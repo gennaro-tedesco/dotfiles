@@ -72,6 +72,8 @@ preview_files () {
 		glow -s ~/.config/glowconfig/customglow.json -p $1
 	elif [[ $1 == *.json ]]; then
 	   	jq '.' -C $1 | less
+	elif [[ $1 == *.csv ]]; then
+		vd $1
 	else
 		bat --theme='Solarized (dark)' $1
 	fi
