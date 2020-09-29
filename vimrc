@@ -97,20 +97,21 @@ call plug#end()
 	inoremap jk <ESC>
 	inoremap kj <ESC>
 
+" easier navigation
+	map W 5w
+	map B 5b
+
 " remap leader key
 	let mapleader = "\<Space>"
 	let maplocalleader =  "\<Space>"
 
-" replace a work with yanked text 
+" replace a word with yanked text 
 	map rw viwpyiw
 
 " mapping of navigation commands
 	map <leader>f :RangerNewTab<CR>
 	map <leader><leader> :Files<CR>
 	map <leader>o :History!<CR>
-
-" mapping of git commands
-	map <leader>gd :Gvdiffsplit<CR>
 
 " shortcut split navigation
 	nnoremap <C-l> <C-w>l
