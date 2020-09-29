@@ -17,7 +17,7 @@ plugins=(
 		)
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/gennarotedesco/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
 # exporting environment variables
@@ -72,6 +72,8 @@ preview_files () {
 		glow -s ~/.config/glowconfig/customglow.json -p $1
 	elif [[ $1 == *.json ]]; then
 	   	jq '.' -C $1 | less
+	elif [[ $1 == *.csv ]]; then
+		vd $1
 	else
 		bat --theme='Solarized (dark)' $1
 	fi
@@ -93,6 +95,3 @@ z() {
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# source plugins 
-source <(navi widget zsh)
