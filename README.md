@@ -2,12 +2,22 @@
 My personal dotfiles: no more, no less
 
 # Installation
-After cloning
 ```
+git clone git@github.com:gennaro-tedesco/dotfiles.git 
 cd dotfiles
-
-cp -f zshrc ~/.zshrc 
-cp -f vimrc ~/.vimrc
-cp -f rc.conf ~/.config/ranger/rc.conf 
-mkdir ~/.config/glowconfig/ && cp -f customglow.json ~/.config/glowconfig/customglow.json
+chmod +x install.sh && ./install.sh 
 ```
+
+# Requirements
+## Vim 
+- vim-plug: https://github.com/junegunn/vim-plug 
+
+## Zsh 
+- bat: https://github.com/sharkdp/bat
+- exa: https://the.exa.website/
+- fzf: https://github.com/junegunn/fzf
+- visidata: https://www.visidata.org/install/
+- jq:
+- glow: https://github.com/charmbracelet/glow
+- zenith: https://github.com/bvaisvil/zenith
+- dust: https://github.com/bootandy/dust

@@ -75,7 +75,7 @@ preview_files () {
 	elif [[ $1 == *.csv ]]; then
 		vd $1
 	else
-		bat --theme='Solarized (dark)' $1
+		bat --theme='Solarized (dark)' --style='header,grid' $1
 	fi
 }
 
