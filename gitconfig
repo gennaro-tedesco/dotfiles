@@ -7,6 +7,7 @@
 	default = current 
 [core]
 	editor = vim
+	pager = /usr/bin/less
 [diff]
 	tool = vimdiff
 [difftool]
