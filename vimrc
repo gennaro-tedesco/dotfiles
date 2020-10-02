@@ -1,4 +1,4 @@
-" Plugins will  e downloaded under the specified directory.
+" Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
@@ -92,6 +92,9 @@ call plug#end()
 
 " remapping the help text
 	cabbrev h tab h
+
+" remapping open file in new tab 
+	cabbrev tn tabnew
 
 " remapping the escape key 
 	inoremap jk <ESC>
