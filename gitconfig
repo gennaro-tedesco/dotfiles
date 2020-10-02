@@ -1,0 +1,15 @@
+[user]
+	name = Gennaro Tedesco
+	email = gennarotedesco@gmail.com
+	username = gennaro-tedesco
+[push]
+    # `git push origin` to push the current branch
+    default = current 
+[core]
+	editor = vim
+[diff]
+	tool = vimdiff
+[difftool]
+    prompt = false
+[alias]
+	logs = log --graph --abbrev-commit --oneline

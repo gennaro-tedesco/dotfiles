@@ -1,0 +1,6 @@
+options.use_default_colors 	= True
+options.color_default_hdr 	= "blue underline bold"
+options.color_current_col 	= "normal"
+options.color_current_row 	= "yellow underline"
+options.color_selected_row 	= "green"
+options.save_filetype 		= "csv"
