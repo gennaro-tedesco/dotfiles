@@ -21,6 +21,7 @@ chmod +x install.sh && ./install.sh
 - glow: https://github.com/charmbracelet/glow
 - zenith: https://github.com/bvaisvil/zenith
 - dust: https://github.com/bootandy/dust
+- navi: https://github.com/denisidoro/navi
 
 ## Ranger
 - https://github.com/ranger/ranger
