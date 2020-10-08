@@ -1,6 +1,5 @@
 [user]
 	name = Gennaro Tedesco
-	email = gennarotedesco@gmail.com
 	username = gennaro-tedesco
 [push]
     # `git push origin` to push the current branch
@@ -9,4 +8,4 @@
 	editor = vim
 	pager = /usr/bin/less
 [alias]
-		logs = log --graph --abbrev-commit --oneline --format=format:'%C(bold blue)%h%C(reset)- %C(green)%ar%C(reset): %s %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+		logs = log --graph --abbrev-commit --oneline --format=format:'%C(bold blue)%h%C(reset) - %C(green)%ar%C(reset): %s %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
