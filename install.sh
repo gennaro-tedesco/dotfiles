@@ -10,6 +10,10 @@ cp -f zshrc ~/.zshrc
 echo "copying vim config file..."
 cp -f vimrc ~/.vimrc
 
+## echo "Installing Vim Plugins"
+## curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+## vim -cPlugInstall -cqa
+
 echo "copying ranger config file..."
 cp -f rc.conf ~/.config/ranger/rc.conf 
 
