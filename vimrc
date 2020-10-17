@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
 Plug 'tpope/vim-sensible'
+Plug 'mhinz/vim-startify'
 Plug 'mechatroner/rainbow_csv'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'preservim/nerdtree'
@@ -33,7 +34,6 @@ call plug#end()
 	let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
 	let g:NERDTreeIgnore = ['^__pycache__$[[dir]]']
 	let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-	let g:calendar_task_delete = 1
 	let g:calendar_first_day = 'monday'
 	let g:lightline = {
       \ 'active': {
@@ -49,6 +49,9 @@ call plug#end()
 	let g:jedi#use_tabs_not_buffers = 1
 	let g:jedi#goto_command = "gd"
 	let jedi#show_call_signatures = 0
+    let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
+	let g:startify_files_number = 15
+
 
 " basic settings for colour and themes
 	filetype plugin indent on
@@ -66,7 +69,7 @@ call plug#end()
     set laststatus=2
     set splitbelow splitright
 
- " standard vim behaviour
+" standard vim behaviour
  	set noswapfile
     set nocompatible
     set hidden
@@ -77,7 +80,7 @@ call plug#end()
     set clipboard+=unnamed
     set autoindent noexpandtab tabstop=4 shiftwidth=4
 
- " search options
+" search options
     set wildmenu
     set hlsearch
     set showmatch
