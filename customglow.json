@@ -15,13 +15,13 @@
   },
   "heading": {
     "block_suffix": "\n",
-    "color": "39",
+    "color": "#268bd2",
     "bold": true
   },
   "h1": {
     "prefix": " ",
     "suffix": " ",
-    "color": "228",
+    "color": "252",
     "background_color": "#6c71c4",
     "bold": true
   },
@@ -50,11 +50,11 @@
     "unticked": "[ ] "
   },
   "link": {
-    "color": "30",
+    "color": "#859900",
     "underline": true
   },
   "link_text": {
-    "color": "35",
+    "color": "#2aa198",
     "bold": true
   },
   "image": {
@@ -68,11 +68,10 @@
   "code": {
     "prefix": " ",
     "suffix": " ",
-    "color": "203",
-    "background_color": "236"
+    "color": "#002b36",
+    "background_color": "#93a1a1"
   },
   "code_block": {
-    "color": "244",
     "margin": 4,
 	"theme": "solarized-dark"
   },
