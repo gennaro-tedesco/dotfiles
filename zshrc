@@ -36,6 +36,7 @@ alias todo="vim ~/.todo"
 alias cal="vim -c Calendar"
 alias zenith="zenith -d 0 -n 0"
 alias du="dust"
+alias grep="rg"
 
 ## ----------------
 ## custom functions
