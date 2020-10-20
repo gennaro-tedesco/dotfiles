@@ -22,6 +22,7 @@ chmod +x install.sh && ./install.sh
 - zenith: https://github.com/bvaisvil/zenith
 - dust: https://github.com/bootandy/dust
 - navi: https://github.com/denisidoro/navi
+- ripgrep: https://github.com/BurntSushi/ripgrep
 
 ## Ranger
 - https://github.com/ranger/ranger
