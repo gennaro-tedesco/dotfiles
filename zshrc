@@ -25,6 +25,7 @@ export LANG=en_US.UTF-8
 export LC_CTYPE="en_US.UTF-8"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export FZF_DEFAULT_OPTS='--reverse --border -e'
+export FZF_DEFAULT_COMMAND="rg --files --hidden -g !.git/"
 
 # aliases
 alias zshconfig="vim ~/.zshrc"
