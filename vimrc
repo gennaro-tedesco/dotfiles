@@ -6,7 +6,6 @@ Plug 'tpope/vim-sensible'
 Plug 'mhinz/vim-startify'
 Plug 'mechatroner/rainbow_csv'
 Plug 'yuttie/comfortable-motion.vim'
-Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'frazrepo/vim-rainbow'
@@ -30,9 +29,6 @@ call plug#end()
 " customisation of default options 
 	let g:rainbow_active = 1
 	let g:gitgutter_enabled = 1
-	let g:NERDTreeWinPos = "right"
-	let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
-	let g:NERDTreeIgnore = ['^__pycache__$[[dir]]']
 	let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 	let g:calendar_first_day = 'monday'
 	let g:lightline = {
@@ -51,7 +47,7 @@ call plug#end()
 	let jedi#show_call_signatures = 0
     let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
 	let g:startify_files_number = 15
-
+	let g:ranger_map_keys = 0
 
 " basic settings for colour and themes
 	filetype plugin indent on
@@ -123,10 +119,6 @@ call plug#end()
 " shortcut split navigation
 	nnoremap <C-l> <C-w>l
 	nnoremap <C-h> <C-w>h
-
-" set Ctrl+N to toggle NERDtree
-	map <C-n> :NERDTreeToggle<CR>
-	map <leader>n :NERDTreeFind<CR>
 
 " open up vimconfig and zshconfig in one go
 	map <leader>v :tabnew<space>~/.vimrc<CR>
