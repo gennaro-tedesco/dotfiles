@@ -109,7 +109,7 @@ call plug#end()
 	let maplocalleader =  "\<Space>"
 
 " replace a word with yanked text 
-	map rw viwpyiw
+	nnoremap rw viwpyiw
 
 " mapping of navigation commands
 	map <leader>f :RangerNewTab<CR>

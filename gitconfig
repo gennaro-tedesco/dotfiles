@@ -2,7 +2,6 @@
 	name = Gennaro Tedesco
 	username = gennaro-tedesco
 [push]
-    # `git push origin` to push the current branch
 	default = current 
 [core]
 	editor = vim
