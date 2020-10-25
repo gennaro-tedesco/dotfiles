@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
 Plug 'tpope/vim-sensible'
 Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-fugitive'
 Plug 'mechatroner/rainbow_csv'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'itchyny/lightline.vim'
@@ -112,9 +113,10 @@ call plug#end()
 	nnoremap rw viwpyiw
 
 " mapping of navigation commands
-	map <leader>f :RangerNewTab<CR>
+	map <leader>r :RangerNewTab<CR>
 	map <leader><leader> :Files<CR>
 	map <leader>o :History!<CR>
+	map <leader>f :Rg<CR>
 
 " shortcut split navigation
 	nnoremap <C-l> <C-w>l
