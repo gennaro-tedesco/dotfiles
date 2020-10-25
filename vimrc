@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-fugitive'
+Plug 'stsewd/fzf-checkout.vim'
 Plug 'mechatroner/rainbow_csv'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'itchyny/lightline.vim'
@@ -117,6 +118,10 @@ call plug#end()
 	map <leader><leader> :Files<CR>
 	map <leader>o :History!<CR>
 	map <leader>f :Rg<CR>
+
+" git fugitive remapping
+	nnoremap <leader>gs :Gstatus<CR>
+	nnoremap <leader>gc :GCheckout<CR>
 
 " shortcut split navigation
 	nnoremap <C-l> <C-w>l
