@@ -49,6 +49,10 @@ call plug#end()
 	let jedi#show_call_signatures = 0
     let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
 	let g:startify_files_number = 15
+	    let g:startify_lists = [
+          \ { 'type': 'files',     'header': ['   Files']            },
+          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+          \ ]
 	let g:ranger_map_keys = 0
 
 " basic settings for colour and themes
