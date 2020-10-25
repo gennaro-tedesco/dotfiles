@@ -27,4 +27,3 @@ chmod +x install.sh && ./install.sh
 ## Ranger
 - https://github.com/ranger/ranger
 
-this is `inline code`
