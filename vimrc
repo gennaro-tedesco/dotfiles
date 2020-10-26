@@ -2,6 +2,7 @@
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
+Plug 'thaerkh/vim-indentguides'
 Plug 'tpope/vim-sensible'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-fugitive'
@@ -34,25 +35,25 @@ call plug#end()
 	let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 	let g:calendar_first_day = 'monday'
 	let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch','readonly', 'filename', 'modified'] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
+	  \ 'active': {
+	  \   'left': [ [ 'mode', 'paste' ],
+	  \				[ 'gitbranch','readonly', 'filename', 'modified'] ]
+	  \ },
+	  \ 'component_function': {
+	  \   'gitbranch': 'FugitiveHead'
+	  \ },
+	  \ }
 	let g:vimtex_view_general_viewer = 'zathura'
 	let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 	let g:jedi#use_tabs_not_buffers = 1
 	let g:jedi#goto_command = "gd"
 	let jedi#show_call_signatures = 0
-    let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
+	let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
 	let g:startify_files_number = 15
-	    let g:startify_lists = [
-          \ { 'type': 'files',     'header': ['   Files']            },
-          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
-          \ ]
+		let g:startify_lists = [
+		  \ { 'type': 'files',	   'header': ['   Files']			 },
+		  \ { 'type': 'dir',	   'header': ['   Current Directory '. getcwd()] },
+		  \ ]
 	let g:ranger_map_keys = 0
 
 " basic settings for colour and themes
@@ -63,44 +64,44 @@ call plug#end()
 	colorscheme solarized8
 
 " cursorline and windows frame
-    set number relativenumber
-    set wrap
+	set number relativenumber
+	set wrap
 	autocmd FileType * set formatoptions-=cro
-    set ruler
-    set cursorline
-    set laststatus=2
-    set splitbelow splitright
+	set ruler
+	set cursorline
+	set laststatus=2
+	set splitbelow splitright
 
 " standard vim behaviour
-    set noswapfile
-    set nocompatible
-    set hidden
-    set mouse=a
-    set updatetime=100
-    set showcmd
-    set sidescroll=1
-    set clipboard+=unnamed
-    set autoindent noexpandtab tabstop=4 shiftwidth=4
+	set noswapfile
+	set nocompatible
+	set hidden
+	set mouse=a
+	set updatetime=100
+	set showcmd
+	set sidescroll=1
+	set clipboard+=unnamed
+	set autoindent noexpandtab tabstop=4 shiftwidth=4
 
 " search options
-    set wildmenu
-    set hlsearch
-    set showmatch
+	set wildmenu
+	set hlsearch
+	set showmatch
 
 " autocompletion options
-    set shortmess+=c
-    set completeopt="menuone,preview"
-    set wildmode=longest,list,full
+	set shortmess+=c
+	set completeopt="menuone,preview"
+	set wildmode=longest,list,full
 
 "" ---------------------------------------
 "" --- remapping and keys combinations ---
 "" ---------------------------------------
 
 " remapping the help text
-    cabbrev h tab h
+	cabbrev h tab h
 
 " remapping open file in new tab 
-    cabbrev tn tabnew
+	cabbrev tn tabnew
 
 " remapping the escape key 
 	inoremap jk <ESC>
