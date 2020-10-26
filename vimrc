@@ -119,7 +119,7 @@ call plug#end()
 	nnoremap rw viwpyiw
 
 " replace all occurrences of words under cursor 
-	nnoremap <leader>s :%s///gc<Left><Left><Left>
+	nnoremap <leader>S :%s///gc<Left><Left><Left>
 
 " mapping of navigation commands
 	nnoremap <leader><leader> :RangerNewTab<CR>
