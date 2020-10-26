@@ -108,8 +108,8 @@ call plug#end()
 	inoremap kj <ESC>
 
 " easier navigation
-	map W 5w
-	map B 5b
+	nnoremap W 5w
+	nnoremap B 5b
 
 " remap leader key
 	let mapleader = "\<Space>"
@@ -118,11 +118,14 @@ call plug#end()
 " replace a word with yanked text 
 	nnoremap rw viwpyiw
 
+" replace all occurrences of words under cursor 
+	nnoremap <leader>s :%s///gc<Left><Left><Left>
+
 " mapping of navigation commands
-	map <leader>b :RangerNewTab<CR>
-	map <leader><leader> :Files<CR>
-	map <leader>o :History!<CR>
-	map <leader>f :Rg<CR>
+	nnoremap <leader><leader> :RangerNewTab<CR>
+	nnoremap <C-p> :Files<CR>
+	nnoremap <leader>o :History!<CR>
+	nnoremap <leader>f :Rg<CR>
 
 " git fugitive remapping
 	nnoremap <leader>gs :Gstatus<CR> :resize 10<CR>
