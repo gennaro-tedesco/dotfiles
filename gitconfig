@@ -6,5 +6,9 @@
 [core]
 	editor = vim
 	pager = /usr/bin/less
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
 [alias]
-		logs = log --graph --abbrev-commit --oneline --format=format:'%C(bold blue)%h%C(reset) - %C(green)%ar%C(reset): %s %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+	logs = log --graph --abbrev-commit --oneline --format=format:'%C(bold blue)%h%C(reset) - %C(green)%ar%C(reset): %s %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'

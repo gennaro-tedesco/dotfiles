@@ -124,12 +124,8 @@ call plug#end()
 	map <leader>f :Rg<CR>
 
 " git fugitive remapping
-	nnoremap <leader>gs :Gstatus<CR>
+	nnoremap <leader>gs :Gstatus<CR> :resize 10<CR>
 	nnoremap <leader>gc :GCheckout<CR>
-
-" shortcut split navigation
-	nnoremap <C-l> <C-w>l
-	nnoremap <C-h> <C-w>h
 
 " open up vimconfig and zshconfig in one go
 	map <leader>v :tabnew<space>~/.vimrc<CR>
