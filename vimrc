@@ -72,7 +72,7 @@ call plug#end()
     set splitbelow splitright
 
 " standard vim behaviour
- 	set noswapfile
+    set noswapfile
     set nocompatible
     set hidden
     set mouse=a
@@ -97,10 +97,10 @@ call plug#end()
 "" ---------------------------------------
 
 " remapping the help text
-	cabbrev h tab h
+    cabbrev h tab h
 
 " remapping open file in new tab 
-	cabbrev tn tabnew
+    cabbrev tn tabnew
 
 " remapping the escape key 
 	inoremap jk <ESC>
@@ -118,7 +118,7 @@ call plug#end()
 	nnoremap rw viwpyiw
 
 " mapping of navigation commands
-	map <leader>r :RangerNewTab<CR>
+	map <leader>b :RangerNewTab<CR>
 	map <leader><leader> :Files<CR>
 	map <leader>o :History!<CR>
 	map <leader>f :Rg<CR>
