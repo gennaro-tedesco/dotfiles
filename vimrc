@@ -24,12 +24,14 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'lifepillar/vim-solarized8'
 Plug 'lervag/vimtex'
 Plug 'davidhalter/jedi-vim', { 'for':  'python' }
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
 
 " customisation of default options 
+	let g:indentguides_tabchar = '.'
 	let g:rainbow_active = 1
 	let g:gitgutter_enabled = 1
 	let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
@@ -47,12 +49,13 @@ call plug#end()
 	let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 	let g:jedi#use_tabs_not_buffers = 1
 	let g:jedi#goto_command = "gd"
-	let jedi#show_call_signatures = 0
+	let g:jedi#usages_command = "gu"
+	let g:jedi#show_call_signatures = 0
 	let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
 	let g:startify_files_number = 15
 		let g:startify_lists = [
-		  \ { 'type': 'files',	   'header': ['   Files']			 },
 		  \ { 'type': 'dir',	   'header': ['   Current Directory '. getcwd()] },
+		  \ { 'type': 'files',	   'header': ['   Files']			 },
 		  \ ]
 	let g:ranger_map_keys = 0
 
