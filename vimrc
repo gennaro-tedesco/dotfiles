@@ -29,138 +29,167 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-
-" customisation of default options 
-	let g:indentguides_tabchar = '.'
-	let g:rainbow_active = 1
-	let g:gitgutter_enabled = 1
-	let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-	let g:calendar_first_day = 'monday'
-	let g:lightline = {
-	  \ 'active': {
-	  \   'left': [ [ 'mode', 'paste' ],
-	  \				[ 'gitbranch','readonly', 'filename', 'modified'] ]
-	  \ },
-	  \ 'component_function': {
-	  \   'gitbranch': 'FugitiveHead'
-	  \ },
-	  \ }
-	let g:vimtex_view_general_viewer = 'zathura'
-	let g:vimtex_view_general_options_latexmk = '-reuse-instance'
-	let g:jedi#use_tabs_not_buffers = 1
-	let g:jedi#goto_command = "gd"
-	let g:jedi#usages_command = "gu"
-	let g:jedi#show_call_signatures = 0
-	let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
-	let g:startify_files_number = 15
-		let g:startify_lists = [
-		  \ { 'type': 'dir',	   'header': ['   Current Directory '. getcwd()] },
-		  \ { 'type': 'files',	   'header': ['   Files']			 },
-		  \ ]
-	let g:ranger_map_keys = 0
+" customisation of default plugin options 
+let g:indentguides_tabchar = '.'
+let g:rainbow_active = 1
+let g:gitgutter_enabled = 1
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+let g:calendar_first_day = 'monday'
+let g:lightline = {
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ],
+	\				[ 'gitbranch','readonly', 'filename', 'modified'] ]
+	\ },
+	\ 'component_function': {
+	\   'gitbranch': 'FugitiveHead'
+	\ },
+	\ }
+let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#goto_command = "gd"
+let g:jedi#usages_command = "gu"
+let g:jedi#show_call_signatures = 0
+let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
+let g:startify_files_number = 15
+let g:startify_lists = [
+	\ { 'type': 'dir',	   'header': ['   Current Directory '. getcwd()] },
+	\ { 'type': 'files',	   'header': ['   Files']			 },
+	\ ]
+let g:ranger_map_keys = 0
+let g:fzf_checkout_merge_settings = v:false
+let g:fzf_branch_actions = {
+	\ 'checkout': {
+	\   'prompt': 'Checkout> ',
+	\   'execute': 'echo system("{git} checkout {branch}")',
+	\   'multiple': v:false,
+	\   'keymap': 'enter',
+	\   'required': ['branch'],
+	\   'confirm': v:false,
+	\ },
+	\ 'track': {
+	\   'prompt': 'Track> ',
+	\   'execute': 'echo system("{git} checkout --track {branch}")',
+	\   'multiple': v:false,
+	\   'keymap': 'alt-enter',
+	\   'required': ['branch'],
+	\   'confirm': v:false,
+	\ },
+	\ 'diff': {
+	\   'prompt': 'Diff> ',
+	\   'execute': 'Git diff {branch}',
+	\   'multiple': v:false,
+	\   'keymap': 'ctrl-f',
+	\   'required': ['branch'],
+	\   'confirm': v:false,
+	\ },
+	\}
 
 " basic settings for colour and themes
-	filetype plugin indent on
-	syntax enable
-	set termguicolors
-	set background=dark
-	colorscheme solarized8
+filetype plugin indent on
+syntax enable
+set termguicolors
+set background=dark
+colorscheme solarized8
 
 " cursorline and windows frame
-	set number relativenumber
-	set wrap
-	autocmd FileType * set formatoptions-=cro
-	set ruler
-	set cursorline
-	set laststatus=2
-	set splitbelow splitright
+set number relativenumber
+set wrap
+autocmd FileType * set formatoptions-=cro
+set ruler
+set cursorline
+set laststatus=2
+set splitbelow splitright
 
 " standard vim behaviour
-	set noswapfile
-	set nocompatible
-	set hidden
-	set mouse=a
-	set updatetime=100
-	set showcmd
-	set sidescroll=1
-	set clipboard+=unnamed
-	set autoindent noexpandtab tabstop=4 shiftwidth=4
+set noswapfile
+set nocompatible
+set hidden
+set mouse=a
+set updatetime=100
+set showcmd
+set sidescroll=1
+set clipboard+=unnamed
+set autoindent noexpandtab tabstop=4 shiftwidth=4
 
 " search options
-	set wildmenu
-	set hlsearch
-	set showmatch
+set wildmenu
+set hlsearch
+set showmatch
 
 " autocompletion options
-	set shortmess+=c
-	set completeopt="menuone,preview"
-	set wildmode=longest,list,full
+set shortmess+=c
+set completeopt="menuone,preview"
+set wildmode=longest,list,full
 
 "" ---------------------------------------
 "" --- remapping and keys combinations ---
 "" ---------------------------------------
 
 " remapping the help text
-	cabbrev h tab h
+cabbrev h tab h
 
 " remapping open file in new tab 
-	cabbrev tn tabnew
+cabbrev tn tabnew
 
 " remapping the escape key 
-	inoremap jk <ESC>
-	inoremap kj <ESC>
+inoremap jj <ESC>
+inoremap kk <ESC>
 
 " easier navigation
-	nnoremap W 5w
-	nnoremap B 5b
+nnoremap W 5w
+nnoremap B 5b
 
 " remap leader key
-	let mapleader = "\<Space>"
-	let maplocalleader =  "\<Space>"
+let mapleader = "\<Space>"
+let maplocalleader =  "\<Space>"
 
 " replace a word with yanked text 
-	nnoremap rw viwpyiw
+nnoremap rw viwpyiw
 
 " replace all occurrences of words under cursor 
-	nnoremap <leader>S :%s///gc<Left><Left><Left>
+nnoremap S :%s///gc<Left><Left><Left>
 
 " mapping of navigation commands
-	nnoremap <leader><leader> :RangerNewTab<CR>
-	nnoremap <C-p> :Files<CR>
-	nnoremap <leader>o :History!<CR>
-	nnoremap <leader>f :Rg<CR>
+nnoremap <leader><leader> :RangerNewTab<CR>
+nnoremap <C-p> :Files<CR>
+nnoremap <leader>o :History!<CR>
+nnoremap <leader>f :Rg<CR>
 
 " git fugitive remapping
-	nnoremap <leader>gs :Gstatus<CR> :resize 10<CR>
-	nnoremap <leader>gc :GCheckout<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :GCheckout<CR>
+nnoremap <leader>gj :diffget //3<CR>
+nnoremap <leader>gf :diffget //2<CR>
 
 " open up vimconfig and zshconfig in one go
-	map <leader>v :tabnew<space>~/.vimrc<CR>
-	map <leader>z :tabnew<space>~/.zshrc<CR>
-	map <leader>t :tabnew<space>~/.todo<CR>
+map <leader>v :tabnew<space>~/.vimrc<CR>
+map <leader>z :tabnew<space>~/.zshrc<CR>
+map <leader>t :tabnew<space>~/.todo<CR>
 
 " select the complete menu item like CTRL+y would.
-	inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
+inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
 
 " cancel the complete menu item like CTRL+e would.
-	inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
+inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
 
 "" ---------------------------
 "" --- additional functions ---
 "" ---------------------------
 
 " specific to python, to align indentation
-	augroup python
-		autocmd!
-		autocmd FileType python setlocal noet ts=4
-	augroup end
+augroup python
+	autocmd!
+	autocmd FileType python setlocal noet ts=4
+augroup end
 
 " set autocompletion
-	function! Tab_Or_Complete()
-	  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-		return "\<C-N>"
-	  else
-		return "\<Tab>"
-	  endif
-	endfunction
-	inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+	return "\<C-N>"
+  else
+	return "\<Tab>"
+  endif
+endfunction
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+

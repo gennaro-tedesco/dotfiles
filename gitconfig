@@ -2,7 +2,9 @@
 	name = Gennaro Tedesco
 	username = gennaro-tedesco
 [push]
-	default = current 
+	default = current
+[pull]
+    rebase = false
 [core]
 	editor = vim
 	pager = /usr/bin/less
