@@ -120,7 +120,7 @@ set showmatch
 " autocompletion options
 set shortmess+=c
 set completeopt="menuone,preview"
-set wildmode=longest,list,full
+set wildmode=longest,full,list
 
 "" ---------------------------------------
 "" --- remapping and keys combinations ---
@@ -172,6 +172,13 @@ inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
 
 " cancel the complete menu item like CTRL+e would.
 inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
+
+"" ---------------------------
+"" -- command-line commands --
+"" ---------------------------
+:command T2S set expandtab | %retab! | w
+:command S2T set noexpandtab | %retab! | w
+
 
 "" ---------------------------
 "" --- additional functions ---
