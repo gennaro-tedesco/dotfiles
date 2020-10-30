@@ -5,6 +5,8 @@
 	default = current
 [pull]
     rebase = false
+[merge]
+	conflictstyle = diff3
 [core]
 	editor = vim
 	pager = /usr/bin/less

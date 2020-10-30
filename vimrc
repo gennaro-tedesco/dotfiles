@@ -31,6 +31,7 @@ call plug#end()
 
 " customisation of default plugin options 
 let g:indentguides_tabchar = '.'
+let g:indentguides_ignorelist = ['help']
 let g:rainbow_active = 1
 let g:gitgutter_enabled = 1
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
@@ -46,6 +47,7 @@ let g:lightline = {
 	\ }
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+let g:tex_flavor = 'latex'
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#goto_command = "gd"
 let g:jedi#usages_command = "gu"

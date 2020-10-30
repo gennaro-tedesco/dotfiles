@@ -68,8 +68,7 @@
   "code": {
     "prefix": " ",
     "suffix": " ",
-    "color": "#002b36",
-    "background_color": "#93a1a1"
+    "background_color": "#073642"
   },
   "code_block": {
     "margin": 4,
