@@ -38,11 +38,11 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 let g:calendar_first_day = 'monday'
 let g:lightline = {
 	\ 'active': {
-	\   'left': [ [ 'mode', 'paste' ],
+	\	'left': [ [ 'mode', 'paste' ],
 	\				[ 'gitbranch','readonly', 'filename', 'modified'] ]
 	\ },
 	\ 'component_function': {
-	\   'gitbranch': 'FugitiveHead'
+	\	'gitbranch': 'FugitiveHead'
 	\ },
 	\ }
 let g:vimtex_view_general_viewer = 'zathura'
@@ -62,28 +62,28 @@ let g:ranger_map_keys = 0
 let g:fzf_checkout_merge_settings = v:false
 let g:fzf_branch_actions = {
 	\ 'checkout': {
-	\   'prompt': 'Checkout> ',
-	\   'execute': 'echo system("{git} checkout {branch}")',
-	\   'multiple': v:false,
-	\   'keymap': 'enter',
-	\   'required': ['branch'],
-	\   'confirm': v:false,
+	\	'prompt': 'Checkout> ',
+	\	'execute': 'echo system("{git} checkout {branch}")',
+	\	'multiple': v:false,
+	\	'keymap': 'enter',
+	\	'required': ['branch'],
+	\	'confirm': v:false,
 	\ },
 	\ 'track': {
-	\   'prompt': 'Track> ',
-	\   'execute': 'echo system("{git} checkout --track {branch}")',
-	\   'multiple': v:false,
-	\   'keymap': 'alt-enter',
-	\   'required': ['branch'],
-	\   'confirm': v:false,
+	\	'prompt': 'Track> ',
+	\	'execute': 'echo system("{git} checkout --track {branch}")',
+	\	'multiple': v:false,
+	\	'keymap': 'alt-enter',
+	\	'required': ['branch'],
+	\	'confirm': v:false,
 	\ },
 	\ 'diff': {
-	\   'prompt': 'Diff> ',
-	\   'execute': 'Git diff {branch}',
-	\   'multiple': v:false,
-	\   'keymap': 'ctrl-f',
-	\   'required': ['branch'],
-	\   'confirm': v:false,
+	\	'prompt': 'Diff> ',
+	\	'execute': 'Git diff {branch}',
+	\	'multiple': v:false,
+	\	'keymap': 'ctrl-f',
+	\	'required': ['branch'],
+	\	'confirm': v:false,
 	\ },
 	\}
 
@@ -176,13 +176,6 @@ inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
 inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
 
 "" ---------------------------
-"" -- command-line commands --
-"" ---------------------------
-:command T2S set expandtab | %retab! | w
-:command S2T set noexpandtab | %retab! | w
-
-
-"" ---------------------------
 "" --- additional functions ---
 "" ---------------------------
 
@@ -201,4 +194,29 @@ function! Tab_Or_Complete()
   endif
 endfunction
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+
+" prettify json
+function Jq ()
+	if (&ft=='json' || &ft=='')
+		:%! jq .
+	else
+		echo "not a json file"
+	endif
+endfunction
+cabbrev jq call Jq()
+autocmd BufReadPost *.json silent! :call Jq()
+
+" T2S and S2T
+function T2S ()
+	set expandtab | %retab! | w
+endfunction
+cabbrev t2s silent! call T2S()
+
+function S2T ()
+	set noexpandtab | %retab! | w
+endfunction
+cabbrev s2t silent! call S2T()
+
+" convert t2s when saving python files 
+autocmd BufWritePre *.py silent! call T2S() 
 
