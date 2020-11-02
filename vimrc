@@ -37,14 +37,14 @@ let g:gitgutter_enabled = 1
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 let g:calendar_first_day = 'monday'
 let g:lightline = {
-	\ 'active': {
-	\	'left': [ [ 'mode', 'paste' ],
-	\				[ 'gitbranch','readonly', 'filename', 'modified'] ]
-	\ },
-	\ 'component_function': {
-	\	'gitbranch': 'FugitiveHead'
-	\ },
-	\ }
+			\ 'active': {
+			\	'left': [ [ 'mode', 'paste' ],
+			\				[ 'gitbranch','readonly', 'filename', 'modified'] ]
+			\ },
+			\ 'component_function': {
+			\	'gitbranch': 'FugitiveHead'
+			\ },
+			\ }
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 let g:tex_flavor = 'latex'
@@ -55,37 +55,37 @@ let g:jedi#show_call_signatures = 0
 let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
 let g:startify_files_number = 15
 let g:startify_lists = [
-	\ { 'type': 'dir',	   'header': ['   Current Directory '. getcwd()] },
-	\ { 'type': 'files',	   'header': ['   Files']			 },
-	\ ]
+			\ { 'type': 'dir',	   'header': ['   Current Directory '. getcwd()] },
+			\ { 'type': 'files',	   'header': ['   Files']			 },
+			\ ]
 let g:ranger_map_keys = 0
 let g:fzf_checkout_merge_settings = v:false
 let g:fzf_branch_actions = {
-	\ 'checkout': {
-	\	'prompt': 'Checkout> ',
-	\	'execute': 'echo system("{git} checkout {branch}")',
-	\	'multiple': v:false,
-	\	'keymap': 'enter',
-	\	'required': ['branch'],
-	\	'confirm': v:false,
-	\ },
-	\ 'track': {
-	\	'prompt': 'Track> ',
-	\	'execute': 'echo system("{git} checkout --track {branch}")',
-	\	'multiple': v:false,
-	\	'keymap': 'alt-enter',
-	\	'required': ['branch'],
-	\	'confirm': v:false,
-	\ },
-	\ 'diff': {
-	\	'prompt': 'Diff> ',
-	\	'execute': 'Git diff {branch}',
-	\	'multiple': v:false,
-	\	'keymap': 'ctrl-f',
-	\	'required': ['branch'],
-	\	'confirm': v:false,
-	\ },
-	\}
+			\ 'checkout': {
+			\	'prompt': 'Checkout> ',
+			\	'execute': 'echo system("{git} checkout {branch}")',
+			\	'multiple': v:false,
+			\	'keymap': 'enter',
+			\	'required': ['branch'],
+			\	'confirm': v:false,
+			\ },
+			\ 'track': {
+			\	'prompt': 'Track> ',
+			\	'execute': 'echo system("{git} checkout --track {branch}")',
+			\	'multiple': v:false,
+			\	'keymap': 'alt-enter',
+			\	'required': ['branch'],
+			\	'confirm': v:false,
+			\ },
+			\ 'diff': {
+			\	'prompt': 'Diff> ',
+			\	'execute': 'Git diff {branch}',
+			\	'multiple': v:false,
+			\	'keymap': 'ctrl-f',
+			\	'required': ['branch'],
+			\	'confirm': v:false,
+			\ },
+			\}
 
 " basic settings for colour and themes
 filetype plugin indent on
@@ -179,19 +179,13 @@ inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
 "" --- additional functions ---
 "" ---------------------------
 
-" specific to python, to align indentation
-augroup python
-	autocmd!
-	autocmd FileType python setlocal noet ts=4
-augroup end
-
 " set autocompletion
 function! Tab_Or_Complete()
-  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-	return "\<C-N>"
-  else
-	return "\<Tab>"
-  endif
+	if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+		return "\<C-N>"
+	else
+		return "\<Tab>"
+	endif
 endfunction
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
@@ -220,3 +214,10 @@ cabbrev s2t silent! call S2T()
 " convert t2s when saving python files 
 autocmd BufWritePre *.py silent! call T2S() 
 
+" navigation controls when in diff mode
+if &diff
+	nnoremap <expr> <Right> '<C-W>l'
+	nnoremap <expr> <Left> '<C-W>h'
+	nnoremap <expr> <Down> ']c'
+	nnoremap <expr> <Up> '[c'
+endif

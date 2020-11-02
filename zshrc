@@ -10,6 +10,7 @@ POWERLEVEL9K_MODE="awesome-patched"
 plugins=(
 		auto-ls
 		fzf-tab
+		vi-mode
 		zsh-interactive-cd
 		zsh-autosuggestions
 		zsh-syntax-highlighting
