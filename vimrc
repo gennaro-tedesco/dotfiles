@@ -34,7 +34,7 @@ let g:indentguides_tabchar = '.'
 let g:indentguides_ignorelist = ['help']
 let g:rainbow_active = 1
 let g:gitgutter_enabled = 1
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.8 } }
 let g:calendar_first_day = 'monday'
 let g:lightline = {
 			\ 'active': {
@@ -84,6 +84,14 @@ let g:fzf_branch_actions = {
 			\	'keymap': 'ctrl-f',
 			\	'required': ['branch'],
 			\	'confirm': v:false,
+			\ },
+			\ 'delete': {
+			\   'prompt': 'Delete> ',
+			\   'execute': 'echo system("{git} branch -D {branch}")',
+			\   'multiple': v:true,
+			\   'keymap': 'ctrl-d',
+			\   'required': ['branch'],
+			\   'confirm': v:true,
 			\ },
 			\}
 
@@ -155,7 +163,7 @@ nnoremap S :%s///gc<Left><Left><Left>
 " mapping of navigation commands
 nnoremap <leader><leader> :RangerNewTab<CR>
 nnoremap <C-p> :Files<CR>
-nnoremap <leader>o :History!<CR>
+nnoremap <C-o> :History<CR>
 nnoremap <leader>f :Rg<CR>
 
 " git fugitive remapping
@@ -175,9 +183,9 @@ inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
 " cancel the complete menu item like CTRL+e would.
 inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
 
-"" ---------------------------
+"" ----------------------------
 "" --- additional functions ---
-"" ---------------------------
+"" ----------------------------
 
 " set autocompletion
 function! Tab_Or_Complete()
@@ -221,3 +229,10 @@ if &diff
 	nnoremap <expr> <Down> ']c'
 	nnoremap <expr> <Up> '[c'
 endif
+
+" installation of plugins 
+function Install()
+	:w | so% | PlugInstall
+endfunction
+cabbrev inst silent! call Install()
+
