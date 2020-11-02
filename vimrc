@@ -219,6 +219,21 @@ function S2T ()
 endfunction
 cabbrev s2t silent! call S2T()
 
+" installation of plugins 
+function Install()
+	:w | so% | PlugInstall | PlugUpdate
+endfunction
+cabbrev inst silent! call Install()
+
+function ReplaceFile()
+	:norm gg"_dGP
+endfunction
+cabbrev rf silent! call ReplaceFile()
+
+"" --------------------
+"" --- autocommands ---
+"" --------------------
+
 " convert t2s when saving python files 
 autocmd BufWritePre *.py silent! call T2S() 
 
@@ -229,10 +244,4 @@ if &diff
 	nnoremap <expr> <Down> ']c'
 	nnoremap <expr> <Up> '[c'
 endif
-
-" installation of plugins 
-function Install()
-	:w | so% | PlugInstall
-endfunction
-cabbrev inst silent! call Install()
 
