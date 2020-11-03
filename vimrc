@@ -143,8 +143,8 @@ cabbrev h tab h
 cabbrev tn tabnew
 
 " remapping the escape key 
-inoremap jj <ESC>
-inoremap kk <ESC>
+inoremap jj <ESC> :w<CR>
+inoremap kk <ESC> :w<CR>
 
 " easier navigation
 nnoremap W 5w
@@ -169,8 +169,6 @@ nnoremap <leader>f :Rg<CR>
 " git fugitive remapping
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :GCheckout<CR>
-nnoremap <leader>gj :diffget //3<CR>
-nnoremap <leader>gf :diffget //2<CR>
 
 " open up vimconfig and zshconfig in one go
 map <leader>v :tabnew<space>~/.vimrc<CR>
@@ -188,14 +186,14 @@ inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
 "" ----------------------------
 
 " set autocompletion
-function! Tab_Or_Complete()
+function! TabComplete()
 	if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
 		return "\<C-N>"
 	else
 		return "\<Tab>"
 	endif
 endfunction
-inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+inoremap <Tab> <C-R>=TabComplete()<CR>
 
 " prettify json
 function Jq ()
@@ -239,9 +237,12 @@ autocmd BufWritePre *.py silent! call T2S()
 
 " navigation controls when in diff mode
 if &diff
+	nnoremap <leader>gR :diffget //3<CR>
+	nnoremap <leader>gL :diffget //2<CR>
 	nnoremap <expr> <Right> '<C-W>l'
 	nnoremap <expr> <Left> '<C-W>h'
 	nnoremap <expr> <Down> ']c'
 	nnoremap <expr> <Up> '[c'
+	cabbrev q qa 
 endif
 
