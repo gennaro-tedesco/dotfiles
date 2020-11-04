@@ -73,9 +73,9 @@ let g:fzf_branch_actions = {
 			\	'prompt': 'Track> ',
 			\	'execute': 'echo system("{git} checkout --track {branch}")',
 			\	'multiple': v:false,
-			\	'keymap': 'alt-enter',
+			\	'keymap': 'ctrl-t',
 			\	'required': ['branch'],
-			\	'confirm': v:false,
+			\	'confirm': v:true,
 			\ },
 			\ 'diff': {
 			\	'prompt': 'Diff> ',
@@ -180,6 +180,11 @@ inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
 
 " cancel the complete menu item like CTRL+e would.
 inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
+
+" comment on/off blocks in visual mode 
+vnoremap c+ :norm I#<ESC>
+vnoremap c- :norm ^x<ESC>
+
 
 "" ----------------------------
 "" --- additional functions ---
