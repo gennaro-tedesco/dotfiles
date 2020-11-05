@@ -164,7 +164,8 @@ nnoremap S :%s///gc<Left><Left><Left>
 nnoremap <leader><leader> :RangerNewTab<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :History<CR>
-nnoremap <leader>f :Rg<CR>
+nnoremap <leader>f :BLines<CR>
+nnoremap <leader>F :Rg<CR>
 
 " git fugitive remapping
 nnoremap <leader>gs :Gstatus<CR>
@@ -242,8 +243,8 @@ autocmd BufWritePre *.py silent! call T2S()
 
 " navigation controls when in diff mode
 if &diff
-	nnoremap <leader>gR :diffget //3<CR>
-	nnoremap <leader>gL :diffget //2<CR>
+	nnoremap <leader>d3 :diffget //3<CR>
+	nnoremap <leader>d2 :diffget //2<CR>
 	nnoremap <expr> <Right> '<C-W>l'
 	nnoremap <expr> <Left> '<C-W>h'
 	nnoremap <expr> <Down> ']c'
