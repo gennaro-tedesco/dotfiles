@@ -2,6 +2,7 @@
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
+Plug 'dense-analysis/ale'
 Plug 'thaerkh/vim-indentguides'
 Plug 'tpope/vim-sensible'
 Plug 'mhinz/vim-startify'
@@ -29,13 +30,20 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-" customisation of default plugin options 
+"" --------------------------------------------
+"" - customisation of default plugins options -
+"" --------------------------------------------
 let g:indentguides_tabchar = '.'
 let g:indentguides_ignorelist = ['help']
+
 let g:rainbow_active = 1
+
 let g:gitgutter_enabled = 1
+
 let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.8 } }
+
 let g:calendar_first_day = 'monday'
+
 let g:lightline = {
 			\ 'active': {
 			\	'left': [ [ 'mode', 'paste' ],
@@ -45,20 +53,35 @@ let g:lightline = {
 			\	'gitbranch': 'FugitiveHead'
 			\ },
 			\ }
+
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 let g:tex_flavor = 'latex'
+
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#goto_command = "gd"
 let g:jedi#usages_command = "gu"
 let g:jedi#show_call_signatures = 0
+
+let g:ale_linters = {'python': ['flake8']}
+let g:ale_fixers = {'python': ['black']}
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '●'
+let g:ale_sign_warning = '.'
+
 let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
 let g:startify_files_number = 15
 let g:startify_lists = [
 			\ { 'type': 'dir',	   'header': ['   Current Directory '. getcwd()] },
 			\ { 'type': 'files',	   'header': ['   Files']			 },
 			\ ]
+
 let g:ranger_map_keys = 0
+
 let g:fzf_checkout_merge_settings = v:false
 let g:fzf_branch_actions = {
 			\ 'checkout': {
@@ -110,6 +133,7 @@ set ruler
 set cursorline
 set laststatus=2
 set splitbelow splitright
+set scrolloff=5
 
 " standard vim behaviour
 set noswapfile
@@ -149,6 +173,8 @@ inoremap kk <ESC> :w<CR>
 " easier navigation
 nnoremap W 5w
 nnoremap B 5b
+nnoremap H ^
+nnoremap L $
 
 " remap leader key
 let mapleader = "\<Space>"
@@ -204,7 +230,7 @@ inoremap <Tab> <C-R>=TabComplete()<CR>
 " prettify json
 function Jq ()
 	if (&ft=='json' || &ft=='')
-		:%! jq .
+		:%! jq . 
 	else
 		echo "not a json file"
 	endif
@@ -237,9 +263,6 @@ cabbrev rf silent! call ReplaceFile()
 "" --------------------
 "" --- autocommands ---
 "" --------------------
-
-" convert t2s when saving python files 
-autocmd BufWritePre *.py silent! call T2S() 
 
 " navigation controls when in diff mode
 if &diff
