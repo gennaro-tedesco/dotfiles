@@ -12,6 +12,10 @@ chmod +x install.sh && ./install.sh
 ## Vim 
 - vim-plug: https://github.com/junegunn/vim-plug 
 
+vim configurations are separated into 
+- `vimrc` general configurations file 
+- `functions.vim` containing custom functions 
+
 ## Zsh 
 - bat: https://github.com/sharkdp/bat
 - exa: https://the.exa.website/
