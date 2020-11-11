@@ -57,20 +57,21 @@ let g:lightline = {
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 let g:tex_flavor = 'latex'
-
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#goto_command = "gd"
 let g:jedi#usages_command = "gu"
 let g:jedi#show_call_signatures = 0
 
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
 let g:ale_linters = {'python': ['flake8']}
 let g:ale_fixers = {'python': ['black']}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
-let g:ale_sign_error = '●'
+let g:ale_fix_on_save = 0
+let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '.'
 
 let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
@@ -194,8 +195,9 @@ nnoremap <leader>f :BLines<CR>
 nnoremap <leader>F :Rg<CR>
 
 " git fugitive remapping
-nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gs :vertical Gstatus<CR>
 nnoremap <leader>gc :GCheckout<CR>
+nnoremap <leader>gp :Gpush <Bar> copen<CR>
 
 " open up vimconfig and zshconfig in one go
 map <leader>v :tabnew<space>~/.vimrc<CR>
@@ -236,7 +238,6 @@ function Jq ()
 	endif
 endfunction
 cabbrev jq call Jq()
-autocmd BufReadPost *.json silent! :call Jq()
 
 " T2S and S2T
 function T2S ()
@@ -259,10 +260,6 @@ function ReplaceFile()
 	:norm gg"_dGP
 endfunction
 cabbrev rf silent! call ReplaceFile()
-
-"" --------------------
-"" --- autocommands ---
-"" --------------------
 
 " navigation controls when in diff mode
 if &diff
