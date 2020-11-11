@@ -1,5 +1,8 @@
 #!/bin/bash 
 
+VIMFUNCTION_DIR=~/.vim/plugin
+GLOWCONFIG_DIR=~/.config/glowconfig/
+
 echo "------------"
 echo "installation"
 echo "------------"
@@ -11,7 +14,8 @@ echo "copying vim config file..."
 cp -f vimrc ~/.vimrc
 
 echo "copying vim function configurations..."
-cp -f functions.vim ~/.vim/plugin/functions.vim
+mkdir -p $VIMFUNCTION_DIR
+cp -f functions.vim ${VIMFUNCTION_DIR}
 
 ## echo "Installing Vim Plugins"
 ## curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -27,4 +31,5 @@ echo "copying git config file ..."
 cp -f gitconfig ~/.gitconfig
 
 echo "copying glow config file..."
-mkdir ~/.config/glowconfig/ && cp -f customglow.json ~/.config/glowconfig/customglow.json
+mkdir -p $GLOWCONFIG_DIR
+cp -f customglow.json ${GLOWCONFIG_DIR}
