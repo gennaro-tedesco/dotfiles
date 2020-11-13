@@ -134,7 +134,7 @@ set ruler
 set cursorline
 set laststatus=2
 set splitbelow splitright
-set scrolloff=5
+set scrolloff=8
 
 " standard vim behaviour
 set noswapfile
@@ -162,7 +162,7 @@ set wildmode=longest,full,list
 "" ---------------------------------------
 
 " remapping the help text
-cabbrev h tab h
+cabbrev h vert h
 
 " remapping open file in new tab 
 cabbrev tn tabnew
@@ -176,6 +176,10 @@ nnoremap W 5w
 nnoremap B 5b
 nnoremap H ^
 nnoremap L $
+
+" scroll tabs 
+nmap ., :tabnext<CR>
+nmap ,. :tabpre<CR>
 
 " remap leader key
 let mapleader = "\<Space>"
@@ -209,10 +213,6 @@ inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
 
 " cancel the complete menu item like CTRL+e would.
 inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
-
-" comment on/off blocks in visual mode 
-vnoremap c+ :norm I#<ESC>
-vnoremap c- :norm ^x<ESC>
 
 "" ----------------------------
 "" --- additional functions ---
