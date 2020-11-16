@@ -64,7 +64,12 @@ let g:jedi#show_call_signatures = 0
 
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
-let g:ale_linters = {'python': ['flake8']}
+let g:ale_linters = {
+			\ 'python': ['flake8'], 
+			\ 'dockerfile': ['hadolint'], 
+			\ 'sh': ['shellcheck'],
+			\ 'latex': ['lacheck'],
+			\}
 let g:ale_fixers = {'python': ['black']}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
@@ -178,8 +183,8 @@ nnoremap H ^
 nnoremap L $
 
 " scroll tabs 
-nmap ., :tabnext<CR>
-nmap ,. :tabpre<CR>
+nnoremap <Tab> :tabnext<CR>
+nnoremap <S-Tab> :tabpre<CR>
 
 " remap leader key
 let mapleader = "\<Space>"
@@ -188,6 +193,9 @@ let maplocalleader =  "\<Space>"
 " replace a word with yanked text 
 nnoremap rw viwpyiw
 
+" copy entire line without newline character
+nnoremap Y ^yg_
+
 " replace all occurrences of words under cursor 
 nnoremap S :%s///gc<Left><Left><Left>
 
@@ -195,6 +203,7 @@ nnoremap S :%s///gc<Left><Left><Left>
 nnoremap <leader><leader> :RangerNewTab<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :History<CR>
+nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>f :BLines<CR>
 nnoremap <leader>F :Rg<CR>
 
@@ -213,6 +222,9 @@ inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
 
 " cancel the complete menu item like CTRL+e would.
 inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
+
+" clean up search results
+nnoremap <silent> <CR> :let @/=""<CR>
 
 "" ----------------------------
 "" --- additional functions ---
