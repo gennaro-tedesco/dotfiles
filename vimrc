@@ -172,6 +172,12 @@ cabbrev h vert h
 " remapping open file in new tab 
 cabbrev tn tabnew
 
+" better indenting
+vnoremap < <gv
+vnoremap > >gv
+nnoremap > >>
+nnoremap < <<
+
 " remapping the escape key 
 inoremap jj <ESC> :w<CR>
 inoremap kk <ESC> :w<CR>
@@ -200,7 +206,7 @@ nnoremap Y ^yg_
 nnoremap S :%s///gc<Left><Left><Left>
 
 " mapping of navigation commands
-nnoremap <leader><leader> :RangerNewTab<CR>
+nnoremap -- :Ranger<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :History<CR>
 nnoremap <leader>b :Buffers<CR>
