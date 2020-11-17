@@ -6,17 +6,17 @@
 
 " convert list of item to SQL tuple
 function! ToTupleFun() range
-    silent execute a:firstline . "," . a:lastline . "norm I'"
-    silent execute a:firstline . "," . a:lastline . "norm A',"
-    silent execute a:firstline . "," . a:lastline . "join"
+	silent execute a:firstline . "," . a:lastline . "norm I'"
+	silent execute a:firstline . "," . a:lastline . "norm A',"
+	silent execute a:firstline . "," . a:lastline . "join"
 
-    " lines are now joined, there is only one line
-    silent execute "norm $x"
-    silent execute "norm I("
-    silent execute "norm A)"
+	" lines are now joined, there is only one line
+	silent execute "norm $x"
+	silent execute "norm I("
+	silent execute "norm A)"
 
-    " yank final text
-    silent execute "norm yy"
+	" yank final text
+	silent execute "norm yy"
 endfunction
 command! -range ToTuple <line1>,<line2> call ToTupleFun()
 
