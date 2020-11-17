@@ -28,6 +28,12 @@ nnoremap L $
 nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabpre<CR>
 
+" Use <alt+hjkl> to resize panes
+nnoremap <silent> ∆ :resize +2<CR>
+nnoremap <silent> º :resize -2<CR>
+nnoremap <silent> ª :vertical resize +2<CR>
+nnoremap <silent> @ :vertical resize -2<CR>
+
 " remap leader key
 let mapleader = "\<Space>"
 let maplocalleader =  "\<Space>"
@@ -53,6 +59,7 @@ nnoremap <leader>F :Rg<CR>
 nnoremap <leader>gs :vertical Gstatus<CR>
 nnoremap <leader>gc :GCheckout<CR>
 nnoremap <leader>gp :Gpush <Bar> copen<CR>
+nnoremap <leader>gl :Commit<CR>
 
 " open up vimconfig and zshconfig in one go
 map <leader>v :tabnew<space>~/.vimrc<CR>
