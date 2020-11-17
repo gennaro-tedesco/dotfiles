@@ -66,13 +66,20 @@ map <leader>v :tabnew<space>~/.vimrc<CR>
 map <leader>z :tabnew<space>~/.zshrc<CR>
 map <leader>t :tabnew<space>~/.todo<CR>
 
-" select the complete menu item like CTRL+y would.
+" navigate through the completion menu
 inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
-
-" cancel the complete menu item like CTRL+e would.
-inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
 
 " clean up search results
 nnoremap <silent> <CR> :let @/=""<CR>
 
+" navigation controls when in diff mode
+if &diff
+    nnoremap <leader>d3 :diffget //3<CR>
+    nnoremap <leader>d2 :diffget //2<CR>
+    nnoremap <expr> <Right> '<C-W>l'
+    nnoremap <expr> <Left> '<C-W>h'
+    nnoremap <expr> <Down> ']c'
+    nnoremap <expr> <Up> '[c'
+    cabbrev q qa
+endif
 

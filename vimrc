@@ -75,28 +75,3 @@ set wildmode=longest,full,list
 "" ~/.vim/plugin/options.vim
 "" -----------------------------
 
-"" ----------------------------
-"" --- additional functions ---
-"" ----------------------------
-
-" set autocompletion
-function! TabComplete()
-    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-        return "\<C-N>"
-    else
-        return "\<Tab>"
-    endif
-endfunction
-inoremap <Tab> <C-R>=TabComplete()<CR>
-
-" navigation controls when in diff mode
-if &diff
-    nnoremap <leader>d3 :diffget //3<CR>
-    nnoremap <leader>d2 :diffget //2<CR>
-    nnoremap <expr> <Right> '<C-W>l'
-    nnoremap <expr> <Left> '<C-W>h'
-    nnoremap <expr> <Down> ']c'
-    nnoremap <expr> <Up> '[c'
-    cabbrev q qa 
-endif
-
