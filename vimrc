@@ -41,7 +41,7 @@ colorscheme solarized8
 " cursorline and windows frame
 set number relativenumber
 set wrap
-set formatoptions-=cro
+autocmd FileType * set formatoptions-=cro
 set ruler
 set cursorline
 set laststatus=2
