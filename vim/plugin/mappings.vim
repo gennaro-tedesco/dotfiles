@@ -1,6 +1,7 @@
 "" ---------------------------------------
 "" --- remapping and keys combinations ---
 "" ---------------------------------------
+
 " remapping open file in new tab 
 cabbrev tn tabnew
 
@@ -9,6 +10,11 @@ vnoremap < <gv
 vnoremap > >gv
 nnoremap > >>
 nnoremap < <<
+
+" code folding
+nnoremap + zA
+nnoremap - zM
+
 
 " remapping the escape key 
 inoremap jj <ESC> :w<CR>
@@ -44,7 +50,7 @@ nnoremap Y ^yg_
 nnoremap S :%s///gc<Left><Left><Left>
 
 " mapping of navigation commands
-nnoremap -- :Ranger<CR>
+nnoremap <leader><leader> :Ranger<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :History<CR>
 nnoremap <leader>b :Buffers<CR>
