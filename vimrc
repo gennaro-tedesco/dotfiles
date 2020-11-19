@@ -2,6 +2,7 @@
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
+Plug 'ervandew/supertab'
 Plug 'dense-analysis/ale'
 Plug 'thaerkh/vim-indentguides'
 Plug 'tpope/vim-sensible'
@@ -40,7 +41,7 @@ colorscheme solarized8
 " cursorline and windows frame
 set number relativenumber
 set wrap
-autocmd FileType * set formatoptions-=cro
+set formatoptions-=cro
 set ruler
 set cursorline
 set laststatus=2

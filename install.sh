@@ -19,8 +19,9 @@ mkdir -p $VIMCONFIG_DIR/plugin
 cp -r vim/ftplugin/. $VIMCONFIG_DIR/ftplugin
 cp -r vim/plugin/. $VIMCONFIG_DIR/plugin
 
-echo "Installing Vim Plugins"
-[ -f "$VIMCONFIG_DIR/autoload/plug.vim" ] || curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+echo "installing Vim Plugins"
+[ -f "$VIMCONFIG_DIR/autoload/plug.vim" ] || \
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 vim -cPlugInstall -cqa
 

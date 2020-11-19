@@ -1,10 +1,6 @@
 "" ---------------------------------------
 "" --- remapping and keys combinations ---
 "" ---------------------------------------
-
-" remapping the help text
-cabbrev h vert h
-
 " remapping open file in new tab 
 cabbrev tn tabnew
 
@@ -80,6 +76,6 @@ if &diff
     nnoremap <expr> <Left> '<C-W>h'
     nnoremap <expr> <Down> ']c'
     nnoremap <expr> <Up> '[c'
-    cabbrev q qa
+    nnoremap q :qa<CR>
 endif
 

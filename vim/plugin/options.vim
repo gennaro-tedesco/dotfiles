@@ -25,9 +25,9 @@ let g:lightline = {
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 let g:tex_flavor = 'latex'
-let g:jedi#use_tabs_not_buffers = 1
-let g:jedi#goto_command = "gd"
-let g:jedi#usages_command = "gu"
+
+let g:jedi#goto_command = 'gd'
+let g:jedi#usages_command = 'gu'
 let g:jedi#show_call_signatures = 0
 
 highlight clear ALEErrorSign
@@ -37,6 +37,7 @@ let g:ale_linters = {
 			\ 'dockerfile': ['hadolint'], 
 			\ 'sh': ['shellcheck'],
 			\ 'latex': ['lacheck'],
+			\ 'vim': ['vint'],
 			\}
 let g:ale_fixers = {'python': ['black']}
 let g:ale_lint_on_text_changed = 'never'
@@ -92,4 +93,6 @@ let g:fzf_branch_actions = {
             \ },
             \}
 
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
