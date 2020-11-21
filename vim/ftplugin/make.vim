@@ -2,6 +2,4 @@
 vnoremap c+ :norm I#<ESC>
 vnoremap c- :norm ^x<ESC>
 
-" folding levels in bash
-set foldmethod=indent
-set nofoldenable
+
