@@ -6,12 +6,10 @@ install-all: install-vim install-zsh install-ranger install-glow install-git
 
 install-vim:
 	cp -f vim/vimrc ${HOME}/.vimrc
-
 	mkdir -p ${VIMCONFIG_DIR}/ftplugin
 	mkdir -p ${VIMCONFIG_DIR}/plugin
 	cp -r vim/ftplugin/. ${VIMCONFIG_DIR}/ftplugin
 	cp -r vim/plugin/. ${VIMCONFIG_DIR}/plugin
-
 	#[ -f "${HOME}/.vim/autoload/plug.vim" ] || curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	#vim -cPlugInstall -cPlugUpdate -cqa
 
