@@ -2,7 +2,7 @@ VIMCONFIG_DIR=${HOME}/.vim
 RANGERCONFIG_DIR=${HOME}/.config/ranger
 GLOWCONFIG_DIR=${HOME}/.config/glowconfig
 
-install-all: install-vim install-zsh install-ranger install-glow install-git
+install-all: install-vim install-zsh install-ranger install-glow install-visidata install-git
 
 install-vim:
 	cp -f vim/vimrc ${HOME}/.vimrc
