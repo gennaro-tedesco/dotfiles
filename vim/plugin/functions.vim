@@ -4,7 +4,7 @@
 
 "" this file is to be saved into ~/.vim/plugin/
 
-" convert list of item to SQL tuple
+" convert list of items to SQL tuple
 function! ToTupleFun() range
 	silent execute a:firstline . "," . a:lastline . "norm I'"
 	silent execute a:firstline . "," . a:lastline . "norm A',"
@@ -56,4 +56,8 @@ function! ReplaceFile()
 	:norm gg"_dGP
 endfunction
 cabbrev rf silent! call ReplaceFile()
+
+" instruct Rg not to include file names in the results 
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>),  
+											\ 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
