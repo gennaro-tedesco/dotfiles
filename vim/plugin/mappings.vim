@@ -12,7 +12,7 @@ nnoremap > >>
 nnoremap < <<
 
 " code folding
-nnoremap + zA
+nnoremap + zR
 nnoremap - zM
 
 
@@ -53,7 +53,7 @@ nnoremap S :%s///gc<Left><Left><Left>
 nnoremap <leader><leader> :Ranger<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :History<CR>
-nnoremap <leader>b :Buffers<CR>
+nnoremap <C-b> :Buffers<CR>
 nnoremap <leader>f :BLines<CR>
 nnoremap <leader>F :Rg<CR>
 
