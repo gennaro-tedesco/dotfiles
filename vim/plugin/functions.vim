@@ -38,6 +38,7 @@ function! T2S ()
 endfunction
 cabbrev t2s silent! call T2S()
 
+
 function! S2T ()
 	set noexpandtab | %retab! | w
 endfunction
@@ -57,7 +58,7 @@ function! ReplaceFile()
 endfunction
 cabbrev rf silent! call ReplaceFile()
 
+
 " instruct Rg not to include file names in the results 
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>),  
-											\ 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 

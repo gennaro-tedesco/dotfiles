@@ -17,8 +17,8 @@ nnoremap - zM
 
 
 " remapping the escape key 
-inoremap jj <ESC> :w<CR>
-inoremap kk <ESC> :w<CR>
+inoremap jj <ESC>
+inoremap kk <ESC>
 
 " easier navigation
 nnoremap W 5w
