@@ -1,6 +1,9 @@
 "" ---------------------------------------
 "" --- remapping and keys combinations ---
 "" ---------------------------------------
+" remap leader key
+let mapleader = "\<Space>"
+let maplocalleader =  "\<Space>"
 
 " remapping open file in new tab 
 cabbrev tn tabnew
@@ -15,7 +18,6 @@ nnoremap < <<
 nnoremap + zR
 nnoremap - zM
 
-
 " remapping the escape key 
 inoremap jj <ESC>
 inoremap kk <ESC>
@@ -26,19 +28,15 @@ nnoremap B 5b
 nnoremap H ^
 nnoremap L $
 
-" scroll tabs 
-nnoremap <Tab> :tabnext<CR>
-nnoremap <S-Tab> :tabpre<CR>
+" tabs scroll between buffers
+nnoremap <TAB> :bnext<CR>
+nnoremap <S-TAB> :bprevious<CR>
 
 " Use <alt+hjkl> to resize panes
 nnoremap <silent> ∆ :resize +2<CR>
 nnoremap <silent> º :resize -2<CR>
 nnoremap <silent> ª :vertical resize +2<CR>
 nnoremap <silent> @ :vertical resize -2<CR>
-
-" remap leader key
-let mapleader = "\<Space>"
-let maplocalleader =  "\<Space>"
 
 " replace a word with yanked text 
 nnoremap rw viwpyiw
@@ -76,12 +74,12 @@ nnoremap <silent> <CR> :let @/=""<CR>
 
 " navigation controls when in diff mode
 if &diff
-    nnoremap <leader>d3 :diffget //3<CR>
-    nnoremap <leader>d2 :diffget //2<CR>
-    nnoremap <expr> <Right> '<C-W>l'
-    nnoremap <expr> <Left> '<C-W>h'
-    nnoremap <expr> <Down> ']c'
-    nnoremap <expr> <Up> '[c'
-    nnoremap q :qa<CR>
+	nnoremap <leader>d3 :diffget //3<CR>
+	nnoremap <leader>d2 :diffget //2<CR>
+	nnoremap <expr> <Right> '<C-W>l'
+	nnoremap <expr> <Left> '<C-W>h'
+	nnoremap <expr> <Down> ']c'
+	nnoremap <expr> <Up> '[c'
+	nnoremap q :qa<CR>
 endif
 
