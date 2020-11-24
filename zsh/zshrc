@@ -29,8 +29,6 @@ export FZF_DEFAULT_OPTS='--reverse --border -e'
 export FZF_DEFAULT_COMMAND="rg --files --hidden -g !.git/"
 
 # aliases
-alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vimrc"
 alias ls="exa --long --header --git --sort=extension"
 alias tree="exa --tree --level=2"
 alias cat="preview_files"

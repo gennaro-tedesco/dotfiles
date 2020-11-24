@@ -1,7 +1,7 @@
+<img src="logo.png" width="400">
+
 # dotfiles
 My personal dotfiles: no more, no less
-
-<img src="logo.png" width="400">
 
 # Requirements
 I am making use of the following system programs:
