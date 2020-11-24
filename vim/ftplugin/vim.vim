@@ -2,4 +2,4 @@
 vnoremap c+ :norm I"<ESC>
 vnoremap c- :norm ^x<ESC>
 
-au! BufWritePost <buffer> source % 
+autocmd BufWritePost <buffer> nested source % 
