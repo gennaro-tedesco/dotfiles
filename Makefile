@@ -11,7 +11,7 @@ install-vim:
 	cp -r vim/ftplugin/. ${VIMCONFIG_DIR}/ftplugin
 	cp -r vim/plugin/. ${VIMCONFIG_DIR}/plugin
 	#[ -f "${HOME}/.vim/autoload/plug.vim" ] || curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	#vim -cPlugInstall -cPlugUpdate -cqa
+	#vim -cPlugClean -cPlugInstall -cPlugUpdate -cqa
 
 install-zsh:
 	cp -f zsh/zshrc ${HOME}/.zshrc

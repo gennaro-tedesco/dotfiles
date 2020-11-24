@@ -64,9 +64,9 @@ nnoremap <leader>gp :Gpush <Bar> copen<CR>
 nnoremap <leader>gl :Commit<CR>
 
 " open up vimconfig and zshconfig in one go
-map <leader>v :tabnew<space>~/.vimrc<CR>
-map <leader>z :tabnew<space>~/.zshrc<CR>
-map <leader>t :tabnew<space>~/.todo<CR>
+map <leader>v :e<space>~/.vimrc<CR>
+map <leader>z :e<space>~/.zshrc<CR>
+map <leader>t :e<space>~/.todo<CR>
 
 " navigate through the completion menu
 inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
