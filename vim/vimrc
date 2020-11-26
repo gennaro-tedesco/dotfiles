@@ -1,37 +1,58 @@
+"" ----------------------------
+"" --- plugins declarations ---
+"" ----------------------------
+
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
-" Declare the list of plugins.
-Plug 'ervandew/supertab'
+" plugins for code autocompletion, language servers and the like
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'zchee/deoplete-jedi'
+Plug 'shougo/neco-vim'
+Plug 'davidhalter/jedi-vim', { 'for':  'python' }
+Plug 'vim-scripts/AutoComplPop'
 Plug 'dense-analysis/ale'
-Plug 'thaerkh/vim-indentguides'
-Plug 'tpope/vim-sensible'
-Plug 'mhinz/vim-startify'
+
+" git integration in vim
 Plug 'tpope/vim-fugitive'
 Plug 'stsewd/fzf-checkout.vim'
-Plug 'mechatroner/rainbow_csv'
-Plug 'yuttie/comfortable-motion.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'machakann/vim-highlightedyank'
-Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
+
+" file navigation
 Plug 'francoiscabrol/ranger.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'itchyny/calendar.vim'
-Plug 'wincent/terminus'
-Plug 'vim-scripts/AutoComplPop'
-Plug 'haya14busa/is.vim'
+
+" vim decorations and looks
+Plug 'machakann/vim-highlightedyank'
+Plug 'frazrepo/vim-rainbow'
+Plug 'thaerkh/vim-indentguides'
+Plug 'mhinz/vim-startify'
+Plug 'mechatroner/rainbow_csv'
+Plug 'tpope/vim-sensible'
+Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'lifepillar/vim-solarized8'
+
+" settings that make vim easier to use
+Plug 'ervandew/supertab'
+Plug 'yuttie/comfortable-motion.vim'
+Plug 'wincent/terminus'
+Plug 'haya14busa/is.vim'
+
+" snippets and language specific plugins
 Plug 'lervag/vimtex'
-Plug 'davidhalter/jedi-vim', { 'for':  'python' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-" basic settings for colour and themes
+"" ------------------------------------
+"" basic settings for colour and themes
+"" ------------------------------------
+
 filetype plugin indent on
 syntax enable
 set termguicolors

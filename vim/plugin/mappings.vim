@@ -68,6 +68,7 @@ map <leader>t :e<space>~/.todo<CR>
 
 " navigate through the completion menu
 inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
+inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " clean up search results
 nnoremap <silent> <CR> :let @/=""<CR>

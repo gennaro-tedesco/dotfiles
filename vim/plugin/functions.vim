@@ -6,27 +6,27 @@
 
 " convert list of items to SQL tuple
 function! ToTupleFun() range
-	silent execute a:firstline . "," . a:lastline . "norm I'"
-	silent execute a:firstline . "," . a:lastline . "norm A',"
-	silent execute a:firstline . "," . a:lastline . "join"
+	silent execute a:firstline . ',' . a:lastline . 'norm I"'
+	silent execute a:firstline . ',' . a:lastline . 'norm A",'
+	silent execute a:firstline . ',' . a:lastline . 'join'
 
 	" lines are now joined, there is only one line
-	silent execute "norm $x"
-	silent execute "norm I("
-	silent execute "norm A)"
+	silent execute 'norm $x'
+	silent execute 'norm I('
+	silent execute 'norm A)'
 
 	" yank final text
-	silent execute "norm yy"
+	silent execute 'norm yy'
 endfunction
 command! -range ToTuple <line1>,<line2> call ToTupleFun()
 
 
 " prettify json
 function! Jq ()
-	if (&ft=='json' || &ft=='')
-		:%! jq . 
+	if (&filetype==?'json' || &filetype==?'')
+		silent execute '%! jq .'
 	else
-		echo "not a json file"
+		echo 'not a json filetype'
 	endif
 endfunction
 cabbrev jq call Jq()
@@ -47,14 +47,14 @@ cabbrev s2t silent! call S2T()
 
 " installation of plugins 
 function! Install()
-	:w | so% | PlugInstall | PlugUpdate
+	silent execute 'w | so% | PlugInstall | PlugUpdate'
 endfunction
 cabbrev inst silent! call Install()
 
 
 " replace entire content of file
 function! ReplaceFile()
-	:norm gg"_dGP
+	silent execute 'norm gg"_dGP'
 endfunction
 cabbrev rf silent! call ReplaceFile()
 

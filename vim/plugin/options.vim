@@ -1,8 +1,10 @@
 "" --------------------------------------------
 "" - customisation of default plugins options -
 "" --------------------------------------------
+let g:deoplete#enable_at_startup = 1
+
 let g:indentguides_tabchar = '.'
-let g:indentguides_ignorelist = ['help']
+let g:indentguides_ignorelist = ['help', 'json']
 
 let g:rainbow_active = 1
 
