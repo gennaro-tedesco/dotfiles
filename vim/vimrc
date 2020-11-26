@@ -17,6 +17,7 @@ Plug 'dense-analysis/ale'
 
 " git integration in vim
 Plug 'tpope/vim-fugitive'
+Plug 'oguzbilgic/vim-gdiff'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'airblade/vim-gitgutter'
 

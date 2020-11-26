@@ -82,7 +82,7 @@ let g:fzf_branch_actions = {
 			\ },
 			\ 'diff': {
 			\   'prompt': 'Diff> ',
-			\   'execute': 'Git diff {branch}',
+			\   'execute': 'Gdiff {branch}',
 			\   'multiple': v:false,
 			\   'keymap': 'ctrl-f',
 			\   'required': ['branch'],
