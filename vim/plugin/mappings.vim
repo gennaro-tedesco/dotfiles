@@ -5,10 +5,7 @@
 let mapleader = "\<Space>"
 let maplocalleader =  "\<Space>"
 
-" remapping open file in new tab 
-cabbrev tn tabnew
-
-" better indenting
+" smarter indenting
 vnoremap < <gv
 vnoremap > >gv
 nnoremap > >>

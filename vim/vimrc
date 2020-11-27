@@ -6,11 +6,6 @@
 call plug#begin('~/.vim/plugged')
 
 " plugins for code autocompletion, language servers and the like
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'zchee/deoplete-jedi'
-Plug 'shougo/neco-vim'
 Plug 'davidhalter/jedi-vim', { 'for':  'python' }
 Plug 'vim-scripts/AutoComplPop'
 Plug 'dense-analysis/ale'
@@ -50,50 +45,10 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-"" ------------------------------------
-"" basic settings for colour and themes
-"" ------------------------------------
-
-filetype plugin indent on
-syntax enable
-set termguicolors
-set background=dark
-colorscheme solarized8
-
-" cursorline and windows frame
-set number relativenumber
-set wrap
-autocmd FileType * set formatoptions-=cro
-set ruler
-set cursorline
-set laststatus=2
-set splitbelow splitright
-set scrolloff=8
-
-" standard vim behaviour
-set noswapfile
-set nocompatible
-set hidden
-set mouse=a
-set updatetime=100
-set showcmd
-set sidescroll=1
-set clipboard+=unnamed
-set autoindent noexpandtab tabstop=4 shiftwidth=4
-
-" search options
-set wildmenu
-set hlsearch
-set showmatch
-
-" autocompletion options
-set shortmess+=c
-set completeopt="menuone,preview"
-set wildmode=longest,full,list
-
 "" -----------------------------
 "" --- automatically loading ---
 "" -----------------------------
+"" ~/.vim/plugin/settings.vim
 "" ~/.vim/plugin/mappings.vim
 "" ~/.vim/plugin/options.vim
 "" -----------------------------
