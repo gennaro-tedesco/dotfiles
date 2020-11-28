@@ -47,7 +47,7 @@ cabbrev s2t silent! call S2T()
 
 " installation of plugins 
 function! Install()
-	silent execute 'w | so% | PlugInstall | PlugUpdate'
+	silent execute 'w | so% | PlugClean | PlugInstall | PlugUpdate'
 endfunction
 cabbrev inst silent! call Install()
 
