@@ -15,6 +15,7 @@ install-vim:
 
 install-zsh:
 	cp -f zsh/zshrc ${HOME}/.zshrc
+	cp -f zsh/p10k.zsh ${HOME}/.p10k.zsh 
 
 install-ranger:
 	cp -f ranger/rc.conf ${RANGERCONFIG_DIR}
