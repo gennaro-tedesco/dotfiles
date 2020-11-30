@@ -1,7 +1,6 @@
 "" --------------------------------------------
 "" - customisation of default plugins options -
 "" --------------------------------------------
-let g:deoplete#enable_at_startup = 1
 
 let g:indentguides_tabchar = '.'
 let g:indentguides_ignorelist = ['help', 'json']
@@ -44,7 +43,10 @@ let g:ale_linters = {
 			\ 'latex': ['lacheck'],
 			\ 'vim': ['vint'],
 			\}
-let g:ale_fixers = {'python': ['black']}
+let g:ale_fixers = {
+			\ 'python': ['black'],
+			\ 'yaml': ['prettier'],
+			\}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
@@ -101,3 +103,6 @@ let g:fzf_branch_actions = {
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
+let g:bookmark_center = 1
+let g:bookmark_show_toggle_warning = 0
+let g:bookmark_show_warning = 0
