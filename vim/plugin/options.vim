@@ -45,7 +45,9 @@ let g:ale_linters = {
 			\}
 let g:ale_fixers = {
 			\ 'python': ['yapf'],
-			\ 'yaml': ['prettier'],
+			\ 'sh': ['trim_whitespace'],
+			\ 'dockerfile': ['trim_whitespace'],
+			\ 'yaml': ['prettier', 'trim_whitespace'],
 			\}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0

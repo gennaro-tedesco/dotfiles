@@ -62,3 +62,6 @@ cabbrev rf silent! call ReplaceFile()
 " instruct Rg not to include file names in the results 
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
+" shorthand commands for linting and fixing
+cabbrev fix silent! ALEFix
+cabbrev lint silent! ALEToggle
