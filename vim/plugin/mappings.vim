@@ -24,6 +24,8 @@ nnoremap W 5w
 nnoremap B 5b
 nnoremap H ^
 nnoremap L $
+nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
+nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
 
 " tabs scroll between buffers
 nnoremap <TAB> :bnext<CR>

@@ -2,7 +2,7 @@
 "" - customisation of default plugins options -
 "" --------------------------------------------
 
-let g:indentguides_tabchar = '.'
+let g:indentguides_tabchar = '|'
 let g:indentguides_ignorelist = ['help', 'json']
 
 let g:rainbow_active = 1
@@ -44,7 +44,7 @@ let g:ale_linters = {
 			\ 'vim': ['vint'],
 			\}
 let g:ale_fixers = {
-			\ 'python': ['black'],
+			\ 'python': ['yapf'],
 			\ 'yaml': ['prettier'],
 			\}
 let g:ale_lint_on_text_changed = 'never'
@@ -100,8 +100,8 @@ let g:fzf_branch_actions = {
 			\ },
 			\}
 
-let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = '<c-n>'
+let g:SuperTabContextDefaultCompletionType = '<c-n>'
 
 let g:bookmark_center = 1
 let g:bookmark_show_toggle_warning = 0
@@ -142,4 +142,6 @@ call wilder#set_option('renderer', wilder#wildmenu_renderer({
 			\    wilder#index({'hl': s:index_hl}),
 			\ ],
 			\ }))
+
+let g:comfortable_motion_no_default_key_mappings = 1
 

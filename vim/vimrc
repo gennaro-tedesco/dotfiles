@@ -38,6 +38,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'ervandew/supertab'
 Plug 'wincent/terminus'
 Plug 'haya14busa/is.vim'
+Plug 'yuttie/comfortable-motion.vim'
 
 " snippets and language specific plugins
 Plug 'lervag/vimtex'
