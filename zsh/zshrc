@@ -42,11 +42,12 @@ alias grep="rg"
 ## custom functions
 ## ----------------
 
-# fzf options and functions to fuzzy open with vim
+# fzf browse files
 ff() (
   IFS=$'\n' files=($(fzf --reverse --border  --preview 'bat --style=numbers --color=always {} | head -500' --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+  [[ -n "$files" ]] && ${EDITOR} "${files[@]}"
 )
+
 
 # fzf browse directories and cd into them
 fd() {
@@ -54,12 +55,13 @@ fd() {
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
 
+
 # fzf checkout git branches
 fb() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+		   fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
@@ -69,7 +71,7 @@ preview_files () {
 	if [[ $1 == *.md ]]; then
 		glow -s ~/.config/glowconfig/customglow.json -p $1
 	elif [[ $1 == *.json ]]; then
-	   	jq '.' -C $1 | less
+		jq '.' -C $1 | less
 	elif [[ $1 == *.csv ]]; then
 		vd $1
 	else
@@ -85,7 +87,7 @@ z() {
 }
 
 ## -----------------------
-## additional source files  
+## additional source files
 ## -----------------------
 
 # sourcing fzf keybindings
@@ -96,3 +98,11 @@ z() {
 
 # navi cheat sheet (Ctrl+g)
 eval "$(navi widget zsh)"
+
+
+## --------
+## bindkeys
+## --------
+bindkey -s '^p' 'ff\n'
+bindkey -s '^n' 'ranger\n'
+

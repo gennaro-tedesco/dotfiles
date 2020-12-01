@@ -45,7 +45,7 @@ nnoremap Y ^yg_
 nnoremap S :%s///gc<Left><Left><Left>
 
 " mapping of navigation commands
-nnoremap <leader><leader> :Ranger<CR>
+nnoremap <C-n> :Ranger<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :History<CR>
 nnoremap <C-b> :Buffers<CR>

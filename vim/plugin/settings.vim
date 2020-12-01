@@ -43,6 +43,4 @@ set shortmess+=c
 set completeopt="menuone,preview"
 set wildmenu
 set wildmode=longest,full,list
-
-" plugin settings
 set wildcharm=<Tab>
