@@ -24,6 +24,8 @@ nnoremap W 5w
 nnoremap B 5b
 nnoremap H ^
 nnoremap L $
+nnoremap <Up> {
+nnoremap <Down> }
 
 " tabs scroll between buffers
 nnoremap <TAB> :bnext<CR>
@@ -48,9 +50,9 @@ nnoremap S :%s///gc<Left><Left><Left>
 nnoremap <leader><leader> :Ranger<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :History<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>f :BLines<CR>
-nnoremap <leader>F :Rg<CR>
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-f> :BLines<CR>
+nnoremap <C-h> :Rg<CR>
 
 " git fugitive remapping
 nnoremap <leader>gs :vertical Gstatus<CR>
@@ -72,8 +74,6 @@ nnoremap <silent> <CR> :let @/=""<CR>
 
 " navigation controls when in diff mode
 if &diff
-	nnoremap <leader>d3 :diffget //3<CR>
-	nnoremap <leader>d2 :diffget //2<CR>
 	nnoremap <expr> <Right> '<C-W>l'
 	nnoremap <expr> <Left> '<C-W>h'
 	nnoremap <expr> <Down> ']c'
