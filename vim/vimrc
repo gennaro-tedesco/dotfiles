@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'davidhalter/jedi-vim', { 'for':  'python' }
 Plug 'vim-scripts/AutoComplPop'
 Plug 'dense-analysis/ale'
+Plug 'gelguy/wilder.nvim'
 
 " git integration in vim
 Plug 'tpope/vim-fugitive'

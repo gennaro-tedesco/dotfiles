@@ -106,3 +106,40 @@ let g:SuperTabContextDefaultCompletionType = "<c-n>"
 let g:bookmark_center = 1
 let g:bookmark_show_toggle_warning = 0
 let g:bookmark_show_warning = 0
+
+call wilder#enable_cmdline_enter()
+call wilder#set_option('modes', ['/', '?', ':'])
+let s:hl = 'LightlineMiddle_active'
+let s:mode_hl = 'LightlineLeft_active_0'
+let s:index_hl = 'LightlineRight_active_0'
+
+call wilder#set_option('pipeline', [
+			\   wilder#branch(
+			\     wilder#substitute_pipeline(),
+			\     wilder#cmdline_pipeline(),
+			\   ),
+			\ ])
+
+call wilder#set_option('renderer', wilder#wildmenu_renderer({
+			\ 'highlights': {
+			\   'default': s:hl,
+			\   'selected': s:index_hl,
+			\ },
+			\ 'apply_highlights': wilder#query_common_subsequence_spans(),
+			\ 'separator': ' · ',
+			\ 'ellipsis': '...',
+			\ 'left': [{'value': [
+			\    wilder#condition(
+			\      {-> getcmdtype() ==# ':'},
+			\      ' COMMAND ',
+			\      ' SEARCH ',
+			\    ),
+			\ ], 'hl': s:mode_hl,},
+			\ wilder#separator('', s:mode_hl, s:hl, 'left'), ' ',
+			\ ],
+			\ 'right': [
+			\    ' ', wilder#separator('', s:index_hl, s:hl, 'right'),
+			\    wilder#index({'hl': s:index_hl}),
+			\ ],
+			\ }))
+

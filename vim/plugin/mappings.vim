@@ -24,8 +24,6 @@ nnoremap W 5w
 nnoremap B 5b
 nnoremap H ^
 nnoremap L $
-nnoremap <Up> {
-nnoremap <Down> }
 
 " tabs scroll between buffers
 nnoremap <TAB> :bnext<CR>
@@ -68,6 +66,10 @@ map <leader>t :e<space>~/.todo<CR>
 " navigate through the completion menu
 inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
 inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" wilder completion menu
+cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
+cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 
 " clean up search results
 nnoremap <silent> <CR> :let @/=""<CR>
