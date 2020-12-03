@@ -2,7 +2,7 @@
 "" - customisation of default plugins options -
 "" --------------------------------------------
 
-let g:indentguides_tabchar = '|'
+let g:indentguides_tabchar = '┆'
 let g:indentguides_ignorelist = ['help', 'json']
 
 let g:rainbow_active = 1
@@ -59,9 +59,17 @@ let g:ale_sign_warning = '.'
 
 let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
 let g:startify_files_number = 15
+let g:startify_use_env = 1
+let g:startify_commands = [
+			\ {'gc': ['git checkout branch', ':GCheckout']},
+			\ {'gs': ['git status', ':vertical Gstatus']},
+			\ {'gl': ['git logs', ':Commits']},
+			\ {'n': ['browse directory', ':Ranger']},
+			\ {'p': ['find files', ':Files']},
+			\ ]
 let g:startify_lists = [
-			\ { 'type': 'dir', 'header': ['  Current Directory '. getcwd()] },
-			\ { 'type': 'files', 'header': ['  Files'] },
+			\ { 'type': 'dir',      'header': ['  Current Directory '. getcwd()] },
+			\ { 'type': 'commands', 'header': ['  Quick commands']       },
 			\ ]
 
 let g:ranger_map_keys = 0

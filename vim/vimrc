@@ -21,6 +21,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'pechorin/any-jump.vim'
 
 " vim decorations and looks
 Plug 'machakann/vim-highlightedyank'
