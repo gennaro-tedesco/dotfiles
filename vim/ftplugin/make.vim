@@ -1,4 +1,4 @@
 " comment on/off blocks in visual mode 
-vnoremap c+ :norm I#<ESC>
-vnoremap c- :norm ^x<ESC>
+vnoremap c+ :norm 0i# <ESC>
+vnoremap c- :norm 0xx<ESC>
 

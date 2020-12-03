@@ -5,6 +5,9 @@
 let mapleader = "\<Space>"
 let maplocalleader =  "\<Space>"
 
+" removing q: 
+nnoremap q: <nop>
+
 " smarter indenting
 vnoremap < <gv
 vnoremap > >gv
@@ -82,6 +85,6 @@ if &diff
 	nnoremap <expr> <Left> '<C-W>h'
 	nnoremap <expr> <Down> ']c'
 	nnoremap <expr> <Up> '[c'
-	nnoremap q :qa<CR>
+	nnoremap qq :qa<CR>
 endif
 
