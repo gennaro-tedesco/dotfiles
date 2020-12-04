@@ -6,6 +6,7 @@ My personal dotfiles: no more, no less
 # Requirements
 I am making use of the following system programs:
 
+- vifm: https://vifm.info/
 - ranger: https://github.com/ranger/ranger
 - bat: https://github.com/sharkdp/bat
 - exa: https://the.exa.website/
