@@ -1,15 +1,15 @@
 
 command! -range ToTuple <line1>,<line2> call functions#ToTupleFun()
 
-cabbrev jq call functions#Jq()
+cabbrev jq call Jq()
 
 " tabulations
-cabbrev t2s silent! call functions#T2S()
-cabbrev s2t silent! call functions#S2T()
+cabbrev t2s silent! call T2S()
+cabbrev s2t silent! call S2T()
 
-cabbrev inst silent! call functions#Install()
+cabbrev inst silent! call Install()
 
-cabbrev rf silent! call functions#ReplaceFile()
+cabbrev rf silent! call ReplaceFile()
 
 
 " instruct Rg not to include file names in the results 
