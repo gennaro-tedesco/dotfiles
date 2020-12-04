@@ -19,6 +19,7 @@ Plug 'airblade/vim-gitgutter'
 
 " file navigation
 Plug 'francoiscabrol/ranger.vim'
+Plug 'vifm/vifm.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'pechorin/any-jump.vim'

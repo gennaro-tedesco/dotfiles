@@ -1,8 +1,10 @@
 VIMCONFIG_DIR=${HOME}/.vim
+VIFILEMANAGERCONFIG_DIR=${HOME}/.config/vifm
 RANGERCONFIG_DIR=${HOME}/.config/ranger
 GLOWCONFIG_DIR=${HOME}/.config/glowconfig
 
-install-all: install-vim install-zsh install-ranger install-glow install-visidata install-git
+
+install-all: install-vim install-zsh install-vifm install-ranger install-glow install-visidata install-git
 
 install-vim:
 	cp -f vim/vimrc ${HOME}/.vimrc
@@ -10,12 +12,16 @@ install-vim:
 	mkdir -p ${VIMCONFIG_DIR}/plugin
 	cp -r vim/ftplugin/. ${VIMCONFIG_DIR}/ftplugin
 	cp -r vim/plugin/. ${VIMCONFIG_DIR}/plugin
-#	[ -f "${HOME}/.vim/autoload/plug.vim" ] || curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-#	vim -cPlugClean -cPlugInstall -cPlugUpdate -cqa
+# 	[ -f "${HOME}/.vim/autoload/plug.vim" ] || curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# 	vim -cPlugClean -cPlugInstall -cPlugUpdate -cqa
 
 install-zsh:
 	cp -f zsh/zshrc ${HOME}/.zshrc
 	cp -f zsh/p10k.zsh ${HOME}/.p10k.zsh 
+
+install-vifm:
+	cp -r vifm/colors/. ${VIFILEMANAGERCONFIG_DIR}/colors
+	cp -f vifm/vifmrc ${VIFILEMANAGERCONFIG_DIR}
 
 install-ranger:
 	cp -f ranger/rc.conf ${RANGERCONFIG_DIR}

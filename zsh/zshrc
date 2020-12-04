@@ -104,5 +104,5 @@ eval "$(navi widget zsh)"
 ## bindkeys
 ## --------
 bindkey -s '^p' 'ff\n'
-bindkey -s '^n' 'ranger\n'
+bindkey -s '^n' 'vifm\n'
 
