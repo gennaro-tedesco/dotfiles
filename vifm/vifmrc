@@ -188,7 +188,7 @@ set vifminfo=dhistory,chistory,state,tui,shistory,
 nnoremap q :q<cr>
 
 " select file 
-nnoremap <space> :select<cr>
+nnoremap v :select<cr>
 
 " Start shell in current directory
 nnoremap s :shell<cr>
@@ -198,7 +198,6 @@ nnoremap S :sort<cr>
 
 " Toggle visibility of preview window
 nnoremap w :view<cr>
-vnoremap w :view<cr>gv
 
 " Open file in new MacVim tab
 nnoremap o :!mvim --remote-tab-silent %f<cr>

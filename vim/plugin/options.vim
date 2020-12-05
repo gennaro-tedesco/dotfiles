@@ -72,8 +72,6 @@ let g:startify_lists = [
 			\ { 'type': 'commands', 'header': ['  Quick commands']       },
 			\ ]
 
-let g:ranger_map_keys = 0
-
 let g:fzf_checkout_merge_settings = v:false
 let g:fzf_branch_actions = {
 			\ 'checkout': {
