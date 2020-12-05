@@ -1,4 +1,5 @@
-
+" panel borders
+set fillchars='vborder:│'
 
 set syscalls
 
@@ -91,12 +92,10 @@ set slowfs=curlftpfs
 
 " Set custom status line look
 
-set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
-
+set statusline="  Hint: %z%= %A %10u %15s"
 " ------------------------------------------------------------------------------
 
 " :mark mark /full/directory/path [filename]
-
 mark h ~/
 
 " ------------------------------------------------------------------------------
@@ -146,18 +145,9 @@ filetype {*.html,*.htm},<text/html>
        \ vim,
 fileviewer {*.html,*.htm},<text/html> w3m -dump -T text/html
 
-" Object
-filetype {*.o},<application/x-object> nm %f | less
-
 " Man page
 filetype {*.[1-8]},<text/troff> man ./%c
 fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
-
-" Image
-filetype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-       \ open -a Preview.app,
-fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-         \ identify %f
 
 " Syntax highlighting in preview
 "
@@ -168,14 +158,6 @@ fileviewer *[^/] env -uCOLORTERM bat --color always --wrap never --pager never %
 " Displaying pictures in terminal
 "
 " fileviewer *.jpg,*.png shellpic %c
-
-" Open all other files with default system programs (you can also remove all
-" :file[x]type commands above to ensure they don't interfere with system-wide
-" settings).  By default all unknown files are opened with 'vi[x]cmd'
-" uncommenting one of lines below will result in ignoring 'vi[x]cmd' option
-" for unknown file types.
-" For OS X:
-" filetype * open
 
 " ------------------------------------------------------------------------------
 
@@ -194,7 +176,7 @@ set vifminfo=dhistory,chistory,state,tui,shistory,
 
 " Filter-out build and temporary files
 "
-" filter! {*.lo,*.o,*.d,*.class,*.pyc,*.pyo,.*~}
+" filter! {*.pyc,*.pyo, __pycache__, .DS_*}
 
 " ------------------------------------------------------------------------------
 
@@ -236,27 +218,8 @@ nnoremap yf :!printf %c:p | pbcopy<cr>
 nnoremap <space> :!qlmanage -p %f > /dev/null 2>&1<cr>
 
 " Mappings for faster renaming
-nnoremap I cw<c-a>
-nnoremap cc cw<c-u>
-nnoremap A cw
+nnoremap i cw<c-a>
 
-" Open editor to edit vifmrc and apply settings after returning to vifm
-nnoremap ,c :write | edit $MYVIFMRC | restart full<cr>
-" Open MacVim to edit vifmrc
-nnoremap ,C :!mvim --remote-tab-silent $MYVIFMRC &<cr>
-
-" Toggle wrap setting on ,w key
-nnoremap ,w :set wrap!<cr>
-
-" Example of standard two-panel file managers mappings
-nnoremap <f3> :!less %f<cr>
-nnoremap <f4> :edit<cr>
-nnoremap <f5> :copy<cr>
-nnoremap <f6> :move<cr>
-nnoremap <f7> :mkdir<space>
-nnoremap <f8> :delete<cr>
-
-" Midnight commander alike mappings
 " Open current directory in the other pane
 nnoremap <a-i> :sync<cr>
 " Open directory under cursor in the other pane
@@ -266,25 +229,11 @@ nnoremap <c-u> <c-w>x
 
 " ------------------------------------------------------------------------------
 
-" Various customization examples
+" -----------------
+" go to directories 
+" -----------------
 
-" Use ag (the silver searcher) instead of grep
-"
-" set grepprg='ag --line-numbers %i %a %s'
+nnoremap gh :cd ~/<cr>
+nnoremap gv :cd ~/.vim<cr> 
+nnoremap gc :cd ~/.config<cr>
 
-" Add additional place to look for executables
-"
-" let $PATH = $HOME.'/bin/fuse:'.$PATH
-
-" Block particular shortcut
-"
-" nnoremap <left> <nop>
-
-" Export IPC name of current instance as environment variable and use it to
-" communicate with the instance later.
-"
-" It can be used in some shell script that gets run from inside vifm, for
-" example, like this:
-"     vifm --server-name "$VIFM_SERVER_NAME" --remote +"cd '$PWD'"
-"
-" let $VIFM_SERVER_NAME = v:servername

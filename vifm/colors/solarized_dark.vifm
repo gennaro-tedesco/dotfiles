@@ -19,7 +19,6 @@
 " standout
 " none
 
-
 highlight clear
 
 highlight Win             cterm=none ctermfg=default    ctermbg=none
@@ -36,7 +35,7 @@ highlight WildMenu        cterm=underline,reverse ctermfg=white ctermbg=black
 highlight CmdLine         cterm=none ctermfg=white ctermbg=black
 highlight ErrorMsg        cterm=none ctermfg=red ctermbg=black
 
-highlight Directory       cterm=bold ctermfg=cyan ctermbg=default
+highlight Directory       cterm=bold ctermfg=blue ctermbg=default
 highlight Link            cterm=none ctermfg=yellow ctermbg=default
 highlight BrokenLink      cterm=none ctermfg=red ctermbg=default
 highlight Socket          cterm=none ctermfg=magenta ctermbg=default
