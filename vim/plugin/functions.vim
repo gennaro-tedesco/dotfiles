@@ -27,40 +27,40 @@ function! Jq ()
 		echo 'not a json filetype'
 	endif
 endfunction
-cabbrev jq call Jq()
+command! Jq call Jq()
 
 
 " T2S and S2T
 function! T2S ()
 	set expandtab | %retab! | w
 endfunction
-cabbrev t2s silent! call T2S()
+command! TS silent! call T2S()
 
 
 function! S2T ()
 	set noexpandtab | %retab! | w
 endfunction
-cabbrev s2t silent! call S2T()
+command! ST silent! call S2T()
 
 
 " installation of plugins 
 function! Install()
 	silent execute 'w | so% | PlugInstall | PlugUpdate'
 endfunction
-cabbrev inst silent! call Install()
+command! Inst silent! call Install()
 
 
 " replace entire content of file
 function! ReplaceFile()
 	silent execute 'norm gg"_dGP'
 endfunction
-cabbrev rf silent! call ReplaceFile()
+command! Rf silent! call ReplaceFile()
 
 
 " instruct Rg not to include file names in the results 
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " shorthand commands for linting and fixing
-cabbrev fix silent! ALEFix
-cabbrev lint silent! ALEToggle
+command! Fix silent! call ALEFix()
+command! Lint silent! call ALEToggle()
 
