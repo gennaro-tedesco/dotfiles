@@ -5,6 +5,9 @@
 let mapleader = "\<Space>"
 let maplocalleader =  "\<Space>"
 
+" remove all trailing spaces
+nnoremap <F5> :call TrimWhitespace()<CR>
+
 " smarter indenting
 vnoremap < <gv
 vnoremap > >gv

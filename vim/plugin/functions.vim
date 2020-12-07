@@ -2,6 +2,13 @@
 "" --- custom functions ---
 "" ------------------------
 
+" trim white spaces 
+function! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfunction
+
 " convert list of items to SQL tuple
 function! ToTupleFun() range
 	silent execute a:firstline . ',' . a:lastline . 'norm I"'

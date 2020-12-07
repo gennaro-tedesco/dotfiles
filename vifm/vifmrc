@@ -119,6 +119,7 @@ command! run !! ./%f
 command! make !!make %a
 command! mkcd :mkdir %a | cd %a
 command! reload :write | restart full
+command! du :if &previewprg == '' | set previewprg='dust -d1 -r ' | view! | else | set previewprg='' | view | endif
 
 " ------------------------------------------------------------------------------
 

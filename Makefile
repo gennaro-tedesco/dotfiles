@@ -1,8 +1,6 @@
 VIMCONFIG_DIR=${HOME}/.vim
 VIFILEMANAGERCONFIG_DIR=${HOME}/.config/vifm
-RANGERCONFIG_DIR=${HOME}/.config/ranger
 GLOWCONFIG_DIR=${HOME}/.config/glowconfig
-
 
 install-all: install-vim install-zsh install-vifm install-ranger install-glow install-visidata install-git
 
@@ -17,15 +15,11 @@ install-vim:
 
 install-zsh:
 	cp -f zsh/zshrc ${HOME}/.zshrc
-	cp -f zsh/p10k.zsh ${HOME}/.p10k.zsh 
+	cp -f zsh/p10k.zsh ${HOME}/.p10k.zsh
 
 install-vifm:
 	cp -r vifm/colors/. ${VIFILEMANAGERCONFIG_DIR}/colors
 	cp -f vifm/vifmrc ${VIFILEMANAGERCONFIG_DIR}
-
-install-ranger:
-	cp -f ranger/rc.conf ${RANGERCONFIG_DIR}
-	cp -f ranger/scope.sh ${RANGERCONFIG_DIR}
 
 install-visidata:
 	cp -f visidata/visidatarc ${HOME}/.visidatarc
