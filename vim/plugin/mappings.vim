@@ -5,9 +5,6 @@
 let mapleader = "\<Space>"
 let maplocalleader =  "\<Space>"
 
-" removing q: 
-nnoremap q: <nop>
-
 " smarter indenting
 vnoremap < <gv
 vnoremap > >gv
