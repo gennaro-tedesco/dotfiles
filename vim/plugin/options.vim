@@ -37,8 +37,8 @@ let g:jedi#show_call_signatures = 0
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_linters = {
-			\ 'python': ['flake8'], 
-			\ 'dockerfile': ['hadolint'], 
+			\ 'python': ['flake8'],
+			\ 'dockerfile': ['hadolint'],
 			\ 'sh': ['shellcheck'],
 			\ 'latex': ['lacheck'],
 			\ 'vim': ['vint'],

@@ -18,7 +18,7 @@ nnoremap < <<
 nnoremap + zR
 nnoremap - zM
 
-" remapping the escape key 
+" remapping the escape key
 inoremap jj <ESC>
 inoremap kk <ESC>
 
@@ -40,22 +40,23 @@ nnoremap <silent> º :resize -2<CR>
 nnoremap <silent> ª :vertical resize +2<CR>
 nnoremap <silent> @ :vertical resize -2<CR>
 
-" replace a word with yanked text 
+" replace a word with yanked text
 nnoremap rw viwpyiw
 
 " copy entire line without newline character
 nnoremap Y ^yg_
 
-" replace all occurrences of words under cursor 
+" replace all occurrences of words under cursor
 nnoremap S :%s///gc<Left><Left><Left>
 
-" mapping of navigation commands
+" buffers and files browsing
 nnoremap <C-n> :EditVifm<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :History<CR>
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-f> :BLines<CR>
 nnoremap <C-h> :Rg<CR>
+nnoremap <silent> <C-q> :bd<CR>
 
 " git fugitive remapping
 nnoremap <leader>gs :vertical Gstatus<CR>
@@ -85,6 +86,6 @@ if &diff
 	nnoremap <expr> <Left> '<C-W>h'
 	nnoremap <expr> <Down> ']c'
 	nnoremap <expr> <Up> '[c'
-	nnoremap qq :qa<CR>
+	nnoremap q :qa<CR>
 endif
 

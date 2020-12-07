@@ -7,7 +7,6 @@ My personal dotfiles: no more, no less
 I am making use of the following system programs:
 
 - vifm: https://vifm.info/
-- ranger: https://github.com/ranger/ranger
 - bat: https://github.com/sharkdp/bat
 - exa: https://the.exa.website/
 - fzf: https://github.com/junegunn/fzf
@@ -24,13 +23,13 @@ Most of them are necessary as they are included in `zsh` functions as well as `v
 # Installation
 Clone the repository
 ```
-git clone git@github.com:gennaro-tedesco/dotfiles.git 
+git clone git@github.com:gennaro-tedesco/dotfiles.git
 cd dotfiles
 ```
 Use the [`Makefile`](https://github.com/gennaro-tedesco/dotfiles/blob/master/Makefile) to install the programs you want:
 ```
-# to copy the vim configurations 
-make install-vim 
+# to copy the vim configurations
+make install-vim
 
 # to copy ranger configurations
 make install-ranger
