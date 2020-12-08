@@ -5,6 +5,9 @@
 let mapleader = "\<Space>"
 let maplocalleader =  "\<Space>"
 
+" open help
+nnoremap <F1> :h 
+
 " remove all trailing spaces
 nnoremap <F5> :call TrimWhitespace()<CR>
 
@@ -45,6 +48,9 @@ nnoremap rw viwpyiw
 
 " copy entire line without newline character
 nnoremap Y ^yg_
+
+" paste into terminal mode 
+tnoremap <leader>p <C-W>"+
 
 " replace all occurrences of words under cursor
 nnoremap S :%s///gc<Left><Left><Left>
