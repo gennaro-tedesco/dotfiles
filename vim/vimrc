@@ -18,7 +18,7 @@ Plug 'stsewd/fzf-checkout.vim'
 Plug 'airblade/vim-gitgutter'
 
 " file navigation
-Plug 'vifm/vifm.vim'
+Plug 'voldikss/vim-floaterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'pechorin/any-jump.vim'
@@ -28,10 +28,8 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'frazrepo/vim-rainbow'
 Plug 'thaerkh/vim-indentguides'
 Plug 'mhinz/vim-startify'
-Plug 'mechatroner/rainbow_csv'
 Plug 'tpope/vim-sensible'
 Plug 'itchyny/lightline.vim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'lifepillar/vim-solarized8'
 
 " settings that make vim easier to use

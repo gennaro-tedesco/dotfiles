@@ -1,6 +1,11 @@
 "" --------------------------------------------
 "" - customisation of default plugins options -
 "" --------------------------------------------
+let g:floaterm_autoclose = 2
+let g:floaterm_keymap_toggle = '<F2>'
+let g:floaterm_width = 0.95
+let g:floaterm_height = 0.8
+let g:floaterm_rootmarkers = ['.git']
 
 let g:indentguides_tabchar = '┆'
 let g:indentguides_ignorelist = ['help', 'json']

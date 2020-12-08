@@ -50,7 +50,7 @@ nnoremap Y ^yg_
 nnoremap S :%s///gc<Left><Left><Left>
 
 " buffers and files browsing
-nnoremap <C-n> :EditVifm<CR>
+nnoremap <C-n> :FloatermNew vifm<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :History<CR>
 nnoremap <C-b> :Buffers<CR>
