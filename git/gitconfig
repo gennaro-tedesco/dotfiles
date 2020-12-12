@@ -13,7 +13,7 @@
 [merge]
 	conflictstyle = diff3
 
-# pager and default editor 
+# pager and default editor
 [core]
 	editor = vim
 	pager = delta
@@ -22,7 +22,8 @@
 [delta]
 	features = side-by-side
 	line-numbers = true
-	navigate = true 
+	navigate = true
+	hunk-header-style = omit
 
 # alias
 [alias]
