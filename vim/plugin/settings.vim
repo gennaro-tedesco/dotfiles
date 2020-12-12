@@ -1,8 +1,6 @@
 "" --------------
 "" basic settings
 "" --------------
-" display indentation guides
-set list listchars=tab:\ \ ,trail:·,nbsp:⎵
 
 " colour scheme
 filetype plugin indent on
@@ -35,6 +33,7 @@ set showcmd
 set sidescroll=1
 set clipboard+=unnamed
 set autoindent noexpandtab tabstop=4 shiftwidth=4
+set list listchars=tab:\ \ ,trail:·,nbsp:⎵
 
 " search options
 set hlsearch
