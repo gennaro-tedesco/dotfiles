@@ -8,19 +8,19 @@
 	default = current
 
 [pull]
-    rebase = false
+	rebase = false
 
 [merge]
-    conflictstyle = diff3
+	conflictstyle = diff3
 
 # pager and default editor 
 [core]
 	editor = vim
 	pager = delta
 
-# delta configurations (requires https://github.com/dandavison/delta)
+# delta configurations
 [delta]
-    features = side-by-side
+	features = side-by-side
 	line-numbers = true
 	navigate = true 
 

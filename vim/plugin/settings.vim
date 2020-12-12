@@ -1,6 +1,8 @@
 "" --------------
 "" basic settings
 "" --------------
+" display indentation guides
+set list listchars=tab:\ \ ,trail:·,nbsp:⎵
 
 " colour scheme
 filetype plugin indent on
