@@ -1,19 +1,29 @@
+# user information
 [user]
 	name = Gennaro Tedesco
 	username = gennaro-tedesco
+
+# push-pull-merge defaults
 [push]
 	default = current
+
 [pull]
     rebase = false
+
 [merge]
-	conflictstyle = diff3
+    conflictstyle = diff3
+
+# pager and default editor 
 [core]
 	editor = vim
-	pager = /usr/bin/less
-[diff]
-	tool = vimdiff
-[difftool]
-	prompt = false
+	pager = delta
+
+# delta configurations (requires https://github.com/dandavison/delta)
+[delta]
+    features = side-by-side
+	line-numbers = true
+	navigate = true 
+
+# alias
 [alias]
 	logs = log --graph --abbrev-commit --oneline --format=format:'%C(bold blue)%h%C(reset) - %C(green)%ar%C(reset): %s %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
-	d = difftool
