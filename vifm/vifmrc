@@ -172,8 +172,8 @@ nnoremap <a-o> :sync %c<cr>
 " Swap panes
 nnoremap <c-u> <c-w>x
 
-" git logs preview 
-nnoremap l :if &previewprg == '' | set previewprg='git log --color -- %c 2>&1' | view! | else | set previewprg='' | view | endif<cr>
+" git logs preview
+nnoremap l :if &previewprg == '' | set previewprg='git logs --color %c 2>&1' | view! | else | set previewprg='' | view | endif<cr>
 
 " ------------------------------------------------------------------------------
 

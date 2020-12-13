@@ -26,3 +26,4 @@
 # alias
 [alias]
 	logs = log --abbrev-commit --oneline --stat --format=format:'%C(bold blue)%h%C(reset) - %C(green)%ar%C(reset): %s %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+	s = status -s
