@@ -26,6 +26,7 @@ Plug 'pechorin/any-jump.vim'
 " vim decorations and looks
 Plug 'machakann/vim-highlightedyank'
 Plug 'frazrepo/vim-rainbow'
+Plug 'thaerkh/vim-indentguides'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-sensible'
 Plug 'itchyny/lightline.vim'

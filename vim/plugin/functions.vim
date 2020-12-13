@@ -2,7 +2,7 @@
 "" --- custom functions ---
 "" ------------------------
 
-" trim white spaces 
+" trim white spaces
 function! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
@@ -50,7 +50,7 @@ endfunction
 command! ST silent! call S2T()
 
 
-" installation of plugins 
+" installation of plugins
 function! Install()
 	silent execute 'w | so% | PlugInstall | PlugUpdate'
 endfunction
@@ -64,7 +64,7 @@ endfunction
 command! Rf silent! call ReplaceFile()
 
 
-" instruct Rg not to include file names in the results 
+" instruct Rg not to include file names in the results
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " shorthand commands for linting and fixing

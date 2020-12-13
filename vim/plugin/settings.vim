@@ -33,7 +33,6 @@ set showcmd
 set sidescroll=1
 set clipboard+=unnamed
 set autoindent noexpandtab tabstop=4 shiftwidth=4
-set list listchars=tab:\ \ ,trail:·,nbsp:⎵
 
 " search options
 set hlsearch
