@@ -18,13 +18,11 @@
 	editor = vim
 	pager = delta
 
-# delta configurations
 [delta]
 	features = side-by-side
 	line-numbers = true
-	navigate = true
 	hunk-header-style = omit
 
 # alias
 [alias]
-	logs = log --graph --abbrev-commit --oneline --format=format:'%C(bold blue)%h%C(reset) - %C(green)%ar%C(reset): %s %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+	logs = log --abbrev-commit --oneline --stat --format=format:'%C(bold blue)%h%C(reset) - %C(green)%ar%C(reset): %s %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
