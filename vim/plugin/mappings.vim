@@ -55,6 +55,9 @@ tnoremap <leader>p <C-W>"+
 " replace all occurrences of words under cursor
 nnoremap S :%s///gc<Left><Left><Left>
 
+" count all occurrences of word under cursor
+nnoremap C :%s/<c-r>=expand("<cword>")<cr>//ng<CR>
+
 " buffers and files browsing
 nnoremap <C-n> :FloatermNew vifm<CR>
 nnoremap <C-p> :Files<CR>

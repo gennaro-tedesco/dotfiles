@@ -69,7 +69,7 @@ let g:startify_commands = [
 			\ {'gc': ['git checkout branch', ':GCheckout']},
 			\ {'gs': ['git status', ':vertical Gstatus']},
 			\ {'gl': ['git logs', ':Commits']},
-			\ {'n': ['browse directory', ':EditVifm']},
+			\ {'n': ['browse directory', ':FloatermNew vifm']},
 			\ {'p': ['find files', ':Files']},
 			\ ]
 let g:startify_lists = [
