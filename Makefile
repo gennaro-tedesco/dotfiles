@@ -2,6 +2,7 @@ VIMCONFIG_DIR=${HOME}/.vim
 VIFILEMANAGERCONFIG_DIR=${HOME}/.config/vifm
 GLOWCONFIG_DIR=${HOME}/.config/glowconfig
 
+.PHONY: install-all
 install-all: install-vim install-zsh install-vifm install-ranger install-glow install-visidata install-git
 
 install-vim:

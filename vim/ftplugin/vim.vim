@@ -4,5 +4,5 @@ vnoremap c- :norm 0x<ESC>
 
 augroup SOURCE_VIM
 	autocmd! * <buffer>
-	autocmd BufWritePost <buffer> nested source %
+	autocmd BufWritePost <buffer> nested source % | redraw
 augroup END
