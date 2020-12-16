@@ -49,6 +49,9 @@ nnoremap rw viwpyiw
 " copy entire line without newline character
 nnoremap Y ^yg_
 
+" copy text with line numbers and file name on top
+vnoremap <leader>y :call YankFileName()<CR>
+
 " paste into terminal mode 
 tnoremap <leader>p <C-W>"+
 

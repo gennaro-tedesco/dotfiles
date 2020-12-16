@@ -2,12 +2,20 @@
 "" --- custom functions ---
 "" ------------------------
 
+" yank text with line numbers and file name on top
+function YankFileName()
+	redir @n | silent! :'<,'>number | redir END
+	let @*=expand("%") . ':' . "\n" . @n
+endfunction
+
+
 " trim white spaces
 function! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfunction
+
 
 " convert list of items to SQL tuple
 function! ToTupleFun() range
