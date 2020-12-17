@@ -4,3 +4,4 @@ options.color_current_col 	= "normal"
 options.color_current_row 	= "yellow underline"
 options.color_selected_row 	= "green"
 options.save_filetype 		= "csv"
+options.disp_float_fmt 		= '%.07f'
