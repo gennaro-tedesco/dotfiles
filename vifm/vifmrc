@@ -155,11 +155,17 @@ nnoremap W :set wrap!<cr>
 nnoremap < 4<c-w><
 nnoremap > 4<c-w>>
 
-" Yank current directory path into the clipboard
-nnoremap yd :!printf %d | pbcopy<cr>
+" yank current directory path into the clipboard
+nnoremap yd :!echo -n %d | pbcopy %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
 
-" Yank current file path into the clipboard
-nnoremap yf :!printf %c:p | pbcopy<cr>
+" yank current file path into the clipboard
+nnoremap yp :!echo -n %c:p | pbcopy %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+
+" yank current filename without path into the clipboard
+nnoremap yn :!echo -n %c | pbcopy %i<cr>:echo expand('%"c') "is yanked to clipboard"<cr>
+
+" yank root of current file's name into the clipboard
+nnoremap yr :!echo -n %c:r | pbcopy %i<cr>:echo expand('%"c:r') "is yanked to clipboard"<cr>
 
 " Mappings for faster renaming
 nnoremap i cw<c-a>
@@ -179,6 +185,6 @@ nnoremap <c-u> <c-w>x
 " -----------------
 
 nnoremap gh :cd ~/<cr>
-nnoremap gv :cd ~/.vim<cr> 
+nnoremap gv :cd ~/.vim<cr>
 nnoremap gc :cd ~/.config<cr>
 
