@@ -11,6 +11,7 @@ colorscheme solarized8
 
 " cursorline and windows frame
 set number relativenumber
+set textwidth=78
 set wrap
 set ruler
 set cursorline

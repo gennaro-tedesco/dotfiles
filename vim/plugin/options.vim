@@ -8,7 +8,7 @@ let g:floaterm_height = 0.8
 let g:floaterm_rootmarkers = ['.git']
 
 let g:indentguides_tabchar = '┆'
-let g:indentguides_ignorelist = ['help', 'json']
+let g:indentguides_ignorelist = ['help', 'json', 'tex']
 
 let g:rainbow_active = 1
 
@@ -33,6 +33,8 @@ let g:lightline = {
 
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+let g:tex_conceal = ''
+let g:tex_fast = ''
 let g:tex_flavor = 'latex'
 
 let g:jedi#goto_command = 'gd'
