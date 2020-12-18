@@ -3,22 +3,22 @@
 "" ------------------------
 
 " yank text with line numbers and file name on top
-function YankFileName()
+function functions#YankFileName()
 	redir @n | silent! :'<,'>number | redir END
 	let @*=expand("%") . ':' . "\n" . @n
 endfunction
 
 
 " trim white spaces
-function! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
+function! functions#TrimWhitespace()
+	let l:save = winsaveview()
+	keeppatterns %s/\s\+$//e
+	call winrestview(l:save)
 endfunction
 
 
 " convert list of items to SQL tuple
-function! ToTupleFun() range
+function! functions#ToTupleFun() range
 	silent execute a:firstline . ',' . a:lastline . 'norm I"'
 	silent execute a:firstline . ',' . a:lastline . 'norm A",'
 	silent execute a:firstline . ',' . a:lastline . 'join'
@@ -31,51 +31,37 @@ function! ToTupleFun() range
 	" yank final text
 	silent execute 'norm yy'
 endfunction
-command! -range ToTuple <line1>,<line2> call ToTupleFun()
 
 
 " prettify json
-function! Jq ()
+function! functions#Jq ()
 	if (&filetype==?'json' || &filetype==?'')
 		silent execute '%! jq .'
 	else
 		echo 'not a json filetype'
 	endif
 endfunction
-command! Jq call Jq()
 
 
 " T2S and S2T
-function! T2S ()
+function! functions#T2S ()
 	set expandtab | %retab! | w
 endfunction
-command! TS silent! call T2S()
 
 
-function! S2T ()
+function! functions#S2T ()
 	set noexpandtab | %retab! | w
 endfunction
-command! ST silent! call S2T()
 
 
 " installation of plugins
-function! Install()
+function! functions#Install()
 	silent execute 'w | so% | PlugInstall | PlugUpdate'
 endfunction
-command! Inst silent! call Install()
 
 
 " replace entire content of file
-function! ReplaceFile()
+function! functions#ReplaceFile()
 	silent execute 'norm gg"_dGP'
 endfunction
-command! Rf silent! call ReplaceFile()
-
-
-" instruct Rg not to include file names in the results
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
-" shorthand commands for linting and fixing
-command! Fix :ALEFix
-command! Lint :ALEToggle
 

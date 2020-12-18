@@ -9,7 +9,7 @@ let maplocalleader =  "\<Space>"
 nnoremap <F1> :h 
 
 " remove all trailing spaces
-nnoremap <F5> :call TrimWhitespace()<CR>
+nnoremap <F5> :call functions#TrimWhitespace()<CR>
 
 " smarter indenting
 vnoremap < <gv
@@ -54,7 +54,7 @@ nnoremap rw viwpyiw
 nnoremap Y ^yg_
 
 " copy text with line numbers and file name on top
-vnoremap <leader>y :call YankFileName()<CR>
+vnoremap <leader>y :call functions#YankFileName()<CR>
 
 " paste into terminal mode 
 tnoremap <leader>p <C-W>"+
@@ -105,3 +105,19 @@ if &diff
 	nnoremap q :qa<CR>
 endif
 
+"" ----------------------------------
+"" --- definition of new commands ---
+"" ----------------------------------
+command! -range ToTuple <line1>,<line2> call functions#ToTupleFun()
+command! Jq :call functions#Jq()
+command! TS silent! call functions#T2S()
+command! ST silent! call functions#S2T()
+command! Inst silent! call functions#Install()
+command! Rf silent! call functions#ReplaceFile()
+
+" instruct Rg not to include file names in the results
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+" shorthand commands for linting and fixing
+command! Fix :ALEFix
+command! Lint :ALEToggle
