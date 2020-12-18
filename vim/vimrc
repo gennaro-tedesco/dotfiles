@@ -52,7 +52,6 @@ call plug#end()
 "" ~/.vim/plugin/settings.vim
 "" ~/.vim/plugin/mappings.vim
 "" ~/.vim/plugin/options.vim
-"" ~/.vim/plugin/functions.vim
 "" ~/.vim/plugin/folding.vim
 "" -----------------------------
 

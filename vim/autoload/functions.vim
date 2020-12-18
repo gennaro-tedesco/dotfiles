@@ -3,7 +3,7 @@
 "" ------------------------
 
 " yank text with line numbers and file name on top
-function functions#YankFileName()
+function! functions#CompleteYank()
 	redir @n | silent! :'<,'>number | redir END
 	let @*=expand("%") . ':' . "\n" . @n
 endfunction

@@ -29,7 +29,9 @@ inoremap kk <ESC>
 nnoremap W 5w
 nnoremap B 5b
 nnoremap H ^
+onoremap H ^
 nnoremap L $
+onoremap L $
 nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
 nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
 nnoremap <PageUp> {
@@ -54,7 +56,7 @@ nnoremap rw viwpyiw
 nnoremap Y ^yg_
 
 " copy text with line numbers and file name on top
-vnoremap <leader>y :call functions#YankFileName()<CR>
+vnoremap <leader>y :call functions#CompleteYank()<CR>
 
 " paste into terminal mode 
 tnoremap <leader>p <C-W>"+
