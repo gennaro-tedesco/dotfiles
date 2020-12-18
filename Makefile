@@ -7,9 +7,11 @@ install-all: install-vim install-zsh install-vifm install-ranger install-glow in
 
 install-vim:
 	cp -f vim/vimrc ${HOME}/.vimrc
-	mkdir -p ${VIMCONFIG_DIR}/ftplugin
+	mkdir -p ${VIMCONFIG_DIR}/after
+	mkdir -p ${VIMCONFIG_DIR}/autoload
 	mkdir -p ${VIMCONFIG_DIR}/plugin
-	cp -r vim/ftplugin/. ${VIMCONFIG_DIR}/ftplugin
+	cp -r vim/after/. ${VIMCONFIG_DIR}/after
+	cp -r vim/autoload/. ${VIMCONFIG_DIR}/autoload
 	cp -r vim/plugin/. ${VIMCONFIG_DIR}/plugin
 # 	[ -f "${HOME}/.vim/autoload/plug.vim" ] || curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # 	vim -cPlugClean -cPlugInstall -cPlugUpdate -cqa

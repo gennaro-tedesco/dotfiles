@@ -1,1 +1,1 @@
-silent! :call Jq()
+silent! :call functions#Jq()
