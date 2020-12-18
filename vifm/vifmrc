@@ -110,6 +110,7 @@ filetype *.pdf zathura %f &
 " Man page
 filetype {*.[1-8]},<text/troff> man ./%c
 fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
+fileview */ exa --tree --level=2 %c
 
 " Syntax highlighting in preview
 "
