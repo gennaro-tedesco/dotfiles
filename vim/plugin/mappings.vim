@@ -81,7 +81,7 @@ nnoremap <leader>gp :Gpush <Bar> copen<CR>
 nnoremap <leader>gl :Commit<CR>
 
 " open up vimconfig and zshconfig in one go
-map <leader>v :e<space>~/.vimrc<CR>
+map <leader>v :e<space>~/.vim/vimrc<CR>
 map <leader>z :e<space>~/.zshrc<CR>
 map <leader>t :e<space>~/.todo<CR>
 
