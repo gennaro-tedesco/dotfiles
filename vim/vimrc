@@ -26,13 +26,13 @@ Plug 'pechorin/any-jump.vim'
 " vim decorations and looks
 Plug 'machakann/vim-highlightedyank'
 Plug 'frazrepo/vim-rainbow'
-Plug 'thaerkh/vim-indentguides'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-sensible'
 Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-solarized8'
 
 " settings that make vim easier to use
+Plug 'junegunn/vim-peekaboo'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'ervandew/supertab'
 Plug 'wincent/terminus'

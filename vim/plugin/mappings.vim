@@ -43,12 +43,6 @@ vnoremap <PageDown> }k
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprevious<CR>
 
-" Use <alt+hjkl> to resize panes
-nnoremap <silent> ∆ :resize +2<CR>
-nnoremap <silent> º :resize -2<CR>
-nnoremap <silent> ª :vertical resize +2<CR>
-nnoremap <silent> @ :vertical resize -2<CR>
-
 " replace a word with yanked text
 nnoremap rw viwpyiw
 
