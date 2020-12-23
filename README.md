@@ -32,8 +32,8 @@ Use the [`Makefile`](https://github.com/gennaro-tedesco/dotfiles/blob/master/Mak
 # to copy the vim configurations
 make install-vim
 
-# to copy ranger configurations
-make install-ranger
+# to copy zsh configurations
+make install-zsh
 ```
 and so forth. To install all programs run `make install-all`.
 

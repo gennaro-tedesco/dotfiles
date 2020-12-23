@@ -58,6 +58,10 @@ tnoremap <leader>p <C-W>"+
 " replace all occurrences of words under cursor
 nnoremap S :%s///gc<Left><Left><Left>
 
+" activate global substitute command
+nnoremap gs :%s/
+xnoremap gs :s/
+
 " count all occurrences of word under cursor
 nnoremap C :%s/<c-r>=expand("<cword>")<cr>//ng<CR>
 
