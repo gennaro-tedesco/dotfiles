@@ -1,14 +1,13 @@
-" panel borders
-set fillchars='vborder:│'
+" Command used to edit files in various contexts.  The default is vim.
+set vicmd=vim
 
+" This makes vifm perform file operations on its own instead of relying on
+" standard utilities like `cp`.  While using `cp` and alike is a more universal
+" solution, it's also much slower when processing large amounts of files and
+" doesn't support progress measuring.
 set syscalls
 
-" Trash Directory
-" The default is to move files that are deleted with dd or :d to
-" the trash directory.  If you change this you will not be able to move
-" files by deleting them and then using p to put the file in the new location.
-" I recommend not changing this until you are familiar with vifm.
-" This probably shouldn't be an option.
+" Trash Directory: do not change!!
 set trash
 
 " This is how many directories to store in the directory history.
@@ -17,12 +16,14 @@ set history=100
 " set line numbers
 set number
 
+" panel borders
+set fillchars='vborder:│'
+
 " Automatically resolve symbolic links on l or Enter.
 set nofollowlinks
 
 " With this option turned on you can run partially entered commands with
 " unambiguous beginning using :! (e.g. :!Te instead of :!Terminal or :!Te<tab>).
-
 " set fastrun
 
 " Natural sort of (version) numbers within text.
