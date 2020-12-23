@@ -13,8 +13,6 @@ let g:gitgutter_enabled = 1
 
 let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.8 } }
 
-let g:calendar_first_day = 'monday'
-
 let g:lightline = {
 			\ 'active': {
 			\   'left': [ [ 'mode', 'paste' ],
@@ -60,6 +58,7 @@ let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 0
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '.'
+let g:ale_echo_msg_format = '[%linter%]: %s'
 
 let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
 let g:startify_files_number = 15
