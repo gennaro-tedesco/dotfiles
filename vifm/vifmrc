@@ -108,6 +108,9 @@ command! du :if &previewprg == '' | set previewprg='dust -d1 -r ' | view! | else
 " Pdf
 filetype *.pdf zathura %f &
 
+" Images 
+filetype *.jpg,*.jpeg,*.png,*.gif open %c
+
 " Man page
 filetype {*.[1-8]},<text/troff> man ./%c
 fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
