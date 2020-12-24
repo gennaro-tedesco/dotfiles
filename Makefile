@@ -10,12 +10,11 @@ install-vim:
 	mkdir -p ${VIMCONFIG_DIR}
 	cp -r vim/. ${VIMCONFIG_DIR}
 #	[ -f "${HOME}/.vim/autoload/plug.vim" ] || curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-#	vim -cPlugClean -cPlugInstall -cPlugUpdate -cqa
+	vim -cPlugClean -cPlugInstall -cPlugUpdate -cqa
 
 install-nvim: install-vim 
 	mkdir -p ${NEOVIMCONFIG_DIR}
 	cp -r nvim/. ${NEOVIMCONFIG_DIR}
-	nvim -cUpdateRemotePlugins -cqa
 
 install-zsh:
 	cp -f zsh/zshrc ${HOME}/.zshrc
