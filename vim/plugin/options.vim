@@ -12,6 +12,7 @@ let g:rainbow_active = 1
 let g:gitgutter_enabled = 1
 
 let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.8 } }
+let g:fzf_buffers_jump = 1
 
 let g:lightline = {
 			\ 'active': {

@@ -118,6 +118,8 @@ command! Rf silent! call functions#ReplaceFile()
 " instruct Rg not to include file names in the results
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
+command! -bang Commits call fzf#vim#commits({'options': '--no-preview'}, <bang>0)
+
 " shorthand commands for linting and fixing
 command! Fix :ALEFix
 command! Lint :ALEToggle
