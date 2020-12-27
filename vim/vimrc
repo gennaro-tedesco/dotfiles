@@ -24,7 +24,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'pechorin/any-jump.vim'
 
 " vim decorations and looks
-Plug 'machakann/vim-highlightedyank'
 Plug 'frazrepo/vim-rainbow'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-sensible'
