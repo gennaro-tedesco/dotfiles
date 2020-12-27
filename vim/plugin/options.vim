@@ -9,7 +9,10 @@ let g:floaterm_rootmarkers = ['.git']
 
 let g:rainbow_active = 1
 
-let g:gitgutter_enabled = 1
+let g:signify_sign_add = '+'
+let g:signify_sign_delete = '-'
+let g:signify_sign_change = '~'
+let g:signify_sign_show_count = 0
 
 let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.8 } }
 let g:fzf_buffers_jump = 1
@@ -126,9 +129,14 @@ let s:mode_hl = 'LightlineLeft_active_0'
 let s:index_hl = 'LightlineRight_active_0'
 
 call wilder#set_option('pipeline', [
-			\   wilder#branch(
+			\   wilder#branch( 
+			\     [
+			\       wilder#check({_, x -> empty(x)}),
+			\       wilder#history(),
+			\     ],
 			\     wilder#substitute_pipeline(),
 			\     wilder#cmdline_pipeline(),
+			\     wilder#vim_search_pipeline(),
 			\   ),
 			\ ])
 

@@ -15,7 +15,7 @@ Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
 Plug 'oguzbilgic/vim-gdiff'
 Plug 'stsewd/fzf-checkout.vim'
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 
 " file navigation
 Plug 'voldikss/vim-floaterm'
