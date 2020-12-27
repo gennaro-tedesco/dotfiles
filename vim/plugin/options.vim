@@ -17,7 +17,7 @@ let g:fzf_buffers_jump = 1
 let g:lightline = {
 			\ 'active': {
 			\   'left': [ [ 'mode', 'paste' ],
-			\             [ 'gitbranch', 'readonly', 'filename', 'modified'] ],
+			\             [ 'gitbranch', 'readonly', 'absolutepath', 'modified'] ],
 			\   'right': [ [ 'lineinfo' ],
 			\              [ 'percent' ],
 			\              [ 'filetype'] ]
