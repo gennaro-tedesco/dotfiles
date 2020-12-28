@@ -36,10 +36,6 @@ let g:tex_conceal = ''
 let g:tex_fast = ''
 let g:tex_flavor = 'latex'
 
-let g:jedi#goto_command = 'gd'
-let g:jedi#usages_command = 'gu'
-let g:jedi#show_call_signatures = 0
-
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_linters = {

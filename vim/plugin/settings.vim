@@ -20,7 +20,7 @@ set splitbelow splitright
 set scrolloff=8
 
 " standard vim behaviour
-augroup Format
+augroup FORMAT
 	autocmd!
 	autocmd FileType * set formatoptions-=cro
 augroup END
@@ -31,6 +31,7 @@ set hidden
 set mouse=a
 set updatetime=100
 set showcmd
+set cmdheight=2
 set sidescroll=1
 set clipboard+=unnamed
 set autoindent noexpandtab tabstop=4 shiftwidth=4

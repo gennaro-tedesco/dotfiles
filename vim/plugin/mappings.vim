@@ -65,8 +65,12 @@ xnoremap gs :s/
 " count all occurrences of word under cursor
 nnoremap C :%s/<c-r>=expand("<cword>")<cr>//ng<CR>
 
+" code navigation (with Coc)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
 " buffers and files browsing
-nnoremap gr :AnyJump<CR>
 nnoremap <C-n> :FloatermNew vifm<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :History<CR>
@@ -125,4 +129,15 @@ command! -bang Commits call fzf#vim#commits({'options': '--no-preview'}, <bang>0
 " shorthand commands for linting and fixing
 command! Fix :ALEFix
 command! Lint :ALEToggle
+
+" CoC show documentation
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 
