@@ -6,7 +6,6 @@
 call plug#begin('~/.vim/plugged')
 
 " plugins for code autocompletion, language servers and the like
-Plug 'vim-scripts/AutoComplPop'
 Plug 'dense-analysis/ale'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}

@@ -99,7 +99,7 @@ cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
 cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 
 " clean up search results
-nnoremap <silent> <CR> :let @/=""<CR>
+nnoremap <silent> <BS> :let @/=""<CR>
 
 " navigation controls when in diff mode
 if &diff
