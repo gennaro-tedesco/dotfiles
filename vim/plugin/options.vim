@@ -161,6 +161,6 @@ call wilder#set_option('renderer', wilder#wildmenu_renderer({
 
 let g:comfortable_motion_no_default_key_mappings = 1
 
-let g:any_jump_disable_default_keybindings = 1
-
 let g:peekaboo_window = 'vert bo 45new'
+
+let g:UltiSnipsExpandTrigger = '<nop>'
