@@ -66,6 +66,7 @@ xnoremap gs :s/
 nnoremap C :%s/<c-r>=expand("<cword>")<cr>//ng<CR>
 
 " buffers and files browsing
+nnoremap gr :AnyJump<CR>
 nnoremap <C-n> :FloatermNew vifm<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :History<CR>
@@ -105,6 +106,7 @@ if &diff
 	nnoremap q :qa<CR>
 endif
 
+
 "" ----------------------------------
 "" --- definition of new commands ---
 "" ----------------------------------
@@ -123,3 +125,4 @@ command! -bang Commits call fzf#vim#commits({'options': '--no-preview'}, <bang>0
 " shorthand commands for linting and fixing
 command! Fix :ALEFix
 command! Lint :ALEToggle
+
