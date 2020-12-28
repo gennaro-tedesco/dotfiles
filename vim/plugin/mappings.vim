@@ -90,10 +90,6 @@ map <leader>v :e<space>~/.vim/vimrc<CR>
 map <leader>z :e<space>~/.zshrc<CR>
 map <leader>t :e<space>~/.todo<CR>
 
-" navigate through the completion menu
-inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
-inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
 " wilder completion menu
 cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
 cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
