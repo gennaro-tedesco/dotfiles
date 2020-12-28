@@ -68,6 +68,7 @@ nnoremap C :%s/<c-r>=expand("<cword>")<cr>//ng<CR>
 " code navigation (with Coc)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " buffers and files browsing
