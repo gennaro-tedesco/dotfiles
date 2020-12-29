@@ -40,6 +40,7 @@ highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 let g:ale_linters = {
 			\ 'python': ['flake8'],
+			\ 'lua': ['luacheck'],
 			\ 'dockerfile': ['hadolint'],
 			\ 'sh': ['shellcheck'],
 			\ 'latex': ['lacheck'],
@@ -47,6 +48,7 @@ let g:ale_linters = {
 			\}
 let g:ale_fixers = {
 			\ 'python': ['yapf'],
+			\ 'lua': ['luafmt'],
 			\ 'sh': ['trim_whitespace'],
 			\ 'dockerfile': ['trim_whitespace'],
 			\ 'yaml': ['prettier', 'trim_whitespace'],

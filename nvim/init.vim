@@ -9,5 +9,7 @@ source ~/.vim/vimrc
 
 augroup HIGHLIGHT_YANK
     autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
 augroup END
+
+lua require'nvim-treesitter.configs'.setup {highlight = {enable = true}}
