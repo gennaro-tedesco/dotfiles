@@ -68,7 +68,7 @@ nnoremap C :%s/<c-r>=expand("<cword>")<cr>//ng<CR>
 " code navigation (with Coc)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
-nmap <leader>rn <Plug>(coc-rename)
+nmap <silent> rn <Plug>(coc-rename)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " buffers and files browsing
@@ -80,11 +80,12 @@ nnoremap <C-f> :BLines<CR>
 nnoremap <C-h> :Rg<CR>
 nnoremap <silent> <C-q> :bd<CR>
 
-" git fugitive remapping
+" git remappings
 nnoremap <leader>gs :vertical Gstatus<CR>
+nnoremap <leader>gd :FloatermNew DELTA_NAVIGATE=1 git diff<CR>
 nnoremap <leader>gc :GCheckout<CR>
 nnoremap <leader>gp :Gpush <Bar> copen<CR>
-nnoremap <leader>gl :Commit<CR>
+nnoremap <leader>gl :BCommit<CR>
 
 " open up vimconfig and zshconfig in one go
 map <leader>v :e<space>~/.vim/vimrc<CR>
@@ -116,18 +117,11 @@ endif
 "" --- definition of new commands ---
 "" ----------------------------------
 command! -range ToTuple <line1>,<line2> call functions#ToTupleFun()
-command! Jq :call functions#Jq()
+command! Jq silent! call functions#Jq()
 command! TS silent! call functions#T2S()
 command! ST silent! call functions#S2T()
 command! Inst silent! call functions#Install()
 command! Rf silent! call functions#ReplaceFile()
-
-" instruct Rg not to include file names in the results
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
-command! -bang Commits call fzf#vim#commits({'options': '--no-preview'}, <bang>0)
-
-" shorthand commands for linting and fixing
 command! Fix :ALEFix
 command! Lint :ALEToggle
 

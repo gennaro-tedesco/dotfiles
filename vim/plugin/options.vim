@@ -164,3 +164,15 @@ let g:comfortable_motion_no_default_key_mappings = 1
 let g:peekaboo_window = 'vert bo 45new'
 
 let g:UltiSnipsExpandTrigger = '<nop>'
+
+let g:python3_host_prog = '/usr/local/bin/python3' 
+
+
+"" --------------------------------------------------
+"" ---- customisation of default plugin commands ----
+"" --------------------------------------------------
+
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+command! -bang BCommits call fzf#vim#buffer_commits({'options': '--no-preview'}, <bang>0)
+command! -bang Commits call fzf#vim#commits({'options': '--no-preview'}, <bang>0)
