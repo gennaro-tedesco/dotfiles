@@ -5,7 +5,7 @@
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.config/nvim/plugged')
 
-" plugins for code autocompletion, language servers and the like
+" code autocompletion, language servers and the like
 Plug 'dense-analysis/ale'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -23,6 +23,7 @@ Plug 'mhinz/vim-signify'
 Plug 'voldikss/vim-floaterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'liuchengxu/vista.vim'
 
 " vim decorations and looks
 Plug 'frazrepo/vim-rainbow'
