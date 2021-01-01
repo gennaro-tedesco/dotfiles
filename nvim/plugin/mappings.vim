@@ -5,9 +5,6 @@
 let mapleader = "\<Space>"
 let maplocalleader =  "\<Space>"
 
-" open help
-nnoremap <F1> :h 
-
 " remove all trailing spaces
 nnoremap <F5> :call functions#TrimWhitespace()<CR>
 
@@ -70,6 +67,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> rn <Plug>(coc-rename)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> gm :CocList --normal outline<CR>
 
 " buffers and files browsing
 nnoremap <C-n> :FloatermNew vifm<CR>
@@ -81,14 +79,12 @@ nnoremap <C-h> :Rg<CR>
 nnoremap <silent> <C-q> :bd<CR>
 
 " git remappings
-nnoremap <leader>gs :vertical Gstatus<CR>
 nnoremap <leader>gd :FloatermNew DELTA_NAVIGATE=1 git diff<CR>
 nnoremap <leader>gc :GCheckout<CR>
 nnoremap <leader>gp :Gpush <Bar> copen<CR>
 nnoremap <leader>gl :BCommit<CR>
 
 " open up vimconfig and zshconfig in one go
-map <leader>v :e<space>~/.vim/vimrc<CR>
 map <leader>z :e<space>~/.zshrc<CR>
 map <leader>t :e<space>~/.todo<CR>
 
