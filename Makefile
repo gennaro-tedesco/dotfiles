@@ -9,13 +9,11 @@ install-all: install-vim install-nvim install-zsh install-vifm install-ranger in
 install-vim:
 	mkdir -p ${VIMCONFIG_DIR}
 	cp -r vim/. ${VIMCONFIG_DIR}
-#	[ -f "${HOME}/.vim/autoload/plug.vim" ] || curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 #	vim -cPlugClean -cPlugInstall -cPlugUpdate -cqa
 
 install-nvim:
 	mkdir -p ${NEOVIMCONFIG_DIR}
 	cp -r nvim/. ${NEOVIMCONFIG_DIR}
-#	[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim" ] || curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 #	nvim -cPlugClean -cPlugInstall -cPlugUpdate -cUpdateRemotePlugins -cqa
 
 install-zsh:

@@ -58,7 +58,7 @@ endfunction
 
 " installation of plugins
 function! functions#Install()
-	silent execute 'w | so% | PlugInstall | PlugUpdate'
+	silent execute 'w | so % | PlugInstall | PlugUpdate | UpdateRemotePlugins'
 endfunction
 
 
