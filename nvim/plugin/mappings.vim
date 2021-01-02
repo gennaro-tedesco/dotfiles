@@ -72,14 +72,13 @@ nnoremap <silent> gm :<C-u>CocFzfList outline<CR>
 " buffers and files browsing
 nnoremap <C-n> :FloatermNew vifm<CR>
 nnoremap <C-p> :Files<CR>
-nnoremap <C-o> :History<CR>
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-f> :BLines<CR>
 nnoremap <C-h> :Rg<CR>
 nnoremap <silent> <C-q> :bd<CR>
 
 " git remappings
-nnoremap <leader>gd :FloatermNew DELTA_NAVIGATE=1 git diff<CR>
+nnoremap <leader>gs :GFiles?<CR>
 nnoremap <leader>gc :GCheckout<CR>
 nnoremap <leader>gp :Gpush <Bar> copen<CR>
 nnoremap <leader>gl :BCommit<CR>

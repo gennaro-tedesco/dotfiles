@@ -14,6 +14,7 @@ let g:signify_sign_delete = '-'
 let g:signify_sign_change = '~'
 let g:signify_sign_show_count = 0
 
+let g:fzf_preview_window = ['down:50%']
 let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.8 } }
 let g:fzf_buffers_jump = 1
 
@@ -176,5 +177,9 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
-command! -bang BCommits call fzf#vim#buffer_commits({'options': '--no-preview'}, <bang>0)
-command! -bang Commits call fzf#vim#commits({'options': '--no-preview'}, <bang>0)
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(s:find_git_root(), fzf#vim#with_preview('right:50%'), <bang>0)
+command! -bang -nargs=? -complete=dir Buffers call fzf#vim#buffers(<q-args>, fzf#vim#with_preview('right:50%'), <bang>0)
+
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
