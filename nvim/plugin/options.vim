@@ -7,9 +7,6 @@ let g:floaterm_width = 0.95
 let g:floaterm_height = 0.8
 let g:floaterm_rootmarkers = ['.git']
 
-let g:vista_default_executive = 'coc'
-let g:vista_fzf_preview = ['right:50%']
-
 let g:rainbow_active = 1
 
 let g:signify_sign_add = '+'

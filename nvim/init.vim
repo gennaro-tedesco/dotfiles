@@ -23,7 +23,7 @@ Plug 'mhinz/vim-signify'
 Plug 'voldikss/vim-floaterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'liuchengxu/vista.vim'
+Plug 'antoinemadec/coc-fzf'
 
 " vim decorations and looks
 Plug 'frazrepo/vim-rainbow'

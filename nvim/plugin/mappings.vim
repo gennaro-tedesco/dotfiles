@@ -67,6 +67,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> rn <Plug>(coc-rename)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> gm :<C-u>CocFzfList outline<CR>
 
 " buffers and files browsing
 nnoremap <C-n> :FloatermNew vifm<CR>
@@ -75,7 +76,6 @@ nnoremap <C-o> :History<CR>
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-f> :BLines<CR>
 nnoremap <C-h> :Rg<CR>
-nnoremap <C-m> :Vista finder coc<CR> 
 nnoremap <silent> <C-q> :bd<CR>
 
 " git remappings
