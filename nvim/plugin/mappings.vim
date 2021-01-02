@@ -80,7 +80,7 @@ nnoremap q/ :call fzf#vim#search_history({'right': '40'})<CR>
 nnoremap q: :call fzf#vim#command_history({'right': '40'})<CR>
 
 " git remappings
-nnoremap <leader>gs :GFiles?<CR>
+nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>gp :Gpush <Bar> copen<CR>
 nnoremap <leader>gl :BCommit<CR>
