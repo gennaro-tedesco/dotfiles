@@ -67,8 +67,8 @@ let g:startify_custom_header = startify#center(['welcome back, and a fine day it
 let g:startify_files_number = 15
 let g:startify_use_env = 1
 let g:startify_commands = [
-			\ {'gc': ['git checkout branch', ':GCheckout']},
-			\ {'gs': ['git status', ':vertical Gstatus']},
+			\ {'gc': ['git checkout branch', ':GBranches']},
+			\ {'gs': ['git status', ':GFiles?']},
 			\ {'gl': ['git logs', ':Commits']},
 			\ {'n': ['browse directory', ':FloatermNew vifm']},
 			\ {'p': ['find files', ':Files']},
@@ -178,7 +178,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(s:find_git_root(), fzf#vim#with_preview('right:50%'), <bang>0)
-command! -bang -nargs=? -complete=dir Buffers call fzf#vim#buffers(<q-args>, fzf#vim#with_preview('right:50%'), <bang>0)
+command! -bang -nargs=? -complete=dir Buffers call fzf#vim#buffers({'right': '40'})
 
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
