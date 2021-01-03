@@ -52,7 +52,6 @@ call plug#end()
 "" ~/.config/nvim/plugin/folding.vim
 "" -----------------------------------
 
-
 " -----------------------------
 " -- global augroup commands --
 " -----------------------------
@@ -60,6 +59,11 @@ call plug#end()
 augroup HIGHLIGHT_YANK
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
+augroup END
+
+augroup TERMINAL_OPEN
+	autocmd!
+	autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
 
 lua require'nvim-treesitter.configs'.setup {highlight = {enable = true}}

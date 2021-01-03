@@ -163,7 +163,7 @@ call wilder#set_option('renderer', wilder#wildmenu_renderer({
 
 let g:comfortable_motion_no_default_key_mappings = 1
 
-let g:peekaboo_window = 'vert bo 45new'
+let g:peekaboo_window = 'vert bo 40new'
 
 let g:UltiSnipsExpandTrigger = '<nop>'
 
