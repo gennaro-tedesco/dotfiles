@@ -175,7 +175,6 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 "" --------------------------------------------------
 
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --hidden -g '!.git/' --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': s:find_git_root()}, 'down:70%'), <bang>0)
-
 command! -bang BCommits call fzf#vim#buffer_commits({'options': '--no-preview'}, <bang>0)
 command! -bang Commits call fzf#vim#commits({'options': '--no-preview'}, <bang>0)
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(s:find_git_root(), fzf#vim#with_preview('right:50%'), <bang>0)

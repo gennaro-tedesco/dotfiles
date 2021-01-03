@@ -73,7 +73,6 @@ nnoremap <silent> gm :<C-u>CocFzfList outline<CR>
 nnoremap <C-n> :FloatermNew vifm<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR>
-nnoremap <C-f> :BLines<CR>
 nnoremap <C-h> :Rg<CR>
 nnoremap <silent> <C-q> :bd<CR>
 nnoremap q/ :call fzf#vim#search_history({'right': '40'})<CR>
