@@ -29,11 +29,11 @@ cd dotfiles
 ```
 Use the [`Makefile`](https://github.com/gennaro-tedesco/dotfiles/blob/master/Makefile) to install the programs you want:
 ```
-# to copy the vim configurations
-make install-vim
+# to install nvim configurations
+make install-nvim plug=1 # <-- plug=1 installs plugins too, omit otherwise
 
-# to copy zsh configurations
+# to install zsh configurations
 make install-zsh
 ```
-and so forth. To install all programs run `make install-all`.
+and so forth.
 

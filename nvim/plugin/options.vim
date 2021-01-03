@@ -174,7 +174,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 "" ---- customisation of default plugin commands ----
 "" --------------------------------------------------
 
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --hidden -g '!.git/' --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': s:find_git_root()}, 'down:70%'), <bang>0)
 
 command! -bang BCommits call fzf#vim#buffer_commits({'options': '--no-preview'}, <bang>0)
 command! -bang Commits call fzf#vim#commits({'options': '--no-preview'}, <bang>0)
