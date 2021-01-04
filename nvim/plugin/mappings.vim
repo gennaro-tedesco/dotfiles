@@ -78,6 +78,7 @@ nnoremap <C-h> :Rg<CR>
 nnoremap <silent> <C-q> :bd<CR>
 nnoremap q/ :call fzf#vim#search_history({'right': '40'})<CR>
 nnoremap q: :call fzf#vim#command_history({'right': '40'})<CR>
+nnoremap <silent> <BS> g;
 
 " git remappings
 nnoremap <leader>gs :Gstatus<CR>
@@ -98,7 +99,7 @@ cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
 cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 
 " clean up search results
-nnoremap <silent> <BS> :let @/=""<CR>
+nnoremap <silent> <CR> :let @/=""<CR>
 
 " navigation controls when in diff mode
 if &diff
