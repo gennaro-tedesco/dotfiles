@@ -18,6 +18,7 @@ let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.8 } }
 let g:fzf_buffers_jump = 1
 
 let g:lightline = {
+			\ 'colorscheme': 'solarized',
 			\ 'active': {
 			\   'left': [ [ 'mode', 'paste' ],
 			\             [ 'gitbranch', 'readonly', 'absolutepath', 'modified'] ],
@@ -181,5 +182,5 @@ command! -bang -nargs=? -complete=dir Files call fzf#vim#files(s:find_git_root()
 command! -bang -nargs=? -complete=dir Buffers call fzf#vim#buffers({'right': '40'})
 
 function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+	return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
