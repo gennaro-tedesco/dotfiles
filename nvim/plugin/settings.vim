@@ -30,6 +30,7 @@ set nocompatible
 set hidden
 set mouse=a
 set updatetime=100
+set timeoutlen=500
 set showcmd
 set sidescroll=1
 set clipboard+=unnamed

@@ -78,6 +78,7 @@ nnoremap <C-h> :Rg<CR>
 nnoremap <silent> <C-q> :bd<CR>
 nnoremap q/ :call fzf#vim#search_history({'right': '40'})<CR>
 nnoremap q: :call fzf#vim#command_history({'right': '40'})<CR>
+nnoremap qh :call fzf#vim#helptags({'right': '40'})<CR>
 nnoremap <silent> <BS> g;
 
 " git remappings
