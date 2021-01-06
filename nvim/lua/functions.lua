@@ -2,11 +2,11 @@
 ---- custom lua functions ----
 ------------------------------
 
-local function FloatingWindow(popup_height_ratio, popup_width_ratio)
+local function FloatingWindow(title)
    local screen_width = vim.api.nvim_list_uis()[1].width
    local screen_height = vim.api.nvim_list_uis()[1].height
-   local popup_width = math.ceil(screen_width*popup_width_ratio)
-   local popup_height = math.ceil(screen_height*popup_height_ratio)
+   local popup_height_ratio, popup_width_ratio = 0.7, 0.6
+   local popup_height, popup_width = math.ceil(screen_height*popup_height_ratio), math.ceil(screen_width*popup_width_ratio)
 
    local opts = {
 	  style = "minimal",
@@ -20,13 +20,19 @@ local function FloatingWindow(popup_height_ratio, popup_width_ratio)
    local border = {}
    local top = "╭" .. string.rep("─", popup_width - 2) .. "╮"
    local mid = "│" .. string.rep(" ", popup_width - 2) .. "│"
-   local bot = "╰" .. string.rep("─", popup_width - 2) .. "╯"
+   local function bot(title)
+	  if title == nil then
+		 return "╰" .. string.rep("─", popup_width - 2) .. "╯"
+	  else
+		 return "╰" .. title .. string.rep("─", popup_width - string.len(title) - 2) .. "╯"
+	  end
+   end
 
    table.insert(border, top)
    for j=1, popup_height-2 do
 	  table.insert(border, mid)
    end
-   table.insert(border, bot)
+   table.insert(border, bot(title))
 
    local external_buf = vim.api.nvim_create_buf(false, true)
    vim.api.nvim_buf_set_option(external_buf, 'bufhidden', 'wipe')
