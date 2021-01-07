@@ -1,6 +1,9 @@
 "" ---------------------------------------
 "" --- remapping and keys combinations ---
 "" ---------------------------------------
+" prevent record functionality
+nnoremap q <nop>
+
 " remap leader key
 let mapleader = "\<Space>"
 let maplocalleader =  "\<Space>"
@@ -107,7 +110,7 @@ if &diff
 	nnoremap <expr> <Left> '<C-W>h'
 	nnoremap <expr> <Down> ']c'
 	nnoremap <expr> <Up> '[c'
-	nnoremap q :qa<CR>
+	nnoremap qq :qa<CR>
 endif
 
 
