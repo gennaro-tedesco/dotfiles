@@ -4,9 +4,3 @@ vnoremap c- :norm 0xx<ESC>
 
 setlocal shiftwidth=3 
 setlocal softtabstop=3 
-
-augroup AUTO_INDENT
-   autocmd! * <buffer>
-   autocmd BufWritePre <buffer> :normal gg=Gg;
-augroup END
-
