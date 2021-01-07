@@ -45,3 +45,6 @@ set completeopt="menuone,preview"
 set wildmenu
 set wildmode=longest,full,list
 set wildcharm=<Tab>
+
+" matching pairs
+set matchpairs+=<:>

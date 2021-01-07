@@ -13,6 +13,7 @@ vnoremap < <gv
 vnoremap > >gv
 nnoremap > >>
 nnoremap < <<
+nnoremap <leader>= gg=Gg;
 
 " code folding
 nnoremap + zR
@@ -73,11 +74,12 @@ nnoremap <silent> gm :<C-u>CocFzfList outline<CR>
 nnoremap <C-n> :FloatermNew vifm<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR>
-nnoremap <C-f> :BLines<CR>
 nnoremap <C-h> :Rg<CR>
 nnoremap <silent> <C-q> :bd<CR>
 nnoremap q/ :call fzf#vim#search_history({'right': '40'})<CR>
 nnoremap q: :call fzf#vim#command_history({'right': '40'})<CR>
+nnoremap qh :call fzf#vim#helptags({'down': '15'})<CR>
+nnoremap <silent> <BS> g;
 
 " git remappings
 nnoremap <leader>gs :Gstatus<CR>
@@ -85,8 +87,7 @@ nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>gp :Gpush <Bar> copen<CR>
 nnoremap <leader>gl :BCommit<CR>
 
-" open up vimconfig and zshconfig in one go
-map <leader>z :e<space>~/.zshrc<CR>
+" open todo file in one go
 map <leader>t :e<space>~/.todo<CR>
 
 " navigate through the completion menu
@@ -98,7 +99,7 @@ cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
 cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 
 " clean up search results
-nnoremap <silent> <BS> :let @/=""<CR>
+nnoremap <silent> <CR> :let @/=""<CR>
 
 " navigation controls when in diff mode
 if &diff
@@ -124,12 +125,12 @@ command! Lint :ALEToggle
 
 " CoC show documentation
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
+	if (index(['vim','help'], &filetype) >= 0)
+		execute 'h '.expand('<cword>')
+	elseif (coc#rpc#ready())
+		call CocActionAsync('doHover')
+	else
+		execute '!' . &keywordprg . " " . expand('<cword>')
+	endif
 endfunction
 
