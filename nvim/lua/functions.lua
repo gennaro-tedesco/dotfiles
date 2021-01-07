@@ -48,12 +48,18 @@ local function FloatingWindow(title)
    local internal_buf = vim.api.nvim_create_buf(false, true)
    vim.api.nvim_buf_set_option(internal_buf, 'bufhidden', 'wipe')
    local internal_win = vim.api.nvim_open_win(internal_buf, true, opts)
-   vim.api.nvim_command('au BufWipeout <buffer> exe "silent bwipeout! "'..external_buf)
    vim.api.nvim_win_set_option(internal_win, 'winhighlight', 'Normal:Floating')
+   vim.api.nvim_command('au WinClosed * ++once :q | call nvim_win_close(' ..external_win..', v:true)')
+   return internal_buf
 end
 
+local function FloatingWindowEdit(query)
+   local popup_buf = FloatingWindow(query)
+   vim.api.nvim_command('edit ' ..query)
+end
 
 return {
    FloatingWindow = FloatingWindow,
+   FloatingWindowEdit = FloatingWindowEdit,
 }
 

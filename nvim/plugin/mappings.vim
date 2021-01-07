@@ -87,8 +87,7 @@ nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>gp :Gpush <Bar> copen<CR>
 nnoremap <leader>gl :BCommit<CR>
 
-" open up vimconfig and zshconfig in one go
-map <leader>z :e<space>~/.zshrc<CR>
+" open todo file in one go
 map <leader>t :e<space>~/.todo<CR>
 
 " navigate through the completion menu
