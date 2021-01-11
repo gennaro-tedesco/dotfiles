@@ -28,7 +28,6 @@ Plug 'antoinemadec/coc-fzf'
 " vim decorations and looks
 Plug 'frazrepo/vim-rainbow'
 Plug 'mhinz/vim-startify'
-Plug 'tpope/vim-sensible'
 Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-solarized8'
 
