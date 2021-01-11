@@ -26,7 +26,6 @@ augroup FORMAT
 augroup END
 
 set noswapfile
-set nocompatible
 set hidden
 set mouse=a
 set updatetime=100

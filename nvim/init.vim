@@ -36,7 +36,6 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'junegunn/vim-peekaboo'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'ervandew/supertab'
-Plug 'wincent/terminus'
 Plug 'haya14busa/is.vim'
 Plug 'yuttie/comfortable-motion.vim'
 

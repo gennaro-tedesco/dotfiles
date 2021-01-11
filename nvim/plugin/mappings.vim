@@ -3,6 +3,7 @@
 "" ---------------------------------------
 " prevent record functionality
 nnoremap q <nop>
+nnoremap qq q
 
 " remap leader key
 let mapleader = "\<Space>"
@@ -110,7 +111,6 @@ if &diff
 	nnoremap <expr> <Left> '<C-W>h'
 	nnoremap <expr> <Down> ']c'
 	nnoremap <expr> <Up> '[c'
-	nnoremap qq :qa<CR>
 endif
 
 
