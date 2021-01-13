@@ -10,6 +10,8 @@ set background=dark
 colorscheme solarized8
 
 " cursorline and windows frame
+set showbreak=↪\
+set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set number relativenumber
 set textwidth=78
 set wrap
@@ -26,7 +28,6 @@ augroup FORMAT
 augroup END
 
 set noswapfile
-set nocompatible
 set hidden
 set mouse=a
 set updatetime=100
@@ -36,6 +37,8 @@ set clipboard+=unnamed
 set autoindent noexpandtab tabstop=4 shiftwidth=4
 
 " search options
+set ignorecase
+set smartcase
 set hlsearch
 set showmatch
 

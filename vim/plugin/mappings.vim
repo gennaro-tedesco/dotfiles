@@ -1,6 +1,10 @@
 "" ---------------------------------------
 "" --- remapping and keys combinations ---
 "" ---------------------------------------
+" prevent record functionality
+nnoremap q <nop>
+nnoremap qq q
+
 " remap leader key
 let mapleader = "\<Space>"
 let maplocalleader =  "\<Space>"
@@ -50,11 +54,8 @@ nnoremap Y ^yg_
 " copy text with line numbers and file name on top
 vnoremap <leader>y :call functions#CompleteYank()<CR>
 
-" paste into terminal mode 
-tnoremap <leader>p <C-W>"+
-
 " replace all occurrences of words under cursor
-nnoremap S :%s///gc<Left><Left><Left>
+nnoremap S :%s/<c-r><c-w>//gc<Left><Left><Left>
 
 " activate global substitute command
 nnoremap gs :%s/
@@ -107,7 +108,6 @@ if &diff
 	nnoremap <expr> <Left> '<C-W>h'
 	nnoremap <expr> <Down> ']c'
 	nnoremap <expr> <Up> '[c'
-	nnoremap q :qa<CR>
 endif
 
 

@@ -54,11 +54,8 @@ nnoremap Y ^yg_
 " copy text with line numbers and file name on top
 vnoremap <leader>y :call functions#CompleteYank()<CR>
 
-" paste into terminal mode 
-tnoremap <leader>p <C-W>"+
-
 " replace all occurrences of words under cursor
-nnoremap S :%s///gc<Left><Left><Left>
+nnoremap S :%s/<c-r><c-w>//gc<Left><Left><Left>
 
 " activate global substitute command
 nnoremap gs :%s/

@@ -37,6 +37,8 @@ set clipboard+=unnamed
 set autoindent noexpandtab tabstop=4 shiftwidth=4
 
 " search options
+set ignorecase
+set smartcase
 set hlsearch
 set showmatch
 
