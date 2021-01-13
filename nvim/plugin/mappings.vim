@@ -102,15 +102,6 @@ cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 " clean up search results
 nnoremap <silent> <CR> :let @/=""<CR>
 
-" navigation controls when in diff mode
-if &diff
-	nnoremap <expr> <Right> '<C-W>l'
-	nnoremap <expr> <Left> '<C-W>h'
-	nnoremap <expr> <Down> ']c'
-	nnoremap <expr> <Up> '[c'
-endif
-
-
 "" ----------------------------------
 "" --- definition of new commands ---
 "" ----------------------------------
