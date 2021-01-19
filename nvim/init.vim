@@ -32,7 +32,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-solarized8'
 
 " settings that make vim easier to use
-Plug 'junegunn/vim-peekaboo'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'ervandew/supertab'
 Plug 'haya14busa/is.vim'

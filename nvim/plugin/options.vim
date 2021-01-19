@@ -164,10 +164,6 @@ call wilder#set_option('renderer', wilder#wildmenu_renderer({
 
 let g:comfortable_motion_no_default_key_mappings = 1
 
-lua lua_functions = require('functions')
-let g:peekaboo_window=":lua lua_functions.FloatingWindow()"
-let g:peekaboo_prefix="\""
-
 let g:UltiSnipsExpandTrigger = '<nop>'
 
 let g:python3_host_prog = '/usr/local/bin/python3' 
