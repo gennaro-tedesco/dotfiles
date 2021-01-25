@@ -13,8 +13,6 @@ colorscheme solarized8
 set showbreak=↪\
 set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set number relativenumber
-set textwidth=78
-set wrap
 set ruler
 set cursorline
 set laststatus=2
