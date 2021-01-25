@@ -48,9 +48,8 @@ nnoremap <S-TAB> :bprevious<CR>
 " replace a word with yanked text
 nnoremap rw viwpyiw
 
-" capitalise words and viceversa
-nnoremap w+ gUiw
-nnoremap w- guiw
+" toggle capitalisation
+nnoremap <leader>w g~iw
 
 " copy entire line without newline character
 nnoremap Y ^yg_
