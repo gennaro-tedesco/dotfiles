@@ -15,7 +15,7 @@
 
 # pager and default editor
 [core]
-	editor = nvim
+	editor = $EDITOR
 	pager = delta
 
 [delta]
