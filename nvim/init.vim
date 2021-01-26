@@ -10,6 +10,7 @@ Plug 'dense-analysis/ale'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
@@ -66,15 +67,9 @@ augroup END
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
 	highlight = {enable = true},
-	indent = {enable = true},
-	incremental_selection = {enable = true,
-      keymaps = {
-        init_selection = "gnn",
-        node_incremental = "grn",
-        scope_incremental = "grc",
-        node_decremental = "grm",
-      },
-    }
+	refactor = {
+    	highlight_definitions = { enable = true },
+  	},
 }
 EOF
 
