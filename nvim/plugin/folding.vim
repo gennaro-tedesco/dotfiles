@@ -1,6 +1,7 @@
 let s:small_l='ℓ'
 
-set foldmethod=indent
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable
 set fml=0
 
