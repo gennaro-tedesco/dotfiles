@@ -40,10 +40,16 @@ nnoremap <PageUp> {
 nnoremap <PageDown> }
 vnoremap <PageUp> {j
 vnoremap <PageDown> }k
+nnoremap <S-Up> 5k
+nnoremap <S-Down> 5j
+
 
 " tabs scroll between buffers
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprevious<CR>
+
+" copy in terminal mode (must be in normal mode in terminal)
+tnoremap <leader>p <C-w>"+pa
 
 " replace a word with yanked text
 nnoremap rw viwpyiw
@@ -67,12 +73,14 @@ xnoremap gs :s/
 " count all occurrences of word under cursor
 nnoremap C :%s/<c-r>=expand("<cword>")<cr>//ng<CR>
 
-" code navigation (with Coc)
+" code navigation (with Coc) and linting
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> rn <Plug>(coc-rename)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> gm :<C-u>CocFzfList outline<CR>
+nnoremap <leader>f :ALEFix<CR>
+nnoremap <leader>l :ALEToggle<CR>
 
 " buffers and files browsing
 nnoremap <C-n> :FloatermNew vifm<CR>
@@ -83,7 +91,6 @@ nnoremap <silent> <C-q> :bd<CR>
 nnoremap q/ :call fzf#vim#search_history({'right': '40'})<CR>
 nnoremap q: :call fzf#vim#command_history({'right': '40'})<CR>
 nnoremap qh :call fzf#vim#helptags({'down': '15'})<CR>
-nnoremap <silent> <BS> g;
 
 " git remappings
 nnoremap <leader>gs :Gstatus<CR>
@@ -114,8 +121,6 @@ command! TS silent! call functions#T2S()
 command! ST silent! call functions#S2T()
 command! Inst silent! call functions#Install()
 command! Rf silent! call functions#ReplaceFile()
-command! Fix :ALEFix
-command! Lint :ALEToggle
 
 " CoC show documentation
 function! s:show_documentation()
