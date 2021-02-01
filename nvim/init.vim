@@ -36,6 +36,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'ervandew/supertab'
 Plug 'haya14busa/is.vim'
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'gennaro-tedesco/nvim-commaround'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -68,4 +69,3 @@ require'nvim-treesitter.configs'.setup {
 	highlight = {enable = true},
 }
 EOF
-
