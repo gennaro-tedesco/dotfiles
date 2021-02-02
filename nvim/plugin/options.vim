@@ -177,7 +177,7 @@ command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-hea
 command! -bang BCommits call fzf#vim#buffer_commits({'options': '--no-preview'}, <bang>0)
 command! -bang Commits call fzf#vim#commits({'options': '--no-preview'}, <bang>0)
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(s:find_git_root(), fzf#vim#with_preview('right:50%'), <bang>0)
-command! -bang -nargs=? -complete=dir Buffers call fzf#vim#buffers({'right': '40'})
+command! -bang -nargs=? -complete=dir Buffers call fzf#vim#buffers(fzf#vim#with_preview('right:50%'))
 
 function! s:find_git_root()
 	return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
