@@ -34,8 +34,6 @@ nnoremap H ^
 onoremap H ^
 nnoremap L $
 onoremap L $
-nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
-nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
 nnoremap <PageUp> {
 nnoremap <PageDown> }
 vnoremap <PageUp> {j
