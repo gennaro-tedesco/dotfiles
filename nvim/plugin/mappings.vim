@@ -54,6 +54,7 @@ nnoremap rw viwpyiw
 
 " toggle capitalisation
 nnoremap <leader>w g~iw
+vnoremap <leader>w ~
 
 " copy entire line without newline character
 nnoremap Y ^yg_
