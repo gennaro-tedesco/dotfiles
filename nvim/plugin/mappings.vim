@@ -1,13 +1,13 @@
 "" ---------------------------------------
 "" --- remapping and keys combinations ---
 "" ---------------------------------------
-" prevent record functionality
-nnoremap q <nop>
-nnoremap qq q
-
 " remap leader key
 let mapleader = "\<Space>"
 let maplocalleader =  "\<Space>"
+
+" prevent record functionality
+nnoremap q <nop>
+nnoremap qq q
 
 " remove all trailing spaces
 nnoremap <F5> :call functions#TrimWhitespace()<CR>
@@ -50,6 +50,9 @@ nnoremap <leader>q <C-w>o
 
 " copy in terminal mode (must be in normal mode in terminal)
 tnoremap <leader>p <C-w>"+pa
+
+" interact with registers 
+nnoremap "" :reg <bar> exec 'normal! "'.input('> "').'p'<CR>
 
 " replace a word with yanked text
 nnoremap rw viwpyiw
