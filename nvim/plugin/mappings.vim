@@ -51,9 +51,6 @@ nnoremap <leader>q <C-w>o
 " copy in terminal mode (must be in normal mode in terminal)
 tnoremap <leader>p <C-w>"+pa
 
-" interact with registers 
-nnoremap "" :reg <bar> exec 'normal! "'.input('> "').'p'<CR>
-
 " replace a word with yanked text
 nnoremap rw viwpyiw
 
