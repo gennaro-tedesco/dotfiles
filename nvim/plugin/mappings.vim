@@ -71,6 +71,10 @@ nnoremap S :%s/<c-r><c-w>//gc<Left><Left><Left>
 nnoremap gs :%s/
 xnoremap gs :s/
 
+" blink word under cursor in search mode
+nnoremap n n:call functions#BlinkWord(1)<CR>
+nnoremap N N:call functions#BlinkWord(1)<CR>
+
 " count all occurrences of word under cursor
 nnoremap C :%s/<c-r>=expand("<cword>")<cr>//ng<CR>
 

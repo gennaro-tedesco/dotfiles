@@ -67,3 +67,14 @@ function! functions#ReplaceFile()
 	silent execute 'norm gg"_dGP'
 endfunction
 
+
+" blink word under cursor
+function! functions#BlinkWord(blinktime)
+	let target_pat = '\c\%#'.@/
+	let ring = matchadd('IncSearch', target_pat)
+	redraw
+	exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+	call matchdelete(ring)
+	redraw
+endfunction
+
