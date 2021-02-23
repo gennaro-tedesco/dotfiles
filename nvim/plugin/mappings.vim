@@ -96,7 +96,7 @@ nnoremap qh :call fzf#vim#helptags({'down': '15'})<CR>
 " git remappings
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :GBranches<CR>
-nnoremap <leader>gp :Gpush <Bar> copen<CR>
+nnoremap <leader>gp :Git push <Bar> copen<CR>
 nnoremap <leader>gl :BCommit<CR>
 
 " open todo file in one go
