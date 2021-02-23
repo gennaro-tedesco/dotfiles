@@ -100,7 +100,7 @@ nnoremap <leader>gp :Gpush <Bar> copen<CR>
 nnoremap <leader>gl :BCommit<CR>
 
 " open todo file in one go
-map <leader>t :e<space>~/.todo<CR>
+nnoremap <leader>t :e<space>~/.todo<CR>
 
 " navigate through the completion menu
 inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
