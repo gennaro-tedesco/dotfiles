@@ -67,13 +67,9 @@ vnoremap <leader>y :call functions#CompleteYank()<CR>
 " replace all occurrences of words under cursor
 nnoremap S :%s/<c-r><c-w>//gc<Left><Left><Left>
 
-" activate global substitute command
-nnoremap gs :%s/
-xnoremap gs :s/
-
 " blink word under cursor in search mode
-nnoremap n n:call functions#BlinkWord(1)<CR>
-nnoremap N N:call functions#BlinkWord(1)<CR>
+nnoremap n n:call functions#BlinkWord(0.3)<CR>
+nnoremap N N:call functions#BlinkWord(0.3)<CR>
 
 " count all occurrences of word under cursor
 nnoremap C :%s/<c-r>=expand("<cword>")<cr>//ng<CR>
@@ -83,7 +79,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> rn <Plug>(coc-rename)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-nnoremap <silent> gm :<C-u>CocFzfList outline<CR>
+nnoremap <silent> gm :<C-u>CocList outline<CR>
 nnoremap <leader>f :ALEFix<CR>
 nnoremap <leader>l :ALEToggle<CR>
 
@@ -91,7 +87,7 @@ nnoremap <leader>l :ALEToggle<CR>
 nnoremap <C-n> :FloatermNew vifm<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR>
-nnoremap <C-h> :Rg<CR>
+nnoremap <C-h> :Grepper<CR>
 nnoremap <silent> <C-q> :w <Bar> bd<CR>
 nnoremap q/ :call fzf#vim#search_history({'right': '40'})<CR>
 nnoremap q: :call fzf#vim#command_history({'right': '40'})<CR>

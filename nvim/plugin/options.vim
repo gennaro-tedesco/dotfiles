@@ -167,6 +167,11 @@ let g:UltiSnipsExpandTrigger = '<nop>'
 
 let g:python3_host_prog = '/usr/local/bin/python3' 
 
+let g:grepper = {}
+let g:grepper = {
+    \ 'tools': ['rg', 'git'],
+    \ 'dir': 'repo',
+	\ }
 
 "" --------------------------------------------------
 "" ---- customisation of default plugin commands ----
