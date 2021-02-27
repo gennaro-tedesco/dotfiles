@@ -82,7 +82,7 @@ nnoremap <leader>l :ALEToggle<CR>
 " buffers and files browsing
 nnoremap <C-n> :FloatermNew vifm<CR>
 nnoremap <C-p> :Files<CR>
-nnoremap <Tab> :Buffers<CR>
+nnoremap <C-b> :Buffers<CR>
 nnoremap <C-h> :Grepper<CR>
 nnoremap <silent> <C-q> :w <Bar> bd<CR>
 nnoremap q/ :call fzf#vim#search_history({'right': '40'})<CR>

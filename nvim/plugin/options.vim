@@ -15,7 +15,7 @@ let g:signify_sign_delete = '-'
 let g:signify_sign_change = '~'
 let g:signify_sign_show_count = 0
 
-let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.8 } }
+let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.5 } }
 let g:fzf_buffers_jump = 1
 
 let g:lightline = {
@@ -67,13 +67,6 @@ let g:ale_echo_msg_format = '[%linter%]: %s'
 let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
 let g:startify_files_number = 15
 let g:startify_use_env = 1
-let g:startify_commands = [
-			\ {'gc': ['git checkout branch', ':GBranches']},
-			\ {'gs': ['git status', ':Gstatus']},
-			\ {'gl': ['git logs', ':Commits']},
-			\ {'n': ['browse directory', ':FloatermNew vifm']},
-			\ {'p': ['find files', ':Files']},
-			\ ]
 let g:startify_lists = [
 			\ { 'type': 'dir',      'header': ['  Current Directory '. getcwd()] },
 			\ { 'type': 'commands', 'header': ['  Quick commands']       },
@@ -178,10 +171,10 @@ let g:grepper = {
 "" --------------------------------------------------
 
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --hidden -g '!.git/' --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': s:find_git_root()}, 'down:70%'), <bang>0)
-command! -bang BCommits call fzf#vim#buffer_commits({'options': '--no-preview'}, <bang>0)
-command! -bang Commits call fzf#vim#commits({'options': '--no-preview'}, <bang>0)
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(s:find_git_root(), fzf#vim#with_preview('right:50%'), <bang>0)
-command! -bang -nargs=? -complete=dir Buffers call fzf#vim#buffers(fzf#vim#with_preview('right:50%'))
+command! -bang BCommits call fzf#vim#buffer_commits({'options': '--no-preview', 'down':'15'}, <bang>0)
+command! -bang Commits call fzf#vim#commits({'options': '--no-preview', 'down':'15'}, <bang>0)
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(s:find_git_root(), <bang>0)
+command! -bang -nargs=? -complete=dir Buffers call fzf#vim#buffers()
 
 function! s:find_git_root()
 	return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
