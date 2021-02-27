@@ -41,10 +41,6 @@ vnoremap <PageDown> }k
 nnoremap <S-Up> 5k
 nnoremap <S-Down> 5j
 
-" tabs scroll between buffers
-nnoremap <TAB> :bnext<CR>
-nnoremap <S-TAB> :bprevious<CR>
-
 " close all splits/windows except the one in focus
 nnoremap <leader>q <C-w>o
 
@@ -86,7 +82,7 @@ nnoremap <leader>l :ALEToggle<CR>
 " buffers and files browsing
 nnoremap <C-n> :FloatermNew vifm<CR>
 nnoremap <C-p> :Files<CR>
-nnoremap <C-b> :Buffers<CR>
+nnoremap <Tab> :Buffers<CR>
 nnoremap <C-h> :Grepper<CR>
 nnoremap <silent> <C-q> :w <Bar> bd<CR>
 nnoremap q/ :call fzf#vim#search_history({'right': '40'})<CR>
