@@ -166,16 +166,3 @@ let g:grepper = {
     \ 'dir': 'repo',
 	\ }
 
-"" --------------------------------------------------
-"" ---- customisation of default plugin commands ----
-"" --------------------------------------------------
-
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --hidden -g '!.git/' --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'dir': s:find_git_root()}, 'down:70%'), <bang>0)
-command! -bang BCommits call fzf#vim#buffer_commits({'options': '--no-preview', 'down':'15'}, <bang>0)
-command! -bang Commits call fzf#vim#commits({'options': '--no-preview', 'down':'15'}, <bang>0)
-command! -bang -nargs=? -complete=dir Files call fzf#vim#files(s:find_git_root(), <bang>0)
-command! -bang -nargs=? -complete=dir Buffers call fzf#vim#buffers()
-
-function! s:find_git_root()
-	return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
