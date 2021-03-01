@@ -81,19 +81,19 @@ nnoremap <leader>l :ALEToggle<CR>
 
 " buffers and files browsing
 nnoremap <C-n> :FloatermNew vifm<CR>
-nnoremap <C-p> :call fzf#vim#files(system('git rev-parse --show-toplevel 2> /dev/null')[:-2])<CR>
-nnoremap <C-b> :call fzf#vim#buffers()<CR>
+nnoremap <C-p> :call fzf#vim#files(system('git rev-parse --show-toplevel 2> /dev/null')[:-2], {'options': '--prompt "> "'})<CR>
+nnoremap <C-b> :call fzf#vim#buffers({'options': '--prompt "buffers:"'})<CR>
 nnoremap <C-h> :Grepper<CR>
 nnoremap <silent> <C-q> :w <Bar> bd<CR>
-nnoremap q/ :call fzf#vim#search_history({'right': '40'})<CR>
-nnoremap q: :call fzf#vim#command_history({'right': '40'})<CR>
-nnoremap qh :call fzf#vim#helptags({'down': '15'})<CR>
+nnoremap q/ :call fzf#vim#search_history({'options': '--prompt "search:"', 'right': '40'})<CR>
+nnoremap q: :call fzf#vim#command_history({'options': '--prompt "cmd:"', 'right': '40'})<CR>
+nnoremap qh :call fzf#vim#helptags({'options': '--prompt "help:"','down': '15'})<CR>
 
 " git remappings
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>gp :Git push <Bar> copen<CR>
-nnoremap <leader>gl :call fzf#vim#buffer_commits({'options': '--no-preview', 'down':'15'})<CR>
+nnoremap <leader>gl :call fzf#vim#buffer_commits({'options': '--no-preview --prompt "logs:"  --no-inline-info', 'down':'15'})<CR>
 
 " open todo file in one go
 nnoremap <leader>t :e<space>~/.todo<CR>
