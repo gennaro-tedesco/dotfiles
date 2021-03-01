@@ -15,7 +15,7 @@ let g:signify_sign_delete = '-'
 let g:signify_sign_change = '~'
 let g:signify_sign_show_count = 0
 
-let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.5 } }
+let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.3 } }
 let g:fzf_buffers_jump = 1
 
 let g:lightline = {
@@ -69,7 +69,7 @@ let g:startify_files_number = 15
 let g:startify_use_env = 1
 let g:startify_lists = [
 			\ { 'type': 'dir',      'header': ['  Current Directory '. getcwd()] },
-			\ { 'type': 'commands', 'header': ['  Quick commands']       },
+			\ { 'type': 'sessions',  'header': ['   Sessions']       },
 			\ ]
 
 let g:fzf_checkout_merge_settings = v:false
