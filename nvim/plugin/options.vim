@@ -164,5 +164,6 @@ let g:grepper = {}
 let g:grepper = {
     \ 'tools': ['rg', 'git'],
     \ 'dir': 'repo',
+	\ 'searchreg': 1,
 	\ }
 
