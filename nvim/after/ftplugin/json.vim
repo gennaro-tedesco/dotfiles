@@ -1,1 +1,4 @@
-silent! :call functions#Jq()
+augroup JQIX
+	autocmd! * <buffer>
+	autocmd BufEnter <buffer> nested :Jqix
+augroup END

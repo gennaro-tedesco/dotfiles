@@ -35,8 +35,11 @@ Plug 'lifepillar/vim-solarized8'
 " settings that make vim easier to use
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'ervandew/supertab'
+
+" my personal plugins: they are awesome
 Plug 'gennaro-tedesco/nvim-commaround'
 Plug 'gennaro-tedesco/nvim-peekup'
+Plug 'gennaro-tedesco/nvim-jqix'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
