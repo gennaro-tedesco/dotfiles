@@ -39,7 +39,7 @@ Plug 'ervandew/supertab'
 " my personal plugins: they are awesome
 Plug 'gennaro-tedesco/nvim-commaround'
 Plug 'gennaro-tedesco/nvim-peekup'
-Plug 'gennaro-tedesco/nvim-jqix'
+Plug 'gennaro-tedesco/nvim-jqx'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
