@@ -3,6 +3,11 @@ NEOVIMCONFIG_DIR=${HOME}/.config/nvim
 VIFILEMANAGERCONFIG_DIR=${HOME}/.config/vifm
 GLOWCONFIG_DIR=${HOME}/.config/glowconfig
 
+.PHONY: help
+help:
+	@printf "%s\n" "Targets:"
+	@grep -E '^[a-zA-Z0-9_-]+:.*' $(MAKEFILE_LIST) | grep -v 'help:' | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m  make %-15s\033[0m %s\n", $$1, $$2}'
+
 .PHONY: install-vim
 install-vim:
 	mkdir -p ${VIMCONFIG_DIR}
@@ -18,7 +23,7 @@ install-nvim:
 ifdef plug
 	nvim -cPlugClean -cPlugInstall -cPlugUpdate -cUpdateRemotePlugins -cqa
 endif
-	
+
 .PHONY: install-zsh
 install-zsh:
 	cp -f zsh/zshrc ${HOME}/.zshrc
