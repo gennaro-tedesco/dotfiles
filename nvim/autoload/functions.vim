@@ -35,16 +35,6 @@ function! functions#ToTupleFun() range
 endfunction
 
 
-" prettify json
-function! functions#Jq ()
-	if (&filetype==?'json' || &filetype==?'')
-		silent execute '%! jq .'
-	else
-		echo 'not a json filetype'
-	endif
-endfunction
-
-
 " T2S and S2T
 function! functions#T2S ()
 	set expandtab | %retab! | w
@@ -58,7 +48,7 @@ endfunction
 
 " installation of plugins
 function! functions#Install()
-	silent execute 'w | so % | PlugInstall | PlugUpdate | UpdateRemotePlugins'
+	silent execute 'w | so % | PlugClean | PlugInstall | PlugUpdate | UpdateRemotePlugins'
 endfunction
 
 

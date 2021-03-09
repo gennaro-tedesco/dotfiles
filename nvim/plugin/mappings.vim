@@ -19,10 +19,6 @@ nnoremap > >>
 nnoremap < <<
 nnoremap <leader>= gg=Gg;
 
-" code folding
-nnoremap + zR
-nnoremap - zM
-
 " remapping the escape key
 inoremap jj <ESC>
 inoremap kk <ESC>
@@ -40,6 +36,8 @@ vnoremap <PageUp> {j
 vnoremap <PageDown> }k
 nnoremap <S-Up> 5k
 nnoremap <S-Down> 5j
+nnoremap <Tab> <C-w>w
+nnoremap <S-Tab> <C-w>W
 
 " close all splits/windows except the one in focus
 nnoremap <leader>q <C-w>o
