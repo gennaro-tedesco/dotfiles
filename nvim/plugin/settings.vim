@@ -50,3 +50,10 @@ set wildcharm=<Tab>
 
 " matching pairs
 set matchpairs+=<:>
+
+" special syntax for certain files
+augroup SPECIAL_SYNTAX
+	autocmd!
+	autocmd BufNewFile,BufRead requirements*.txt set syntax=config
+	autocmd BufNewFile,BufRead *.env set syntax=config
+augroup END
