@@ -1,0 +1,33 @@
+{
+	"diagnostic.displayByAle": true,
+	"jedi.startupMessage": false,
+	"suggest.enablePreview": true,
+	"suggest.minTriggerInputLength": 3,
+	"suggest.snippetIndicator": "[+] ",
+	"coc.preferences.useQuickfixForLocations": true,
+	"suggest.completionItemKindLabels": {
+		"method": " ƒ ",
+		"function": " ƒ ",
+		"variable": "  ",
+		"constant": "  ",
+		"class": "  ",
+		"interface": " ﰮ ",
+		"struct": "  ",
+		"event": "  ",
+		"operator": " ⨂ ",
+		"module": "  ",
+		"property": "  ",
+		"enum": "  ",
+		"reference": "  ",
+		"keyword": "  ",
+		"file": "  ",
+		"folder": "  ",
+		"color": "  ",
+		"unit": "  ",
+		"snippet": " ﬌ ",
+		"text": "  ",
+		"constructor": "  ",
+		"value": "  ",
+		"enumMember": "  "
+	}
+}
