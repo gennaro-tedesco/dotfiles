@@ -111,7 +111,6 @@ nnoremap <silent> <CR> :let @/=""<CR>
 "" --- definition of new commands ---
 "" ----------------------------------
 command! -range ToTuple <line1>,<line2> call functions#ToTupleFun()
-command! Jq silent! call functions#Jq()
 command! TS silent! call functions#T2S()
 command! ST silent! call functions#S2T()
 command! Inst silent! call functions#Install()
