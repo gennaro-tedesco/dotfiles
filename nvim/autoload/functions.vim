@@ -68,3 +68,13 @@ function! functions#BlinkWord(blinktime)
 	redraw
 endfunction
 
+function! functions#ToggleQF() abort
+	for i in range(1, winnr('$'))
+        if getbufvar(winbufnr(i), '&buftype') == 'quickfix'
+            cclose
+            return
+        endif
+    endfor
+
+	copen
+endfunction

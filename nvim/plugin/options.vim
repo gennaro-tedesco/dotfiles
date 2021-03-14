@@ -47,6 +47,7 @@ let g:ale_linters = {
 			\ 'sh': ['shellcheck'],
 			\ 'latex': ['lacheck'],
 			\ 'vim': ['vint'],
+			\ 'go': ['golint'],
 			\}
 let g:ale_fixers = {
 			\ 'python': ['yapf'],
