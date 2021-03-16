@@ -90,7 +90,7 @@ nnoremap <silent> <C-q> :call functions#ToggleQF()<CR>
 " git remappings
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :GBranches<CR>
-nnoremap <leader>gp :Git push <Bar> copen<CR>
+nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :call fzf#vim#buffer_commits({'options': '--no-preview --prompt "logs:"  --no-inline-info', 'down':'15'})<CR>
 
 " open todo file in one go
