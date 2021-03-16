@@ -55,6 +55,7 @@ let g:ale_fixers = {
 			\ 'sh': ['trim_whitespace'],
 			\ 'dockerfile': ['trim_whitespace'],
 			\ 'yaml': ['prettier', 'trim_whitespace'],
+			\ 'go': ['gofmt'],
 			\}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0

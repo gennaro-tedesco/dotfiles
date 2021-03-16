@@ -30,6 +30,11 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export FZF_DEFAULT_OPTS='--reverse --border -e'
 export FZF_DEFAULT_COMMAND="rg --files --hidden -g !.git/"
 
+# exporting go paths
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=${PATH}:$GOBIN
+
 # aliases
 alias ls="exa --long --header --git --sort=extension"
 alias tree="exa --tree --level=2"
