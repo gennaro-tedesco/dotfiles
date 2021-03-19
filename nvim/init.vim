@@ -27,7 +27,6 @@ Plug 'kevinhwang91/nvim-bqf'
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 
 " vim decorations and looks
-Plug 'frazrepo/vim-rainbow'
 Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-solarized8'
@@ -70,5 +69,6 @@ augroup END
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
 	highlight = {enable = true},
+	ensure_installed = {"go", "python", "json", "lua", "bash", "yaml"}
 }
 EOF
