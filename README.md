@@ -1,7 +1,17 @@
-<img src="logo.png" width="400">
+<h1 align="center">
+  <br>
+  <img src="logo.png" width="400">
+  <br>
+  dotfiles
+  <br>
+</h1>
 
-# dotfiles
-My personal dotfiles: no more, no less
+<h4 align="center">My personal dotfiles: no more, no less</h4>
+<h3 align="center">
+  <a href="#Requirements">Requirements</a> •
+  <a href="#Installation">Installation</a>
+</h3>
+
 
 # Requirements
 I am making use of the following system programs:
