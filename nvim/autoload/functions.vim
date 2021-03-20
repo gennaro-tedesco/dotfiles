@@ -46,12 +46,6 @@ function! functions#S2T ()
 endfunction
 
 
-" installation of plugins
-function! functions#Install()
-	silent execute 'w | so % | PlugClean | PlugInstall | PlugUpdate | UpdateRemotePlugins'
-endfunction
-
-
 " replace entire content of file
 function! functions#ReplaceFile()
 	silent execute 'norm gg"_dGP'

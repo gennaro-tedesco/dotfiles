@@ -113,7 +113,6 @@ nnoremap <silent> <CR> :let @/=""<CR>
 command! -range ToTuple <line1>,<line2> call functions#ToTupleFun()
 command! TS silent! call functions#T2S()
 command! ST silent! call functions#S2T()
-command! Inst silent! call functions#Install()
 command! Rf silent! call functions#ReplaceFile()
 
 " CoC show documentation
