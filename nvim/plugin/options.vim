@@ -51,11 +51,11 @@ let g:ale_linters = {
 			\}
 let g:ale_fixers = {
 			\ 'python': ['yapf'],
-			\ 'lua': ['luafmt'],
+			\ 'lua': ['luafmt', 'trim_whitespace'],
 			\ 'sh': ['trim_whitespace'],
 			\ 'dockerfile': ['trim_whitespace'],
 			\ 'yaml': ['prettier', 'trim_whitespace'],
-			\ 'go': ['gofmt'],
+			\ 'go': ['gofmt', 'goimports', 'trim_whitespace'],
 			\}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
