@@ -135,28 +135,18 @@ call wilder#set_option('pipeline', [
 			\   ),
 			\ ])
 
-call wilder#set_option('renderer', wilder#wildmenu_renderer({
-			\ 'highlights': {
-			\   'default': s:hl,
-			\   'selected': s:index_hl,
-			\ },
-			\ 'apply_highlights': wilder#query_common_subsequence_spans(),
-			\ 'separator': ' · ',
-			\ 'ellipsis': '...',
-			\ 'left': [{'value': [
-			\    wilder#condition(
-			\      {-> getcmdtype() ==# ':'},
-			\      ' COMMAND ',
-			\      ' SEARCH ',
-			\    ),
-			\ ], 'hl': s:mode_hl,},
-			\ wilder#separator('', s:mode_hl, s:hl, 'left'), ' ',
-			\ ],
-			\ 'right': [
-			\    ' ', wilder#separator('', s:index_hl, s:hl, 'right'),
-			\    wilder#index({'hl': s:index_hl}),
-			\ ],
-			\ }))
+call wilder#set_option('renderer', wilder#renderer_mux({
+      \ ':': wilder#popupmenu_renderer({
+		\ 'highlighter': wilder#basic_highlighter(),
+      \ }),
+      \ '/': wilder#wildmenu_renderer(
+      \ wilder#lightline_theme({
+      \   'highlights': {},
+      \   'highlighter': wilder#basic_highlighter(),
+      \   'separator': ' · ',
+      \ })
+      \ ),
+      \ }))
 
 let g:UltiSnipsExpandTrigger = '<nop>'
 
