@@ -119,9 +119,6 @@ let g:bookmark_show_warning = 0
 
 call wilder#enable_cmdline_enter()
 call wilder#set_option('modes', ['/', '?', ':'])
-let s:hl = 'LightlineMiddle_active'
-let s:mode_hl = 'LightlineLeft_active_0'
-let s:index_hl = 'LightlineRight_active_0'
 
 call wilder#set_option('pipeline', [
 			\   wilder#branch( 
@@ -138,6 +135,8 @@ call wilder#set_option('pipeline', [
 call wilder#set_option('renderer', wilder#renderer_mux({
       \ ':': wilder#popupmenu_renderer({
 		\ 'highlighter': wilder#basic_highlighter(),
+		\ 'max_height': '20%',
+		\ 'max_width': '20%',
       \ }),
       \ '/': wilder#wildmenu_renderer(
       \ wilder#lightline_theme({
