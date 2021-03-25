@@ -38,6 +38,7 @@ nnoremap <S-Up> 5k
 nnoremap <S-Down> 5j
 nnoremap <Tab> <C-w>w
 nnoremap <S-Tab> <C-w>W
+nnoremap <BS> <C-o>
 
 " close all splits/windows except the one in focus
 nnoremap <leader>q <C-w>o
