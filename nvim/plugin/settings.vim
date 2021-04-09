@@ -26,6 +26,7 @@ augroup FORMAT
 	autocmd FileType * set formatoptions-=cro
 augroup END
 
+set pastetoggle=<F3>
 set noswapfile
 set hidden
 set mouse=a
