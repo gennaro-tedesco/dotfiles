@@ -29,7 +29,7 @@ I am making use of the following system programs:
 - ripgrep: https://github.com/BurntSushi/ripgrep
 - delta: https://github.com/dandavison/delta
 
-Most of them are necessary as they are included in `zsh` functions as well as `vim` plugins.
+Most of them are necessary as they are included in `zsh` functions as well as `neovim` plugins.
 
 # Installation
 Clone the repository
