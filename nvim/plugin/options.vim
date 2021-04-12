@@ -40,6 +40,8 @@ let g:tex_flavor = 'latex'
 
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
 let g:ale_linters = {
 			\ 'python': ['flake8'],
 			\ 'lua': ['luacheck'],
