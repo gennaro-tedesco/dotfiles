@@ -15,7 +15,6 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " git integration in vim
 Plug 'tpope/vim-fugitive'
-Plug 'oguzbilgic/vim-gdiff'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'mhinz/vim-signify'
 

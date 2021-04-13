@@ -89,7 +89,7 @@ nnoremap qh :call fzf#vim#helptags({'options': '--prompt "help:"','down': '15'})
 nnoremap <silent> <C-q> :call functions#ToggleQF()<CR>
 
 " git remappings
-nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :call fzf#vim#buffer_commits({'options': '--no-preview --prompt "logs:"  --no-inline-info', 'down':'15'})<CR>
