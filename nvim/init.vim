@@ -29,6 +29,7 @@ Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-solarized8'
+Plug 'karb94/neoscroll.nvim'
 
 " settings that make vim easier to use
 Plug 'MattesGroeger/vim-bookmarks'
@@ -70,4 +71,7 @@ require'nvim-treesitter.configs'.setup {
 	highlight = {enable = true},
 	ensure_installed = {"go", "python", "json", "lua", "bash", "yaml"}
 }
+
+require('neoscroll').setup()
 EOF
+
