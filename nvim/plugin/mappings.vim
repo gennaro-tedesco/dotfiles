@@ -24,7 +24,7 @@ inoremap jj <ESC>
 inoremap kk <ESC>
 
 " easier navigation
-nnoremap W 5w
+nnoremap E 5e
 nnoremap B 5b
 nnoremap H ^
 onoremap H ^
