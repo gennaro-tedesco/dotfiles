@@ -39,6 +39,7 @@ export PATH=${PATH}:$GOBIN
 alias ls="exa --long --header --git --sort=extension"
 alias tree="exa --tree --level=2"
 alias cat="preview_files"
+alias help="preview_man"
 alias todo="${EDITOR} ~/.todo"
 alias zenith="zenith -d 0 -n 0"
 alias du="dust"
@@ -69,6 +70,13 @@ fb() {
   branch=$(echo "$branches" |
 		   fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+
+# list man pages
+preview_man() {
+  local manpage
+  manpage=$(man -k . 2> /dev/null | grep -F '(1)' | sed 's/(.*//' | fzf) && man "$manpage"
 }
 
 
@@ -111,4 +119,5 @@ eval "$(navi widget zsh)"
 ## --------
 bindkey -s '^p' 'ff\n'
 bindkey -s '^n' 'vifm\n'
+bindkey -s '^[OP' 'preview_man\n'
 
