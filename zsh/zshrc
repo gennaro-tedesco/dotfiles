@@ -43,6 +43,7 @@ alias todo="${EDITOR} ~/.todo"
 alias zenith="zenith -d 0 -n 0"
 alias du="dust"
 alias grep="rg"
+alias jd="json_diff"
 
 ## ----------------
 ## custom functions
@@ -92,6 +93,15 @@ preview_files () {
 	fi
 }
 
+# json_diff
+json_diff(){
+	[[ $# != 2 ]] && { echo "expected two arguments"; return}
+	[[ ( $1 != *.json ) || ( $2 != *.json ) ]] && { echo "arguments must be both json files"; return}
+	[[ ! -f $1 ]] && { echo "cannot find $1"; return}
+	[[ ! -f $2 ]] && { echo "cannot find $2"; return}
+
+	delta <(jq -S . $1) <(jq -S . $2)
+}
 
 unalias z 2> /dev/null
 z() {
