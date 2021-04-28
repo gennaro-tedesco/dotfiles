@@ -1,9 +1,4 @@
-% Shell Usage
-
-# Run a script as background process
-<process> &
-
-% sed
+% sed replace
 
 # Search and replace within file
 sed -i s/<original-text>/<new-text>/g <filename-txt>
@@ -19,7 +14,7 @@ scp <username-remote>:<file-to-send-path> <path-to-recieve>
 # Copy file from local to server
 scp <file-to-send> <username-remote>:<where-to-put>
 
-% Shell Variables
+% env file
 
 # export .env file
 export $(xargs < .env)

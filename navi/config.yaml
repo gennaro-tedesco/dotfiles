@@ -8,7 +8,7 @@ style:
     width_percentage: 42
     min_width: 45
   snippet:
-    color: white
+    color: dark_cyan
 
 finder:
   command: fzf

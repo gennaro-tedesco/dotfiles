@@ -1,6 +1,7 @@
 NEOVIMCONFIG_DIR=${HOME}/.config/nvim
 VIFILEMANAGERCONFIG_DIR=${HOME}/.config/vifm
 GLOWCONFIG_DIR=${HOME}/.config/glowconfig
+NAVICONFIG_DIR=${HOME}/.config/navi
 
 .PHONY: help
 help:
@@ -38,3 +39,7 @@ install-glow:
 	mkdir -p ${GLOWCONFIG_DIR}
 	cp -f glow/customglow.json ${GLOWCONFIG_DIR}
 
+.PHONY: install-navi
+install-navi:
+	mkdir -p ${NAVICONFIG_DIR}
+	cp -r navi/. ${NAVICONFIG_DIR}
