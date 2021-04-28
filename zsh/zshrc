@@ -76,7 +76,7 @@ fb() {
 # list man pages
 preview_man() {
   local manpage
-  manpage=$(man -k . 2> /dev/null | grep -F '(1)' | sort -u | sed 's/(.*//' | fzf) && man "$manpage"
+  manpage=$(man -k . 2> /dev/null | sed 's/(.*//' | fzf) && man "$manpage"
 }
 
 
