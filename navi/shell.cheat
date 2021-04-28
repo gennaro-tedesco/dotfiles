@@ -1,0 +1,41 @@
+% Shell Usage
+
+# Run a script as background process
+<process> &
+
+% sed
+
+# Search and replace within file
+sed -i s/<original-text>/<new-text>/g <filename-txt>
+
+% ssh
+
+# Access via ssh
+ssh <username-remote>
+
+# Copy file from server to local
+scp <username-remote>:<file-to-send-path> <path-to-recieve>
+
+# Copy file from local to server
+scp <file-to-send> <username-remote>:<where-to-put>
+
+% Shell Variables
+
+# export .env file
+export $(xargs < .env)
+
+% jq
+
+# show all keys and subkeys in json file with jq
+jq -r '[paths | join(".")]' <json-file>
+
+# select keys in a list
+jq 'with_entries(select(.key | in({"key2":1, "key12":1})))' <json-file>
+
+$json-file: ls -A1 | grep .json
+
+% brew
+
+# update out of date packages
+brew upgrade $(brew outdated | fzf)
+

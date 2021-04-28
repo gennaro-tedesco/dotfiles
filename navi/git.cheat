@@ -1,0 +1,25 @@
+% git
+
+# Abort the current conflict resolution process, and try to reconstruct the pre-merge state.
+git merge --abort
+
+# Checkout a branch from a fork
+git checkout -b <forked_branch> && git pull origin pull/<pr_number>/head
+
+# list all branches containing a pattern
+git branch -r | awk -F/ '/\/pattern/{print $2}'
+
+# delete all branches containing a pattern
+git branch -r | awk -F/ '/\/pattern/{print $2}' | xargs -I {} git push origin :{}
+
+# create an annotated tag
+git tag -a tag_name -m "tag description"
+
+# list all local tags
+git tag
+
+# list all remote tags
+git ls-remote --tags
+
+# push tag to remote
+git push --follow-tags

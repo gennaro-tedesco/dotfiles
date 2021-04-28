@@ -11,7 +11,6 @@ Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'lervag/vimtex'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " git integration in vim
 Plug 'tpope/vim-fugitive'

@@ -1,0 +1,23 @@
+style:
+  tag:
+    color: cyan
+    width_percentage: 10
+    min_width: 10
+  comment:
+    color: blue
+    width_percentage: 42
+    min_width: 45
+  snippet:
+    color: white
+
+finder:
+  command: fzf
+
+cheats:
+  path: /Users/gennaro/.config/navi
+
+# search:
+  # tags: git,!checkout # equivalent to the --tag-rules option
+
+shell:
+  command: zsh

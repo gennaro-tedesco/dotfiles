@@ -35,6 +35,8 @@ export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=${PATH}:$GOBIN
 
+export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
+
 # aliases
 alias ls="exa --long --header --git --sort=extension"
 alias tree="exa --tree --level=2"
