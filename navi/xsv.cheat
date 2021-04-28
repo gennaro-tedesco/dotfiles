@@ -25,7 +25,7 @@ less <filename> | xsv select <columns>
 less <filename> | xsv sort -s <columns>
 
 # unique values in a column
-awk -F ',' '{print $<column_number>}' text_file | sort | uniq -c | sort -nr
+awk -F ',' '{print $<column_number>}' <filename> | sort | uniq -c | sort -nr
 
 $ filename: ls -l | grep .csv | awk '{print $NF}' --- --prevent-extra --preview 'bat --style=numbers --color=always {} | head -500' --preview-window up:50% 
 $ columns: head -1 $filename | tr ',' '\n' --- --multi --map "echo $0 | tr  '[:space:]' ',' | sed 's/.$//' "

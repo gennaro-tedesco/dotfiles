@@ -190,6 +190,6 @@ nnoremap <c-u> <c-w>x
 " -----------------
 
 nnoremap gh :cd ~/<cr>
-nnoremap gv :cd ~/.vim<cr>
+nnoremap gd :cd ~/dotfiles<cr>
 nnoremap gc :cd ~/.config<cr>
 
