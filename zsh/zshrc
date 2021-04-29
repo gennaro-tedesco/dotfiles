@@ -29,13 +29,13 @@ export LC_CTYPE="en_US.UTF-8"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export FZF_DEFAULT_OPTS='--reverse --border -e --height=50% --padding=1'
 export FZF_DEFAULT_COMMAND="rg --files --hidden -g !.git/"
+export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
 
 # exporting go paths
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=${PATH}:$GOBIN
 
-export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
 
 # aliases
 alias ls="exa --long --header --git --sort=extension"
@@ -121,14 +121,12 @@ z() {
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# navi cheat sheet (Ctrl+g)
-eval "$(navi widget zsh)"
-
 
 ## --------
 ## bindkeys
 ## --------
 bindkey -s '^p' 'ff\n'
 bindkey -s '^n' 'vifm\n'
+bindkey -s '^g' 'navi\n'
 bindkey -s '^[OP' 'preview_man\n'
 
