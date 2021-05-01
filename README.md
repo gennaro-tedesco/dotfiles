@@ -9,7 +9,8 @@
 <h4 align="center">My personal dotfiles: no more, no less</h4>
 <h3 align="center">
   <a href="#Requirements">Requirements</a> •
-  <a href="#Installation">Installation</a>
+  <a href="#Installation">Installation</a> •
+  <a href="#Screenshots">Screenshots</a>
 </h3>
 
 
@@ -47,3 +48,9 @@ make install-zsh
 ```
 and so forth.
 
+# Screenshots
+<details>
+  <summary>Show look</summary>
+
+<img width="1321" src="https://user-images.githubusercontent.com/15387611/116796202-10b83700-aadb-11eb-887a-510fc540d142.png">
+</details>
