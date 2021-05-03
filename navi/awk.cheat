@@ -1,0 +1,45 @@
+% awk
+
+# print columns
+awk 'BEGIN{FS=OFS=","} {print $1,$2}' <filename>
+
+# omit columns
+awk 'BEGIN{FS=OFS=","} {$3=""; print}' <filename>
+
+# change delimiter
+awk '$1=$1' FS="<old>" OFS="<new>" <filename>
+
+# search regex
+awk '/<regex>/' <filename>
+
+# search regex in column
+awk '$1 ~/<regex>/' <filename>
+
+# exclude regex
+awk '!/<regex>/' <filename>
+
+# exclude regex column
+awk '$1 !~/<regex>/' <filename>
+
+# search and replace
+awk -F ',' '{gsub(/pattern/,"replacement"); print }' <filename>
+
+# seach and replace in column
+awk 'BEGIN{FS=OFS=","} {gsub(/pattern/,"replacement"); print }' <filename>
+
+# data validation/condition
+awk -F ',' '<condition> { print }' <filename>
+
+# check number of columns
+awk -F ',' 'NF!=3 { print }' <filename>
+
+# check null fields
+awk -F ',' '$1==""' <filename>
+
+# print row by index
+awk -F ',' 'NR==<index>' <filename>
+
+# count lines that match pattern
+awk '/<pattern>/{++cnt} END {print "Lines matching pattern = ", cnt}' <filename>
+
+$ filename: ls -p | grep -v / | awk '{print $NF}'
