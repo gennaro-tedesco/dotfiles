@@ -1,7 +1,10 @@
 % sed replace
 
-# Search and replace within file
-sed -i s/<original-text>/<new-text>/g <filename-txt>
+# search and replace within file
+sed -i s/original-text/new-text/g <filename>
+
+# remove all white spaces
+sed 's/[[:space:]]//g' <filename>
 
 % ssh
 
