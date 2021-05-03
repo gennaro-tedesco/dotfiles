@@ -127,6 +127,6 @@ z() {
 ## --------
 bindkey -s '^p' 'ff\n'
 bindkey -s '^n' 'vifm\n'
+bindkey -s '^g' 'navi\n'
 bindkey -s '^[OP' 'preview_man\n'
-eval "$(navi widget zsh)"
 
