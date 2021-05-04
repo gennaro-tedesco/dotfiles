@@ -28,7 +28,7 @@ awk -F ',' '$1 !~/<regex>/' <filename>
  awk 'BEGIN{FS=OFS=","} {gsub(/[ \t]+/,""); print }' <filename>
 
 # trim leading and trailing white spaces
-awk '{ gsub(/^[ \t]+|[ \t]+$/, ""); print }' <filename>
+awk 'BEGIN{FS=OFS=","} { gsub(/^[ \t]+|[ \t]+$/, ""); print }' <filename>
 
 # replace
 awk 'BEGIN{FS=OFS=","} {gsub(/<pattern>/,"<replacement>"); print }' <filename>
