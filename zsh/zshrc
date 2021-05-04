@@ -36,11 +36,10 @@ export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=${PATH}:$GOBIN
 
-
 # aliases
 alias ls="exa --long --header --git --sort=extension"
 alias tree="exa --tree --level=2"
-alias cat="preview_files"
+alias show="preview_files"
 alias todo="${EDITOR} ~/.todo"
 alias zenith="zenith -d 0 -n 0"
 alias du="dust"
