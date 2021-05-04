@@ -6,6 +6,9 @@ awk 'BEGIN{FS=OFS=","} {print $1,$2}' <filename>
 # omit columns
 awk 'BEGIN{FS=OFS=","} {$3=""; print}' <filename>
 
+# check if records have same columns
+awk -F ',' '{print NF}' <filename>  | sort -nu | wc -l
+
 # change delimiter
 awk '$1=$1' FS="<old>" OFS="<new>" <filename>
 
@@ -22,10 +25,10 @@ awk -F ',' '!/<regex>/' <filename>
 awk -F ',' '$1 !~/<regex>/' <filename>
 
 # remove all white spaces
- awk 'BEGIN{FS=OFS=","} {gsub(/[ \s]+/,""); print }' <filename>
+ awk 'BEGIN{FS=OFS=","} {gsub(/[ \t]+/,""); print }' <filename>
 
 # trim leading and trailing white spaces
-awk '{ gsub(/^[ \s]+|[ \s]+$/, ""); print }' <filename>
+awk '{ gsub(/^[ \t]+|[ \t]+$/, ""); print }' <filename>
 
 # replace
 awk 'BEGIN{FS=OFS=","} {gsub(/<pattern>/,"<replacement>"); print }' <filename>
@@ -39,8 +42,11 @@ awk -F ',' '<condition> { print }' <filename>
 # remove empty lines
 awk NF <filename>
 
+# remove duplicates
+awk -F ',' '!seen[$0]++' <filename>
+
 # print index of empty lines
-awk 'NF==0 {print NR, $0}' <filename>
+awk '!NF {print NR}' <filename>
 
 # check null fields
 awk -F ',' '$1==""' <filename>
@@ -49,6 +55,6 @@ awk -F ',' '$1==""' <filename>
 awk -F ',' 'NR==<index>' <filename>
 
 # count lines that match pattern
-awk '/<pattern>/{++cnt} END {print "Lines matching pattern = ", cnt}' <filename>
+awk -F ',' '/<pattern>/{++count} END {print count}' <filename>
 
 $ filename: ls -p | grep -v / | awk '{print $NF}'
