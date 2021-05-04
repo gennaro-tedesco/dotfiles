@@ -10,16 +10,22 @@ awk 'BEGIN{FS=OFS=","} {$3=""; print}' <filename>
 awk '$1=$1' FS="<old>" OFS="<new>" <filename>
 
 # search regex
-awk '/<regex>/' <filename>
+awk -F ',' '/<regex>/' <filename>
 
 # search regex in column
-awk '$1 ~/<regex>/' <filename>
+awk -F ',' '$1 ~/<regex>/' <filename>
 
 # exclude regex
-awk '!/<regex>/' <filename>
+awk -F ',' '!/<regex>/' <filename>
 
-# exclude regex column
-awk '$1 !~/<regex>/' <filename>
+# exclude regex in column
+awk -F ',' '$1 !~/<regex>/' <filename>
+
+# remove all white spaces
+ awk 'BEGIN{FS=OFS=","} {gsub(/[ \s]+/,""); print }' <filename>
+
+# trim leading and trailing white spaces
+awk '{ gsub(/^[ \s]+|[ \s]+$/, ""); print }' <filename>
 
 # replace
 awk 'BEGIN{FS=OFS=","} {gsub(/<pattern>/,"<replacement>"); print }' <filename>

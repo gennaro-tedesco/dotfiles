@@ -39,3 +39,8 @@ $json-file: ls -A1 | grep .json
 # update out of date packages
 brew upgrade $(brew outdated | fzf)
 
+% tr
+
+# highlight white spaces and tabs
+tr " " "-" < filename | tr "\t" "*"
+
