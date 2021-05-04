@@ -1,6 +1,6 @@
-% sed replace
+% sed
 
-# search and replace within file
+# replace within file
 sed -i s/<original-text>/<new-text>/g <filename>
 
 # remove all white spaces

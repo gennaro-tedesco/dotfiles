@@ -21,17 +21,20 @@ awk '!/<regex>/' <filename>
 # exclude regex column
 awk '$1 !~/<regex>/' <filename>
 
-# search and replace
-awk -F ',' '{gsub(/pattern/,"replacement"); print }' <filename>
+# replace
+awk 'BEGIN{FS=OFS=","} {gsub(/<pattern>/,"<replacement>"); print }' <filename>
 
-# seach and replace in column
-awk 'BEGIN{FS=OFS=","} {gsub(/pattern/,"replacement"); print }' <filename>
+# replace in column
+awk 'BEGIN{FS=OFS=","} {gsub(/<pattern>/,"<replacement>",$<column>); print }' <filename>
 
 # data validation/condition
 awk -F ',' '<condition> { print }' <filename>
 
-# check number of columns
-awk -F ',' 'NF!=3 { print }' <filename>
+# remove empty lines
+awk NF <filename>
+
+# print index of empty lines
+awk 'NF==0 {print NR, $0}' <filename>
 
 # check null fields
 awk -F ',' '$1==""' <filename>
