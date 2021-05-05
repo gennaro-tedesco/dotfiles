@@ -16,13 +16,13 @@ awk '$1=$1' FS="<old>" OFS="<new>" <filename>
 awk -F ',' '/<regex>/' <filename>
 
 # search regex in column
-awk -F ',' '$1 ~/<regex>/' <filename>
+awk -F ',' '$<colNr> ~/<regex>/' <filename>
 
 # exclude regex
 awk -F ',' '!/<regex>/' <filename>
 
 # exclude regex in column
-awk -F ',' '$1 !~/<regex>/' <filename>
+awk -F ',' '$<colNr> !~/<regex>/' <filename>
 
 # remove all white spaces
  awk 'BEGIN{FS=OFS=","} {gsub(/[ \t]+/,""); print }' <filename>
@@ -49,7 +49,10 @@ awk -F ',' '!seen[$0]++' <filename>
 awk '!NF {print NR}' <filename>
 
 # check null fields
-awk -F ',' '$1==""' <filename>
+awk -F ',' '$<colNr>==""' <filename>
+
+# checko for empty fields (only spaces)
+awk -F ',' '$3 ~/^[[:blank:]]+$/' <filename>
 
 # print row by index
 awk -F ',' 'NR==<index>' <filename>
@@ -58,6 +61,6 @@ awk -F ',' 'NR==<index>' <filename>
 awk -F ',' '/<pattern>/{++count} END {print count}' <filename>
 
 # unique values in a column
-awk -F ',' '{print $2}' <filename> | sort | uniq -c | sort -nr
+awk -F ',' '{print $<colNr>}' <filename> | sort | uniq -c | sort -nr
 
 $ filename: ls -p | grep -v / | awk '{print $NF}'
