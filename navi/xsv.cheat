@@ -13,16 +13,16 @@ xsv headers <filename>
 xsv frequency <filename>
 
 # search for pattern in .csv file
-xsv search <pattern> <filename>
+xsv search "<pattern>" -s "<column>" <filename>
 
 # calculate stats from .csv file
-xsv stats <filename> --everything | xsv table
+xsv stats <filename> | awk -F ',' 'NR==1; ($2=="Float" || $2=="Integer") {print}' | gcut --complement -d, -f2 | xsv table
 
 # select columns from .csv file
 xsv select "first,second" <filename>
 
 # sort file by columns
-xsv sort -s "column" -R <filename>
+xsv sort -s "<column>" -R <filename>
 
 $ filename: ls -l | grep .csv | awk '{print $NF}' --- --prevent-extra --preview 'bat --style=numbers --color=always {} | head -500' --preview-window up:50% 
 
