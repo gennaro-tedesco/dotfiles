@@ -48,5 +48,9 @@ brew upgrade $(brew outdated | fzf)
 % tr
 
 # highlight white spaces and tabs
-tr " " "-" < filename | tr "\t" "*"
+tr " " "␣" < <filename> | tr "\t" "→"
 
+# convert to lowercase
+tr "[:upper:]" "[:lower:]" < <filename>
+
+$ filename: ls -p | grep -v / | awk '{print $NF}'
