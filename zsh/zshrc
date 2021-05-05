@@ -45,6 +45,7 @@ alias zenith="zenith -d 0 -n 0"
 alias du="dust"
 alias grep="rg"
 alias jd="json_diff"
+alias printenv="printenv | fzf"
 
 ## ----------------
 ## custom functions
@@ -77,7 +78,8 @@ fb() {
 # list man pages
 preview_man() {
   local manpage
-  manpage=$(man -k . 2> /dev/null | sed 's/(.*//' | fzf) && man "$manpage"
+  manlist=$(man -k . 2>/dev/null | rg "\([1|4]\)" | awk 'BEGIN{FS=OFS="- "} {gsub(/\([[:digit:]]\)/,"",$1); print }' | awk '!seen[$0]++' | fzf) &&
+  manpage=$(echo "$manlist" | awk '{print $1}') && man "$manpage"
 }
 
 
