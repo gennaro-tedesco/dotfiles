@@ -12,14 +12,8 @@ awk -F ',' '{print NF}' <filename>  | sort -nu | wc -l
 # change delimiter
 awk '$1=$1' FS="<old>" OFS="<new>" <filename>
 
-# search regex
-awk -F ',' '/<regex>/' <filename>
-
 # search regex in column
 awk -F ',' '$<colNr> ~/<regex>/' <filename>
-
-# exclude regex
-awk -F ',' '!/<regex>/' <filename>
 
 # exclude regex in column
 awk -F ',' '$<colNr> !~/<regex>/' <filename>
@@ -51,7 +45,7 @@ awk '!NF {print NR}' <filename>
 # check null fields
 awk -F ',' '$<colNr>==""' <filename>
 
-# checko for empty fields (only spaces)
+# check for empty fields (only spaces)
 awk -F ',' '$3 ~/^[[:blank:]]+$/' <filename>
 
 # print row by index

@@ -1,3 +1,14 @@
+% cut
+
+# select columns from tabular delimiters
+gcut -f2,5 -d, filename
+
+# exclude columns from tabular delimiters
+gcut -f2,5 -d, --complement filename
+
+# columnate tabular data
+column -t -s, filename
+
 % sed
 
 # print row by index
@@ -17,13 +28,13 @@ $ filename: ls -p | grep -v / | awk '{print $NF}'
 % ssh
 
 # Access via ssh
-ssh <username-remote>
+ssh username-remote
 
 # Copy file from server to local
-scp <username-remote>:<file-to-send-path> <path-to-recieve>
+scp username-remote:file-to-send-path path-to-receive
 
 # Copy file from local to server
-scp <file-to-send> <username-remote>:<where-to-put>
+scp file-to-send username-remote:where-to-put
 
 % env file
 
