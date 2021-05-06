@@ -77,7 +77,7 @@ fb() {
 
 # list man pages
 preview_man() {
-  local manlist,manpage
+  local manlist manpage
   manlist=$(man -k . 2>/dev/null | rg "\([1|4]\)" | awk 'BEGIN{FS=OFS="- "} {gsub(/\([[:digit:]]\)/,"",$1); print }' | awk '!seen[$0]++' | fzf) &&
   manpage=$(echo "$manlist" | awk '{print $1}') && man "$manpage"
 }
