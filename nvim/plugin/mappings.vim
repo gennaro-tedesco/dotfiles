@@ -30,10 +30,10 @@ nnoremap H ^
 onoremap H ^
 nnoremap L $
 onoremap L $
-nnoremap <PageUp> {
-nnoremap <PageDown> }
-vnoremap <PageUp> {j
-vnoremap <PageDown> }k
+nnoremap <PageUp> k{j
+nnoremap <PageDown> j}k
+vnoremap <PageUp> k{j
+vnoremap <PageDown> j}k
 nnoremap <Tab> <C-w>w
 nnoremap <S-Tab> <C-w>W
 nnoremap <BS> <C-o>
