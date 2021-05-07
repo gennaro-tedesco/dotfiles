@@ -1,4 +1,4 @@
-% cut
+% cut, column
 
 # select columns from tabular delimiters
 gcut -f2,5 -d, filename
@@ -8,6 +8,7 @@ gcut -f2,5 -d, --complement filename
 
 # columnate tabular data
 column -t -s, filename
+
 
 % sed
 
@@ -25,21 +26,24 @@ sed -i '/<pattern>/d' <filename>
 
 $ filename: ls -p | grep -v / | awk '{print $NF}' 
 
+
 % ssh
 
 # Access via ssh
 ssh username-remote
 
 # Copy file from server to local
-scp username-remote:file-to-send-path path-to-receive
+scp username-remote:file-to-send where-to-put
 
 # Copy file from local to server
 scp file-to-send username-remote:where-to-put
+
 
 % env file
 
 # export .env file
 export $(xargs < .env)
+
 
 % jq
 
@@ -51,10 +55,12 @@ jq 'with_entries(select(.key | in({"key2":1, "key12":1})))' <json-file>
 
 $json-file: ls -A1 | grep .json
 
+
 % brew
 
 # update out of date packages
 brew upgrade $(brew outdated | fzf)
+
 
 % tr
 
@@ -65,3 +71,9 @@ tr " " "␣" < <filename> | tr "\t" "→"
 tr "[:upper:]" "[:lower:]" < <filename>
 
 $ filename: ls -p | grep -v / | awk '{print $NF}'
+
+
+% curl
+
+# get request with json body
+curl -s -H "Content-Type: application/json" -X POST -d @path/to/json/body "$APP_HOST:$APP_PORT/endpoint" | jq
