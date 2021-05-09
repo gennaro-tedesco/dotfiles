@@ -3,6 +3,12 @@
 # count rows
 xsv count <filename>
 
+# print row by index
+xsv slice -i <index> <filename>
+
+# slice csv between two indeces
+xsv slice -s <start> -e <end> <filename>
+
 # sample random rows
 xsv sample <N> <filename>
 
@@ -10,10 +16,16 @@ xsv sample <N> <filename>
 xsv headers <filename>
 
 # display frequency table from .csv file
-xsv frequency <filename>
+xsv frequency -s <column> <filename>
 
 # search for pattern in .csv file
 xsv search "<pattern>" -s "<column>" <filename>
+
+# remove rows containing white spaces in column
+xsv search -s model '^\S*$' <filename>
+
+# print rows containing white spaces in column
+xsv search -s model '\s' <filename>
 
 # calculate stats from .csv file
 xsv stats <filename> | awk -F ',' 'NR==1; ($2=="Float" || $2=="Integer") {print}' | gcut --complement -d, -f2 | xsv table

@@ -7,7 +7,7 @@ awk 'BEGIN{FS=OFS=","} {print $1,$2}' <filename>
 awk 'BEGIN{FS=OFS=","} {$3=""; print}' <filename>
 
 # check if records have same columns
-awk -F ',' '{print NF}' <filename>  | sort -nu | wc -l
+awk -F ',' '{print NF}' <filename>  | sort | uniq -c | wc -l
 
 # change delimiter
 awk '$1=$1' FS="<old>" OFS="<new>" <filename>
