@@ -18,7 +18,7 @@ xsv headers <filename>
 # display frequency table from .csv file
 xsv frequency -s <column> <filename>
 
-# search for pattern in .csv file
+# search regex in column
 xsv search "<pattern>" -s "<column>" <filename>
 
 # remove rows containing white spaces in column

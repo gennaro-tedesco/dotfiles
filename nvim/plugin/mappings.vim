@@ -57,8 +57,15 @@ nnoremap Y ^yg_
 " copy text with line numbers and file name on top
 vnoremap <leader>y :call functions#CompleteYank()<CR>
 
-" replace all occurrences of words under cursor
+" replace all occurrences of word under cursor in current file
 nnoremap S :%s/<c-r><c-w>//gc<Left><Left><Left>
+
+" replace all occurrences of word under cursor projectwise
+nnoremap R
+  \ :let @s='\<'.expand('<cword>').'\>'<CR>
+  \ :Grepper -cword -noprompt<CR>
+  \ :cfdo %s/<C-r>s//g \| update
+  \<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
 " blink word under cursor in search mode
 nnoremap n n:call functions#BlinkWord(0.3)<CR>
