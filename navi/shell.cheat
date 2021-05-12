@@ -24,7 +24,7 @@ sed 's/[[:space:]]//g' <filename>
 # remove all lines containing a pattern
 sed -i '/<pattern>/d' <filename>
 
-$ filename: ls -p | grep -v / | awk '{print $NF}' 
+$ filename: ls -p | grep -v / | awk '{print $NF}'
 
 
 % ssh
@@ -77,3 +77,9 @@ $ filename: ls -p | grep -v / | awk '{print $NF}'
 
 # get request with json body
 curl -s -H "Content-Type: application/json" -X POST -d @path/to/json/body "$APP_HOST:$APP_PORT/endpoint" | jq
+
+
+%man
+
+# man page of bash conditionals
+man test
