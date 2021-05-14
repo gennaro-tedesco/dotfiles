@@ -16,7 +16,7 @@ xsv sample <N> <filename>
 xsv headers <filename>
 
 # display frequency table from .csv file
-xsv frequency -s <column> <filename> | xsv table
+xsv frequency -s <column> <filename> -l 0 | xsv table
 
 # search regex in column
 xsv search "<pattern>" -s "<column>" <filename>
