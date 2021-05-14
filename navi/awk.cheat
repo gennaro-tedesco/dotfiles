@@ -54,7 +54,7 @@ awk -F ',' 'NR==<index>' <filename>
 # count lines that match pattern
 awk -F ',' '/<pattern>/{++count} END {print count}' <filename>
 
-# unique values in a column
+# count frequencies of values in column
 awk -F ',' '{print $<colNr>}' <filename> | sort | uniq -c | sort -nr
 
 $ filename: ls -p | grep -v / | awk '{print $NF}'
