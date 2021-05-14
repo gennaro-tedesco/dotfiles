@@ -22,10 +22,10 @@ xsv frequency -s <column> <filename>
 xsv search "<pattern>" -s "<column>" <filename>
 
 # remove rows containing white spaces in column
-xsv search -s model '^\S*$' <filename>
+xsv search -s <column> '^\S*$' <filename>
 
 # print rows containing white spaces in column
-xsv search -s model '\s' <filename>
+xsv search -s <column> '\s' <filename>
 
 # calculate stats from .csv file
 xsv stats <filename> | awk -F ',' 'NR==1; ($2=="Float" || $2=="Integer") {print}' | gcut --complement -d, -f2 | xsv table
