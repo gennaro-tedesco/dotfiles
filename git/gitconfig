@@ -22,6 +22,7 @@
 	features = side-by-side
 	line-numbers = true
 	hunk-header-style = omit
+	navigate = true
 
 # alias
 [alias]
