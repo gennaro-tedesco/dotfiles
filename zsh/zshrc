@@ -40,7 +40,7 @@ export PATH=${PATH}:$GOBIN
 # aliases
 alias ls="exa --long --header --git --sort=extension"
 alias tree="exa --tree --level=2"
-alias show="preview_files"
+alias view="preview_files"
 alias todo="${EDITOR} ~/.todo"
 alias zenith="zenith -d 0 -n 0"
 alias du="dust"
@@ -86,6 +86,11 @@ preview_man() {
 
 # preview files
 preview_files () {
+	local selection
+	if [[ -z "$1" ]]; then
+		selection="$(echo *(^/) | tr " " "\n" | fzf)" && preview_files "$selection"
+		return 0
+	fi
 	if [[ $1 == *.md ]]; then
 		glow -s ~/.config/glowconfig/customglow.json -p $1
 	elif [[ $1 == *.json ]]; then
