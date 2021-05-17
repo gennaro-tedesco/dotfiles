@@ -84,6 +84,8 @@ preview_man() {
   manpage=$(echo "$manlist" | awk '{print $1}') && man "$manpage"
 }
 
+# paginate help
+help() { "$@" --help | bat -l man -p ; }
 
 # preview files
 preview_files () {

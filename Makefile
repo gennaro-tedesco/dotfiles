@@ -33,6 +33,7 @@ install-visidata:
 .PHONY: install-git
 install-git:
 	cp -f git/gitconfig ${HOME}/.gitconfig
+	cp -f git/config.yml ${HOME}/.config/gh
 
 .PHONY: install-glow
 install-glow:
