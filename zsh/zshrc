@@ -10,6 +10,7 @@ POWERLEVEL9K_MODE="awesome-patched"
 plugins=(
 		auto-ls
 		fzf-tab
+		golang
 		vi-mode
 		zsh-interactive-cd
 		zsh-autosuggestions
@@ -80,7 +81,7 @@ fb() {
 preview_man() {
   local manlist manpage
   manlist=$(man -k . 2>/dev/null | rg "\([1|4]\)" | awk 'BEGIN{FS=OFS="- "} {gsub(/\([[:digit:]]\)/,"",$1); print }' | awk '!seen[$0]++' | fzf) &&
-  manpage=$(echo "$manlist" | awk -F, '{print $1}') && man "$manpage"
+  manpage=$(echo "$manlist" | awk '{print $1}') && man "$manpage"
 }
 
 
