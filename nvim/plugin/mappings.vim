@@ -98,6 +98,8 @@ nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :call fzf#vim#buffer_commits({'options': '--no-preview --prompt "logs:"  --no-inline-info', 'down':'15'})<CR>
+nnoremap <expr> <Down> &diff ? ']c' : '<Down>'
+nnoremap <expr> <Up> &diff ? '[c' : '<Up>'
 
 " open todo file in one go
 nnoremap <leader>t :e<space>~/.todo<CR>

@@ -1,5 +1,8 @@
 % awk
 
+# column indices
+awk -F, 'NR==1 {for (i=1; i<=NF; i++) print i","$i}' <filename> | column -t -s,
+
 # print columns
 awk 'BEGIN{FS=OFS=","} {print $1,$2}' <filename>
 
@@ -43,10 +46,10 @@ awk -F ',' '!seen[$0]++' <filename>
 awk '!NF {print NR}' <filename>
 
 # check null fields
-awk -F ',' '$<colNr>==""' <filename>
+awk -F ',' '!$<colNr>' <filename>
 
-# check for empty fields (only spaces)
-awk -F ',' '$3 ~/^[[:blank:]]+$/' <filename>
+# check for only spaces
+awk -F ',' '$<colNr> ~/^[[:blank:]]+$/' <filename>
 
 # print row by index
 awk -F ',' 'NR==<index>' <filename>
@@ -58,6 +61,9 @@ awk -F ',' '/<pattern>/{++count} END {print count}' <filename>
 awk -F ',' '{print $<colNr>}' <filename> | sort | uniq -c | sort -nr
 
 # count, sum and avg grouped by
-awk -F, 'BEGIN{print "field,count,sum,average"; print "-----,-----,---,-------"} NR>1  {sum[$<col_groupby>]+=$<col_sum>; count[$<col_groupby>]++;}END{for(i in sum)printf i","count[i]","sum[i]"," "%.3f\n",sum[i]/count[i];}' <filename> | column -t -s, | bat -l csv -p
+awk -F, 'BEGIN{print "field,count,sum,average"; print "-----,-----,---,-------"} NR>1  {sum[$<colGroupBy>]+=$<colAggregate>; count[$<col_groupby>]++;}END{for(i in sum)printf i","count[i]","sum[i]"," "%.3f\n",sum[i]/count[i];}' <filename> | column -t -s, | bat -l csv -p
+
+# count types in column
+awk -F, 'BEGIN{print"type,count"; print"----,-----";} NR>1 {if( $<colNr> ~/^[0-9]+$/ ) count["number"]++; else if(  $<colNr> ~/^[:blank:]+$/  ) count["whitespace"]++; else if ( !$<colNr> ) count["NULL"]++; else count["string"]++;}END{for(i in count)print i","count[i]}' <filename> | column -t -s, | bat -l csv -p
 
 $ filename: ls -p | grep -v / | awk '{print $NF}'
