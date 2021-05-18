@@ -21,6 +21,9 @@ xsv frequency -s <column> <filename> -l 0 | xsv table
 # search regex in column
 xsv search "<pattern>" -s "<column>" <filename>
 
+# exclude regex in column
+xsv search "<pattern>" -s "<column>" -v <filename>
+
 # remove rows containing white spaces in column
 xsv search -s <column> '^\S*$' <filename>
 
@@ -28,7 +31,7 @@ xsv search -s <column> '^\S*$' <filename>
 xsv search -s <column> '\s' <filename>
 
 # calculate stats from .csv file
-xsv stats <filename> | awk -F ',' 'NR==1; ($2=="Float" || $2=="Integer") {print}' | gcut --complement -d, -f2 | xsv table
+xsv stats <filename> | awk -F ',' 'NR==1; ($2=="Float" || $2=="Integer") {print}' | gcut --complement -d, -f2 | xsv table | bat -l csv -p
 
 # select columns from .csv file
 xsv select "first,second" <filename>
