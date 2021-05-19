@@ -58,10 +58,10 @@ awk -F ',' 'NR==<index>' <filename>
 awk -F ',' '/<pattern>/{++count} END {print count}' <filename>
 
 # count frequencies of values in column
-awk -F ',' '{print $<colNr>}' <filename> | sort | uniq -c | sort -nr
+awk -F ',' 'NR!=1 {print $<colNr>}' <filename> | sort | uniq -c | sort -nr
 
 # count, sum and avg grouped by
-awk -F, 'BEGIN{print "field,count,sum,average"; print "-----,-----,---,-------"} NR>1  {sum[$<colGroupBy>]+=$<colAggregate>; count[$<col_groupby>]++;}END{for(i in sum)printf i","count[i]","sum[i]"," "%.3f\n",sum[i]/count[i];}' <filename> | column -t -s, | bat -l csv -p
+awk -F, 'BEGIN{print "field,count,sum,average"; print "-----,-----,---,-------"} NR>1  {sum[$<colGroupBy>]+=$<colAggregate>; count[$<colGroupBy>]++;}END{for(i in sum)printf i","count[i]","sum[i]"," "%.3f\n",sum[i]/count[i];}' <filename> | column -t -s, | bat -l csv -p
 
 # count types in column
 awk -F, 'BEGIN{print"type,count"; print"----,-----";} NR>1 {if( $<colNr> ~/^[0-9]+$/ ) count["number"]++; else if(  $<colNr> ~/^[:blank:]+$/  ) count["whitespace"]++; else if ( !$<colNr> ) count["NULL"]++; else count["string"]++;}END{for(i in count)print i","count[i]}' <filename> | column -t -s, | bat -l csv -p
