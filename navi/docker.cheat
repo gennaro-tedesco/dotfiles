@@ -6,6 +6,9 @@ docker image rm <image_id>
 # Delete an image from the local image store
 docker rmi <image_id>
 
+# Delete all images
+docker rmi -f $(docker images -a -q)
+
 # Clean none/dangling images
 docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
 
