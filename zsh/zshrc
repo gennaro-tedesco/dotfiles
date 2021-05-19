@@ -19,7 +19,12 @@ plugins=(
 		z
 		)
 unsetopt autocd
+
+# options to use vi-mode from command line
 VI_MODE_SET_CURSOR=true
+bindkey -M vicmd ' ' edit-command-line
+bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M viins 'kk' vi-cmd-mode
 
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
@@ -39,7 +44,7 @@ export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=${PATH}:$GOBIN
 
-# aliases
+# alias
 alias ls="exa --long --header --git --sort=extension"
 alias tree="exa --tree --level=2"
 alias view="preview_files"
