@@ -12,10 +12,10 @@ xsv slice -s <start> -e <end> <filename>
 # sample random rows
 xsv sample <N> <filename>
 
-# display headers from .csv file
+# display file's headers
 xsv headers <filename>
 
-# display frequency table from .csv file
+# display frequency table from file
 xsv frequency -s <column> <filename> -l 0 | xsv table
 
 # search regex in column
@@ -30,14 +30,17 @@ xsv search -s <column> '^\S*$' <filename>
 # print rows containing white spaces in column
 xsv search -s <column> '\s' <filename>
 
-# calculate stats from .csv file
-xsv stats <filename> | awk -F ',' 'NR==1; ($2=="Float" || $2=="Integer") {print}' | gcut --complement -d, -f2 | xsv table | bat -l csv -p
+# calculate stats from file
+xsv stats <filename> | awk -F ',' 'NR==1; ($2=="Float" || $2=="Integer") {print}' | gcut --complement -d, -f2 | xsv table
 
-# select columns from .csv file
-xsv select "first,second" <filename>
+# select columns from file
+xsv select 'first,second' <filename>
+
+# omit columns from file
+xsv select '!<column>' <filename>
 
 # sort file by columns
-xsv sort -s "<column>" -R <filename>
+xsv sort -s '<column>' -R <filename>
 
-$ filename: ls -l | grep .csv | awk '{print $NF}' --- --prevent-extra --preview 'bat --style=numbers --color=always {} | head -500' --preview-window up:50% 
+$ filename: ls *.csv | awk '{print $NF}' --- --prevent-extra --preview 'bat --style=numbers --color=always {} | head -500' --preview-window up:50% 
 

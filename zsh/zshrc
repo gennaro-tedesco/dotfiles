@@ -46,6 +46,8 @@ export GOBIN=$GOPATH/bin
 export PATH=${PATH}:$GOBIN
 
 # alias
+alias cut="gcut"
+alias sed="gsed"
 alias ls="exa --long --header --git --sort=extension"
 alias tree="exa --tree --level=2"
 alias view="preview_files"

@@ -6,9 +6,6 @@ awk -F, 'NR==1 {for (i=1; i<=NF; i++) print i","$i}' <filename> | column -t -s,
 # print columns
 awk 'BEGIN{FS=OFS=","} {print $1,$2}' <filename>
 
-# omit columns
-awk 'BEGIN{FS=OFS=","} {$3=""; print}' <filename>
-
 # check if records have same columns
 awk -F ',' '{print NF}' <filename>  | sort | uniq -c | wc -l
 
@@ -22,7 +19,7 @@ awk -F ',' '$<colNr> ~/<regex>/' <filename>
 awk -F ',' '$<colNr> !~/<regex>/' <filename>
 
 # remove all white spaces
- awk 'BEGIN{FS=OFS=","} {gsub(/[ \t]+/,""); print }' <filename>
+awk 'BEGIN{FS=OFS=","} {gsub(/[ \t]+/,""); print }' <filename>
 
 # trim leading and trailing white spaces
 awk 'BEGIN{FS=OFS=","} { gsub(/^[ \t]+|[ \t]+$/, ""); print }' <filename>
@@ -61,9 +58,9 @@ awk -F ',' '/<pattern>/{++count} END {print count}' <filename>
 awk -F ',' 'NR!=1 {print $<colNr>}' <filename> | sort | uniq -c | sort -nr
 
 # count, sum and avg grouped by
-awk -F, 'BEGIN{print "field,count,sum,average"; print "-----,-----,---,-------"} NR>1  {sum[$<colGroupBy>]+=$<colAggregate>; count[$<colGroupBy>]++;}END{for(i in sum)printf i","count[i]","sum[i]"," "%.3f\n",sum[i]/count[i];}' <filename> | column -t -s, | bat -l csv -p
+awk -F, 'BEGIN{print "field,count,sum,average"; print "-----,-----,---,-------"} NR>1  {sum[$<colGroupBy>]+=$<colAggregate>; count[$<colGroupBy>]++;}END{for(i in sum)printf i","count[i]","sum[i]"," "%.3f\n",sum[i]/count[i];}' <filename> | column -t -s,
 
 # count types in column
-awk -F, 'BEGIN{print"type,count"; print"----,-----";} NR>1 {if( $<colNr> ~/^[0-9]+$/ ) count["number"]++; else if(  $<colNr> ~/^[:blank:]+$/  ) count["whitespace"]++; else if ( !$<colNr> ) count["NULL"]++; else count["string"]++;}END{for(i in count)print i","count[i]}' <filename> | column -t -s, | bat -l csv -p
+awk -F, 'BEGIN{print"type,count"; print"----,-----";} NR>1 {if( $<colNr> ~/^[0-9]+$/ ) count["number"]++; else if(  $<colNr> ~/^[:blank:]+$/  ) count["whitespace"]++; else if ( !$<colNr> ) count["NULL"]++; else count["string"]++;}END{for(i in count)print i","count[i]}' <filename> | column -t -s,
 
 $ filename: ls -p | grep -v / | awk '{print $NF}'

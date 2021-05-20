@@ -1,13 +1,15 @@
 % cut, column
 
 # select columns from tabular delimiters
-gcut -f2,5 -d, filename
+gcut -f<colNr> -d, <filename>
 
-# exclude columns from tabular delimiters
-gcut -f2,5 -d, --complement filename
+# omit columns from tabular delimiters
+gcut -f<colNr> -d, --complement <filename>
 
 # columnate tabular data
-column -t -s, filename
+column -t -s, <filename>
+
+$ filename: ls -p | grep -v / | awk '{print $NF}'
 
 
 % sed
