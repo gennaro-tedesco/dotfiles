@@ -20,15 +20,16 @@ plugins=(
 		)
 unsetopt autocd
 
+# Path to your oh-my-zsh installation.
+export ZSH="${HOME}/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+unalias -m '*'
+
 # options to use vi-mode from command line
 VI_MODE_SET_CURSOR=true
 bindkey -M vicmd ' ' edit-command-line
 bindkey -M viins 'jj' vi-cmd-mode
 bindkey -M viins 'kk' vi-cmd-mode
-
-# Path to your oh-my-zsh installation.
-export ZSH="${HOME}/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
 
 # exporting environment variables
 export EDITOR="nvim"
@@ -55,72 +56,6 @@ alias grep="rg"
 alias jd="json_diff"
 alias printenv="printenv | column -t -s= | fzf | awk '{print \$1\"=\"\$2}'"
 
-## ----------------
-## custom functions
-## ----------------
-
-# fzf browse files
-ff() (
-  IFS=$'\n' files=($(fzf --preview 'bat --style=numbers --color=always {} | head -500' --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && ${EDITOR} "${files[@]}"
-)
-
-
-# fzf browse directories and cd into them
-fd() {
-  local dir
-  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
-}
-
-
-# fzf checkout git branches
-fb() {
-  local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-		   fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-}
-
-
-# list man pages
-preview_man() {
-  local manlist manpage
-  manlist=$(man -k . 2>/dev/null | rg "\([1|4]\)" | awk 'BEGIN{FS=OFS="- "} {gsub(/\([[:digit:]]\)/,"",$1); print }' | awk '!seen[$0]++' | fzf) &&
-  manpage=$(echo "$manlist" | awk -F' |,' '{print $1}') && man "$manpage"
-}
-
-# paginate help
-help() { "$@" --help | bat -l man -p ; }
-
-# preview files
-preview_files () {
-	local selection
-	if [[ -z "$1" ]]; then
-		selection="$(echo *(^/) | tr " " "\n" | fzf)" && preview_files "$selection"
-		return 0
-	fi
-	if [[ $1 == *.md ]]; then
-		glow -s ~/.config/glowconfig/customglow.json -p $1
-	elif [[ $1 == *.json ]]; then
-		jq '.' -C $1 | less
-	elif [[ $1 == *.csv ]]; then
-		vd $1
-	else
-		bat --theme='Solarized (dark)' --style='header,grid' $1
-	fi
-}
-
-# json_diff
-json_diff(){
-	[[ $# != 2 ]] && { echo "expected two arguments"; return}
-	[[ ( $1 != *.json ) || ( $2 != *.json ) ]] && { echo "arguments must be both json files"; return}
-	[[ ! -f $1 ]] && { echo "cannot find $1"; return}
-	[[ ! -f $2 ]] && { echo "cannot find $2"; return}
-
-	delta <(jq -S . $1) <(jq -S . $2)
-}
-
 unalias z 2> /dev/null
 z() {
   [ $# -gt 0 ] && _z "$*" && return
@@ -130,6 +65,9 @@ z() {
 ## -----------------------
 ## additional source files
 ## -----------------------
+
+# sourcing fzf custom functions
+[ -f ~/.zshfun ] && source ~/.zshfun
 
 # sourcing fzf keybindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -19,6 +19,7 @@ endif
 .PHONY: install-zsh
 install-zsh:
 	cp -f zsh/zshrc ${HOME}/.zshrc
+	cp -f zsh/zshfun ${HOME}/.zshfun
 	cp -f zsh/p10k.zsh ${HOME}/.p10k.zsh
 
 .PHONY: install-vifm
