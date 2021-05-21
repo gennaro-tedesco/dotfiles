@@ -9,13 +9,16 @@ gcut -f<colNr> -d, --complement <filename>
 # columnate tabular data
 column -t -s, <filename>
 
-$ filename: ls -p | grep -v / | awk '{print $NF}'
+$ filename: ls | grep -v / | awk '{print $NF}'
 
 
 % sed
 
 # print row by index
-sed '<index>!d' <filename>
+sed -n '<index>p' <filename>
+
+# slice file between two lines
+sed -n '<start>,<end>p' <filename>
 
 # replace within file
 sed -i 's/<original-text>/<new-text>/g' <filename>
@@ -26,7 +29,7 @@ sed 's/[[:space:]]//g' <filename>
 # remove all lines containing a pattern
 sed -i '/<pattern>/d' <filename>
 
-$ filename: ls -p | grep -v / | awk '{print $NF}'
+$ filename: ls | grep -v / | awk '{print $NF}'
 
 
 % ssh
