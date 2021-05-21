@@ -55,7 +55,7 @@ jq -r '[paths | join(".")]' <json-file>
 # select keys in a list
 jq 'with_entries(select(.key | in({"key2":1, "key12":1})))' <json-file>
 
-$json-file: ls -A1 | grep .json
+$json-file: ls *.json
 
 
 % brew
@@ -72,7 +72,7 @@ tr " " "␣" < <filename> | tr "\t" "→"
 # convert to lowercase
 tr "[:upper:]" "[:lower:]" < <filename>
 
-$ filename: ls -p | grep -v / | awk '{print $NF}'
+$ filename: ls | grep -v / | awk '{print $NF}'
 
 
 % curl

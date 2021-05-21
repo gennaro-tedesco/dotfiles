@@ -54,6 +54,9 @@ awk -F ',' 'NR==<index>' <filename>
 # count lines that match pattern
 awk -F ',' '/<pattern>/{++count} END {print count}' <filename>
 
+# count distinct
+awk -F ',' 'NR > 1 {print $<colNr>}' <filename> | sort | uniq -c | wc -l
+
 # count frequencies of values in column
 awk -F ',' 'NR!=1 {print $<colNr>}' <filename> | sort | uniq -c | sort -nr
 
@@ -63,4 +66,4 @@ awk -F, 'BEGIN{print "field,count,sum,average"; print "-----,-----,---,-------"}
 # count types in column
 awk -F, 'BEGIN{print"type,count"; print"----,-----";} NR>1 {if( $<colNr> ~/^[0-9]+$/ ) count["number"]++; else if(  $<colNr> ~/^[:blank:]+$/  ) count["whitespace"]++; else if ( !$<colNr> ) count["NULL"]++; else count["string"]++;}END{for(i in count)print i","count[i]}' <filename> | column -t -s,
 
-$ filename: ls -p | grep -v / | awk '{print $NF}'
+$ filename: ls *.csv | grep -v / | awk '{print $NF}'

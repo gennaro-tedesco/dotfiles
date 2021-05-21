@@ -42,5 +42,4 @@ xsv select '!<column>' <filename>
 # sort file by columns
 xsv sort -s '<column>' -R <filename>
 
-$ filename: ls *.csv | awk '{print $NF}' --- --prevent-extra --preview 'bat --style=numbers --color=always {} | head -500' --preview-window up:50% 
-
+$ filename: ls *.csv | grep -v / | awk '{print $NF}'
