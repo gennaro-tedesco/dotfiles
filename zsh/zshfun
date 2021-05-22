@@ -2,6 +2,11 @@
 ## custom functions
 ## ----------------
 
+# calculator
+calc() {
+	lua -e 'print('$1')'
+}
+
 # mkdir and cd
 mkcd () {
   mkdir -p -- "$1" && cd -P -- "$1"
@@ -55,6 +60,8 @@ preview_files () {
 		jq '.' -C $1 | less
 	elif [[ $1 == *.csv ]]; then
 		vd $1
+	elif [[ $1 == *.pdf ]]; then
+		zathura $1
 	else
 		bat --theme='Solarized (dark)' --style='header,grid' $1
 	fi
