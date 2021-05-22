@@ -3,11 +3,11 @@
 # count rows
 xsv count <filename>
 
-# print row by index (start index is zero)
-xsv slice -i <index> <filename>
+# print row by index
+xsv slice -n -i <index> <filename>
 
-# slice csv between two row indices (start index is zero)
-xsv slice -s <start> -e <end> <filename>
+# slice csv between two row indices
+xsv slice -n -s <start> -e <end> <filename>
 
 # sample random rows
 xsv sample <N> <filename>
