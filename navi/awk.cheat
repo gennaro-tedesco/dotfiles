@@ -3,7 +3,7 @@
 # column indices
 awk -F, 'NR==1 {for (i=1; i<=NF; i++) print i","$i}' <filename> | column -t -s,
 
-# print columns
+# select columns from file
 awk 'BEGIN{FS=OFS=","} {print $1,$2}' <filename>
 
 # check if records have same columns
@@ -66,4 +66,4 @@ awk -F, 'BEGIN{print "field,count,sum,average"; print "-----,-----,---,-------"}
 # count types in column
 awk -F, 'BEGIN{print"type,count"; print"----,-----";} NR>1 {if( $<colNr> ~/^[0-9]+$/ ) count["number"]++; else if(  $<colNr> ~/^[:blank:]+$/  ) count["whitespace"]++; else if ( !$<colNr> ) count["NULL"]++; else count["string"]++;}END{for(i in count)print i","count[i]}' <filename> | column -t -s,
 
-$ filename: ls *.csv | grep -v / | awk '{print $NF}'
+$ filename: ls *.csv | awk '{print $NF}'

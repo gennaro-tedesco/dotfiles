@@ -34,12 +34,12 @@ xsv search -s <column> '\s' <filename>
 xsv stats <filename> | awk -F ',' 'NR==1; ($2=="Float" || $2=="Integer") {print}' | gcut --complement -d, -f2 | xsv table
 
 # select columns from file
-xsv select 'first,second' <filename>
+xsv select '<column>' <filename>
 
 # omit columns from file
 xsv select '!<column>' <filename>
 
 # sort file by columns
-xsv sort -s '<column>' -R <filename>
+xsv sort -s '<column>' -R <filename> | column -s, -t | bat --file-name <filename>
 
-$ filename: ls *.csv | grep -v / | awk '{print $NF}'
+$ filename: ls *.csv | awk '{print $NF}'

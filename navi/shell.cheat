@@ -9,7 +9,7 @@ gcut -f<colNr> -d, --complement <filename>
 # columnate tabular data
 column -t -s, <filename>
 
-$ filename: ls | grep -v / | awk '{print $NF}'
+$ filename: echo *(^/) | tr " " "\n"
 
 
 % sed
@@ -29,7 +29,7 @@ sed 's/[[:space:]]//g' <filename>
 # remove all lines containing a pattern
 sed -i '/<pattern>/d' <filename>
 
-$ filename: ls | grep -v / | awk '{print $NF}'
+$ filename: echo *(^/) | tr " " "\n"
 
 
 % ssh
@@ -70,12 +70,12 @@ brew upgrade $(brew outdated | fzf)
 % tr
 
 # highlight white spaces and tabs
-tr " " "␣" < <filename> | tr "\t" "→"
+tr " " "␣" < <filename> | tr "\t" "→" | bat --file-name <filename>
 
 # convert to lowercase
 tr "[:upper:]" "[:lower:]" < <filename>
 
-$ filename: ls | grep -v / | awk '{print $NF}'
+$ filename: echo *(^/) | tr " " "\n"
 
 
 % curl
