@@ -44,8 +44,10 @@ preview_man() {
   manpage=$(echo "$manlist" | awk -F' |,' '{print $1}') && man "$manpage"
 }
 
+
 # paginate help
 help() { "$@" --help | bat -l man -p ; }
+
 
 # preview files
 preview_files () {
@@ -60,13 +62,14 @@ preview_files () {
 		*.json)
 			jq '.' -C $1 | less;;
 		*.csv)
-			vd $1;;
+			vd "$@";;
 		*.pdf)
 			zathura $1;;
 		*)
 			bat --theme='Solarized (dark)' --style='header,grid' $1;;
 	esac
 }
+
 
 # json_diff
 json_diff(){
