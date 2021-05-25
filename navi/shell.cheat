@@ -62,7 +62,7 @@ jq 'with_entries(select(.key | in({"keyName1":1, "keyName2":1})))' <json-file>
 jq '.<key>' <json-file>
 
 $ json-file: ls *.json
-$ key: jq 'keys[]' <json-file> | sed 's/\"//g'
+$ key: jq 'keys[]' <json-file>
 
 % brew
 
@@ -80,6 +80,9 @@ tr "[:upper:]" "[:lower:]" < <filename>
 
 # squeeze all spaces into one
 tr -s " " < <filename>
+
+# print all $PATH directories
+echo $PATH | tr  ':' '\n'
 
 $ filename: echo *(^/) | tr " " "\n"
 
