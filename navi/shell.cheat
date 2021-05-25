@@ -14,7 +14,7 @@ $ filename: echo *(^/) | tr " " "\n"
 
 % sed
 
-# print row by index
+# select row by index
 sed -n '<index>p' <filename>
 
 # slice file between two lines
@@ -56,10 +56,13 @@ export $(xargs < .env)
 jq -r '[paths | join(".")]' <json-file>
 
 # select keys in a list
-jq 'with_entries(select(.key | in({"key2":1, "key12":1})))' <json-file>
+jq 'with_entries(select(.key | in({"keyName1":1, "keyName2":1})))' <json-file>
 
-$json-file: ls *.json
+# query a certain key
+jq '.<key>' <json-file>
 
+$ json-file: ls *.json
+$ key: jq 'keys[]' <json-file> | sed 's/\"//g'
 
 % brew
 
@@ -74,6 +77,9 @@ tr " " "␣" < <filename> | tr "\t" "→" | bat --file-name <filename>
 
 # convert to lowercase
 tr "[:upper:]" "[:lower:]" < <filename>
+
+# squeeze all spaces into one
+tr -s " " < <filename>
 
 $ filename: echo *(^/) | tr " " "\n"
 

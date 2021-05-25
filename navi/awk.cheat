@@ -13,7 +13,7 @@ awk -F ',' '{print NF}' <filename>  | sort | uniq -c | wc -l
 awk '$1=$1' FS="<old>" OFS="<new>" <filename>
 
 # search regex in column
-awk -F ',' '$<colNr> ~/<regex>/' <filename>
+awk -F ',' '$<colNr> ~/<regex>/' <filename> | xsv table | bat --file-name <filename>
 
 # exclude regex in column
 awk -F ',' '$<colNr> !~/<regex>/' <filename>
@@ -48,7 +48,7 @@ awk -F ',' '!$<colNr>' <filename>
 # check for only spaces
 awk -F ',' '$<colNr> ~/^[[:blank:]]+$/' <filename>
 
-# print row by index
+# select row by index
 awk -F ',' 'NR==<index>' <filename>
 
 # count lines that match pattern

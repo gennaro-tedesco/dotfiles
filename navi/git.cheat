@@ -13,7 +13,7 @@ git branch -r | awk -F/ '/\/pattern/{print $2}'
 git branch -r | awk -F/ '/\/pattern/{print $2}' | xargs -I {} git push origin :{}
 
 # create an annotated tag
-git tag -a tag_name -m "tag description"
+git tag -a <tag_name> -m "<tag description>"
 
 # list all local tags
 git tag
@@ -23,3 +23,6 @@ git ls-remote --tags
 
 # push tag to remote
 git push --follow-tags
+
+# add files by pattern
+git diff --name-only | grep '<pattern>' | xargs git add

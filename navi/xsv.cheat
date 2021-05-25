@@ -3,7 +3,7 @@
 # count rows
 xsv count <filename>
 
-# print row by index
+# select row by index
 xsv slice -n -i <index> <filename>
 
 # slice csv between two row indices
@@ -16,18 +16,18 @@ xsv sample <N> <filename>
 xsv headers <filename>
 
 # display frequency table from file
-xsv frequency -s <column> <filename> -l 0 | xsv table
+xsv frequency -s <column> <filename> -l 0 | xsv table | bat --file-name <filename>
 
 # search regex in column
-xsv search "<pattern>" -s "<column>" <filename>
+xsv search "<pattern>" -s "<column>" <filename> | xsv table | bat --file-name <filename>
 
 # exclude regex in column
-xsv search "<pattern>" -s "<column>" -v <filename>
+xsv search "<pattern>" -s "<column>" -v <filename> | xsv table | bat --file-name <filename>
 
 # remove rows containing white spaces in column
 xsv search -s <column> '^\S*$' <filename>
 
-# print rows containing white spaces in column
+# select rows containing white spaces in column
 xsv search -s <column> '\s' <filename>
 
 # calculate stats from file
@@ -43,3 +43,4 @@ xsv select '!<column>' <filename>
 xsv sort -s '<column>' -R <filename> | column -s, -t | bat --file-name <filename>
 
 $ filename: ls *.csv | awk '{print $NF}'
+$ column: xsv headers <filename> | awk '{print $2}'
