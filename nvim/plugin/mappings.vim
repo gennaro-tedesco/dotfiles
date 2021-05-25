@@ -43,7 +43,7 @@ nnoremap J Jx
 nnoremap <leader>q <C-w>o
 
 " copy in terminal mode (must be in normal mode in terminal)
-tnoremap <leader>p <C-w>"+pa
+tnoremap pp <C-w>"+pa
 
 " replace a word with yanked text
 nnoremap rw viwpyiw
