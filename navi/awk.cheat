@@ -30,6 +30,9 @@ awk 'BEGIN{FS=OFS=","} {gsub(/<pattern>/,"<replacement>"); print }' <filename>
 # replace in column
 awk 'BEGIN{FS=OFS=","} {gsub(/<pattern>/,"<replacement>",$<column>); print }' <filename>
 
+# replace in column on condition
+awk 'BEGIN{FS=OFS=","} {if(<condition>) gsub(/<pattern>/,"<replacement>",$<column>); print }' <filename>
+
 # data validation/condition
 awk -F ',' '<condition> { print }' <filename>
 
