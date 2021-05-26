@@ -64,7 +64,10 @@ awk -F ',' 'NR > 1 {print $<colNr>}' <filename> | sort | uniq -c | wc -l
 awk -F ',' 'NR!=1 {print $<colNr>}' <filename> | sort | uniq -c | sort -nr
 
 # count, sum and avg grouped by
-awk -F, 'BEGIN{print "field,count,sum,average"; print "-----,-----,---,-------"} NR>1  {sum[$<colGroupBy>]+=$<colAggregate>; count[$<colGroupBy>]++;}END{for(i in sum)printf i","count[i]","sum[i]"," "%.3f\n",sum[i]/count[i];}' <filename> | column -t -s,
+awk -F, 'BEGIN{print "field,count,sum,average"; print "-----,-----,---,-------"} NR>1  {sum[$<colGroupBy>]+=$<colAggregate>; count[$<colGroupBy>]++;}END{for(i in sum)printf i","count[i]","sum[i]"," "%.3f\n",sum[i]/count[i];}' <filename> | (sed -u 2q;  sort -n -k2 -t, -r) | column -t -s, | bat --file-name <filename>
+
+# count percentages histogram
+awk -F, 'BEGIN{print "field,count,percentage"; print "-----,-----,----------"} NR>1  {partial[$<colNr>]++; total++;}END{for(i in partial)printf i","partial[i]"," "%.3f\n",partial[i]/total;}' <filename> | (sed -u 2q;  sort -n -k2 -t, -r) | column -t -s, | bat --file-name <filename>
 
 # count types in column
 awk -F, 'BEGIN{print"type,count"; print"----,-----";} NR>1 {if( $<colNr> ~/^[0-9]+$/ ) count["number"]++; else if(  $<colNr> ~/^[:blank:]+$/  ) count["whitespace"]++; else if ( !$<colNr> ) count["NULL"]++; else count["string"]++;}END{for(i in count)print i","count[i]}' <filename> | column -t -s,
