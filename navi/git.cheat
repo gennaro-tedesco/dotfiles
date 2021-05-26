@@ -25,4 +25,4 @@ git ls-remote --tags
 git push --follow-tags
 
 # add files by pattern
-git diff --name-only | grep '<pattern>' | xargs git add
+git diff --name-only | grep '<pattern>' | xargs -n 1 -t git add

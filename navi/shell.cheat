@@ -61,8 +61,13 @@ jq 'with_entries(select(.key | in({"keyName1":1, "keyName2":1})))' <json-file>
 # query a certain key
 jq '.<key>' <json-file>
 
+# query nested subkeys
+jq '.<subkey>' <json-file>
+
 $ json-file: ls *.json
 $ key: jq 'keys[]' <json-file>
+$ subkey: jq -r '[paths | join(".")][]' <json-file> --- --map "sed 's/\([^\.]*\)/\"\\1\"/' | sed 's/\.\([0-9]\)/\[\\1\]/' | tr -d '\n'"
+
 
 % brew
 
