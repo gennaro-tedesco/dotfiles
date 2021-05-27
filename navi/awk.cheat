@@ -42,6 +42,9 @@ awk NF <filename>
 # remove duplicates
 awk -F ',' '!seen[$0]++' <filename>
 
+# remove duplicates in column
+awk -F ',' '!seen[$<colNr>]++' <filename>
+
 # print index of empty lines
 awk '!NF {print NR}' <filename>
 
