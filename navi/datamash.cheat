@@ -19,6 +19,6 @@ datamash -t, -H rmdup <column> < <filename>
 datamash -t, -s -H -g <groupBy> count <column> < <filename> | (sed -u 1q; sort -t, -k2 -n -r) | column -s, -t | bat --file-name <filename>
 
 # pivot table
-datamash -t, -s --header-in crosstab <colNr-colNr> < <filename> | sed 's/^,/ ,/' | column -s, -t | bat --file-name <filename>
+datamash -t, -s --header-in crosstab <colNr-colNr> < <filename> | sed 's/^,/ ,/;s/N\/A/0/g' | column -s, -t | bat --file-name <filename>
 
 $ filename: ls *.csv | awk '{print $NF}'
