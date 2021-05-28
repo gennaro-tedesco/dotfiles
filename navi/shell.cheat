@@ -1,3 +1,14 @@
+% head, tail
+
+# remove first line of a file
+tail -n +2 <filename>
+
+# remove last line of a file
+ghead -n -1 <filename>
+
+$ filename: echo *(^/) | tr " " "\n"
+
+
 % cut, column
 
 # select columns from tabular delimiters
