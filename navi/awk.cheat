@@ -16,7 +16,7 @@ awk '$1=$1' FS="<old>" OFS="<new>" <filename>
 awk -F ',' '$<colNr> ~/<regex>/' <filename> | xsv table | bat --file-name <filename>
 
 # exclude regex in column
-awk -F ',' '$<colNr> !~/<regex>/' <filename>
+awk -F ',' '$<colNr> !~/<regex>/' <filename> | xsv table | bat --file-name <filename>
 
 # remove all white spaces
 awk 'BEGIN{FS=OFS=","} {gsub(/[ \t]+/,""); print }' <filename>
@@ -55,7 +55,7 @@ awk -F ',' '!$<colNr>' <filename>
 awk -F ',' '$<colNr> ~/^[[:blank:]]+$/' <filename>
 
 # select row by index
-awk -F ',' 'NR==<index>' <filename>
+awk -F ',' 'NR==<index>' <filename> | bat --file-name <filename>
 
 # count lines that match pattern
 awk -F ',' '/<pattern>/{++count} END {print count}' <filename>
@@ -72,4 +72,4 @@ awk -F, 'BEGIN{print "field,count,sum,average"; print "-----,-----,---,-------"}
 # count percentages histogram
 awk -F, 'BEGIN{print "field,count,percentage"; print "-----,-----,----------"} NR>1  {partial[$<colNr>]++; total++;}END{for(i in partial)printf i","partial[i]"," "%.3f\n",partial[i]/total;}' <filename> | (sed -u 2q;  sort -n -k2 -t, -r) | column -t -s, | bat --file-name <filename>
 
-$ filename: ls *.csv | awk '{print $NF}'
+$ filename: echo *(^/) | tr " " "\n"

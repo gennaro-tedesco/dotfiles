@@ -26,10 +26,10 @@ $ filename: echo *(^/) | tr " " "\n"
 % sed
 
 # select row by index
-sed -n '<index>p' <filename>
+sed -n '<index>p' <filename> | bat --file-name <filename>
 
 # slice file between two lines
-sed -n '<start>,<end>p' <filename>
+sed -n '<start>,<end>p' <filename> | bat --file-name <filename>
 
 # replace within file
 sed -i 's/<original-text>/<new-text>/g' <filename>

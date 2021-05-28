@@ -3,9 +3,6 @@
 # count rows
 xsv count <filename>
 
-# select row by index
-xsv slice -n -i <index> <filename>
-
 # slice csv between two row indices
 xsv slice -n -s <start> -e <end> <filename>
 
