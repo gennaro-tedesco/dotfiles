@@ -113,3 +113,9 @@ curl -s -H "Content-Type: application/json" -X POST -d @path/to/json/body "$APP_
 
 # man page of bash conditionals
 man test
+
+
+% find
+
+# count files by extension
+find . -type f | grep -v '.git/' | awk -F'/' '{print $NF}' | awk -F'.' '  {print $NF}' | sort | uniq -c | sort -nr
