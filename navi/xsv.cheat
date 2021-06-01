@@ -12,6 +12,9 @@ xsv sample <N> <filename>
 # display file's headers
 xsv headers <filename>
 
+# find column number of header
+xsv headers <filename> | grep -i <header>
+
 # display frequency table from file
 xsv frequency -s <column> <filename> -l 0 | xsv table | bat --file-name <filename>
 
