@@ -15,6 +15,9 @@ datamash -H rmdup 1 < <filename>
 # remove duplicates in column
 datamash -t, -H rmdup <column> < <filename>
 
+# count distinct
+datamash -t, -s -H countunique <column> < <filename>
+
 # count frequencies of values in column
 datamash -t, -s -H -g <groupBy> count <column> < <filename> | (sed -u 1q; sort -t, -k2 -n -r) | sed 's/GroupBy(\(\w*\))/\1/g;s/(\w*)//g' | column -s, -t | bat --file-name <filename>
 
