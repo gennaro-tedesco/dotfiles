@@ -19,7 +19,7 @@ datamash -t, -H rmdup <column> < <filename>
 datamash -t, -s -H countunique <column> < <filename>
 
 # count frequencies of values in column
-datamash -t, -s -H -g <groupBy> count <column> < <filename> | (sed -u 1q; sort -t, -k2 -n -r) | sed 's/GroupBy(\(\w*\))/\1/g;s/(\w*)//g' | column -s, -t | bat --file-name <filename>
+datamash -t, -s -H -g <groupBy> count <column> < <filename> | (sed -u 1q; sort -t, -k2 -n -r) | sed 's/GroupBy(\(\w*\))/\1/g;s/(\w*)//g' | sed 's/^,/ ,/' | column -s, -t | bat --file-name <filename>
 
 # pivot table
 datamash -t, -s --header-in crosstab <colNr-colNr> < <filename> | sed 's/^,/ ,/;s/N\/A/0/g' | column -s, -t | bat --file-name <filename>
