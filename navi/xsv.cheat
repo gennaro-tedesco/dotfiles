@@ -15,7 +15,7 @@ xsv headers <filename>
 # find column number of header
 xsv headers <filename> | grep -i <header>
 
-# display frequency table from file
+# count frequencies of values in column
 xsv frequency -s <column> <filename> -l 0 | xsv table | bat --file-name <filename>
 
 # search regex in column
