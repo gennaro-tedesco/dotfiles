@@ -4,7 +4,7 @@
 datamash transpose < <filename>
 
 # stats grouped by
-datamash -t, -s -H -g <groupBy> count <column> min <column> max <column> sum <column> mean <column> sstdev <column> < <filename> | (sed -u 1q;  sort -n -k1 -t,) | column -t -s,  | bat --file-name <filename>
+datamash -t, -s -H -g <colGroupBy> count <colAggregate> min <colAggregate> max <colAggregate> mean <colAggregate> sstdev <colAggregate> < <filename> | (sed -u 1q;  sort -n -k1 -t,) | sed 's/GroupBy(\(\w*\))/\1/g' | sed 's/^,/ ,/' | column -t -s,  | bat --file-name <filename>
 
 # validate shape of file
 datamash -t, check < <filename>
@@ -19,7 +19,7 @@ datamash -t, -H rmdup <column> < <filename>
 datamash -t, -s -H countunique <column> < <filename>
 
 # count frequencies of values in column
-datamash -t, -s -H -g <groupBy> count 1 < <filename> | (sed -u 1q; sort -t, -k2 -n -r) | sed 's/GroupBy(\(\w*\))/\1/g;s/(\w*)//g' | sed 's/^,/ ,/' | column -s, -t | bat --file-name <filename>
+datamash -t, -s -H -g <colGroupBy> count 1 < <filename> | (sed -u 1q; sort -t, -k2 -n -r) | sed 's/GroupBy(\(\w*\))/\1/g;s/(\w*)//g' | sed 's/^,/ ,/' | column -s, -t | bat --file-name <filename>
 
 # pivot table
 datamash -t, -s --header-in crosstab <colNr-colNr> < <filename> | sed 's/^,/ ,/;s/N\/A/0/g' | column -s, -t | bat --file-name <filename>
