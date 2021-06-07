@@ -72,4 +72,4 @@ awk -F, 'BEGIN{print "field,count,sum,average"; print "-----,-----,---,-------"}
 # count percentages histogram
 awk -F, 'BEGIN{print "field,count,percentage"; print "-----,-----,----------"} NR>1  {partial[$<colNr>]++; total++;}END{for(i in partial)printf i","partial[i]"," "%.3f\n",partial[i]/total;}' <filename> | (sed -u 2q;  sort -n -k2 -t, -r) | column -t -s, | bat --file-name <filename>
 
-$ filename: echo *(^/) | tr " " "\n"
+$ filename: ls *.csv | awk '{print $NF}'
