@@ -13,34 +13,34 @@ xsv sample <N> <filename>
 xsv headers <filename>
 
 # find column number of header
-xsv headers <filename> | grep -i <header>
+xsv headers <filename> | grep -i <column>
 
 # count frequencies of values in column
-xsv frequency -s <column> <filename> -l 0 | xsv table | bat --file-name <filename>
+filename="<filename>"; xsv frequency -s <column> "$filename" -l 0 | xsv table | bat --file-name "$filename"
 
 # search regex in column
-xsv search "<pattern>" -s "<column>" <filename> | xsv table | bat --file-name <filename>
+filename="<filename>"; xsv search "<pattern>" -s "<column>" "$filename" | xsv table | bat --file-name "$filename"
 
 # exclude regex in column
-xsv search "<pattern>" -s "<column>" -v <filename> | xsv table | bat --file-name <filename>
+filename="<filename>"; xsv search "<pattern>" -s "<column>" -v <filename> | xsv table | bat --file-name <filename>
 
 # remove rows containing white spaces in column
-xsv search -s <column> '^\S*$' <filename>
+filename="<filename>"; xsv search -s <column> '^\S*$' "$filename"
 
 # select rows containing white spaces in column
-xsv search -s <column> '\s' <filename>
+filename="<filename>"; xsv search -s <column> '\s' "$filename"
 
 # calculate stats from file
 xsv stats <filename> | awk -F ',' 'NR==1; ($2=="Float" || $2=="Integer") {print}' | gcut --complement -d, -f2 | xsv table
 
 # select columns from file
-xsv select '<column>' <filename>
+filename="<filename>"; xsv select '<column>' "$filename"
 
 # omit columns from file
-xsv select '!<column>' <filename>
+filename="<filename>"; xsv select '!<column>' "$filename"
 
 # sort file by columns
-xsv sort -s '<column>' -R <filename> | column -s, -t | bat --file-name <filename>
+filename="<filename>"; xsv sort -s '<column>' -R "$filename" | column -s, -t | bat --file-name "$filename"
 
 $ filename: ls *.csv | awk '{print $NF}'
 $ column: xsv headers <filename> | awk '{print $2}'
