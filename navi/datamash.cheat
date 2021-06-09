@@ -13,10 +13,10 @@ datamash -t, check < <filename>
 datamash -H rmdup 1 < <filename>
 
 # remove duplicates in column
-: <filename>; datamash -t, -H rmdup <column> < <filename>
+: <filename>; datamash -t, -H rmdup <colNr> < <filename>
 
 # count distinct
-: <filename>; datamash -t, -s -H countunique <column> < <filename>
+: <filename>; datamash -t, -s -H countunique <colNr> < <filename>
 
 # count frequencies of values in column
 : <filename>; datamash -t, -s -H -g <colGroupBy> count 1 < <filename> | (sed -u 1q; sort -t, -k2 -n -r) | sed 's/GroupBy(\(\w*\))/\1/g;s/(\w*)//g' | sed 's/^,/ ,/' | column -s, -t | bat --file-name <filename>
@@ -25,4 +25,6 @@ datamash -H rmdup 1 < <filename>
 : <filename>; datamash -t, -s --header-in crosstab <colNr-colNr> < <filename> | sed 's/^,/ ,/;s/N\/A/0/g' | column -s, -t | bat --file-name <filename>
 
 $ filename: ls *.csv | awk '{print $NF}'
-$ column: xsv headers <filename> | awk '{print $2}'
+$ colNr: xsv headers <filename> --- --column 1
+$ colGroupBy: xsv headers <filename> --- --column 1
+$ colAggregate: xsv headers <filename> --- --column 1
