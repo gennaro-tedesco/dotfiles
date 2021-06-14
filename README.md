@@ -15,22 +15,7 @@
 
 
 # Requirements
-I am making use of the following system programs:
-
-- vifm: https://vifm.info/
-- bat: https://github.com/sharkdp/bat
-- exa: https://the.exa.website/
-- fzf: https://github.com/junegunn/fzf
-- visidata: https://www.visidata.org/install/
-- jq: https://stedolan.github.io/jq/
-- glow: https://github.com/charmbracelet/glow
-- zenith: https://github.com/bvaisvil/zenith
-- dust: https://github.com/bootandy/dust
-- navi: https://github.com/denisidoro/navi
-- ripgrep: https://github.com/BurntSushi/ripgrep
-- delta: https://github.com/dandavison/delta
-
-Most of them are necessary as they are included in `zsh` functions as well as `neovim` plugins.
+I am making use of a certain number of system programs that you can find in [`REQUIREMENTS.md`](https://github.com/gennaro-tedesco/dotfiles/blob/master/REQUIREMENTS.md); some of them are necessary as they are included in `zsh` functions as well as `neovim` plugins and `navi` commands, whereas some others are optional.
 
 # Installation
 Clone the repository
@@ -45,6 +30,9 @@ make install-nvim plug=1 # <-- plug=1 installs plugins too, omit otherwise
 
 # to install zsh configurations
 make install-zsh
+
+# to install navi cheatsheets
+make install-navi
 ```
 and so forth.
 
