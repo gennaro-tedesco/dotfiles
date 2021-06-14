@@ -43,18 +43,6 @@ sed -i '/<pattern>/d' <filename>
 $ filename: echo *(^/) | tr " " "\n"
 
 
-% ssh
-
-# Access via ssh
-ssh username-remote
-
-# Copy file from server to local
-scp username-remote:file-to-send where-to-put
-
-# Copy file from local to server
-scp file-to-send username-remote:where-to-put
-
-
 % env file
 
 # export .env file
@@ -70,20 +58,14 @@ jq -r '[paths | join(".")]' <json-file>
 jq 'with_entries(select(.key | in({"keyName1":1, "keyName2":1})))' <json-file>
 
 # query a certain key
-jq '.<key>' <json-file>
+: <json-file>; jq '.<key>' <json-file>
 
 # query nested subkeys
-jq '.<subkey>' <json-file>
+: <json-file>; jq '.<subkey>' <json-file>
 
 $ json-file: ls *.json
 $ key: jq 'keys[]' <json-file>
 $ subkey: jq -r '[paths | join(".")][]' <json-file> --- --map "sed 's/\([^\.]*\)/\"\\1\"/' | sed 's/\.\([0-9]\)/\[\\1\]/' | tr -d '\n'"
-
-
-% brew
-
-# update out of date packages
-brew upgrade $(brew outdated | fzf)
 
 
 % tr
