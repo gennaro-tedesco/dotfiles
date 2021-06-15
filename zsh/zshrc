@@ -40,6 +40,7 @@ export FZF_DEFAULT_OPTS='--reverse --border -e --height=50% --padding=1'
 export FZF_DEFAULT_COMMAND="rg --files --hidden -g !.git/"
 export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
 export MACCHINA_CONF="$HOME/.config/macchina/macchina.toml"
+export LS_COLORS="$(vivid generate solarized-dark)"
 
 # exporting go paths
 export GOPATH=$HOME/go

@@ -23,7 +23,7 @@ Clone the repository
 git clone git@github.com:gennaro-tedesco/dotfiles.git
 cd dotfiles
 ```
-Use the [`Makefile`](https://github.com/gennaro-tedesco/dotfiles/blob/master/Makefile) to install the programs you want:
+Use the [`Makefile`](https://github.com/gennaro-tedesco/dotfiles/blob/master/Makefile) to install the programs configurations you want:
 ```
 # to install nvim configurations
 make install-nvim plug=1 # <-- plug=1 installs plugins too, omit otherwise
