@@ -38,7 +38,7 @@ list_man() {
 # list env variables
 list_env() {
   local var
-  var=$(printenv | cut -d= -f1 | fzf) && echo "${(P)var}"
+  var=$(printenv | cut -d= -f1 | fzf) && echo "$var=${(P)var}"
 }
 
 # paginate help
