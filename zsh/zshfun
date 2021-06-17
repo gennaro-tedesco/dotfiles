@@ -27,23 +27,19 @@ fd() {
 }
 
 
-# fzf checkout git branches
-fb() {
-  local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-		   fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-}
-
-
 # list man pages
-preview_man() {
+list_man() {
   local manlist manpage
   manlist=$(man -k . 2>/dev/null | rg "\([1|4]\)" | awk 'BEGIN{FS=OFS="- "} {gsub(/\([[:digit:]]\)/,"",$1); print }' | awk '!seen[$0]++' | fzf) &&
   manpage=$(echo "$manlist" | awk -F' |,' '{print $1}') && man "$manpage"
 }
 
+
+# list env variables
+list_env() {
+  local var
+  var=$(printenv | cut -d= -f1 | fzf) && echo "${(P)var}"
+}
 
 # paginate help
 help() { "$@" --help | bat -l man -p ; }
