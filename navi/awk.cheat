@@ -48,10 +48,13 @@ awk -F ',' '!seen[$<colNr>]++' <filename>
 # print index of empty lines
 awk '!NF {print NR}' <filename>
 
-# check null fields
+# select null in column
 awk -F ',' '!$<colNr>' <filename>
 
-# check for only spaces
+# exclude null in column
+awk -F ',' '$<colNr>' <filename>
+
+# search for only spaces in column
 awk -F ',' '$<colNr> ~/^[[:blank:]]+$/' <filename>
 
 # select row by index
