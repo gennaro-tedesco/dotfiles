@@ -60,7 +60,7 @@ alias zenith="zenith -d 0 -n 0"
 alias du="dust"
 alias grep="rg"
 alias jd="json_diff"
-alias printenv="printenv | column -t -s= | fzf | awk '{print \$1\"=\"\$2}'"
+alias printenv="printenv | awk -F'=' '{printf(\"%s %2s\",\$1,\$2\"\n\")}'  | fzf | awk '{print \$1\"=\"\$2}'"
 
 unalias z 2> /dev/null
 z() {
