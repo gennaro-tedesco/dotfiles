@@ -67,7 +67,7 @@ awk -F ',' '/<pattern>/{++count} END {print count}' <filename>
 : <filename>; awk -F ',' 'NR > 1 {print $<colNr>}' <filename> | sort | uniq -c | wc -l
 
 # count frequencies of values in column
-: <filename>; awk -F ',' 'NR!=1 {print $<colNr>}' <filename> | sort | uniq -c | sort -nr
+: <filename>; awk -F ',' 'NR!=1 {print $<colNr>}' <filename> | sort | uniq -c | sort -nr | bat --file-name <filename>
 
 # stats grouped by
 : <filename>; awk -F, 'BEGIN{print "field,count,sum,average"; print "-----,-----,---,-------"} NR>1  {sum[$<colGroupBy>]+=$<colAggregate>; count[$<colGroupBy>]++;}END{for(i in sum)printf i","count[i]","sum[i]"," "%.3f\n",sum[i]/count[i];}' <filename> | (sed -u 2q;  sort -n -k2 -t, -r) | column -t -s, | bat --file-name <filename>
