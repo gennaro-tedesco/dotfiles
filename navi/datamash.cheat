@@ -24,7 +24,7 @@ datamash -H rmdup 1 < <filename>
 # pivot table
 : <filename>; datamash -t, -s --header-in crosstab <colNr-colNr> < <filename> | sed 's/^,/ ,/;s/N\/A/0/g' | column -s, -t | bat --file-name <filename>
 
-$ filename: ls *.csv | awk '{print $NF}'
+$ filename: find . -type f -iname '*.csv' | sed 's/^\.\///g'
 $ colNr: xsv headers <filename> --- --column 1
 $ colGroupBy: xsv headers <filename> --- --column 1
 $ colAggregate: xsv headers <filename> --- --column 1

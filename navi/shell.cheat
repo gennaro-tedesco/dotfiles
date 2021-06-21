@@ -63,7 +63,7 @@ jq 'with_entries(select(.key | in({"keyName1":1, "keyName2":1})))' <json-file>
 # query nested subkeys
 : <json-file>; jq '.<subkey>' <json-file>
 
-$ json-file: ls *.json
+$ json-file: find . -type f -iname '*.json' | sed 's/^\.\///g'
 $ key: jq 'keys[]' <json-file>
 $ subkey: jq -r '[paths | join(".")][]' <json-file> --- --map "sed 's/\([^\.]*\)/\"\\1\"/' | sed 's/\.\([0-9]\)/\[\\1\]/' | tr -d '\n'"
 
@@ -88,7 +88,9 @@ $ filename: echo *(^/) | tr " " "\n"
 % curl
 
 # get request with json body
-curl -s -H "Content-Type: application/json" -X POST -d @path/to/json/body "$APP_HOST:$APP_PORT/endpoint" | jq
+curl -s -H "Content-Type: application/json" -X POST -d @<body> "$APP_HOST:$APP_PORT/endpoint" | jq
+
+$ body: find . -type f -iname '*.json' | sed 's/^\.\///g'
 
 
 %man
