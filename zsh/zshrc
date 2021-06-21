@@ -61,6 +61,7 @@ alias du="dust"
 alias grep="rg"
 alias jd="json_diff"
 alias env="list_env"
+alias weather="curl wttr.in"
 
 unalias z 2> /dev/null
 z() {
