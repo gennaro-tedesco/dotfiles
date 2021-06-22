@@ -77,3 +77,8 @@ json_diff(){
 	delta <(jq -S . $1) <(jq -S . $2)
 }
 
+
+# curl weather
+weather(){
+	curl wttr.in/$1
+}
