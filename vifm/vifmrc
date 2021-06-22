@@ -94,11 +94,7 @@ set statusline="  Hint: %z%= %A %10u %15s"
 " %D the other window directory name.
 " %m run the command in a menu window
 
-command! df df -h %m 2> /dev/null
-command! diff vim -d %f %F
-command! zip zip -r %f.zip %f
-command! run !! ./%f
-command! make !!make %a
+command! diff delta %f %F
 command! mkcd :mkdir %a | cd %a
 command! reload :write | restart full
 command! du :if &previewprg == '' | set previewprg='dust -d1 -r ' | view! | else | set previewprg='' | view | endif
