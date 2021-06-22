@@ -9,7 +9,6 @@ POWERLEVEL9K_MODE="awesome-patched"
 # list of plugins to load
 plugins=(
 		auto-ls
-		fzf-tab
 		golang
 		vi-mode
 		zsh-interactive-cd
@@ -17,6 +16,7 @@ plugins=(
 		zsh-syntax-highlighting
 		zsh_reload
 		z
+		fzf-tab
 		)
 unsetopt autocd
 
