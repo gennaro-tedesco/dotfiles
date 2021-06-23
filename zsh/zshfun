@@ -83,5 +83,5 @@ json_diff(){
 
 # curl weather
 weather(){
-	curl wttr.in/$1
+	[[ $# -eq 0 ]] && curl wttr.in/Berlin || curl wttr.in/$1
 }
