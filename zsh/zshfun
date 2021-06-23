@@ -30,15 +30,18 @@ fd() {
 # list man pages
 list_man() {
   local manlist manpage
-  manlist=$(man -k . 2>/dev/null | rg "\([1|4]\)" | awk 'BEGIN{FS=OFS="- "} {gsub(/\([[:digit:]]\)/,"",$1); print }' | awk '!seen[$0]++' | fzf) &&
-  manpage=$(echo "$manlist" | awk -F' |,' '{print $1}') && man "$manpage"
+  manlist=$(man -k . 2>/dev/null | awk 'BEGIN {FS=OFS="- "} /\([1|4]\)/ {gsub(/\([0-9]\)/, "", $1); if (!seen[$0]++) { print }}' | fzf) \
+    && man "$(echo "$manlist" | awk -F' |,' '{print $1}')" \
+    && unset manlist
 }
 
 
 # list env variables
 list_env() {
   local var
-  var=$(printenv | cut -d= -f1 | fzf) && echo "$var=${(P)var}"
+  var=$(printenv | cut -d= -f1 | fzf) \
+    && echo "$var=$(printenv "$var")" \
+    && unset var
 }
 
 # paginate help
