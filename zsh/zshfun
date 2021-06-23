@@ -83,5 +83,7 @@ json_diff(){
 
 # curl weather
 weather(){
-	[[ $# -eq 0 ]] && curl wttr.in/Berlin || curl wttr.in/$1
+	local location
+	[[ $# -eq 0 ]] && location="Berlin" || location=$1
+	curl wttr.in/${location}\?F
 }
