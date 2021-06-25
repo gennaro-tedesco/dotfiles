@@ -1,8 +1,5 @@
 % git
 
-# Abort the current conflict resolution process, and try to reconstruct the pre-merge state.
-git merge --abort
-
 # checkout a branch from a fork
 git checkout -b <forked_branch> && git pull origin pull/<pr_number>/head
 
