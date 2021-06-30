@@ -36,7 +36,7 @@ export EDITOR="nvim"
 export LANG=en_US.UTF-8
 export LC_CTYPE="en_US.UTF-8"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export FZF_DEFAULT_OPTS='--reverse --border -e --height=50% --padding=1'
+export FZF_DEFAULT_OPTS='--reverse --border -e --height=50% --padding=1 --preview-window=hidden'
 export FZF_DEFAULT_COMMAND="rg --files --hidden -g !.git/"
 export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
 export MACCHINA_CONF="$HOME/.config/macchina/macchina.toml"

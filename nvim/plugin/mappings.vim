@@ -86,7 +86,7 @@ nnoremap <leader>l :ALEToggle<CR>
 
 " buffers and files browsing
 nnoremap <C-n> :FloatermNew vifm<CR>
-nnoremap <C-p> :call fzf#vim#files(system('git rev-parse --show-toplevel 2> /dev/null')[:-2], {'options': '--prompt "> "'})<CR>
+nnoremap <C-p> :call fzf#vim#files(system('git rev-parse --show-toplevel 2> /dev/null')[:-2], {'options': '--prompt "files:"'})<CR>
 nnoremap <C-b> :call fzf#vim#buffers({'options': '--prompt "buffers:"'})<CR>
 nnoremap <C-h> :Grepper<CR>
 nnoremap q/ :call fzf#vim#search_history({'options': '--prompt "search:"', 'right': '40'})<CR>
