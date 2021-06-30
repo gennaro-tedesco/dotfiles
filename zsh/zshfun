@@ -15,7 +15,7 @@ mkcd () {
 
 # fzf browse files
 ff() (
-  IFS=$'\n' files=($(fzf --preview 'bat --style=numbers --color=always {} | head -500' --query="$1" --multi --select-1 --exit-0))
+  IFS=$'\n' files=($(fzf --preview 'bat --style=numbers --color=always {} | head -500' --query="$1" --multi --select-1 --exit-0 --prompt 'files:'))
   [[ -n "$files" ]] && ${EDITOR} "${files[@]}"
 )
 
@@ -23,14 +23,14 @@ ff() (
 # fzf browse directories and cd into them
 fd() {
   local dir
-  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+  dir=$(find . -not -path '*/\.*' -type d 2> /dev/null | fzf --prompt 'folders:' +m) && cd "$dir"
 }
 
 
 # list man pages
 list_man() {
   local manlist manpage
-  manlist=$(man -k . 2>/dev/null | awk 'BEGIN {FS=OFS="- "} /\([1|4]\)/ {gsub(/\([0-9]\)/, "", $1); if (!seen[$0]++) { print }}' | fzf) \
+  manlist=$(man -k . 2>/dev/null | awk 'BEGIN {FS=OFS="- "} /\([1|4]\)/ {gsub(/\([0-9]\)/, "", $1); if (!seen[$0]++) { print }}' | fzf --prompt 'man:') \
     && man "$(echo "$manlist" | awk -F' |,' '{print $1}')" \
     && unset manlist
 }
@@ -39,7 +39,7 @@ list_man() {
 # list env variables
 list_env() {
   local var
-  var=$(printenv | cut -d= -f1 | fzf) \
+  var=$(printenv | cut -d= -f1 | fzf --prompt 'env:') \
     && echo "$var=$(printenv "$var")" \
     && unset var
 }
