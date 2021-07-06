@@ -42,7 +42,7 @@ nnoremap J Jx
 " close all splits/windows except the one in focus
 nnoremap <leader>q <C-w>o
 
-" copy in terminal mode (must be in normal mode in terminal)
+" paste in terminal mode (must be in normal mode in terminal)
 tnoremap pp <C-w>"+pa
 
 " replace a word with yanked text
@@ -54,6 +54,9 @@ vnoremap <leader>w ~
 
 " copy entire line without newline character
 nnoremap Y ^yg_
+
+" copy file name to the clipboard
+nnoremap yf :let @+=expand("%")<CR>
 
 " copy text with line numbers and file name on top
 vnoremap <leader>y :call functions#CompleteYank()<CR>
