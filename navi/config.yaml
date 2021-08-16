@@ -14,7 +14,7 @@ finder:
   command: fzf
 
 cheats:
-  path: /Users/gennaro/.config/navi
+  path: ~/.config/navi
 
 # search:
   # tags: git,!checkout # equivalent to the --tag-rules option
