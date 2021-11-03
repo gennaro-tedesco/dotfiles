@@ -82,5 +82,8 @@ man test
 
 % find
 
+# find files by extension
+find . -type f -name '*.py'
+
 # count files by extension
 find . -type f | grep -v '.git/' | awk -F'/' '{print $NF}' | awk -F'.' '  {print $NF}' | sort | uniq -c | sort -nr
