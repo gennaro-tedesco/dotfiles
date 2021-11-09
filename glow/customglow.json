@@ -40,10 +40,10 @@
     "format": "\n--------\n"
   },
   "item": {
-    "block_prefix": "○ "
+    "block_prefix": "● "
   },
   "enumeration": {
-    "block_prefix": ". "
+    "block_prefix": ") "
   },
   "task": {
     "ticked": "[✓] ",
