@@ -72,5 +72,11 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require('neoscroll').setup()
+
+require('bqf').setup({
+	func_map = {
+		openc = '<CR>'
+    },
+})
 EOF
 
