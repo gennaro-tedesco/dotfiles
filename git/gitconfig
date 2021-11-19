@@ -27,7 +27,12 @@
 # alias
 [alias]
 	logs = log --abbrev-commit --oneline --stat --format=format:'%C(bold blue)%h%C(reset) - %C(green)%ar%C(reset): %s %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
-	check= "!f() { if [ $# -eq 0 ]; then echo 'Filename missing!'; else tracked=$(git ls-files ${1}); if [[ -z ${tracked} ]]; then echo 'File not tracked'; else echo 'File tracked'; fi; fi;  };  f"
 	s = status -s
 	c = checkout -- .
 	d = diff --name-only
+	qm = "!f() { git checkout ${1}; git merge develop; git push origin ${1}; git checkout develop; }; f"
+	check = "!f() { \
+		[ ! -f ${1} ] && echo 'file does not exist' && exit || tracked=$(git ls-files ${1}); \
+		[ -z ${tracked} ] && echo 'file not tracked' || echo 'file tracked'; \
+	};  f"
+
