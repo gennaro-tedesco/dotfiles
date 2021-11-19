@@ -32,7 +32,7 @@
 	d = diff --name-only
 	qm = "!f() { git checkout ${1}; git merge develop; git push origin ${1}; git checkout develop; }; f"
 	check = "!f() { \
-		[ ! -f ${1} ] && echo 'file does not exist' && exit || tracked=$(git ls-files ${1}); \
+		[ ! -f ${1} ] && { echo 'file does not exist' ; exit; } || tracked=$(git ls-files ${1}); \
 		[ -z ${tracked} ] && echo 'file not tracked' || echo 'file tracked'; \
 	};  f"
 
