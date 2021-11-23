@@ -52,13 +52,14 @@ let g:ale_linters = {
 			\ 'go': ['golint'],
 			\}
 let g:ale_fixers = {
-			\ 'python': ['black'],
+			\ 'python': ['black', 'isort'],
 			\ 'lua': ['luafmt', 'trim_whitespace'],
 			\ 'sh': ['trim_whitespace'],
 			\ 'dockerfile': ['trim_whitespace'],
 			\ 'yaml': ['prettier', 'trim_whitespace'],
 			\ 'go': ['gofmt', 'goimports', 'trim_whitespace'],
 			\}
+let g:ale_python_isort_options = '--profile black'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
