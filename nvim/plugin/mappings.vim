@@ -37,7 +37,6 @@ vnoremap <PageDown> j}k
 nnoremap <Tab> <C-w>w
 nnoremap <S-Tab> <C-w>W
 nnoremap <BS> <C-o>
-nnoremap J Jx
 
 " close all splits/windows except the one in focus
 nnoremap <leader>q <C-w>o
@@ -48,12 +47,15 @@ tnoremap pp <C-w>"+pa
 " replace a word with yanked text
 nnoremap rw viwpyiw
 
+" replace till the end of line with yanked text
+nnoremap rl Pl"_D
+
 " toggle capitalisation
 nnoremap <leader>w g~iw
 vnoremap <leader>w ~
 
-" copy entire line without newline character
-nnoremap Y ^yg_
+" copy till the end of the line
+nnoremap Y yg_
 
 " copy file name to the clipboard
 nnoremap yf :let @+=expand("%")<CR>
@@ -75,8 +77,8 @@ nnoremap R
 nnoremap C :%s/<c-r>=expand("<cword>")<cr>//ng<CR>
 
 " blink word under cursor in search mode
-nnoremap n n:call functions#BlinkWord(0.3)<CR>
-nnoremap N N:call functions#BlinkWord(0.3)<CR>
+nnoremap n nzz:call functions#BlinkWord(0.3)<CR>
+nnoremap N Nzz:call functions#BlinkWord(0.3)<CR>
 
 " code navigation (with Coc) and linting
 nmap <silent> gd <Plug>(coc-definition)
