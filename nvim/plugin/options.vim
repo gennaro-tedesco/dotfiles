@@ -57,6 +57,7 @@ let g:ale_fixers = {
 			\ 'sh': ['trim_whitespace'],
 			\ 'dockerfile': ['trim_whitespace'],
 			\ 'yaml': ['prettier', 'trim_whitespace'],
+			\ 'tex': ['latexindent'],
 			\ 'go': ['gofmt', 'goimports', 'trim_whitespace'],
 			\}
 let g:ale_python_isort_options = '--profile black'
