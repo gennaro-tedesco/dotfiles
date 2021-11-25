@@ -38,6 +38,7 @@ Plug 'ervandew/supertab'
 Plug 'gennaro-tedesco/nvim-commaround'
 Plug 'gennaro-tedesco/nvim-peekup'
 Plug 'gennaro-tedesco/nvim-jqx'
+Plug 'gennaro-tedesco/nvim-dvc'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -78,5 +79,7 @@ require('bqf').setup({
 		openc = '<CR>'
     },
 })
+
+require('nvim-jqx.config').use_quickfix = false
 EOF
 

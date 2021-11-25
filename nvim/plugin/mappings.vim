@@ -98,6 +98,7 @@ nnoremap q/ :call fzf#vim#search_history({'options': '--prompt "search:"', 'righ
 nnoremap q: :call fzf#vim#command_history({'options': '--prompt "cmd:"', 'right': '40'})<CR>
 nnoremap qh :call fzf#vim#helptags({'options': '--prompt "help:"','down': '15'})<CR>
 nnoremap <silent> <C-q> :call functions#ToggleQF()<CR>
+nnoremap <silent> <C-l> :call functions#ToggleLL()<CR>
 
 " git remappings
 nnoremap <leader>gs :Git<CR>

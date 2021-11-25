@@ -72,3 +72,14 @@ function! functions#ToggleQF() abort
 
 	copen
 endfunction
+
+function! functions#ToggleLL() abort
+	for i in range(1, winnr('$'))
+        if getbufvar(winbufnr(i), '&buftype') == 'quickfix'
+            lclose
+            return
+        endif
+    endfor
+
+	lopen
+endfunction
