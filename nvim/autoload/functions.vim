@@ -70,6 +70,10 @@ function! functions#ToggleQF() abort
         endif
     endfor
 
+	if getqflist() == []
+		echo "qf list empty"
+		return
+	endif
 	copen
 endfunction
 
@@ -81,5 +85,9 @@ function! functions#ToggleLL() abort
         endif
     endfor
 
+	if getloclist(0) == []
+		echo "loc list empty"
+		return
+	endif
 	lopen
 endfunction
