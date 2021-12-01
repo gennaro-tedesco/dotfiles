@@ -54,9 +54,6 @@ nnoremap rl Pl"_D
 nnoremap <leader>w g~iw
 vnoremap <leader>w ~
 
-" copy till the end of the line
-nnoremap Y yg_
-
 " copy file name to the clipboard
 nnoremap yf :let @+=expand("%")<CR>
 
