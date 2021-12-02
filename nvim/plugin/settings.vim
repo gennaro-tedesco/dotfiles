@@ -37,7 +37,7 @@ set clipboard+=unnamed
 set autoindent noexpandtab tabstop=4 shiftwidth=4
 
 " search options
-set inccommand=split
+set inccommand=nosplit
 set ignorecase
 set smartcase
 set hlsearch
