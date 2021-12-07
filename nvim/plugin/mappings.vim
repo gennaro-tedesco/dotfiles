@@ -71,7 +71,7 @@ nnoremap R
   \<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
 " count all occurrences of word under cursor
-nnoremap C :%s/<c-r>=expand("<cword>")<cr>//ng<CR>
+nnoremap * *:%s/<c-r>=expand("<cword>")<cr>//ng<CR>
 
 " blink word under cursor in search mode
 nnoremap n nzz:call functions#BlinkWord(0.3)<CR>
