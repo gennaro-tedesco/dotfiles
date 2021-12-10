@@ -47,7 +47,7 @@ let g:ale_linters = {
 			\ 'lua': ['luacheck'],
 			\ 'dockerfile': ['hadolint'],
 			\ 'sh': ['shellcheck'],
-			\ 'latex': ['lacheck'],
+			\ 'tex': ['lacheck'],
 			\ 'vim': ['vint'],
 			\ 'go': ['golint'],
 			\}
@@ -58,7 +58,7 @@ let g:ale_fixers = {
 			\ 'sh': ['trim_whitespace'],
 			\ 'dockerfile': ['trim_whitespace'],
 			\ 'yaml': ['prettier', 'trim_whitespace'],
-			\ 'tex': ['latexindent'],
+			\ 'tex': ['latexindent', 'trim_whitespace'],
 			\ 'go': ['gofmt', 'goimports', 'trim_whitespace'],
 			\}
 let g:ale_python_isort_options = '--profile black'
