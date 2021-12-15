@@ -77,6 +77,9 @@ nnoremap * *:%s/<c-r>=expand("<cword>")<cr>//ng<CR>
 nnoremap n nzz:call functions#BlinkWord(0.3)<CR>
 nnoremap N Nzz:call functions#BlinkWord(0.3)<CR>
 
+" insert hyperlink markdown at current word
+inoremap lll <Esc>bi[<Esc>A]()<Left>
+
 " code navigation (with Coc) and linting
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
