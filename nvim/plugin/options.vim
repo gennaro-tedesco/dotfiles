@@ -56,7 +56,7 @@ let g:ale_fixers = {
 			\ 'python': ['black', 'isort'],
 			\ 'lua': ['lua-format', 'trim_whitespace'],
 			\ 'json': ['jq'],
-			\ 'sh': ['trim_whitespace'],
+			\ 'sh': ['shfmt', 'trim_whitespace'],
 			\ 'dockerfile': ['trim_whitespace'],
 			\ 'yaml': ['prettier', 'trim_whitespace'],
 			\ 'tex': ['latexindent', 'trim_whitespace'],
