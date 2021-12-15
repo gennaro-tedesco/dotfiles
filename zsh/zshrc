@@ -59,6 +59,7 @@ alias zenith="zenith -d 0 -n 0"
 alias du="dust"
 alias jd="json_diff"
 alias env="list_env"
+alias src="exec zsh"
 
 unalias z 2> /dev/null
 z() {

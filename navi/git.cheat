@@ -12,12 +12,6 @@ git branch -r | awk -F/ '/<pattern>/{print $2}' | xargs -I {} git push origin :{
 # create an annotated tag
 git tag -a <tag_name> -m "<tag description>"
 
-# list all local tags
-git tag
-
-# list all remote tags
-git ls-remote --tags
-
 # push tag to remote
 git push --follow-tags
 

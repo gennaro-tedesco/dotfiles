@@ -77,7 +77,7 @@ json_diff(){
 	[[ ! -f $1 ]] && { echo "cannot find $1"; return}
 	[[ ! -f $2 ]] && { echo "cannot find $2"; return}
 
-	delta <(jq -S . $1) <(jq -S . $2)
+	delta =(jq -S . $1) =(jq -S . $2)
 }
 
 
