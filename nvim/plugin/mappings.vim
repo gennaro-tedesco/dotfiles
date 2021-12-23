@@ -129,7 +129,7 @@ command! -range ToTuple <line1>,<line2> call functions#ToTupleFun()
 command! TS silent! call functions#T2S()
 command! ST silent! call functions#S2T()
 command! Rf silent! call functions#ReplaceFile()
-command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
+command! EmptyRegisters for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
 command W write
 command GetL :diffget //2
 command GetR :diffget //3
