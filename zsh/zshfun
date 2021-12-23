@@ -44,6 +44,16 @@ list_env() {
     && unset var
 }
 
+
+# list go env variables
+list_goenv() {
+  local var
+  var=$(go env | cut -d= -f1 | fzf --prompt 'env:') \
+    && echo "$var=$(go env "$var")" \
+    && unset var
+}
+
+
 # paginate help
 help() { "$@" --help | bat -l man -p ; }
 
