@@ -39,7 +39,7 @@ list_man() {
 # list env variables
 list_env() {
   local var
-  var=$(printenv | cut -d= -f1 | fzf --prompt 'env:') \
+  var=$(printenv | cut -d= -f1 | fzf --prompt 'env:' --preview-window='right:50%:nohidden:wrap', --preview='printenv {}') \
     && echo "$var=$(printenv "$var")" \
     && unset var
 }
@@ -48,7 +48,7 @@ list_env() {
 # list go env variables
 list_goenv() {
   local var
-  var=$(go env | cut -d= -f1 | fzf --prompt 'env:') \
+  var=$(go env | cut -d= -f1 | fzf --prompt 'env:' --preview-window='right:50%:nohidden:wrap', --preview='go env {}') \
     && echo "$var=$(go env "$var")" \
     && unset var
 }
