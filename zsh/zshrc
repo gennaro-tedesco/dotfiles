@@ -87,4 +87,5 @@ z() {
 bindkey -s '^p' 'ff\n'
 bindkey -s '^n' 'vifm\n'
 bindkey -s '^[OP' 'list_man\n'
+bindkey -s '^h' 'search '
 eval "$(navi widget zsh)"

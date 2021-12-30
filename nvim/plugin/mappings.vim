@@ -21,7 +21,9 @@ nnoremap <leader>= gg=Gg;
 
 " remapping the escape key
 inoremap jj <ESC>
+vnoremap jj <ESC>
 inoremap kk <ESC>
+vnoremap kk <ESC>
 
 " easier navigation
 nnoremap E 5e

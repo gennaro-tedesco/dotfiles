@@ -54,6 +54,15 @@ list_goenv() {
 }
 
 
+# search regex in current directory
+search(){
+  [[ $# -ne 1 ]] && { echo "pass one regex argument only"; return }
+  local matching_files
+  matching_files=$(rg -l $1 | fzf --preview-window="right:50%:nohidden:wrap" --preview="rg '$1' {} --color=always")
+  [[ -n "$matching_files" ]] && ${EDITOR} "${matching_files}" -c/$1
+}
+
+
 # paginate help
 help() { "$@" --help | bat -l man -p ; }
 
