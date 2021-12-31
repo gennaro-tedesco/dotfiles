@@ -23,7 +23,7 @@ ff() (
 # fzf browse directories and cd into them
 fd() {
   local dir
-  dir=$(find . -not -path '*/\.*' -type d 2> /dev/null | fzf --prompt 'folders:' +m) && cd "$dir"
+  dir=$(find . -not -path '*/\.*' -type d 2> /dev/null | fzf --prompt 'folders:' +m --preview-window='right:50%:nohidden:wrap' --preview='exa --tree --level=2 {}') && cd "$dir"
 }
 
 

@@ -51,6 +51,7 @@ call plug#end()
 "" ~/.config/nvim/plugin/options.vim
 "" ~/.config/nvim/plugin/folding.vim
 "" -----------------------------------
+lua require("options")
 
 " -----------------------------
 " -- global augroup commands --
@@ -65,21 +66,3 @@ augroup TERMINAL_OPEN
 	autocmd!
 	autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-	highlight = {enable = true},
-	ensure_installed = {"go", "python", "json", "lua", "bash", "yaml"}
-}
-
-require('neoscroll').setup()
-
-require('bqf').setup({
-	func_map = {
-		openc = '<CR>'
-    },
-})
-
-require('nvim-jqx.config').use_quickfix = false
-EOF
-
