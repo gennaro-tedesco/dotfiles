@@ -15,7 +15,7 @@ mkcd () {
 
 # fzf browse files
 ff() (
-  IFS=$'\n' files=($(fzf --preview 'bat --style=numbers --color=always {} | head -500' --query="$1" --multi --select-1 --exit-0 --prompt 'files:'))
+  IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0 --prompt 'files:'))
   [[ -n "$files" ]] && ${EDITOR} "${files[@]}"
 )
 
@@ -39,7 +39,7 @@ list_man() {
 # list env variables
 list_env() {
   local var
-  var=$(printenv | cut -d= -f1 | fzf --prompt 'env:' --preview-window='right:50%:nohidden:wrap', --preview='printenv {}') \
+  var=$(printenv | cut -d= -f1 | fzf --prompt 'env:' --preview='printenv {}') \
     && echo "$var=$(printenv "$var")" \
     && unset var
 }
@@ -48,7 +48,7 @@ list_env() {
 # list go env variables
 list_goenv() {
   local var
-  var=$(go env | cut -d= -f1 | fzf --prompt 'env:' --preview-window='right:50%:nohidden:wrap', --preview='go env {}') \
+  var=$(go env | cut -d= -f1 | fzf --prompt 'env:' --preview='go env {}') \
     && echo "$var=$(go env "$var")" \
     && unset var
 }
@@ -56,10 +56,11 @@ list_goenv() {
 
 # search regex in current directory
 search(){
-  [[ $# -ne 1 ]] && { echo "pass one regex argument only"; return }
+  [[ $# > 1 ]] && { echo "pass one regex argument only"; return }
+  [[ $# -eq 0 ]] && { echo -n "search regex: "; read -r regex} || regex=$1
   local matching_files
-  matching_files=$(rg -l $1 | fzf --preview-window="right:50%:nohidden:wrap" --preview="rg '$1' {} --color=always")
-  [[ -n "$matching_files" ]] && ${EDITOR} "${matching_files}" -c/$1
+  matching_files=$(rg -l ${regex} | fzf --preview="rg '${regex}' {} --color=always -n")
+  [[ -n "$matching_files" ]] && ${EDITOR} "${matching_files}" -c/${regex}
 }
 
 
