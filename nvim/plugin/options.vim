@@ -34,7 +34,7 @@ let g:lightline = {
 			\ }
 
 let g:vimtex_view_general_viewer = 'zathura'
-let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+let g:vimtex_view_zathura_options = '-reuse-instance'
 let g:vimtex_imaps_leader = ','
 let g:tex_conceal = ''
 let g:tex_fast = ''
