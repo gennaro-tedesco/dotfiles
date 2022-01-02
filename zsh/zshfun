@@ -4,63 +4,65 @@
 
 # calculator
 calc() {
-	lua -e 'print('$1')'
+	while { echo -n "> "; read EXPRESSION } && [[ ! -z "$EXPRESSION" ]] ; do
+		lua -e 'print('$EXPRESSION')'
+	done
 }
 
 # mkdir and cd
 mkcd () {
-  mkdir -p -- "$1" && cd -P -- "$1"
+	mkdir -p -- "$1" && cd -P -- "$1"
 }
 
 
 # fzf browse files
 ff() (
-  IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0 --prompt 'files:'))
-  [[ -n "$files" ]] && ${EDITOR} "${files[@]}"
+	IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0 --prompt 'files:'))
+	[[ -n "$files" ]] && ${EDITOR} "${files[@]}"
 )
 
 
 # fzf browse directories and cd into them
 fd() {
-  local dir
-  dir=$(find . -not -path '*/\.*' -type d 2> /dev/null | fzf --prompt 'folders:' +m --preview-window='right:50%:nohidden:wrap' --preview='exa --tree --level=2 {}') && cd "$dir"
+	local dir
+	dir=$(find . -not -path '*/\.*' -type d 2> /dev/null | fzf --prompt 'folders:' +m --preview-window='right:50%:nohidden:wrap' --preview='exa --tree --level=2 {}') && cd "$dir"
 }
 
 
 # list man pages
 list_man() {
-  local manlist manpage
-  manlist=$(man -k . 2>/dev/null | awk 'BEGIN {FS=OFS="- "} /\([1|4]\)/ {gsub(/\([0-9]\)/, "", $1); if (!seen[$0]++) { print }}' | fzf --prompt 'man:') \
-    && man "$(echo "$manlist" | awk -F' |,' '{print $1}')" \
-    && unset manlist
+	local manlist manpage
+	manlist=$(man -k . 2>/dev/null | awk 'BEGIN {FS=OFS="- "} /\([1|4]\)/ {gsub(/\([0-9]\)/, "", $1); if (!seen[$0]++) { print }}' | fzf --prompt 'man:') \
+		&& man "$(echo "$manlist" | awk -F' |,' '{print $1}')" \
+		&& unset manlist
 }
 
 
 # list env variables
 list_env() {
-  local var
-  var=$(printenv | cut -d= -f1 | fzf --prompt 'env:' --preview='printenv {}') \
-    && echo "$var=$(printenv "$var")" \
-    && unset var
+	local var
+	var=$(printenv | cut -d= -f1 | fzf --prompt 'env:' --preview='printenv {}') \
+		&& echo "$var=$(printenv "$var")" \
+		&& unset var
 }
 
 
 # list go env variables
 list_goenv() {
-  local var
-  var=$(go env | cut -d= -f1 | fzf --prompt 'env:' --preview='go env {}') \
-    && echo "$var=$(go env "$var")" \
-    && unset var
+	local var
+	var=$(go env | cut -d= -f1 | fzf --prompt 'env:' --preview='go env {}') \
+		&& echo "$var=$(go env "$var")" \
+		&& unset var
 }
 
 
 # search regex in current directory
 search(){
-  [[ $# > 1 ]] && { echo "pass one regex argument only"; return }
-  [[ $# -eq 0 ]] && { echo -n "search regex: "; read -r regex} || regex=$1
-  local matching_files
-  matching_files=$(rg -l ${regex} | fzf --preview="rg '${regex}' {} --color=always -n")
-  [[ -n "$matching_files" ]] && ${EDITOR} "${matching_files}" -c/${regex}
+	[[ $# > 1 ]] && { echo "pass one regex argument only"; return }
+	[[ $# -eq 0 ]] && { echo -n "search regex: "; read -r regex} || regex=$1
+	local matching_files
+	matching_files=$(rg -l ${regex} | fzf --preview="rg '${regex}' {} --color=always -n")
+	[[ -n "$matching_files" ]] && ${EDITOR} "${matching_files}" -c/${regex}
 }
 
 
