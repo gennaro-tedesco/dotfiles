@@ -30,7 +30,11 @@
 	s = status -s
 	c = checkout -- .
 	d = diff --name-only
-	qm = "!f() { git checkout ${1}; git merge develop; git push origin ${1}; git checkout develop; }; f"
+	qminto = "!f() { \
+		[ -z $1 ] && { echo 'specify branch name'; exit; }; \
+		cb=$(git branch --show-current); \
+		git checkout ${1} 2>/dev/null && git merge $cb && git push origin ${1} && git checkout $cb; \
+	}; f"
 	check = "!f() { \
 		[ ! -f ${1} ] && { echo 'file does not exist' ; exit; } || tracked=$(git ls-files ${1}); \
 		[ -z ${tracked} ] && echo 'file not tracked' || echo 'file tracked'; \
