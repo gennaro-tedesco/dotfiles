@@ -17,7 +17,9 @@ let g:signify_sign_change = '~'
 let g:signify_sign_show_count = 0
 
 let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.3 } }
+let g:fzf_preview_window = []
 let g:fzf_buffers_jump = 1
+
 
 let g:lightline = {
 			\ 'colorscheme': 'solarized',
