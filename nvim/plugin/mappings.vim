@@ -17,7 +17,7 @@ vnoremap < <gv
 vnoremap > >gv
 nnoremap > >>
 nnoremap < <<
-nnoremap <leader>= gg=Gg;
+nnoremap <leader>= gqap;
 
 " remapping the escape key
 inoremap jj <ESC>
@@ -45,6 +45,10 @@ nnoremap <leader>q <C-w>o
 
 " paste in terminal mode (must be in normal mode in terminal)
 tnoremap pp <C-w>"+pa
+
+" avoid x to override the clipboard
+nnoremap x "_x
+nnoremap X "_X
 
 " replace a word with yanked text
 nnoremap rw viwpyiw
