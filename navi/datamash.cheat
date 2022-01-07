@@ -22,7 +22,10 @@ datamash -H rmdup 1 < <filename>
 : <filename>; datamash -t, -s -H -g <colGroupBy> count 1 < <filename> | (sed -u 1q; sort -t, -k2 -n -r) | sed 's/GroupBy(\(\w*\))/\1/g;s/(\w*)//g' | sed 's/^,/ ,/' | column -s, -t | bat --file-name <filename>
 
 # pivot table
-: <filename>; datamash -t, -s --header-in crosstab <colNr-colNr> < <filename> | sed 's/^,/ ,/;s/N\/A/0/g' | column -s, -t | bat --file-name <filename>
+: <filename>; datamash -t, -s --header-in crosstab <colNr-comma-colNr> < <filename> | sed 's/^,/ ,/;s/N\/A/0/g' | column -s, -t | bat --file-name <filename>
+
+# correlations between columns
+: <filename>; datamash -t, -s --header-in ppearson <colNr-colon-colNr> < <filename>
 
 $ filename: find . -type f -iname '*.csv' | sed 's/^\.\///g'
 $ colNr: xsv headers <filename> --- --column 1
