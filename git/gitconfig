@@ -40,3 +40,7 @@
 		[ -z ${tracked} ] && echo 'file not tracked' || echo 'file tracked'; \
 	};  f"
 	root = rev-parse --show-toplevel
+	cherrypick = "!f() { \
+		from_branch=$(git branch | fzf --prompt 'pick from branch:') && files=$(fzf --query=$1 --multi --select-1 --exit-0 --prompt 'files:'); \
+		[[ -n ${files} ]] && git restore --source ${from_branch} ${files}; \
+	}; f"
