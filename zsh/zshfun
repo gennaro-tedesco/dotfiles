@@ -106,6 +106,7 @@ preview_files () {
 
 # dvc repro
 repro(){
+	[[ ! -f "dvc.yaml" ]] && { echo "dvc.yaml not found"; return }
 	local stages
 	stages=$(dvc stage list --names-only 2>/dev/null | fzf --prompt 'stages:' --preview-window="right:50%:nohidden:wrap" --preview="yq e '.stages.{}' dvc.yaml --colors") \
 		&& dvc repro "$stages"
