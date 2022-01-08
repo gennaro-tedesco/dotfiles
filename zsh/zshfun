@@ -66,6 +66,18 @@ search(){
 }
 
 
+# replace
+replace() {
+	[[ ! "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]] && { echo "not a git repo"; return }
+	echo -n "search regex: "; read -r find_regex
+	local matching_files
+	matching_files=$(rg -l $find_regex)
+	[[ -n "$matching_files" ]] && { echo $matching_files | awk 'BEGIN {print}; {printf "\033[36m  %-15s\033[0m\n", $1}; END{print ""}' } || { echo "no matching files"; return }
+	echo -n "replace with: "; read -r replace_regex
+	[[ -n $replace_regex ]] && echo $matching_files | xargs -n 1 -I {} -t sed -i '' "s/$find_regex/$replace_regex/g" {}
+}
+
+
 # paginate help
 help() { "$@" --help | bat -l man -p ; }
 
@@ -89,6 +101,14 @@ preview_files () {
 		*)
 			bat --theme='Solarized (dark)' --style='header,grid' $1;;
 	esac
+}
+
+
+# dvc repro
+repro(){
+	local stages
+	stages=$(dvc stage list --names-only 2>/dev/null | fzf --prompt 'stages:' --preview-window="right:50%:nohidden:wrap" --preview="yq e '.stages.{}' dvc.yaml --colors") \
+		&& dvc repro "$stages"
 }
 
 
