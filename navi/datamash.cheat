@@ -4,7 +4,7 @@
 datamash transpose < <filename>
 
 # stats grouped by
-: <filename>; datamash -t, -s -H -g <colGroupBy> count <colAggregate> min <colAggregate> max <colAggregate> mean <colAggregate> sstdev <colAggregate> < <filename> | (sed -u 1q;  sort -n -k1 -t,) | sed 's/GroupBy(\(\w*\))/\1/g' | sed 's/^,/ ,/' | column -t -s,  | bat --file-name <filename>
+: <filename>; datamash -t, -s -H -g <colGroupBy> count <colAggregate> min <colAggregate> max <colAggregate> mean <colAggregate> median <colAggregate> sstdev <colAggregate> < <filename> | (sed -u 1q;  sort -n -k1 -t,) | sed 's/GroupBy(\(\w*\))/\1/g' | sed 's/^,/ ,/' | column -t -s,  | bat --file-name <filename>
 
 # validate shape of file
 datamash -t, check < <filename>
