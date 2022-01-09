@@ -29,15 +29,6 @@ fd() {
 }
 
 
-# list man pages
-list_man() {
-	local manlist manpage
-	manlist=$(man -k . 2>/dev/null | awk 'BEGIN {FS=OFS="- "} /\([1|4]\)/ {gsub(/\([0-9]\)/, "", $1); if (!seen[$0]++) { print }}' | fzf --prompt 'man:') \
-		&& man "$(echo "$manlist" | awk -F' |,' '{print $1}')" \
-		&& unset manlist
-}
-
-
 # list env variables
 list_env() {
 	local var
