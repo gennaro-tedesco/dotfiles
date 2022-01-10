@@ -42,5 +42,5 @@ xsv stats <filename> | awk -F ',' 'NR==1; ($2=="Float" || $2=="Integer") {print}
 # sort file by columns
 : <filename>; xsv sort -s '<column>' -R <filename> | column -s, -t | bat --file-name <filename>
 
-$ filename: find . -type f -iname '*.csv' | sed 's/^\.\///g'
+$ filename: fd -I -t f -e csv
 $ column: xsv headers <filename> | awk '{print $2}'

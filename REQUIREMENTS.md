@@ -12,6 +12,7 @@ I am making use of the following system programs:
 - [dust](https://github.com/bootandy/dust)
 - [navi](https://github.com/denisidoro/navi)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
+- [fd](https://github.com/sharkdp/fd)
 - [delta](https://github.com/dandavison/delta)
 
 Most of them are necessary as they are included in `zsh` functions as well as `neovim` plugins.

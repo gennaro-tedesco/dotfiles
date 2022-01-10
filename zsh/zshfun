@@ -10,22 +10,22 @@ calc() {
 }
 
 # mkdir and cd
-mkcd () {
+mkcd() {
 	mkdir -p -- "$1" && cd -P -- "$1"
 }
 
 
 # fzf browse files
-ff() (
+find_files() {
 	IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0 --prompt 'files:'))
 	[[ -n "$files" ]] && ${EDITOR} "${files[@]}"
-)
+}
 
 
 # fzf browse directories and cd into them
-fd() {
+find_dir() {
 	local dir
-	dir=$(find . -not -path '*/\.*' -type d 2> /dev/null | fzf --prompt 'folders:' +m --preview-window='right:50%:nohidden:wrap' --preview='exa --tree --level=2 {}') && cd "$dir"
+	dir=$(fd -I -t d 2> /dev/null | fzf --prompt 'folders:' +m --preview-window='right:50%:nohidden:wrap' --preview='exa --tree --level=2 {}') && cd "$dir"
 }
 
 
@@ -48,7 +48,7 @@ list_goenv() {
 
 
 # search regex in current directory
-search(){
+search() {
 	[[ $# > 1 ]] && { echo "pass one regex argument only"; return }
 	[[ $# -eq 0 ]] && { echo -n "search regex: "; read -r regex} || regex=$1
 	local matching_files
@@ -62,10 +62,10 @@ replace() {
 	[[ ! "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]] && { echo "not a git repo"; return }
 	echo -n "search regex: "; read -r find_regex
 	local matching_files
-	matching_files=$(rg -l $find_regex)
-	[[ -n "$matching_files" ]] && { echo $matching_files | awk 'BEGIN {print}; {printf "\033[36m  %-15s\033[0m\n", $1}; END{print ""}' } || { echo "no matching files"; return }
+	matching_files=$(rg -l --count $find_regex)
+	[[ -n "$matching_files" ]] && { echo $matching_files | awk 'BEGIN {FS=":"; print}; {printf "\033[36m %s\033[35m %s\033[0m\n", $1,":"$2}; END{print ""}' } || { echo "no matching files"; return }
 	echo -n "replace with: "; read -r replace_regex
-	[[ -n $replace_regex ]] && echo $matching_files | xargs -n 1 -I {} -t sed -i '' "s/$find_regex/$replace_regex/g" {}
+	[[ -n $replace_regex ]] && echo $matching_files | cut -f1 -d":" | xargs -n 1 -I {} -t sed -i '' "s/$find_regex/$replace_regex/g" {}
 }
 
 
@@ -73,8 +73,12 @@ replace() {
 help() { "$@" --help | bat -l man -p ; }
 
 
+# search for options in man test
+opt() { [[ $# -eq 0 ]] && { echo "argument required"; return } || man test | rg -- "^[[:space:]]+$1" }
+
+
 # preview files
-preview_files () {
+preview_files() {
 	local selection
 	if [[ -z "$1" ]]; then
 		selection="$(echo *(^/) | tr " " "\n" | fzf)" && preview_files "$selection"
@@ -96,7 +100,7 @@ preview_files () {
 
 
 # dvc repro
-repro(){
+repro() {
 	[[ ! -f "dvc.yaml" ]] && { echo "dvc.yaml not found"; return }
 	local stages
 	stages=$(dvc stage list --names-only 2>/dev/null | fzf --prompt 'stages:' --preview-window="right:50%:nohidden:wrap" --preview="yq e '.stages.{}' dvc.yaml --colors") \
@@ -105,7 +109,7 @@ repro(){
 
 
 # json_diff
-json_diff(){
+json_diff() {
 	[[ $# != 2 ]] && { echo "expected two arguments"; return}
 	[[ ( $1 != *.json ) || ( $2 != *.json ) ]] && { echo "arguments must be both json files"; return}
 	[[ ! -f $1 ]] && { echo "cannot find $1"; return}
@@ -116,7 +120,7 @@ json_diff(){
 
 
 # curl weather
-weather(){
+weather() {
 	local location
 	[[ $# -eq 0 ]] && location="Berlin" || location=$1
 	curl wttr.in/${location}\?F

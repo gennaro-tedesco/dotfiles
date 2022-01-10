@@ -6,7 +6,7 @@ tail -n +2 <filename>
 # remove last line of a file
 ghead -n -1 <filename>
 
-$ filename: echo *(^/) | tr " " "\n"
+$ filename: fd -d 1 -t f
 
 
 % cut, column
@@ -20,7 +20,7 @@ gcut -f<colNr> -d, --complement <filename>
 # columnate tabular data
 column -t -s, <filename>
 
-$ filename: echo *(^/) | tr " " "\n"
+$ filename: fd -d 1 -t f
 
 
 % sed
@@ -40,7 +40,7 @@ sed 's/[[:space:]]//g' <filename>
 # remove all lines containing a pattern
 sed -i '/<pattern>/d' <filename>
 
-$ filename: echo *(^/) | tr " " "\n"
+$ filename: fd -d 1 -t f
 
 
 % env file
@@ -63,7 +63,7 @@ tr -s " " < <filename>
 # print all $PATH directories
 echo $PATH | tr  ':' '\n'
 
-$ filename: echo *(^/) | tr " " "\n"
+$ filename: fd -d 1 -t f
 
 
 % curl
@@ -78,6 +78,12 @@ $ body: find . -type f -iname '*.json' | sed 's/^\.\///g'
 
 # man page of bash conditionals
 man test
+
+# man page ripgrep
+glow -s ~/.config/glowconfig/customglow.json -p https://raw.githubusercontent.com/BurntSushi/ripgrep/master/GUIDE.md
+
+# man page fd
+glow -s ~/.config/glowconfig/customglow.json -p github.com/sharkdp/fd
 
 
 % find

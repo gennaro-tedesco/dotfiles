@@ -27,7 +27,7 @@ datamash -H rmdup 1 < <filename>
 # correlations between columns
 : <filename>; datamash -t, -s --header-in ppearson <colNr-colon-colNr> < <filename>
 
-$ filename: find . -type f -iname '*.csv' | sed 's/^\.\///g'
+$ filename: fd -I -t f -e csv
 $ colNr: xsv headers <filename> --- --column 1
 $ colGroupBy: xsv headers <filename> --- --column 1
 $ colAggregate: xsv headers <filename> --- --column 1
