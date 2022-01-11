@@ -38,10 +38,6 @@
 		cb=$(git branch --show-current); \
 		git checkout ${1} 2>/dev/null && git merge $cb && git push origin ${1} && git checkout $cb; \
 	}; f"
-	check = "!f() { \
-		[ ! -f ${1} ] && { echo 'file does not exist' ; exit; } || tracked=$(git ls-files ${1}); \
-		[ -z ${tracked} ] && echo 'file not tracked' || echo 'file tracked'; \
-	};  f"
 	root = rev-parse --show-toplevel
 	pick = "!f() { \
 		from_branch=$(git branch | fzf --prompt 'pick from branch:') && files=$(git diff --name-only ${from_branch} | fzf --query=$1 --multi --select-1 --exit-0 --prompt 'files:'); \
