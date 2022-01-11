@@ -113,7 +113,6 @@ nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :BCommits<CR>
 nnoremap <expr> <Down> &diff ? ']c' : '<Down>'
 nnoremap <expr> <Up> &diff ? '[c' : '<Up>'
-nnoremap <expr> <leader>q &diff ? ':wqa<CR>' : '<leader>q'
 nnoremap <expr> + &diff ? '/^\(<<<<<<<\\|>>>>>>>\)<CR>' : '+'
 nnoremap <expr> - &diff ? '?^\(<<<<<<<\\|>>>>>>>\)<CR>' : '-'
 
