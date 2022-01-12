@@ -27,7 +27,7 @@
 # alias
 [alias]
 	logs = "!f() { \
-		commit=$(git log --oneline --color=always | fzf --ansi --preview=\"echo {} | cut -f1 -d' ' | xargs -n1 git show --stat --abbrev-commit --format='%C(bold blue)%h%C(reset) - %C(green)%ar%C(reset): %C(cyan)%an%C(reset)%C(bold yellow)%d%C(reset)' --color=always\"); \
+		commit=$(git log --oneline --color=always | fzf --prompt=\"$(git branch --show-current): \" --ansi --preview=\"echo {} | cut -f1 -d' ' | xargs -n1 git show --stat --abbrev-commit --format='%C(bold blue)%h%C(reset) - %C(green)%ar%C(reset): %C(cyan)%an%C(reset)%C(bold yellow)%d%C(reset)'  --color=always\"); \
 			[[ -n ${commit} ]] && echo $commit | cut -f1 -d' ' | xargs -n1 git show; \
 	}; f"
 	s = status -s
