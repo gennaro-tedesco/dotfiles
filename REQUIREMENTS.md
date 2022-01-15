@@ -23,5 +23,6 @@ Moreover I am using
 - [macchina](https://github.com/Macchina-CLI/macchina)
 - [hyperfine](https://github.com/sharkdp/hyperfine)
 - [vivid](https://github.com/sharkdp/vivid)
+- [insect](https://github.com/sharkdp/insect)
 
 Installation instructions depend on your operating system, however most programs can be easily installed by using the specific package manager of choice.
