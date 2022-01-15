@@ -1,28 +1,30 @@
 # Requirements
 I am making use of the following system programs:
 
-- [vifm](https://vifm.info/)
-- [bat](https://github.com/sharkdp/bat)
-- [exa](https://the.exa.website/)
-- [fzf](https://github.com/junegunn/fzf)
-- [visidata](https://www.visidata.org/install/)
-- [jq](https://stedolan.github.io/jq/)
-- [glow](https://github.com/charmbracelet/glow)
-- [zenith](https://github.com/bvaisvil/zenith)
-- [dust](https://github.com/bootandy/dust)
-- [navi](https://github.com/denisidoro/navi)
-- [ripgrep](https://github.com/BurntSushi/ripgrep)
-- [fd](https://github.com/sharkdp/fd)
-- [delta](https://github.com/dandavison/delta)
+|:------------|:------------|
+[vifm](https://vifm.info/) | file manager |
+[bat](https://github.com/sharkdp/bat) | file preview |
+[exa](https://the.exa.website/) | file and dir list |
+[fzf](https://github.com/junegunn/fzf) | fuzzy finder |
+[visidata](https://www.visidata.org/install/) | interactive csv manipulation |
+[jq](https://stedolan.github.io/jq/) | json parser |
+[glow](https://github.com/charmbracelet/glow) | md preview |
+[zenith](https://github.com/bvaisvil/zenith) | process list |
+[dust](https://github.com/bootandy/dust) | disk space |
+[navi](https://github.com/denisidoro/navi) | cheatsheet |
+[ripgrep](https://github.com/BurntSushi/ripgrep) | grep improved |
+[fd](https://github.com/sharkdp/fd) | find improved |
+[delta](https://github.com/dandavison/delta) | diff improved |
 
 Most of them are necessary as they are included in `zsh` functions as well as `neovim` plugins.
 
 ## Additional
 Moreover I am using
 
-- [macchina](https://github.com/Macchina-CLI/macchina)
-- [hyperfine](https://github.com/sharkdp/hyperfine)
-- [vivid](https://github.com/sharkdp/vivid)
-- [insect](https://github.com/sharkdp/insect)
+|:------------|:------------|
+[macchina](https://github.com/Macchina-CLI/macchina) | sysinfo |
+[hyperfine](https://github.com/sharkdp/hyperfine) | benchmarks |
+[vivid](https://github.com/sharkdp/vivid) | better colors |
+[insect](https://github.com/sharkdp/insect) | calculator |
 
 Installation instructions depend on your operating system, however most programs can be easily installed by using the specific package manager of choice.
