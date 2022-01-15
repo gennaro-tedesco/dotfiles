@@ -1,6 +1,7 @@
 # Requirements
 I am making use of the following system programs:
 
+|program      |scope        |
 |:------------|:------------|
 [vifm](https://vifm.info/) | file manager |
 [bat](https://github.com/sharkdp/bat) | file preview |
@@ -21,6 +22,7 @@ Most of them are necessary as they are included in `zsh` functions as well as `n
 ## Additional
 Moreover I am using
 
+|program      |scope        |
 |:------------|:------------|
 [macchina](https://github.com/Macchina-CLI/macchina) | sysinfo |
 [hyperfine](https://github.com/sharkdp/hyperfine) | benchmarks |
