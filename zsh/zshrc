@@ -60,6 +60,7 @@ alias jd="json_diff"
 alias env="list_env"
 alias goenv="list_goenv"
 alias src="exec zsh"
+alias calc="insect"
 
 unalias z 2> /dev/null
 z() {
