@@ -26,13 +26,6 @@
 
 # alias
 [alias]
-	logs = "!f() { \
-		commit=$(git log --oneline --color=always | fzf --prompt=\"$(git branch --show-current): \" --ansi --preview=\"echo {} | cut -f1 -d' ' | xargs -n1 git show --stat --abbrev-commit --format='%C(bold blue)%h%C(reset) - %C(green)%ar%C(reset): %C(cyan)%an%C(reset)%C(bold yellow)%d%C(reset)'  --color=always\"); \
-			[[ -n ${commit} ]] && echo $commit | cut -f1 -d' ' | xargs -n1 git show; \
-	}; f"
-	b = "!f() { \
-		branch=$(git branch | sed 's/[* ]//g' | fzf --preview=\"git log --oneline --format='%C(bold blue)%h%C(reset) - %C(green)%ar%C(reset) - %C(cyan)%an%C(reset)%C(bold yellow)%d%C(reset): %s' --color=always {}\") && git checkout ${branch}; \
-	}; f"
 	s = status -s
 	c = checkout -- .
 	d = diff --name-only
@@ -42,7 +35,3 @@
 		git checkout ${1} 2>/dev/null && git merge $cb && git push origin ${1} && git checkout $cb; \
 	}; f"
 	root = rev-parse --show-toplevel
-	pick = "!f() { \
-		from_branch=$(git branch | fzf --prompt 'pick from branch:') && files=$(git diff --name-only ${from_branch} | fzf --query=$1 --multi --select-1 --exit-0 --prompt 'files:'); \
-		[[ -n ${files} ]] && git restore --source ${from_branch} ${files}; \
-	}; f"

@@ -4,8 +4,3 @@ prompt: enabled
 pager: delta -s
 aliases:
     view: '!gh repo view --web'
-    prcheck: '!id="$(gh pr list -s"open" -L100 | cut -f1-3 | fzf | cut -f1)"; [ -n "$id" ] && gh pr checkout "$id"'
-    prdiff: '!id="$(gh pr list -s"open" -L100 | cut -f1-3 | fzf | cut -f1)"; [ -n "$id" ] && gh pr diff "$id"'
-    myissue: '!read -p "repo name: " repo && gh issue list -s"all" -R $repo -A @me | cut -f 1,3 | fzf | cut -f1 | xargs -t gh issue view -R $repo -c'
-    search: '!read -p "repo name: " repo && read -p "search: " search && gh issue list -s"all" -R $repo -L 300 | grep "${search}" | cut -f 1,3 | fzf | cut -f1 | xargs -t gh issue view -R $repo -c'
-
