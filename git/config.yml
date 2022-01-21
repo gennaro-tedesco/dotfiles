@@ -3,4 +3,4 @@ editor: nvim
 prompt: enabled
 pager: delta -s
 aliases:
-    view: '!gh repo view --web'
+    view: 'repo view --web'
