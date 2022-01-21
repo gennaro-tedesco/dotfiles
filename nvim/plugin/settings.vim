@@ -12,6 +12,7 @@ colorscheme solarized8
 " cursorline, windows frame and looks
 set showbreak=↪\
 set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
+set fillchars=eob:\ 
 set number relativenumber
 set ruler
 set cursorline
