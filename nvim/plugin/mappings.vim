@@ -111,6 +111,7 @@ nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :BCommits<CR>
+nnoremap <leader>gd :Gvdiffsplit develop<CR>
 nnoremap <expr> <Down> &diff ? ']c' : '<Down>'
 nnoremap <expr> <Up> &diff ? '[c' : '<Up>'
 nnoremap <expr> + &diff ? '/^\(<<<<<<<\\|>>>>>>>\)<CR>' : '+'
