@@ -33,6 +33,7 @@ Plug 'karb94/neoscroll.nvim'
 " settings that make vim easier to use
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'ervandew/supertab'
+Plug 'jiangmiao/auto-pairs'
 
 " my personal plugins: they are awesome
 Plug 'gennaro-tedesco/nvim-commaround'

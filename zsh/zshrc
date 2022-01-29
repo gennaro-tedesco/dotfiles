@@ -61,6 +61,7 @@ alias env="list_env"
 alias goenv="list_goenv"
 alias src="exec zsh"
 alias calc="insect"
+alias :q="exit"
 
 unalias z 2> /dev/null
 z() {
