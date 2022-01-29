@@ -29,5 +29,6 @@ Moreover I am using
 [vivid](https://github.com/sharkdp/vivid) | better colors |
 [insect](https://github.com/sharkdp/insect) | calculator |
 [gh-f](https://github.com/gennaro-tedesco/gh-f) | git and github utils |
+[gh-s](https://github.com/gennaro-tedesco/gh-s) | search github repos  |
 
 Installation instructions depend on your operating system, however most programs can be easily installed by using the specific package manager of choice.
