@@ -6,6 +6,9 @@ tail -n +2 <filename>
 # remove last line of a file
 ghead -n -1 <filename>
 
+# check if file contains EOF
+tail -c1 <filename>
+
 $ filename: fd -d 1 -t f
 
 

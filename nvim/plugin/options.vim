@@ -1,6 +1,9 @@
 "" --------------------------------------------
 "" - customisation of default plugins options -
 "" --------------------------------------------
+let g:AutoPairs = {'(':')', '[':']', '{':'}','`':'`', '```':'```', '"""':'"""'}
+let g:AutoPairsShortcutFastWrap = '<C-w>'
+
 let g:floaterm_autoclose = 2
 let g:floaterm_keymap_toggle = '<F2>'
 let g:floaterm_width = 0.85
