@@ -28,7 +28,8 @@ Moreover I am using
 [hyperfine](https://github.com/sharkdp/hyperfine) | benchmarks |
 [vivid](https://github.com/sharkdp/vivid) | better colors |
 [insect](https://github.com/sharkdp/insect) | calculator |
-[gh-f](https://github.com/gennaro-tedesco/gh-f) | git and github utils |
 [gh-s](https://github.com/gennaro-tedesco/gh-s) | search github repos  |
+[gh-i](https://github.com/gennaro-tedesco/gh-s) | search github issues |
+[gh-f](https://github.com/gennaro-tedesco/gh-f) | git and github utils |
 
 Installation instructions depend on your operating system, however most programs can be easily installed by using the specific package manager of choice.

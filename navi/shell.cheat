@@ -82,12 +82,6 @@ $ body: find . -type f -iname '*.json' | sed 's/^\.\///g'
 # man page of bash conditionals
 man test
 
-# man page ripgrep
-glow -s ~/.config/glowconfig/customglow.json -p https://raw.githubusercontent.com/BurntSushi/ripgrep/master/GUIDE.md
-
-# man page fd
-glow -s ~/.config/glowconfig/customglow.json -p github.com/sharkdp/fd
-
 
 % find
 
