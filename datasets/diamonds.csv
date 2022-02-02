@@ -1,0 +1,990 @@
+carat,cut,color,clarity,depth,table
+1.5,Fair,G,SI1,64.5,57
+0.7,Ideal,E,VS2,61.4,57
+1.22,Premium,G,VS1,61.3,58
+0.51,Premium,E,VS2,62.5,60
+2.02,Very Good,J,SI2,59.2,60
+0.7,Very Good,E,SI1,63.2,61
+0.46,Ideal,G,VVS1,60.7,57
+0.55,Premium,F,SI2,60.6,58
+0.51,Ideal,G,VVS2,61.6,56
+0.5,Ideal,H,VS2,62.3,55
+1.51,Premium,J,VS1,62.1,58
+0.4,Ideal,E,SI1,61.1,56
+1.05,Premium,D,SI1,61.6,61
+1.18,Ideal,H,SI2,62.2,56
+1.32,Ideal,E,SI2,62.7,56
+0.31,Very Good,H,SI1,61.1,57
+1.32,Ideal,G,VS1,61.6,57
+1.8,Very Good,J,SI1,61.4,55
+0.71,Very Good,F,VVS2,62,56
+0.73,Premium,H,VS1,61.7,58
+0.33,Ideal,F,VVS1,61.3,55
+1.01,Premium,D,VVS2,62.4,60
+1,Premium,F,VS2,62.7,58
+1.09,Ideal,E,SI2,59.4,57
+0.72,Ideal,F,VS1,61.7,57
+0.9,Fair,G,SI2,55.9,62
+0.54,Ideal,F,VS1,60.9,56
+0.38,Very Good,F,VS2,60.9,56
+0.91,Very Good,D,VS2,59.6,58
+1.24,Very Good,G,VS1,62,55
+1.06,Premium,G,VVS2,59.6,58
+0.3,Very Good,J,VS1,62.4,58
+0.31,Ideal,F,VS2,62.3,55
+0.43,Premium,E,SI2,61.8,60
+0.32,Very Good,H,SI1,61.9,58
+0.43,Ideal,H,VS2,60.7,55
+1.32,Very Good,H,SI1,62.8,56
+0.52,Premium,D,VS2,62.4,58
+0.36,Ideal,F,VVS2,61.5,55
+1,Good,E,SI2,63.7,61
+0.34,Premium,I,VVS1,62.4,59
+0.32,Ideal,F,VVS2,62,55
+0.71,Ideal,D,SI1,60.8,57
+0.75,Ideal,D,SI2,61.3,56
+1.2,Premium,G,SI2,62.6,61
+0.3,Ideal,D,SI1,61.6,57
+0.43,Premium,G,VVS1,62,59
+0.31,Premium,I,VS2,62.3,57
+0.51,Good,D,VS2,63.1,58
+1.24,Ideal,G,VS1,60.1,58
+2.14,Premium,E,SI2,61.5,58
+1,Premium,E,SI1,60.5,59
+0.5,Very Good,H,SI1,60.9,61
+0.38,Ideal,D,VVS2,61.4,57
+0.56,Ideal,D,VS2,60.6,56
+0.31,Ideal,H,VVS2,62.2,55
+0.91,Very Good,E,SI1,62.4,57
+0.71,Ideal,F,SI1,61.6,56
+0.34,Premium,G,SI2,62.8,58
+0.39,Premium,J,VS2,61.3,60
+1.59,Good,G,SI1,63.8,56
+0.43,Ideal,H,SI1,62.3,56
+0.7,Very Good,H,SI2,63.8,55
+1.11,Ideal,E,SI2,62.8,55
+1.01,Premium,F,VS2,63,58
+0.42,Very Good,D,SI2,58.6,58
+1.2,Good,F,VS1,64,56
+1.2,Premium,H,VS2,60.6,58
+0.71,Very Good,G,VS2,61.5,57
+0.35,Premium,E,VS2,60.9,59
+1.02,Very Good,H,VS2,60.6,60
+0.41,Ideal,G,VS2,61.4,55
+0.3,Premium,D,VS2,60.9,58
+0.41,Ideal,F,VS2,61.8,57
+2,Very Good,H,SI1,63.2,54
+1.07,Ideal,H,SI2,62.8,56
+0.72,Premium,G,SI2,61.6,55
+0.3,Premium,F,VS2,60.7,58
+0.71,Good,H,SI1,64,61
+0.71,Ideal,E,VS2,62.2,56
+0.9,Fair,E,VS1,67.6,56
+1.51,Premium,E,VS2,60.7,60
+0.96,Good,I,I1,58.6,64
+0.38,Ideal,F,VS1,62.5,56
+1,Premium,I,VS2,61.6,59
+1,Premium,F,SI1,62.1,59
+0.27,Ideal,I,VS1,61.9,54
+0.56,Ideal,E,SI1,62.3,56
+0.47,Very Good,D,SI2,61.5,55
+1.01,Very Good,G,SI1,62.4,58
+0.71,Ideal,F,VS1,61.9,56
+1.02,Ideal,G,VVS1,61.5,57
+0.27,Ideal,H,VS2,61.8,56
+0.31,Ideal,G,VS1,61.5,56
+0.71,Ideal,I,VS1,61.5,55
+1.5,Premium,F,VS2,61.6,58
+0.59,Ideal,F,SI1,62.3,54
+1.65,Ideal,J,SI1,62.5,56
+1.21,Ideal,H,VS2,62.4,59
+0.53,Good,F,VVS2,62.5,65
+0.51,Ideal,E,VS1,61.8,55
+0.32,Ideal,F,IF,60.3,58
+2.01,Premium,G,SI2,61.2,57.2
+0.3,Ideal,G,IF,61.7,53
+0.56,Premium,G,SI1,62.4,58
+1.1,Ideal,I,SI1,62.1,57
+0.7,Premium,H,SI1,60.3,55
+0.48,Good,G,VS2,60.3,60.7
+0.3,Ideal,D,VS1,60.8,58
+0.93,Premium,E,SI1,61.4,57
+0.72,Ideal,G,VS1,61.3,56
+0.79,Premium,F,VS2,60.7,60
+0.28,Very Good,F,VS1,60.8,58
+0.55,Ideal,E,SI2,61.8,55
+0.3,Ideal,H,IF,61.5,56
+1.01,Premium,H,SI2,61.6,59
+1.08,Very Good,H,SI1,61.8,53
+0.7,Very Good,E,SI1,62.3,58
+0.91,Good,J,VS2,61.3,61
+0.9,Very Good,D,IF,62.4,54
+0.51,Ideal,F,VS1,60.2,56
+1.04,Ideal,E,SI2,61.1,56
+0.36,Ideal,I,VVS1,61.6,56
+0.34,Ideal,H,VVS2,61.2,56
+2.05,Premium,I,VS1,60.6,60
+1.01,Very Good,E,VVS1,63.1,57
+1.35,Good,I,SI2,57.9,60
+0.5,Ideal,E,VS2,62.5,57
+0.37,Premium,G,VS2,60.1,59
+2.01,Very Good,F,SI2,62.3,63
+1.1,Very Good,F,SI2,59.1,57
+1.23,Very Good,H,VS2,58.5,62
+1.2,Very Good,F,SI2,63.3,59
+0.31,Ideal,E,VVS1,61.7,56
+0.31,Very Good,D,VS1,63.7,58
+1.12,Ideal,I,SI2,62.4,57
+0.38,Ideal,F,VS1,62.5,53.8
+0.75,Ideal,I,SI1,61.8,55
+1.01,Very Good,E,VVS2,61.7,60
+1.02,Good,F,SI1,63.5,57
+0.3,Ideal,H,IF,62.1,55
+0.4,Premium,E,SI1,62.2,62
+1.53,Ideal,I,VS2,61.7,57
+0.9,Very Good,I,VS2,61.6,57
+0.73,Ideal,I,VS1,62.1,55.8
+0.24,Good,F,VVS2,64,61
+1.42,Premium,E,SI1,61.1,62
+0.54,Ideal,D,SI1,61.5,56
+0.31,Ideal,F,VS2,62.3,55
+1.07,Ideal,F,SI2,61.5,57
+0.33,Very Good,F,SI1,61.2,58.1
+0.53,Very Good,F,IF,59.6,58
+0.97,Premium,G,SI1,62.6,58
+0.96,Very Good,F,SI1,62.1,62
+0.33,Premium,G,VS1,62,59
+0.31,Very Good,D,SI2,62.9,59
+0.51,Ideal,F,VS1,60.4,56
+0.59,Ideal,E,VS2,61.5,56
+1.02,Very Good,F,VS1,61.3,58
+0.38,Ideal,F,VVS1,62.2,57
+1.17,Ideal,F,VS2,61.8,55
+1.01,Good,E,SI2,63.3,58
+1.55,Premium,E,SI2,58.5,57
+0.59,Very Good,F,VS2,61.6,56
+0.32,Ideal,G,IF,60.9,56
+1.21,Ideal,H,VS1,62.4,53
+0.32,Premium,F,VS2,61.3,60
+1.05,Ideal,H,SI2,61.2,57
+0.51,Ideal,D,VS2,60.8,57
+1.03,Ideal,D,SI1,61.3,56
+0.64,Ideal,G,VVS2,61.8,56
+0.3,Premium,D,VS2,62.8,59
+1.02,Premium,I,SI1,62.7,58
+1.14,Premium,H,SI1,62.5,58
+0.78,Very Good,F,SI2,62.4,59
+0.81,Very Good,E,SI2,62.9,56
+0.4,Ideal,F,VVS2,61.1,57
+1.5,Good,H,VS2,63.9,59
+1.01,Premium,H,SI1,62.7,59
+0.55,Very Good,D,VVS1,61.5,56
+0.71,Very Good,F,VVS2,60.6,58
+0.71,Ideal,I,VS2,61.8,55
+0.7,Very Good,H,VS2,60,55
+1.01,Ideal,F,VS2,61.9,55
+0.42,Ideal,G,VVS2,62.1,57
+1.07,Ideal,E,VVS2,61.4,56
+0.93,Good,D,SI1,63.8,59
+0.52,Very Good,H,VVS1,63.9,59
+0.71,Very Good,E,VS2,62.4,57
+0.34,Good,G,SI1,63.4,57
+0.82,Very Good,G,SI1,63.4,55
+1.12,Very Good,I,VS2,63.9,52
+2.02,Ideal,H,SI1,61.7,57
+1.24,Premium,F,VS2,62.4,60
+0.75,Premium,H,VS1,61.9,61
+0.84,Premium,F,SI1,59,59
+1.23,Premium,D,VS2,59.3,59
+2.29,Ideal,J,SI2,62.8,56
+0.3,Ideal,E,VS2,61.2,55
+1.51,Ideal,J,VS1,61.8,59
+0.74,Very Good,E,SI1,63.5,56
+0.34,Premium,F,VS2,62.6,59
+0.38,Good,F,VS2,60.3,61
+0.63,Ideal,D,IF,62.5,55
+1.01,Premium,D,SI1,59.2,61
+0.41,Ideal,E,VVS1,60.7,57
+1.29,Premium,J,VS1,61.7,59
+0.4,Good,F,SI1,63.6,59
+1.18,Premium,I,SI2,60.8,58
+1.21,Very Good,G,SI1,61.2,58
+0.3,Good,J,VS2,64.1,58
+0.56,Ideal,F,VS2,62.1,57
+1,Ideal,H,SI2,59.4,55
+0.7,Good,F,SI1,62.8,58
+0.62,Ideal,F,VVS2,61.4,56
+0.52,Very Good,G,SI1,63.5,58
+0.41,Premium,G,VS2,62.4,58
+0.41,Very Good,E,VVS2,61.6,60
+1,Good,H,VS2,63.7,59
+1,Ideal,E,SI1,62.9,56
+0.74,Very Good,H,VVS2,60.5,60
+1.07,Good,J,VS2,61.7,57.7
+1.16,Very Good,H,SI2,62.8,59
+1.24,Ideal,G,VS1,61.1,57
+0.7,Ideal,D,VS1,61.7,57
+1.02,Very Good,D,VS2,62.3,57
+0.75,Premium,G,SI2,62.7,58
+0.37,Very Good,I,VVS2,60.9,58
+1.01,Very Good,G,SI2,59.3,61
+1.04,Premium,G,VS2,62.5,58
+0.5,Premium,G,VS1,61,59
+0.9,Ideal,I,VS1,60.9,60
+0.32,Ideal,I,VS2,61.6,56
+1.01,Very Good,G,VS1,61.9,58
+0.35,Ideal,D,VS1,61.4,56
+1,Premium,F,SI1,60.3,58
+0.3,Very Good,H,VVS2,63.1,60
+1,Good,G,SI1,64.3,58
+0.31,Good,G,VS1,63.2,56
+0.32,Very Good,E,VS2,62,54
+0.3,Premium,H,VVS2,62.4,58
+0.7,Very Good,E,VS2,62.6,56
+0.32,Very Good,E,VS1,62.9,57
+2.13,Very Good,J,SI1,62.8,58
+1.2,Ideal,J,VS2,62.2,54
+0.31,Ideal,F,VVS2,61.6,55
+1.19,Ideal,H,I1,61.5,57
+0.72,Ideal,F,VS1,62.5,54
+0.7,Premium,I,VS2,60.8,59
+0.52,Ideal,G,IF,61.5,56
+1.21,Premium,F,SI1,61.1,61
+2.22,Very Good,J,SI1,58.7,60
+0.41,Very Good,E,VS1,59.8,61
+0.35,Very Good,G,IF,62.1,54
+0.35,Premium,G,VVS2,62.8,58
+0.75,Premium,G,VS2,61.7,58
+1.22,Very Good,I,VS2,59.6,58
+0.56,Ideal,G,SI1,61.5,56
+0.39,Very Good,F,VVS2,61.7,56
+0.41,Good,D,VVS2,63.3,59
+0.32,Ideal,H,SI2,61.5,56
+0.9,Very Good,E,VS2,62.9,57
+0.31,Ideal,E,VS2,61.9,55
+0.3,Premium,F,VS2,62.2,58
+0.38,Ideal,D,SI2,61.1,56
+0.59,Ideal,G,IF,59.5,58
+0.7,Good,G,SI1,61.8,62
+0.9,Very Good,F,SI1,63.3,57
+1.21,Premium,F,SI2,59.9,62
+0.3,Very Good,D,SI2,62.2,59
+0.46,Premium,E,VS1,61.7,59
+0.9,Good,F,SI2,61.3,59
+0.9,Very Good,J,VS1,62.5,56
+1.1,Ideal,E,SI2,61.6,56
+0.3,Premium,E,SI1,62.3,58
+1.14,Good,G,SI2,63.7,60
+2,Premium,G,SI2,60.8,55
+0.71,Fair,F,SI2,60.1,68
+0.3,Ideal,E,VVS2,61.3,54
+0.51,Ideal,E,SI1,61.5,55
+0.34,Ideal,F,VVS1,62,56
+0.9,Good,D,SI1,63.8,57
+1.01,Good,E,VS1,64.6,58
+2.52,Very Good,G,SI2,63.2,58
+0.7,Ideal,F,VS2,61.8,54
+1.05,Premium,G,VS1,61.1,59
+1.11,Premium,F,VS1,60.7,59
+0.5,Ideal,E,VS2,62.9,55
+0.66,Very Good,H,VVS1,61.9,59
+0.78,Premium,F,SI1,62.4,58
+1.68,Ideal,I,VS2,62.1,57
+1.51,Premium,J,VS2,59.2,59
+1.52,Ideal,G,SI1,60.7,57
+1.01,Very Good,D,SI1,59,59
+0.4,Good,G,SI2,63.4,59
+1.23,Ideal,I,SI1,61.1,58
+1,Very Good,E,SI1,63.3,57
+0.9,Good,H,VS2,64.1,56
+1.65,Premium,D,SI2,61.6,58
+1.36,Ideal,H,VS2,59.9,57
+2.01,Good,G,SI1,60.8,61
+0.51,Ideal,E,VS2,61.4,57
+1.51,Good,F,VS2,64,59
+1.26,Ideal,G,VS2,60.8,55
+1.22,Premium,D,SI1,62.3,60
+1.53,Ideal,I,SI1,62.4,57
+1.7,Premium,G,VS1,61,59
+0.57,Ideal,H,SI1,61.8,55
+1.01,Very Good,I,SI1,60.1,59
+0.34,Premium,H,VS2,62.6,60
+0.3,Very Good,G,VS1,62.8,57
+1.08,Good,H,VVS1,63.1,57
+0.59,Ideal,G,VS2,61.9,56
+0.36,Very Good,H,VS2,63.5,54
+1.01,Very Good,J,SI1,61.3,57
+0.28,Very Good,F,VVS2,61.1,57
+0.71,Very Good,H,SI1,63.5,57
+0.31,Good,D,SI1,63.5,57
+0.31,Ideal,G,VVS1,61.6,56
+0.7,Ideal,E,VVS2,62.8,56
+0.3,Good,H,SI2,63.9,56
+0.61,Good,G,VS2,59.6,61.5
+0.38,Ideal,F,VVS2,62,54.1
+0.47,Ideal,E,VS1,61.8,53
+1.5,Good,G,VS1,63.8,58
+1.01,Premium,E,SI2,60.4,57
+1.39,Ideal,G,IF,60.6,55
+0.54,Ideal,H,SI1,62.5,56
+0.54,Premium,D,SI1,62.6,57
+0.31,Ideal,D,VS1,62.1,57
+0.71,Ideal,E,VS2,62.7,57
+0.62,Very Good,G,VS2,63.2,55
+1.97,Premium,H,VS2,62.9,59
+0.61,Ideal,G,VS2,61.6,55
+0.35,Ideal,J,IF,61.8,53
+0.41,Premium,F,VVS1,61.3,59
+0.9,Very Good,F,SI1,63.3,55
+0.71,Ideal,H,VS1,62.8,57
+1.01,Premium,H,SI2,61.9,61
+1.52,Fair,J,VS1,65.4,58
+0.24,Premium,I,VS1,62.5,57
+0.31,Very Good,F,VS2,63,57
+0.6,Ideal,G,VVS2,61.3,56
+2.58,Very Good,D,SI2,58.9,63
+0.33,Ideal,G,IF,61,56
+0.92,Ideal,H,SI1,60.5,57
+0.33,Ideal,G,VS1,62.1,55
+1.75,Premium,E,SI1,60.3,61
+1.07,Very Good,H,VVS2,61.3,56
+2.04,Premium,J,VS2,60.9,59
+0.42,Ideal,G,VS1,62,55
+0.6,Ideal,D,SI2,61.3,59
+0.31,Good,D,SI2,63.9,57
+1.21,Premium,F,VS1,62.6,59
+0.71,Ideal,H,SI1,62.7,55
+0.6,Ideal,H,IF,61.9,56
+0.54,Ideal,F,VS2,61.9,56
+0.34,Premium,F,SI2,61.7,61
+0.3,Ideal,G,VS1,61.4,57
+0.24,Very Good,E,VVS1,62.2,59
+0.5,Good,D,SI2,63.2,56
+1.7,Ideal,J,VS2,60.5,58
+0.47,Very Good,J,SI1,62.4,58
+1.39,Very Good,E,VS1,60.9,61
+0.41,Premium,F,VS1,61.2,57
+1.21,Ideal,F,VS2,62.4,59
+0.31,Ideal,G,IF,62.1,54
+0.66,Premium,J,SI1,61,61
+0.43,Premium,F,VS2,61.2,59
+1.56,Ideal,H,SI2,62.1,58
+0.41,Ideal,F,SI2,61.1,57
+0.37,Very Good,E,SI1,59.9,59
+0.8,Ideal,E,SI1,61.7,56
+0.5,Premium,G,SI1,62.6,56
+1,Fair,E,SI1,57.4,61
+1.11,Ideal,G,SI1,62.6,57
+0.88,Good,J,VS1,64,56
+0.9,Good,F,SI1,64,59
+0.73,Good,I,VS2,63.7,58
+1.07,Good,I,VS2,63.8,60
+0.41,Very Good,J,IF,63.5,54
+1.01,Very Good,G,SI1,60,58
+0.34,Very Good,G,VS2,60.3,54
+0.7,Very Good,D,SI1,61.1,61
+0.8,Premium,G,SI1,63,59
+1.01,Very Good,G,VS2,62.7,61
+0.7,Good,D,VS2,63.2,60
+0.71,Ideal,F,VS1,62.1,56
+1.56,Ideal,I,VS2,61.8,56
+1.08,Good,E,SI2,63.7,57
+1.1,Ideal,D,VVS2,62,57
+0.23,Ideal,G,IF,61.8,56
+0.4,Good,J,VS1,63.2,57
+1,Fair,F,SI2,65.1,55
+0.23,Very Good,E,VVS2,60.9,60
+0.35,Ideal,D,SI1,62.1,57
+1.05,Ideal,G,VS2,61.7,56
+1.15,Very Good,I,SI1,62.5,60
+39.8323109420016,Ideal,F,VS2,62.8,57
+1.01,Good,F,SI2,63.9,54
+1.18,Fair,F,SI2,55.9,64
+1.05,Ideal,G,SI2,62.3,56
+1.5,Premium,H,VS1,59.9,60
+0.7,Very Good,G,SI1,63.2,58
+1.5,Very Good,F,VS2,63.4,61
+1.01,Premium,G,VS2,61.6,61
+0.35,Ideal,I,VS2,59.8,57
+0.31,Ideal,G,VS1,61,55
+1.01,Very Good,F,VS2,61.7,57
+0.3,Premium,F,VS2,61.1,59
+0.71,Very Good,F,SI1,61.1,58
+1.13,Premium,G,VS2,62.5,58
+1.01,Premium,I,SI2,62.1,59
+0.41,Premium,G,VS2,62.6,59
+1.21,Very Good,H,VS1,60.4,59
+0.72,Ideal,E,VS2,60.8,56
+1.52,Premium,H,SI1,61,58
+0.24,Very Good,E,VVS2,63.1,56
+1.02,Ideal,E,SI2,61.6,56
+0.57,Premium,E,SI2,60.7,57
+0.61,Ideal,E,VVS2,62.1,54.2
+2.1,Premium,I,SI1,59.9,61
+0.42,Ideal,D,VS2,61.2,56
+0.7,Very Good,I,SI2,61.8,58
+0.31,Premium,G,SI2,63,57
+1,Premium,H,VS1,60.7,59
+0.3,Ideal,E,VVS1,62.5,54
+0.32,Very Good,G,VS1,63,55
+0.3,Very Good,E,VS2,61.9,61
+0.7,Very Good,G,VS1,61.7,59
+0.75,Ideal,F,SI1,61.2,55
+0.3,Premium,F,VS2,61.5,60
+1.13,Very Good,H,VS2,61.4,61
+0.31,Premium,G,VS1,62.1,58
+0.76,Premium,H,SI1,59.8,57
+1.5,Very Good,H,VVS1,63.8,57
+0.76,Ideal,F,SI2,60.3,60
+0.31,Ideal,G,VVS1,60.8,56
+0.77,Ideal,D,VS2,61.8,56
+0.7,Ideal,G,SI1,62.5,56
+0.5,Very Good,D,VS2,62.8,56
+1.03,Ideal,G,SI1,61.6,57
+1.02,Very Good,E,VS2,60,59
+1.51,Ideal,D,SI1,61.9,56
+0.9,Very Good,F,SI1,58,63
+0.71,Very Good,E,VS2,59.6,60
+0.31,Very Good,I,VS2,60.7,61
+1,Good,I,SI1,63.7,64
+0.4,Ideal,G,VS1,61.3,55
+1.01,Premium,E,VS2,62,59
+0.51,Very Good,F,SI1,63.4,58
+1.21,Good,J,IF,62.1,60
+0.3,Ideal,E,VVS1,61.2,57
+0.83,Ideal,E,SI2,61.3,57
+0.5,Ideal,E,VS2,62.1,54
+1.16,Premium,I,VS1,60.4,59
+0.53,Very Good,G,VS2,60.1,59
+0.45,Ideal,G,VVS1,61.5,57
+0.34,Premium,G,IF,60.5,58
+1.02,Fair,E,SI1,65.7,58
+1.15,Ideal,H,SI1,61.6,55
+0.54,Ideal,D,SI1,62.9,57
+0.51,Ideal,D,SI2,62.5,55
+1.8,Ideal,D,SI2,62.9,54
+1.52,Ideal,G,SI1,60.3,57
+1.78,Premium,H,VS1,60.2,59
+0.34,Ideal,F,SI1,59.4,57
+2.03,Premium,H,SI2,61.6,58
+2,Premium,J,SI2,59.8,60
+0.52,Ideal,G,SI2,61.6,55
+0.56,Ideal,D,VS2,62.2,56
+0.51,Very Good,I,SI1,62.5,58
+1,Very Good,G,VS2,61.1,55
+0.51,Ideal,G,VS1,61.2,55
+0.42,Good,H,SI1,63.6,57
+1.54,Premium,H,VS2,61,60
+0.9,Premium,E,SI2,60.4,59
+1.01,Premium,G,VS2,62.1,54
+0.28,Very Good,H,VVS1,61.5,58
+0.31,Ideal,F,VVS1,62,55
+0.38,Ideal,F,VVS1,62.2,57
+0.37,Premium,G,IF,59.8,58
+1.12,Premium,D,VVS2,59.8,58
+1.53,Very Good,J,VS1,59.5,60
+1.07,Premium,G,SI2,62.9,59
+0.78,Premium,F,SI2,62.8,56
+0.4,Very Good,E,SI1,63.3,56
+0.37,Premium,D,SI1,62.2,58
+0.72,Premium,D,SI2,62,60
+1.22,Good,G,SI2,64,61
+1.13,Ideal,D,VVS2,61.7,57
+0.51,Very Good,G,IF,59.3,57
+1,Fair,I,SI2,65.8,58
+1.5,Good,H,SI2,64.2,56
+1.06,Very Good,H,SI1,60.2,59
+0.33,Ideal,F,VVS1,61.9,55
+0.24,Ideal,H,VVS1,62.4,56
+0.35,Very Good,F,SI1,61,55
+1.6,Premium,F,SI1,60.5,58
+0.7,Very Good,G,VS2,63.4,58
+0.34,Ideal,E,VS2,61.8,57
+0.3,Ideal,G,VS1,61.4,57
+0.53,Ideal,D,VS1,61.5,55
+1,Very Good,E,SI1,63.4,58
+0.32,Ideal,I,VS1,62.3,56
+0.31,Ideal,H,VVS1,62.2,56
+0.71,Very Good,E,VS2,58.5,57
+0.5,Premium,F,VS2,60.6,59
+0.34,Ideal,I,IF,62.2,53.5
+0.85,Ideal,G,VS1,61.6,54
+0.33,Ideal,H,VS2,60.7,57
+0.5,Good,F,VS2,63.3,57
+0.57,Ideal,F,VVS1,62.3,55
+0.73,Ideal,F,VS1,62.9,56
+0.34,Premium,H,SI1,62.1,59
+1.3,Premium,F,VS2,60.4,59
+0.35,Ideal,E,IF,62.2,56
+1.1,Premium,E,VVS2,60.1,58
+1.19,Very Good,G,VVS2,61.8,59
+0.31,Good,I,VS1,63.9,55
+0.5,Very Good,E,SI2,62.8,55
+0.25,Ideal,D,SI1,61.5,55
+0.34,Ideal,G,VVS1,62.1,55
+0.75,Premium,I,SI2,61.1,57
+2.03,Ideal,J,SI1,62.6,55
+0.58,Ideal,H,VVS1,62.1,53.6
+0.52,Ideal,H,VS2,61.6,55
+0.4,Ideal,G,SI1,61.3,55
+0.32,Ideal,D,VS1,61.5,56
+0.36,Ideal,D,VVS2,61.9,53
+0.73,Very Good,J,VS2,60.6,61
+0.37,Premium,F,VS2,59.8,59
+0.71,Premium,D,SI1,59.2,62
+1.05,Premium,F,VS1,61,58
+1.19,Premium,I,SI2,61.6,56
+2,Ideal,J,VS2,61,57
+0.51,Very Good,I,SI1,63.1,56
+0.7,Very Good,E,SI2,63.5,54
+0.32,Ideal,E,VVS1,61.5,56
+0.9,Premium,F,SI1,62,55
+1.04,Ideal,I,SI1,63,56
+0.31,Ideal,E,VVS1,62.3,57
+1,Premium,F,VS2,60.7,57
+0.28,Very Good,E,VVS1,61.9,59
+0.39,Premium,F,SI1,61.3,62
+1.21,Ideal,H,VS2,62.9,55
+0.34,Good,E,SI1,63.9,56
+0.75,Ideal,D,VS1,62,58
+0.3,Ideal,E,VS2,61.5,56
+0.3,Premium,G,VS1,60.3,62
+1.2,Very Good,H,SI1,63.5,58
+0.37,Very Good,F,VS2,63.3,56
+0.33,Ideal,E,VS2,62.1,56
+0.79,Very Good,J,SI1,58.8,62
+1.03,Premium,H,VS2,61,58
+0.31,Good,H,VS1,63.1,57
+0.43,Premium,G,VVS1,62,59
+0.39,Premium,F,VS1,62,56
+0.3,Ideal,G,VVS2,62.2,54
+0.43,Premium,G,VS1,61,58
+0.31,Ideal,H,VS2,61.2,56
+0.72,Very Good,G,SI1,62.4,59
+1.35,Ideal,G,IF,62.2,57
+0.51,Ideal,F,SI1,61.7,56
+0.7,Good,E,SI1,59.8,64
+1.54,Ideal,F,VS2,61.8,56
+1.05,Very Good,G,SI1,61.6,57
+0.81,Ideal,J,SI2,62.2,57
+0.3,Premium,G,VVS1,61.7,58
+1.48,Ideal,E,SI2,62.1,57
+1,Very Good,D,SI1,62.8,58
+0.9,Premium,J,VS1,62.1,62
+0.32,Very Good,D,SI1,60,56
+0.41,Premium,G,SI1,61.4,60
+1.53,Very Good,H,VS2,62.2,58
+0.94,Very Good,E,SI1,62.4,56
+1.01,Very Good,I,SI1,62.9,58
+0.41,Ideal,E,VS1,62.7,57
+1,Good,G,VS1,63.9,55
+2.12,Very Good,F,SI2,60.6,58
+0.7,Fair,J,VS2,64.6,58
+1.02,Ideal,I,VS2,62.7,56
+0.63,Premium,F,SI2,60.3,61
+1.01,Premium,E,VS2,62.4,60
+2.04,Premium,E,SI2,58.3,58
+2.22,Very Good,J,SI2,61.2,63
+1.01,Premium,E,SI1,62.9,59
+0.28,Very Good,D,VS1,62.4,56
+1.13,Ideal,E,VS2,61.4,58
+0.3,Premium,I,VS1,61.7,59
+0.91,Premium,G,SI1,61.8,60
+0.71,Very Good,I,VS1,61.1,57
+0.32,Ideal,F,VVS1,61.7,56
+0.53,Ideal,E,VVS2,61.9,55
+0.41,Premium,F,SI2,60.8,58
+1.01,Fair,E,SI1,64.7,56
+0.9,Very Good,F,SI1,63.7,58
+0.24,Very Good,F,VVS1,61.8,58
+0.31,Premium,H,SI1,58.7,60
+0.32,Good,E,SI1,63.5,56
+0.71,Ideal,F,SI1,61.5,56
+1.31,Premium,J,VS2,60.7,58
+1.01,Good,G,SI2,63.7,58
+0.73,Ideal,G,VS1,61.5,56
+0.54,Ideal,D,VS1,61.6,54
+1.02,Ideal,F,VS2,62.9,57
+0.52,Ideal,H,VS1,62,55
+0.72,Ideal,J,VVS1,62.5,56
+0.32,Ideal,I,SI1,62.4,57
+0.27,Ideal,H,VS2,61.7,56
+0.93,Premium,E,I1,62.3,60
+0.76,Good,I,SI1,64.1,59
+1.14,Ideal,D,SI2,61.4,56
+0.3,Good,F,IF,64.3,53
+0.9,Premium,H,VS2,61.8,56
+1.14,Very Good,E,SI2,62.6,56
+0.9,Good,E,SI1,57.9,60
+0.7,Good,F,VVS1,59.9,62
+1,Ideal,E,SI2,62.9,56
+1.01,Ideal,F,SI2,61.4,56
+0.71,Ideal,G,VS1,62.3,54
+0.33,Premium,I,VVS1,62.5,61
+0.6,Premium,D,SI1,62.9,58
+0.71,Ideal,D,SI2,62.7,55
+0.4,Ideal,D,VVS2,62.8,56
+2.24,Premium,H,SI2,61.4,57
+0.39,Ideal,D,VS1,60.3,56
+0.34,Ideal,G,VVS1,62.1,55
+0.32,Ideal,I,VS2,62.2,57
+0.31,Ideal,E,VS2,61.6,57
+0.51,Premium,E,VS2,61.3,58
+0.75,Ideal,D,VS1,62.4,54
+0.4,Good,D,SI2,63.8,54
+0.73,Premium,F,SI1,62.4,55
+0.7,Premium,F,SI1,62.8,59
+1.01,Very Good,D,VVS2,62.5,59
+1.13,Ideal,G,VVS2,60.7,57
+0.54,Very Good,F,SI1,63.5,58
+2.05,Ideal,F,SI2,62.2,57
+0.53,Ideal,H,SI1,62.3,57
+1.13,Very Good,D,VVS2,61.5,58
+0.9,Very Good,I,VS2,59.3,59
+1.2,Ideal,H,VS2,61.2,59
+1.08,Ideal,G,IF,61.3,57
+1.28,Ideal,G,IF,60.8,57
+0.75,Premium,G,SI1,59.4,62
+1.33,Ideal,H,SI1,60.1,57
+1.39,Premium,I,I1,62.6,57
+0.31,Ideal,G,VVS2,61.5,56
+0.32,Ideal,E,IF,62.6,55
+0.36,Ideal,E,VS2,61.2,56
+1.24,Very Good,J,SI2,62.2,58
+1.8,Very Good,I,SI2,63.2,58
+0.42,Ideal,H,VS1,62,57
+1.25,Premium,G,SI1,60.7,58
+0.31,Ideal,G,VVS1,60.2,61
+1.04,Ideal,G,VS2,60.7,56
+0.9,Good,F,SI2,63.1,57
+0.3,Ideal,G,VVS1,62.2,57
+0.52,Very Good,E,VS2,62.8,58
+0.31,Ideal,H,SI1,62.9,56
+0.31,Ideal,D,SI1,62.6,57
+0.25,Very Good,H,VVS2,63.3,54
+0.75,Very Good,D,SI1,61.8,57
+0.4,Ideal,F,SI2,61.6,55
+1.01,Good,E,SI1,59.3,64
+0.32,Ideal,F,VVS2,61.2,55
+1,Good,H,SI2,63.2,59
+1.14,Very Good,G,VS2,63.2,58
+1.01,Premium,H,VS2,61.6,59
+0.3,Very Good,E,VVS2,63.2,56
+1.22,Very Good,J,VS1,59,63
+0.7,Ideal,H,VVS1,62,57
+0.71,Very Good,I,VS2,61.4,56
+1.06,Ideal,F,VVS2,61.1,57
+0.4,Ideal,E,VVS1,61.5,56
+0.56,Ideal,F,VS2,61.6,55
+0.37,Premium,D,SI1,61.9,59
+0.9,Good,I,VS2,63.7,61
+0.71,Ideal,E,VS2,61.3,56
+0.5,Ideal,E,VS2,61.5,57
+0.57,Very Good,D,SI2,62.1,58
+1.2,Very Good,H,SI1,58.9,60
+0.51,Very Good,F,VVS2,62.7,56
+0.32,Very Good,F,VS2,62.8,57
+0.9,Good,D,SI2,64,59
+1.01,Good,E,VS1,63.8,55
+1.53,Premium,G,VVS1,60.6,58
+1,Fair,G,SI1,64.7,60
+1.01,Premium,F,VS2,62.4,58
+1.31,Ideal,I,VS1,61.8,55
+0.31,Premium,D,SI2,61.8,60
+0.57,Premium,F,SI2,61.7,59
+0.4,Ideal,F,VVS2,62,56
+1.25,Premium,I,SI1,59.7,59
+0.7,Ideal,J,VS2,61.9,57
+0.61,Ideal,G,VVS2,62.4,53.8
+1.15,Very Good,F,SI1,62.5,59
+2.03,Very Good,D,SI2,63.1,58
+0.33,Ideal,F,VS2,61.6,56
+0.64,Good,H,VS1,61.8,60.3
+0.9,Good,F,SI1,59.3,56
+0.71,Very Good,E,VS2,63.5,59
+1.27,Premium,F,VVS2,61.3,60
+1.04,Very Good,H,VS2,60.9,58
+0.74,Premium,E,VS2,62.7,58
+0.38,Ideal,G,VS1,60.8,56
+0.34,Ideal,H,VVS1,61.1,56
+0.31,Very Good,H,VS1,62.8,58
+1.09,Ideal,G,VVS2,61.8,56
+1.53,Premium,G,VS2,59.4,59
+1.08,Ideal,E,VVS2,61.8,56
+1.1,Ideal,G,SI1,61.6,56
+1,Very Good,E,SI2,62.5,55
+0.7,Ideal,I,VVS2,61.8,56
+0.6,Ideal,F,SI2,61.7,56
+1.11,Good,I,VS2,63.6,58
+1.18,Ideal,G,SI1,62,56
+0.34,Premium,G,VS1,62.2,55
+0.31,Very Good,F,VS1,59.7,55
+1.49,Ideal,F,VVS2,61.1,58
+0.57,Ideal,E,SI1,61.5,56
+0.4,Fair,G,VS2,64.6,55
+0.53,Premium,F,VS2,61.4,60
+0.31,Ideal,F,IF,62.1,54
+1.33,Very Good,J,VS1,61.7,55
+1.02,Ideal,G,VS2,60.6,56
+0.8,Very Good,H,SI2,62.7,57
+1.03,Very Good,G,VS2,61,58
+0.78,Very Good,D,VS1,61.5,57
+0.71,Good,H,VS1,63.6,55
+0.39,Ideal,E,VVS2,61.9,55
+0.3,Good,F,VVS1,61.1,61
+1.21,Ideal,D,VVS2,61.3,57
+0.3,Ideal,H,SI1,62,58
+0.52,Ideal,G,VS1,61.2,56
+0.72,Ideal,D,VS1,61.6,56
+1.51,Premium,F,SI1,61.4,58
+0.35,Very Good,H,VS2,59.8,62
+0.41,Ideal,F,VVS2,61.2,56
+0.34,Premium,I,VVS2,61.3,57
+0.5,Ideal,E,VS2,60.8,57
+1.55,Ideal,F,VS2,62.6,57
+0.3,Ideal,G,VVS2,60.9,57
+0.38,Ideal,E,VVS1,62.4,56
+0.34,Premium,G,VS2,62.4,59
+0.4,Ideal,D,VS1,62.3,56
+0.72,Premium,J,VS2,61.7,58
+2.03,Ideal,I,VS2,62.7,57
+1.06,Premium,G,VS1,62.2,55
+0.93,Fair,G,SI2,66.1,58.1
+0.33,Ideal,I,VVS1,62.2,54
+1.01,Premium,E,VVS2,62.4,58
+0.38,Ideal,E,VS2,61.9,57
+1.22,Very Good,F,VVS2,60.7,62
+0.53,Very Good,I,VS1,61,57
+0.38,Ideal,G,VS2,62.2,56
+0.32,Ideal,J,VS2,62.2,57
+0.57,Very Good,F,VVS2,62.6,58
+1,Very Good,E,VVS2,61.9,61
+0.82,Very Good,D,SI1,63.1,58
+0.7,Ideal,J,SI1,62,55
+0.91,Very Good,H,VS2,63.1,56
+0.54,Very Good,H,SI1,61.6,56
+32.7665274450555,Fair,E,VVS2,63.1,55
+1.03,Premium,I,SI1,62,58
+0.94,Premium,H,VS2,62.5,58
+0.71,Premium,H,SI1,62.4,59
+0.35,Premium,E,VS2,61.4,58
+1.73,Premium,E,SI1,62.6,58
+1.38,Ideal,I,SI2,61.8,57
+0.3,Premium,D,VS2,60.6,58
+2.07,Ideal,I,SI2,62,55
+0.32,Ideal,G,VS1,61.8,55
+0.65,Premium,E,SI2,61.4,59
+0.5,Ideal,D,SI1,60.9,57
+0.41,Premium,F,VS2,61.6,59
+0.73,Ideal,G,VVS2,61.9,56
+0.5,Fair,H,VS2,65.1,59
+0.33,Premium,G,VS1,60.5,58
+0.5,Very Good,H,SI1,63.5,56
+2.02,Premium,I,VS1,61.2,59
+0.9,Fair,I,VS2,65.8,55
+0.42,Good,I,VVS1,59.2,61
+1.03,Premium,J,SI2,62,58
+2.06,Very Good,J,VS2,61.8,59
+0.4,Ideal,G,SI1,61.5,57
+1.09,Ideal,E,SI1,61.1,55
+1.53,Very Good,I,SI1,63.1,57
+0.31,Ideal,E,VVS1,61.7,56
+0.91,Premium,G,SI2,61.3,60
+0.42,Premium,G,VS1,60.8,59
+0.7,Fair,G,SI1,63.1,57
+1.5,Premium,E,SI1,61.3,59
+1.23,Very Good,F,VS1,60.6,58
+1.09,Premium,F,VS1,60.9,58
+1,Very Good,I,VS1,63.3,55
+0.51,Premium,G,VVS2,61.7,58
+1.2,Ideal,I,SI1,62.2,56
+0.7,Very Good,I,VVS1,62.1,58
+1,Good,H,SI1,61,61
+0.62,Ideal,G,VVS2,61.6,56
+1.1,Premium,E,SI1,60.7,55
+0.36,Ideal,H,SI1,61.5,57
+1.53,Good,I,SI1,63.1,57
+0.31,Premium,E,IF,61,59
+0.9,Good,I,VVS1,63.6,58
+1.2,Premium,J,SI1,60.7,60
+0.51,Very Good,J,VS2,58,62
+0.74,Very Good,E,VS1,63.1,58
+0.33,Ideal,E,VS2,61.9,54
+0.32,Ideal,G,VS1,61.3,55
+0.5,Ideal,E,VS1,62.2,57
+0.23,Ideal,F,VS2,60.9,57
+1.2,Premium,H,SI2,62.4,61
+0.33,Very Good,H,VVS2,61.9,56
+0.52,Ideal,I,VS1,61.5,56
+0.7,Ideal,D,SI2,60.6,56.6
+1.01,Very Good,I,SI2,61.5,62
+0.5,Fair,F,VS1,65,55
+0.36,Premium,E,VS1,61.5,59
+0.56,Ideal,D,SI1,61.8,55
+0.9,Good,F,VS2,62.6,57
+0.88,Fair,I,VS2,57.4,67
+0.3,Ideal,F,IF,61.8,54
+1.22,Very Good,J,SI1,58.8,61
+0.5,Very Good,D,SI1,60.6,59
+0.82,Premium,H,SI1,59.9,57
+0.91,Very Good,G,SI2,62.9,54
+0.31,Ideal,I,VVS1,61.2,55.6
+0.32,Premium,G,VS1,61.2,62
+1.14,Premium,D,SI2,62.4,58
+0.64,Fair,F,VS2,57,62.5
+1.04,Ideal,H,SI1,62.1,57
+0.52,Ideal,D,VS2,61.5,56
+1.24,Ideal,F,VS2,61.6,54
+1,Good,G,SI2,57.4,60
+0.31,Ideal,G,VVS2,62.6,57
+1.02,Premium,J,VS2,58.9,60
+0.71,Very Good,E,SI1,60,56
+0.9,Fair,G,SI2,65.3,59
+1.37,Very Good,I,SI2,63,57
+1.5,Fair,E,SI1,56.2,58
+0.3,Ideal,F,VVS1,61.9,55
+0.38,Ideal,D,VS1,62,57
+0.32,Good,H,SI1,63.7,55
+0.41,Ideal,G,SI1,62.9,56
+1.15,Very Good,G,VVS2,58.4,59
+0.9,Ideal,H,VS1,61.9,56
+1.26,Ideal,I,SI2,59.6,57
+0.31,Ideal,E,VS1,61.6,56
+1.12,Ideal,G,VVS2,61.9,57
+0.36,Very Good,E,SI1,61.3,56
+0.59,Good,F,VS1,60.5,61
+0.34,Ideal,D,VS1,61.4,56
+1.17,Fair,I,I1,64.5,59
+1.64,Good,I,SI1,57.9,61
+0.54,Ideal,H,VVS1,61.8,55
+1.04,Ideal,F,VVS2,61.2,57
+0.79,Ideal,I,VS1,61.8,59
+1.03,Premium,F,SI2,60.2,55
+0.31,Ideal,E,VS1,61.7,53
+0.56,Ideal,E,VS1,61.8,55
+1,Premium,I,VS2,61.6,59
+0.51,Very Good,E,VVS2,61.3,55
+1.02,Ideal,F,VS1,61.5,56
+0.53,Ideal,H,SI1,61.5,54
+0.41,Ideal,G,VS2,60.9,57
+0.38,Ideal,D,SI1,61.3,57
+0.7,Ideal,F,SI1,60.8,57
+1,Ideal,E,VS2,62.9,55
+1,Ideal,F,SI1,62,57
+1.04,Very Good,H,IF,62,55
+0.53,Ideal,E,VVS2,62.2,54
+2.02,Good,F,SI2,61.9,61
+0.72,Premium,J,VS2,61.7,58
+1.04,Good,G,VS1,63.8,57
+0.84,Ideal,J,SI1,61.8,56
+0.7,Very Good,F,SI2,59.9,59
+0.43,Very Good,G,VS2,59.1,60
+0.39,Ideal,G,VVS2,60.7,55
+2,Premium,I,VS2,60.7,60
+1.76,Very Good,H,SI1,62.6,58
+1.13,Fair,F,SI2,64.4,56
+0.31,Premium,I,VS1,62.6,59
+1.12,Premium,H,SI2,62.1,56
+0.4,Premium,F,VS1,61.1,59
+1.04,Very Good,D,VS1,62.3,59
+0.67,Premium,G,VVS2,60.1,60
+1.13,Premium,G,SI2,60,61
+1.04,Very Good,D,SI1,63.4,55
+0.44,Premium,F,VS2,62.2,58
+0.96,Very Good,G,SI2,63.1,56
+0.52,Ideal,G,VVS2,62.1,56
+0.3,Ideal,I,VVS1,62.4,56
+0.93,Very Good,H,VS2,62.8,59
+0.34,Ideal,J,VS1,62,54
+1.05,Ideal,H,SI2,60.6,57
+0.41,Very Good,F,SI2,62.6,54
+0.54,Ideal,G,VS1,62.3,55
+1.56,Very Good,I,VS2,59.7,60
+0.32,Very Good,I,VS1,62.4,56
+2.42,Premium,J,SI2,58.5,59
+1.54,Premium,I,SI2,60.1,61
+1.01,Premium,F,SI2,61.8,56
+0.92,Premium,D,SI1,62.3,58
+0.58,Ideal,G,VS1,60.6,56
+0.91,Good,D,SI2,63.8,58
+0.73,Fair,E,VVS2,57.4,59
+0.3,Ideal,F,IF,62.2,56
+0.31,Ideal,F,VS2,60.8,57
+1.08,Very Good,G,SI2,60.3,58
+0.32,Ideal,F,IF,61.2,57
+0.52,Ideal,D,VS2,62,56
+0.32,Ideal,G,VVS1,61.9,56
+0.4,Good,D,SI1,63.6,57
+0.7,Ideal,F,SI1,62.7,57
+0.71,Premium,E,SI2,62.7,59
+0.72,Ideal,E,VS1,62.6,57
+0.52,Ideal,F,VS2,61.2,56
+0.3,Ideal,G,VS1,61.9,56
+1.21,Ideal,D,SI2,62,57
+0.34,Ideal,H,VS2,61.4,57
+0.32,Premium,E,VVS1,60.5,58
+0.9,Ideal,D,SI1,62.6,55
+1.01,Good,F,SI1,63.3,58
+1.11,Very Good,H,SI1,61.9,58
+1.09,Good,F,SI2,60.8,61.4
+1.05,Very Good,F,VS2,62.8,57
+1,Good,I,SI1,65.2,56
+0.41,Ideal,E,VS1,62,54
+0.9,Very Good,H,SI2,62.3,61
+0.3,Premium,D,VS2,62.5,58
+1,Fair,F,SI2,65.5,56
+0.78,Ideal,E,SI1,61.6,56
+0.3,Very Good,G,IF,62.9,58
+0.71,Good,G,SI1,63.9,56
+0.31,Very Good,I,SI1,60.7,60
+0.37,Ideal,E,SI1,61.9,56
+1.08,Ideal,H,SI2,61.2,57.4
+0.37,Ideal,G,VS2,61.3,57
+1.72,Fair,J,I1,68.5,59
+0.5,Premium,G,VVS2,62.1,61
+1.58,Premium,G,VS1,60.8,58
+0.52,Very Good,D,VS2,62.8,58
+0.35,Ideal,H,VVS1,60.5,57
+1.7,Premium,E,SI2,59.8,59
+2.01,Premium,H,SI1,60.9,59
+0.51,Ideal,H,IF,62.6,56
+1.01,Very Good,E,VS2,63.4,60
+1.03,Premium,H,VS2,61.6,61
+0.27,Very Good,G,VVS1,62.9,55
+1.14,Ideal,F,I1,61.7,57
+2.08,Ideal,I,VS2,62,56
+1.32,Ideal,G,SI1,61.9,57
+0.71,Ideal,G,VVS2,62.5,57
+0.71,Ideal,F,VS1,62.6,55
+1.35,Fair,H,VS2,64.5,58
+1.03,Fair,I,SI2,65.3,55
+1,Ideal,I,SI1,62.7,56
+0.49,Very Good,F,SI1,62.5,57
+1.02,Fair,H,SI1,65.5,60
+0.83,Premium,G,VS1,58.8,58
+0.3,Good,G,SI2,63.3,57
+0.71,Ideal,F,SI1,60.8,57
+0.9,Good,D,SI2,59.5,62
+1.51,Very Good,H,VS2,63,57
+0.54,Premium,D,VS1,61.1,58
+1.25,Good,H,SI1,63.7,58
+1.1,Ideal,J,SI2,60.9,56
+1.31,Premium,G,VVS2,62.7,59
+0.36,Premium,G,VS1,59.7,56
+0.57,Premium,J,SI2,62.7,60
+0.9,Premium,E,VS1,60.1,56
+0.44,Ideal,G,VVS1,62.3,56
+0.38,Ideal,F,VS2,62.2,57
+2.16,Ideal,J,VS1,61.4,59
+2.09,Good,I,SI1,57.9,63
+1.01,Ideal,H,VS2,60.6,57
+2.15,Good,G,SI2,63.8,58
+0.33,Very Good,G,VVS2,61.4,55
+0.41,Ideal,J,VS1,61.3,57
+0.27,Ideal,E,VS2,60.8,56
+0.73,Ideal,G,VS1,61.8,57
+0.36,Very Good,G,SI1,63.3,56
+0.32,Ideal,F,VS1,61.3,55
+0.91,Ideal,I,SI1,62.4,56
+1.51,Good,H,SI2,63.1,60
+0.79,Premium,F,VS2,63,59
