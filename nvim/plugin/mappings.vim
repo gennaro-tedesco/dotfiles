@@ -76,6 +76,9 @@ nnoremap R
   \ :cfdo %s/<C-r>s//g \| update
   \<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
+" delete a conditional/logical block of code
+nnoremap <leader>db dVa{
+
 " count all occurrences of word under cursor
 nnoremap * *:%s/<c-r>=expand("<cword>")<cr>//ng<CR>
 
@@ -94,6 +97,8 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> gm :<C-u>CocList outline<CR>
 nnoremap <leader>f :ALEFix<CR>
 nnoremap <leader>l :ALEToggle<CR>
+nmap <silent> <leader>+ <Plug>(ale_next_wrap)
+nmap <silent> <leader>- <Plug>(ale_previous_wrap)
 
 " buffers and files browsing
 nnoremap <C-n> :FloatermNew vifm<CR>
