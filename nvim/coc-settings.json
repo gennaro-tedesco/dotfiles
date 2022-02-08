@@ -2,10 +2,12 @@
   "diagnostic.displayByAle": true,
   "jedi.startupMessage": false,
   "sumneko-lua.enableNvimLuaDev": true,
+  "go.tags": {
+    "options": "json="
+  },
   "suggest.enablePreview": true,
   "suggest.minTriggerInputLength": 3,
   "suggest.snippetIndicator": "[+] ",
-  "coc.preferences.useQuickfixForLocations": true,
   "suggest.completionItemKindLabels": {
     "method": " ƒ ",
     "function": " ƒ ",
@@ -30,5 +32,6 @@
     "constructor": "  ",
     "value": "  ",
     "enumMember": "  "
-  }
+  },
+  "coc.preferences.useQuickfixForLocations": true
 }
