@@ -111,11 +111,22 @@ json_diff() {
 # preview json files
 jqx() {
 	[[ ( $# -ne 1 ) || ( $1 != *.json ) ]] && { echo "pass one json file only"; return }
-	jq 'keys[]' "$1" |
-		fzf \
-			--preview "jq .{} $1 -C" \
-			--prompt "keys:" \
-			--bind "enter:execute:(jq  .{} $1 -C | less)"
+
+	local json_type="$(jq '.|type' $1)"
+	if [[ "$(jq '.|type' $1)" == "\"array\"" ]]
+	then
+		jq 'keys[]' "$1" |
+			fzf \
+				--preview "jq '.[{}]' $1 -C" \
+				--prompt "array index:" \
+				--bind "enter:execute:(jq  '.[{}]' $1 -C | less)"
+	else
+		jq 'keys[]' "$1" |
+			fzf \
+				--preview "jq .{} $1 -C" \
+				--prompt "keys:" \
+				--bind "enter:execute:(jq  .{} $1 -C | less)"
+	fi
 }
 
 # curl weather
