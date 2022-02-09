@@ -6,7 +6,7 @@
     "options": "json="
   },
   "suggest.enablePreview": true,
-  "suggest.minTriggerInputLength": 3,
+  "suggest.minTriggerInputLength": 2,
   "suggest.snippetIndicator": "[+] ",
   "suggest.completionItemKindLabels": {
     "method": " ƒ ",
