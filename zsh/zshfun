@@ -108,6 +108,16 @@ json_diff() {
 }
 
 
+# preview json files
+jqx() {
+	[[ ( $# -ne 1 ) || ( $1 != *.json ) ]] && { echo "pass one json file only"; return }
+	jq 'keys[]' "$1" |
+		fzf \
+			--preview "jq .{} $1 -C" \
+			--prompt "keys:" \
+			--bind "enter:execute:(jq  .{} $1 -C | less)"
+}
+
 # curl weather
 weather() {
 	local location
