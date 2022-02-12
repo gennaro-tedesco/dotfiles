@@ -29,6 +29,8 @@ VI_MODE_SET_CURSOR=true
 bindkey -M vicmd ' ' edit-command-line
 bindkey -M vicmd 'H' vi-beginning-of-line
 bindkey -M vicmd 'L' vi-end-of-line
+bindkey -M vicmd -s E 10e
+bindkey -M vicmd -s B 10b
 bindkey -M viins 'jj' vi-cmd-mode
 bindkey -M viins 'kk' vi-cmd-mode
 
