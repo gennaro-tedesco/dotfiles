@@ -110,7 +110,13 @@ json_diff() {
 
 # preview json files
 jqx() {
-	[[ ( $# -ne 1 ) || ( $1 != *.json ) ]] && { echo "pass one json file only"; return }
+	if [[ -z "$1" ]]; then
+		local json_selection
+		json_selection="$(fd -I -t f -e json | fzf)" && jqx "$json_selection"
+		return 0
+	fi
+
+	[[ $1 != *.json ]] && { echo "json files only"; return }
 
 	local json_type="$(jq '.|type' $1)"
 	if [[ "$(jq '.|type' $1)" == "\"array\"" ]]
