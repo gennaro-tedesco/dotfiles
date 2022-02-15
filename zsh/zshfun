@@ -70,7 +70,7 @@ help() { "$@" --help | bat -l man -p ; }
 preview_files() {
 	local selection
 	if [[ -z "$1" ]]; then
-		selection="$(echo *(^/) | tr " " "\n" | fzf)" && preview_files "$selection"
+		selection="$(fd -H -t f -E '.git/' | fzf)" && preview_files "$selection"
 		return 0
 	fi
 	case $1 in
