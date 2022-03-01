@@ -73,7 +73,13 @@ preview_files() {
 		selection="$(fd -H -t f -E '.git/' | fzf)" && preview_files "$selection"
 		return 0
 	fi
+
 	case $1 in
+		-e)
+			shift
+			selection="$(fd -H -t f -E '.git/' -e $1 | fzf)" && preview_files "$selection"
+			shift
+			;;
 		*.md)
 			glow -s ~/.config/glowconfig/customglow.json -p $1;;
 		*.json)
