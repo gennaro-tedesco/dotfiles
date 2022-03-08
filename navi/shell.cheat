@@ -9,7 +9,7 @@ ghead -n -1 <filename>
 # check if file contains EOF
 tail -c1 <filename>
 
-$ filename: fd -d 1 -t f
+$ filename: fd -t f
 
 
 % cut, column
@@ -23,7 +23,7 @@ gcut -f<colNr> -d, --complement <filename>
 # columnate tabular data
 column -t -s, <filename>
 
-$ filename: fd -d 1 -t f
+$ filename: fd -t f
 
 
 % sed
@@ -66,7 +66,7 @@ tr -s " " < <filename>
 # print all $PATH directories
 echo $PATH | tr  ':' '\n'
 
-$ filename: fd -d 1 -t f
+$ filename: fd -t f
 
 
 % curl

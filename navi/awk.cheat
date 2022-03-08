@@ -1,8 +1,5 @@
 % awk
 
-# column indices
-awk -F, 'NR==1 {for (i=1; i<=NF; i++) print i","$i}' <filename> | column -t -s,
-
 # select columns from file
 awk 'BEGIN{FS=OFS=","} {print $1,$2}' <filename>
 
@@ -24,7 +21,7 @@ awk 'BEGIN{FS=OFS=","} {gsub(/[ \t]+/,""); print }' <filename>
 # trim leading and trailing white spaces
 awk 'BEGIN{FS=OFS=","} { gsub(/^[ \t]+|[ \t]+$/, ""); print }' <filename>
 
-# replace
+# replace everywhere
 awk 'BEGIN{FS=OFS=","} {gsub(/<pattern>/,"<replacement>"); print }' <filename>
 
 # replace in column
@@ -68,9 +65,6 @@ awk -F ',' '/<pattern>/{++count} END {print count}' <filename>
 
 # count frequencies of values in column
 : <filename>; awk -F ',' 'NR!=1 {print $<colNr>}' <filename> | sort | uniq -c | sort -nr
-
-# count percentages histogram
-awk -F, 'BEGIN{print "field,count,percentage"; print "-----,-----,----------"} NR>1  {partial[$<colNr>]++; total++;}END{for(i in partial)printf i","partial[i]"," "%.3f\n",partial[i]/total;}' <filename> | (sed -u 2q;  sort -n -k2 -t, -r) | column -t -s,
 
 $ filename: fd -I -t f -e csv
 $ colNr: xsv headers <filename> --- --column 1
