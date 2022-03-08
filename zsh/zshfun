@@ -42,10 +42,19 @@ list_goenv() {
 
 # search regex in current directory
 search() {
-	[[ $# > 1 ]] && { echo "pass one regex argument only"; return }
-	[[ $# -eq 0 ]] && { echo -n "search regex: "; read -r regex} || regex=$1
+	[[ $# -eq 0 ]] && { echo "provide regex argument"; return }
 	local matching_files
-	matching_files=$(rg -l ${regex} | fzf --preview="rg '${regex}' {} --color=always -n")
+	case $1 in
+		-h)
+			shift
+			regex=$1
+			matching_files=$(rg -l --hidden ${regex} | fzf --exit-0 --preview="rg --color=always -n '${regex}' {} ")
+			;;
+		*)
+			regex=$1
+			matching_files=$(rg -l -- ${regex} | fzf --exit-0 --preview="rg --color=always -n -- '${regex}' {} ")
+			;;
+	esac
 	[[ -n "$matching_files" ]] && ${EDITOR} "${matching_files}" -c/${regex}
 }
 
@@ -77,7 +86,7 @@ preview_files() {
 	case $1 in
 		-e)
 			shift
-			selection="$(fd -H -t f -E '.git/' -e $1 | fzf)" && preview_files "$selection"
+			selection="$(fd -H -t f -E '.git/' -e $1 | fzf --exit-0)" && preview_files "$selection"
 			shift
 			;;
 		*.md)
