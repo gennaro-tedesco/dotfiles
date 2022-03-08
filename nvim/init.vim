@@ -53,6 +53,7 @@ call plug#end()
 "" ~/.config/nvim/plugin/folding.vim
 "" -----------------------------------
 lua require("options")
+lua require("globals")
 
 " -----------------------------
 " -- global augroup commands --

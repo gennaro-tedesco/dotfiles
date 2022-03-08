@@ -2,6 +2,7 @@
   "jedi.startupMessage": false,
   "sumneko-lua.enableNvimLuaDev": true,
   "Lua.hint.setType": true,
+  "Lua.telemetry.enable": false,
   "go.tags": {
     "options": "json="
   },
