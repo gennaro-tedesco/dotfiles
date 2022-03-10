@@ -128,7 +128,6 @@ set vifminfo=dhistory,chistory,state,tui,shistory,
 
 " ------------------------------------------------------------------------------
 
-
 " Filter-out build and temporary files
 
 filter {*.pyc,*.pyo, __pycache__, .DS_*}
@@ -172,15 +171,6 @@ nnoremap yr :!echo -n %c:r | pbcopy %i<cr>:echo expand('%"c:r') "is yanked to cl
 nnoremap i cw<c-a>
 nnoremap A cw
 
-" Open current directory in the other pane
-nnoremap <a-i> :sync<cr>
-" Open directory under cursor in the other pane
-nnoremap <a-o> :sync %c<cr>
-" Swap panes
-nnoremap <c-u> <c-w>x
-
-" ------------------------------------------------------------------------------
-
 " -----------------
 " go to directories
 " -----------------
@@ -189,3 +179,8 @@ nnoremap gh :cd ~/<cr>
 nnoremap gd :cd ~/dotfiles<cr>
 nnoremap gc :cd ~/.config<cr>
 
+
+" -----
+" icons
+" -----
+source ~/.config/vifm/icons.vifm

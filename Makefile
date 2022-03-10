@@ -26,7 +26,7 @@ install-zsh:
 .PHONY: install-vifm
 install-vifm:
 	cp -r vifm/colors/. ${VIFILEMANAGERCONFIG_DIR}/colors
-	cp -f vifm/vifmrc ${VIFILEMANAGERCONFIG_DIR}
+	cp -r vifm/. ${VIFILEMANAGERCONFIG_DIR}
 
 .PHONY: install-visidata
 install-visidata:
