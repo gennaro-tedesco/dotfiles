@@ -90,3 +90,11 @@ find . -type f -name '*.<extension>'
 
 # count files by extension
 find . -type f | grep -v '.git/' | awk -F'/' '{print $NF}' | awk -F'.' '  {print $NF}' | sort | uniq -c | sort -nr
+
+
+% jq
+
+# extract by regex
+jq 'to_entries[]|select(.key|test("<regex>"))' <filename>
+
+$ filename: fd -t f -e json
