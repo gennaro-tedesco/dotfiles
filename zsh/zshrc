@@ -44,6 +44,7 @@ export FZF_DEFAULT_OPTS='--reverse --border -e --height=50% --padding=1 --previe
 export FZF_DEFAULT_COMMAND="fd -H -t f -E '.git/'"
 export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
 export LS_COLORS="$(vivid generate solarized-dark)"
+export JIRA_API_TOKEN="v7xzI0EOgKSqJe5ilr4pC778"
 
 # exporting go paths
 export GOPATH=$HOME/go
@@ -55,8 +56,7 @@ alias ..="cd .."
 alias cut="gcut"
 alias sed="gsed"
 alias head="ghead"
-alias ls="exa --long --header --git --sort=extension"
-alias tree="exa --tree --level=2"
+alias ls="exa --tree --level=1"
 alias view="preview_files"
 alias todo="${EDITOR} ~/.todo"
 alias zenith="zenith -d 0 -n 0"
