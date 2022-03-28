@@ -11,6 +11,8 @@
   "diagnostic.checkCurrentLine": true,
   "suggest.enablePreview": true,
   "suggest.enablePreselect": true,
+  "suggest.removeDuplicateItems": true,
+  "codeLens.enable": true,
   "suggest.minTriggerInputLength": 2,
   "suggest.snippetIndicator": "[+] ",
   "suggest.completionItemKindLabels": {
