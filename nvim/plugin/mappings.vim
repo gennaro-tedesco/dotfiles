@@ -46,8 +46,9 @@ nnoremap <leader>q <C-w>o
 " paste in terminal mode (must be in normal mode in terminal)
 tnoremap pp <C-w>"+pa
 
-" avoid x to override the clipboard
+" avoid x and s to override the clipboard
 nnoremap x "_x
+nnoremap s "_s
 nnoremap X "_X
 
 " replace a word with yanked text
