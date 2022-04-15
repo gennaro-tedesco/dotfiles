@@ -20,6 +20,8 @@ set laststatus=2
 set splitbelow splitright
 set scrolloff=8
 set noshowmode
+set laststatus=3
+highlight WinSeparator guibg=None
 
 " standard vim behaviour
 augroup FORMAT
