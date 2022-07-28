@@ -1,0 +1,17 @@
+% dvc
+
+# view dvc files
+view <dvc_files>
+
+# view dvc metrics
+view <dvc_metrics>
+
+# view dvc stages
+dvc stage list --names-only 2>/dev/null
+
+# dvc diff
+dvc metrics diff <branch> --targets <dvc_metrics> --no-path
+
+$ dvc_files: dvc list -R --dvc-only .
+$ dvc_metrics: dvc metrics show --json | jq '.[] | .[] | keys[]' | cut -d'"' -f2
+$ branch: git branch | tr -d " "
