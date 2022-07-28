@@ -21,9 +21,9 @@ endfunction
 
 " convert list of items to SQL tuple
 function! functions#ToTupleFun() range
-	silent execute a:firstline . ',' . a:lastline . 'norm I"'
-	silent execute a:firstline . ',' . a:lastline . 'norm A",'
-	silent execute a:firstline . ',' . a:lastline . 'join'
+	silent execute a:firstline . ',' . a:lastline . "norm I'"
+	silent execute a:firstline . ',' . a:lastline . "norm A',"
+	silent execute a:firstline . ',' . a:lastline . "join"
 
 	" lines are now joined, there is only one line
 	silent execute 'norm $x'

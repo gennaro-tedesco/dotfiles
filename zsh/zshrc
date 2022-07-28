@@ -67,6 +67,7 @@ alias goenv="list_goenv"
 alias src="exec zsh"
 alias calc="insect"
 alias :q="exit"
+alias upgrade="brew upgrade && brew cleanup --prune=1 -s"
 
 unalias z 2> /dev/null
 z() {
