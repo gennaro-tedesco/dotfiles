@@ -94,7 +94,8 @@ find . -type f | grep -v '.git/' | awk -F'/' '{print $NF}' | awk -F'.' '  {print
 
 % jq
 
-# extract by regex
-jq 'to_entries[]|select(.key|test("<regex>"))' <filename>
+# extract multiple key-values
+jq '{<keys>}' <filename>
 
 $ filename: fd -t f -e json
+$ keys: jq 'keys[]' <filename> --- --multi --map "paste -s -d, -"
