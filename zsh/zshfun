@@ -67,7 +67,7 @@ replace() {
 	matching_files=$(rg -l --count-matches $find_regex)
 	[[ -n "$matching_files" ]] && { echo $matching_files | awk -F: '{printf "\033[36m %s\033[35m %s\033[0m\n", $1,":"$2}' | column -s: -t} || { echo "no matching files"; return }
 	replace_regex=$(gum input --prompt="replace regex: " --placeholder="replace pattern...")
-	[[ -n $replace_regex ]] && echo $matching_files | cut -f1 -d":" | xargs -n 1 -I {} -t sed -i '' "s/$find_regex/$replace_regex/g" {}
+	gum confirm "replace $find_regex with $replace_regex ?" && echo $matching_files | cut -f1 -d":" | xargs -n 1 -I {} -t sed -i '' "s/$find_regex/$replace_regex/g" {}
 }
 
 
