@@ -110,12 +110,13 @@ preview_files() {
 
 # json_diff
 json_diff() {
-	[[ $# != 2 ]] && { echo "expected two arguments"; return}
-	[[ ( $1 != *.json ) || ( $2 != *.json ) ]] && { echo "arguments must be both json files"; return}
-	[[ ! -f $1 ]] && { echo "cannot find $1"; return}
-	[[ ! -f $2 ]] && { echo "cannot find $2"; return}
-
-	delta =(jq -S . $1) =(jq -S . $2)
+	local files
+	IFS=$'\n' files=($(fd -t f -e json | fzf -m2 --exit-0 --prompt 'select json files:'))
+	if [[ ${#files[@]} == 2 ]] then
+		delta =(jq -S . $files[1]) =(jq -S . $files[2])
+	else
+		echo "expected two arguments"
+	fi
 }
 
 
