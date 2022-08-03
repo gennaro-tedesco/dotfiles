@@ -50,6 +50,11 @@ search() {
 			regex=$1
 			matching_files=$(rg -l --hidden ${regex} | fzf --exit-0 --preview="rg --color=always -n '${regex}' {} ")
 			;;
+		-i)
+			shift
+			regex=$1
+			matching_files=$(rg -i -l --hidden ${regex} | fzf --exit-0 --preview="rg -i --color=always -n '${regex}' {} ")
+			;;
 		*)
 			regex=$1
 			matching_files=$(rg -l -- ${regex} | fzf --exit-0 --preview="rg --color=always -n -- '${regex}' {} ")
