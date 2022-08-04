@@ -43,7 +43,7 @@ sed 's/[[:space:]]//g' <filename>
 # remove all lines containing a pattern
 sed -i '/<pattern>/d' <filename>
 
-$ filename: fd -t f
+$ filename: fd -u -t f -E '.git/'
 
 
 % env file
