@@ -31,5 +31,6 @@ Moreover I am using
 [gh-s](https://github.com/gennaro-tedesco/gh-s) | search github repos  |
 [gh-i](https://github.com/gennaro-tedesco/gh-s) | search github issues |
 [gh-f](https://github.com/gennaro-tedesco/gh-f) | git and github utils |
+[gum](https://github.com/charmbracelet/gum) | terminal prompts |
 
 Installation instructions depend on your operating system, however most programs can be easily installed by using the specific package manager of choice.
