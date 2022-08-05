@@ -96,5 +96,5 @@ bindkey -s '^p' 'find_files\n'
 bindkey -s '^o' 'git d 2>/dev/null | find_files\n'
 bindkey -s '^n' 'vifm\n'
 bindkey -s '^h' 'search '
-bindkey -s 'cc' 'quick_commit\n'
+bindkey -s 'qc' 'quick_commit\n'
 eval "$(navi widget zsh)"
