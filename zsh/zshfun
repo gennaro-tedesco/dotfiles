@@ -116,7 +116,9 @@ quick_commit(){
 	gum style --border rounded --foreground "#d33682" --border-foreground "#2aa198" --margin "1 1" --padding "1 1" $unstaged_list
 	message=$(gum input --prompt="commit: " --placeholder="commit message...")
 	gum confirm "add files and commit?" && \
-		git add . && git commit -m "$message"
+		git add . && git commit -m "$message" && \
+			gum confirm "push to $(git rev-parse --abbrev-ref --symbolic-full-name @{u})?" && \
+				git push
 }
 
 # json_diff
