@@ -18,7 +18,7 @@ find_files() {
 # fzf browse directories and cd into them
 find_dir() {
 	local dir
-	dir=$(fd -IH -t d 2> /dev/null | fzf --prompt 'folders:' +m --preview-window='right:50%:nohidden:wrap' --preview='exa --tree --level=2 {}') && cd "$dir"
+	dir=$(fd -IH -t d -E '.git' 2> /dev/null | fzf --prompt 'folders:' +m --preview-window='right:50%:nohidden:wrap' --preview='exa --tree --level=2 {}') && cd "$dir"
 }
 
 
