@@ -110,6 +110,7 @@ preview_files() {
 
 # quick commit all
 quick_commit(){
+	[[ ! "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]] && { echo "not a git repo"; return; }
 	unstaged_list="$(git status -s)"
 	[[ -z "$unstaged_list" ]] && { echo "no files to commit"; return; }
 	gum style --border rounded --foreground "#d33682" --border-foreground "#2aa198" --margin "1 1" --padding "1 1" $unstaged_list
