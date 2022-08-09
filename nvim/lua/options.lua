@@ -16,3 +16,8 @@ require('git-conflict').setup({
 vim.keymap.set('n', '++', '<Plug>(git-conflict-next-conflict)')
 vim.keymap.set('n', '--', '<Plug>(git-conflict-prev-conflict)')
 vim.keymap.set('n', 'cq', ':GitConflictListQf<CR>')
+
+require('pqf').setup({
+    signs = {error = '✘', warning = 'W', info = 'I', hint = 'H'}
+})
+

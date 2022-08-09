@@ -22,7 +22,6 @@ Plug 'akinsho/git-conflict.nvim'
 Plug 'voldikss/vim-floaterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'kevinhwang91/nvim-bqf'
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 
 " vim decorations and looks
@@ -30,6 +29,8 @@ Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'karb94/neoscroll.nvim'
+Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
+Plug 'kevinhwang91/nvim-bqf'
 
 " settings that make vim easier to use
 Plug 'MattesGroeger/vim-bookmarks'
