@@ -9,7 +9,6 @@
   "diagnostic.displayByAle": true,
   "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": true,
-  "suggest.enablePreview": true,
   "suggest.enablePreselect": true,
   "suggest.removeDuplicateItems": true,
   "codeLens.enable": true,
