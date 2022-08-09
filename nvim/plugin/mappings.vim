@@ -111,10 +111,6 @@ nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :BCommits<CR>
 nnoremap <leader>gd :Gvdiffsplit develop<CR>
-nnoremap <expr> <Down> &diff ? ']c' : '<Down>'
-nnoremap <expr> <Up> &diff ? '[c' : '<Up>'
-nnoremap <expr> + &diff ? '/^\(<<<<<<<\\|>>>>>>>\)<CR>' : '+'
-nnoremap <expr> - &diff ? '?^\(<<<<<<<\\|>>>>>>>\)<CR>' : '-'
 
 " open todo file in one go
 nnoremap <leader>t :e<space>~/.todo<CR>
@@ -139,8 +135,6 @@ command! ST silent! call functions#S2T()
 command! Rf silent! call functions#ReplaceFile()
 command! EmptyRegisters for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
 command W write
-command GetL :diffget //2
-command GetR :diffget //3
 command! -bar -bang -range=% BCommits let b:fzf_winview = winsaveview() | <line1>,<line2>call fzf#vim#buffer_commits(fzf#vim#with_preview({'options': '--prompt "logs:"', 'down': '15'}), <bang>0)
 
 " CoC show documentation

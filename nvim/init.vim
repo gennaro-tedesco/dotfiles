@@ -16,6 +16,7 @@ Plug 'lervag/vimtex'
 Plug 'tpope/vim-fugitive'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'mhinz/vim-signify'
+Plug 'akinsho/git-conflict.nvim'
 
 " file navigation
 Plug 'voldikss/vim-floaterm'
