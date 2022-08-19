@@ -37,6 +37,7 @@ set showcmd
 set sidescroll=1
 set clipboard+=unnamed
 set autoindent noexpandtab tabstop=4 shiftwidth=4
+set pastetoggle=<F3>
 
 " search options
 set inccommand=split
