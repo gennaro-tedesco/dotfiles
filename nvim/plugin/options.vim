@@ -122,9 +122,6 @@ let g:fzf_branch_actions = {
 			\ },
 			\}
 
-let g:SuperTabDefaultCompletionType = '<c-n>'
-let g:SuperTabContextDefaultCompletionType = '<c-n>'
-
 let g:bookmark_center = 1
 let g:bookmark_show_toggle_warning = 0
 let g:bookmark_show_warning = 0
