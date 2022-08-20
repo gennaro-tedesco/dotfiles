@@ -11,11 +11,11 @@ I am making use of the following system programs:
 [jq](https://stedolan.github.io/jq/) | json parser |
 [glow](https://github.com/charmbracelet/glow) | md preview |
 [zenith](https://github.com/bvaisvil/zenith) | process list |
-[dust](https://github.com/bootandy/dust) | disk space |
 [navi](https://github.com/denisidoro/navi) | cheatsheet |
 [ripgrep](https://github.com/BurntSushi/ripgrep) | grep improved |
 [fd](https://github.com/sharkdp/fd) | find improved |
 [delta](https://github.com/dandavison/delta) | diff improved |
+[zoxide](https://github.com/ajeetdsouza/zoxide) | dir navigation |
 
 Most of them are necessary as they are included in `zsh` functions as well as `neovim` plugins.
 
@@ -24,6 +24,8 @@ Moreover I am using
 
 |program      |scope        |
 |:------------|:------------|
+[dust](https://github.com/bootandy/dust) | disk space |
+[duf](https://github.com/muesli/duf) | disk usage |
 [macchina](https://github.com/Macchina-CLI/macchina) | sysinfo |
 [hyperfine](https://github.com/sharkdp/hyperfine) | benchmarks |
 [vivid](https://github.com/sharkdp/vivid) | better colors |

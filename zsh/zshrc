@@ -14,7 +14,6 @@ plugins=(
 		zsh-interactive-cd
 		zsh-autosuggestions
 		zsh-syntax-highlighting
-		z
 		fzf-tab
 		)
 unsetopt autocd
@@ -40,7 +39,7 @@ export EDITOR="nvim"
 export LANG=en_US.UTF-8
 export LC_CTYPE="en_US.UTF-8"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export FZF_DEFAULT_OPTS='--reverse --border -e --height=50% --padding=1 --preview-window=right:50%:wrap --bind shift-up:preview-up,shift-down:preview-down --bind ?:toggle-preview'
+export FZF_DEFAULT_OPTS="--reverse --border -e --height=50% --padding=1 --preview-window=right:50%:wrap --bind shift-up:preview-up,shift-down:preview-down --bind ?:toggle-preview"
 export FZF_DEFAULT_COMMAND="fd -H -t f -E '.git/'"
 export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
 export LS_COLORS="$(vivid generate solarized-dark)"
@@ -61,6 +60,7 @@ alias view="preview_files"
 alias todo="${EDITOR} ~/.todo"
 alias zenith="zenith -d 0 -n 0"
 alias du="dust"
+alias df="duf"
 alias jd="json_diff"
 alias env="list_env"
 alias goenv="list_goenv"
@@ -69,11 +69,6 @@ alias calc="insect"
 alias :q="exit"
 alias upgrade="brew upgrade && brew cleanup --prune=1 -s"
 
-unalias z 2> /dev/null
-z() {
-  [ $# -gt 0 ] && _z "$*" && return
-  cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
-}
 
 ## -----------------------
 ## additional source files
@@ -98,3 +93,4 @@ bindkey -s '^n' 'vifm\n'
 bindkey -s '^h' 'search '
 bindkey -s 'qc' 'quick_commit\n'
 eval "$(navi widget zsh)"
+eval "$(zoxide init zsh)"
