@@ -55,7 +55,7 @@ alias ..="cd .."
 alias cut="gcut"
 alias sed="gsed"
 alias head="ghead"
-alias ls="exa --tree --level=1"
+alias ls="exa --tree --level=1 --sort='extension'"
 alias view="preview_files"
 alias todo="${EDITOR} ~/.todo"
 alias zenith="zenith -d 0 -n 0"
@@ -88,7 +88,7 @@ alias upgrade="brew upgrade && brew cleanup --prune=1 -s"
 ## bindkeys
 ## --------
 bindkey -s '^p' 'find_files\n'
-bindkey -s '^o' 'git d 2>/dev/null | find_files\n'
+bindkey -s '^o' 'cd $(git root) && git d 2>/dev/null | find_files\n'
 bindkey -s '^n' 'vifm\n'
 bindkey -s '^h' 'search '
 bindkey -s 'qc' 'quick_commit\n'
