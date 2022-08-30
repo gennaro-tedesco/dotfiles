@@ -156,8 +156,6 @@ call wilder#set_option('renderer', wilder#renderer_mux({
       \ ),
       \ }))
 
-let g:UltiSnipsExpandTrigger = '<nop>'
-
 let g:python3_host_prog = '/usr/local/bin/python3' 
 
 let g:grepper = {}
