@@ -29,9 +29,4 @@
 	s = status -s
 	c = checkout -- .
 	d = diff --name-only
-	qminto = "!f() { \
-		[ -z $1 ] && { echo 'specify branch name'; exit; }; \
-		cb=$(git branch --show-current); \
-		git checkout ${1} 2>/dev/null && git merge $cb && git push origin ${1} && git checkout $cb; \
-	}; f"
 	root = rev-parse --show-toplevel
