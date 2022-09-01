@@ -12,6 +12,11 @@ let g:floaterm_rootmarkers = ['.git']
 let g:floaterm_opener = 'edit'
 let g:floaterm_title = ''
 
+let g:git_messenger_include_diff = "current"
+let g:git_messenger_always_into_popup = v:true
+let g:git_messenger_floating_win_opts = { 'border': 'rounded' }
+let g:git_messenger_popup_content_margins = v:false
+
 let g:signify_sign_add = '+'
 let g:signify_sign_delete = '-'
 let g:signify_sign_change = '~'
