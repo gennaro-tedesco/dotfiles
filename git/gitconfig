@@ -13,6 +13,9 @@
 [merge]
 	conflictstyle = diff3
 
+[diff]
+    colorMoved = default
+
 # pager and default editor
 [core]
 	editor = $EDITOR
