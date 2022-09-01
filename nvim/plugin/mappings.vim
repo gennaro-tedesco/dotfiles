@@ -110,6 +110,7 @@ nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :BCommits<CR>
+nnoremap <leader>gb <Plug>(git-messenger)
 nnoremap <leader>gd :Gvdiffsplit develop<CR>
 
 " open todo file in one go
