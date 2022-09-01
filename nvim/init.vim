@@ -15,7 +15,7 @@ Plug 'lervag/vimtex'
 
 " git integration in vim
 Plug 'tpope/vim-fugitive'
-Plug 'stsewd/fzf-checkout.vim'
+Plug 'rhysd/git-messenger.vim'
 Plug 'mhinz/vim-signify'
 Plug 'akinsho/git-conflict.nvim'
 

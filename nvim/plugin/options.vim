@@ -12,8 +12,6 @@ let g:floaterm_rootmarkers = ['.git']
 let g:floaterm_opener = 'edit'
 let g:floaterm_title = ''
 
-let g:rainbow_active = 1
-
 let g:signify_sign_add = '+'
 let g:signify_sign_delete = '-'
 let g:signify_sign_change = '~'
@@ -22,7 +20,6 @@ let g:signify_sign_show_count = 0
 let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.3 } }
 let g:fzf_preview_window = []
 let g:fzf_buffers_jump = 1
-
 
 let g:lightline = {
 			\ 'colorscheme': 'solarized',
@@ -85,42 +82,6 @@ let g:startify_lists = [
 			\ { 'type': 'dir',      'header': ['  Current Directory '. getcwd()] },
 			\ { 'type': 'sessions',  'header': ['   Sessions']       },
 			\ ]
-
-let g:fzf_checkout_merge_settings = v:false
-let g:fzf_branch_actions = {
-			\ 'checkout': {
-			\   'prompt': 'Checkout> ',
-			\   'execute': 'echo system("{git} checkout {branch}")',
-			\   'multiple': v:false,
-			\   'keymap': 'enter',
-			\   'required': ['branch'],
-			\   'confirm': v:false,
-			\ },
-			\ 'track': {
-			\   'prompt': 'Track> ',
-			\   'execute': 'echo system("{git} checkout --track {branch}")',
-			\   'multiple': v:false,
-			\   'keymap': 'ctrl-t',
-			\   'required': ['branch'],
-			\   'confirm': v:true,
-			\ },
-			\ 'diff': {
-			\   'prompt': 'Diff> ',
-			\   'execute': 'Gdiff {branch}',
-			\   'multiple': v:false,
-			\   'keymap': 'ctrl-f',
-			\   'required': ['branch'],
-			\   'confirm': v:false,
-			\ },
-			\ 'delete': {
-			\   'prompt': 'Delete> ',
-			\   'execute': 'echo system("{git} branch -D {branch}")',
-			\   'multiple': v:true,
-			\   'keymap': 'ctrl-d',
-			\   'required': ['branch'],
-			\   'confirm': v:true,
-			\ },
-			\}
 
 let g:bookmark_center = 1
 let g:bookmark_show_toggle_warning = 0
