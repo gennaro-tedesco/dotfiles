@@ -25,6 +25,14 @@ vnoremap jj <ESC>
 inoremap kk <ESC>
 vnoremap kk <ESC>
 
+" treat visual lineas as actual lines
+noremap j gj
+noremap k gk
+noremap <Down> gj
+noremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
 " easier navigation
 nnoremap E 5e
 nnoremap B 5b

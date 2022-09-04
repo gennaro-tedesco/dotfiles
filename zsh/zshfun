@@ -67,12 +67,26 @@ search() {
 # replace
 replace() {
 	[[ ! "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]] && { echo "not a git repo"; return }
-	find_regex=$(gum input --prompt="find regex: " --placeholder="find pattern...")
-	local matching_files
-	matching_files=$(rg -l --count-matches $find_regex)
-	[[ -n "$matching_files" ]] && { echo $matching_files | awk -F: '{printf "\033[36m %s\033[35m %s\033[0m\n", $1,":"$2}' | column -s: -t} || { echo "no matching files"; return }
-	replace_regex=$(gum input --prompt="replace regex: " --placeholder="replace pattern...")
-	[[ ! -z "$replace_regex" ]] && gum confirm "replace $find_regex with $replace_regex ?" && echo $matching_files | cut -f1 -d":" | xargs -n 1 -I {} -t sed -i '' "s/$find_regex/$replace_regex/g" {}
+
+	local find_regex=$(gum input --prompt="find regex: " --placeholder="find pattern...")
+	local matching_files=$(rg -l --count-matches $find_regex)
+
+	if [[ -n "$matching_files" ]] then
+		echo $matching_files | \
+		awk -F: '{printf "\033[36m %s\033[35m %s\033[0m\n", $1,":"$2}' | \
+		column -s: -t
+	else
+		echo "no matching files"
+		return
+	fi
+
+	local replace_regex=$(gum input --prompt="replace regex: " --placeholder="replace pattern...")
+	if [[ ! -z "$replace_regex" ]] then
+		gum confirm "replace $find_regex with $replace_regex ?" && \
+		echo $matching_files | \
+		cut -f1 -d":" | \
+		xargs -n 1 -I {} -t sed -i '' "s/$find_regex/$replace_regex/g" {}
+	fi
 }
 
 
@@ -112,14 +126,26 @@ preview_files() {
 # quick commit all
 quick_commit(){
 	[[ ! "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]] && { echo "not a git repo"; return; }
-	unstaged_list="$(git status -s)"
-	[[ -z "$unstaged_list" ]] && { echo "no files to commit"; return; }
+
+	local unstaged_list="$(git status -s)"
+	if [[ -z "$unstaged_list" ]] then
+		echo "no files to commit"
+		return
+	fi
+
 	gum style --border rounded --foreground "#d33682" --border-foreground "#2aa198" --margin "1 1" --padding "1 1" $unstaged_list
-	message=$(gum input --prompt="commit: " --placeholder="commit message...")
+
+	local message=$(gum input --prompt="commit: " --placeholder="commit message...")
+
+	if [[ -z "$message" ]] then
+		echo "commit aborted"
+		return
+	fi
+
 	gum confirm "add files and commit?" && \
-		git add . && git commit -m "$message" && \
-			gum confirm "push to $(git rev-parse --abbrev-ref --symbolic-full-name @{u})?" && \
-				git push
+	git add . && git commit -m "$message" && \
+	gum confirm "push to $(git rev-parse --abbrev-ref --symbolic-full-name @{u})?" && \
+	git push
 }
 
 # json_diff
