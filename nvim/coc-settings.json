@@ -15,10 +15,11 @@
     "kind",
     "shortcut"
   ],
-  "suggest.enablePreselect": true,
+  "suggest.enablePreselect": false,
+  "suggest.noselect": true,
   "suggest.removeDuplicateItems": true,
   "codeLens.enable": true,
-  "suggest.minTriggerInputLength": 2,
+  "suggest.minTriggerInputLength": 1,
   "suggest.snippetIndicator": "[+] ",
   "suggest.completionItemKindLabels": {
     "method": " ƒ ",
