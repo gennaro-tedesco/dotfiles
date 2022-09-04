@@ -107,7 +107,6 @@ nnoremap <silent> <C-l> :call functions#ToggleLL()<CR>
 
 " git remappings
 nnoremap <leader>gs :Git<CR>
-nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :BCommits<CR>
 nnoremap <leader>gb <Plug>(git-messenger)
