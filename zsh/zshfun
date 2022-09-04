@@ -10,7 +10,7 @@ mkcd() {
 
 # fzf browse files
 find_files() {
-	IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0 --prompt 'files:'))
+	IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0 --prompt 'files:' --preview='exa --tree --level=1 $(dirname {})'))
 	[[ -n "$files" ]] && ${EDITOR} "${files[@]}"
 }
 
