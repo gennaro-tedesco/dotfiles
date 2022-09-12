@@ -93,7 +93,7 @@ inoremap lll <Esc>bi[<Esc>A]()<Left>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> rn <Plug>(coc-rename)
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 nnoremap <silent> gm :<C-u>CocList outline<CR>
 nnoremap <leader>f :ALEFix<CR>
 nnoremap <leader>l :ALEToggle<CR>
@@ -147,19 +147,18 @@ command! TS silent! call functions#T2S()
 command! ST silent! call functions#S2T()
 command! Rf silent! call functions#ReplaceFile()
 command! EmptyRegisters for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
+command! EmptyMarks delm! | delm a-zA-Z0-9 | delm \"<>
 command W write
 command! -bar -bang -range=% BCommits let b:fzf_winview = winsaveview() | <line1>,<line2>call fzf#vim#buffer_commits(fzf#vim#with_preview({'options': '--prompt "logs:"', 'down': '15'}), <bang>0)
 command! Error let @*=trim(execute('1messages')) | echo 'error message copied'
 
 " CoC functions
-function! s:show_documentation()
-	if (index(['vim','help'], &filetype) >= 0)
-		execute 'h '.expand('<cword>')
-	elseif (coc#rpc#ready())
-		call CocActionAsync('doHover')
-	else
-		execute '!' . &keywordprg . " " . expand('<cword>')
-	endif
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
 endfunction
 
 function! CheckBackspace() abort
