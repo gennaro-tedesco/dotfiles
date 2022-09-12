@@ -146,8 +146,7 @@ command! -range ToTuple <line1>,<line2> call functions#ToTupleFun()
 command! TS silent! call functions#T2S()
 command! ST silent! call functions#S2T()
 command! Rf silent! call functions#ReplaceFile()
-command! EmptyRegisters for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
-command! EmptyMarks delm! | delm a-zA-Z0-9 | delm \"<>
+command! EmptyMarks delm! | delm a-zA-Z0-9 | delm \"<> | wshada!
 command W write
 command! -bar -bang -range=% BCommits let b:fzf_winview = winsaveview() | <line1>,<line2>call fzf#vim#buffer_commits(fzf#vim#with_preview({'options': '--prompt "logs:"', 'down': '15'}), <bang>0)
 command! Error let @*=trim(execute('1messages')) | echo 'error message copied'

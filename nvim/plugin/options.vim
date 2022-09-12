@@ -64,7 +64,7 @@ let g:ale_linters = {
 			\}
 let g:ale_fixers = {
 			\ 'python': ['black', 'isort'],
-			\ 'lua': ['lua-format', 'trim_whitespace'],
+			\ 'lua': ['stylua', 'trim_whitespace'],
 			\ 'json': ['jq'],
 			\ 'sh': ['shfmt', 'trim_whitespace'],
 			\ 'dockerfile': ['trim_whitespace'],
