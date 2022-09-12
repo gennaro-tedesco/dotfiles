@@ -1,6 +1,7 @@
 {
   "jedi.startupMessage": false,
   "sumneko-lua.enableNvimLuaDev": true,
+  "inlayHint.enable": false,
   "Lua.hint.setType": true,
   "Lua.telemetry.enable": false,
   "go.tags": {
