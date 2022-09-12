@@ -133,3 +133,10 @@ let g:grepper = {
 	\ 'searchreg': 1,
 	\ }
 let g:grepper.prompt_text = '$t: '
+
+let g:SignatureMap = {
+	\ 'PlaceNextMark': 'mm',
+	\ 'PurgeMarks': 'mx',
+	\ 'GotoNextSpotByPos': 'mn',
+	\ 'GotoPrevSpotByPos': 'mp',
+	\ }
