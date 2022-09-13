@@ -76,18 +76,12 @@ vnoremap <leader>y :call functions#CompleteYank()<CR>
 " replace all occurrences of word under cursor in current file
 nnoremap S :%s/<c-r><c-w>//gc<Left><Left><Left>
 
-" delete a conditional/logical block of code
-nnoremap <leader>db dVa{
-
 " count all occurrences of word under cursor
 nnoremap * *:%s/<c-r>=expand("<cword>")<cr>//ng<CR>
 
 " blink word under cursor in search mode
 nnoremap n nzz:call functions#BlinkWord(0.3)<CR>
 nnoremap N Nzz:call functions#BlinkWord(0.3)<CR>
-
-" insert hyperlink markdown at current word
-inoremap lll <Esc>bi[<Esc>A]()<Left>
 
 " code navigation (with Coc) and linting
 nmap <silent> gd <Plug>(coc-definition)
@@ -139,6 +133,9 @@ cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 " clean up search results
 nnoremap <silent> <CR> :let @/=""<CR>
 
+" delete all marks
+nnoremap mx :delm! <bar> delm A-Z0-9 <bar> delm \"<> <bar> wshada!<CR>
+
 "" ----------------------------------
 "" --- definition of new commands ---
 "" ----------------------------------
@@ -146,7 +143,6 @@ command! -range ToTuple <line1>,<line2> call functions#ToTupleFun()
 command! TS silent! call functions#T2S()
 command! ST silent! call functions#S2T()
 command! Rf silent! call functions#ReplaceFile()
-command! EmptyMarks delm! | delm a-zA-Z0-9 | delm \"<> | wshada!
 command W write
 command! -bar -bang -range=% BCommits let b:fzf_winview = winsaveview() | <line1>,<line2>call fzf#vim#buffer_commits(fzf#vim#with_preview({'options': '--prompt "logs:"', 'down': '15'}), <bang>0)
 command! Error let @*=trim(execute('1messages')) | echo 'error message copied'

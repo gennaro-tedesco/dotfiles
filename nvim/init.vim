@@ -34,7 +34,7 @@ Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
 Plug 'kevinhwang91/nvim-bqf'
 
 " settings that make vim easier to use
-Plug 'kshenoy/vim-signature'
+Plug 'chentoast/marks.nvim'
 Plug 'jiangmiao/auto-pairs'
 
 " my personal plugins: they are awesome
