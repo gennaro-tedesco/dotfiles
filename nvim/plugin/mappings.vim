@@ -73,9 +73,6 @@ nnoremap yf :let @+=expand("%")<CR>
 " copy text with line numbers and file name on top
 vnoremap <leader>y :call functions#CompleteYank()<CR>
 
-" replace all occurrences of word under cursor in current file
-nnoremap S :%s/<c-r><c-w>//gc<Left><Left><Left>
-
 " count all occurrences of word under cursor
 nnoremap * *:%s/<c-r>=expand("<cword>")<cr>//ng<CR>
 
