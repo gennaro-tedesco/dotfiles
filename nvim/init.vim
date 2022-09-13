@@ -36,6 +36,7 @@ Plug 'kevinhwang91/nvim-bqf'
 " settings that make vim easier to use
 Plug 'chentoast/marks.nvim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'rcarriga/nvim-notify'
 
 " my personal plugins: they are awesome
 Plug 'gennaro-tedesco/nvim-commaround'

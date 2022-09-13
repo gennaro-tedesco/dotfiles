@@ -74,7 +74,7 @@ nnoremap yf :let @+=expand("%")<CR>
 vnoremap <leader>y :call functions#CompleteYank()<CR>
 
 " count all occurrences of word under cursor
-nnoremap * *:%s/<c-r>=expand("<cword>")<cr>//ng<CR>
+nnoremap * *:lua require("functions").count_matches()<CR>
 
 " blink word under cursor in search mode
 nnoremap n nzz:call functions#BlinkWord(0.3)<CR>
@@ -142,7 +142,7 @@ command! ST silent! call functions#S2T()
 command! Rf silent! call functions#ReplaceFile()
 command W write
 command! -bar -bang -range=% BCommits let b:fzf_winview = winsaveview() | <line1>,<line2>call fzf#vim#buffer_commits(fzf#vim#with_preview({'options': '--prompt "logs:"', 'down': '15'}), <bang>0)
-command! Error let @*=trim(execute('1messages')) | echo 'error message copied'
+command! Error :lua require("functions").copy_error()<CR>
 
 " CoC functions
 function! ShowDocumentation()

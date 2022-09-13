@@ -31,3 +31,9 @@ require("marks").setup({
 })
 
 vim.keymap.set("n", "m/", ":MarksListAll<CR>")
+
+require("notify").setup({
+   timeout=5000,
+   stages="slide",
+   render="minimal"
+})
