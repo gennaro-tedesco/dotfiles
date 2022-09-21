@@ -13,8 +13,8 @@ require("git-conflict").setup({
 	default_mappings = true,
 	highlights = { incoming = "DiffText", current = "DiffAdd" },
 })
-vim.keymap.set("n", "++", "<Plug>(git-conflict-next-conflict)")
-vim.keymap.set("n", "--", "<Plug>(git-conflict-prev-conflict)")
+vim.keymap.set("n", "c+", "<Plug>(git-conflict-next-conflict)")
+vim.keymap.set("n", "c-", "<Plug>(git-conflict-prev-conflict)")
 vim.keymap.set("n", "cq", ":GitConflictListQf<CR>")
 
 require("pqf").setup({
@@ -33,7 +33,7 @@ require("marks").setup({
 vim.keymap.set("n", "m/", ":MarksListAll<CR>")
 
 require("notify").setup({
-   timeout=5000,
-   stages="slide",
-   render="minimal"
+	timeout = 5000,
+	stages = "slide",
+	render = "minimal",
 })

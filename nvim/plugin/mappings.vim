@@ -109,6 +109,8 @@ nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :BCommits<CR>
 nnoremap <leader>gb <Plug>(git-messenger)
 nnoremap <leader>gd :Gvdiffsplit develop<CR>
+nmap ++ <plug>(signify-next-hunk)
+nmap -- <plug>(signify-prev-hunk)
 
 " open todo file in one go
 nnoremap <leader>t :e<space>~/.todo<CR>
@@ -122,6 +124,10 @@ inoremap <silent><expr> <TAB>
 	\ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <c-space> coc#refresh()
+nnoremap <nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
+nnoremap <nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
+inoremap <nowait><expr> <C-j> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 
 " wilder completion menu
 cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
