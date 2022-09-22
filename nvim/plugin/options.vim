@@ -94,11 +94,13 @@ let g:bookmark_center = 1
 let g:bookmark_show_toggle_warning = 0
 let g:bookmark_show_warning = 0
 
-call wilder#enable_cmdline_enter()
-call wilder#set_option('modes', ['/', '?', ':'])
+call wilder#setup({
+			\ 'modes': [':', '/', '?'],
+			\ 'enable_cmdline_enter': 1,
+			\ })
 
 call wilder#set_option('pipeline', [
-			\   wilder#branch( 
+			\   wilder#branch(
 			\     [
 			\       wilder#check({_, x -> empty(x)}),
 			\       wilder#history(),
@@ -110,21 +112,25 @@ call wilder#set_option('pipeline', [
 			\ ])
 
 call wilder#set_option('renderer', wilder#renderer_mux({
-      \ ':': wilder#popupmenu_renderer({
-		\ 'highlighter': wilder#basic_highlighter(),
-		\ 'max_height': '20%',
-		\ 'max_width': '20%',
-      \ }),
-      \ '/': wilder#wildmenu_renderer(
-      \ wilder#lightline_theme({
-      \   'highlights': {},
-      \   'highlighter': wilder#basic_highlighter(),
-      \   'separator': ' · ',
-      \ })
-      \ ),
-      \ }))
+			\ ':': wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
+			\ 'highlighter': wilder#basic_highlighter(),
+			\ 'highlights': {
+			\   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#d33682'}]),
+			\ },
+			\ 'max_height': '30%',
+			\ 'reverse': 0,
+			\ 'border': 'rounded'
+			\ })),
+			\ '/': wilder#wildmenu_renderer(
+			\ wilder#lightline_theme({
+			\   'highlights': {},
+			\   'highlighter': wilder#basic_highlighter(),
+			\   'separator': ' · ',
+			\ })
+			\ ),
+			\ }))
 
-let g:python3_host_prog = '/usr/local/bin/python3' 
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 let g:grepper = {}
 let g:grepper = {
