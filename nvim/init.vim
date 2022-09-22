@@ -37,6 +37,7 @@ Plug 'kevinhwang91/nvim-bqf'
 Plug 'chentoast/marks.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rcarriga/nvim-notify'
+Plug 'ethanholz/nvim-lastplace'
 
 " my personal plugins: they are awesome
 Plug 'gennaro-tedesco/nvim-commaround'
