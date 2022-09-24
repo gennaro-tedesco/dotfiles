@@ -1,6 +1,17 @@
 "" --------------------------------------------
 "" - customisation of default plugins options -
 "" --------------------------------------------
+let g:coc_global_extensions = [
+			\'coc-sumneko-lua',
+			\'coc-vimtex',
+			\'coc-vimlsp',
+			\'coc-marketplace',
+			\'coc-sh',
+			\'coc-json',
+			\'coc-jedi',
+			\'coc-go' ]
+
+
 let g:AutoPairs = {'(':')', '[':']', '{':'}','`':'`', '```':'```', '"""':'"""'}
 let g:AutoPairsShortcutFastWrap = '<C-w>'
 
@@ -76,7 +87,7 @@ let g:ale_lua_luacheck_options = '--globals "vim"'
 let g:ale_python_isort_options = '--profile black'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 0
+let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '✘'
