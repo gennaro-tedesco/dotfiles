@@ -21,7 +21,7 @@ local function replace_grep()
 	local replace_word = vim.fn.input("Enter replace word: ")
 	vim.cmd("Rg " .. cur_word)
 	if replace_word ~= "" then
-		vim.cmd("cdo s/" .. cur_word .. "/" .. replace_word .. "/g")
+		vim.cmd("cdo s/" .. cur_word .. "/" .. replace_word)
 		vim.cmd("cclose")
 		notify(" replace: " .. cur_word .. " --> " .. replace_word)
 	end
