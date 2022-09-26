@@ -23,7 +23,7 @@ Plug 'akinsho/git-conflict.nvim'
 Plug 'voldikss/vim-floaterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+Plug 'jremmen/vim-ripgrep'
 
 " vim decorations and looks
 Plug 'mhinz/vim-startify'
