@@ -77,8 +77,8 @@ vnoremap <leader>y :call functions#CompleteYank()<CR>
 nnoremap * *:lua require("functions").count_matches()<CR>
 
 " blink word under cursor in search mode
-nnoremap n nzz:call functions#BlinkWord(0.3)<CR>
-nnoremap N Nzz:call functions#BlinkWord(0.3)<CR>
+nnoremap n nzz:lua require("functions").hl_search(0.3)<CR>
+nnoremap N Nzz:lua require("functions").hl_search(0.3)<CR>
 
 " code navigation (with Coc) and linting
 nmap <silent> gd <Plug>(coc-definition)
@@ -133,8 +133,8 @@ inoremap <nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(
 cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
 cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 
-" clean up search results
-nnoremap <silent> <CR> :let @/=""<CR>
+" clean up search results and extmarks
+nnoremap <silent> <CR> :let @/="" <bar> lua vim.api.nvim_buf_clear_namespace(0, -1, 0, -1)<CR>
 
 " delete all marks
 nnoremap mx :delm! <bar> delm A-Z0-9 <bar> delm \"<> <bar> wshada!<CR>
@@ -147,6 +147,7 @@ command! TS silent! call functions#T2S()
 command! ST silent! call functions#S2T()
 command! Rf silent! call functions#ReplaceFile()
 command W write
+command Q quit
 command! -bar -bang -range=% BCommits let b:fzf_winview = winsaveview() | <line1>,<line2>call fzf#vim#buffer_commits(fzf#vim#with_preview({'options': '--prompt "logs:"', 'down': '15'}), <bang>0)
 command! Error :lua require("functions").copy_error()<CR>
 
