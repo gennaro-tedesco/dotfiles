@@ -144,11 +144,3 @@ call wilder#set_option('renderer', wilder#renderer_mux({
 			\ }))
 
 let g:python3_host_prog = '/usr/local/bin/python3'
-
-let g:grepper = {}
-let g:grepper = {
-    \ 'tools': ['rg', 'git', 'grep'],
-    \ 'dir': 'repo',
-	\ 'searchreg': 1,
-	\ }
-let g:grepper.prompt_text = '$t: '
