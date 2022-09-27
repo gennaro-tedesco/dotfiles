@@ -85,6 +85,7 @@ let g:ale_fixers = {
 			\}
 let g:ale_lua_luacheck_options = '--globals "vim" "P"'
 let g:ale_python_isort_options = '--profile black'
+let g:ale_python_flake8_options = '--max-line-length=88 --extend-ignore=E203'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 1
