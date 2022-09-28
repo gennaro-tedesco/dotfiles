@@ -41,4 +41,6 @@ require("lspconfig").sumneko_lua.setup({
 		},
 	},
 })
+require'lspconfig'.vimls.setup{}
+
 vim.lsp.set_log_level("debug")

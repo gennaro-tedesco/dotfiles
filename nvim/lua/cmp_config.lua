@@ -2,8 +2,14 @@ local cmp = require("cmp")
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+			require("luasnip").lsp_expand(args.body)
 		end,
+	},
+	window = {
+		completion = cmp.config.window.bordered({
+			col_offset = -3,
+			side_padding = 0
+		}),
 	},
 	mapping = {
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
