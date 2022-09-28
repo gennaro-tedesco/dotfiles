@@ -38,12 +38,11 @@ Plug 'chentoast/marks.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rcarriga/nvim-notify'
 Plug 'ethanholz/nvim-lastplace'
+Plug 'numToStr/Comment.nvim'
 
 " my personal plugins: they are awesome
-Plug 'gennaro-tedesco/nvim-commaround'
 Plug 'gennaro-tedesco/nvim-peekup'
 Plug 'gennaro-tedesco/nvim-jqx'
-Plug 'gennaro-tedesco/nvim-dvc'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
