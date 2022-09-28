@@ -12,6 +12,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
@@ -42,12 +43,11 @@ Plug 'chentoast/marks.nvim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rcarriga/nvim-notify'
 Plug 'ethanholz/nvim-lastplace'
+Plug 'numToStr/Comment.nvim'
 
 " my personal plugins: they are awesome
-Plug 'gennaro-tedesco/nvim-commaround'
 Plug 'gennaro-tedesco/nvim-peekup'
 Plug 'gennaro-tedesco/nvim-jqx'
-Plug 'gennaro-tedesco/nvim-dvc'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()

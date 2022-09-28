@@ -22,6 +22,7 @@ end
 local lsp_flags = {
 	debounce_text_changes = 150,
 }
+vim.lsp.set_log_level("debug")
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -43,8 +44,7 @@ require("lspconfig").sumneko_lua.setup({
 	},
 })
 require'lspconfig'.vimls.setup{}
-
-vim.lsp.set_log_level("debug")
+require'lspconfig'.bashls.setup{}
 
 
 -- diagnostics --

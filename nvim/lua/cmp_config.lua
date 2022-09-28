@@ -16,9 +16,9 @@ cmp.setup({
 		format = function(entry, item)
 			local menu_icon = {
 				nvim_lsp = 'λ',
-				luasnip = '⋗',
+				luasnip = '﬌',
 				buffer = 'Ω',
-				path = '🖫',
+				path = '../',
 			}
 
 			item.menu = menu_icon[entry.source.name]
