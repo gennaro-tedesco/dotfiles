@@ -1,27 +1,50 @@
 local cmp = require("cmp")
+
+local kind_icons = {
+	Class = "ﴯ",
+	Color = "",
+	Constant = "",
+	Constructor = "",
+	Enum = "",
+	EnumMember = "",
+	Event = "",
+	Field = "",
+	File = "",
+	Folder = "",
+	Function = "",
+	Interface = "",
+	Keyword = "",
+	Method = "",
+	Module = "",
+	Operator = "",
+	Property = "ﰠ",
+	Reference = "",
+	Snippet = "",
+	Struct = "",
+	Text = "",
+	TypeParameter = "",
+	Unit = "",
+	Value = "",
+	Variable = "",
+}
+
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-	window = {
-		completion = cmp.config.window.bordered({
-			col_offset = -3,
-			side_padding = 0
-		}),
-	},
 	formatting = {
-		fields = { 'menu', 'abbr', 'kind' },
+		fields = { 'abbr', 'kind', 'menu' },
 		format = function(entry, item)
-			local menu_icon = {
-				nvim_lsp = 'λ',
-				luasnip = '﬌',
-				buffer = 'Ω',
-				path = '../',
-			}
-
-			item.menu = menu_icon[entry.source.name]
+			item.kind = string.format("%s %s", kind_icons[item.kind], item.kind)
+			item.menu =({
+				nvim_lsp = '[LSP]',
+				luasnip = '[snip]',
+				buffer = '[buf]',
+				path = '[../]',
+			})[entry.source.name]
 			return item
 		end,
 	},
@@ -54,5 +77,7 @@ cmp.setup({
 		{ name = 'nvim_lsp', keyword_length = 3 },
 		{ name = 'buffer', keyword_length = 3 },
 		{ name = 'luasnip', keyword_length = 2 },
+		{ name = 'nvim_lsp_signature_help' },
 	},
 })
+
