@@ -12,6 +12,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'L3MON4D3/LuaSnip'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
@@ -62,7 +63,7 @@ call plug#end()
 "" -----------------------------------
 lua require("options")
 lua require("globals")
-lua require("lsp")
+lua require("lspconf")
 
 " -----------------------------
 " -- global augroup commands --
