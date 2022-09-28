@@ -62,39 +62,3 @@ let g:startify_lists = [
 let g:bookmark_center = 1
 let g:bookmark_show_toggle_warning = 0
 let g:bookmark_show_warning = 0
-
-call wilder#setup({
-			\ 'modes': [':', '/', '?'],
-			\ 'enable_cmdline_enter': 1,
-			\ })
-
-call wilder#set_option('pipeline', [
-			\   wilder#branch(
-			\     [
-			\       wilder#check({_, x -> empty(x)}),
-			\       wilder#history(),
-			\     ],
-			\     wilder#substitute_pipeline(),
-			\     wilder#cmdline_pipeline(),
-			\     wilder#vim_search_pipeline(),
-			\   ),
-			\ ])
-
-call wilder#set_option('renderer', wilder#renderer_mux({
-			\ ':': wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
-			\ 'highlighter': wilder#basic_highlighter(),
-			\ 'highlights': {
-			\   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#d33682'}]),
-			\ },
-			\ 'max_height': '30%',
-			\ 'reverse': 0,
-			\ 'border': 'rounded'
-			\ })),
-			\ '/': wilder#wildmenu_renderer(
-			\ wilder#lightline_theme({
-			\   'highlights': {},
-			\   'highlighter': wilder#basic_highlighter(),
-			\   'separator': ' · ',
-			\ })
-			\ ),
-			\ }))

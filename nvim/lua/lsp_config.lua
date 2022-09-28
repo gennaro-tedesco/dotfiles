@@ -60,15 +60,7 @@ vim.diagnostic.config({
   },
 })
 
-local sign = function(opts)
-	vim.fn.sign_define(opts.name, {
-		texthl = opts.name,
-		text = opts.text,
-		numhl = ''
-	})
-end
-
-sign({ name = 'DiagnosticSignError', text = '✘' })
-sign({ name = 'DiagnosticSignWarn', text = '.' })
-sign({ name = 'DiagnosticSignHint', text = '⚑' })
-sign({ name = 'DiagnosticSignInfo', text = '' })
+vim.fn.sign_define('DiagnosticSignError', { name = 'DiagnosticSignError', text = '✘' })
+vim.fn.sign_define('DiagnosticSignWarn', { name = 'DiagnosticSignWarn', text = '.' })
+vim.fn.sign_define('DiagnosticSignHint', { name = 'DiagnosticSignHint', text = '⚑' })
+vim.fn.sign_define('DiagnosticSignInfo', { name = 'DiagnosticSignInfo', text = '' })

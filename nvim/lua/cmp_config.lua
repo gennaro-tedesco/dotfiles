@@ -1,6 +1,6 @@
 local cmp = require("cmp")
 
-local kind_icons = {
+local icons = {
 	Class = "ﴯ",
 	Color = "",
 	Constant = "",
@@ -35,11 +35,14 @@ cmp.setup({
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
+	window = {
+		completion = cmp.config.window.bordered()
+	},
 	formatting = {
-		fields = { 'abbr', 'kind', 'menu' },
+		fields = { 'kind', 'abbr', 'menu' },
 		format = function(entry, item)
-			item.kind = string.format("%s %s", kind_icons[item.kind], item.kind)
-			item.menu =({
+			item.kind = string.format("%s %s", icons[item.kind], item.kind)
+			item.menu = ({
 				nvim_lsp = '[LSP]',
 				luasnip = '[snip]',
 				buffer = '[buf]',
@@ -81,3 +84,20 @@ cmp.setup({
 	},
 })
 
+cmp.setup.cmdline({ '/', '?' }, {
+	mapping = cmp.mapping.preset.cmdline(),
+	formatting = {fields = {'abbr'}},
+	sources = {
+		{ name = 'buffer' }
+	}
+})
+
+cmp.setup.cmdline(':', {
+	mapping = cmp.mapping.preset.cmdline(),
+	formatting = {fields = {'abbr'}},
+	sources = cmp.config.sources({
+		{ name = 'path' }
+	}, {
+		{ name = 'cmdline' }
+	})
+})

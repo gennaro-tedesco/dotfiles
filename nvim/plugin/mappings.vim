@@ -46,7 +46,6 @@ vnoremap <PageUp> k{j
 vnoremap <PageDown> j}k
 nnoremap <Tab> <C-w>w
 nnoremap <S-Tab> <C-w>W
-nnoremap <BS> <C-o>
 nnoremap u m`u``
 
 " close all splits/windows except the one in focus
