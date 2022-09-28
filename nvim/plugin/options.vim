@@ -1,6 +1,8 @@
 "" --------------------------------------------
 "" - customisation of default plugins options -
 "" --------------------------------------------
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 let g:coc_global_extensions = [
 			\'coc-sumneko-lua',
 			\'coc-vimtex',
@@ -143,4 +145,3 @@ call wilder#set_option('renderer', wilder#renderer_mux({
 			\ ),
 			\ }))
 
-let g:python3_host_prog = '/usr/local/bin/python3'
