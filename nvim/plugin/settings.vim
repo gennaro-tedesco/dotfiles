@@ -52,7 +52,7 @@ set showmatch
 
 " autocompletion options
 set shortmess+=c
-set completeopt="menuone,preview"
+set completeopt=menu,menuone,noselect
 set wildmenu
 set wildmode=longest,full,list
 set wildcharm=<Tab>
