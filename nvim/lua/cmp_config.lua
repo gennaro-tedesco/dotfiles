@@ -11,6 +11,20 @@ cmp.setup({
 			side_padding = 0
 		}),
 	},
+	formatting = {
+		fields = { 'menu', 'abbr', 'kind' },
+		format = function(entry, item)
+			local menu_icon = {
+				nvim_lsp = 'λ',
+				luasnip = '⋗',
+				buffer = 'Ω',
+				path = '🖫',
+			}
+
+			item.menu = menu_icon[entry.source.name]
+			return item
+		end,
+	},
 	mapping = {
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
@@ -35,10 +49,23 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 	},
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
-	}, {
-		{ name = "buffer" },
-	}),
+	sources = {
+		{ name = 'path' },
+		{ name = 'nvim_lsp', keyword_length = 3 },
+		{ name = 'buffer', keyword_length = 3 },
+		{ name = 'luasnip', keyword_length = 2 },
+	},
 })
+
+local sign = function(opts)
+	vim.fn.sign_define(opts.name, {
+		texthl = opts.name,
+		text = opts.text,
+		numhl = ''
+	})
+end
+
+sign({ name = 'DiagnosticSignError', text = '✘' })
+sign({ name = 'DiagnosticSignWarn', text = '.' })
+sign({ name = 'DiagnosticSignHint', text = '⚑' })
+sign({ name = 'DiagnosticSignInfo', text = '' })
