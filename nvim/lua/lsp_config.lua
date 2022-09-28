@@ -2,6 +2,7 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "g+", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "g-", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "gl", vim.diagnostic.setloclist, opts)
+vim.keymap.set("n", "ge", vim.diagnostic.open_float, opts)
 
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -44,3 +45,30 @@ require("lspconfig").sumneko_lua.setup({
 require'lspconfig'.vimls.setup{}
 
 vim.lsp.set_log_level("debug")
+
+
+-- diagnostics --
+vim.diagnostic.config({
+  virtual_text = true,
+  signs=true,
+  severity_sort = true,
+  float = {
+    border = 'rounded',
+    source = 'always',
+    header = '',
+    prefix = '',
+  },
+})
+
+local sign = function(opts)
+	vim.fn.sign_define(opts.name, {
+		texthl = opts.name,
+		text = opts.text,
+		numhl = ''
+	})
+end
+
+sign({ name = 'DiagnosticSignError', text = '✘' })
+sign({ name = 'DiagnosticSignWarn', text = '.' })
+sign({ name = 'DiagnosticSignHint', text = '⚑' })
+sign({ name = 'DiagnosticSignInfo', text = '' })
