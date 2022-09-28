@@ -6,9 +6,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " code autocompletion, language servers and the like
-Plug 'dense-analysis/ale'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'lervag/vimtex'

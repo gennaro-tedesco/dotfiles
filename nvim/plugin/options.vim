@@ -3,17 +3,6 @@
 "" --------------------------------------------
 let g:python3_host_prog = '/usr/local/bin/python3'
 
-let g:coc_global_extensions = [
-			\'coc-sumneko-lua',
-			\'coc-vimtex',
-			\'coc-vimlsp',
-			\'coc-marketplace',
-			\'coc-sh',
-			\'coc-json',
-			\'coc-jedi',
-			\'coc-go' ]
-
-
 let g:AutoPairs = {'(':')', '[':']', '{':'}','`':'`', '```':'```', '"""':'"""'}
 let g:AutoPairsShortcutFastWrap = '<C-w>'
 
@@ -62,41 +51,6 @@ let g:tex_conceal = ''
 let g:tex_fast = ''
 let g:tex_flavor = 'latex'
 
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_linters = {
-			\ 'python': ['flake8'],
-			\ 'lua': ['luacheck'],
-			\ 'dockerfile': ['hadolint'],
-			\ 'sh': ['shellcheck'],
-			\ 'tex': ['lacheck'],
-			\ 'vim': ['vint'],
-			\ 'go': ['golint'],
-			\}
-let g:ale_fixers = {
-			\ 'python': ['black', 'isort'],
-			\ 'lua': ['stylua'],
-			\ 'json': ['jq'],
-			\ 'sh': ['shfmt', 'trim_whitespace'],
-			\ 'dockerfile': ['trim_whitespace'],
-			\ 'yaml': ['prettier', 'trim_whitespace'],
-			\ 'tex': ['latexindent', 'trim_whitespace'],
-			\ 'go': ['gofmt', 'goimports', 'trim_whitespace'],
-			\}
-let g:ale_lua_luacheck_options = '--globals "vim" "P"'
-let g:ale_python_isort_options = '--profile black'
-let g:ale_python_flake8_options = '--max-line-length=88 --extend-ignore=E203'
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '.'
-let g:ale_echo_msg_format = '[%linter%]: %s'
-
 let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
 let g:startify_files_number = 15
 let g:startify_use_env = 1
@@ -144,4 +98,3 @@ call wilder#set_option('renderer', wilder#renderer_mux({
 			\ })
 			\ ),
 			\ }))
-

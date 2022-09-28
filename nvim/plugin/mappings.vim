@@ -80,17 +80,6 @@ nnoremap * *:lua require("functions").count_matches()<CR>
 nnoremap n nzz:lua require("functions").hl_search(0.3)<CR>
 nnoremap N Nzz:lua require("functions").hl_search(0.3)<CR>
 
-" code navigation (with Coc) and linting
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> rn <Plug>(coc-rename)
-nnoremap <silent> K :call ShowDocumentation()<CR>
-nnoremap <silent> gm :<C-u>CocList outline<CR>
-nnoremap <leader>f :ALEFix<CR>
-nnoremap <leader>l :ALEToggle<CR>
-nmap <silent> <leader>+ <Plug>(ale_next_wrap)
-nmap <silent> <leader>- <Plug>(ale_previous_wrap)
-
 " buffers and files browsing
 nnoremap <C-n> :FloatermNew vifm<CR>
 nnoremap <C-p> :call fzf#vim#files(system('git rev-parse --show-toplevel 2> /dev/null')[:-2], {'options': '--prompt "files:"'})<CR>
@@ -111,20 +100,6 @@ nmap -- <plug>(signify-prev-hunk)
 
 " open todo file in one go
 nnoremap <leader>t :e<space>~/.todo<CR>
-
-" navigate through the completion menu
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
-inoremap <silent><expr> <TAB>
-	\ coc#pum#visible() ? coc#pum#next(1):
-	\ CheckBackspace() ? "\<Tab>" :
-	\ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-inoremap <silent><expr> <c-space> coc#refresh()
-nnoremap <nowait><expr> <C-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-j>"
-nnoremap <nowait><expr> <C-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-k>"
-inoremap <nowait><expr> <C-j> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-inoremap <nowait><expr> <C-k> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 
 " wilder completion menu
 cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
@@ -147,20 +122,3 @@ command W write
 command Q quit
 command! -bar -bang -range=% BCommits let b:fzf_winview = winsaveview() | <line1>,<line2>call fzf#vim#buffer_commits(fzf#vim#with_preview({'options': '--prompt "logs:"', 'down': '15'}), <bang>0)
 command! Error :lua require("functions").copy_error()<CR>
-
-" CoC functions
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-hi CocSearch ctermfg=12 guifg=#18A3FF
-hi CocMenuSel ctermbg=109 guibg=#13354A
