@@ -1,34 +1,5 @@
 local cmp = require("cmp")
 
-local icons = {
-	Class = "ﴯ",
-	Color = "",
-	Constant = "",
-	Constructor = "",
-	Enum = "",
-	EnumMember = "",
-	Event = "",
-	Field = "",
-	File = "",
-	Folder = "",
-	Function = "",
-	Interface = "",
-	Keyword = "",
-	Method = "",
-	Module = "",
-	Operator = "",
-	Property = "ﰠ",
-	Reference = "",
-	Snippet = "",
-	Struct = "",
-	Text = "",
-	TypeParameter = "",
-	Unit = "",
-	Value = "",
-	Variable = "",
-}
-
-
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -41,7 +12,7 @@ cmp.setup({
 	formatting = {
 		fields = { 'kind', 'abbr', 'menu' },
 		format = function(entry, item)
-			item.kind = string.format("%s %s", icons[item.kind], item.kind)
+			item.kind = string.format("%s %s", Icons[item.kind], item.kind)
 			item.menu = ({
 				nvim_lsp = '[LSP]',
 				luasnip = '[snip]',
@@ -86,7 +57,7 @@ cmp.setup({
 
 cmp.setup.cmdline({ '/', '?' }, {
 	mapping = cmp.mapping.preset.cmdline(),
-	formatting = {fields = {'abbr'}},
+	formatting = { fields = { 'abbr' } },
 	sources = {
 		{ name = 'buffer' }
 	}
@@ -94,7 +65,7 @@ cmp.setup.cmdline({ '/', '?' }, {
 
 cmp.setup.cmdline(':', {
 	mapping = cmp.mapping.preset.cmdline(),
-	formatting = {fields = {'abbr'}},
+	formatting = { fields = { 'abbr' } },
 	sources = cmp.config.sources({
 		{ name = 'path' }
 	}, {

@@ -79,3 +79,8 @@ augroup TERMINAL_OPEN
 	autocmd!
 	autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
+
+augroup FORMAT_ON_SAVE
+	autocmd!
+	autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
+augroup END
