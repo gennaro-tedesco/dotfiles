@@ -6,13 +6,11 @@ cmp.setup({
 		end,
 	},
 	mapping = {
-		["<C-Space>"] = cmp.mapping.complete({}),
-		["<C-e>"] = cmp.mapping.close(),
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
-			select = false,
+			select = true,
 		}),
 
 		["<Tab>"] = cmp.mapping(function(fallback)
@@ -33,7 +31,7 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{ name = "luasnip" }, -- For luasnip users.
+		{ name = "luasnip" },
 	}, {
 		{ name = "buffer" },
 	}),

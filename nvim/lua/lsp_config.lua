@@ -22,24 +22,22 @@ local lsp_flags = {
 	debounce_text_changes = 150,
 }
 
-require("lspconfig").gopls.setup({ on_attach = on_attach, lsp_flags = lsp_flags })
-require("lspconfig").sumneko_lua.setup({
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+-- configuration of the individual language servers --
+require("lspconfig").gopls.setup({
+	capabilities = capabilities,
 	on_attach = on_attach,
-	lsp_flags = lsp_flags,
+	lsp_flags = lsp_flags
+})
+require("lspconfig").sumneko_lua.setup({
+	capabilities = capabilities, on_attach = on_attach, lsp_flags = lsp_flags,
 	settings = {
 		Lua = {
-			runtime = {
-				version = "LuaJIT",
-			},
-			diagnostics = {
-				globals = { "vim" },
-			},
-			workspace = {
-				library = vim.api.nvim_get_runtime_file("", true),
-			},
-			telemetry = {
-				enable = false,
-			},
+			runtime = { version = "LuaJIT", },
+			diagnostics = { globals = { "vim", "P" }, },
+			workspace = { library = vim.api.nvim_get_runtime_file("", true), },
+			telemetry = { enable = false, },
 		},
 	},
 })
