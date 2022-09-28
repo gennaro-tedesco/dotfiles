@@ -97,8 +97,6 @@ nnoremap <C-p> :call fzf#vim#files(system('git rev-parse --show-toplevel 2> /dev
 nnoremap <C-b> :call fzf#vim#buffers({'options': '--prompt "buffers:"'})<CR>
 nnoremap <C-h> :Rg 
 nnoremap <C-g> :lua require("functions").replace_grep()<CR>
-nnoremap q/ :call fzf#vim#search_history({'options': '--prompt "search:"', 'right': '40'})<CR>
-nnoremap q: :call fzf#vim#command_history({'options': '--prompt "cmd:"', 'right': '40'})<CR>
 nnoremap qh :call fzf#vim#helptags({'options': '--prompt "help:"','down': '15'})<CR>
 nnoremap <silent> <C-q> :call functions#ToggleQF()<CR>
 nnoremap <silent> <C-l> :call functions#ToggleLL()<CR>
@@ -108,7 +106,6 @@ nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :BCommits<CR>
 nnoremap <leader>gb <Plug>(git-messenger)
-nnoremap <leader>gd :Gvdiffsplit develop<CR>
 nmap ++ <plug>(signify-next-hunk)
 nmap -- <plug>(signify-prev-hunk)
 
