@@ -43,21 +43,21 @@ require("lspconfig").sumneko_lua.setup({
 		},
 	},
 })
-require'lspconfig'.vimls.setup{}
-require'lspconfig'.bashls.setup{}
+require 'lspconfig'.vimls.setup {}
+require 'lspconfig'.bashls.setup {}
 
 
 -- diagnostics --
 vim.diagnostic.config({
-  virtual_text = true,
-  signs=true,
-  severity_sort = true,
-  float = {
-    border = 'rounded',
-    source = 'always',
-    header = '',
-    prefix = '',
-  },
+	virtual_text = true,
+	signs = true,
+	severity_sort = true,
+	float = {
+		border = 'rounded',
+		source = 'always',
+		header = '',
+		prefix = '',
+	},
 })
 
 vim.fn.sign_define('DiagnosticSignError', { name = 'DiagnosticSignError', text = '✘' })

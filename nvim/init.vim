@@ -69,7 +69,6 @@ lua require("cmp_config")
 " -----------------------------
 " -- global augroup commands --
 " -----------------------------
-
 augroup HIGHLIGHT_YANK
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
@@ -83,4 +82,10 @@ augroup END
 augroup FORMAT_ON_SAVE
 	autocmd!
 	autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
+augroup END
+
+augroup DIAGNOSTICS
+	autocmd!
+	autocmd BufEnter * silent! hi clear DiagnosticWarn
+	autocmd BufEnter * silent! hi link DiagnosticWarn Comment
 augroup END
