@@ -15,7 +15,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-	vim.keymap.set("n", "<space>f", vim.lsp.buf.format, bufopts)
+	vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
 	vim.keymap.set("n", "<space>a", vim.lsp.buf.code_action, bufopts)
 end
 
@@ -24,28 +24,35 @@ local lsp_flags = {
 }
 vim.lsp.set_log_level("debug")
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- configuration of the individual language servers --
 require("lspconfig").gopls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	lsp_flags = lsp_flags
+	lsp_flags = lsp_flags,
 })
 require("lspconfig").sumneko_lua.setup({
-	capabilities = capabilities, on_attach = on_attach, lsp_flags = lsp_flags,
+	capabilities = capabilities,
+	on_attach = on_attach,
+	lsp_flags = lsp_flags,
 	settings = {
 		Lua = {
-			runtime = { version = "LuaJIT", },
-			diagnostics = { globals = { "vim", "P" }, },
-			workspace = { library = vim.api.nvim_get_runtime_file("", true), },
-			telemetry = { enable = false, },
+			runtime = { version = "LuaJIT" },
+			diagnostics = { globals = { "vim", "P" } },
+			workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+			telemetry = { enable = false },
 		},
 	},
 })
-require 'lspconfig'.vimls.setup {}
-require 'lspconfig'.bashls.setup {}
-
+require("lspconfig").jedi_language_server.setup({})
+require("lspconfig").vimls.setup({ on_attach = on_attach })
+require("lspconfig").bashls.setup({ on_attach = on_attach })
+require("lspconfig").jsonls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
 
 -- diagnostics --
 vim.diagnostic.config({
@@ -53,14 +60,14 @@ vim.diagnostic.config({
 	signs = true,
 	severity_sort = true,
 	float = {
-		border = 'rounded',
-		source = 'always',
-		header = '',
-		prefix = '',
+		border = "rounded",
+		source = "always",
+		header = "",
+		prefix = "",
 	},
 })
 
-vim.fn.sign_define('DiagnosticSignError', { name = 'DiagnosticSignError', text = '✘' })
-vim.fn.sign_define('DiagnosticSignWarn', { name = 'DiagnosticSignWarn', text = '.' })
-vim.fn.sign_define('DiagnosticSignHint', { name = 'DiagnosticSignHint', text = '⚑' })
-vim.fn.sign_define('DiagnosticSignInfo', { name = 'DiagnosticSignInfo', text = '' })
+vim.fn.sign_define("DiagnosticSignError", { name = "DiagnosticSignError", text = "✘" })
+vim.fn.sign_define("DiagnosticSignWarn", { name = "DiagnosticSignWarn", text = "." })
+vim.fn.sign_define("DiagnosticSignHint", { name = "DiagnosticSignHint", text = "⚑" })
+vim.fn.sign_define("DiagnosticSignInfo", { name = "DiagnosticSignInfo", text = "" })
