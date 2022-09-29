@@ -7,6 +7,17 @@ vim.keymap.set("n", "ge", vim.diagnostic.open_float, opts)
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
+	vim.g.diagnostics_visible = true
+	local function toggle_diagnostics()
+		if vim.g.diagnostics_visible then
+			vim.g.diagnostics_visible = false
+			vim.diagnostic.disable()
+		else
+			vim.g.diagnostics_visible = true
+			vim.diagnostic.enable()
+		end
+	end
+
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
@@ -15,8 +26,9 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-	vim.keymap.set("n", "<space>f", vim.lsp.buf.format, bufopts)
-	vim.keymap.set("n", "<space>a", vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, bufopts)
+	vim.keymap.set("n", "<leader>l", toggle_diagnostics, bufopts)
+	vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
 end
 
 local lsp_flags = {
