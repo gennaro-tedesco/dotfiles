@@ -89,6 +89,20 @@ vim.fn.sign_define("DiagnosticSignHint", { name = "DiagnosticSignHint", text = "
 vim.fn.sign_define("DiagnosticSignInfo", { name = "DiagnosticSignInfo", text = "" })
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local null_ls = require("null-ls")
+local sources = {
+	null_ls.builtins.formatting.stylua,
+	null_ls.builtins.formatting.gofmt,
+	null_ls.builtins.formatting.goimports,
+	null_ls.builtins.formatting.isort,
+	null_ls.builtins.formatting.black,
+	null_ls.builtins.formatting.prettier.with({ filetypes = { "json", "yaml", "markdown" } }),
+	null_ls.builtins.formatting.shfmt,
+	null_ls.builtins.formatting.jq,
+	null_ls.builtins.code_actions.shellcheck,
+	null_ls.builtins.hover.printenv,
+}
+
 require("null-ls").setup({
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
@@ -102,13 +116,5 @@ require("null-ls").setup({
 			})
 		end
 	end,
-	sources = {
-		require("null-ls").builtins.formatting.stylua,
-		require("null-ls").builtins.formatting.gofmt,
-		require("null-ls").builtins.formatting.goimports,
-		require("null-ls").builtins.formatting.isort,
-		require("null-ls").builtins.formatting.black,
-		require("null-ls").builtins.formatting.shfmt,
-		require("null-ls").builtins.formatting.jq,
-	},
+	sources = sources,
 })
