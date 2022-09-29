@@ -37,10 +37,13 @@ let g:lightline = {
 			\             [ 'gitbranch', 'readonly', 'absolutepath', 'modified'] ],
 			\   'right': [ [ 'lineinfo' ],
 			\              [ 'percent' ],
-			\              [ 'filetype'] ]
+			\              [ 'filetype'], ['lsp_hints'], ['lsp_warnings'], ['lsp_errors'] ]
 			\ },
 			\ 'component_function': {
-			\   'gitbranch': 'FugitiveHead'
+			\   'gitbranch': 'FugitiveHead',
+			\   'lsp_errors': 'LspErrors',
+			\   'lsp_warnings': 'LspWarnings',
+			\   'lsp_hints': 'LspHints',
 			\ },
 			\ }
 
@@ -62,3 +65,33 @@ let g:startify_lists = [
 let g:bookmark_center = 1
 let g:bookmark_show_toggle_warning = 0
 let g:bookmark_show_warning = 0
+
+function LspErrors() abort
+	let icon = '❗:'
+	let count = luaeval("#vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })")
+	if count >= 1
+		return icon . count
+	else
+		return ''
+	endif
+endfunction
+
+function LspWarnings() abort
+	let icon = '⚠️ :'
+	let count = luaeval("#vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })")
+	if count >= 1
+		return icon . count
+	else
+		return ''
+	endif
+endfunction
+
+function LspHints() abort
+	let icon = '💡 :'
+	let count = luaeval("#vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })")
+	if count >= 1
+		return icon . count
+	else
+		return ''
+	endif
+endfunction
