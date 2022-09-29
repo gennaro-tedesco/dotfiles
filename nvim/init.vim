@@ -15,6 +15,8 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'lervag/vimtex'
@@ -77,11 +79,6 @@ augroup END
 augroup TERMINAL_OPEN
 	autocmd!
 	autocmd TermOpen * setlocal nonumber norelativenumber
-augroup END
-
-augroup FORMAT_ON_SAVE
-	autocmd!
-	autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
 augroup END
 
 augroup DIAGNOSTICS

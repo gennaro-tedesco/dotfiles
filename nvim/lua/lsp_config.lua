@@ -15,7 +15,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-	vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
+	vim.keymap.set("n", "<space>f", vim.lsp.buf.format, bufopts)
 	vim.keymap.set("n", "<space>a", vim.lsp.buf.code_action, bufopts)
 end
 
@@ -54,7 +54,7 @@ require("lspconfig").jsonls.setup({
 	capabilities = capabilities,
 })
 
--- diagnostics --
+-- diagnostics: linting and formatting --
 vim.diagnostic.config({
 	virtual_text = true,
 	signs = true,
@@ -71,3 +71,28 @@ vim.fn.sign_define("DiagnosticSignError", { name = "DiagnosticSignError", text =
 vim.fn.sign_define("DiagnosticSignWarn", { name = "DiagnosticSignWarn", text = "." })
 vim.fn.sign_define("DiagnosticSignHint", { name = "DiagnosticSignHint", text = "⚑" })
 vim.fn.sign_define("DiagnosticSignInfo", { name = "DiagnosticSignInfo", text = "" })
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+require("null-ls").setup({
+	on_attach = function(client, bufnr)
+		if client.supports_method("textDocument/formatting") then
+			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = augroup,
+				buffer = bufnr,
+				callback = function()
+					vim.lsp.buf.format()
+				end,
+			})
+		end
+	end,
+	sources = {
+		require("null-ls").builtins.formatting.stylua,
+		require("null-ls").builtins.formatting.gofmt,
+		require("null-ls").builtins.formatting.goimports,
+		require("null-ls").builtins.formatting.isort,
+		require("null-ls").builtins.formatting.black,
+		require("null-ls").builtins.formatting.shfmt,
+		require("null-ls").builtins.formatting.jq,
+	},
+})

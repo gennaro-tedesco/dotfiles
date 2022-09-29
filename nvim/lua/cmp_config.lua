@@ -7,17 +7,17 @@ cmp.setup({
 		end,
 	},
 	window = {
-		completion = cmp.config.window.bordered()
+		completion = cmp.config.window.bordered(),
 	},
 	formatting = {
-		fields = { 'kind', 'abbr', 'menu' },
+		fields = { "kind", "abbr", "menu" },
 		format = function(entry, item)
 			item.kind = string.format("%s %s", Icons[item.kind], item.kind)
 			item.menu = ({
-				nvim_lsp = '[LSP]',
-				luasnip = '[snip]',
-				buffer = '[buf]',
-				path = '[../]',
+				nvim_lsp = "[LSP]",
+				luasnip = "[snip]",
+				buffer = "[buf]",
+				path = "[../]",
 			})[entry.source.name]
 			return item
 		end,
@@ -47,28 +47,28 @@ cmp.setup({
 		end, { "i", "s" }),
 	},
 	sources = {
-		{ name = 'path' },
-		{ name = 'nvim_lsp', keyword_length = 3 },
-		{ name = 'buffer', keyword_length = 3 },
-		{ name = 'luasnip', keyword_length = 2 },
-		{ name = 'nvim_lsp_signature_help' },
+		{ name = "nvim_lsp", keyword_length = 3 },
+		{ name = "nvim_lsp_signature_help" },
+		{ name = "luasnip", keyword_length = 2 },
+		{ name = "path" },
+		{ name = "buffer", keyword_length = 5 },
 	},
 })
 
-cmp.setup.cmdline({ '/', '?' }, {
+cmp.setup.cmdline({ "/", "?" }, {
 	mapping = cmp.mapping.preset.cmdline(),
-	formatting = { fields = { 'abbr' } },
+	formatting = { fields = { "abbr" } },
 	sources = {
-		{ name = 'buffer' }
-	}
+		{ name = "buffer" },
+	},
 })
 
-cmp.setup.cmdline(':', {
+cmp.setup.cmdline(":", {
 	mapping = cmp.mapping.preset.cmdline(),
-	formatting = { fields = { 'abbr' } },
+	formatting = { fields = { "abbr" } },
 	sources = cmp.config.sources({
-		{ name = 'path' }
+		{ name = "path" },
 	}, {
-		{ name = 'cmdline' }
-	})
+		{ name = "cmdline" },
+	}),
 })

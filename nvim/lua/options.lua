@@ -50,4 +50,4 @@ require("nvim-lastplace").setup({
 })
 
 -- comments
-require('Comment').setup()
+require("Comment").setup()
