@@ -46,7 +46,11 @@ require("lspconfig").sumneko_lua.setup({
 		},
 	},
 })
-require("lspconfig").jedi_language_server.setup({})
+require("lspconfig").jedi_language_server.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	lsp_flags = lsp_flags,
+})
 require("lspconfig").vimls.setup({ on_attach = on_attach })
 require("lspconfig").bashls.setup({ on_attach = on_attach })
 require("lspconfig").jsonls.setup({

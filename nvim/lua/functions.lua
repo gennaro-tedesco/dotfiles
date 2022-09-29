@@ -17,13 +17,15 @@ local function copy_error()
 end
 
 local function replace_grep()
-	local cur_word = vim.fn.expandcmd("<cword>")
-	local replace_word = vim.fn.input("Enter replace word: ")
-	vim.cmd("Rg " .. cur_word)
-	if replace_word ~= "" then
-		vim.cmd("cdo s/" .. cur_word .. "/" .. replace_word)
-		vim.cmd("cclose")
-		notify(" replace: " .. cur_word .. " --> " .. replace_word)
+	local cur_word = vim.fn.expand("<cword>")
+	if cur_word ~= "" then
+		local replace_word = vim.fn.input("Enter replace word: ")
+		vim.cmd("Rg " .. cur_word)
+		if replace_word ~= "" then
+			vim.cmd("cdo s/" .. cur_word .. "/" .. replace_word)
+			vim.cmd("cclose")
+			notify(" replace: " .. cur_word .. " --> " .. replace_word)
+		end
 	end
 end
 
