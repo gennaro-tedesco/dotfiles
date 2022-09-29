@@ -62,10 +62,6 @@ let g:startify_lists = [
 			\ { 'type': 'sessions',  'header': ['   Sessions']       },
 			\ ]
 
-let g:bookmark_center = 1
-let g:bookmark_show_toggle_warning = 0
-let g:bookmark_show_warning = 0
-
 function LspErrors() abort
 	let icon = '❗:'
 	let count = luaeval("#vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })")
@@ -87,7 +83,7 @@ function LspWarnings() abort
 endfunction
 
 function LspHints() abort
-	let icon = '💡 :'
+	let icon = '💡:'
 	let count = luaeval("#vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })")
 	if count >= 1
 		return icon . count

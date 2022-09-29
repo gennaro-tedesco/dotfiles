@@ -1,4 +1,7 @@
 local opts = { noremap = true, silent = true }
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local null_ls = require("null-ls")
+
 vim.keymap.set("n", "g+", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "g-", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "gl", vim.diagnostic.setloclist, opts)
@@ -36,7 +39,6 @@ local lsp_flags = {
 }
 vim.lsp.set_log_level("debug")
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- configuration of the individual language servers --
@@ -90,7 +92,6 @@ vim.fn.sign_define("DiagnosticSignHint", { name = "DiagnosticSignHint", text = "
 vim.fn.sign_define("DiagnosticSignInfo", { name = "DiagnosticSignInfo", text = "i" })
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-local null_ls = require("null-ls")
 local sources = {
 	null_ls.builtins.formatting.stylua,
 	null_ls.builtins.formatting.gofmt,
