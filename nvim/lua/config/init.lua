@@ -1,0 +1,5 @@
+require("options")
+require("globals")
+require("lsp_config")
+require("cmp_config")
+require("snips")
