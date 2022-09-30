@@ -42,7 +42,7 @@ Plug 'kevinhwang91/nvim-bqf'
 
 " settings that make vim easier to use
 Plug 'chentoast/marks.nvim'
-Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs'
 Plug 'rcarriga/nvim-notify'
 Plug 'ethanholz/nvim-lastplace'
 Plug 'numToStr/Comment.nvim'

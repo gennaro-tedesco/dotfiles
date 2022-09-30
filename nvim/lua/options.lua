@@ -1,3 +1,7 @@
+-- ------------------------------------------
+-- customisation of default plugins options -
+-- ------------------------------------------
+
 -- treesitter
 require("nvim-treesitter.configs").setup({
 	highlight = { enable = true },
@@ -99,3 +103,24 @@ require("nvim-lastplace").setup({
 
 -- comments
 require("Comment").setup()
+
+-- auto-pairs
+local npairs = require("nvim-autopairs")
+npairs.setup({
+	ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
+})
+npairs.setup({
+	fast_wrap = {},
+})
+npairs.setup({
+	fast_wrap = {
+		map = "<C-w>",
+		chars = { "{", "[", "(", '"', "'" },
+		pattern = [=[[%'%"%)%>%]%)%}%,]]=],
+		end_key = "$",
+		keys = "qwertyuiopzxcvbnmasdfghjkl",
+		check_comma = true,
+		highlight = "Search",
+		highlight_grey = "Comment",
+	},
+})

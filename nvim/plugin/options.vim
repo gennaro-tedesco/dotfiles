@@ -3,9 +3,6 @@
 "" --------------------------------------------
 let g:python3_host_prog = '/usr/local/bin/python3'
 
-let g:AutoPairs = {'(':')', '[':']', '{':'}','`':'`', '```':'```', '"""':'"""'}
-let g:AutoPairsShortcutFastWrap = '<C-w>'
-
 let g:floaterm_autoclose = 2
 let g:floaterm_keymap_toggle = '<F2>'
 let g:floaterm_width = 0.85
