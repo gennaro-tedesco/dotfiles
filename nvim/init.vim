@@ -66,6 +66,7 @@ lua require("options")
 lua require("globals")
 lua require("lsp_config")
 lua require("cmp_config")
+lua require("snips")
 
 " -----------------------------
 " -- global augroup commands --
