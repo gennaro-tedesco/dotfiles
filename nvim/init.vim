@@ -33,7 +33,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'jremmen/vim-ripgrep'
 
 " vim decorations and looks
-Plug 'mhinz/vim-startify'
+Plug 'goolord/alpha-nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'karb94/neoscroll.nvim'

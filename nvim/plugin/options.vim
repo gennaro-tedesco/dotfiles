@@ -39,14 +39,6 @@ let g:tex_conceal = ''
 let g:tex_fast = ''
 let g:tex_flavor = 'latex'
 
-let g:startify_custom_header = startify#center(['welcome back, and a fine day it is!'])
-let g:startify_files_number = 15
-let g:startify_use_env = 1
-let g:startify_lists = [
-			\ { 'type': 'dir',      'header': ['  Current Directory '. getcwd()] },
-			\ { 'type': 'sessions',  'header': ['   Sessions']       },
-			\ ]
-
 function LspErrors() abort
 	let icon = '❗:'
 	let count = luaeval("#vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })")
