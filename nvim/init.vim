@@ -62,9 +62,11 @@ call plug#end()
 "" ~/.config/nvim/plugin/options.vim
 "" ~/.config/nvim/plugin/folding.vim
 "" -----------------------------------
-
-"" load the lua configuration in ./lua/config
-lua require("config")
+lua require("options")
+lua require("globals")
+lua require("lsp_config")
+lua require("cmp_config")
+lua require("snips")
 
 " -----------------------------
 " -- global augroup commands --
