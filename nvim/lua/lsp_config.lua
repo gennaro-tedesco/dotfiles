@@ -91,6 +91,7 @@ vim.fn.sign_define("DiagnosticSignWarn", { name = "DiagnosticSignWarn", text = "
 vim.fn.sign_define("DiagnosticSignHint", { name = "DiagnosticSignHint", text = "⚑" })
 vim.fn.sign_define("DiagnosticSignInfo", { name = "DiagnosticSignInfo", text = "i" })
 
+-- null-ls --
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local sources = {
 	null_ls.builtins.formatting.stylua,
@@ -102,6 +103,7 @@ local sources = {
 	null_ls.builtins.formatting.shfmt,
 	null_ls.builtins.formatting.jq,
 	null_ls.builtins.code_actions.shellcheck,
+	null_ls.builtins.code_actions.gitsigns,
 	null_ls.builtins.hover.printenv,
 }
 
