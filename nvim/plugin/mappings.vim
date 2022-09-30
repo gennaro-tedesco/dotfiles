@@ -93,9 +93,6 @@ nnoremap <silent> <C-l> :call functions#ToggleLL()<CR>
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :BCommits<CR>
-nnoremap <leader>gb <Plug>(git-messenger)
-nmap ++ <plug>(signify-next-hunk)
-nmap -- <plug>(signify-prev-hunk)
 
 " open todo file in one go
 nnoremap <leader>t :e<space>~/.todo<CR>

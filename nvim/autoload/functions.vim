@@ -19,22 +19,6 @@ function! functions#TrimWhitespace()
 endfunction
 
 
-" convert list of items to SQL tuple
-function! functions#ToTupleFun() range
-	silent execute a:firstline . ',' . a:lastline . "norm I'"
-	silent execute a:firstline . ',' . a:lastline . "norm A',"
-	silent execute a:firstline . ',' . a:lastline . "join"
-
-	" lines are now joined, there is only one line
-	silent execute 'norm $x'
-	silent execute 'norm I('
-	silent execute 'norm A)'
-
-	" yank final text
-	silent execute 'norm yy'
-endfunction
-
-
 " T2S and S2T
 function! functions#T2S ()
 	set expandtab | %retab! | w
@@ -52,16 +36,6 @@ function! functions#ReplaceFile()
 endfunction
 
 
-" blink word under cursor
-function! functions#BlinkWord(blinktime)
-	let target_pat = '\c\%#'.@/
-	let ring = matchadd('IncSearch', target_pat)
-	redraw
-	exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
-	call matchdelete(ring)
-	redraw
-endfunction
-
 function! functions#ToggleQF() abort
 	for i in range(1, winnr('$'))
         if getbufvar(winbufnr(i), '&buftype') == 'quickfix'
@@ -76,6 +50,7 @@ function! functions#ToggleQF() abort
 	endif
 	copen
 endfunction
+
 
 function! functions#ToggleLL() abort
 	for i in range(1, winnr('$'))

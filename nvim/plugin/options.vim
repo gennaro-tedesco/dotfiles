@@ -21,11 +21,6 @@ let g:git_messenger_always_into_popup = v:true
 let g:git_messenger_floating_win_opts = { 'border': 'rounded' }
 let g:git_messenger_popup_content_margins = v:false
 
-let g:signify_sign_add = '+'
-let g:signify_sign_delete = '-'
-let g:signify_sign_change = '~'
-let g:signify_sign_show_count = 0
-
 let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.3 } }
 let g:fzf_preview_window = []
 let g:fzf_buffers_jump = 1

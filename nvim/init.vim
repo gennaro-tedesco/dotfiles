@@ -23,8 +23,7 @@ Plug 'lervag/vimtex'
 
 " git integration in vim
 Plug 'tpope/vim-fugitive'
-Plug 'rhysd/git-messenger.vim'
-Plug 'mhinz/vim-signify'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'akinsho/git-conflict.nvim'
 
 " file navigation
@@ -81,8 +80,10 @@ augroup TERMINAL_OPEN
 	autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
 
-augroup DIAGNOSTICS
+augroup LSP_HIGHLIGHTS
 	autocmd!
 	autocmd BufEnter * silent! hi clear DiagnosticWarn
 	autocmd BufEnter * silent! hi link DiagnosticWarn Comment
+	autocmd BufEnter * silent! hi clear CmpItemAbbrMatch
+	autocmd BufEnter * silent! hi link CmpItemAbbrMatch helpVim
 augroup END
