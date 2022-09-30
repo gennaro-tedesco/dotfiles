@@ -97,10 +97,6 @@ nnoremap <leader>gl :BCommits<CR>
 " open todo file in one go
 nnoremap <leader>t :e<space>~/.todo<CR>
 
-" wilder completion menu
-cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
-cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
-
 " clean up search results and extmarks
 nnoremap <silent> <CR> :let @/="" <bar> lua vim.api.nvim_buf_clear_namespace(0, -1, 0, -1)<CR>
 
