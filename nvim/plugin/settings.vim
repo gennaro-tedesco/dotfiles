@@ -64,9 +64,29 @@ set pumheight=10
 " matching pairs
 set matchpairs+=<:>
 
-" special syntax for certain files
+" -----------------------------
+" -- global augroup commands --
+" -----------------------------
 augroup SPECIAL_SYNTAX
 	autocmd!
 	autocmd BufNewFile,BufRead requirements*.txt set syntax=config
 	autocmd BufNewFile,BufRead *.env set syntax=config
+augroup END
+
+augroup HIGHLIGHT_YANK
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
+augroup END
+
+augroup TERMINAL_OPEN
+	autocmd!
+	autocmd TermOpen * setlocal nonumber norelativenumber
+augroup END
+
+augroup LSP_HIGHLIGHTS
+	autocmd!
+	autocmd BufEnter * silent! hi clear DiagnosticWarn
+	autocmd BufEnter * silent! hi link DiagnosticWarn Comment
+	autocmd BufEnter * silent! hi clear CmpItemAbbrMatch
+	autocmd BufEnter * silent! hi link CmpItemAbbrMatch helpVim
 augroup END

@@ -67,25 +67,4 @@ lua require("globals")
 lua require("functions")
 lua require("lsp_config")
 lua require("cmp_config")
-lua require("snips")
-
-" -----------------------------
-" -- global augroup commands --
-" -----------------------------
-augroup HIGHLIGHT_YANK
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
-augroup END
-
-augroup TERMINAL_OPEN
-	autocmd!
-	autocmd TermOpen * setlocal nonumber norelativenumber
-augroup END
-
-augroup LSP_HIGHLIGHTS
-	autocmd!
-	autocmd BufEnter * silent! hi clear DiagnosticWarn
-	autocmd BufEnter * silent! hi link DiagnosticWarn Comment
-	autocmd BufEnter * silent! hi clear CmpItemAbbrMatch
-	autocmd BufEnter * silent! hi link CmpItemAbbrMatch helpVim
-augroup END
+lua require("snip_config")
