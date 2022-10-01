@@ -17,11 +17,10 @@ set number relativenumber
 set ruler
 set cursorline
 set laststatus=2
+set cmdheight=1
 set splitbelow splitright
 set scrolloff=8
 set noshowmode
-set laststatus=0
-set cmdheight=0
 highlight WinSeparator guibg=None
 
 " standard vim behaviour
@@ -39,8 +38,6 @@ set sidescroll=1
 set clipboard+=unnamed
 set autoindent noexpandtab tabstop=4 shiftwidth=4
 set pastetoggle=<F3>
-set laststatus=3
-set cmdheight=1
 augroup PASTE
 	autocmd!
 	autocmd InsertLeave * silent! set nopaste
