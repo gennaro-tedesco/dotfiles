@@ -16,7 +16,7 @@ set fillchars=eob:\
 set number relativenumber
 set ruler
 set cursorline
-set laststatus=2
+set laststatus=3
 set cmdheight=1
 set splitbelow splitright
 set scrolloff=8
