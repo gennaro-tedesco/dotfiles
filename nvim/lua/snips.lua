@@ -57,4 +57,17 @@ ls.add_snippets(nil, {
 			i(0),
 		}),
 	},
+	vim = {
+		s({
+			trig = "plug",
+			namr = "include plugin",
+		}, {
+			t("Plug '"),
+			f(function(_, snip)
+				return snip.env.TM_SELECTED_TEXT[1] or {}
+			end, {}),
+			t("'"),
+			i(0),
+		}),
+	},
 })

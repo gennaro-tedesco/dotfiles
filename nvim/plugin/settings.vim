@@ -20,7 +20,8 @@ set laststatus=2
 set splitbelow splitright
 set scrolloff=8
 set noshowmode
-set laststatus=3
+set laststatus=0
+set cmdheight=0
 highlight WinSeparator guibg=None
 
 " standard vim behaviour
@@ -56,6 +57,7 @@ set completeopt=menu,menuone,noselect
 set wildmenu
 set wildmode=longest,full,list
 set wildcharm=<Tab>
+set pumheight=10
 
 " matching pairs
 set matchpairs+=<:>
