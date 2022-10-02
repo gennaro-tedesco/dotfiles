@@ -62,9 +62,8 @@ call plug#end()
 "" ~/.config/nvim/plugin/options.vim
 "" ~/.config/nvim/plugin/folding.vim
 "" -----------------------------------
-lua require("options")
-lua require("globals")
-lua require("functions")
-lua require("lsp_config")
-lua require("cmp_config")
-lua require("snip_config")
+lua << EOF
+for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath('config')..'/lua', [[v:val =~ '\.lua$']])) do
+  require(file:gsub('%.lua$', ''))
+end
+EOF

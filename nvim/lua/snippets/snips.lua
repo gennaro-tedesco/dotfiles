@@ -19,6 +19,17 @@ local lua = {
 		t({ "", "end" }),
 		i(0),
 	}),
+	s({
+		trig = "mod",
+		namr = "local module",
+		dscr = "return local module M",
+	}, {
+		t({ "local M = {}" }),
+		t({ "", "", "" }),
+		i(0),
+		t({ "", "" }),
+		t({ "", "return M" }),
+	}),
 }
 
 local markdown = {
