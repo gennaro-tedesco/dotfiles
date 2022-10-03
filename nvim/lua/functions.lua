@@ -1,12 +1,14 @@
 local notify = require("notify")
 
-local function count_matches()
+local M = {}
+
+M.count_matches = function()
 	local cur_word = vim.fn.expandcmd("<cword>")
 	local count = vim.api.nvim_exec("%s/" .. cur_word .. "//ng", true)
 	notify(" " .. count, "info", { title = "search: " .. cur_word, render = "simple" })
 end
 
-local function copy_error()
+M.copy_error = function()
 	local error_message = vim.fn.trim(vim.fn.execute("1messages"))
 	if error_message ~= "" then
 		notify(error_message, "error", { title = "message copied!", render = "simple" })
@@ -16,7 +18,7 @@ local function copy_error()
 	end
 end
 
-local function replace_grep()
+M.replace_grep = function()
 	local cur_word = vim.fn.expand("<cword>")
 	if cur_word ~= "" then
 		local replace_word = vim.fn.input("Enter replace word: ")
@@ -29,7 +31,7 @@ local function replace_grep()
 	end
 end
 
-local function hl_search(blinktime)
+M.hl_search = function(blinktime)
 	local ns = vim.api.nvim_create_namespace("search")
 	vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
 
@@ -48,4 +50,4 @@ local function hl_search(blinktime)
 	vim.cmd("redraw")
 end
 
-return { count_matches = count_matches, copy_error = copy_error, replace_grep = replace_grep, hl_search = hl_search }
+return M
