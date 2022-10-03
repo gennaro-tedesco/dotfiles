@@ -5,7 +5,7 @@
 -- treesitter
 require("nvim-treesitter.configs").setup({
 	highlight = { enable = true },
-	ensure_installed = { "go", "python", "json", "lua", "bash", "yaml", "help" },
+	ensure_installed = { "go", "python", "json", "lua", "bash", "yaml" },
 })
 
 -- neoscroll
@@ -136,3 +136,48 @@ startify.section.bottom_buttons.val = { startify.button("q", "✘ Quit NVIM", ":
 startify.section.mru.val = { { type = "padding", val = 0 } }
 startify.nvim_web_devicons.enabled = false
 require("alpha").setup(require("alpha.themes.startify").config)
+
+-- noice
+require("noice").setup({
+	views = {
+		cmdline_popup = {
+			border = {
+				style = "none",
+				padding = { 1, 2 },
+			},
+			filter_options = {},
+			win_options = {
+				winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+			},
+		},
+	},
+	routes = {
+		{
+			filter = { event = "msg_show", kind = { "search_count", "wmsg" } },
+			opts = { skip = true },
+		},
+		{
+			filter = {
+				event = "cmdline",
+				find = "^%s*[/?]",
+			},
+			view = "cmdline",
+		},
+		{
+			filter = {
+				event = "msg_show",
+				kind = "",
+				find = "written",
+			},
+			opts = { skip = true },
+		},
+		{
+			filter = {
+				event = "msg_show",
+				kind = "",
+				find = "written",
+			},
+			opts = { skip = true },
+		},
+	},
+})

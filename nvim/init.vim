@@ -39,6 +39,8 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'karb94/neoscroll.nvim'
 Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
 Plug 'kevinhwang91/nvim-bqf'
+Plug 'folke/noice.nvim'
+Plug 'MunifTanjim/nui.nvim'
 
 " settings that make vim easier to use
 Plug 'chentoast/marks.nvim'
