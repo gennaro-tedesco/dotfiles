@@ -113,4 +113,3 @@ command! Rf silent! call functions#ReplaceFile()
 command W write
 command Q quit
 command! -bar -bang -range=% BCommits let b:fzf_winview = winsaveview() | <line1>,<line2>call fzf#vim#buffer_commits(fzf#vim#with_preview({'options': '--prompt "logs:"', 'down': '15'}), <bang>0)
-command! Error :lua require("functions").copy_error()<CR>

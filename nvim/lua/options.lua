@@ -158,26 +158,27 @@ require("noice").setup({
 		},
 		{
 			filter = {
+				event = "msg_show",
+				kind = "",
+				find = "written",
+			},
+			opts = { skip = true },
+		},
+		{
+			filter = {
 				event = "cmdline",
 				find = "^%s*[/?]",
 			},
 			view = "cmdline",
 		},
-		{
-			filter = {
-				event = "msg_show",
-				kind = "",
-				find = "written",
-			},
-			opts = { skip = true },
-		},
-		{
-			filter = {
-				event = "msg_show",
-				kind = "",
-				find = "written",
-			},
-			opts = { skip = true },
+	},
+	cmdline = {
+		view = "cmdline_popup",
+		opts = { buf_options = { filetype = "vim" } },
+		icons = {
+			["/"] = { icon = "🔎", hl_group = "DiagnosticWarn" },
+			["?"] = { icon = "🔎", hl_group = "DiagnosticWarn" },
+			[":"] = { icon = " ", hl_group = "DiagnosticInfo", firstc = false },
 		},
 	},
 })

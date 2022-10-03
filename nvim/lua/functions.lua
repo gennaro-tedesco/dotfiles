@@ -8,16 +8,6 @@ M.count_matches = function()
 	notify(" " .. count, "info", { title = "search: " .. cur_word, render = "simple" })
 end
 
-M.copy_error = function()
-	local error_message = vim.fn.trim(vim.fn.execute("1messages"))
-	if error_message ~= "" then
-		notify(error_message, "error", { title = "message copied!", render = "simple" })
-		vim.cmd("let @*='" .. error_message .. "'")
-	else
-		notify(" No new messages", "info")
-	end
-end
-
 M.replace_grep = function()
 	local cur_word = vim.fn.expand("<cword>")
 	if cur_word ~= "" then
