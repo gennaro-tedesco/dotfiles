@@ -185,3 +185,6 @@ require("noice").setup({
 		},
 	},
 })
+
+-- symbols outline
+require("symbols-outline").setup()
