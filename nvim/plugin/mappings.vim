@@ -110,7 +110,7 @@ nnoremap mx :delm! <bar> delm A-Z0-9 <bar> delm \"<> <bar> wshada!<CR>
 command! -range ToTuple <line1>,<line2> call functions#ToTupleFun()
 command! TS silent! call functions#T2S()
 command! ST silent! call functions#S2T()
-command! Rf silent! call functions#ReplaceFile()
+command! Rf silent! lua require("functions").replace_file()<CR>
 command W write
 command Q quit
 command! -bar -bang -range=% BCommits let b:fzf_winview = winsaveview() | <line1>,<line2>call fzf#vim#buffer_commits(fzf#vim#with_preview({'options': '--prompt "logs:"', 'down': '15'}), <bang>0)

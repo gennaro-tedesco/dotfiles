@@ -77,4 +77,20 @@ M.toggle_ll = function()
 	vim.cmd("lopen")
 end
 
+M.t2s = function()
+	vim.o.expandtab = true
+	vim.cmd("%retab!")
+	vim.cmd("write")
+end
+
+M.s2t = function()
+	vim.o.expandtab = false
+	vim.cmd("%retab!")
+	vim.cmd("write")
+end
+
+M.replace_file = function()
+	vim.cmd("silent execute 'norm gg" .. '"' .. "_dGP'")
+end
+
 return M
