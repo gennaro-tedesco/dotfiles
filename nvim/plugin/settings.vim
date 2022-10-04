@@ -17,7 +17,7 @@ set number relativenumber
 set ruler
 set cursorline
 set laststatus=3
-set cmdheight=1
+set cmdheight=0
 set splitbelow splitright
 set scrolloff=8
 set noshowmode

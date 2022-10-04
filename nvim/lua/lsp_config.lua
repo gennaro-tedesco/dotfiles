@@ -88,7 +88,7 @@ vim.diagnostic.config({
 
 vim.fn.sign_define("DiagnosticSignError", { name = "DiagnosticSignError", text = "✘" })
 vim.fn.sign_define("DiagnosticSignWarn", { name = "DiagnosticSignWarn", text = "." })
-vim.fn.sign_define("DiagnosticSignHint", { name = "DiagnosticSignHint", text = "⚑" })
+vim.fn.sign_define("DiagnosticSignHint", { name = "DiagnosticSignHint", text = "💡" })
 vim.fn.sign_define("DiagnosticSignInfo", { name = "DiagnosticSignInfo", text = "i" })
 
 -- null-ls --
