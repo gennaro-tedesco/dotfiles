@@ -10,7 +10,7 @@ nnoremap q <nop>
 nnoremap qq q
 
 " remove all trailing spaces
-nnoremap <F5> :call functions#TrimWhitespace()<CR>
+nnoremap <F5> :lua require("functions").trim_whitespace()<CR>
 
 " smarter indenting
 vnoremap < <gv
@@ -86,8 +86,8 @@ nnoremap <C-b> :call fzf#vim#buffers({'options': '--prompt "buffers:"'})<CR>
 nnoremap <C-h> :Rg 
 nnoremap <C-g> :lua require("functions").replace_grep()<CR>
 nnoremap qh :call fzf#vim#helptags({'options': '--prompt "help:"','down': '15'})<CR>
-nnoremap <silent> <C-q> :call functions#ToggleQF()<CR>
-nnoremap <silent> <C-l> :call functions#ToggleLL()<CR>
+nnoremap <silent> <C-q> :lua require("functions").toggle_qf()<CR>
+nnoremap <silent> <C-l> :lua require("functions").toggle_ll()<CR>
 nnoremap gm :SymbolsOutline<CR>
 
 " git remappings

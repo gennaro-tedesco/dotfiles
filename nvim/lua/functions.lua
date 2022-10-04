@@ -40,4 +40,41 @@ M.hl_search = function(blinktime)
 	vim.cmd("redraw")
 end
 
+M.trim_whitespace = function()
+	local pattern = [[%s/\s\+$//e]]
+	local cur_view = vim.fn.winsaveview()
+	vim.api.nvim_exec(string.format("keepjumps keeppatterns silent! %s", pattern), false)
+	vim.fn.winrestview(cur_view)
+end
+
+M.toggle_qf = function()
+	for _, info in ipairs(vim.fn.getwininfo()) do
+		if info.quickfix == 1 then
+			vim.cmd("cclose")
+			return
+		end
+	end
+
+	if next(vim.fn.getqflist()) == nil then
+		print("qf list empty")
+		return
+	end
+	vim.cmd("copen")
+end
+
+M.toggle_ll = function()
+	for _, info in ipairs(vim.fn.getwininfo()) do
+		if info.loclist == 1 then
+			vim.cmd("lclose")
+			return
+		end
+	end
+
+	if next(vim.fn.getloclist(0)) == nil then
+		print("loc list empty")
+		return
+	end
+	vim.cmd("lopen")
+end
+
 return M
