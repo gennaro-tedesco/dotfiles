@@ -136,6 +136,13 @@ startify.section.mru.val = { { type = "padding", val = 0 } }
 startify.nvim_web_devicons.enabled = false
 require("alpha").setup(require("alpha.themes.startify").config)
 
+local function no_msg(kind, regex)
+	return {
+		filter = { event = "msg_show", kind = kind, find = regex },
+		opts = { skip = true },
+	}
+end
+
 -- noice
 require("noice").setup({
 	views = {
@@ -155,18 +162,12 @@ require("noice").setup({
 			view = "split",
 			filter = { event = "msg_show", min_height = 10 },
 		},
-		{
-			filter = { event = "msg_show", kind = { "search_count", "wmsg" } },
-			opts = { skip = true },
-		},
-		{
-			filter = {
-				event = "msg_show",
-				kind = "",
-				find = "written",
-			},
-			opts = { skip = true },
-		},
+		no_msg(nil, "written"),
+		no_msg(nil, "lines"),
+		no_msg("search_count", nil),
+		no_msg("wmsg", nil),
+		no_msg("emsg", "E23"),
+		no_msg("emsg", "E20"),
 		{
 			filter = {
 				event = "cmdline",
