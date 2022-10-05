@@ -35,7 +35,7 @@ Plug 'jremmen/vim-ripgrep'
 
 " vim decorations and looks
 Plug 'goolord/alpha-nvim'
-Plug 'itchyny/lightline.vim'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'karb94/neoscroll.nvim'
 Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
