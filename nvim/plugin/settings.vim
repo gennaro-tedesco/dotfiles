@@ -64,12 +64,6 @@ set matchpairs+=<:>
 " -----------------------------
 " -- global augroup commands --
 " -----------------------------
-augroup SPECIAL_SYNTAX
-	autocmd!
-	autocmd BufNewFile,BufRead requirements*.txt set syntax=config
-	autocmd BufNewFile,BufRead *.env set syntax=config
-augroup END
-
 augroup HIGHLIGHT_YANK
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=700 }
