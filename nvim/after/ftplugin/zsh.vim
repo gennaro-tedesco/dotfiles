@@ -1,1 +1,0 @@
-inoremap vvv "$"<Left>

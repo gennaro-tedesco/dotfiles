@@ -53,7 +53,6 @@ local snips = {
 			t({ "", "return M" }),
 		}),
 	},
-
 	markdown = {
 		s({
 			trig = "link",
@@ -70,31 +69,6 @@ local snips = {
 			i(0),
 		}),
 	},
-
-	vim = {
-		s({
-			trig = "plug",
-			namr = "include plugin",
-		}, {
-			t("Plug '"),
-			f(function(_, snip)
-				return snip.env.TM_SELECTED_TEXT[1] or {}
-			end, {}),
-			t("'"),
-			i(0),
-		}),
-	},
-
-	sh = {
-		s({
-			trig = "shebang",
-			namr = "preferred shebang",
-		}, {
-			t("#!/bin/sh"),
-			i(0),
-		}),
-	},
-
 	python = {
 		s({
 			trig = "test",
@@ -121,6 +95,46 @@ local snips = {
 			t("    unittest.main()"),
 		}),
 	},
+	sh = {
+		s({
+			trig = "shebang",
+			namr = "preferred shebang",
+		}, {
+			t("#!/bin/sh"),
+			i(0),
+		}),
+		s({
+			trig = "var",
+			namr = "variable indicator",
+		}, {
+			t('"$'),
+			i(1),
+			t('"'),
+		}),
+	},
+	vim = {
+		s({
+			trig = "plug",
+			namr = "include plugin",
+		}, {
+			t("Plug '"),
+			f(function(_, snip)
+				return snip.env.TM_SELECTED_TEXT[1] or {}
+			end, {}),
+			t("'"),
+			i(0),
+		}),
+	},
+	zsh = {
+		s({
+			trig = "var",
+			namr = "variable indicator",
+		}, {
+			t('"$'),
+			i(1),
+			t('"'),
+		}),
+	},
 }
 
 -- add snips to engine
@@ -128,6 +142,7 @@ ls.add_snippets(nil, {
 	lua = snips.lua,
 	markdown = snips.markdown,
 	python = snips.python,
-	vim = snips.vim,
 	sh = snips.sh,
+	vim = snips.vim,
+	zsh = snips.zsh,
 })
