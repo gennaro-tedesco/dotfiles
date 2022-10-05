@@ -2,6 +2,35 @@
 -- customisation of default plugins options -
 -- ------------------------------------------
 
+vim.g.python3_host_prog = "/usr/local/bin/python3"
+
+-- fzf
+vim.g.fzf_layout = {
+	window = {
+		width = 0.7,
+		height = 0.3,
+	},
+}
+vim.g.fzf_preview_window = {}
+vim.g.fzf_buffers_jump = 1
+
+-- floaterm
+vim.g.floaterm_autoclose = 2
+vim.g.floaterm_keymap_toggle = "<F2>"
+vim.g.floaterm_width = 0.85
+vim.g.floaterm_height = 0.9
+vim.g.floaterm_rootmarkers = { ".git" }
+vim.g.floaterm_opener = "edit"
+vim.g.floaterm_title = ""
+
+-- vimtex/zathura
+vim.g.vimtex_view_general_viewer = "zathura"
+vim.g.vimtex_view_zathura_options = "-reuse-instance"
+vim.g.vimtex_imaps_leader = ","
+vim.g.tex_conceal = ""
+vim.g.tex_fast = ""
+vim.g.tex_flavor = "latex"
+
 -- treesitter
 require("nvim-treesitter.configs").setup({
 	highlight = { enable = true },
@@ -14,7 +43,7 @@ require("neoscroll").setup()
 -- quickfix windows
 require("bqf").setup({ func_map = { openc = "<CR>" } })
 require("pqf").setup({
-	signs = { error = "✘", warning = "W", info = "I", hint = "H" },
+	signs = { error = "✘", warning = ".", info = "i", hint = "💡" },
 })
 require("nvim-jqx.config").use_quickfix = false
 
@@ -196,7 +225,7 @@ soldark.normal.a.gui = ""
 soldark.insert.a.gui = ""
 soldark.visual.a.gui = ""
 require("lualine").setup({
-	extensions = { "quickfix", "fugitive" },
+	extensions = { "quickfix", "fugitive", "fzf" },
 	options = {
 		theme = soldark,
 		component_separators = { left = "", right = "" },
