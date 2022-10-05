@@ -4,7 +4,11 @@ local t = ls.text_node
 local i = ls.insert_node
 local f = ls.function_node
 
-local lua = {
+-- must include filetype snippets in snip_config.lua
+-- ls.add_snippets({ ft = snips.ft})
+local M = {}
+
+M.lua = {
 	s({
 		trig = "lf",
 		namr = "local function",
@@ -32,7 +36,7 @@ local lua = {
 	}),
 }
 
-local markdown = {
+M.markdown = {
 	s({
 		trig = "link",
 		namr = "markdown_link",
@@ -49,7 +53,7 @@ local markdown = {
 	}),
 }
 
-local vim = {
+M.vim = {
 	s({
 		trig = "plug",
 		namr = "include plugin",
@@ -63,4 +67,41 @@ local vim = {
 	}),
 }
 
-return { lua = lua, markdown = markdown, vim = vim }
+M.sh = {
+	s({
+		trig = "shebang",
+		namr = "preferred shebang",
+	}, {
+		t("#!/bin/sh"),
+		i(0),
+	}),
+}
+
+M.python = {
+	s({
+		trig = "test",
+		namr = "template unit test",
+	}, {
+		t("import unittest"),
+		t({ "", "", "", "" }),
+		t("class "),
+		i(1, "TestCaseName"),
+		t("(unittest.TestCase):"),
+		t({ "", "" }),
+		t("    def setUp(self):"),
+		t({ "", "" }),
+		t("        return None"),
+		t({ "", "", "" }),
+		t("    def "),
+		i(2, "test_function_name"),
+		t("(self):"),
+		t({ "", "" }),
+		t("        return None"),
+		t({ "", "", "", "" }),
+		t('if __name__ == "__main__":'),
+		t({ "", "" }),
+		t("    unittest.main()"),
+	}),
+}
+
+return M

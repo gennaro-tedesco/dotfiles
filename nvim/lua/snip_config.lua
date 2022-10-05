@@ -25,5 +25,7 @@ end, { silent = true })
 ls.add_snippets(nil, {
 	lua = snips.lua,
 	markdown = snips.markdown,
+	python = snips.python,
 	vim = snips.vim,
+	sh = snips.sh,
 })
