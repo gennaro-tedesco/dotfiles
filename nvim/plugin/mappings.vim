@@ -81,11 +81,11 @@ nnoremap N Nzz:lua require("functions").hl_search(0.3)<CR>
 
 " buffers and files browsing
 nnoremap <C-n> :FloatermNew vifm<CR>
-nnoremap <C-p> :call fzf#vim#files(system('git rev-parse --show-toplevel 2> /dev/null')[:-2], {'options': '--prompt "files:"'})<CR>
-nnoremap <C-b> :call fzf#vim#buffers({'options': '--prompt "buffers:"'})<CR>
+nnoremap <C-p> :<cmd>lua require('fzf-lua').files()<CR>
+nnoremap <C-b> :<cmd>lua require('fzf-lua').buffers()<CR>
 nnoremap <C-h> :Rg 
 nnoremap <C-g> :lua require("functions").replace_grep()<CR>
-nnoremap qh :call fzf#vim#helptags({'options': '--prompt "help:"','down': '15'})<CR>
+nnoremap <F1> :<cmd> lua require('fzf-lua').help_tags()<CR>
 nnoremap <silent> <C-q> :lua require("functions").toggle_qf()<CR>
 nnoremap <silent> <C-l> :lua require("functions").toggle_ll()<CR>
 nnoremap gm :SymbolsOutline<CR>

@@ -29,8 +29,7 @@ Plug 'akinsho/git-conflict.nvim'
 
 " file navigation
 Plug 'voldikss/vim-floaterm'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'jremmen/vim-ripgrep'
 
 " vim decorations and looks

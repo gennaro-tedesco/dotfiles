@@ -4,16 +4,6 @@
 
 vim.g.python3_host_prog = "/usr/local/bin/python3"
 
--- fzf
-vim.g.fzf_layout = {
-	window = {
-		width = 0.7,
-		height = 0.3,
-	},
-}
-vim.g.fzf_preview_window = {}
-vim.g.fzf_buffers_jump = 1
-
 -- floaterm
 vim.g.floaterm_autoclose = 2
 vim.g.floaterm_keymap_toggle = "<F2>"
@@ -252,5 +242,37 @@ require("lualine").setup({
 		},
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
+	},
+})
+
+-- fzf
+
+require("fzf-lua").setup({
+	preview_opts = "hidden",
+	winopts = {
+		height = 0.25,
+		width = 0.4,
+		row = 0.5,
+		hl = { normal = "NormalFloat" },
+		border = "none",
+	},
+	fzf_opts = {
+		["--info"] = "hidden",
+	},
+	files = {
+		git_icons = false,
+		prompt = "files:",
+	},
+	buffers = {
+		git_icons = false,
+		prompt = "buffers:",
+	},
+	helptags = {
+		prompt = "help:",
+		winopts = {
+			row = 1,
+			width = 1,
+			height = 0.3,
+		},
 	},
 })
