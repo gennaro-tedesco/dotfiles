@@ -88,7 +88,7 @@ require("gitsigns").setup({
 		-- Actions
 		map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
 		map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-		map("n", "<leader>gb", function()
+		map("n", "<leader>gB", function()
 			gs.blame_line({ full = true })
 		end)
 	end,
@@ -179,7 +179,6 @@ require("noice").setup({
 			backend = "notify",
 			level = vim.log.levels.INFO,
 			replace = true,
-			highlight = false,
 		},
 	},
 	routes = {
@@ -248,7 +247,7 @@ require("lualine").setup({
 -- fzf
 
 require("fzf-lua").setup({
-	preview_opts = "hidden",
+	-- preview_opts = "hidden",
 	winopts = {
 		height = 0.25,
 		width = 0.4,
@@ -262,17 +261,40 @@ require("fzf-lua").setup({
 	files = {
 		git_icons = false,
 		prompt = "files:",
+		preview_opts = "hidden",
 	},
 	buffers = {
 		git_icons = false,
 		prompt = "buffers:",
+		preview_opts = "hidden",
 	},
 	helptags = {
-		prompt = "help:",
+		prompt = "💡:",
+		preview_opts = "hidden",
 		winopts = {
 			row = 1,
 			width = 1,
-			height = 0.3,
+			height = 0.25,
+		},
+	},
+	git = {
+		bcommits = {
+			prompt = "logs:",
+			preview_opts = "hidden",
+			winopts = {
+				row = 1,
+				width = 1,
+				height = 0.25,
+			},
+		},
+		branches = {
+			prompt = "branches: ",
+			cmd = "git branch --all --color",
+			winopts = {
+				row = 1,
+				width = 1,
+				height = 0.25,
+			},
 		},
 	},
 })

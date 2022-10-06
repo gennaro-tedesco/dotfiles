@@ -93,7 +93,8 @@ nnoremap gm :SymbolsOutline<CR>
 " git remappings
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gp :Git push<CR>
-nnoremap <leader>gl :BCommits<CR>
+nnoremap <leader>gl :<cmd> :lua require('fzf-lua').git_bcommits()<CR>
+nnoremap <leader>gb :<cmd> :lua require('fzf-lua').git_branches()<CR>
 
 " open todo file in one go
 nnoremap <leader>t :e<space>~/.todo<CR>
