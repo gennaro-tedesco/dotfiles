@@ -273,26 +273,36 @@ require("fzf-lua").setup({
 		preview_opts = "hidden",
 		winopts = {
 			row = 1,
-			width = 1,
+			width = vim.api.nvim_win_get_width(0),
 			height = 0.25,
 		},
 	},
 	git = {
 		bcommits = {
 			prompt = "logs:",
+			actions = {
+				["ctrl-d"] = function(selected)
+					local words = {}
+					for word in selected[1]:gmatch("%w+") do
+						table.insert(words, word)
+					end
+					vim.cmd("Gvdiffsplit " .. words[1])
+				end,
+			},
 			preview_opts = "hidden",
 			winopts = {
 				row = 1,
-				width = 1,
+				hl = { cursorline = "IncSearch" },
+				width = vim.api.nvim_win_get_width(0),
 				height = 0.25,
 			},
 		},
 		branches = {
-			prompt = "branches: ",
+			prompt = "branches:",
 			cmd = "git branch --all --color",
 			winopts = {
 				row = 1,
-				width = 1,
+				width = vim.api.nvim_win_get_width(0),
 				height = 0.25,
 			},
 		},
