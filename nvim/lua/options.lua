@@ -185,6 +185,12 @@ require("noice").setup({
 				winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
 			},
 		},
+		notify = {
+			backend = "notify",
+			level = vim.log.levels.INFO,
+			replace = true,
+			highlight = false,
+		},
 	},
 	routes = {
 		{
@@ -197,6 +203,7 @@ require("noice").setup({
 		no_msg("wmsg", nil),
 		no_msg("emsg", "E23"),
 		no_msg("emsg", "E20"),
+		no_msg("emsg", "E37"),
 		{
 			filter = {
 				event = "cmdline",
