@@ -150,7 +150,10 @@ startify.section.top_buttons.val = {
 	startify.button("e", " New file", ":ene <BAR> startinsert <CR>"),
 	startify.button("t", " Todo", ":e<space>~/.todo<CR>"),
 }
-startify.section.bottom_buttons.val = { startify.button("q", "✘ Quit NVIM", ":qa<CR>") }
+startify.section.bottom_buttons.val = {
+	startify.button("q", "✘ Quit NVIM", ":qa<CR>"),
+	startify.button("h", "✔ checkhealth", ":checkhealth<CR>"),
+}
 startify.section.mru.val = { { type = "padding", val = 0 } }
 startify.nvim_web_devicons.enabled = false
 require("alpha").setup(require("alpha.themes.startify").config)
@@ -231,6 +234,11 @@ require("lualine").setup({
 		lualine_b = { "branch" },
 		lualine_c = { { "filename", path = 1 } },
 		lualine_x = {
+			{
+				require("noice").api.statusline.mode.get,
+				cond = require("noice").api.statusline.mode.has,
+				color = { fg = "#2aa198" },
+			},
 			{
 				"diagnostics",
 				update_in_insert = true,
