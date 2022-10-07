@@ -255,7 +255,6 @@ require("lualine").setup({
 -- fzf
 
 require("fzf-lua").setup({
-	-- preview_opts = "hidden",
 	winopts = {
 		height = 0.25,
 		width = 0.4,
@@ -265,6 +264,7 @@ require("fzf-lua").setup({
 	},
 	fzf_opts = {
 		["--info"] = "hidden",
+		["--padding"] = "10%,5%,10%,5%",
 	},
 	files = {
 		git_icons = false,
@@ -288,6 +288,8 @@ require("fzf-lua").setup({
 	git = {
 		bcommits = {
 			prompt = "logs:",
+			cmd = "git log --color --pretty=format:'%C(yellow)%h%Creset %Cgreen%><(12)%cr%><|(12)%Creset %s' <file>",
+			preview = "git show --stat --color --format='%C(cyan)%an%C(reset)%C(bold yellow)%d%C(reset): %s' {1} -- <file>",
 			actions = {
 				["ctrl-d"] = function(selected)
 					local words = {}
@@ -297,8 +299,11 @@ require("fzf-lua").setup({
 					vim.cmd("Gvdiffsplit " .. words[1])
 				end,
 			},
-			preview_opts = "hidden",
+			preview_opts = "nohidden",
 			winopts = {
+				preview = {
+					horizontal = "right:50%",
+				},
 				row = 1,
 				hl = { cursorline = "IncSearch" },
 				width = vim.api.nvim_win_get_width(0),
