@@ -293,12 +293,9 @@ require("fzf-lua").setup({
 			cmd = "git log --color --pretty=format:'%C(yellow)%h%Creset %Cgreen%><(12)%cr%><|(12)%Creset %s' <file>",
 			preview = "git show --stat --color --format='%C(cyan)%an%C(reset)%C(bold yellow)%d%C(reset): %s' {1} -- <file>",
 			actions = {
-				["ctrl-d"] = function(selected)
-					local words = {}
-					for word in selected[1]:gmatch("%w+") do
-						table.insert(words, word)
-					end
-					vim.cmd("Gvdiffsplit " .. words[1])
+				["ctrl-d"] = function(...)
+					require("fzf-lua").actions.git_buf_vsplit(...)
+					vim.cmd("windo diffthis")
 				end,
 			},
 			preview_opts = "nohidden",
