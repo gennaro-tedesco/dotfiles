@@ -94,6 +94,20 @@ local snips = {
 			t({ "", "" }),
 			t("    unittest.main()"),
 		}),
+		s({
+			trig = "csv",
+			namr = "save df to csv",
+			dscr = "save pandas dataframe to csv in cwd",
+		}, {
+			f(function(_, snip)
+				return snip.env.TM_SELECTED_TEXT[1] or {}
+			end, {}),
+			t({ ".to_csv('" }),
+			f(function(_, snip)
+				return snip.env.TM_SELECTED_TEXT[1] or {}
+			end, {}),
+			t({ ".csv', index=False)" }),
+		}),
 	},
 	sh = {
 		s({

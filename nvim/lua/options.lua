@@ -216,7 +216,9 @@ require("noice").setup({
 })
 
 -- symbols outline
-require("symbols-outline").setup()
+require("symbols-outline").setup({
+	highlight_hovered_item = false,
+})
 
 -- lualine
 local soldark = require("lualine.themes.solarized_dark")
@@ -224,7 +226,7 @@ soldark.normal.a.gui = ""
 soldark.insert.a.gui = ""
 soldark.visual.a.gui = ""
 require("lualine").setup({
-	extensions = { "quickfix", "fugitive", "fzf" },
+	extensions = { "quickfix", "fugitive" },
 	options = {
 		theme = soldark,
 		component_separators = { left = "", right = "" },
