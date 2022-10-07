@@ -24,7 +24,7 @@ vim.g.tex_flavor = "latex"
 -- treesitter
 require("nvim-treesitter.configs").setup({
 	highlight = { enable = true },
-	ensure_installed = { "go", "python", "json", "lua", "bash", "yaml" },
+	ensure_installed = { "go", "python", "json", "lua", "bash", "yaml", "vim" },
 })
 
 -- neoscroll
