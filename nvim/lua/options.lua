@@ -255,7 +255,6 @@ require("lualine").setup({
 })
 
 -- fzf
-
 require("fzf-lua").setup({
 	winopts = {
 		height = 0.25,
@@ -267,6 +266,7 @@ require("fzf-lua").setup({
 	fzf_opts = {
 		["--info"] = "hidden",
 		["--padding"] = "10%,5%,10%,5%",
+		["--header"] = " ",
 	},
 	files = {
 		git_icons = false,
@@ -284,7 +284,7 @@ require("fzf-lua").setup({
 		winopts = {
 			row = 1,
 			width = vim.api.nvim_win_get_width(0),
-			height = 0.25,
+			height = 0.3,
 		},
 	},
 	git = {
@@ -302,11 +302,12 @@ require("fzf-lua").setup({
 			winopts = {
 				preview = {
 					horizontal = "right:50%",
+					wrap = "wrap",
 				},
 				row = 1,
 				hl = { cursorline = "IncSearch" },
 				width = vim.api.nvim_win_get_width(0),
-				height = 0.25,
+				height = 0.3,
 			},
 		},
 		branches = {
@@ -315,7 +316,7 @@ require("fzf-lua").setup({
 			winopts = {
 				row = 1,
 				width = vim.api.nvim_win_get_width(0),
-				height = 0.25,
+				height = 0.3,
 			},
 		},
 	},
