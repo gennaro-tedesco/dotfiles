@@ -7,7 +7,7 @@ filetype plugin indent on
 syntax enable
 set termguicolors
 set background=dark
-colorscheme solarized8
+colorscheme solarized8_flat
 
 " cursorline, windows frame and looks
 set showbreak=↪\

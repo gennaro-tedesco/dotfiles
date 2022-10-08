@@ -125,7 +125,7 @@ require("Comment").setup()
 -- auto-pairs
 local npairs = require("nvim-autopairs")
 npairs.setup({
-	ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
+	ignored_next_char = "[%w%.]",
 })
 npairs.setup({
 	fast_wrap = {},
