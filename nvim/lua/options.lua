@@ -191,6 +191,7 @@ require("noice").setup({
 		},
 		no_msg(nil, "written"),
 		no_msg(nil, "lines"),
+		no_msg(nil, "search hit BOTTOM"),
 		no_msg("search_count", nil),
 		no_msg("wmsg", nil),
 		no_msg("emsg", "E23"),
