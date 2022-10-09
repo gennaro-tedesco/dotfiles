@@ -219,6 +219,7 @@ require("noice").setup({
 -- symbols outline
 require("symbols-outline").setup({
 	highlight_hovered_item = false,
+	autofold_depth = 1,
 })
 
 -- lualine
