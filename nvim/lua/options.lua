@@ -227,6 +227,21 @@ local soldark = require("lualine.themes.solarized_dark")
 soldark.normal.a.gui = ""
 soldark.insert.a.gui = ""
 soldark.visual.a.gui = ""
+local lsp_progress = function()
+	if #vim.lsp.buf_get_clients() == 0 then
+		return ""
+	end
+
+	local lsp = vim.lsp.util.get_progress_messages()[1]
+	if lsp then
+		local name = lsp.name or ""
+		local msg = lsp.message or ""
+		local percentage = lsp.percentage or 0
+		local title = lsp.title or ""
+		return string.format(" %%<%s: %s %s (%s%%%%) ", name, title, msg, percentage)
+	end
+	return ""
+end
 require("lualine").setup({
 	extensions = { "quickfix", "fugitive" },
 	options = {
@@ -243,6 +258,7 @@ require("lualine").setup({
 				cond = require("noice").api.statusline.mode.has,
 				color = { fg = "#2aa198" },
 			},
+			{ lsp_progress },
 			{
 				"diagnostics",
 				update_in_insert = true,
