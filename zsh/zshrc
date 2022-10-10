@@ -43,7 +43,6 @@ export FZF_DEFAULT_OPTS="--reverse --border -e --height=50% --padding=1 --previe
 export FZF_DEFAULT_COMMAND="fd -H -t f -E '.git/'"
 export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
 export LS_COLORS="$(vivid generate solarized-dark)"
-export JIRA_API_TOKEN="v7xzI0EOgKSqJe5ilr4pC778"
 
 # exporting go paths
 export GOPATH=$HOME/go
