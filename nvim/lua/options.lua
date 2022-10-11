@@ -2,6 +2,34 @@
 -- customisation of default plugins options -
 -- ------------------------------------------
 
+Icons = {
+	Class = "ﴯ",
+	Color = "",
+	Constant = "",
+	Constructor = "",
+	Enum = "",
+	EnumMember = "",
+	Event = "",
+	Field = "",
+	File = "",
+	Folder = "",
+	Function = "",
+	Interface = "",
+	Keyword = "",
+	Method = "",
+	Module = "",
+	Operator = "",
+	Property = "ﰠ",
+	Reference = "",
+	Snippet = "",
+	Struct = "",
+	Text = "",
+	TypeParameter = "",
+	Unit = "",
+	Value = "",
+	Variable = "",
+}
+
 vim.g.python3_host_prog = "/usr/local/bin/python3"
 
 -- floaterm
@@ -220,6 +248,9 @@ require("noice").setup({
 require("symbols-outline").setup({
 	highlight_hovered_item = false,
 	autofold_depth = 1,
+	symbols = {
+		Function = { icon = Icons.Function },
+	},
 })
 
 -- lualine

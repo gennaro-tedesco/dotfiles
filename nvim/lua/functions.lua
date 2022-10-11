@@ -93,4 +93,18 @@ M.replace_file = function()
 	vim.cmd("silent execute 'norm gg" .. '"' .. "_dGP'")
 end
 
+P = function(v)
+	print(vim.inspect(v))
+	return v
+end
+
+RELOAD = function(...)
+	return require("plenary.reload").reload_module(...)
+end
+
+R = function(name)
+	RELOAD(name)
+	return require(name)
+end
+
 return M
