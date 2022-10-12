@@ -1,6 +1,5 @@
 local opts = { noremap = true, silent = true }
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local null_ls = require("null-ls")
 
 vim.keymap.set("n", "g+", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "g-", vim.diagnostic.goto_prev, opts)
@@ -92,6 +91,11 @@ vim.fn.sign_define("DiagnosticSignHint", { name = "DiagnosticSignHint", text = "
 vim.fn.sign_define("DiagnosticSignInfo", { name = "DiagnosticSignInfo", text = "i" })
 
 -- null-ls --
+local ok, null_ls = pcall(require, "null-ls")
+if not ok then
+	return
+end
+
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local sources = {
 	null_ls.builtins.formatting.stylua,
@@ -108,7 +112,7 @@ local sources = {
 	null_ls.builtins.hover.printenv,
 }
 
-require("null-ls").setup({
+null_ls.setup({
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
 			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })

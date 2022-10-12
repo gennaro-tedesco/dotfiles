@@ -1,5 +1,12 @@
-local cmp = require("cmp")
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+local ok, cmp = pcall(require, "cmp")
+if not ok then
+	return
+end
+
+local pairs_ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+if not pairs_ok then
+	return
+end
 
 cmp.setup({
 	snippet = {

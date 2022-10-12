@@ -28,6 +28,16 @@ end, { silent = true })
 -- snippets
 local snips = {
 	lua = {
+		s(
+			{ trig = "pcall", dscr = "protected call" },
+			fmt(
+				[[
+				local ok, {} = pcall(require, '{}')
+				if not ok then return end
+				]],
+				{ i(1, "name"), i(2, "module") }
+			)
+		),
 		s({ trig = "req", dscr = "local require" }, fmt("local {} = require('{}')", { i(1, "name"), i(2, "module") })),
 		s(
 			{ trig = "lf", dscr = "local function" },
