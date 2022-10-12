@@ -3,6 +3,7 @@ local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
 local f = ls.function_node
+local fmt = require("luasnip.extras.fmt").fmt
 
 -- options
 ls.config.set_config({
@@ -27,77 +28,73 @@ end, { silent = true })
 -- snippets
 local snips = {
 	lua = {
-		s({
-			trig = "lf",
-			namr = "local function",
-		}, {
-			t({ "local function " }),
-			i(1, "fun name"),
-			t({ "(" }),
-			i(2, "fun args"),
-			t({ ")" }),
-			t({ "", "	" }),
-			i(3, "fun body"),
-			t({ "", "end" }),
-			i(0),
-		}),
-		s({
-			trig = "mod",
-			namr = "local module",
-			dscr = "return local module M",
-		}, {
-			t({ "local M = {}" }),
-			t({ "", "", "" }),
-			i(0),
-			t({ "", "" }),
-			t({ "", "return M" }),
-		}),
+		s({ trig = "req", dscr = "local require" }, fmt("local {} = require('{}')", { i(1, "name"), i(2, "module") })),
+		s(
+			{ trig = "lf", dscr = "local function" },
+			fmt(
+				[[
+				local function {}({})
+					{}
+				end
+				]],
+				{ i(1, "name"), i(2, "args"), i(3, "body") }
+			)
+		),
+		s(
+			{ trig = "mod", dscr = "local module M" },
+			fmt(
+				[[
+				local M = {{}}
+
+				{}
+
+				return M
+				]],
+				i(0)
+			)
+		),
 	},
 	markdown = {
-		s({
-			trig = "link",
-			namr = "markdown_link",
-			dscr = "Create markdown link [txt](url)",
-		}, {
-			t("["),
-			i(1),
-			t("]("),
-			f(function(_, snip)
-				return snip.env.TM_SELECTED_TEXT[1] or {}
-			end, {}),
-			t(")"),
-			i(0),
-		}),
+		s(
+			{
+				trig = "link",
+				dscr = "Create markdown link [txt](url)",
+			},
+			fmt(
+				"[{}]({})",
+				{ i(1, "description"), f(function(_, snip)
+					return snip.env.TM_SELECTED_TEXT[1] or {}
+				end, {}) }
+			)
+		),
 	},
 	python = {
-		s({
-			trig = "test",
-			namr = "template unit test",
-		}, {
-			t("import unittest"),
-			t({ "", "", "", "" }),
-			t("class "),
-			i(1, "TestCaseName"),
-			t("(unittest.TestCase):"),
-			t({ "", "" }),
-			t("    def setUp(self):"),
-			t({ "", "" }),
-			t("        return None"),
-			t({ "", "", "" }),
-			t("    def "),
-			i(2, "test_function_name"),
-			t("(self):"),
-			t({ "", "" }),
-			t("        return None"),
-			t({ "", "", "", "" }),
-			t('if __name__ == "__main__":'),
-			t({ "", "" }),
-			t("    unittest.main()"),
-		}),
+		s(
+			{
+				trig = "test",
+				dscr = "template unit test",
+			},
+			fmt(
+				[[
+				import unittest
+
+				class {}(unittest.TestCase):
+
+					def setUp(self):
+						return None
+
+					def test_{}():
+						self.assertTrue(True)
+
+				if __name__ == '__main__':
+					unittest.main()
+				]],
+				{ i(1, "className"), i(2, "function_name") }
+			)
+		),
 		s({
 			trig = "csv",
-			namr = "save df to csv",
-			dscr = "save pandas dataframe to csv in cwd",
+			dscr = "save df to csv",
 		}, {
 			f(function(_, snip)
 				return snip.env.TM_SELECTED_TEXT[1] or {}
@@ -120,34 +117,27 @@ local snips = {
 		s({
 			trig = "var",
 			namr = "variable indicator",
-		}, {
-			t('"$'),
-			i(1),
-			t('"'),
-		}),
+		}, fmt('"${}"', i(1, "var"))),
 	},
 	vim = {
-		s({
-			trig = "plug",
-			namr = "include plugin",
-		}, {
-			t("Plug '"),
-			f(function(_, snip)
-				return snip.env.TM_SELECTED_TEXT[1] or {}
-			end, {}),
-			t("'"),
-			i(0),
-		}),
+		s(
+			{
+				trig = "plug",
+				namr = "include plugin",
+			},
+			fmt(
+				"Plug '{}'",
+				f(function(_, snip)
+					return snip.env.TM_SELECTED_TEXT[1] or {}
+				end, {})
+			)
+		),
 	},
 	zsh = {
 		s({
 			trig = "var",
 			namr = "variable indicator",
-		}, {
-			t('"$'),
-			i(1),
-			t('"'),
-		}),
+		}, fmt('"${}"', i(1, "var"))),
 	},
 }
 
