@@ -4,12 +4,20 @@ local t = ls.text_node
 local i = ls.insert_node
 local f = ls.function_node
 local fmt = require("luasnip.extras.fmt").fmt
+local types = require("luasnip.util.types")
 
 -- options
 ls.config.set_config({
 	history = true,
 	updateevents = "TextChanged,TextChangedI",
 	store_selection_keys = "<c-s>",
+	ext_opts = {
+		[types.choiceNode] = {
+			active = {
+				virt_text = { { "●", "InsertMode" } },
+			},
+		},
+	},
 })
 
 -- commands
@@ -59,7 +67,7 @@ local snips = {
 					{}
 				end
 				]],
-				{ i(1, "name"), i(2, "args"), i(3, "body") }
+				{ i(1, "name"), i(2, "args"), i(0) }
 			)
 		),
 		s(
