@@ -56,7 +56,9 @@ require("nvim-treesitter.configs").setup({
 })
 
 -- neoscroll
-require("neoscroll").setup()
+require("neoscroll").setup({
+	mappings = { "<C-u>", "<C-d>", "<C-e>", "zt", "zz", "zb" },
+})
 
 -- quickfix windows
 require("bqf").setup({ func_map = { openc = "<CR>" } })
@@ -366,6 +368,23 @@ require("fzf-lua").setup({
 				row = 1,
 				width = vim.api.nvim_win_get_width(0),
 				height = 0.3,
+			},
+		},
+	},
+	nvim = {
+		keymaps = {
+			prompt = "keymaps:",
+			winopts = {
+				width = 0.8,
+			},
+			actions = {
+				["default"] = function(selected)
+					local words = {}
+					for word in selected[1]:gmatch("[^|%s]+") do
+						table.insert(words, word)
+					end
+					vim.cmd.map({ words[3] })
+				end,
 			},
 		},
 	},
