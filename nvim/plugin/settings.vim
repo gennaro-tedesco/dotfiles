@@ -35,11 +35,6 @@ set showcmd
 set sidescroll=1
 set clipboard+=unnamed
 set autoindent noexpandtab tabstop=4 shiftwidth=4
-set pastetoggle=<F3>
-augroup PASTE
-	autocmd!
-	autocmd InsertLeave * silent! set nopaste
-augroup END
 
 " search options
 set inccommand=split

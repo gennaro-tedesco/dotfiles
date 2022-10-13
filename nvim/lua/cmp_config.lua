@@ -9,6 +9,9 @@ if not pairs_ok then
 end
 
 cmp.setup({
+	view = {
+		entries = { name = "custom", selection_order = "near_cursor" },
+	},
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)

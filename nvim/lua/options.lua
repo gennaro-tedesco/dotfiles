@@ -387,5 +387,17 @@ require("fzf-lua").setup({
 				end,
 			},
 		},
+		registers = {
+			prompt = "registers:",
+			preview_opts = "hidden",
+			winopts = {
+				width = 0.5,
+				height = 0.5,
+				preview = {
+					layout = "vertical",
+					vertical = "down:45%",
+				},
+			},
+		},
 	},
 })

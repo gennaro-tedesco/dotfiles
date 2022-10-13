@@ -50,7 +50,6 @@ Plug 'ethanholz/nvim-lastplace'
 Plug 'numToStr/Comment.nvim'
 
 " my personal plugins: they are awesome
-Plug 'gennaro-tedesco/nvim-peekup'
 Plug 'gennaro-tedesco/nvim-jqx'
 
 " List ends here. Plugins become visible to Vim after this call.

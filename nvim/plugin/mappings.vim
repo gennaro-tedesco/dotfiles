@@ -89,6 +89,7 @@ nnoremap <F1> :<cmd> lua require('fzf-lua').help_tags()<CR>
 nnoremap <silent> <C-q> :lua require("functions").toggle_qf()<CR>
 nnoremap <silent> <C-l> :lua require("functions").toggle_ll()<CR>
 nnoremap gm :SymbolsOutline<CR>
+nnoremap "" :<cmd> lua require('fzf-lua').registers()<CR>
 
 " git remappings
 nnoremap <leader>gs :Git<CR>
