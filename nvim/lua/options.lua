@@ -39,6 +39,7 @@ vim.g.floaterm_width = 0.85
 vim.g.floaterm_height = 0.9
 vim.g.floaterm_rootmarkers = { ".git" }
 vim.g.floaterm_opener = "edit"
+vim.g.floaterm_borderchars = "        "
 vim.g.floaterm_title = ""
 
 -- vimtex/zathura
@@ -377,21 +378,11 @@ require("fzf-lua").setup({
 			winopts = {
 				width = 0.8,
 			},
-			actions = {
-				["default"] = function(selected)
-					local words = {}
-					for word in selected[1]:gmatch("[^|%s]+") do
-						table.insert(words, word)
-					end
-					vim.cmd.map({ words[3] })
-				end,
-			},
 		},
 		registers = {
 			prompt = "registers:",
 			preview_opts = "hidden",
 			winopts = {
-				width = 0.5,
 				height = 0.5,
 				preview = {
 					layout = "vertical",

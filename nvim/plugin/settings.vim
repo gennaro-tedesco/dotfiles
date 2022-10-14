@@ -67,8 +67,10 @@ augroup TERMINAL_OPEN
 	autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
 
-augroup LSP_HIGHLIGHTS
+augroup HIGHLIGHTS
 	autocmd!
+	autocmd BufEnter * silent! hi clear Floaterm
+	autocmd BufEnter * silent! hi link Floaterm Pmenu
 	autocmd BufEnter * silent! hi clear DiagnosticHint
 	autocmd BufEnter * silent! hi link DiagnosticHint Comment
 	autocmd BufEnter * silent! hi clear DiagnosticWarn
