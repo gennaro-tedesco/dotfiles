@@ -228,7 +228,6 @@ require("noice").setup({
 			filter = { event = "msg_show", min_height = 10 },
 		},
 		no_msg(nil, "written"),
-		no_msg(nil, "lines?"),
 		no_msg(nil, "search hit BOTTOM"),
 		no_msg("search_count", nil),
 		no_msg("wmsg", nil),
