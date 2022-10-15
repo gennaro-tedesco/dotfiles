@@ -17,7 +17,6 @@ vnoremap < <gv
 vnoremap > >gv
 nnoremap > >>
 nnoremap < <<
-nnoremap <leader>= gqap;
 
 " remapping the escape key
 inoremap jj <ESC>
