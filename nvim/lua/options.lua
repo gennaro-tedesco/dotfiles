@@ -248,7 +248,7 @@ require("noice").setup({
 		icons = {
 			["/"] = { icon = "🔎", hl_group = "DiagnosticWarn" },
 			["?"] = { icon = "🔎", hl_group = "DiagnosticWarn" },
-			[":"] = { icon = " ", hl_group = "DiagnosticInfo", firstc = false },
+			[":"] = { icon = "", hl_group = "DiagnosticInfo", firstc = false },
 		},
 	},
 })
@@ -384,6 +384,13 @@ require("fzf-lua").setup({
 			winopts = {
 				width = 0.8,
 				height = 0.7,
+			},
+			actions = {
+				["default"] = function(selected)
+					local lines = vim.split(selected[1], "│", true)
+					local mode, key = lines[1]:gsub("%s+", ""), lines[2]:gsub("%s+", "")
+					print(vim.cmd("verbose " .. mode .. "map " .. key))
+				end,
 			},
 		},
 		registers = {
