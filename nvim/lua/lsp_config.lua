@@ -1,5 +1,5 @@
 local opts = { noremap = true, silent = true }
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 vim.keymap.set("n", "g+", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "g-", vim.diagnostic.goto_prev, opts)
@@ -37,8 +37,6 @@ local lsp_flags = {
 	debounce_text_changes = 150,
 }
 vim.lsp.set_log_level("debug")
-
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- configuration of the individual language servers --
 require("lspconfig").gopls.setup({
