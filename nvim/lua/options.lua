@@ -140,6 +140,7 @@ vim.keymap.set("n", "m/", ":MarksListAll<CR>")
 -- notify
 require("notify").setup({
 	timeout = 5000,
+	render = "minimal",
 	stages = "slide",
 })
 
@@ -198,6 +199,9 @@ local function no_msg(kind, regex)
 end
 
 require("noice").setup({
+	hacks = {
+		skip_duplicate_messages = true,
+	},
 	views = {
 		cmdline_popup = {
 			border = {
@@ -213,6 +217,9 @@ require("noice").setup({
 			backend = "notify",
 			level = vim.log.levels.INFO,
 			replace = true,
+		},
+		split = {
+			enter = true,
 		},
 	},
 	routes = {
@@ -377,13 +384,15 @@ require("fzf-lua").setup({
 			prompt = "keymaps:",
 			winopts = {
 				width = 0.8,
+				height = 0.7,
 			},
 		},
 		registers = {
 			prompt = "registers:",
 			preview_opts = "hidden",
 			winopts = {
-				height = 0.5,
+				width = 0.8,
+				height = 0.7,
 				preview = {
 					layout = "vertical",
 					vertical = "down:45%",
