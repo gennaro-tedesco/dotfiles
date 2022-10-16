@@ -7,5 +7,3 @@ call s:adjust_height(3, 10)
 setlocal cursorline
 setlocal nonumber norelativenumber
 hi Search cterm=None ctermfg=None ctermbg=None gui=None guifg=None
-
-nnoremap qq :q<CR>
