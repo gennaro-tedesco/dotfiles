@@ -119,6 +119,9 @@ require("gitsigns").setup({
 		-- Actions
 		map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
 		map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
+		map("n", "<leader>hl", function()
+			gs.setloclist()
+		end)
 		map("n", "<leader>gB", function()
 			gs.blame_line({ full = true })
 		end)
