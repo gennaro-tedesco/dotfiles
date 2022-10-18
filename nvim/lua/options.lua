@@ -119,6 +119,7 @@ require("gitsigns").setup({
 		-- Actions
 		map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
 		map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
+		map("n", "<leader>hp", gs.preview_hunk)
 		map("n", "<leader>hl", function()
 			gs.setloclist()
 		end)
@@ -202,49 +203,7 @@ local function no_msg(kind, regex)
 end
 
 require("noice").setup({
-	hacks = {
-		skip_duplicate_messages = true,
-	},
-	views = {
-		cmdline_popup = {
-			border = {
-				style = "none",
-				padding = { 1, 2 },
-			},
-			filter_options = {},
-			win_options = {
-				winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-			},
-		},
-		notify = {
-			backend = "notify",
-			level = vim.log.levels.INFO,
-			replace = true,
-		},
-		split = {
-			enter = true,
-		},
-	},
-	routes = {
-		{
-			view = "split",
-			filter = { event = "msg_show", min_height = 10 },
-		},
-		no_msg(nil, "written"),
-		no_msg(nil, "search hit BOTTOM"),
-		no_msg("search_count", nil),
-		no_msg("wmsg", nil),
-		no_msg("emsg", "E23"),
-		no_msg("emsg", "E20"),
-		no_msg("emsg", "E37"),
-		{
-			filter = {
-				event = "cmdline",
-				find = "^%s*[/?]",
-			},
-			view = "cmdline",
-		},
-	},
+	-- general options for cmdline
 	cmdline = {
 		view = "cmdline_popup",
 		opts = { buf_options = { filetype = "vim" } },
@@ -253,6 +212,32 @@ require("noice").setup({
 			["?"] = { icon = "🔎", hl_group = "DiagnosticWarn" },
 			[":"] = { icon = "", hl_group = "DiagnosticInfo", firstc = false },
 		},
+	},
+	-- custom options for each view
+	views = {
+		cmdline_popup = {
+			border = { style = "none", padding = { 1, 2 } },
+			win_options = { winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder" },
+		},
+		split = { enter = true },
+	},
+	-- routing/filtering messages to specific view
+	routes = {
+		{
+			filter = { event = "cmdline", find = "^%s*[/?]" },
+			view = "cmdline",
+		},
+		{
+			filter = { event = "msg_show", min_height = 10 },
+			view = "split",
+		},
+		no_msg(nil, "written"),
+		no_msg(nil, "search hit BOTTOM"),
+		no_msg("search_count", nil),
+		no_msg("wmsg", nil),
+		no_msg("emsg", "E23"),
+		no_msg("emsg", "E20"),
+		no_msg("emsg", "E37"),
 	},
 })
 
