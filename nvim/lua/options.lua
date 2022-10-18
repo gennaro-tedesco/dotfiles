@@ -366,31 +366,29 @@ require("fzf-lua").setup({
 			},
 		},
 	},
-	nvim = {
-		keymaps = {
-			prompt = "keymaps:",
-			winopts = {
-				width = 0.8,
-				height = 0.7,
-			},
-			actions = {
-				["default"] = function(selected)
-					local lines = vim.split(selected[1], "│", true)
-					local mode, key = lines[1]:gsub("%s+", ""), lines[2]:gsub("%s+", "")
-					print(vim.cmd("verbose " .. mode .. "map " .. key))
-				end,
-			},
+	keymaps = {
+		prompt = "keymaps:",
+		winopts = {
+			width = 0.8,
+			height = 0.7,
 		},
-		registers = {
-			prompt = "registers:",
-			preview_opts = "hidden",
-			winopts = {
-				width = 0.8,
-				height = 0.7,
-				preview = {
-					layout = "vertical",
-					vertical = "down:45%",
-				},
+		actions = {
+			["default"] = function(selected)
+				local lines = vim.split(selected[1], "│", true)
+				local mode, key = lines[1]:gsub("%s+", ""), lines[2]:gsub("%s+", "")
+				print(vim.cmd("verbose " .. mode .. "map " .. key))
+			end,
+		},
+	},
+	registers = {
+		prompt = "registers:",
+		preview_opts = "hidden",
+		winopts = {
+			width = 0.8,
+			height = 0.7,
+			preview = {
+				layout = "vertical",
+				vertical = "down:45%",
 			},
 		},
 	},
