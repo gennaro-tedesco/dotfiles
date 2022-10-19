@@ -203,17 +203,25 @@ local function no_msg(kind, regex)
 end
 
 require("noice").setup({
-	-- general options for cmdline
+	-- general options for each component
 	cmdline = {
 		view = "cmdline_popup",
-		opts = { buf_options = { filetype = "vim" } },
 		icons = {
 			["/"] = { icon = "🔎", hl_group = "DiagnosticWarn" },
 			["?"] = { icon = "🔎", hl_group = "DiagnosticWarn" },
 			[":"] = { icon = "", hl_group = "DiagnosticInfo", firstc = false },
 		},
 	},
-	-- custom options for each view
+	messages = {
+		view_search = false,
+	},
+	lsp_progress = {
+		enabled = true,
+		format = "lsp_progress",
+		format_done = "lsp_progress_done",
+		view = "mini",
+	},
+	-- components view customisation
 	views = {
 		cmdline_popup = {
 			border = { style = "none", padding = { 1, 2 } },
@@ -286,7 +294,6 @@ require("lualine").setup({
 				cond = require("noice").api.statusline.mode.has,
 				color = { fg = "#2aa198" },
 			},
-			{ lsp_progress },
 			{
 				"diagnostics",
 				update_in_insert = true,

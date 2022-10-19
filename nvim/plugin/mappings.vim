@@ -31,6 +31,7 @@ noremap <Down> gj
 noremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
+nnoremap vv ^vg_
 
 " easier navigation
 nnoremap E 5e
@@ -82,7 +83,7 @@ nnoremap N Nzz:lua require("functions").hl_search(0.3)<CR>
 nnoremap <C-n> :FloatermNew vifm<CR>
 nnoremap <C-p> :<cmd>lua require('fzf-lua').files()<CR>
 nnoremap <C-b> :<cmd>lua require('fzf-lua').buffers()<CR>
-nnoremap <C-h> :Rg 
+nnoremap <C-h> :Rg<space>
 nnoremap <C-g> :lua require("functions").replace_grep()<CR>
 nnoremap <F1> :<cmd> lua require('fzf-lua').help_tags()<CR>
 nnoremap <silent> <C-q> :lua require("functions").toggle_qf()<CR>
