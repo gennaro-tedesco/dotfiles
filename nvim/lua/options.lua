@@ -53,7 +53,7 @@ vim.g.tex_flavor = "latex"
 -- treesitter
 require("nvim-treesitter.configs").setup({
 	highlight = { enable = true },
-	ensure_installed = { "go", "python", "json", "lua", "bash", "yaml", "vim" },
+	ensure_installed = { "go", "python", "json", "lua", "bash", "regex", "yaml", "vim" },
 })
 
 -- neoscroll
@@ -202,43 +202,54 @@ local function no_msg(kind, regex)
 	}
 end
 
+local noice_hl = vim.api.nvim_create_augroup("NoiceHighlights", {})
+vim.api.nvim_clear_autocmds({ group = noice_hl })
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = noice_hl,
+	callback = function()
+		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderCmdline", {})
+		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderCmdline", { link = "Constant" })
+		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderLua", {})
+		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderLua", { link = "Constant" })
+		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderFilter", {})
+		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderFilter", { link = "Constant" })
+	end,
+})
+
+local cmdline_opts = {
+	border = {
+		style = "rounded",
+		text = { top = "" },
+	},
+}
+
 require("noice").setup({
-	-- general options for each component
 	cmdline = {
 		view = "cmdline_popup",
-		icons = {
-			["/"] = { icon = "🔎", hl_group = "DiagnosticWarn" },
-			["?"] = { icon = "🔎", hl_group = "DiagnosticWarn" },
-			[":"] = { icon = "", hl_group = "DiagnosticInfo", firstc = false },
+		format = {
+			cmdline = { pattern = "^:", icon = "", opts = cmdline_opts },
+			search_down = { kind = "Search", pattern = "^/", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
+			search_up = { kind = "Search", pattern = "^%?", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
+			filter = { pattern = "^:%s*!", icon = "$", ft = "sh" },
+			lua = { pattern = "^:%s*lua%s+", icon = "", conceal = true, ft = "lua", opts = cmdline_opts },
+			IncRename = {
+				pattern = "^:%s*IncRename%s+",
+				icon = " ",
+				conceal = true,
+				opts = {
+					relative = "cursor",
+					size = { min_width = 20 },
+					position = { row = -3, col = 0 },
+					buf_options = { filetype = "text" },
+				},
+			},
 		},
 	},
-	messages = {
-		view_search = false,
-	},
-	lsp_progress = {
-		enabled = true,
-		format = "lsp_progress",
-		format_done = "lsp_progress_done",
-		view = "mini",
-	},
-	-- components view customisation
-	views = {
-		cmdline_popup = {
-			border = { style = "none", padding = { 1, 2 } },
-			win_options = { winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder" },
-		},
-		split = { enter = true },
-	},
-	-- routing/filtering messages to specific view
+	messages = { view_search = false },
+	lsp_progress = { view = "mini" },
+	views = { split = { enter = true } },
 	routes = {
-		{
-			filter = { event = "cmdline", find = "^%s*[/?]" },
-			view = "cmdline",
-		},
-		{
-			filter = { event = "msg_show", min_height = 10 },
-			view = "split",
-		},
+		{ filter = { event = "msg_show", min_height = 10 }, view = "split" },
 		no_msg(nil, "written"),
 		no_msg(nil, "search hit BOTTOM"),
 		no_msg("search_count", nil),
@@ -263,21 +274,6 @@ local soldark = require("lualine.themes.solarized_dark")
 soldark.normal.a.gui = ""
 soldark.insert.a.gui = ""
 soldark.visual.a.gui = ""
-local lsp_progress = function()
-	if #vim.lsp.buf_get_clients() == 0 then
-		return ""
-	end
-
-	local lsp = vim.lsp.util.get_progress_messages()[1]
-	if lsp then
-		local name = lsp.name or ""
-		local msg = lsp.message or ""
-		local percentage = lsp.percentage or 0
-		local title = lsp.title or ""
-		return string.format(" %%<%s: %s %s (%s%%%%) ", name, title, msg, percentage)
-	end
-	return ""
-end
 require("lualine").setup({
 	extensions = { "quickfix", "fugitive" },
 	options = {
@@ -400,3 +396,6 @@ require("fzf-lua").setup({
 		},
 	},
 })
+
+-- IncRename
+require("inc_rename").setup()

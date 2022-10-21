@@ -1,3 +1,8 @@
+local lsp_ok, lsp = pcall(require, "lspconfig")
+if not lsp_ok then
+	return
+end
+
 local opts = { noremap = true, silent = true }
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -26,7 +31,9 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set("n", "rn", vim.lsp.buf.rename, bufopts)
+	vim.keymap.set("n", "rn", function()
+		return ":IncRename " .. vim.fn.expand("<cword>")
+	end, { expr = true })
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, bufopts)
 	vim.keymap.set("n", "<leader>l", toggle_diagnostics, bufopts)
@@ -39,12 +46,12 @@ local lsp_flags = {
 vim.lsp.set_log_level("debug")
 
 -- configuration of the individual language servers --
-require("lspconfig").gopls.setup({
+lsp.gopls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	lsp_flags = lsp_flags,
 })
-require("lspconfig").sumneko_lua.setup({
+lsp.sumneko_lua.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	lsp_flags = lsp_flags,
@@ -57,14 +64,14 @@ require("lspconfig").sumneko_lua.setup({
 		},
 	},
 })
-require("lspconfig").jedi_language_server.setup({
+lsp.jedi_language_server.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	lsp_flags = lsp_flags,
 })
-require("lspconfig").vimls.setup({ on_attach = on_attach })
-require("lspconfig").bashls.setup({ on_attach = on_attach })
-require("lspconfig").jsonls.setup({
+lsp.vimls.setup({ on_attach = on_attach })
+lsp.bashls.setup({ on_attach = on_attach })
+lsp.jsonls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
@@ -89,8 +96,8 @@ vim.fn.sign_define("DiagnosticSignHint", { name = "DiagnosticSignHint", text = "
 vim.fn.sign_define("DiagnosticSignInfo", { name = "DiagnosticSignInfo", text = "i" })
 
 -- null-ls --
-local ok, null_ls = pcall(require, "null-ls")
-if not ok then
+local null_ls_ok, null_ls = pcall(require, "null-ls")
+if not null_ls_ok then
 	return
 end
 
