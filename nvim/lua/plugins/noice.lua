@@ -1,23 +1,23 @@
-local function no_msg(kind, regex)
-	return {
-		filter = { event = "msg_show", kind = kind, find = regex },
-		opts = { skip = true },
-	}
+local ok, noice = pcall(require, "noice")
+if not ok then
+	return
 end
 
 local noice_hl = vim.api.nvim_create_augroup("NoiceHighlights", {})
+local noice_cmd_types = {
+	"CmdLine",
+	"Lua",
+	"Filter",
+	"Rename",
+}
 vim.api.nvim_clear_autocmds({ group = noice_hl })
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = noice_hl,
 	callback = function()
-		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", {})
-		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { link = "Constant" })
-		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderCmdline", {})
-		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderCmdline", { link = "Constant" })
-		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderLua", {})
-		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderLua", { link = "Constant" })
-		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderFilter", {})
-		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderFilter", { link = "Constant" })
+		for _, type in ipairs(noice_cmd_types) do
+			vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder" .. type, {})
+			vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder" .. type, { link = "Constant" })
+		end
 	end,
 })
 
@@ -28,7 +28,14 @@ local cmdline_opts = {
 	},
 }
 
-require("noice").setup({
+local function no_msg(kind, regex)
+	return {
+		filter = { event = "msg_show", kind = kind, find = regex },
+		opts = { skip = true },
+	}
+end
+
+noice.setup({
 	cmdline = {
 		view = "cmdline_popup",
 		format = {
@@ -36,10 +43,16 @@ require("noice").setup({
 			search_down = { kind = "Search", pattern = "^/", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
 			search_up = { kind = "Search", pattern = "^%?", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
 			filter = { pattern = "^:%s*!", icon = "$", ft = "sh", opts = cmdline_opts },
-			f_filter = { pattern = "^:%s*%%%s*!", icon = " $", ft = "sh", opts = cmdline_opts },
-			v_filter = { pattern = "^:%s*%'<,%'>%s*!", icon = " $", ft = "sh", opts = cmdline_opts },
+			f_filter = { kind = "CmdLine", pattern = "^:%s*%%%s*!", icon = " $", ft = "sh", opts = cmdline_opts },
+			v_filter = {
+				kind = "CmdLine",
+				pattern = "^:%s*%'<,%'>%s*!",
+				icon = " $",
+				ft = "sh",
+				opts = cmdline_opts,
+			},
 			lua = { pattern = "^:%s*lua%s+", icon = "", conceal = true, ft = "lua", opts = cmdline_opts },
-			IncRename = {
+			rename = {
 				pattern = "^:%s*IncRename%s+",
 				icon = " ",
 				conceal = true,
@@ -48,6 +61,11 @@ require("noice").setup({
 					size = { min_width = 20 },
 					position = { row = -3, col = 0 },
 					buf_options = { filetype = "text" },
+					border = {
+						text = {
+							top = " rename ",
+						},
+					},
 				},
 			},
 		},
