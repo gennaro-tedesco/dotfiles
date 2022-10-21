@@ -207,6 +207,8 @@ vim.api.nvim_clear_autocmds({ group = noice_hl })
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = noice_hl,
 	callback = function()
+		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", {})
+		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { link = "Constant" })
 		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderCmdline", {})
 		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderCmdline", { link = "Constant" })
 		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderLua", {})
@@ -230,7 +232,9 @@ require("noice").setup({
 			cmdline = { pattern = "^:", icon = "", opts = cmdline_opts },
 			search_down = { kind = "Search", pattern = "^/", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
 			search_up = { kind = "Search", pattern = "^%?", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
-			filter = { pattern = "^:%s*!", icon = "$", ft = "sh" },
+			filter = { pattern = "^:%s*!", icon = "$", ft = "sh", opts = cmdline_opts },
+			f_filter = { pattern = "^:%s*%%%s*!", icon = " $", ft = "sh", opts = cmdline_opts },
+			v_filter = { pattern = "^:%s*%'<,%'>%s*!", icon = " $", ft = "sh", opts = cmdline_opts },
 			lua = { pattern = "^:%s*lua%s+", icon = "", conceal = true, ft = "lua", opts = cmdline_opts },
 			IncRename = {
 				pattern = "^:%s*IncRename%s+",
