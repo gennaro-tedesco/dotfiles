@@ -56,16 +56,14 @@ Plug 'gennaro-tedesco/nvim-jqx'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-"" ----------------------------------
-"" ----- automatically loading ------
-"" ----------------------------------
-"" ~/.config/nvim/plugin/settings.vim
-"" ~/.config/nvim/plugin/mappings.vim
-"" ~/.config/nvim/plugin/options.vim
-"" ~/.config/nvim/plugin/folding.vim
-"" -----------------------------------
 lua << EOF
 for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath('config')..'/lua', [[v:val =~ '\.lua$']])) do
   require(file:gsub('%.lua$', ''))
 end
+
+for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath('config')..'/lua/plugins', [[v:val =~ '\.lua$']])) do
+  require("plugins."..file:gsub('%.lua$', ''))
+end
+
+vim.g.python3_host_prog = "/usr/local/bin/python3"
 EOF
