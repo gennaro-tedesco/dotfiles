@@ -1,4 +1,8 @@
-local npairs = require("nvim-autopairs")
+local ok, npairs = pcall(require, "nvim-autopairs")
+if not ok then
+	return
+end
+
 npairs.setup({
 	ignored_next_char = "[%w%.]",
 })

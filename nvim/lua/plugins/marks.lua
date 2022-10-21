@@ -1,4 +1,9 @@
-require("marks").setup({
+local ok, marks = pcall(require, "marks")
+if not ok then
+	return
+end
+
+marks.setup({
 	mappings = {
 		set_next = "mm",
 		next = "mn",

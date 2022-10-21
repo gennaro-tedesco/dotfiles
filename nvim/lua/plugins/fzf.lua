@@ -1,4 +1,9 @@
-require("fzf-lua").setup({
+local ok, fzf = pcall(require, "fzf-lua")
+if not ok then
+	return
+end
+
+fzf.setup({
 	winopts = {
 		height = 0.25,
 		width = 0.4,
@@ -37,7 +42,7 @@ require("fzf-lua").setup({
 			preview = "git show --stat --color --format='%C(cyan)%an%C(reset)%C(bold yellow)%d%C(reset): %s' {1} -- <file>",
 			actions = {
 				["ctrl-d"] = function(...)
-					require("fzf-lua").actions.git_buf_vsplit(...)
+					fzf.actions.git_buf_vsplit(...)
 					vim.cmd("windo diffthis")
 				end,
 			},

@@ -1,3 +1,8 @@
+local ok, alpha = pcall(require, "alpha")
+if not ok then
+	return
+end
+
 local startify = require("alpha.themes.startify")
 startify.section.header.val = { "welcome back, and a fine day it is!" }
 startify.section.top_buttons.val = {
@@ -10,4 +15,4 @@ startify.section.bottom_buttons.val = {
 }
 startify.section.mru.val = { { type = "padding", val = 0 } }
 startify.nvim_web_devicons.enabled = false
-require("alpha").setup(require("alpha.themes.startify").config)
+alpha.setup(startify.config)

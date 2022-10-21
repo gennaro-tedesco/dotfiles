@@ -1,8 +1,18 @@
+local line_ok, lualine = pcall(require, "lualine")
+if not line_ok then
+	return
+end
+
+local noice_ok, noice = pcall(require, "noice")
+if not noice_ok then
+	return
+end
+
 local soldark = require("lualine.themes.solarized_dark")
 soldark.normal.a.gui = ""
 soldark.insert.a.gui = ""
 soldark.visual.a.gui = ""
-require("lualine").setup({
+lualine.setup({
 	extensions = { "quickfix", "fugitive" },
 	options = {
 		theme = soldark,
@@ -14,8 +24,8 @@ require("lualine").setup({
 		lualine_c = { { "filename", path = 1 } },
 		lualine_x = {
 			{
-				require("noice").api.statusline.mode.get,
-				cond = require("noice").api.statusline.mode.has,
+				noice.api.statusline.mode.get,
+				cond = noice.api.statusline.mode.has,
 				color = { fg = "#2aa198" },
 			},
 			{

@@ -3,6 +3,11 @@ if not lsp_ok then
 	return
 end
 
+local cmq_ok, _ = pcall(require, "cmp_nvim_lsp")
+if not cmq_ok then
+	return
+end
+
 local opts = { noremap = true, silent = true }
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 

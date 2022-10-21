@@ -1,4 +1,10 @@
-require("git-conflict").setup({
+-- git conflict
+local conflict_ok, git_conflict = pcall(require, "git-conflict")
+if not conflict_ok then
+	return
+end
+
+git_conflict.setup({
 	default_mappings = true,
 	highlights = { incoming = "DiffText", current = "DiffAdd" },
 })
@@ -7,7 +13,12 @@ vim.keymap.set("n", "c-", "<Plug>(git-conflict-prev-conflict)")
 vim.keymap.set("n", "cq", ":GitConflictListQf<CR>")
 
 -- git-signs
-require("gitsigns").setup({
+local signs_ok, gitsigns = pcall(require, "gitsigns")
+if not signs_ok then
+	return
+end
+
+gitsigns.setup({
 	signs = {
 		add = { hl = "GitSignsAdd", text = "+", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
 		change = { hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
