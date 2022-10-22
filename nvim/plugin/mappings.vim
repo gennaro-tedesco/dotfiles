@@ -69,33 +69,30 @@ vnoremap <leader>w ~
 " copy file name to the clipboard
 nnoremap yf :let @+=expand("%")<CR>
 
-" copy text with line numbers and file name on top
-vnoremap <leader>y :call functions#CompleteYank()<CR>
-
 " count all occurrences of word under cursor
-nnoremap * *:lua require("functions").count_matches()<CR>
+nnoremap * *<cmd>lua require("functions").count_matches()<CR>
 
 " blink word under cursor in search mode
-nnoremap n nzz:lua require("functions").hl_search(0.3)<CR>
-nnoremap N Nzz:lua require("functions").hl_search(0.3)<CR>
+nnoremap n nzz <cmd>lua require("functions").hl_search(0.3)<CR>
+nnoremap N Nzz <cmd>lua require("functions").hl_search(0.3)<CR>
 
 " buffers and files browsing
-nnoremap <C-n> :FloatermNew vifm<CR>
-nnoremap <C-p> :<cmd>lua require('fzf-lua').files()<CR>
-nnoremap <C-b> :<cmd>lua require('fzf-lua').buffers()<CR>
-nnoremap <C-h> :Rg<space>
-nnoremap <C-g> :lua require("functions").replace_grep()<CR>
-nnoremap <F1> :<cmd> lua require('fzf-lua').help_tags()<CR>
-nnoremap <silent> <C-q> :lua require("functions").toggle_qf()<CR>
-nnoremap <silent> <C-l> :lua require("functions").toggle_ll()<CR>
-nnoremap gm :SymbolsOutline<CR>
-nnoremap "" :<cmd> lua require('fzf-lua').registers()<CR>
+nnoremap <silent> <C-n> <cmd> FloatermNew vifm<CR>
+nnoremap <silent> <C-p> <cmd> lua require('fzf-lua').files()<CR>
+nnoremap <silent> <C-b> <cmd> lua require('fzf-lua').buffers()<CR>
+nnoremap <silent> <C-h> <cmd> Rg<space>
+nnoremap <silent> <C-g> <cmd> lua require("functions").replace_grep()<CR>
+nnoremap <silent> <F1>  <cmd> lua require('fzf-lua').help_tags()<CR>
+nnoremap <silent> <C-q> <cmd> lua require("functions").toggle_qf()<CR>
+nnoremap <silent> <C-l> <cmd> lua require("functions").toggle_ll()<CR>
+nnoremap gm <cmd> SymbolsOutline<CR>
+nnoremap "" <cmd> lua require('fzf-lua').registers()<CR>
 
 " git remappings
-nnoremap <leader>gs :Git<CR>
-nnoremap <leader>gp :Git push<CR>
-nnoremap <leader>gl :<cmd> :lua require('fzf-lua').git_bcommits()<CR>
-nnoremap <leader>gb :<cmd> :lua require('fzf-lua').git_branches()<CR>
+nnoremap <leader>gs <cmd> Git<CR>
+nnoremap <leader>gp <cmd> Git push<CR>
+nnoremap <leader>gl <cmd> lua require('fzf-lua').git_bcommits()<CR>
+nnoremap <leader>gb <cmd> lua require('fzf-lua').git_branches()<CR>
 
 " open todo file in one go
 nnoremap <leader>t :e<space>~/.todo<CR>
@@ -109,10 +106,6 @@ nnoremap mx :delm! <bar> delm A-Z0-9 <bar> delm \"<> <bar> wshada!<CR>
 "" ----------------------------------
 "" --- definition of new commands ---
 "" ----------------------------------
-command! -range ToTuple <line1>,<line2> call functions#ToTupleFun()
-command! TS silent! call functions#T2S()
-command! ST silent! call functions#S2T()
 command! Rf silent! lua require("functions").replace_file()<CR>
 command W write
 command Q quit
-command! -bar -bang -range=% BCommits let b:fzf_winview = winsaveview() | <line1>,<line2>call fzf#vim#buffer_commits(fzf#vim#with_preview({'options': '--prompt "logs:"', 'down': '15'}), <bang>0)
