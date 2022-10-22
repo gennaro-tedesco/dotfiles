@@ -77,14 +77,14 @@ nnoremap n nzz<cmd>lua require("functions").hl_search(0.3)<CR>
 nnoremap N Nzz<cmd>lua require("functions").hl_search(0.3)<CR>
 
 " buffers and files browsing
-nnoremap <silent> <C-n> <cmd> FloatermNew vifm<CR>
-nnoremap <silent> <C-p> <cmd> lua require('fzf-lua').files({show_cwd_header=false, cwd=require("functions").git_root()})<CR>
-nnoremap <silent> <C-b> <cmd> lua require('fzf-lua').buffers()<CR>
-nnoremap <silent> <C-h> <cmd> Rg<space>
-nnoremap <silent> <C-g> <cmd> lua require("functions").replace_grep()<CR>
-nnoremap <silent> <F1>  <cmd> lua require('fzf-lua').help_tags()<CR>
-nnoremap <silent> <C-q> <cmd> lua require("functions").toggle_qf()<CR>
-nnoremap <silent> <C-l> <cmd> lua require("functions").toggle_ll()<CR>
+nnoremap <C-n> <cmd> FloatermNew vifm<CR>
+nnoremap <C-p> <cmd> lua require('fzf-lua').files({show_cwd_header=false, cwd=require("functions").git_root()})<CR>
+nnoremap <C-b> <cmd> lua require('fzf-lua').buffers()<CR>
+nnoremap <C-h> :Rg<space>
+nnoremap <C-g> <cmd> lua require("functions").replace_grep()<CR>
+nnoremap <F1>  <cmd> lua require('fzf-lua').help_tags()<CR>
+nnoremap <C-q> <cmd> lua require("functions").toggle_qf()<CR>
+nnoremap <C-l> <cmd> lua require("functions").toggle_ll()<CR>
 nnoremap gm <cmd> SymbolsOutline<CR>
 nnoremap "" <cmd> lua require('fzf-lua').registers()<CR>
 
