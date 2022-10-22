@@ -3,7 +3,7 @@ if not bqf_ok then
 	return
 end
 
-local pqf_ok, pqf = pcall(require, "nvim-pqf")
+local pqf_ok, pqf = pcall(require, "pqf")
 if not pqf_ok then
 	return
 end
