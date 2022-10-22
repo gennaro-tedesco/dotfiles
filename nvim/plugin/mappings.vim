@@ -81,7 +81,7 @@ nnoremap N Nzz:lua require("functions").hl_search(0.3)<CR>
 
 " buffers and files browsing
 nnoremap <C-n> :FloatermNew vifm<CR>
-nnoremap <C-p> :<cmd>lua require('fzf-lua').files()<CR>
+nnoremap <C-p> :<cmd>lua require('fzf-lua').files({show_cwd_header=false, cwd=require("functions").git_root()})<CR>
 nnoremap <C-b> :<cmd>lua require('fzf-lua').buffers()<CR>
 nnoremap <C-h> :Rg<space>
 nnoremap <C-g> :lua require("functions").replace_grep()<CR>
