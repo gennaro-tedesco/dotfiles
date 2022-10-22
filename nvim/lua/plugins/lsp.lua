@@ -3,6 +3,11 @@ if not lsp_ok then
 	return
 end
 
+local cmq_ok, _ = pcall(require, "cmp_nvim_lsp")
+if not cmq_ok then
+	return
+end
+
 local opts = { noremap = true, silent = true }
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -94,40 +99,3 @@ vim.fn.sign_define("DiagnosticSignError", { name = "DiagnosticSignError", text =
 vim.fn.sign_define("DiagnosticSignWarn", { name = "DiagnosticSignWarn", text = "" })
 vim.fn.sign_define("DiagnosticSignHint", { name = "DiagnosticSignHint", text = "i" })
 vim.fn.sign_define("DiagnosticSignInfo", { name = "DiagnosticSignInfo", text = "i" })
-
--- null-ls --
-local null_ls_ok, null_ls = pcall(require, "null-ls")
-if not null_ls_ok then
-	return
-end
-
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-local sources = {
-	null_ls.builtins.formatting.stylua,
-	null_ls.builtins.formatting.gofmt,
-	null_ls.builtins.formatting.goimports,
-	null_ls.builtins.formatting.isort,
-	null_ls.builtins.formatting.black,
-	null_ls.builtins.formatting.prettier.with({ filetypes = { "json", "yaml", "markdown" } }),
-	null_ls.builtins.formatting.shfmt,
-	null_ls.builtins.formatting.jq,
-	null_ls.builtins.hover.printenv,
-	null_ls.builtins.code_actions.shellcheck,
-	null_ls.builtins.code_actions.gitsigns,
-}
-
-null_ls.setup({
-	on_attach = function(client, bufnr)
-		if client.supports_method("textDocument/formatting") then
-			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = augroup,
-				buffer = bufnr,
-				callback = function()
-					vim.lsp.buf.format()
-				end,
-			})
-		end
-	end,
-	sources = sources,
-})

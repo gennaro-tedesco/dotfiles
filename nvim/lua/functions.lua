@@ -96,6 +96,11 @@ M.replace_file = function()
 	vim.cmd("silent execute 'norm gg" .. '"' .. "_dGP'")
 end
 
+M.git_root = function()
+	local git_path = vim.fn.finddir(".git", ".;")
+	return vim.fn.fnamemodify(git_path, ":h")
+end
+
 P = function(v)
 	print(vim.inspect(v))
 	return v
@@ -109,5 +114,33 @@ R = function(name)
 	RELOAD(name)
 	return require(name)
 end
+
+Icons = {
+	Class = "ﴯ",
+	Color = "",
+	Constant = "",
+	Constructor = "",
+	Enum = "",
+	EnumMember = "",
+	Event = "",
+	Field = "",
+	File = "",
+	Folder = "",
+	Function = "",
+	Interface = "",
+	Keyword = "",
+	Method = "",
+	Module = "",
+	Operator = "",
+	Property = "ﰠ",
+	Reference = "",
+	Snippet = "",
+	Struct = "",
+	Text = "",
+	TypeParameter = "",
+	Unit = "",
+	Value = "",
+	Variable = "",
+}
 
 return M

@@ -54,6 +54,9 @@ set pumheight=10
 " matching pairs
 set matchpairs+=<:>
 
+" python host program
+let g:python3_host_prog = "/usr/local/bin/python3"
+
 " -----------------------------
 " -- global augroup commands --
 " -----------------------------
