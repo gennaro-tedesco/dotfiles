@@ -65,5 +65,4 @@ for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath('config')..'/lua/plugins', [
   require("plugins."..file:gsub('%.lua$', ''))
 end
 
-vim.g.python3_host_prog = "/usr/local/bin/python3"
 EOF
