@@ -73,8 +73,8 @@ nnoremap yf :let @+=expand("%")<CR>
 nnoremap * *<cmd>lua require("functions").count_matches()<CR>
 
 " blink word under cursor in search mode
-nnoremap n nzz <cmd>lua require("functions").hl_search(0.3)<CR>
-nnoremap N Nzz <cmd>lua require("functions").hl_search(0.3)<CR>
+nnoremap n nzz<cmd>lua require("functions").hl_search(0.3)<CR>
+nnoremap N Nzz<cmd>lua require("functions").hl_search(0.3)<CR>
 
 " buffers and files browsing
 nnoremap <silent> <C-n> <cmd> FloatermNew vifm<CR>
