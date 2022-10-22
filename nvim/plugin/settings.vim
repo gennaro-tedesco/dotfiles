@@ -72,10 +72,6 @@ augroup END
 
 augroup HIGHLIGHTS
 	autocmd!
-	autocmd BufEnter * silent! hi clear Floaterm
-	autocmd BufEnter * silent! hi link Floaterm Pmenu
 	autocmd BufEnter * silent! hi clear ErrorMsg
 	autocmd BufEnter * silent! hi ErrorMsg cterm=bold gui=bold guifg=#dc322f guibg=None
-	autocmd BufEnter * silent! hi clear CmpItemAbbrMatch
-	autocmd BufEnter * silent! hi link CmpItemAbbrMatch helpVim
 augroup END

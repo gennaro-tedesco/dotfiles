@@ -85,3 +85,31 @@ cmp.setup.cmdline(":", {
 })
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+local cmp_hl = vim.api.nvim_create_augroup("CmpHighlights", {})
+local cmp_types = {
+	"Constant",
+	"Constructor",
+	"Field",
+	"Function",
+	"Keyword",
+	"Method",
+	"Operator",
+	"Property",
+	"Text",
+}
+
+vim.api.nvim_clear_autocmds({ group = cmp_hl })
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = cmp_hl,
+	callback = function()
+		vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", {})
+		vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { link = "helpVim" })
+		vim.api.nvim_set_hl(0, "CmpItemKindVariable", {})
+		vim.api.nvim_set_hl(0, "CmpItemKindVariable", { link = "@number" })
+		for _, type in ipairs(cmp_types) do
+			vim.api.nvim_set_hl(0, "CmpItemKind" .. type, {})
+			vim.api.nvim_set_hl(0, "CmpItemKind" .. type, { link = "@" .. type })
+		end
+	end,
+})
