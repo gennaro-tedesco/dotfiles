@@ -75,12 +75,10 @@ noice.setup({
 	views = { split = { enter = true } },
 	routes = {
 		{ filter = { event = "msg_show", min_height = 10 }, view = "split" },
-		no_msg(nil, "<"),
+		no_msg(nil, "written"),
 		no_msg(nil, "search hit BOTTOM"),
-		no_msg("search_count", nil),
 		no_msg("wmsg", nil),
 		no_msg("emsg", "E23"),
 		no_msg("emsg", "E20"),
-		no_msg("emsg", "E37"),
 	},
 })

@@ -67,7 +67,7 @@ nnoremap <leader>w g~iw
 vnoremap <leader>w ~
 
 " copy file name to the clipboard
-nnoremap yf :let @+=expand("%")<CR>
+nnoremap yf <cmd> let @+=expand("%") <bar> echo "copied: ".@% <CR>
 
 " count all occurrences of word under cursor
 nnoremap * *<cmd>lua require("functions").count_matches()<CR>
@@ -95,13 +95,13 @@ nnoremap <leader>gl <cmd> lua require('fzf-lua').git_bcommits()<CR>
 nnoremap <leader>gb <cmd> lua require('fzf-lua').git_branches()<CR>
 
 " open todo file in one go
-nnoremap <leader>t :e<space>~/.todo<CR>
+nnoremap <leader>t <cdm> e<space>~/.todo<CR>
 
 " clean up search results and extmarks
 nnoremap <silent> <CR> :let @/="" <bar> lua vim.api.nvim_buf_clear_namespace(0, -1, 0, -1)<CR>
 
 " delete all marks
-nnoremap mx :delm! <bar> delm A-Z0-9 <bar> delm \"<> <bar> wshada!<CR>
+nnoremap mx <cmd> delm! <bar> delm A-Z0-9 <bar> delm \"<> <bar> wshada!<CR>
 
 "" ----------------------------------
 "" --- definition of new commands ---
