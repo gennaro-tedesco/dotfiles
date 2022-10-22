@@ -10,7 +10,7 @@ nnoremap q <nop>
 nnoremap qq q
 
 " remove all trailing spaces
-nnoremap <F5> :lua require("functions").trim_whitespace()<CR>
+nnoremap <F5> <cmd> lua require("functions").trim_whitespace()<CR>
 
 " smarter indenting
 vnoremap < <gv
@@ -78,7 +78,7 @@ nnoremap N Nzz <cmd>lua require("functions").hl_search(0.3)<CR>
 
 " buffers and files browsing
 nnoremap <silent> <C-n> <cmd> FloatermNew vifm<CR>
-nnoremap <silent> <C-p> <cmd> lua require('fzf-lua').files()<CR>
+nnoremap <silent> <C-p> <cmd> lua require('fzf-lua').files({show_cwd_header=false, cwd=require("functions").git_root()})<CR>
 nnoremap <silent> <C-b> <cmd> lua require('fzf-lua').buffers()<CR>
 nnoremap <silent> <C-h> <cmd> Rg<space>
 nnoremap <silent> <C-g> <cmd> lua require("functions").replace_grep()<CR>

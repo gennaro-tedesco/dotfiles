@@ -17,12 +17,11 @@ fzf.setup({
 		["--header"] = " ",
 	},
 	files = {
-		git_icons = false,
+		git_icons = true,
 		prompt = "files:",
 		preview_opts = "hidden",
 	},
 	buffers = {
-		git_icons = false,
 		prompt = "buffers:",
 		preview_opts = "hidden",
 	},
