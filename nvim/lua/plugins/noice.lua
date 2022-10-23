@@ -18,6 +18,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
 			vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder" .. type, {})
 			vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder" .. type, { link = "Constant" })
 		end
+		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderSubstitute", {})
+		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderSubstitute", { link = "Define" })
 	end,
 })
 
@@ -42,10 +44,22 @@ noice.setup({
 			cmdline = { pattern = "^:", icon = "", opts = cmdline_opts },
 			search_down = { kind = "Search", pattern = "^/", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
 			search_up = { kind = "Search", pattern = "^%?", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
+			substitute = {
+				pattern = "^:%%?s/",
+				icon = " ",
+				ft = "regex",
+				opts = {
+					border = {
+						text = {
+							top = " sub (old/new/) ",
+						},
+					},
+				},
+			},
 			filter = { pattern = "^:%s*!", icon = "$", ft = "sh", opts = cmdline_opts },
-			f_filter = { kind = "CmdLine", pattern = "^:%s*%%%s*!", icon = " $", ft = "sh", opts = cmdline_opts },
-			v_filter = {
-				kind = "CmdLine",
+			filefilter = { kind = "Filter", pattern = "^:%s*%%%s*!", icon = " $", ft = "sh", opts = cmdline_opts },
+			selectionfilter = {
+				kind = "Filter",
 				pattern = "^:%s*%'<,%'>%s*!",
 				icon = " $",
 				ft = "sh",
