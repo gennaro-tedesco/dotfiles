@@ -80,5 +80,7 @@ noice.setup({
 		no_msg("wmsg", nil),
 		no_msg("emsg", "E23"),
 		no_msg("emsg", "E20"),
+		no_msg("emsg", "E37"),
+		no_msg("emsg", "E162"),
 	},
 })
