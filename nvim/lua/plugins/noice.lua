@@ -5,21 +5,20 @@ end
 
 local noice_hl = vim.api.nvim_create_augroup("NoiceHighlights", {})
 local noice_cmd_types = {
-	"CmdLine",
-	"Lua",
-	"Filter",
-	"Rename",
+	CmdLine = "Constant",
+	Lua = "Constant",
+	Filter = "Constant",
+	Rename = "Constant",
+	Substitute = "Define",
 }
 vim.api.nvim_clear_autocmds({ group = noice_hl })
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = noice_hl,
 	callback = function()
-		for _, type in ipairs(noice_cmd_types) do
+		for type, hl in pairs(noice_cmd_types) do
 			vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder" .. type, {})
-			vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder" .. type, { link = "Constant" })
+			vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder" .. type, { link = hl })
 		end
-		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderSubstitute", {})
-		vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderSubstitute", { link = "Define" })
 	end,
 })
 
