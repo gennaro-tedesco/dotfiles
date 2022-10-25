@@ -8,7 +8,7 @@ startify.section.header.val = { "welcome back, and a fine day it is!" }
 startify.section.top_buttons.val = {
 	startify.button("e", " New file", ":ene <BAR> startinsert <CR>"),
 	startify.button("t", " Todo", ":e<space>~/.todo<CR>"),
-	startify.button("s", " Sessions", "<cmd> lua require('plugins.sessions').load_session()<CR>"),
+	startify.button("s", " Sessions", "<cmd> lua require('plugins.sessions').load_session()<CR>"),
 }
 startify.section.bottom_buttons.val = {
 	startify.button("q", "✘ Quit NVIM", ":qa<CR>"),
