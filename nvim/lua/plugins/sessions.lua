@@ -38,6 +38,7 @@ M.load_session = function()
 	require("fzf-lua").files({
 		prompt = "sessions:",
 		path_shorten = true,
+		show_cwd_header = false,
 		cwd = M.config.sessions_path,
 		previewer = false,
 		preview = require("fzf-lua").shell.raw_preview_action_cmd(function(selected)
