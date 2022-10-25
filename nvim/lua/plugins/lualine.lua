@@ -21,7 +21,15 @@ lualine.setup({
 	sections = {
 		lualine_a = { { "mode", padding = { left = 1 } } },
 		lualine_b = { "branch" },
-		lualine_c = { { "filename", path = 1 } },
+		lualine_c = {
+			{ "filename", path = 1 },
+			{
+				"w:cs",
+				fmt = function(str)
+					return "(" .. str .. ")"
+				end,
+			},
+		},
 		lualine_x = {
 			{
 				noice.api.statusline.mode.get,

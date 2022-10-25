@@ -2,12 +2,25 @@ local M = {}
 
 M.sessions_path = vim.fn.stdpath("data") .. "/sessions/"
 
-M.save_session = function()
+M.new_session = function()
 	local name = vim.fn.input("name: ")
-	print(name)
 	if name ~= "" then
-		vim.cmd.mksession({ args = { M.sessions_path .. name }, bang = true })
-		print("saved in: " .. M.sessions_path .. name)
+		if next(vim.fs.find(name, { path = M.sessions_path })) == nil then
+			vim.cmd.mksession({ args = { M.sessions_path .. name } })
+			print("saved in: " .. M.sessions_path .. name)
+		else
+			print("session already exists")
+		end
+	end
+end
+
+M.update_session = function()
+	local cs = vim.w["cs"]
+	if cs ~= nil then
+		local confirm = vim.fn.confirm("overwrite session?", "&Yes\n&No", 2)
+		if confirm == 1 then
+			vim.cmd.mksession({ args = { M.sessions_path .. cs }, bang = true })
+		end
 	end
 end
 
@@ -20,13 +33,14 @@ M.load_session = function()
 		actions = {
 			["default"] = function(selected)
 				vim.cmd.source(M.sessions_path .. selected[1])
+				vim.w["cs"] = selected[1]:gsub("^%./", "")
 			end,
 			["ctrl-v"] = function()
 				print("sessions path: " .. M.sessions_path)
 			end,
 			["ctrl-x"] = function(selected)
 				local confirm = vim.fn.confirm("delete session?", "&Yes\n&No", 2)
-				if confirm then
+				if confirm == 1 then
 					os.remove(M.sessions_path .. selected[1])
 					print("deleted " .. M.sessions_path .. selected[1])
 				end

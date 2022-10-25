@@ -87,7 +87,8 @@ nnoremap <C-q> <cmd> lua require("functions").toggle_qf()<CR>
 nnoremap <C-l> <cmd> lua require("functions").toggle_ll()<CR>
 nnoremap gm <cmd> SymbolsOutline<CR>
 nnoremap "" <cmd> lua require('fzf-lua').registers()<CR>
-nnoremap <leader>s <cmd> lua require('plugins.sessions').save_session()<CR>
+nnoremap <leader>sn <cmd> lua require('plugins.sessions').new_session()<CR>
+nnoremap <leader>su <cmd> lua require('plugins.sessions').update_session()<CR>
 nnoremap <C-S> <cmd> lua require('plugins.sessions').load_session()<CR>
 
 " git remappings
