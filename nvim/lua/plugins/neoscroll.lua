@@ -4,5 +4,5 @@ if not ok then
 end
 
 neoscroll.setup({
-	mappings = { "<C-u>", "<C-d>", "<C-e>", "zt", "zz", "zb" },
+	mappings = { "<C-u>", "<C-d>", "zt", "zz", "zb" },
 })
