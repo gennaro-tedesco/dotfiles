@@ -29,7 +29,7 @@ M.update_session = function()
 		local confirm = vim.fn.confirm("overwrite session?", "&Yes\n&No", 2)
 		if confirm == 1 then
 			vim.cmd.mksession({ args = { M.config.sessions_path .. cur_session }, bang = true })
-			print("overwritten session: " .. cur_session)
+			print("updated session: " .. cur_session)
 		end
 	end
 end

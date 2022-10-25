@@ -6,10 +6,12 @@ end
 local noice_hl = vim.api.nvim_create_augroup("NoiceHighlights", {})
 local noice_cmd_types = {
 	CmdLine = "Constant",
+	Input = "Constant",
 	Lua = "Constant",
 	Filter = "Constant",
 	Rename = "Constant",
 	Substitute = "Define",
+	Help = "helpVim",
 }
 vim.api.nvim_clear_autocmds({ group = noice_hl })
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -19,6 +21,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
 			vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder" .. type, {})
 			vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder" .. type, { link = hl })
 		end
+		vim.api.nvim_set_hl(0, "NoiceConfirmBorder", {})
+		vim.api.nvim_set_hl(0, "NoiceConfirmBorder", { link = "Constant" })
 	end,
 })
 
@@ -43,6 +47,7 @@ noice.setup({
 			cmdline = { pattern = "^:", icon = "", opts = cmdline_opts },
 			search_down = { kind = "Search", pattern = "^/", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
 			search_up = { kind = "Search", pattern = "^%?", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
+			input = { icon = "", ft = "text", opts = cmdline_opts },
 			substitute = {
 				pattern = "^:%%?s/",
 				icon = " ",
@@ -81,6 +86,7 @@ noice.setup({
 					},
 				},
 			},
+			help = { pattern = "^:%s*h%s+", icon = "", opts = cmdline_opts },
 		},
 	},
 	messages = { view_search = false },
