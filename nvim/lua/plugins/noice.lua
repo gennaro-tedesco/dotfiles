@@ -33,13 +33,6 @@ local cmdline_opts = {
 	},
 }
 
-local function no_msg(kind, regex)
-	return {
-		filter = { event = "msg_show", kind = kind, find = regex },
-		opts = { skip = true },
-	}
-end
-
 noice.setup({
 	cmdline = {
 		view = "cmdline_popup",
@@ -94,12 +87,11 @@ noice.setup({
 	views = { split = { enter = true } },
 	routes = {
 		{ filter = { event = "msg_show", min_height = 10 }, view = "split" },
-		no_msg(nil, "written"),
-		no_msg(nil, "search hit BOTTOM"),
-		no_msg("wmsg", nil),
-		no_msg("emsg", "E23"),
-		no_msg("emsg", "E20"),
-		no_msg("emsg", "E37"),
-		no_msg("emsg", "E162"),
+		{ filter = { find = "E162" }, view = "mini" },
+		{ filter = { find = "E37" }, view = "mini" },
+		{ filter = { find = "written" }, view = "mini" },
+		{ filter = { event = "msg_show", find = "hit BOTTOM" }, skip = true },
+		{ filter = { event = "emsg", find = "E23" }, skip = true },
+		{ filter = { event = "emsg", find = "E20" }, skip = true },
 	},
 })
