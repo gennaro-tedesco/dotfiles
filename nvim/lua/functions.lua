@@ -116,6 +116,7 @@ R = function(name)
 end
 
 Icons = {
+	Array = "",
 	Class = "ﴯ",
 	Color = "",
 	Constant = "",
@@ -126,12 +127,15 @@ Icons = {
 	Field = "",
 	File = "",
 	Folder = "",
-	Function = "",
+	Function = "ƒ",
 	Interface = "",
 	Keyword = "",
 	Method = "",
 	Module = "",
-	Operator = "",
+	Number = "",
+	Object = "⦿",
+	Operator = "+",
+	Package = "",
 	Property = "ﰠ",
 	Reference = "",
 	Snippet = "",
