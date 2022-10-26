@@ -93,5 +93,6 @@ noice.setup({
 		{ filter = { event = "msg_show", find = "hit BOTTOM" }, skip = true },
 		{ filter = { event = "emsg", find = "E23" }, skip = true },
 		{ filter = { event = "emsg", find = "E20" }, skip = true },
+		{ filter = { find = "No signature help" }, skip = true },
 	},
 })
