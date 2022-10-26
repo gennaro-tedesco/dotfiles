@@ -56,13 +56,16 @@ M.load_session = function()
 		actions = {
 			["default"] = function(selected)
 				vim.cmd.source(M.config.sessions_path .. selected[1])
-				vim.w[M.config.sessions_variable] = selected[1]:gsub("^%./", "")
+				vim.w[M.config.sessions_variable] = vim.fs.basename(selected[1])
 			end,
 			["ctrl-x"] = function(selected)
 				local confirm = vim.fn.confirm("delete session?", "&Yes\n&No", 2)
 				if confirm == 1 then
 					os.remove(M.config.sessions_path .. selected[1])
 					print("deleted " .. M.config.sessions_path .. selected[1])
+					if vim.w[M.config.sessions_variable] == vim.fs.basename(selected[1]) then
+						vim.w[M.config.sessions_variable] = nil
+					end
 				end
 			end,
 		},
