@@ -6,7 +6,7 @@ M.config = {
 	sessions_icon = "",
 }
 
-M.statusline_session = function()
+M.status = function()
 	local cur_session = vim.w[M.config.sessions_variable]
 	return cur_session ~= nil and M.config.sessions_icon .. ":" .. cur_session or nil
 end
@@ -34,7 +34,27 @@ M.update_session = function()
 	end
 end
 
-M.load_session = function()
+M.delete_session = function(selected)
+	local session = M.config.sessions_path .. selected[1]
+	local confirm = vim.fn.confirm("delete session?", "&Yes\n&No", 2)
+	if confirm == 1 then
+		os.remove(session)
+		print("deleted " .. session)
+		if vim.w[M.config.sessions_variable] == vim.fs.basename(session) then
+			vim.w[M.config.sessions_variable] = nil
+		end
+	end
+end
+require("fzf-lua").config.set_action_helpstr(M.delete_session, "delete-session")
+
+M.load_session = function(selected)
+	local session = M.config.sessions_path .. selected[1]
+	vim.cmd.source(session)
+	vim.w[M.config.sessions_variable] = vim.fs.basename(session)
+end
+require("fzf-lua").config.set_action_helpstr(M.load_session, "load-session")
+
+M.list_sessions = function()
 	require("fzf-lua").files({
 		prompt = "sessions:",
 		path_shorten = true,
@@ -52,22 +72,9 @@ M.load_session = function()
 		winopts = {
 			height = 0.5,
 		},
-
 		actions = {
-			["default"] = function(selected)
-				vim.cmd.source(M.config.sessions_path .. selected[1])
-				vim.w[M.config.sessions_variable] = vim.fs.basename(selected[1])
-			end,
-			["ctrl-x"] = function(selected)
-				local confirm = vim.fn.confirm("delete session?", "&Yes\n&No", 2)
-				if confirm == 1 then
-					os.remove(M.config.sessions_path .. selected[1])
-					print("deleted " .. M.config.sessions_path .. selected[1])
-					if vim.w[M.config.sessions_variable] == vim.fs.basename(selected[1]) then
-						vim.w[M.config.sessions_variable] = nil
-					end
-				end
-			end,
+			["default"] = M.load_session,
+			["ctrl-x"] = M.delete_session,
 		},
 	})
 end

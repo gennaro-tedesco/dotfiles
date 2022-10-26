@@ -89,7 +89,7 @@ nnoremap gm <cmd> SymbolsOutline<CR>
 nnoremap "" <cmd> lua require('fzf-lua').registers()<CR>
 nnoremap <leader>sn <cmd> lua require('plugins.sessions').new_session()<CR>
 nnoremap <leader>su <cmd> lua require('plugins.sessions').update_session()<CR>
-nnoremap <leader>sl <cmd> lua require('plugins.sessions').load_session()<CR>
+nnoremap <leader>sl <cmd> lua require('plugins.sessions').list_sessions()<CR>
 
 " git remappings
 nnoremap <leader>gs <cmd> Git<CR>
