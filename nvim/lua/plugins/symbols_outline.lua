@@ -6,7 +6,7 @@ end
 symbols.setup({
 	highlight_hovered_item = false,
 	autofold_depth = 1,
-	auto_close = true,
+	auto_close = false,
 	symbols = {
 		File = { icon = Icons.File, hl = "@text.uri" },
 		Module = { icon = "", hl = "@namespace" },
