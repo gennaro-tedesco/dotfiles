@@ -76,20 +76,18 @@ require("fzf-lua").config.set_action_helpstr(M.load_session, "load-session")
 M.list_sessions = function()
 	require("fzf-lua").files({
 		prompt = "sessions:",
-		path_shorten = true,
 		show_cwd_header = false,
 		cwd = M.config.sessions_path,
 		previewer = false,
-		fzf_opts = {
-			["--preview-window"] = "nohidden,down,50%",
-			["--preview"] = require("fzf-lua").shell.action(function(items)
-				local contents = {}
-				vim.tbl_map(function(x)
-					table.insert(contents, M.session_bufs(M.config.sessions_path .. x))
-				end, items)
-				return contents
-			end),
-		},
+		preview_opts = "nohidden",
+		preview_horizontal = "down:50%",
+		preview = require("fzf-lua").shell.raw_action(function(items)
+			local contents = {}
+			vim.tbl_map(function(x)
+				table.insert(contents, M.session_bufs(M.config.sessions_path .. x))
+			end, items)
+			return contents
+		end),
 		winopts = {
 			height = 0.5,
 		},
