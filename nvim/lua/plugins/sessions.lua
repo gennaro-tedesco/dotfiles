@@ -11,6 +11,25 @@ M.status = function()
 	return cur_session ~= nil and M.config.sessions_icon .. ":" .. cur_session or nil
 end
 
+M.session_bufs = function(file)
+	local lines = {}
+	local cwd, cwd_pat = nil, "^cd%s*"
+	local buf_pat = "^badd%s*%+%d"
+	for line in io.lines(file) do
+		if string.find(line, cwd_pat) then
+			cwd = line
+		end
+		if string.find(line, buf_pat) then
+			lines[#lines + 1] = line
+		end
+	end
+	local buffers = {}
+	for k, v in pairs(lines) do
+		buffers[k] = v:gsub(buf_pat, ""):gsub("%d", ""):gsub(cwd:gsub("cd%s*", ""), ""):gsub("^%s*/?%./", "")
+	end
+	return table.concat(buffers, "\n")
+end
+
 M.new_session = function()
 	local name = vim.fn.input("name: ")
 	if name ~= "" then
@@ -61,13 +80,15 @@ M.list_sessions = function()
 		show_cwd_header = false,
 		cwd = M.config.sessions_path,
 		previewer = false,
-		preview = require("fzf-lua").shell.raw_preview_action_cmd(function(selected)
-			return string.format(
-				"rg badd " .. M.config.sessions_path .. selected[1]:gsub("^%./", "") .. "| cut -f3 -d' '"
-			)
-		end),
 		fzf_opts = {
 			["--preview-window"] = "nohidden,down,50%",
+			["--preview"] = require("fzf-lua").shell.action(function(items)
+				local contents = {}
+				vim.tbl_map(function(x)
+					table.insert(contents, M.session_bufs(M.config.sessions_path .. x))
+				end, items)
+				return contents
+			end),
 		},
 		winopts = {
 			height = 0.5,
