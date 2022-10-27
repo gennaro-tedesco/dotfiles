@@ -83,7 +83,25 @@ noice.setup({
 		},
 	},
 	messages = { view_search = false },
-	lsp_progress = { view = "mini" },
+	lsp = {
+		signature = { enabled = true },
+		hover = { enabled = true },
+		documentation = {
+			opts = {
+				border = { style = "rounded" },
+				relative = "cursor",
+				position = {
+					row = 2,
+				},
+				win_options = {
+					winhighlight = {
+						Normal = "Normal",
+						FloatBorder = "@function",
+					},
+				},
+			},
+		},
+	},
 	views = { split = { enter = true } },
 	routes = {
 		{ filter = { event = "msg_show", min_height = 10 }, view = "split" },
