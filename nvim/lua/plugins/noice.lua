@@ -106,11 +106,11 @@ noice.setup({
 	routes = {
 		{ filter = { event = "msg_show", min_height = 10 }, view = "split" },
 		{ filter = { find = "E162" }, view = "mini" },
-		{ filter = { find = "E37" }, view = "mini" },
 		{ filter = { find = "written" }, view = "mini" },
 		{ filter = { event = "msg_show", find = "hit BOTTOM" }, skip = true },
 		{ filter = { event = "emsg", find = "E23" }, skip = true },
 		{ filter = { event = "emsg", find = "E20" }, skip = true },
 		{ filter = { find = "No signature help" }, skip = true },
+		{ filter = { find = "E37" }, skip = true },
 	},
 })
