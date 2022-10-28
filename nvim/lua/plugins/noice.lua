@@ -84,16 +84,18 @@ noice.setup({
 	},
 	messages = { view_search = false },
 	lsp = {
-		signature = { enabled = true },
+		override = {
+			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+			["vim.lsp.util.stylize_markdown"] = true,
+			["cmp.entry.get_documentation"] = true,
+		},
 		hover = { enabled = true },
+		signature = { enabled = true },
 		documentation = {
 			opts = {
-				border = { style = "rounded" },
-				relative = "cursor",
-				position = {
-					row = 2,
-				},
 				win_options = {
+					concealcursor = "n",
+					conceallevel = 3,
 					winhighlight = {
 						Normal = "Normal",
 						FloatBorder = "@function",
@@ -103,11 +105,15 @@ noice.setup({
 		},
 	},
 	views = { split = { enter = true } },
+	presets = {
+		long_message_to_split = true,
+		lsp_doc_border = true,
+	},
 	routes = {
-		{ filter = { event = "msg_show", min_height = 10 }, view = "split" },
 		{ filter = { find = "E162" }, view = "mini" },
 		{ filter = { find = "written" }, view = "mini" },
-		{ filter = { event = "msg_show", find = "hit BOTTOM" }, skip = true },
+		{ filter = { event = "msg_show", find = "search hit BOTTOM" }, skip = true },
+		{ filter = { event = "msg_show", find = "search hit TOP" }, skip = true },
 		{ filter = { event = "emsg", find = "E23" }, skip = true },
 		{ filter = { event = "emsg", find = "E20" }, skip = true },
 		{ filter = { find = "No signature help" }, skip = true },
