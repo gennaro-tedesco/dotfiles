@@ -3,8 +3,8 @@ editor: nvim
 prompt: enabled
 pager: delta -s
 aliases:
-    mine: s -E -u @me
-    b: f -b
-    l: f -l
-    p: f -p
-    k: f -k
+  mine: s -E -u @me
+  b: f -b
+  l: f -l
+  p: f -p
+  k: f -k

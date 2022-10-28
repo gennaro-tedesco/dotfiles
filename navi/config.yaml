@@ -9,15 +9,11 @@ style:
     min_width: 35
   snippet:
     color: dark_cyan
-
 finder:
   command: fzf
-
 cheats:
   path: ~/.config/navi
-
 # search:
-  # tags: git,!checkout # equivalent to the --tag-rules option
-
+# tags: git,!checkout # equivalent to the --tag-rules option
 shell:
   command: zsh

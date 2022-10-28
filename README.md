@@ -13,17 +13,21 @@
   <a href="#Screenshots">Screenshots</a>
 </h3>
 
-
 # Requirements
+
 I am making use of a certain number of system programs that you can find in [`REQUIREMENTS.md`](https://github.com/gennaro-tedesco/dotfiles/blob/master/REQUIREMENTS.md); some of them are necessary as they are included in `zsh` functions as well as `neovim` plugins and `navi` commands, whereas some others are optional.
 
 # Installation
+
 Clone the repository
+
 ```
 git clone git@github.com:gennaro-tedesco/dotfiles.git
 cd dotfiles
 ```
+
 Use the [`Makefile`](https://github.com/gennaro-tedesco/dotfiles/blob/master/Makefile) to install the programs configurations you want:
+
 ```
 # to install nvim configurations
 make install-nvim plug=1 # <-- plug=1 installs plugins too, omit otherwise
@@ -34,9 +38,11 @@ make install-zsh
 # to install navi cheatsheets
 make install-navi
 ```
+
 and so forth.
 
 # Screenshots
+
 <details>
   <summary>Show look</summary>
 

@@ -1,5 +1,10 @@
 repos:
-- repo: https://github.com/JohnnyMorganz/StyLua
-  rev: v0.14.3
-  hooks:
-    - id: stylua
+  - repo: https://github.com/JohnnyMorganz/StyLua
+    rev: v0.15.1
+    hooks:
+      - id: stylua
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: "v3.0.0-alpha.4"
+    hooks:
+      - id: prettier
+        types_or: [json, markdown, yaml]
