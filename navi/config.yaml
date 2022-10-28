@@ -13,7 +13,5 @@ finder:
   command: fzf
 cheats:
   path: ~/.config/navi
-# search:
-# tags: git,!checkout # equivalent to the --tag-rules option
 shell:
   command: zsh
