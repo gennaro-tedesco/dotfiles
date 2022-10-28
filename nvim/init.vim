@@ -46,7 +46,6 @@ Plug 'MunifTanjim/nui.nvim'
 Plug 'chentoast/marks.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug 'rcarriga/nvim-notify'
-Plug 'ethanholz/nvim-lastplace'
 Plug 'numToStr/Comment.nvim'
 
 " my personal plugins: they are awesome

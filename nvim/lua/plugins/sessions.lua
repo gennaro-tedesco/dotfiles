@@ -93,7 +93,7 @@ M.list_sessions = function()
 		},
 		actions = {
 			["default"] = M.load_session,
-			["ctrl-x"] = M.delete_session,
+			["ctrl-x"] = { M.delete_session, require("fzf-lua").actions.resume },
 		},
 	})
 end

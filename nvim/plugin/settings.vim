@@ -75,3 +75,8 @@ augroup HIGHLIGHTS
 	autocmd BufEnter * silent! hi clear ErrorMsg
 	autocmd BufEnter * silent! hi ErrorMsg cterm=bold gui=bold guifg=#dc322f guibg=None
 augroup END
+
+augroup LASTPLACE
+	autocmd!
+	autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
