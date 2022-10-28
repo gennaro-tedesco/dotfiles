@@ -17,7 +17,7 @@ M.session_bufs = function(file)
 	local buf_pat = "^badd%s*%+%d"
 	for line in io.lines(file) do
 		if string.find(line, cwd_pat) then
-			cwd = line
+			cwd = line:gsub("%p", "%%%1")
 		end
 		if string.find(line, buf_pat) then
 			lines[#lines + 1] = line
@@ -25,7 +25,7 @@ M.session_bufs = function(file)
 	end
 	local buffers = {}
 	for k, v in pairs(lines) do
-		buffers[k] = v:gsub(buf_pat, ""):gsub("%d", ""):gsub(cwd:gsub("cd%s*", ""), ""):gsub("^%s*/?%./", "")
+		buffers[k] = v:gsub(buf_pat, ""):gsub("%d", ""):gsub(cwd:gsub("cd%s*", ""), ""):gsub("^%s*/?%.?/", "")
 	end
 	return table.concat(buffers, "\n")
 end
