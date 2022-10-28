@@ -4,6 +4,6 @@ if not ok then
 end
 
 require("nvim-treesitter.configs").setup({
-	highlight = { enable = true },
-	ensure_installed = { "go", "python", "json", "lua", "bash", "regex", "yaml", "vim" },
+	highlight = { enable = true, disable = { "markdown" } },
+	ensure_installed = { "bash", "go", "json", "lua", "markdown", "markdown_inline", "python", "regex", "yaml", "vim" },
 })
