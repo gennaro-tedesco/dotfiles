@@ -74,6 +74,10 @@ augroup HIGHLIGHTS
 	autocmd!
 	autocmd BufEnter * silent! hi clear ErrorMsg
 	autocmd BufEnter * silent! hi ErrorMsg cterm=bold gui=bold guifg=#dc322f guibg=None
+	autocmd BufEnter * silent! hi clear DiffDelete
+	autocmd BufEnter * silent! hi DiffDelete cterm=bold ctermfg=12 ctermbg=6 gui=bold guifg=#dc322f guibg=None
+	autocmd BufEnter * silent! hi clear DiffChange
+	autocmd BufEnter * silent! hi DiffChange ctermbg=5 guifg=#b58900 guibg=None guisp=#b58900
 augroup END
 
 augroup LASTPLACE
