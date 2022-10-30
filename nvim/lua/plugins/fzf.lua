@@ -81,6 +81,22 @@ fzf.setup({
 			end,
 		},
 	},
+	highlights = {
+		prompt = "highlights:",
+		winopts = {
+			width = 0.8,
+			height = 0.7,
+			preview = {
+				horizontal = "down:40%",
+				wrap = "wrap",
+			},
+		},
+		actions = {
+			["default"] = function(selected)
+				print(vim.cmd.highlight(selected[1]))
+			end,
+		},
+	},
 	registers = {
 		prompt = "registers:",
 		preview_opts = "hidden",
