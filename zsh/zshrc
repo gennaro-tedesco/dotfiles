@@ -66,6 +66,7 @@ alias goenv="list_goenv"
 alias src="exec zsh"
 alias calc="insect"
 alias :q="exit"
+alias cheat="cht.sh --shell"
 alias upgrade="brew upgrade && brew cleanup --prune=1 -s"
 
 
