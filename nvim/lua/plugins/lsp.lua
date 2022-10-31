@@ -81,6 +81,8 @@ lsp.jsonls.setup({
 	capabilities = capabilities,
 })
 
+require("lspconfig").texlab.setup({ on_attach = on_attach })
+
 -- diagnostics: linting and formatting --
 vim.diagnostic.config({
 	virtual_text = true,
