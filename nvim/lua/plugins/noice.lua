@@ -111,7 +111,7 @@ noice.setup({
 	},
 	routes = {
 		{ filter = { find = "E162" }, view = "mini" },
-		{ filter = { find = "written" }, view = "mini" },
+		{ filter = { event = "msg_show", kind = "", find = "written" }, view = "mini" },
 		{ filter = { event = "msg_show", find = "search hit BOTTOM" }, skip = true },
 		{ filter = { event = "msg_show", find = "search hit TOP" }, skip = true },
 		{ filter = { event = "emsg", find = "E23" }, skip = true },
