@@ -46,10 +46,10 @@ awk -F ',' '!seen[$<colNr>]++' <filename>
 awk '!NF {print NR}' <filename>
 
 # select null in column
-awk -F ',' '!$<colNr>' <filename>
+awk -F ',' '$<colNr> ~/^$/' <filename>
 
 # exclude null in column
-awk -F ',' '$<colNr>' <filename>
+awk -F ',' '$<colNr> !~/^$/' <filename>
 
 # search for only spaces in column
 awk -F ',' '$<colNr> ~/^[[:blank:]]+$/' <filename>
