@@ -53,7 +53,7 @@ end)
 local snips = {
 	lua = {
 		s(
-			{ trig = "pcall", dscr = "protected call" },
+			{ trig = "pcall", name = "protected call" },
 			fmt(
 				[[
 				local ok, {} = pcall(require, '{}')
@@ -62,9 +62,9 @@ local snips = {
 				{ i(1, "name"), i(2, "module") }
 			)
 		),
-		s({ trig = "req", dscr = "local require" }, fmt("local {} = require('{}')", { i(1, "name"), i(2, "module") })),
+		s({ trig = "req", name = "local require" }, fmt("local {} = require('{}')", { i(1, "name"), i(2, "module") })),
 		s(
-			{ trig = "lf", dscr = "local function" },
+			{ trig = "lf", name = "local function" },
 			fmt(
 				[[
 				local function {}({})
@@ -75,7 +75,7 @@ local snips = {
 			)
 		),
 		s(
-			{ trig = "mod", dscr = "local module M" },
+			{ trig = "mod", name = "local module M" },
 			fmt(
 				[[
 				local M = {{}}
@@ -92,7 +92,7 @@ local snips = {
 		s(
 			{
 				trig = "link",
-				dscr = "Create markdown link [txt](url)",
+				name = "Create markdown link [txt](url)",
 			},
 			fmt(
 				"[{}]({})",
@@ -101,12 +101,27 @@ local snips = {
 				end, {}) }
 			)
 		),
+		s(
+			{
+				trig = "lang",
+				name = "code block markdown language",
+			},
+			fmt(
+				[[
+				```{}
+
+				{}
+				```
+				]],
+				{ i(1, "language"), i(2, "body") }
+			)
+		),
 	},
 	python = {
 		s(
 			{
 				trig = "test",
-				dscr = "template unit test",
+				name = "template unit test",
 			},
 			fmt(
 				[[
@@ -128,7 +143,7 @@ local snips = {
 		),
 		s({
 			trig = "csv",
-			dscr = "save df to csv",
+			name = "save df to csv",
 		}, {
 			f(function(_, snip)
 				return snip.env.TM_SELECTED_TEXT[1] or {}
@@ -143,21 +158,21 @@ local snips = {
 	sh = {
 		s({
 			trig = "shebang",
-			namr = "preferred shebang",
+			name = "preferred shebang",
 		}, {
 			t("#!/bin/sh"),
 			i(0),
 		}),
 		s({
 			trig = "var",
-			namr = "variable indicator",
+			name = "variable indicator",
 		}, fmt('"${}"', i(1, "var"))),
 	},
 	vim = {
 		s(
 			{
 				trig = "plug",
-				namr = "include plugin",
+				name = "include plugin",
 			},
 			fmt(
 				"Plug '{}'",
@@ -170,7 +185,7 @@ local snips = {
 	zsh = {
 		s({
 			trig = "var",
-			namr = "variable indicator",
+			name = "variable indicator",
 		}, fmt('"${}"', i(1, "var"))),
 	},
 }
