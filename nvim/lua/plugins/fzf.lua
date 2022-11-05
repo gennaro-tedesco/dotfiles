@@ -48,7 +48,8 @@ fzf.setup({
 			preview_opts = "nohidden",
 			winopts = {
 				preview = {
-					horizontal = "right:50%",
+					layout = "vertical",
+					vertical = "right:50%",
 					wrap = "wrap",
 				},
 				row = 1,
@@ -87,6 +88,7 @@ fzf.setup({
 			width = 0.8,
 			height = 0.7,
 			preview = {
+				layout = "horizontal",
 				horizontal = "down:40%",
 				wrap = "wrap",
 			},
@@ -104,8 +106,8 @@ fzf.setup({
 			width = 0.8,
 			height = 0.7,
 			preview = {
-				layout = "vertical",
-				vertical = "down:45%",
+				layout = "horizontal",
+				horizontal = "down:45%",
 			},
 		},
 	},
