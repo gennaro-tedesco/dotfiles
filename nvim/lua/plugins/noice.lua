@@ -10,7 +10,7 @@ local noice_cmd_types = {
 	Lua = "Constant",
 	Filter = "Constant",
 	Rename = "Constant",
-	Substitute = "Define",
+	Substitute = "NoiceCmdlinePopupBorderSearch",
 	Help = "helpVim",
 }
 vim.api.nvim_clear_autocmds({ group = noice_hl })
@@ -43,7 +43,7 @@ noice.setup({
 			input = { icon = "", ft = "text", opts = cmdline_opts },
 			substitute = {
 				pattern = "^:%%?s/",
-				icon = " ",
+				icon = "",
 				ft = "regex",
 				opts = {
 					border = {
