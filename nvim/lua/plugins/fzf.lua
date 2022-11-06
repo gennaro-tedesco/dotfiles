@@ -43,6 +43,8 @@ fzf.setup({
 				["ctrl-d"] = function(...)
 					fzf.actions.git_buf_vsplit(...)
 					vim.cmd("windo diffthis")
+					local switch = vim.api.nvim_replace_termcodes("<C-w>h", true, false, true)
+					vim.api.nvim_feedkeys(switch, "t", false)
 				end,
 			},
 			preview_opts = "nohidden",
@@ -53,7 +55,6 @@ fzf.setup({
 					wrap = "wrap",
 				},
 				row = 1,
-				hl = { cursorline = "IncSearch" },
 				width = vim.api.nvim_win_get_width(0),
 				height = 0.3,
 			},
@@ -62,6 +63,11 @@ fzf.setup({
 			prompt = "branches:",
 			cmd = "git branch --all --color",
 			winopts = {
+				preview = {
+					layout = "vertical",
+					vertical = "right:50%",
+					wrap = "wrap",
+				},
 				row = 1,
 				width = vim.api.nvim_win_get_width(0),
 				height = 0.3,
