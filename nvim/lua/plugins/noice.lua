@@ -43,7 +43,7 @@ noice.setup({
 			input = { icon = "", ft = "text", opts = cmdline_opts },
 			substitute = {
 				pattern = "^:%%?s/",
-				icon = "",
+				icon = "<->",
 				ft = "regex",
 				opts = {
 					border = {
