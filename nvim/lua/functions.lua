@@ -101,9 +101,17 @@ M.git_root = function()
 	return vim.fn.fnamemodify(git_path, ":h")
 end
 
-P = function(v)
-	print(vim.inspect(v))
-	return v
+P = function(...)
+	local msg = vim.inspect(...)
+	notify(msg, "info", {
+		on_open = function(win)
+			vim.wo[win].conceallevel = 3
+			vim.wo[win].concealcursor = ""
+			vim.wo[win].spell = false
+			local buf = vim.api.nvim_win_get_buf(win)
+			vim.treesitter.start(buf, "lua")
+		end,
+	})
 end
 
 RELOAD = function(...)

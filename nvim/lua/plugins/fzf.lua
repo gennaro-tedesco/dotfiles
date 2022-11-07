@@ -84,7 +84,7 @@ fzf.setup({
 			["default"] = function(selected)
 				local lines = vim.split(selected[1], "│", {})
 				local mode, key = lines[1]:gsub("%s+", ""), lines[2]:gsub("%s+", "")
-				print(vim.cmd("verbose " .. mode .. "map " .. key))
+				vim.cmd("verbose " .. mode .. "map " .. key)
 			end,
 		},
 	},
