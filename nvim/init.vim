@@ -45,6 +45,7 @@ Plug 'MunifTanjim/nui.nvim'
 " settings that make vim easier to use
 Plug 'chentoast/marks.nvim'
 Plug 'windwp/nvim-autopairs'
+Plug 'kylechui/nvim-surround'
 Plug 'rcarriga/nvim-notify'
 Plug 'numToStr/Comment.nvim'
 
