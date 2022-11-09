@@ -12,7 +12,7 @@ install-nvim:
 	mkdir -p ${NEOVIMCONFIG_DIR}
 	cp -r nvim/. ${NEOVIMCONFIG_DIR}
 ifdef plug
-	nvim -cPlugClean -cPlugInstall -cPlugUpdate -cUpdateRemotePlugins -cqa
+	nvim -cPlugClean -cPlugInstall -cPlugUpdate -cqa
 endif
 
 install-zsh:
