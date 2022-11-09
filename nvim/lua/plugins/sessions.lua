@@ -1,3 +1,8 @@
+local ok, fzf = pcall(require, "fzf-lua")
+if not ok then
+	return
+end
+
 local M = {}
 
 M.config = {
@@ -72,14 +77,14 @@ M.delete = function(selected)
 		end
 	end
 end
-require("fzf-lua").config.set_action_helpstr(M.delete, "delete-session")
+fzf.config.set_action_helpstr(M.delete, "delete-session")
 
 M.load = function(selected)
 	local session = M.config.sessions_path .. selected[1]
 	vim.cmd.source(session)
 	vim.g[M.config.sessions_variable] = vim.fs.basename(session)
 end
-require("fzf-lua").config.set_action_helpstr(M.load, "load-session")
+fzf.config.set_action_helpstr(M.load, "load-session")
 
 M.list = function()
 	local iter = vim.loop.fs_scandir(M.config.sessions_path)
@@ -89,14 +94,14 @@ M.list = function()
 		return
 	end
 
-	return require("fzf-lua").files({
+	return fzf.files({
 		prompt = "sessions:",
 		show_cwd_header = false,
 		cwd = M.config.sessions_path,
 		previewer = false,
 		preview_opts = "nohidden",
 		preview_horizontal = "down:50%",
-		preview = require("fzf-lua").shell.raw_action(function(items)
+		preview = fzf.shell.raw_action(function(items)
 			local contents = {}
 			vim.tbl_map(function(x)
 				table.insert(contents, M.session_files(M.config.sessions_path .. x))
@@ -108,7 +113,7 @@ M.list = function()
 		},
 		actions = {
 			["default"] = M.load,
-			["ctrl-x"] = { M.delete, require("fzf-lua").actions.resume },
+			["ctrl-x"] = { M.delete, fzf.actions.resume },
 		},
 	})
 end
