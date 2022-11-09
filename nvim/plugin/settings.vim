@@ -19,7 +19,7 @@ set cmdheight=0
 set splitbelow splitright
 set scrolloff=8
 set noshowmode
-highlight WinSeparator guibg=None
+highlight WinSeparator guibg=None guifg=#268bd2
 
 " standard vim behaviour
 augroup FORMAT
