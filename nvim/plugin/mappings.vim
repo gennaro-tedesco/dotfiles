@@ -98,7 +98,7 @@ nnoremap <leader>gl <cmd> lua require('fzf-lua').git_bcommits()<CR>
 nnoremap <leader>gb <cmd> lua require('fzf-lua').git_branches()<CR>
 
 " open todo file in one go
-nnoremap <leader>t :e<space>~/.todo<CR>
+nnoremap <leader>t <cmd>e ~/.todo<CR>
 
 " clean up search results and extmarks
 nnoremap <silent> <CR> :let @/="" <bar> lua vim.api.nvim_buf_clear_namespace(0, -1, 0, -1)<CR>
