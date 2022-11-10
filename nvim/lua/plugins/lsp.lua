@@ -81,6 +81,13 @@ lsp.jsonls.setup({
 	capabilities = capabilities,
 })
 lsp.rust_analyzer.setup({
+	settings = {
+		["rust-analyzer"] = {
+			checkOnSave = {
+				command = "clippy",
+			},
+		},
+	},
 	capabilities = capabilities,
 	on_attach = on_attach,
 	lsp_flags = lsp_flags,
