@@ -64,6 +64,33 @@ local snips = {
 		),
 		s({ trig = "req", name = "local require" }, fmt("local {} = require('{}')", { i(1, "name"), i(2, "module") })),
 		s(
+			{ trig = "aucmd", name = "create lua autocommand" },
+			fmt(
+				[[
+				local {} = vim.api.nvim_create_augroup("{}", {{}})
+				vim.api.nvim_clear_autocmds({{ group = {} }})
+				vim.api.nvim_create_autocmd("{}", {{
+					group = {},
+					callback = function()
+						{}
+					end,
+				}})
+				]],
+				{
+					i(1, "name"),
+					i(2, "augroup_name"),
+					f(function(name)
+						return name[1]
+					end, { 1 }),
+					i(3, "vim event"),
+					f(function(name)
+						return name[1]
+					end, { 1 }),
+					i(0, "command"),
+				}
+			)
+		),
+		s(
 			{ trig = "lf", name = "local function" },
 			fmt(
 				[[
