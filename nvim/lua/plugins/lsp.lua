@@ -80,7 +80,11 @@ lsp.jsonls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
-
+lsp.rust_analyzer.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	lsp_flags = lsp_flags,
+})
 lsp.texlab.setup({ on_attach = on_attach })
 
 -- diagnostics: linting and formatting --

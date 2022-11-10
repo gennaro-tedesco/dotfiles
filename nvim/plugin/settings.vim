@@ -27,6 +27,7 @@ augroup FORMAT
 	autocmd FileType * set formatoptions-=cro
 augroup END
 
+set undofile
 set noswapfile
 set hidden
 set mouse=a
