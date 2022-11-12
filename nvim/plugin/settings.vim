@@ -3,7 +3,6 @@
 "" --------------
 
 " colour scheme
-set termguicolors
 set background=dark
 colorscheme solarized8_flat
 
