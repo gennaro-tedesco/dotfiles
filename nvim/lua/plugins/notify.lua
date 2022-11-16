@@ -16,5 +16,5 @@ vim.api.nvim_create_autocmd("BufEnter", {
 notify.setup({
 	timeout = 5000,
 	render = "minimal",
-	stages = "static",
+	stages = "fade_in_slide_out",
 })

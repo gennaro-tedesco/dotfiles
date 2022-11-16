@@ -120,3 +120,15 @@ noice.setup({
 		{ filter = { find = "E37" }, skip = true },
 	},
 })
+
+vim.keymap.set("n", "<c-j>", function()
+	if not require("noice.lsp").scroll(4) then
+		return "<c-j>"
+	end
+end, { silent = true, expr = true })
+
+vim.keymap.set("n", "<c-k>", function()
+	if not require("noice.lsp").scroll(-4) then
+		return "<c-k>"
+	end
+end, { silent = true, expr = true })
