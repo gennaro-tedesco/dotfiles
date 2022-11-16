@@ -68,6 +68,7 @@ alias calc="insect"
 alias :q="exit"
 alias cheat="cht.sh --shell"
 alias upgrade="brew upgrade && brew cleanup --prune=1 -s"
+alias csp="xsv table | bat -H1 -p -l csv --theme='Nord'"
 
 
 ## -----------------------
