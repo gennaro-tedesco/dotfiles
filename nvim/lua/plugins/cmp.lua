@@ -26,10 +26,10 @@ cmp.setup({
 		format = function(entry, item)
 			item.kind = string.format("%s %s", Icons[item.kind], item.kind)
 			item.menu = ({
-				nvim_lsp = "[LSP]",
-				luasnip = "[snip]",
-				buffer = "[buf]",
-				path = "[../]",
+				nvim_lsp = "✨",
+				luasnip = "🚀",
+				buffer = "📝",
+				path = "📁",
 			})[entry.source.name]
 			return item
 		end,

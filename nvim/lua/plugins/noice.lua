@@ -45,13 +45,7 @@ noice.setup({
 				pattern = "^:%%?s/",
 				icon = "<->",
 				ft = "regex",
-				opts = {
-					border = {
-						text = {
-							top = " sub (old/new/) ",
-						},
-					},
-				},
+				opts = { border = { text = { top = " sub (old/new/) " } } },
 			},
 			filter = { pattern = "^:%s*!", icon = "$", ft = "sh", opts = cmdline_opts },
 			filefilter = { kind = "Filter", pattern = "^:%s*%%%s*!", icon = " $", ft = "sh", opts = cmdline_opts },
@@ -72,11 +66,7 @@ noice.setup({
 					size = { min_width = 20 },
 					position = { row = -3, col = 0 },
 					buf_options = { filetype = "text" },
-					border = {
-						text = {
-							top = " rename ",
-						},
-					},
+					border = { text = { top = " rename " } },
 				},
 			},
 			help = { pattern = "^:%s*h%s+", icon = "", opts = cmdline_opts },
