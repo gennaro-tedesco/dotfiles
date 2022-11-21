@@ -27,6 +27,9 @@ gitsigns.setup({
 		changedelete = { hl = "GitSignsChange", text = "_", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
 		untracked = { hl = "GitSignsAdd", text = "+", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
 	},
+	preview_config = {
+		border = "rounded",
+	},
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
 
@@ -67,5 +70,15 @@ gitsigns.setup({
 		map("n", "<leader>gB", function()
 			gs.blame_line({ full = true })
 		end)
+	end,
+})
+
+local gs_hl = vim.api.nvim_create_augroup("GitSignsHighlight", {})
+vim.api.nvim_clear_autocmds({ group = gs_hl })
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = gs_hl,
+	callback = function()
+		vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", {})
+		vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { link = "Comment" })
 	end,
 })
