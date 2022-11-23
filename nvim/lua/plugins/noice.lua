@@ -94,7 +94,10 @@ noice.setup({
 			},
 		},
 	},
-	views = { split = { enter = true } },
+	views = {
+		split = { enter = true },
+		mini = { win_options = { winblend = 100 } },
+	},
 	presets = {
 		long_message_to_split = true,
 		lsp_doc_border = true,
