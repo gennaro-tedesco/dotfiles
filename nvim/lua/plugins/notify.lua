@@ -18,3 +18,8 @@ notify.setup({
 	render = "minimal",
 	stages = "fade_in_slide_out",
 })
+
+vim.keymap.set("n", "<Esc>", function()
+	require("notify").dismiss()
+	vim.cmd.nohlsearch()
+end)
