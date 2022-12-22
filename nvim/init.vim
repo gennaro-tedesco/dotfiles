@@ -29,7 +29,8 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'akinsho/git-conflict.nvim'
 
 " file navigation
-Plug 'voldikss/vim-floaterm'
+Plug 'numToStr/FTerm.nvim'
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'jremmen/vim-ripgrep'
 

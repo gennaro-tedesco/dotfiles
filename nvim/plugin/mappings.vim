@@ -76,7 +76,7 @@ nnoremap n nzz<cmd>lua require("functions").hl_search(0.3)<CR>
 nnoremap N Nzz<cmd>lua require("functions").hl_search(0.3)<CR>
 
 " buffers and files browsing
-nnoremap <C-n> <cmd> FloatermNew vifm<CR>
+nnoremap <C-n> <cmd> lua require("nvim-tree.api").tree.toggle()<CR>
 nnoremap <C-p> <cmd> lua require('fzf-lua').files({show_cwd_header=false, cwd=require("functions").git_root()})<CR>
 nnoremap <C-b> <cmd> lua require('fzf-lua').buffers()<CR>
 nnoremap <C-h> :Rg<space>
