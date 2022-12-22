@@ -5,17 +5,22 @@ local HEIGHT_RATIO = 0.8
 local WIDTH_RATIO = 0.4
 
 require("nvim-tree").setup({
-	remove_keymaps = { "<Tab>", "D", "d", "s", "r" },
+	remove_keymaps = true,
 	renderer = { icons = { show = { file = false } } },
 	diagnostics = { enable = false },
 	view = {
 		mappings = {
 			list = {
+				{ key = "<CR>", action = "cd" },
+				{ key = { "q", "<Esc>" }, action = "close" },
+				{ key = { "l", "<Right>" }, action = "edit" },
+				{ key = { "h", "<Left>" }, action = "close_node" },
 				{ key = "i", action = "rename" },
 				{ key = "dd", action = "remove" },
 				{ key = "++", action = "next_git_item" },
 				{ key = "--", action = "prev_git_item" },
 				{ key = "o", action = "preview" },
+				{ key = "K", action = "toggle_file_info" },
 			},
 		},
 		float = {
