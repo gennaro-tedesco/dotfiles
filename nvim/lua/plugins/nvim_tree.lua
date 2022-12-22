@@ -5,10 +5,19 @@ local HEIGHT_RATIO = 0.8
 local WIDTH_RATIO = 0.4
 
 require("nvim-tree").setup({
-	remove_keymaps = { "<Tab>" },
+	remove_keymaps = { "<Tab>", "D", "d", "s", "r" },
 	renderer = { icons = { show = { file = false } } },
 	diagnostics = { enable = false },
 	view = {
+		mappings = {
+			list = {
+				{ key = "i", action = "rename" },
+				{ key = "dd", action = "remove" },
+				{ key = "++", action = "next_git_item" },
+				{ key = "--", action = "prev_git_item" },
+				{ key = "o", action = "preview" },
+			},
+		},
 		float = {
 			enable = true,
 			open_win_config = function()
@@ -33,5 +42,8 @@ require("nvim-tree").setup({
 		width = function()
 			return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
 		end,
+	},
+	filters = {
+		dotfiles = true,
 	},
 })
