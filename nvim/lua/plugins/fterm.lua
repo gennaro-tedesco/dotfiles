@@ -1,4 +1,9 @@
-require("FTerm").setup({
+local ok, fterm = pcall(require, "FTerm")
+if not ok then
+	return
+end
+
+fterm.setup({
 	border = "rounded",
 	dimensions = {
 		height = 0.85,

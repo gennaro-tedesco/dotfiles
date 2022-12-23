@@ -32,6 +32,8 @@ nvim_tree.setup({
 				{ key = "++", action = "next_git_item" },
 				{ key = "--", action = "prev_git_item" },
 				{ key = "o", action = "preview" },
+				{ key = "za", action = "toggle_dotfiles" },
+				{ key = "zi", action = "toggle_git_ignored" },
 				{ key = "K", action = "toggle_file_info" },
 				{ key = "yf", action = "copy_name" },
 				{ key = "yp", action = "copy_path" },
