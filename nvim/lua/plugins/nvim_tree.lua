@@ -1,26 +1,40 @@
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+local ok, nvim_tree = pcall(require, "nvim-tree")
+if not ok then
+	return
+end
 
 local HEIGHT_RATIO = 0.8
 local WIDTH_RATIO = 0.4
 
-require("nvim-tree").setup({
+local function edit_cd(node)
+	local api = require("nvim-tree.api")
+	if vim.fn.isdirectory(node.absolute_path) == 1 then
+		return api.tree.change_root_to_node(node)
+	else
+		return api.node.open.edit(node)
+	end
+end
+
+nvim_tree.setup({
 	remove_keymaps = true,
 	renderer = { icons = { show = { file = false } } },
 	diagnostics = { enable = false },
 	view = {
 		mappings = {
 			list = {
-				{ key = "<CR>", action = "cd" },
+				{ key = "<CR>", action = "edit_cd", action_cb = edit_cd },
 				{ key = { "q", "<Esc>" }, action = "close" },
 				{ key = { "l", "<Right>" }, action = "edit" },
 				{ key = { "h", "<Left>" }, action = "close_node" },
+				{ key = "a", action = "create" },
 				{ key = "i", action = "rename" },
 				{ key = "dd", action = "remove" },
 				{ key = "++", action = "next_git_item" },
 				{ key = "--", action = "prev_git_item" },
 				{ key = "o", action = "preview" },
 				{ key = "K", action = "toggle_file_info" },
+				{ key = "yf", action = "copy_name" },
+				{ key = "yp", action = "copy_path" },
 			},
 		},
 		float = {
