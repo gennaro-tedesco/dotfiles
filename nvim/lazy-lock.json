@@ -1,4 +1,8 @@
 {
+  "FTerm.nvim": {
+    "branch": "master",
+    "commit": "d1320892cc2ebab472935242d9d992a2c9570180"
+  },
   "cmp-buffer": {
     "branch": "main",
     "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa"
@@ -14,6 +18,10 @@
   "cmp-path": {
     "branch": "main",
     "commit": "91ff86cd9c29299a64f968ebb45846c485725f23"
+  },
+  "fzf-lua": {
+    "branch": "main",
+    "commit": "5abf66f63bf08121dd4e917488b59ccb693eee12"
   },
   "inc-rename.nvim": {
     "branch": "main",
@@ -45,11 +53,15 @@
   },
   "nvim-lspconfig": {
     "branch": "master",
-    "commit": "f6cdf0ac0e8ac5b2c40457cc1d83a9357dc2f7ce"
+    "commit": "b0bd4297763024bfeb0c3065609361fb599c3594"
   },
   "nvim-notify": {
     "branch": "master",
     "commit": "b005821516f1f37801a73067afd1cef2dbc4dfe8"
+  },
+  "nvim-tree.lua": {
+    "branch": "master",
+    "commit": "9e4c39572f631bb60ee15cb9d46e1daa9927a45e"
   },
   "nvim-treesitter": {
     "branch": "master",
@@ -58,6 +70,10 @@
   "nvim-treesitter-context": {
     "branch": "master",
     "commit": "d28654b012d4c56beafec630ef7143275dff76f8"
+  },
+  "vim-ripgrep": {
+    "branch": "master",
+    "commit": "2bb2425387b449a0cd65a54ceb85e123d7a320b8"
   },
   "vim-solarized8": {
     "branch": "master",
