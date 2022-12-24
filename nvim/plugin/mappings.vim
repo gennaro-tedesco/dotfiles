@@ -1,10 +1,6 @@
 "" ---------------------------------------
 "" --- remapping and keys combinations ---
 "" ---------------------------------------
-" remap leader key
-let mapleader = "\<Space>"
-let maplocalleader =  "\<Space>"
-
 " prevent record functionality
 nnoremap q <nop>
 nnoremap qq q

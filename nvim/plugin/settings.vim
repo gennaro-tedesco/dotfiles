@@ -4,7 +4,6 @@
 
 " colour scheme
 set background=dark
-colorscheme solarized8_flat
 
 " cursorline, windows frame and looks
 set showbreak=↪\

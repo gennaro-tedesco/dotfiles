@@ -1,0 +1,22 @@
+{
+  "lazy.nvim": {
+    "branch": "main",
+    "commit": "a973c2edc2167012d4721a784a0da46906cf005c"
+  },
+  "neoscroll.nvim": {
+    "branch": "master",
+    "commit": "54c5c419f6ee2b35557b3a6a7d631724234ba97a"
+  },
+  "nvim-treesitter": {
+    "branch": "master",
+    "commit": "cf6b5cb1ede83741d5cca7071fd75df3b942d3ca"
+  },
+  "nvim-treesitter-context": {
+    "branch": "master",
+    "commit": "d28654b012d4c56beafec630ef7143275dff76f8"
+  },
+  "vim-solarized8": {
+    "branch": "master",
+    "commit": "9f9b7951975012ce51766356c7c28ba56294f9e8"
+  }
+}
