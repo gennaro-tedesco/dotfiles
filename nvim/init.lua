@@ -46,7 +46,6 @@ local plugins = {
 		dev = false,
 		build = ":TSUpdate",
 		event = "BufReadPost",
-
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-context",
 		},
@@ -97,6 +96,7 @@ local plugins = {
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
+		keys = { ":", "/", "?" },
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
@@ -121,6 +121,12 @@ local plugins = {
 		end,
 	},
 	{
+		"jose-elias-alvarez/null-ls.nvim",
+		config = function()
+			require("plugins.null_ls")
+		end,
+	},
+	{
 		"smjonas/inc-rename.nvim",
 		config = true,
 	},
@@ -134,6 +140,18 @@ local plugins = {
 			require("plugins.symbols_outline")
 		end,
 	},
+	{
+		"lervag/vimtex",
+		ft = "tex",
+		init = function()
+			vim.g.vimtex_view_general_viewer = "zathura"
+			vim.g.vimtex_view_zathura_options = "-reuse-instance"
+			vim.g.vimtex_imaps_leader = ","
+			vim.g.tex_conceal = ""
+			vim.g.tex_fast = ""
+			vim.g.tex_flavor = "latex"
+		end,
+	},
 
 	--- file navigation
 	{
@@ -144,7 +162,6 @@ local plugins = {
 			vim.keymap.set({ "n" }, "<C-p>", function()
 				fzf.files({ show_cwd_header = false, cwd = require("functions").git_root() })
 			end)
-
 			vim.keymap.set({ "n" }, "<C-b>", function()
 				fzf.buffers()
 			end)
@@ -194,6 +211,52 @@ local plugins = {
 		end,
 	},
 
+	--- git integration
+	{
+		"tpope/vim-fugitive",
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+		event = "BufReadPre",
+		config = function()
+			require("plugins.gitsigns")
+		end,
+	},
+	{
+		"akinsho/git-conflict.nvim",
+		init = function()
+			vim.keymap.set("n", "c+", "<Plug>(git-conflict-next-conflict)")
+			vim.keymap.set("n", "c-", "<Plug>(git-conflict-prev-conflict)")
+			vim.keymap.set("n", "cq", ":GitConflictListQf<CR>")
+		end,
+		config = { default_mappings = true, highlights = { incoming = "DiffText", current = "DiffAdd" } },
+	},
+
+	--- plugins that make vim easier to use
+	{
+		"chentoast/marks.nvim",
+		init = function()
+			vim.keymap.set("n", "m/", ":MarksListAll<CR>")
+		end,
+		keys = { "m" },
+		config = {
+			mappings = {
+				set_next = "mm",
+				next = "mn",
+				prev = "mp",
+				preview = false,
+			},
+		},
+	},
+	{
+		"kylechui/nvim-surround",
+		config = true,
+	},
+	{
+		"numToStr/Comment.nvim",
+		config = true,
+	},
+
 	--- my plugins, they're awesome
 	{
 		"gennaro-tedesco/nvim-jqx",
@@ -222,6 +285,7 @@ local opts = {
 	},
 	checker = {
 		enabled = true,
+		notify = false,
 	},
 }
 require("lazy").setup(plugins, opts)
