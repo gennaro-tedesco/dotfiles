@@ -3,6 +3,10 @@
     "branch": "master",
     "commit": "d1320892cc2ebab472935242d9d992a2c9570180"
   },
+  "LuaSnip": {
+    "branch": "master",
+    "commit": "5570fd797eae0790affb54ea669a150cad76db5d"
+  },
   "cmp-buffer": {
     "branch": "main",
     "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa"
@@ -18,6 +22,10 @@
   "cmp-path": {
     "branch": "main",
     "commit": "91ff86cd9c29299a64f968ebb45846c485725f23"
+  },
+  "cmp_luasnip": {
+    "branch": "master",
+    "commit": "18095520391186d634a0045dacaa346291096566"
   },
   "fzf-lua": {
     "branch": "main",
