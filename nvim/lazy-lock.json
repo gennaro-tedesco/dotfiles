@@ -1,4 +1,24 @@
 {
+  "cmp-buffer": {
+    "branch": "main",
+    "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa"
+  },
+  "cmp-cmdline": {
+    "branch": "main",
+    "commit": "23c51b2a3c00f6abc4e922dbd7c3b9aca6992063"
+  },
+  "cmp-nvim-lsp": {
+    "branch": "main",
+    "commit": "59224771f91b86d1de12570b4070fe4ad7cd1eeb"
+  },
+  "cmp-path": {
+    "branch": "main",
+    "commit": "91ff86cd9c29299a64f968ebb45846c485725f23"
+  },
+  "inc-rename.nvim": {
+    "branch": "main",
+    "commit": "48c4aa2be19f79e79b465a9bb37ee9fbe6c606f5"
+  },
   "lazy.nvim": {
     "branch": "main",
     "commit": "a973c2edc2167012d4721a784a0da46906cf005c"
@@ -6,6 +26,30 @@
   "neoscroll.nvim": {
     "branch": "master",
     "commit": "54c5c419f6ee2b35557b3a6a7d631724234ba97a"
+  },
+  "noice.nvim": {
+    "branch": "main",
+    "commit": "585d24ec6e3fb4288414f864cfe2de7d025e8216"
+  },
+  "nui.nvim": {
+    "branch": "main",
+    "commit": "5d1ca66829d8fac9965cd18fcc2cd9aa49ba1ea5"
+  },
+  "nvim-autopairs": {
+    "branch": "master",
+    "commit": "b5994e6547d64f781cfca853a1aa6174d238fe0e"
+  },
+  "nvim-cmp": {
+    "branch": "main",
+    "commit": "d09b0c396aaa078cdfe78316ec06940971136e85"
+  },
+  "nvim-lspconfig": {
+    "branch": "master",
+    "commit": "f6cdf0ac0e8ac5b2c40457cc1d83a9357dc2f7ce"
+  },
+  "nvim-notify": {
+    "branch": "master",
+    "commit": "b005821516f1f37801a73067afd1cef2dbc4dfe8"
   },
   "nvim-treesitter": {
     "branch": "master",
