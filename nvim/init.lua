@@ -47,7 +47,11 @@ local plugins = {
 		build = ":TSUpdate",
 		event = "BufReadPost",
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter-context",
+			{
+				"nvim-treesitter/nvim-treesitter-context",
+				event = "BufReadPre",
+				config = true,
+			},
 		},
 		config = function()
 			require("plugins.treesitter")
@@ -258,6 +262,7 @@ local plugins = {
 	},
 	{
 		"numToStr/Comment.nvim",
+		keys = { "gc", "gcc", "gbc" },
 		config = true,
 	},
 
