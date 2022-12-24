@@ -70,7 +70,9 @@ local plugins = {
 			require("plugins.noice")
 		end,
 	},
-	--- LSP and code autocompletion
+
+	--- LSP, language servers and code autocompletion
+	{ "nvim-lua/plenary.nvim" },
 	{
 		"neovim/nvim-lspconfig",
 		event = "BufReadPre",
@@ -101,6 +103,17 @@ local plugins = {
 		"smjonas/inc-rename.nvim",
 		config = true,
 	},
+	{
+		"simrat39/symbols-outline.nvim",
+		cmd = "SymbolsOutline",
+		init = function()
+			vim.keymap.set("n", "gm", "<cmd>SymbolsOutline<cr>")
+		end,
+		config = function()
+			require("plugins.symbols_outline")
+		end,
+	},
+
 	--- file navigation
 	{
 		"ibhagwan/fzf-lua",
@@ -147,13 +160,14 @@ local plugins = {
 				require("nvim-tree.api").tree.toggle()
 			end)
 		end,
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("plugins.nvim_tree")
 		end,
-		keys = { "<C-n>" },
 	},
 	{
 		"jremmen/vim-ripgrep",
+		cmd = "Rg",
 		init = function()
 			vim.keymap.set("n", "<C-h>", ":Rg<space>")
 		end,

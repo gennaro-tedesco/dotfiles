@@ -75,7 +75,6 @@ nnoremap N Nzz<cmd>lua require("functions").hl_search(0.3)<CR>
 nnoremap <C-g> <cmd> lua require("functions").replace_grep()<CR>
 nnoremap <C-q> <cmd> lua require("functions").toggle_qf()<CR>
 nnoremap <C-l> <cmd> lua require("functions").toggle_ll()<CR>
-nnoremap gm <cmd> SymbolsOutline<CR>
 nnoremap <leader>sn <cmd> lua require('plugins.sessions').new()<CR>
 nnoremap <leader>su <cmd> lua require('plugins.sessions').update()<CR>
 nnoremap <leader>sl <cmd> lua require('plugins.sessions').list()<CR>

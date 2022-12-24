@@ -71,6 +71,18 @@
     "branch": "master",
     "commit": "d28654b012d4c56beafec630ef7143275dff76f8"
   },
+  "nvim-web-devicons": {
+    "branch": "master",
+    "commit": "05e1072f63f6c194ac6e867b567e6b437d3d4622"
+  },
+  "plenary.nvim": {
+    "branch": "master",
+    "commit": "4b7e52044bbb84242158d977a50c4cbcd85070c7"
+  },
+  "symbols-outline.nvim": {
+    "branch": "master",
+    "commit": "6a3ed24c5631da7a5d418bced57c16b32af7747c"
+  },
   "vim-ripgrep": {
     "branch": "master",
     "commit": "2bb2425387b449a0cd65a54ceb85e123d7a320b8"
