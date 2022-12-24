@@ -7,6 +7,10 @@
     "branch": "master",
     "commit": "5570fd797eae0790affb54ea669a150cad76db5d"
   },
+  "alpha-nvim": {
+    "branch": "main",
+    "commit": "21a0f2520ad3a7c32c0822f943368dc063a569fb"
+  },
   "cmp-buffer": {
     "branch": "main",
     "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa"
@@ -39,6 +43,10 @@
     "branch": "main",
     "commit": "a973c2edc2167012d4721a784a0da46906cf005c"
   },
+  "lualine.nvim": {
+    "branch": "master",
+    "commit": "fffbcb829288c3ca366f17cdb8d46aefb5c1d6f3"
+  },
   "neoscroll.nvim": {
     "branch": "master",
     "commit": "54c5c419f6ee2b35557b3a6a7d631724234ba97a"
@@ -55,9 +63,17 @@
     "branch": "master",
     "commit": "b5994e6547d64f781cfca853a1aa6174d238fe0e"
   },
+  "nvim-bqf": {
+    "branch": "main",
+    "commit": "b418b0a241d36509196944a6f6bee886c775d54f"
+  },
   "nvim-cmp": {
     "branch": "main",
     "commit": "d09b0c396aaa078cdfe78316ec06940971136e85"
+  },
+  "nvim-jqx": {
+    "branch": "master",
+    "commit": "24d3e0228aec27280e091d09ff65593e99d4d564"
   },
   "nvim-lspconfig": {
     "branch": "master",

@@ -35,6 +35,13 @@ local plugins = {
 		end,
 	},
 	{
+		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("plugins.lualine")
+		end,
+	},
+	{
 		"nvim-treesitter/nvim-treesitter",
 		dev = false,
 		build = ":TSUpdate",
@@ -70,6 +77,13 @@ local plugins = {
 			require("plugins.noice")
 		end,
 	},
+	{
+		"goolord/alpha-nvim",
+		config = function()
+			require("plugins.alpha")
+		end,
+	},
+	{ "kevinhwang91/nvim-bqf", config = { func_map = { openc = "<CR>" } } },
 
 	--- LSP, language servers and code autocompletion
 	{ "nvim-lua/plenary.nvim" },
@@ -177,6 +191,15 @@ local plugins = {
 		cmd = "Rg",
 		init = function()
 			vim.keymap.set("n", "<C-h>", ":Rg<space>")
+		end,
+	},
+
+	--- my plugins, they're awesome
+	{
+		"gennaro-tedesco/nvim-jqx",
+		ft = { "json", "yaml" },
+		config = function()
+			require("nvim-jqx.config").use_quickfix = false
 		end,
 	},
 }
