@@ -79,10 +79,6 @@ nnoremap <leader>sn <cmd> lua require('plugins.sessions').new()<CR>
 nnoremap <leader>su <cmd> lua require('plugins.sessions').update()<CR>
 nnoremap <leader>sl <cmd> lua require('plugins.sessions').list()<CR>
 
-" git remappings
-nnoremap <leader>gs <cmd> Git<CR>
-nnoremap <leader>gp <cmd> Git push<CR>
-
 " open todo file in one go
 nnoremap <leader>t <cmd>e ~/.todo<CR>
 
