@@ -8,14 +8,14 @@ local M = {}
 M.config = {
 	sessions_path = vim.fn.stdpath("data") .. "/sessions/",
 	sessions_variable = "session",
-	sessions_icon = "",
+	sessions_icon = "📌",
 }
 
 ---set global variable with session name
 ---return string
 M.status = function()
 	local cur_session = vim.g[M.config.sessions_variable]
-	return cur_session ~= nil and M.config.sessions_icon .. ":" .. cur_session or nil
+	return cur_session ~= nil and M.config.sessions_icon .. cur_session or nil
 end
 
 ---return the list of files in the session
