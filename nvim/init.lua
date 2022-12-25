@@ -93,6 +93,11 @@ local plugins = {
 	{
 		"neovim/nvim-lspconfig",
 		event = "BufReadPre",
+		dependencies = {
+			"smjonas/inc-rename.nvim",
+			event = "InsertEnter",
+			config = true,
+		},
 		config = function()
 			require("plugins.lsp")
 		end,
@@ -120,6 +125,7 @@ local plugins = {
 	},
 	{
 		"L3MON4D3/LuaSnip",
+		event = "InsertEnter",
 		config = function()
 			require("plugins.snip")
 		end,
@@ -131,14 +137,10 @@ local plugins = {
 		end,
 	},
 	{
-		"smjonas/inc-rename.nvim",
-		config = true,
-	},
-	{
 		"simrat39/symbols-outline.nvim",
 		cmd = "SymbolsOutline",
 		init = function()
-			vim.keymap.set("n", "gm", "<cmd>SymbolsOutline<cr>")
+			vim.keymap.set("n", "gm", "<cmd>SymbolsOutline<CR>")
 		end,
 		config = function()
 			require("plugins.symbols_outline")
@@ -187,12 +189,12 @@ local plugins = {
 	},
 	{
 		"numToStr/FTerm.nvim",
+		keys = { "<F2>" },
 		init = function()
 			vim.keymap.set("n", "<F2>", '<CMD>lua require("FTerm").toggle()<CR>')
 			vim.keymap.set("t", "<F2>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 		end,
 		config = { border = "rounded", dimensions = { height = 0.85, width = 0.9 } },
-		keys = { "<F2>" },
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -242,10 +244,11 @@ local plugins = {
 	--- plugins that make vim easier to use
 	{
 		"chentoast/marks.nvim",
-		init = function()
-			vim.keymap.set("n", "m/", ":MarksListAll<CR>")
-		end,
 		keys = { "m" },
+		cmd = "MarksListAll",
+		init = function()
+			vim.keymap.set("n", "m/", "<cmd>MarksListAll<CR>")
+		end,
 		config = {
 			mappings = {
 				set_next = "mm",
