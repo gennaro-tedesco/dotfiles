@@ -295,6 +295,9 @@ local opts = {
 		enabled = true,
 		notify = false,
 	},
+	diff = {
+		cmd = "terminal_git",
+	},
 }
 require("lazy").setup(plugins, opts)
 
