@@ -198,6 +198,7 @@ local plugins = {
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
+		keys = "<C-n>",
 		init = function()
 			vim.keymap.set("n", "<C-n>", function()
 				require("nvim-tree.api").tree.toggle()
@@ -279,6 +280,7 @@ local plugins = {
 }
 
 local opts = {
+	lockfile = vim.fs.normalize("~/dotfiles/nvim") .. "/lazy-lock.json",
 	ui = {
 		icons = {
 			cmd = "⌘",
