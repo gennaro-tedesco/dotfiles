@@ -195,20 +195,6 @@ local snips = {
 			name = "variable indicator",
 		}, fmt('"${}"', i(1, "var"))),
 	},
-	vim = {
-		s(
-			{
-				trig = "plug",
-				name = "include plugin",
-			},
-			fmt(
-				"Plug '{}'",
-				f(function(_, snip)
-					return snip.env.TM_SELECTED_TEXT[1] or {}
-				end, {})
-			)
-		),
-	},
 	zsh = {
 		s({
 			trig = "var",

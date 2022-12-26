@@ -17,7 +17,6 @@ end
 
 nvim_tree.setup({
 	remove_keymaps = true,
-	renderer = { icons = { show = { file = false } } },
 	diagnostics = { enable = false },
 	view = {
 		mappings = {

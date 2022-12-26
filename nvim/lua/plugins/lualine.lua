@@ -24,6 +24,11 @@ lualine.setup({
 		lualine_c = { { "filename", path = 1 }, { "require'plugins.sessions'.status()" } },
 		lualine_x = {
 			{
+				require("lazy.status").updates,
+				cond = require("lazy.status").has_updates,
+				color = { fg = "#2aa198" },
+			},
+			{
 				noice.api.statusline.mode.get,
 				cond = noice.api.statusline.mode.has,
 				color = { fg = "#2aa198" },

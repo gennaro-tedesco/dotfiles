@@ -9,11 +9,9 @@ help:
 	@grep -E '^[a-zA-Z0-9_-]+:.*' $(MAKEFILE_LIST) | grep -v 'help:' | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m  make %-15s\033[0m %s\n", $$1, $$2}'
 
 install-nvim:
+	rm -rf ${NEOVIMCONFIG_DIR}
 	mkdir -p ${NEOVIMCONFIG_DIR}
 	cp -r nvim/. ${NEOVIMCONFIG_DIR}
-ifdef plug
-	nvim -cPlugClean -cPlugInstall -cPlugUpdate -cqa
-endif
 
 install-zsh:
 	cp -f zsh/zshrc ${HOME}/.zshrc
