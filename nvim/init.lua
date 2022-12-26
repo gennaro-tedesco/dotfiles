@@ -188,16 +188,13 @@ local plugins = {
 	},
 	{
 		"numToStr/FTerm.nvim",
-		keys = { "<F2>" },
-		init = function()
-			vim.keymap.set("n", "<F2>", '<CMD>lua require("FTerm").toggle()<CR>')
-			vim.keymap.set("t", "<F2>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+		config = function()
+			require("plugins.fterm")
 		end,
-		config = { border = "rounded", dimensions = { height = 0.85, width = 0.9 } },
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
-		keys = "<C-n>",
+		cmd = "NvimTreeToggle",
 		init = function()
 			vim.keymap.set("n", "<C-n>", function()
 				require("nvim-tree.api").tree.toggle()
