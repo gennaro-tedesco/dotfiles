@@ -104,8 +104,7 @@ local plugins = {
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		keys = { ":", "/", "?" },
+		event = { "InsertEnter", "CmdlineEnter" },
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
