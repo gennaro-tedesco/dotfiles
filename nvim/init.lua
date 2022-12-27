@@ -11,6 +11,7 @@ vim.g.maplocalleader = " "
 --- plugins manager:lazy.nvim ---
 ---------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local config_path = vim.fn.stdpath("config")
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -23,6 +24,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
+local ok, lazy = pcall(require, "lazy")
+if not ok then
+	print("lazy not installed")
+	return
+end
 --------------------
 --- plugins list ---
 --------------------
@@ -303,8 +309,17 @@ local opts = {
 		cmd = "terminal_git",
 	},
 }
-require("lazy").setup(plugins, opts)
 
-for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath("config") .. "/lua", [[v:val =~ '\.lua$']])) do
+lazy.setup(plugins, opts)
+
+for _, file in ipairs(vim.fn.readdir(config_path .. "/lua", [[v:val =~ '\.lua$']])) do
 	require(file:gsub("%.lua$", ""))
 end
+
+local function plug_list()
+	for _, p in pairs(lazy.plugins()) do
+		print(p[1])
+	end
+end
+
+vim.api.nvim_create_user_command("PlugList", plug_list, {})
