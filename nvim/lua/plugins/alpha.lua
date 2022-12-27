@@ -6,13 +6,14 @@ end
 local startify = require("alpha.themes.startify")
 startify.section.header.val = { "welcome back, and a fine day it is!" }
 startify.section.top_buttons.val = {
-	startify.button("e", " New file", ":ene <BAR> startinsert <CR>"),
-	startify.button("t", " Todo", ":e<space>~/.todo<CR>"),
-	startify.button("s", " Sessions", "<cmd> lua require('plugins.sessions').list()<CR>"),
+	startify.button("e", "📄 new file", ":ene <BAR> startinsert <CR>"),
+	startify.button("t", "📆 todo", ":e<space>~/.todo<CR>"),
+	startify.button("s", "📌 sessions", "<cmd> lua require('plugins.sessions').list()<CR>"),
 }
 startify.section.bottom_buttons.val = {
-	startify.button("q", "✘ Quit NVIM", ":qa<CR>"),
-	startify.button("h", "✔ checkhealth", ":checkhealth<CR>"),
+	startify.button("q", "❌ quit", "<cmd>qa<CR>"),
+	startify.button("h", "✅ checkhealth", "<cmd>checkhealth<CR>"),
+	startify.button("p", "🔌 plugins", "<cmd>Lazy<CR>"),
 }
 startify.section.mru.val = { { type = "padding", val = 0 } }
 startify.nvim_web_devicons.enabled = false
