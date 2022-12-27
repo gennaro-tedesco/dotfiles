@@ -194,16 +194,13 @@ local plugins = {
 	},
 	{
 		"numToStr/FTerm.nvim",
-		keys = { "<F2>" },
-		init = function()
-			vim.keymap.set("n", "<F2>", '<CMD>lua require("FTerm").toggle()<CR>')
-			vim.keymap.set("t", "<F2>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+		config = function()
+			require("plugins.fterm")
 		end,
-		config = { border = "rounded", dimensions = { height = 0.85, width = 0.9 } },
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
-		keys = "<C-n>",
+		cmd = "NvimTreeToggle",
 		init = function()
 			vim.keymap.set("n", "<C-n>", function()
 				require("nvim-tree.api").tree.toggle()
@@ -219,6 +216,7 @@ local plugins = {
 		cmd = "Rg",
 		init = function()
 			vim.keymap.set("n", "<C-h>", ":Rg<space>")
+			vim.keymap.set("n", "<C-g>", "<cmd> lua require('functions').replace_grep()<CR>")
 		end,
 	},
 
@@ -317,9 +315,25 @@ for _, file in ipairs(vim.fn.readdir(config_path .. "/lua", [[v:val =~ '\.lua$']
 end
 
 local function plug_list()
+	vim.cmd.edit(config_path .. "/init.lua")
+
+	local loc_list = {}
 	for _, p in pairs(lazy.plugins()) do
-		print(p[1])
+		local plugin_pattern = '"' .. p[1]:gsub("/", "\\/") .. '"'
+		local row = vim.fn.search(plugin_pattern)
+		local col =
+		tonumber(vim.api.nvim_exec("g/" .. plugin_pattern .. '/execute "normal! ^" | echo col(".")-1', true))
+		if row ~= 0 then
+			table.insert(loc_list, {
+				bufnr = vim.api.nvim_buf_get_number(0),
+				lnum = row,
+				col = col + 1,
+				text = p[1],
+			})
+		end
 	end
+	vim.fn.setloclist(0, loc_list, " ")
+	vim.cmd("lopen")
 end
 
 vim.api.nvim_create_user_command("PlugList", plug_list, {})
