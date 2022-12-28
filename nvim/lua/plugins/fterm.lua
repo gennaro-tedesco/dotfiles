@@ -19,4 +19,4 @@ local view_md = function()
 	end
 end
 
-vim.keymap.set("n", "<F3>", view_md)
+vim.keymap.set("n", "<F3>", view_md, { desc = "render markdown file in toggled terminal" })

@@ -174,22 +174,22 @@ local plugins = {
 			local fzf = require("fzf-lua")
 			vim.keymap.set({ "n" }, "<C-p>", function()
 				fzf.files({ show_cwd_header = false, cwd = require("functions").git_root() })
-			end)
+			end, { desc = "fzf browse files" })
 			vim.keymap.set({ "n" }, "<C-b>", function()
 				fzf.buffers()
-			end)
+			end, { desc = "fzf browse open buffers" })
 			vim.keymap.set({ "n" }, "<F1>", function()
 				fzf.help_tags()
-			end)
+			end, { desc = "fzf help tags" })
 			vim.keymap.set({ "n" }, '""', function()
 				fzf.registers()
-			end)
+			end, { desc = "fzf show registers content" })
 			vim.keymap.set({ "n" }, "<leader>gb", function()
 				fzf.git_branches()
-			end)
+			end, { desc = "fzf git branches" })
 			vim.keymap.set({ "n" }, "<leader>gc", function()
 				fzf.git_bcommits()
-			end)
+			end, { desc = "fzf buffer commits" })
 		end,
 		config = function()
 			require("plugins.fzf")
@@ -207,7 +207,7 @@ local plugins = {
 		init = function()
 			vim.keymap.set("n", "<C-n>", function()
 				require("nvim-tree.api").tree.toggle()
-			end)
+			end, { desc = "toggle nvim-tree" })
 		end,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
@@ -308,6 +308,9 @@ local opts = {
 	},
 	diff = {
 		cmd = "terminal_git",
+	},
+	dev = {
+		path = "~",
 	},
 }
 

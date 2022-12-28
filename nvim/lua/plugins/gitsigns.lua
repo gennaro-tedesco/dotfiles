@@ -33,7 +33,7 @@ gitsigns.setup({
 				gs.next_hunk()
 			end)
 			return "<Ignore>"
-		end, { expr = true })
+		end, { expr = true, desc = "next git hunk" })
 
 		map("n", "--", function()
 			if vim.wo.diff then
@@ -43,7 +43,7 @@ gitsigns.setup({
 				gs.prev_hunk()
 			end)
 			return "<Ignore>"
-		end, { expr = true })
+		end, { expr = true, desc = "prev git hunk" })
 
 		-- Actions
 		map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
@@ -51,10 +51,10 @@ gitsigns.setup({
 		map("n", "<leader>hp", gs.preview_hunk)
 		map("n", "<leader>hl", function()
 			gs.setloclist()
-		end)
+		end, { desc = "send git hunks to loc list" })
 		map("n", "<leader>gB", function()
 			gs.blame_line({ full = true })
-		end)
+		end, { desc = "git blame" })
 	end,
 })
 

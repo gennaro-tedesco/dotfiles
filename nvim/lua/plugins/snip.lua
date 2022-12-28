@@ -29,25 +29,25 @@ vim.keymap.set({ "i", "s" }, "<C-k>", function()
 	if ls.expand_or_jumpable() then
 		ls.expand_or_jump()
 	end
-end, { silent = true })
+end, { silent = true, desc = "🚀snip jump to next placeholder" })
 
 vim.keymap.set({ "i", "s" }, "<C-j>", function()
 	if ls.expand_or_jumpable(-1) then
 		ls.jump(-1)
 	end
-end, { silent = true })
+end, { silent = true, desc = "🚀snip jump to prev placeholder" })
 
 vim.keymap.set({ "i", "s" }, "<C-l>", function()
 	if ls.choice_active() then
 		ls.change_choice(1)
 	end
-end)
+end, { desc = "🚀snip next choice" })
 
 vim.keymap.set({ "i", "s" }, "<C-h>", function()
 	if ls.choice_active() then
 		ls.change_choice(-1)
 	end
-end)
+end, { desc = "🚀snip prev choice" })
 
 -- snippets
 local snips = {
