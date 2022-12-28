@@ -65,6 +65,7 @@ local plugins = {
 	},
 	{
 		"karb94/neoscroll.nvim",
+		keys = { "<C-u>", "<C-d>", "zt", "zz", "zb" },
 		config = function()
 			require("neoscroll").setup({
 				mappings = { "<C-u>", "<C-d>", "zt", "zz", "zb" },
@@ -88,6 +89,7 @@ local plugins = {
 	},
 	{
 		"goolord/alpha-nvim",
+		event = "VimEnter",
 		config = function()
 			require("plugins.alpha")
 		end,
@@ -137,6 +139,7 @@ local plugins = {
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
+		event = "BufEnter",
 		config = function()
 			require("plugins.null_ls")
 		end,
@@ -322,7 +325,7 @@ local function plug_list()
 		local plugin_pattern = '"' .. p[1]:gsub("/", "\\/") .. '"'
 		local row = vim.fn.search(plugin_pattern)
 		local col =
-		tonumber(vim.api.nvim_exec("g/" .. plugin_pattern .. '/execute "normal! ^" | echo col(".")-1', true))
+			tonumber(vim.api.nvim_exec("g/" .. plugin_pattern .. '/execute "normal! ^" | echo col(".")-1', true))
 		if row ~= 0 then
 			table.insert(loc_list, {
 				bufnr = vim.api.nvim_buf_get_number(0),
