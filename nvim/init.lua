@@ -190,6 +190,9 @@ local plugins = {
 			vim.keymap.set({ "n" }, "<leader>gc", function()
 				fzf.git_bcommits()
 			end, { desc = "fzf buffer commits" })
+			vim.api.nvim_create_user_command("Maps", function()
+				fzf.keymaps()
+			end, {})
 		end,
 		config = function()
 			require("plugins.fzf")

@@ -24,7 +24,7 @@ cmp.setup({
 	formatting = {
 		fields = { "abbr", "kind", "menu" },
 		format = function(entry, item)
-			item.kind = string.format("%s %s", Icons[item.kind], item.kind)
+			item.kind = string.format("%s %s", icons[item.kind], item.kind)
 			item.menu = ({
 				nvim_lsp = "✨",
 				luasnip = "🚀",

@@ -3,6 +3,59 @@ if not ok then
 	return
 end
 
+------------------------
+--- global functions ---
+------------------------
+_G.P = function(...)
+	local msg = vim.inspect(...)
+	notify(msg, "info", {
+		on_open = function(win)
+			vim.wo[win].conceallevel = 3
+			vim.wo[win].concealcursor = ""
+			vim.wo[win].spell = false
+			local buf = vim.api.nvim_win_get_buf(win)
+			vim.treesitter.start(buf, "lua")
+		end,
+	})
+end
+
+_G.R = function(pkg_name)
+	require("plenary.reload").reload_module(pkg_name)
+	return require(pkg_name)
+end
+
+_G.icons = {
+	Array = "",
+	Class = "ﴯ",
+	Color = "",
+	Constant = "",
+	Constructor = "",
+	Enum = "",
+	EnumMember = "",
+	Event = "",
+	Field = "",
+	File = "",
+	Folder = "",
+	Function = "ƒ",
+	Interface = "",
+	Keyword = "",
+	Method = "",
+	Module = "",
+	Number = "",
+	Object = "⦿",
+	Operator = "+",
+	Package = "",
+	Property = "ﰠ",
+	Reference = "",
+	Snippet = "",
+	Struct = "",
+	Text = "",
+	TypeParameter = "",
+	Unit = "",
+	Value = "",
+	Variable = "",
+}
+
 local M = {}
 
 M.count_matches = function()
@@ -100,59 +153,5 @@ M.git_root = function()
 	local git_path = vim.fn.finddir(".git", ".;")
 	return vim.fn.fnamemodify(git_path, ":h")
 end
-
-P = function(...)
-	local msg = vim.inspect(...)
-	notify(msg, "info", {
-		on_open = function(win)
-			vim.wo[win].conceallevel = 3
-			vim.wo[win].concealcursor = ""
-			vim.wo[win].spell = false
-			local buf = vim.api.nvim_win_get_buf(win)
-			vim.treesitter.start(buf, "lua")
-		end,
-	})
-end
-
-RELOAD = function(...)
-	return require("plenary.reload").reload_module(...)
-end
-
-R = function(name)
-	RELOAD(name)
-	return require(name)
-end
-
-Icons = {
-	Array = "",
-	Class = "ﴯ",
-	Color = "",
-	Constant = "",
-	Constructor = "",
-	Enum = "",
-	EnumMember = "",
-	Event = "",
-	Field = "",
-	File = "",
-	Folder = "",
-	Function = "ƒ",
-	Interface = "",
-	Keyword = "",
-	Method = "",
-	Module = "",
-	Number = "",
-	Object = "⦿",
-	Operator = "+",
-	Package = "",
-	Property = "ﰠ",
-	Reference = "",
-	Snippet = "",
-	Struct = "",
-	Text = "",
-	TypeParameter = "",
-	Unit = "",
-	Value = "",
-	Variable = "",
-}
 
 return M
