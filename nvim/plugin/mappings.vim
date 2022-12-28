@@ -82,7 +82,7 @@ nnoremap <leader>sl <cmd> lua require('plugins.sessions').list()<CR>
 nnoremap <leader>t <cmd>e ~/.todo<CR>
 
 " clean up search results and extmarks
-nnoremap <silent> <CR> :let @/="" <bar> lua vim.api.nvim_buf_clear_namespace(0, -1, 0, -1)<CR>
+nnoremap <silent> <CR> :nohlsearch <bar> lua vim.api.nvim_buf_clear_namespace(0, -1, 0, -1)<CR>
 
 " delete all marks
 nnoremap mx <cmd> delm! <bar> delm A-Z0-9 <bar> delm \"<> <bar> wshada!<CR>
