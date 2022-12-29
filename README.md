@@ -30,7 +30,7 @@ Use the [`Makefile`](https://github.com/gennaro-tedesco/dotfiles/blob/master/Mak
 
 ```
 # to install nvim configurations
-make install-nvim plug=1 # <-- plug=1 installs plugins too, omit otherwise
+make install-nvim
 
 # to install zsh configurations
 make install-zsh
