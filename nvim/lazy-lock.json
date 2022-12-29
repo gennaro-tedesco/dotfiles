@@ -53,7 +53,7 @@
   },
   "lazy.nvim": {
     "branch": "main",
-    "commit": "044e28bf8bb454335c63998ef6f21bc34b3e6124"
+    "commit": "c7122d64cdf16766433588486adcee67571de6d0"
   },
   "lualine.nvim": {
     "branch": "master",
@@ -97,7 +97,7 @@
   },
   "nvim-lspconfig": {
     "branch": "master",
-    "commit": "432935081337dbbbc80f4d0531868509624505df"
+    "commit": "d066a47be7713dba46736aece1792a4e13aaf1de"
   },
   "nvim-notify": {
     "branch": "master",

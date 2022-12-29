@@ -12,7 +12,7 @@ local view_md = function()
 	local buf = vim.api.nvim_buf_get_name(0)
 	local ft = vim.filetype.match({ filename = buf })
 	local md = fterm:new({
-		cmd = "glow -p " .. buf,
+		cmd = "glow -s ~/.config/glowconfig/customglow.json -p " .. buf,
 	})
 	if ft == "markdown" then
 		md:toggle()
