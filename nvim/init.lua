@@ -244,9 +244,9 @@ local plugins = {
 	{
 		"akinsho/git-conflict.nvim",
 		init = function()
-			vim.keymap.set("n", "c+", "<Plug>(git-conflict-next-conflict)")
-			vim.keymap.set("n", "c-", "<Plug>(git-conflict-prev-conflict)")
-			vim.keymap.set("n", "cq", ":GitConflictListQf<CR>")
+			vim.keymap.set("n", "c+", "<Plug>(git-conflict-next-conflict)", { desc = "go to next git conflict" })
+			vim.keymap.set("n", "c-", "<Plug>(git-conflict-prev-conflict)", { desc = "go to prev git conflict" })
+			vim.keymap.set("n", "cq", ":GitConflictListQf<CR>", { desc = "send git conflicts to quickfix" })
 		end,
 		config = { default_mappings = true, highlights = { incoming = "DiffText", current = "DiffAdd" } },
 	},
