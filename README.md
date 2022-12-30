@@ -6,6 +6,12 @@
   <br>
 </h1>
 
+<h2 align="center">
+  <a href="https://github.com/gennaro-tedesco/gh-f/releases">
+    <img alt="releases" src="https://img.shields.io/github/release/gennaro-tedesco/dotfiles"/>
+  </a>
+</h2>
+
 <h4 align="center">My personal dotfiles: no more, no less</h4>
 <h3 align="center">
   <a href="#Requirements">Requirements</a> •
