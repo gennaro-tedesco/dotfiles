@@ -40,15 +40,15 @@ noice.setup({
 			cmdline = { pattern = "^:", icon = "", opts = cmdline_opts },
 			search_down = { kind = "Search", pattern = "^/", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
 			search_up = { kind = "Search", pattern = "^%?", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
-			input = { icon = "", ft = "text", opts = cmdline_opts },
+			input = { icon = "✏️ ", ft = "text", opts = cmdline_opts },
 			substitute = {
 				pattern = "^:%%?s/",
-				icon = "<->",
+				icon = "🔁",
 				ft = "regex",
 				opts = { border = { text = { top = " sub (old/new/) " } } },
 			},
 			filter = { pattern = "^:%s*!", icon = "$", ft = "sh", opts = cmdline_opts },
-			filefilter = { kind = "Filter", pattern = "^:%s*%%%s*!", icon = " $", ft = "sh", opts = cmdline_opts },
+			filefilter = { kind = "Filter", pattern = "^:%s*%%%s*!", icon = "📄 $", ft = "sh", opts = cmdline_opts },
 			selectionfilter = {
 				kind = "Filter",
 				pattern = "^:%s*%'<,%'>%s*!",
@@ -59,7 +59,7 @@ noice.setup({
 			lua = { pattern = "^:%s*lua%s+", icon = "", conceal = true, ft = "lua", opts = cmdline_opts },
 			rename = {
 				pattern = "^:%s*IncRename%s+",
-				icon = " ",
+				icon = "✏️ ",
 				conceal = true,
 				opts = {
 					relative = "cursor",
@@ -69,7 +69,7 @@ noice.setup({
 					border = { text = { top = " rename " } },
 				},
 			},
-			help = { pattern = "^:%s*h%s+", icon = "", opts = cmdline_opts },
+			help = { pattern = "^:%s*h%s+", icon = "💡", opts = cmdline_opts },
 		},
 	},
 	messages = { view_search = false },
