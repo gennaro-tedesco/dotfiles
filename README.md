@@ -7,7 +7,7 @@
 </h1>
 
 <h2 align="center">
-  <a href="https://github.com/gennaro-tedesco/gh-f/releases">
+  <a href="https://github.com/gennaro-tedesco/dotfiles/releases">
     <img alt="releases" src="https://img.shields.io/github/release/gennaro-tedesco/dotfiles"/>
   </a>
 </h2>
