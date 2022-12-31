@@ -45,7 +45,7 @@
   },
   "git-conflict.nvim": {
     "branch": "main",
-    "commit": "77faa75c09a6af88e7b54d8d456327e06611f7ea"
+    "commit": "cbefa7075b67903ca27f6eefdc9c1bf0c4881017"
   },
   "gitsigns.nvim": {
     "branch": "main",
@@ -57,7 +57,7 @@
   },
   "lazy.nvim": {
     "branch": "main",
-    "commit": "d6b5d6e756a596304fd4acbc46f9fa553ea880a2"
+    "commit": "0fadb5e1cec709de839ecd6937b338b9201734ad"
   },
   "lualine.nvim": {
     "branch": "master",
@@ -117,7 +117,7 @@
   },
   "nvim-treesitter": {
     "branch": "master",
-    "commit": "168567efb8aa3874f3da8832dbcd3d1a4ff40d3b"
+    "commit": "b019eb30323635d680aa2f32e498a1831676ebb1"
   },
   "nvim-treesitter-context": {
     "branch": "master",

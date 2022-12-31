@@ -131,6 +131,11 @@ end, {})
 vim.api.nvim_create_user_command("W", function()
 	vim.cmd.write()
 end, {})
+
 vim.api.nvim_create_user_command("Q", function()
 	vim.cmd.quit()
 end, {})
+
+vim.api.nvim_create_user_command("Timer", function(opts)
+	require("functions").timer(opts.args)
+end, { nargs = 1 })

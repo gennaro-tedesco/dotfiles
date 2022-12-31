@@ -154,4 +154,33 @@ M.git_root = function()
 	return vim.fn.fnamemodify(git_path, ":h")
 end
 
+M.timer = function(seconds)
+	local timer = vim.loop.new_timer()
+	local spinner_frames = { "⌛", "⏳" }
+	local countdown = notify("", "info", {
+		title = "🕐 countdown",
+		timeout = false,
+		render = "simple",
+	})
+
+	timer:start(
+		0,
+		1000,
+		vim.schedule_wrap(function()
+			seconds = seconds - 1
+			local spinner_left = spinner_frames[(seconds % #spinner_frames) + 1]
+			countdown = notify(" " .. spinner_left .. " " .. seconds .. "s left", "info", {
+				replace = countdown,
+				on_close = function()
+					timer:close()
+				end,
+			})
+			if seconds == 0 then
+				timer:stop()
+				countdown = notify(string.rep(" 💥 ", 12), "error", { replace = countdown })
+			end
+		end)
+	)
+end
+
 return M
