@@ -64,12 +64,19 @@ cmp.setup({
 		{ name = "buffer", keyword_length = 5 },
 		{ name = "path" },
 	},
+	sorting = {
+		comparators = {
+			cmp.config.compare.exact,
+			cmp.config.compare.recently_used,
+		},
+	},
 })
 
 cmp.setup.cmdline({ "/", "?" }, {
 	mapping = cmp.mapping.preset.cmdline(),
 	formatting = { fields = { "abbr" } },
 	sources = {
+		{ name = "nvim_lsp_document_symbol" },
 		{ name = "buffer" },
 	},
 })
