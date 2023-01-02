@@ -29,7 +29,7 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
 --- diff options
-vim.opt.diffopt = { context = 3, linematch = 60 }
+vim.g.diffopt = { context = 3, linematch = 60 }
 
 --- search options
 vim.opt.inccommand = "split"
@@ -69,6 +69,8 @@ local highlight_yank = vim.api.nvim_create_augroup("HighlightYank", {})
 vim.api.nvim_clear_autocmds({ group = highlight_yank })
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_yank,
+	desc = "highlight yank",
+	pattern = { "*" },
 	callback = function()
 		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 400 })
 	end,
@@ -87,6 +89,9 @@ vim.api.nvim_create_autocmd("TermOpen", {
 local lastplace = vim.api.nvim_create_augroup("LastPlace", {})
 vim.api.nvim_clear_autocmds({ group = lastplace })
 vim.api.nvim_create_autocmd("BufReadPost", {
+	group = lastplace,
+	pattern = { "*" },
+	desc = "remember last cursor place",
 	callback = function()
 		local mark = vim.api.nvim_buf_get_mark(0, '"')
 		local lcount = vim.api.nvim_buf_line_count(0)
