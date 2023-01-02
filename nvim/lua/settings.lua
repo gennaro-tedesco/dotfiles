@@ -65,6 +65,37 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+local highlight_yank = vim.api.nvim_create_augroup("HighlightYank", {})
+vim.api.nvim_clear_autocmds({ group = highlight_yank })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = highlight_yank,
+	callback = function()
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 400 })
+	end,
+})
+
+local terminal_open = vim.api.nvim_create_augroup("TerminalOpen", {})
+vim.api.nvim_clear_autocmds({ group = terminal_open })
+vim.api.nvim_create_autocmd("TermOpen", {
+	group = terminal_open,
+	callback = function()
+		vim.opt.number = false
+		vim.opt.relativenumber = false
+	end,
+})
+
+local lastplace = vim.api.nvim_create_augroup("LastPlace", {})
+vim.api.nvim_clear_autocmds({ group = lastplace })
+vim.api.nvim_create_autocmd("BufReadPost", {
+	callback = function()
+		local mark = vim.api.nvim_buf_get_mark(0, '"')
+		local lcount = vim.api.nvim_buf_line_count(0)
+		if mark[1] > 0 and mark[1] <= lcount then
+			pcall(vim.api.nvim_win_set_cursor, 0, mark)
+		end
+	end,
+})
+
 ------------------------
 --- highlight groups ---
 ------------------------
@@ -76,6 +107,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	desc = "redefinition of default highlight groups",
 	callback = function()
 		vim.api.nvim_set_hl(0, "ErrorMsg", { bold = false, fg = "#dc322f", bg = "none" })
+		vim.api.nvim_set_hl(0, "DiffDelete", { bold = true, ctermfg = 12, ctermbg = 6, fg = "#dc322f", bg = "none" })
+		vim.api.nvim_set_hl(0, "DiffChange", { bold = true, ctermbg = 5, fg = "#b58900", bg = "none", sp = "#b58900" })
 		vim.api.nvim_set_hl(0, "WinSeparator", { bold = false, fg = "#268bd2", bg = "none" })
 	end,
 })
