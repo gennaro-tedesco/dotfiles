@@ -254,8 +254,6 @@ local plugins = {
 	--- plugins that make vim easier to use
 	{
 		"chentoast/marks.nvim",
-		keys = { "m" },
-		cmd = "MarksListAll",
 		init = function()
 			vim.keymap.set("n", "m/", "<cmd>MarksListAll<CR>")
 		end,
