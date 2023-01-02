@@ -33,7 +33,7 @@ end
 --- plugins list ---
 --------------------
 local plugins = {
-	--- colorschemes, looks and syntax highlights
+	--- colorschemes, syntax highlights and general UI
 	{
 		"lifepillar/vim-solarized8",
 		init = function()
@@ -102,9 +102,8 @@ local plugins = {
 		"neovim/nvim-lspconfig",
 		event = "BufReadPre",
 		dependencies = {
-			"smjonas/inc-rename.nvim",
-			event = "InsertEnter",
-			config = true,
+			{ "smjonas/inc-rename.nvim", event = "InsertEnter", config = true },
+			{ "folke/neodev.nvim", event = "InsertEnter", ft = "lua", config = true },
 		},
 		config = function()
 			require("plugins.lsp")

@@ -67,6 +67,10 @@
     "branch": "master",
     "commit": "a69253e4b471a2421f9411bc5bba127eef878dc0"
   },
+  "neodev.nvim": {
+    "branch": "main",
+    "commit": "c045c0fe93b1f9c78443d0f3b88660fffbcf64a7"
+  },
   "neoscroll.nvim": {
     "branch": "master",
     "commit": "54c5c419f6ee2b35557b3a6a7d631724234ba97a"
