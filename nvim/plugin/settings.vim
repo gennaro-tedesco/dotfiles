@@ -1,64 +1,3 @@
-"" --------------
-"" basic settings
-"" --------------
-
-" colour scheme
-set background=dark
-
-" cursorline, windows frame and looks
-set showbreak=↪\
-set list listchars=tab:\ \ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
-set fillchars=eob:\ 
-set number relativenumber
-set ruler
-set cursorline
-set laststatus=3
-set cmdheight=0
-set splitbelow splitright
-set scrolloff=8
-set noshowmode
-highlight WinSeparator guibg=None guifg=#268bd2
-
-" standard vim behaviour
-augroup FORMAT
-	autocmd!
-	autocmd FileType * set formatoptions-=cro
-augroup END
-
-set undofile
-set noswapfile
-set hidden
-set mouse=a
-set updatetime=100
-set showcmd
-set sidescroll=1
-set clipboard+=unnamed
-set autoindent noexpandtab tabstop=4 shiftwidth=4
-
-" diff options
-set diffopt+=context:3,linematch:60
-
-" search options
-set inccommand=split
-set ignorecase
-set smartcase
-set hlsearch
-set showmatch
-
-" autocompletion options
-set shortmess+=c
-set completeopt=menu,menuone,noselect
-set wildmenu
-set wildmode=longest,full,list
-set wildcharm=<Tab>
-set pumheight=10
-
-" matching pairs
-set matchpairs+=<:>
-
-" python host program
-let g:python3_host_prog = "/usr/local/bin/python3"
-
 " -----------------------------
 " -- global augroup commands --
 " -----------------------------
@@ -74,8 +13,6 @@ augroup END
 
 augroup HIGHLIGHTS
 	autocmd!
-	autocmd BufEnter * silent! hi clear ErrorMsg
-	autocmd BufEnter * silent! hi ErrorMsg cterm=bold guifg=#dc322f guibg=None
 	autocmd BufEnter * silent! hi clear DiffDelete
 	autocmd BufEnter * silent! hi DiffDelete cterm=bold ctermfg=12 ctermbg=6 gui=bold guifg=#dc322f guibg=None
 	autocmd BufEnter * silent! hi clear DiffChange
