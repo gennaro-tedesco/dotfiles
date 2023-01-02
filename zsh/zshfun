@@ -153,10 +153,8 @@ quick_commit(){
 
 # json_diff
 json_diff() {
-	local files
-	IFS=$'\n' files=($(fd -t f -e json | fzf -m2 --exit-0 --prompt 'select json files:'))
-	if [[ ${#files[@]} == 2 ]] then
-		delta =(jq -S . $files[1]) =(jq -S . $files[2])
+	if [[ $# -eq 2 ]] then
+		delta =(jq -S . $1) =(jq -S . $2)
 	else
 		echo "expected two arguments"
 	fi
