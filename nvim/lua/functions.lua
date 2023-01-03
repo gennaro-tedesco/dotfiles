@@ -26,6 +26,7 @@ end
 
 _G.icons = {
 	Array = "",
+	Boolean = "◩ ",
 	Class = "ﴯ",
 	Color = "",
 	Constant = "",
@@ -42,12 +43,14 @@ _G.icons = {
 	Method = "",
 	Module = "",
 	Number = "",
+	Null = "ﳠ",
 	Object = "⦿",
 	Operator = "+",
 	Package = "",
 	Property = "ﰠ",
 	Reference = "",
 	Snippet = "",
+	String = " ",
 	Struct = "",
 	Text = "",
 	TypeParameter = "",

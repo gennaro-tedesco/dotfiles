@@ -109,6 +109,7 @@ local cmp_types = {
 vim.api.nvim_clear_autocmds({ group = cmp_hl })
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = cmp_hl,
+	desc = "redefinition of nvim-cmp highlight groups",
 	callback = function()
 		vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", {})
 		vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { link = "helpVim" })

@@ -7,6 +7,7 @@ local noice_hl = vim.api.nvim_create_augroup("NoiceHighlights", {})
 local noice_cmd_types = {
 	CmdLine = "Constant",
 	Input = "Constant",
+	Calculator = "Constant",
 	Lua = "Constant",
 	Filter = "Constant",
 	Rename = "Constant",
@@ -16,6 +17,7 @@ local noice_cmd_types = {
 vim.api.nvim_clear_autocmds({ group = noice_hl })
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = noice_hl,
+	desc = "redefinition of noice highlight groups",
 	callback = function()
 		for type, hl in pairs(noice_cmd_types) do
 			vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder" .. type, {})
@@ -41,6 +43,7 @@ noice.setup({
 			search_down = { kind = "Search", pattern = "^/", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
 			search_up = { kind = "Search", pattern = "^%?", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
 			input = { icon = "✏️ ", ft = "text", opts = cmdline_opts },
+			calculator = { pattern = "^=", icon = "", lang = "vimnormal", opts = cmdline_opts },
 			substitute = {
 				pattern = "^:%%?s/",
 				icon = "🔁",
