@@ -7,6 +7,7 @@ local noice_hl = vim.api.nvim_create_augroup("NoiceHighlights", {})
 local noice_cmd_types = {
 	CmdLine = "Constant",
 	Input = "Constant",
+	Calculator = "Constant",
 	Lua = "Constant",
 	Filter = "Constant",
 	Rename = "Constant",
@@ -42,6 +43,7 @@ noice.setup({
 			search_down = { kind = "Search", pattern = "^/", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
 			search_up = { kind = "Search", pattern = "^%?", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
 			input = { icon = "✏️ ", ft = "text", opts = cmdline_opts },
+			calculator = { pattern = "^=", icon = "", lang = "vimnormal", opts = cmdline_opts },
 			substitute = {
 				pattern = "^:%%?s/",
 				icon = "🔁",
