@@ -16,6 +16,7 @@ local noice_cmd_types = {
 vim.api.nvim_clear_autocmds({ group = noice_hl })
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = noice_hl,
+	desc = "redefinition of noice highlight groups",
 	callback = function()
 		for type, hl in pairs(noice_cmd_types) do
 			vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder" .. type, {})

@@ -62,6 +62,7 @@ local gs_hl = vim.api.nvim_create_augroup("GitSignsHighlight", {})
 vim.api.nvim_clear_autocmds({ group = gs_hl })
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = gs_hl,
+	desc = "redefinition of gitsigns highlight groups",
 	callback = function()
 		vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", {})
 		vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { link = "Comment" })

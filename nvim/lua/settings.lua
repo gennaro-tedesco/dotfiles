@@ -60,6 +60,7 @@ vim.api.nvim_clear_autocmds({ group = format })
 vim.api.nvim_create_autocmd("FileType", {
 	group = format,
 	pattern = { "*" },
+	desc = "remove formatoptions",
 	callback = function()
 		vim.opt.formatoptions:remove({ "c", "r", "o" })
 	end,
