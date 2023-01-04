@@ -16,5 +16,5 @@ startify.section.bottom_buttons.val = {
 	startify.button("p", "🔌 plugins", "<cmd>Lazy<CR>"),
 }
 startify.section.mru.val = { { type = "padding", val = 0 } }
-startify.nvim_web_devicons.enabled = false
+startify.nvim_web_devicons.enabled = true
 alpha.setup(startify.config)
