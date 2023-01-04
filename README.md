@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <img src="logo.png" width="400">
+  <img src="https://user-images.githubusercontent.com/15387611/210524697-9c3f3efc-47d4-477e-8053-28854b319faa.png" width="400">
   <br>
   dotfiles
   <br>

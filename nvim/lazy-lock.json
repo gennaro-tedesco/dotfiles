@@ -49,7 +49,7 @@
   },
   "gitsigns.nvim": {
     "branch": "main",
-    "commit": "615f256d01629ffb858df77a132f483ac977ddf7"
+    "commit": "81641791439bc8f0ceb3691d62b95c8e646f3771"
   },
   "inc-rename.nvim": {
     "branch": "main",
@@ -57,7 +57,7 @@
   },
   "lazy.nvim": {
     "branch": "main",
-    "commit": "2e3e65b0f7b16773f5f83ee4eea09fe6bca653cd"
+    "commit": "09fd8fabd29eb6da82c3eb2be4b270f9de9b4d8c"
   },
   "lualine.nvim": {
     "branch": "master",
@@ -69,7 +69,7 @@
   },
   "neodev.nvim": {
     "branch": "main",
-    "commit": "d20006b7ca5c6bcf0c4f955d07947fdf06c360e7"
+    "commit": "a6cd21560f88b54d8f8ddd1cd145be3ed4a051bc"
   },
   "neoscroll.nvim": {
     "branch": "master",
@@ -105,7 +105,7 @@
   },
   "nvim-lspconfig": {
     "branch": "master",
-    "commit": "0687eaacc634a82f4832599653ad1305fdf0c941"
+    "commit": "e69978a39e4d3262b09ce6a316beff384f443e3b"
   },
   "nvim-notify": {
     "branch": "master",
@@ -121,7 +121,7 @@
   },
   "nvim-treesitter": {
     "branch": "master",
-    "commit": "28baed769815c54b243f0df606ccb4114287e772"
+    "commit": "46cace42fa1a5954da9de7dded15137d3d247d4f"
   },
   "nvim-treesitter-context": {
     "branch": "master",
@@ -133,7 +133,7 @@
   },
   "plenary.nvim": {
     "branch": "master",
-    "commit": "4b7e52044bbb84242158d977a50c4cbcd85070c7"
+    "commit": "bb444796dc5746d969f0718913a31c8075741e36"
   },
   "symbols-outline.nvim": {
     "branch": "master",
