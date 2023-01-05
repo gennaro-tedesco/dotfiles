@@ -200,8 +200,11 @@ local plugins = {
 	},
 	{
 		"numToStr/FTerm.nvim",
+		keys = { "<F2>" },
 		config = function()
-			require("plugins.fterm")
+			require("FTerm").setup({ border = "rounded", dimensions = { height = 0.85, width = 0.9 } })
+			vim.keymap.set("n", "<F2>", '<cmd>lua require("FTerm").toggle()<CR>')
+			vim.keymap.set("t", "<F2>", '<C-\\><C-n><cmd>lua require("FTerm").toggle()<CR>')
 		end,
 	},
 	{
