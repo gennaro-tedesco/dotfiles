@@ -25,15 +25,15 @@ vim.keymap.set(
 )
 vim.keymap.set(
 	"n",
-	"gl",
+	"g/",
 	vim.diagnostic.setloclist,
-	vim.tbl_extend("force", opts, { desc = "send diagnostics to loc list" })
+	vim.tbl_extend("force", opts, { desc = "✨lsp send diagnostics to loc list" })
 )
 vim.keymap.set(
 	"n",
 	"ge",
 	vim.diagnostic.open_float,
-	vim.tbl_extend("force", opts, { desc = "show diagnostic in floating window" })
+	vim.tbl_extend("force", opts, { desc = "✨lsp show diagnostic in floating window" })
 )
 
 local on_attach = function(client, bufnr)
