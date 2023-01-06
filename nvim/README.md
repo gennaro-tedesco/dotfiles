@@ -8,7 +8,7 @@
 
 ## Description
 
-evergreen is a simple but at the same time precise and complete neovim configuration fully written in lua . It is a continuous work in progress, however the pinned releases are tested and stable. The structure is as follows:
+evergreen is a simple but at the same time precise and complete neovim configuration fully written in lua 🌙. It is a continuous work in progress, however the pinned releases are tested and stable. The structure is as follows:
 
 ```
 ├── after
