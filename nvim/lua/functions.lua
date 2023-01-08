@@ -26,6 +26,7 @@ end
 
 _G.icons = {
 	Array = "",
+	Branch = "",
 	Boolean = "◩ ",
 	Class = "ﴯ",
 	Color = "",
