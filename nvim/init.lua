@@ -94,7 +94,7 @@ local plugins = {
 			require("plugins.alpha")
 		end,
 	},
-	{ "kevinhwang91/nvim-bqf", config = { func_map = { openc = "<CR>" } } },
+	{ "kevinhwang91/nvim-bqf", opts = { func_map = { openc = "<CR>" } } },
 
 	--- LSP, language servers and code autocompletion
 	{ "nvim-lua/plenary.nvim" },
@@ -250,7 +250,7 @@ local plugins = {
 			vim.keymap.set("n", "c-", "<Plug>(git-conflict-prev-conflict)", { desc = "go to prev git conflict" })
 			vim.keymap.set("n", "cq", "<cmd>GitConflictListQf<CR>", { desc = "send git conflicts to quickfix" })
 		end,
-		config = { default_mappings = true, highlights = { incoming = "DiffText", current = "DiffAdd" } },
+		opt = { default_mappings = true, highlights = { incoming = "DiffText", current = "DiffAdd" } },
 	},
 
 	--- plugins that make vim easier to use
@@ -259,7 +259,7 @@ local plugins = {
 		init = function()
 			vim.keymap.set("n", "m/", "<cmd>MarksListAll<CR>")
 		end,
-		config = {
+		opts = {
 			mappings = {
 				set_next = "mm",
 				next = "mn",
@@ -331,7 +331,7 @@ local function plug_list()
 		local plugin_pattern = '"' .. p[1]:gsub("/", "\\/") .. '"'
 		local row = vim.fn.search(plugin_pattern)
 		local col =
-			tonumber(vim.api.nvim_exec("g/" .. plugin_pattern .. '/execute "normal! ^" | echo col(".")-1', true))
+		tonumber(vim.api.nvim_exec("g/" .. plugin_pattern .. '/execute "normal! ^" | echo col(".")-1', true))
 		if row ~= 0 then
 			table.insert(loc_list, {
 				bufnr = vim.api.nvim_buf_get_number(0),
