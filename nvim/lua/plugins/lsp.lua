@@ -117,6 +117,9 @@ lsp.sumneko_lua.setup({
 	lsp_flags = lsp_flags,
 	settings = {
 		Lua = {
+			format = {
+				enable = false,
+			},
 			runtime = { version = "LuaJIT" },
 			diagnostics = { globals = { "vim", "P" } },
 			workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false },
