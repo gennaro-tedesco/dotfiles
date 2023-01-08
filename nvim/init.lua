@@ -192,6 +192,9 @@ local plugins = {
 			vim.api.nvim_create_user_command("Maps", function()
 				fzf.keymaps()
 			end, {})
+			vim.api.nvim_create_user_command("Highlights", function()
+				fzf.highlights()
+			end, {})
 		end,
 		config = function()
 			require("plugins.fzf")
@@ -331,7 +334,7 @@ local function plug_list()
 		local plugin_pattern = '"' .. p[1]:gsub("/", "\\/") .. '"'
 		local row = vim.fn.search(plugin_pattern)
 		local col =
-		tonumber(vim.api.nvim_exec("g/" .. plugin_pattern .. '/execute "normal! ^" | echo col(".")-1', true))
+			tonumber(vim.api.nvim_exec("g/" .. plugin_pattern .. '/execute "normal! ^" | echo col(".")-1', true))
 		if row ~= 0 then
 			table.insert(loc_list, {
 				bufnr = vim.api.nvim_buf_get_number(0),
