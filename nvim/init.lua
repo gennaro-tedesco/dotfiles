@@ -205,8 +205,8 @@ local plugins = {
 		keys = { "<F2>" },
 		config = function()
 			require("FTerm").setup({ border = "rounded", dimensions = { height = 0.85, width = 0.9 } })
-			vim.keymap.set("n", "<F2>", '<cmd>lua require("FTerm").toggle()<CR>')
-			vim.keymap.set("t", "<F2>", '<C-\\><C-n><cmd>lua require("FTerm").toggle()<CR>')
+			vim.keymap.set("n", "<F2>", '<cmd>lua require("FTerm").toggle()<CR>', { desc = "toggle fterm" })
+			vim.keymap.set("t", "<F2>", '<C-\\><C-n><cmd>lua require("FTerm").toggle()<CR>', { desc = "toggle fterm" })
 		end,
 	},
 	{
@@ -277,7 +277,6 @@ local plugins = {
 	},
 	{
 		"numToStr/Comment.nvim",
-		keys = { "gc", "gcc", "gbc" },
 		config = true,
 	},
 
