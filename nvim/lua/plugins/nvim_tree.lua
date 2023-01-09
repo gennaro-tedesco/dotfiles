@@ -16,6 +16,7 @@ local function edit_cd(node)
 end
 
 nvim_tree.setup({
+	update_focused_file = { enable = true },
 	remove_keymaps = true,
 	diagnostics = { enable = false },
 	view = {
