@@ -95,9 +95,6 @@ nnoremap("N", "Nzz<cmd>lua require('functions').hl_search(0.3)<CR>", { desc = "g
 --- quickfix and sessions
 nnoremap("<C-q>", "<cmd> lua require('functions').toggle_qf()<CR>", { desc = "toggle quickfix" })
 nnoremap("<C-l>", "<cmd> lua require('functions').toggle_ll()<CR>", { desc = "toggle loc list" })
-nnoremap("<leader>sn", "<cmd> lua require('plugins.sessions').new()<CR>", { desc = "📌sessions new" })
-nnoremap("<leader>su", "<cmd> lua require('plugins.sessions').update()<CR>", { desc = "📌sessions load" })
-nnoremap("<leader>sl", "<cmd> lua require('plugins.sessions').list()<CR>", { desc = "📌sessions list" })
 
 --- open todo file in one go
 nnoremap("<leader>t", function()

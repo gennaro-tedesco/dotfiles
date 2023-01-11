@@ -21,7 +21,7 @@ lualine.setup({
 	sections = {
 		lualine_a = { { "mode", padding = { left = 1 } } },
 		lualine_b = { "branch" },
-		lualine_c = { { "filename", path = 1 }, { "require'plugins.sessions'.status()" } },
+		lualine_c = { { "filename", path = 1 }, { "require'nvim-possession'.status()" } },
 		lualine_x = {
 			{
 				require("lazy.status").updates,

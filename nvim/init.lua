@@ -288,6 +288,16 @@ local plugins = {
 			require("nvim-jqx.config").use_quickfix = false
 		end,
 	},
+	{
+		"gennaro-tedesco/nvim-possession",
+		dev = true,
+		config = true,
+		init = function()
+			vim.keymap.set("n", "<leader>sl", function()
+				require("nvim-possession").list()
+			end)
+		end,
+	},
 }
 
 local opts = {
