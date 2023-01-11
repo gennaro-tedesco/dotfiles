@@ -107,6 +107,10 @@
     "branch": "master",
     "commit": "b005821516f1f37801a73067afd1cef2dbc4dfe8"
   },
+  "nvim-possession": {
+    "branch": "main",
+    "commit": "1531feb22515ccaa0a9fd3b322b343189a057279"
+  },
   "nvim-surround": {
     "branch": "main",
     "commit": "ad56e6234bf42fb7f7e4dccc7752e25abd5ec80e"
@@ -117,7 +121,7 @@
   },
   "nvim-treesitter": {
     "branch": "master",
-    "commit": "0ed09e2e6c39d9b27755f48bd8a407d3828367b3"
+    "commit": "1298d9ba3ba78cf6bba3810e47e5d2d568f33614"
   },
   "nvim-treesitter-context": {
     "branch": "master",
