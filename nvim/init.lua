@@ -290,17 +290,17 @@ local plugins = {
 	},
 	{
 		"gennaro-tedesco/nvim-possession",
-		dev = true,
 		config = true,
 		init = function()
+			local possession = require("nvim-possession")
 			vim.keymap.set("n", "<leader>sl", function()
-				require("nvim-possession").list()
+				possession.list()
 			end)
 			vim.keymap.set("n", "<leader>sn", function()
-				require("nvim-possession").new()
+				possession.new()
 			end)
 			vim.keymap.set("n", "<leader>su", function()
-				require("nvim-possession").update()
+				possession.update()
 			end)
 		end,
 	},

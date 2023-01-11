@@ -92,7 +92,7 @@ nnoremap("*", "*<cmd>lua require('functions').count_matches()<CR>", { desc = "co
 nnoremap("n", "nzz<cmd>lua require('functions').hl_search(0.3)<CR>", { desc = "go to next search and highlight" })
 nnoremap("N", "Nzz<cmd>lua require('functions').hl_search(0.3)<CR>", { desc = "go to prev search and highlight" })
 
---- quickfix and sessions
+--- quickfix
 nnoremap("<C-q>", "<cmd> lua require('functions').toggle_qf()<CR>", { desc = "toggle quickfix" })
 nnoremap("<C-l>", "<cmd> lua require('functions').toggle_ll()<CR>", { desc = "toggle loc list" })
 
