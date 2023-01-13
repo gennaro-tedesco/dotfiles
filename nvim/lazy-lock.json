@@ -45,7 +45,7 @@
   },
   "gitsigns.nvim": {
     "branch": "main",
-    "commit": "6c3a381c619f3201dfbc0ba4a02c85e24a442886"
+    "commit": "addd6e174a85fc1c4007ab0b65d77e6555b417bf"
   },
   "inc-rename.nvim": {
     "branch": "main",
@@ -53,7 +53,7 @@
   },
   "lazy.nvim": {
     "branch": "main",
-    "commit": "a64623899db9fe1a41c8bf86562feed6d4757ba0"
+    "commit": "666ed7bf73eb5895253c1155bd29270b066cbdac"
   },
   "lualine.nvim": {
     "branch": "master",
@@ -65,7 +65,7 @@
   },
   "neodev.nvim": {
     "branch": "main",
-    "commit": "8547af2c45f8ecc770c5e44963a1ca345dac750b"
+    "commit": "0e3f5e763639951f96f9acbdc9f52a9fedf91b46"
   },
   "neoscroll.nvim": {
     "branch": "master",
@@ -73,7 +73,7 @@
   },
   "noice.nvim": {
     "branch": "main",
-    "commit": "2613a16b5009acbf2adabb34b029b1c4c57101e3"
+    "commit": "36eabb66be53c6ed20c712a7820f0edaa0c00bb8"
   },
   "nui.nvim": {
     "branch": "main",
@@ -101,7 +101,7 @@
   },
   "nvim-lspconfig": {
     "branch": "master",
-    "commit": "f0221821d8ceed70f0525a2c35380ba56672e107"
+    "commit": "f7ebb0fed4b952c77bb5827db030405f2d6cd4e7"
   },
   "nvim-notify": {
     "branch": "master",
@@ -109,7 +109,7 @@
   },
   "nvim-possession": {
     "branch": "main",
-    "commit": "1531feb22515ccaa0a9fd3b322b343189a057279"
+    "commit": "7dc390619f887b08b2e2f9810369987e306e6140"
   },
   "nvim-surround": {
     "branch": "main",
@@ -121,7 +121,7 @@
   },
   "nvim-treesitter": {
     "branch": "master",
-    "commit": "1298d9ba3ba78cf6bba3810e47e5d2d568f33614"
+    "commit": "9a257d989a526c413a28c252c4ec9113a7d35a28"
   },
   "nvim-treesitter-context": {
     "branch": "master",
@@ -141,7 +141,7 @@
   },
   "vim-fugitive": {
     "branch": "master",
-    "commit": "99cdb88bc64063dc4656ae53496f06fb2a394cd4"
+    "commit": "9c5f675db54139c18ed4a1a18989ea2da37d6cae"
   },
   "vim-ripgrep": {
     "branch": "master",
@@ -153,6 +153,6 @@
   },
   "vimtex": {
     "branch": "master",
-    "commit": "2cebf6872bcb0ad1176a0b5eba36946d4bd889a5"
+    "commit": "bd0173e7d3c0097c5b855265ce83f5863f073c85"
   }
 }

@@ -22,6 +22,9 @@ end
 nnoremap("q", "<nop>")
 nnoremap("qq", "q")
 
+--- redo
+nnoremap("U", "<C-r>")
+
 --- remove all trailing spaces
 nnoremap("<F5>", "<cmd>lua require('functions').trim_whitespace()<CR>")
 
