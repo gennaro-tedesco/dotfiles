@@ -121,7 +121,7 @@ lsp.sumneko_lua.setup({
 				enable = false,
 			},
 			runtime = { version = "LuaJIT" },
-			diagnostics = { globals = { "vim", "setup", "teardown" } },
+			diagnostics = { globals = { "describe", "it", "vim", "setup", "teardown" } },
 			workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false },
 			telemetry = { enable = false },
 		},
