@@ -4,6 +4,8 @@ if not signs_ok then
 end
 
 gitsigns.setup({
+	numhl = true,
+	signcolumn = false,
 	signs = {
 		add = { hl = "GitSignsAdd", text = "+", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
 		change = { hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
