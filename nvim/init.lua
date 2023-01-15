@@ -49,7 +49,6 @@ local plugins = {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
-		dev = false,
 		build = ":TSUpdate",
 		event = "BufReadPost",
 		dependencies = {
@@ -290,19 +289,18 @@ local plugins = {
 	},
 	{
 		"gennaro-tedesco/nvim-possession",
-		event = "VeryLazy",
 		init = function()
 			vim.keymap.set("n", "<leader>sl", function()
 				require("nvim-possession").list()
-			end)
+			end, { desc = "📌list sessions" })
 			vim.keymap.set("n", "<leader>sn", function()
 				require("nvim-possession").new()
-			end)
+			end, { desc = "📌create new session" })
 			vim.keymap.set("n", "<leader>su", function()
 				require("nvim-possession").update()
-			end)
+			end, { desc = "📌update current session" })
 		end,
-		config = true,
+		opts = { fzf_winopts = { hl = { border = "Constant" } } },
 	},
 }
 
