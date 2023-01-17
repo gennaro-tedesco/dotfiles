@@ -166,7 +166,16 @@ vim.diagnostic.config({
 	},
 })
 
-vim.fn.sign_define("DiagnosticSignError", { name = "DiagnosticSignError", text = "✘", texthl = "DiagnosticError" })
-vim.fn.sign_define("DiagnosticSignWarn", { name = "DiagnosticSignWarn", text = "", texthl = "DiagnosticWarn" })
-vim.fn.sign_define("DiagnosticSignHint", { name = "DiagnosticSignHint", text = "i", texthl = "DiagnosticHint" })
-vim.fn.sign_define("DiagnosticSignInfo", { name = "DiagnosticSignInfo", text = "i", texthl = "DiagnosticInfo" })
+local diagnostics = {
+	Error = "✘",
+	Warn = "",
+	Hint = "i",
+	Info = "i",
+}
+
+for type, icon in pairs(diagnostics) do
+	vim.fn.sign_define(
+		"DiagnosticSign" .. type,
+		{ name = "DiagnosticSign" .. type, text = icon, texthl = "Diagnostic" .. type }
+	)
+end
