@@ -166,7 +166,7 @@ vim.diagnostic.config({
 	},
 })
 
-vim.fn.sign_define("DiagnosticSignError", { name = "DiagnosticSignError", text = "✘" })
-vim.fn.sign_define("DiagnosticSignWarn", { name = "DiagnosticSignWarn", text = "" })
-vim.fn.sign_define("DiagnosticSignHint", { name = "DiagnosticSignHint", text = "i" })
-vim.fn.sign_define("DiagnosticSignInfo", { name = "DiagnosticSignInfo", text = "i" })
+vim.fn.sign_define("DiagnosticSignError", { name = "DiagnosticSignError", text = "✘", texthl = "DiagnosticError" })
+vim.fn.sign_define("DiagnosticSignWarn", { name = "DiagnosticSignWarn", text = "", texthl = "DiagnosticWarn" })
+vim.fn.sign_define("DiagnosticSignHint", { name = "DiagnosticSignHint", text = "i", texthl = "DiagnosticHint" })
+vim.fn.sign_define("DiagnosticSignInfo", { name = "DiagnosticSignInfo", text = "i", texthl = "DiagnosticInfo" })
