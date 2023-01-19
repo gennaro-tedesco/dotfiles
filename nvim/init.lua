@@ -253,6 +253,7 @@ local plugins = {
 			vim.keymap.set("n", "cq", "<cmd>GitConflictListQf<CR>", { desc = "send git conflicts to quickfix" })
 		end,
 		opt = { default_mappings = true, highlights = { incoming = "DiffText", current = "DiffAdd" } },
+		config = true,
 	},
 
 	--- plugins that make vim easier to use
@@ -300,7 +301,10 @@ local plugins = {
 				require("nvim-possession").update()
 			end, { desc = "📌update current session" })
 		end,
-		opts = { fzf_winopts = { hl = { border = "Constant" } } },
+		opts = {
+			autoload = true,
+			fzf_winopts = { hl = { border = "Constant" } },
+		},
 	},
 }
 
