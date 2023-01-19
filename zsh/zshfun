@@ -147,8 +147,7 @@ quick_commit(){
 
 	gum confirm "add files and commit?" && \
 	git add . && git commit -m "$message" && \
-	gum confirm "push to $(git rev-parse --abbrev-ref --symbolic-full-name @{u})?" && \
-	git push
+	gum confirm "push to $(git rev-parse --abbrev-ref --symbolic-full-name @{u})?" && gum spin --spinner dot --title "git push..." --show-output -- git push
 }
 
 # json_diff
