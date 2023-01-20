@@ -363,8 +363,16 @@ local function plug_list()
 			end
 		end
 	end
+	table.sort(loc_list, function(a, b)
+		return string.upper(a.text:gsub(".*/", "")) < string.upper(b.text:gsub(".*/", ""))
+	end)
 	vim.fn.setloclist(0, loc_list, " ")
 	vim.cmd("lopen")
 end
-
 vim.api.nvim_create_user_command("PlugList", plug_list, {})
+
+local function install()
+	local mk_path, mk_cmd = vim.fs.normalize("~/dotfiles"), "install-nvim"
+	vim.cmd("!make -C " .. mk_path .. " " .. mk_cmd)
+end
+nnoremap("<leader>i", install, { desc = "install nvim dotfiles" })
