@@ -348,17 +348,19 @@ local function plug_list()
 
 	local loc_list = {}
 	for _, p in pairs(lazy.plugins()) do
-		local plugin_pattern = '"' .. p[1]:gsub("/", "\\/") .. '"'
-		local row = vim.fn.search(plugin_pattern)
-		local col =
-			tonumber(vim.api.nvim_exec("g/" .. plugin_pattern .. '/execute "normal! ^" | echo col(".")-1', true))
-		if row ~= 0 then
-			table.insert(loc_list, {
-				bufnr = vim.api.nvim_buf_get_number(0),
-				lnum = row,
-				col = col + 1,
-				text = p[1],
-			})
+		if p[1] ~= nil then
+			local plugin_pattern = '"' .. p[1]:gsub("/", "\\/") .. '"'
+			local row = vim.fn.search(plugin_pattern)
+			local col =
+				tonumber(vim.api.nvim_exec("g/" .. plugin_pattern .. '/execute "normal! ^" | echo col(".")-1', true))
+			if row ~= 0 then
+				table.insert(loc_list, {
+					bufnr = vim.api.nvim_buf_get_number(0),
+					lnum = row,
+					col = col + 1,
+					text = p[1],
+				})
+			end
 		end
 	end
 	vim.fn.setloclist(0, loc_list, " ")
