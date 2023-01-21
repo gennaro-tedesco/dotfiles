@@ -12,6 +12,7 @@ install-nvim:
 	rm -rf ${NEOVIMCONFIG_DIR}
 	mkdir -p ${NEOVIMCONFIG_DIR}
 	cp -r nvim/. ${NEOVIMCONFIG_DIR}
+	nvim --headless "+Lazy! restore" +qa
 
 install-zsh:
 	cp -f zsh/zshrc ${HOME}/.zshrc

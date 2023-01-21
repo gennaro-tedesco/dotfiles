@@ -303,6 +303,7 @@ local plugins = {
 		end,
 		opts = {
 			autoload = true,
+			autoswitch = { enable = true },
 			fzf_winopts = { hl = { border = "Constant" } },
 		},
 	},
