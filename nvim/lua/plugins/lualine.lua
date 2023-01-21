@@ -17,11 +17,26 @@ lualine.setup({
 	options = {
 		theme = soldark,
 		component_separators = { left = "", right = "" },
+		disabled_filetypes = { statusline = { "alpha" } },
 	},
 	sections = {
 		lualine_a = { { "mode", padding = { left = 1 } } },
 		lualine_b = { "branch" },
-		lualine_c = { { "filename", path = 1 }, { "require'nvim-possession'.status()" } },
+		lualine_c = {
+			{ "filename", path = 1 },
+			{
+				"diff",
+				on_click = function()
+					require("gitsigns").setloclist()
+				end,
+			},
+			{
+				require("nvim-possession").status,
+				cond = function()
+					return require("nvim-possession").status() ~= nil
+				end,
+			},
+		},
 		lualine_x = {
 			{
 				require("lazy.status").updates,
@@ -38,6 +53,9 @@ lualine.setup({
 				update_in_insert = true,
 				symbols = { error = "❗:", warn = "⚠️ :", info = "i:", hint = "💡:" },
 				colored = false,
+				on_click = function()
+					vim.diagnostic.setloclist()
+				end,
 			},
 			{ "filetype" },
 		},
