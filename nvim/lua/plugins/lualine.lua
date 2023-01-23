@@ -42,6 +42,9 @@ lualine.setup({
 				require("lazy.status").updates,
 				cond = require("lazy.status").has_updates,
 				color = { fg = "#2aa198" },
+				on_click = function()
+					require("lazy").home()
+				end,
 			},
 			{
 				noice.api.status.mode.get,
