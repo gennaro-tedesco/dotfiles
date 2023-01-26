@@ -8,7 +8,7 @@ fzf.setup({
 		height = 0.25,
 		width = 0.4,
 		row = 0.5,
-		hl = { normal = "NormalFloat" },
+		hl = { normal = "Pmenu" },
 		border = "none",
 	},
 	fzf_opts = {
