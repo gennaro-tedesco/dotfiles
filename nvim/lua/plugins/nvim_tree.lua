@@ -17,13 +17,10 @@ end
 
 nvim_tree.setup({
 	update_focused_file = { enable = true },
+
 	remove_keymaps = true,
-	diagnostics = { enable = false },
-	renderer = {
-		indent_markers = {
-			enable = true,
-		},
-	},
+
+	---window
 	view = {
 		mappings = {
 			list = {
@@ -69,7 +66,14 @@ nvim_tree.setup({
 			return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
 		end,
 	},
-	filters = {
-		dotfiles = true,
+
+	---markers
+	renderer = {
+		indent_markers = { enable = true },
+		indent_width = 2,
+		special_files = {},
 	},
+	diagnostics = { enable = false },
+	git = { enable = false },
+	filters = { dotfiles = true },
 })
