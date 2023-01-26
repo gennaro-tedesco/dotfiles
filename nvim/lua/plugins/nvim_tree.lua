@@ -19,6 +19,11 @@ nvim_tree.setup({
 	update_focused_file = { enable = true },
 	remove_keymaps = true,
 	diagnostics = { enable = false },
+	renderer = {
+		indent_markers = {
+			enable = true,
+		},
+	},
 	view = {
 		mappings = {
 			list = {
