@@ -1,8 +1,7 @@
 vim.wo.conceallevel = 0
 vim.opt.textwidth = 78
 
-inoremap("//", "\\")
-inoremap("<C-b>", "<ESC>yypkI\\begin{<ESC>A}<ESC>jI\\end{<ESC>A}<esc>kA<CR>", { buffer = true })
+vim.keymap.set("i", "//", "\\")
 
 vim.api.nvim_exec(
 	[[
@@ -17,6 +16,6 @@ vim.api.nvim_exec(
 				\ 'rhs' : '\verb++<Left>',
 				\ 'wrapper' : 'vimtex#imaps#wrap_trivial',
 				\})
-]],
+	]],
 	false
 )

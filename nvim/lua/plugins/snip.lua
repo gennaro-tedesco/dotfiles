@@ -195,6 +195,25 @@ local snips = {
 			name = "variable indicator",
 		}, fmt('"${}"', i(1, "var"))),
 	},
+	tex = {
+		s(
+			{ trig = "env", name = "latex environment" },
+			fmt(
+				[[
+				\begin{{{}}}
+					{}
+				\end{{{}}}
+				]],
+				{
+					i(1, "env"),
+					i(0, "body"),
+					f(function(env)
+						return env[1]
+					end, { 1 }),
+				}
+			)
+		),
+	},
 	zsh = {
 		s({
 			trig = "var",
@@ -209,6 +228,7 @@ ls.add_snippets(nil, {
 	markdown = snips.markdown,
 	python = snips.python,
 	sh = snips.sh,
+	tex = snips.tex,
 	vim = snips.vim,
 	zsh = snips.zsh,
 })
