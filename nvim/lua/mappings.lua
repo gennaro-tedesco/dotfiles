@@ -77,6 +77,9 @@ nnoremap("rw", "viwpyiw", { desc = "replace a word with yanked text" })
 --- replace till the end of line with yanked text
 nnoremap("rl", 'Pl"_D', { desc = "replace till end of the line" })
 
+--- ciw
+nnoremap("S", "ciw")
+
 --- toggle capitalisation
 nnoremap("<leader>w", "g~iw")
 vnoremap("<leader>w", "~")
