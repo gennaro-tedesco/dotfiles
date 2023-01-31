@@ -56,10 +56,10 @@ vim.g.python3_host_prog = "/usr/local/bin/python3"
 --------------------
 --- autocommands ---
 --------------------
-local format = vim.api.nvim_create_augroup("Format", {})
-vim.api.nvim_clear_autocmds({ group = format })
+local general_settings = vim.api.nvim_create_augroup("GeneralSettings", { clear = true })
+
 vim.api.nvim_create_autocmd("FileType", {
-	group = format,
+	group = general_settings,
 	pattern = { "*" },
 	desc = "remove formatoptions",
 	callback = function()
@@ -67,32 +67,25 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-local highlight_yank = vim.api.nvim_create_augroup("HighlightYank", {})
-vim.api.nvim_clear_autocmds({ group = highlight_yank })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	group = highlight_yank,
+	group = general_settings,
 	desc = "highlight yank",
-	pattern = { "*" },
 	callback = function()
 		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 400 })
 	end,
 })
 
-local terminal_open = vim.api.nvim_create_augroup("TerminalOpen", {})
-vim.api.nvim_clear_autocmds({ group = terminal_open })
 vim.api.nvim_create_autocmd("TermOpen", {
-	group = terminal_open,
+	group = general_settings,
+	desc = "settings for terminal windows",
 	callback = function()
 		vim.opt.number = false
 		vim.opt.relativenumber = false
 	end,
 })
 
-local lastplace = vim.api.nvim_create_augroup("LastPlace", {})
-vim.api.nvim_clear_autocmds({ group = lastplace })
 vim.api.nvim_create_autocmd("BufReadPost", {
-	group = lastplace,
-	pattern = { "*" },
+	group = general_settings,
 	desc = "remember last cursor place",
 	callback = function()
 		local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -100,6 +93,21 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		if mark[1] > 0 and mark[1] <= lcount then
 			pcall(vim.api.nvim_win_set_cursor, 0, mark)
 		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("VimEnter", {
+	group = general_settings,
+	desc = "open nvim-tree on directory enter",
+	callback = function(data)
+		local directory = vim.fn.isdirectory(data.file) == 1
+
+		if not directory then
+			return
+		end
+
+		vim.cmd.cd(data.file)
+		require("nvim-tree.api").tree.open()
 	end,
 })
 
