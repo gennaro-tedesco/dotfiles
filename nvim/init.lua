@@ -312,6 +312,7 @@ local plugins = {
 local opts = {
 	lockfile = vim.fs.normalize("~/dotfiles/nvim") .. "/lazy-lock.json",
 	ui = {
+		border = "rounded",
 		icons = {
 			cmd = "⌘",
 			config = "🛠",
