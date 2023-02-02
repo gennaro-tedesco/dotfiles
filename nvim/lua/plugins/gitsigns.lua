@@ -51,7 +51,7 @@ gitsigns.setup({
 		map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
 		map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
 		map("n", "<leader>hp", gs.preview_hunk)
-		map("n", "<leader>hl", function()
+		map("n", "<leader>h/", function()
 			gs.setloclist()
 		end, { desc = "send git hunks to loc list" })
 		map("n", "<leader>gB", function()
