@@ -5,6 +5,7 @@ end
 
 symbols.setup({
 	highlight_hovered_item = false,
+	preview_bg_highlight = "Normal",
 	autofold_depth = 1,
 	auto_close = false,
 	symbols = {
