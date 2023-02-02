@@ -54,7 +54,7 @@ lualine.setup({
 			{
 				"diagnostics",
 				update_in_insert = true,
-				symbols = { error = "❗:", warn = "⚠️ :", info = "i:", hint = "💡:" },
+				symbols = { error = "❗", warn = "⚠️ ", info = "i", hint = "💡" },
 				colored = false,
 				on_click = function()
 					vim.diagnostic.setloclist()
