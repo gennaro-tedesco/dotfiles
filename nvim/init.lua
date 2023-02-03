@@ -55,6 +55,17 @@ local plugins = {
 			{
 				"nvim-treesitter/nvim-treesitter-context",
 				event = "BufReadPre",
+				init = function()
+					local treesitter_hl = vim.api.nvim_create_augroup("TreesitterHighlights", {})
+					vim.api.nvim_clear_autocmds({ group = treesitter_hl })
+					vim.api.nvim_create_autocmd("BufEnter", {
+						group = treesitter_hl,
+						desc = "redefinition of treesitter context highlights group",
+						callback = function()
+							vim.api.nvim_set_hl(0, "TreesitterContext", { link = "Pmenu" })
+						end,
+					})
+				end,
 				config = true,
 			},
 		},
