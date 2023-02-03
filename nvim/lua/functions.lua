@@ -27,7 +27,7 @@ end
 _G.icons = {
 	Array = "",
 	Branch = "",
-	Boolean = "◩ ",
+	Boolean = "◩",
 	Class = "ﴯ",
 	Color = "",
 	Constant = "",
@@ -35,14 +35,16 @@ _G.icons = {
 	Enum = "",
 	EnumMember = "",
 	Event = "",
-	Field = "",
+	Field = "",
 	File = "",
 	Folder = "",
 	Function = "ƒ",
 	Interface = "",
+	Key = "",
 	Keyword = "",
 	Method = "",
 	Module = "",
+	Namespace = "",
 	Number = "",
 	Null = "ﳠ",
 	Object = "⦿",
@@ -57,7 +59,7 @@ _G.icons = {
 	TypeParameter = "",
 	Unit = "",
 	Value = "",
-	Variable = "",
+	Variable = "𝓐",
 }
 
 local M = {}
