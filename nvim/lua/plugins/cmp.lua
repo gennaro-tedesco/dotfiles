@@ -8,6 +8,8 @@ if not pairs_ok then
 	return
 end
 
+local icons = require("utils").icons
+
 cmp.setup({
 	view = {
 		entries = { name = "custom", selection_order = "near_cursor" },
@@ -24,7 +26,7 @@ cmp.setup({
 	formatting = {
 		fields = { "abbr", "kind", "menu" },
 		format = function(entry, item)
-			item.kind = string.format("%s %s", icons[item.kind], item.kind)
+			item.kind = string.format("%s %s", icons.kinds[item.kind], item.kind)
 			item.menu = ({
 				nvim_lsp = "✨",
 				luasnip = "🚀",

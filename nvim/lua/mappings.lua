@@ -26,7 +26,7 @@ nnoremap("qq", "q")
 nnoremap("U", "<C-r>")
 
 --- remove all trailing spaces
-nnoremap("<F5>", "<cmd>lua require('functions').trim_whitespace()<CR>")
+nnoremap("<F5>", "<cmd>lua require('utils').trim_whitespace()<CR>")
 
 --- smarter indenting
 vnoremap("<", "<gv")
@@ -92,15 +92,15 @@ nnoremap("yf", function()
 end, { desc = "copy file name to clipboard" })
 
 --- count all occurrences of word under cursor
-nnoremap("*", "*<cmd>lua require('functions').count_matches()<CR>", { desc = "count matches for word under cursor" })
+nnoremap("*", "*<cmd>lua require('utils').count_matches()<CR>", { desc = "count matches for word under cursor" })
 
 --- blink word under cursor in search mode
-nnoremap("n", "nzz<cmd>lua require('functions').hl_search(0.3)<CR>", { desc = "go to next search and highlight" })
-nnoremap("N", "Nzz<cmd>lua require('functions').hl_search(0.3)<CR>", { desc = "go to prev search and highlight" })
+nnoremap("n", "nzz<cmd>lua require('utils').hl_search(0.3)<CR>", { desc = "go to next search and highlight" })
+nnoremap("N", "Nzz<cmd>lua require('utils').hl_search(0.3)<CR>", { desc = "go to prev search and highlight" })
 
 --- quickfix
-nnoremap("<C-q>", "<cmd> lua require('functions').toggle_qf()<CR>", { desc = "toggle quickfix" })
-nnoremap("<C-l>", "<cmd> lua require('functions').toggle_ll()<CR>", { desc = "toggle loc list" })
+nnoremap("<C-q>", "<cmd> lua require('utils').toggle_qf()<CR>", { desc = "toggle quickfix" })
+nnoremap("<C-l>", "<cmd> lua require('utils').toggle_ll()<CR>", { desc = "toggle loc list" })
 
 --- open todo file in one go
 nnoremap("<leader>t", function()
@@ -128,7 +128,7 @@ tnoremap("qq", "<C-\\><C-n>")
 --- definition of new commands ---
 ----------------------------------
 vim.api.nvim_create_user_command("Rf", function()
-	require("functions").replace_file()
+	require("utils").replace_file()
 end, {})
 
 vim.api.nvim_create_user_command("W", function()
@@ -140,5 +140,5 @@ vim.api.nvim_create_user_command("Q", function()
 end, {})
 
 vim.api.nvim_create_user_command("Timer", function(opts)
-	require("functions").timer(opts.args)
+	require("utils").timer(opts.args)
 end, { nargs = 1 })

@@ -182,7 +182,7 @@ local plugins = {
 		init = function()
 			local fzf = require("fzf-lua")
 			vim.keymap.set({ "n" }, "<C-p>", function()
-				fzf.files({ show_cwd_header = false, cwd = require("functions").git_root() })
+				fzf.files({ show_cwd_header = false, cwd = require("utils").git_root() })
 			end, { desc = "fzf browse files" })
 			vim.keymap.set({ "n" }, "<C-b>", function()
 				fzf.buffers()
@@ -237,7 +237,7 @@ local plugins = {
 		cmd = "Rg",
 		init = function()
 			vim.keymap.set("n", "<C-h>", ":Rg<space>")
-			vim.keymap.set("n", "<C-g>", "<cmd> lua require('functions').replace_grep()<CR>")
+			vim.keymap.set("n", "<C-g>", "<cmd> lua require('utils').replace_grep()<CR>")
 		end,
 	},
 
