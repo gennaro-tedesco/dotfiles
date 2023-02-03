@@ -65,7 +65,7 @@
   },
   "neodev.nvim": {
     "branch": "main",
-    "commit": "4186775df167e3fb974398ea2f9130a1f0cac019"
+    "commit": "d9a8d651501cd2f287742472af4b3103d991cd68"
   },
   "neoscroll.nvim": {
     "branch": "master",
@@ -93,7 +93,7 @@
   },
   "nvim-cmp": {
     "branch": "main",
-    "commit": "e7e2ef7031db8e0cfad7ad9916ec766ddd9dbb3b"
+    "commit": "cfafe0a1ca8933f7b7968a287d39904156f2c57d"
   },
   "nvim-jqx": {
     "branch": "master",
@@ -121,7 +121,7 @@
   },
   "nvim-treesitter": {
     "branch": "master",
-    "commit": "588cdb6c0652356dacc7d29bb4bb2b273df2df86"
+    "commit": "98a52ce300d2f8ba3bf7838e08396d829aaef078"
   },
   "nvim-treesitter-context": {
     "branch": "master",
