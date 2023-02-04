@@ -11,6 +11,9 @@ end
 local opts = { noremap = true, silent = true }
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+---------------
+--- keymaps ---
+---------------
 vim.keymap.set(
 	"n",
 	"g+",
@@ -105,12 +108,21 @@ local lsp_flags = {
 }
 vim.lsp.set_log_level("debug")
 
--- configuration of the individual language servers --
+--------------------------------------------------------
+--- configuration of the individual language servers ---
+--------------------------------------------------------
+
+---bashls
+lsp.bashls.setup({ on_attach = on_attach })
+
+---gopls
 lsp.gopls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	lsp_flags = lsp_flags,
 })
+
+---sumneko_lua
 lsp.sumneko_lua.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
@@ -127,17 +139,21 @@ lsp.sumneko_lua.setup({
 		},
 	},
 })
+
+---jedi_language_server
 lsp.jedi_language_server.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	lsp_flags = lsp_flags,
 })
-lsp.vimls.setup({ on_attach = on_attach })
-lsp.bashls.setup({ on_attach = on_attach })
+
+---jsonls
 lsp.jsonls.setup({
-	on_attach = on_attach,
 	capabilities = capabilities,
+	on_attach = on_attach,
 })
+
+---rust_analyzer
 lsp.rust_analyzer.setup({
 	settings = {
 		["rust-analyzer"] = {
@@ -150,9 +166,32 @@ lsp.rust_analyzer.setup({
 	on_attach = on_attach,
 	lsp_flags = lsp_flags,
 })
+
+---texlab
 lsp.texlab.setup({ on_attach = on_attach })
 
--- diagnostics: linting and formatting --
+---vimls
+lsp.vimls.setup({ on_attach = on_attach })
+
+---yamlls
+lsp.yamlls.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = {
+		yaml = {
+			schemas = {
+				["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+				["https://json.schemastore.org/pre-commit-config.json"] = "/.pre-commit-config.*",
+				["https://raw.githubusercontent.com/iterative/dvcyaml-schema/master/schema.json"] = "dvc.yaml",
+				["https://json.schemastore.org/swagger-2.0.json"] = "swagger.yaml",
+			},
+		},
+	},
+})
+
+-------------------------------------------
+--- diagnostics: linting and formatting ---
+-------------------------------------------
 vim.diagnostic.config({
 	virtual_text = true,
 	signs = true,
