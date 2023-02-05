@@ -7,6 +7,10 @@ mkcd() {
 	mkdir -p -- "$1" && cd -P -- "$1"
 }
 
+# mkdir and touch file
+touchdir() {
+	mkdir -p "$(dirname "$1")" && touch "$1"
+}
 
 # fzf browse files
 find_files() {
