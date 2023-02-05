@@ -21,17 +21,20 @@ cmp.setup({
 	},
 	window = {
 		documentation = cmp.config.window.bordered(),
-		completion = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered({
+			col_offset = -3,
+		}),
 	},
 	formatting = {
-		fields = { "abbr", "kind", "menu" },
+		fields = { "kind", "abbr", "menu" },
 		format = function(entry, item)
-			item.kind = string.format("%s %s", icons.kinds[item.kind], item.kind)
+			local kind = string.lower(item.kind)
+			item.kind = string.format(icons.kinds[item.kind])
 			item.menu = ({
-				nvim_lsp = "✨",
-				luasnip = "🚀",
-				buffer = "📝",
-				path = "📁",
+				nvim_lsp = "✨" .. kind,
+				luasnip = "🚀" .. kind,
+				buffer = "📝" .. kind,
+				path = "📁" .. kind,
 			})[entry.source.name]
 			return item
 		end,
@@ -65,7 +68,6 @@ cmp.setup({
 		{ name = "nvim_lsp", keyword_length = 3 },
 		{ name = "buffer", keyword_length = 5 },
 		{ name = "path" },
-		{ name = "plugins" },
 	},
 	sorting = {
 		comparators = {
@@ -77,6 +79,7 @@ cmp.setup({
 
 cmp.setup.cmdline({ "/", "?" }, {
 	mapping = cmp.mapping.preset.cmdline(),
+	window = { completion = cmp.config.window.bordered({ col_offset = 0 }) },
 	formatting = { fields = { "abbr" } },
 	sources = {
 		{ name = "buffer" },
@@ -85,6 +88,7 @@ cmp.setup.cmdline({ "/", "?" }, {
 
 cmp.setup.cmdline(":", {
 	mapping = cmp.mapping.preset.cmdline(),
+	window = { completion = cmp.config.window.bordered({ col_offset = 0 }) },
 	formatting = { fields = { "abbr" } },
 	sources = cmp.config.sources({
 		{ name = "path" },
@@ -97,19 +101,22 @@ cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 local cmp_hl = vim.api.nvim_create_augroup("CmpHighlights", {})
 local cmp_types = {
+	"Class",
 	"Constant",
 	"Constructor",
+	"Enum",
 	"Field",
 	"Function",
 	"Keyword",
 	"Method",
 	"Operator",
 	"Property",
+	"Struct",
 	"Text",
 }
 
 vim.api.nvim_clear_autocmds({ group = cmp_hl })
-vim.api.nvim_create_autocmd("BufEnter", {
+vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
 	group = cmp_hl,
 	desc = "redefinition of nvim-cmp highlight groups",
 	callback = function()
