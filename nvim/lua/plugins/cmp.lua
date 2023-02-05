@@ -65,6 +65,7 @@ cmp.setup({
 		{ name = "nvim_lsp", keyword_length = 3 },
 		{ name = "buffer", keyword_length = 5 },
 		{ name = "path" },
+		{ name = "plugins" },
 	},
 	sorting = {
 		comparators = {
@@ -78,7 +79,6 @@ cmp.setup.cmdline({ "/", "?" }, {
 	mapping = cmp.mapping.preset.cmdline(),
 	formatting = { fields = { "abbr" } },
 	sources = {
-		{ name = "nvim_lsp_document_symbol" },
 		{ name = "buffer" },
 	},
 })

@@ -117,11 +117,11 @@
   },
   "nvim-tree.lua": {
     "branch": "master",
-    "commit": "7eb33d2a6d5d574a43159da90e0eac2445367393"
+    "commit": "59e65d88db177ad1e6a8cffaafd4738420ad20b6"
   },
   "nvim-treesitter": {
     "branch": "master",
-    "commit": "3fa887eaaef03960a87cdfec0eda508d4bfb97d8"
+    "commit": "720f75f9881cae820cecde23fc2f07affacf2826"
   },
   "nvim-treesitter-context": {
     "branch": "master",
