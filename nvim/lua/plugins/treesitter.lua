@@ -15,5 +15,8 @@ return {
 			"yaml",
 			"vim",
 		},
+		matchup = {
+			enable = true,
+		},
 	}),
 }
