@@ -29,7 +29,7 @@ cmp.setup({
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, item)
 			local kind = string.lower(item.kind)
-			item.kind = string.format(icons.kinds[item.kind])
+			item.kind = icons.kinds[item.kind] or "?"
 			item.menu = ({
 				nvim_lsp = "✨" .. kind,
 				luasnip = "🚀" .. kind,
@@ -122,6 +122,8 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
 	callback = function()
 		vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", {})
 		vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { link = "helpVim" })
+		vim.api.nvim_set_hl(0, "CmpItemMenu", {})
+		vim.api.nvim_set_hl(0, "CmpItemMenu", { link = "LineNr" })
 		vim.api.nvim_set_hl(0, "CmpItemKindVariable", {})
 		vim.api.nvim_set_hl(0, "CmpItemKindVariable", { link = "@number" })
 		for _, type in ipairs(cmp_types) do
