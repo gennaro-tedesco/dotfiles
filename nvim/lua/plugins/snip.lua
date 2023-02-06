@@ -51,6 +51,19 @@ end, { desc = "🚀snip prev choice" })
 
 -- snippets
 local snips = {
+	go = {
+		s(
+			{ trig = "err", name = "error check" },
+			fmt(
+				[[
+				if {} != nil {{
+					{}
+				}}
+				]],
+				{ i(1, "err"), i(2, "body") }
+			)
+		),
+	},
 	lua = {
 		s(
 			{ trig = "pcall", name = "protected call" },
@@ -224,6 +237,7 @@ local snips = {
 
 -- add snips to engine
 ls.add_snippets(nil, {
+	go = snips.go,
 	lua = snips.lua,
 	markdown = snips.markdown,
 	python = snips.python,
