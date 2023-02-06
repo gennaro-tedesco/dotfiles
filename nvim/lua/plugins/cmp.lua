@@ -30,6 +30,7 @@ cmp.setup({
 		format = function(entry, item)
 			local kind = string.lower(item.kind)
 			item.kind = icons.kinds[item.kind] or "?"
+			item.abbr = item.abbr:match("[^(]+")
 			item.menu = ({
 				nvim_lsp = "✨" .. kind,
 				luasnip = "🚀" .. kind,
