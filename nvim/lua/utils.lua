@@ -70,6 +70,13 @@ M.icons = {
 		Value = "",
 		Variable = "𝓐",
 	},
+	cmp_sources = {
+		nvim_lsp = "✨",
+		luasnip = "🚀",
+		buffer = "📝",
+		path = "📁",
+		cmdline = "💻",
+	},
 }
 
 M.count_matches = function()
