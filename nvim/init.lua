@@ -270,6 +270,7 @@ local plugins = {
 	--- plugins that make vim easier to use
 	{
 		"chentoast/marks.nvim",
+		event = "VeryLazy",
 		init = function()
 			vim.keymap.set("n", "m/", "<cmd>MarksListAll<CR>")
 		end,
@@ -284,10 +285,12 @@ local plugins = {
 	},
 	{
 		"kylechui/nvim-surround",
+		event = "BufReadPost",
 		config = true,
 	},
 	{
 		"numToStr/Comment.nvim",
+		event = "BufReadPost",
 		config = true,
 	},
 	{
