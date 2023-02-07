@@ -114,6 +114,21 @@ local plugins = {
 		dependencies = {
 			{ "smjonas/inc-rename.nvim", event = "InsertEnter", config = true },
 			{ "folke/neodev.nvim", event = "InsertEnter", ft = "lua", config = true },
+			{
+				"weilbith/nvim-code-action-menu",
+				cmd = "CodeActionMenu",
+				init = function()
+					vim.g.code_action_menu_show_diff = true
+					vim.g.code_action_menu_window_border = "rounded"
+					local actions_hl = vim.api.nvim_create_augroup("ActionsHighlight", { clear = true })
+					vim.api.nvim_create_autocmd("User CodeActionMenuWindowOpened", {
+						group = actions_hl,
+						callback = function()
+							vim.api.nvim_set_hl(0, "CodeActionMenuMenuSelection", { link = "PmenuSel" })
+						end,
+					})
+				end,
+			},
 		},
 		config = function()
 			require("plugins.lsp")

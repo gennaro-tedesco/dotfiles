@@ -98,7 +98,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set(
 		"n",
 		"<leader>a",
-		vim.lsp.buf.code_action,
+		"<cmd>CodeActionMenu<CR>",
 		vim.tbl_extend("force", bufopts, { desc = "✨lsp code action" })
 	)
 end
