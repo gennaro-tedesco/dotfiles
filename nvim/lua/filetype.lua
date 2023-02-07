@@ -5,6 +5,7 @@ vim.filetype.add({
 	},
 	pattern = {
 		["req.*.txt"] = "config",
+		["env.*"] = "config",
 		["gitconf.*"] = "gitconfig",
 	},
 })
