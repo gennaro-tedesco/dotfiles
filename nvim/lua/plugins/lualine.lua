@@ -8,6 +8,8 @@ if not noice_ok then
 	return
 end
 
+local icons = require("utils").icons
+
 local soldark = require("lualine.themes.solarized_dark")
 soldark.normal.a.gui = ""
 soldark.insert.a.gui = ""
@@ -54,7 +56,12 @@ lualine.setup({
 			{
 				"diagnostics",
 				update_in_insert = true,
-				symbols = { error = "❗", warn = "⚠️ ", info = "i", hint = "💡" },
+				symbols = {
+					error = icons.statusline.Error,
+					warn = icons.statusline.Warn,
+					info = icons.statusline.Info,
+					hint = icons.statusline.Hint,
+				},
 				colored = false,
 				on_click = function()
 					vim.diagnostic.setloclist()

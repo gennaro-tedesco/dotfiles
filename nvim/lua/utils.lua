@@ -77,6 +77,12 @@ M.icons = {
 		path = "📁",
 		cmdline = "💻",
 	},
+	statusline = {
+		Error = "❗",
+		Warn = "⚠️ ",
+		Hint = "i",
+		Info = "💡",
+	},
 }
 
 M.count_matches = function()
