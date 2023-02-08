@@ -212,3 +212,5 @@ for _, type in ipairs({ "Error", "Warn", "Hint", "Info" }) do
 		{ name = "DiagnosticSign" .. type, text = icons.diagnostics[type], texthl = "Diagnostic" .. type }
 	)
 end
+
+require("lspconfig.ui.windows").default_options.border = "rounded"
