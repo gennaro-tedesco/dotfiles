@@ -5,6 +5,7 @@ pager: delta -s
 aliases:
   mine: s -E -u @me
   b: f -b
+  d: f -d
   l: f -l
   p: f -p
   k: f -k

@@ -68,6 +68,7 @@ local plugins = {
 				end,
 				config = true,
 			},
+			{ "m-demare/hlargs.nvim", event = "BufReadPost", opts = { highlight = { link = "NonText" } } },
 		},
 		config = function()
 			require("plugins.treesitter")
