@@ -122,7 +122,8 @@ local plugins = {
 					vim.g.code_action_menu_show_diff = true
 					vim.g.code_action_menu_window_border = "rounded"
 					local actions_hl = vim.api.nvim_create_augroup("ActionsHighlight", { clear = true })
-					vim.api.nvim_create_autocmd("User CodeActionMenuWindowOpened", {
+					vim.api.nvim_create_autocmd("User", {
+						pattern = "CodeActionMenuWindowOpened",
 						group = actions_hl,
 						callback = function()
 							vim.api.nvim_set_hl(0, "CodeActionMenuMenuSelection", { link = "PmenuSel" })
