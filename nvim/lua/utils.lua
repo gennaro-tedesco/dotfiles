@@ -210,4 +210,14 @@ M.timer = function(seconds)
 	)
 end
 
+M.version = function()
+	local ver = vim.version()
+	return require("nvim-web-devicons").get_icon_by_filetype("vim", {})
+		.. ver.major
+		.. "."
+		.. ver.minor
+		.. "."
+		.. ver.patch
+end
+
 return M
