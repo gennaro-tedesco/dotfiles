@@ -23,27 +23,30 @@ return {
 				enable = true,
 				lookahead = true,
 				keymaps = {
-					["af"] = { query = "@function.outer", desc = "select around function" },
-					["if"] = { query = "@function.inner", desc = "select inside function" },
-					["ac"] = { query = "@class.outer", desc = "select around class" },
-					["ic"] = { query = "@class.inner", desc = "select inside class" },
+					["af"] = { query = "@function.outer", desc = "🌲select around function" },
+					["if"] = { query = "@function.inner", desc = "🌲select inside function" },
+					["ac"] = { query = "@class.outer", desc = "🌲select around class" },
+					["ic"] = { query = "@class.inner", desc = "🌲select inside class" },
 				},
 			},
 			move = {
 				enable = true,
 				set_jumps = true,
 				goto_next_start = {
-					["m+"] = "@function.outer",
+					["g+"] = { query = "@function.outer", desc = "🌲go to next function" },
+					["gc+"] = { query = "@class.outer", desc = "🌲go to next class" },
 				},
 				goto_previous_start = {
-					["m-"] = "@function.outer",
+					["g-"] = { query = "@function.outer", desc = "🌲go to previous function" },
+					["gc-"] = { query = "@class.outer", desc = "🌲go to previous class" },
 				},
 			},
 			lsp_interop = {
 				enable = true,
 				border = "rounded",
 				peek_definition_code = {
-					["pd"] = "@function.outer",
+					["gp"] = { query = "@function.outer", desc = "🌲peek function definition" },
+					["gcp"] = { query = "@class.outer", desc = "🌲peek class definition" },
 				},
 			},
 		},

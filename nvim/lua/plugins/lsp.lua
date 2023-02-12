@@ -16,25 +16,25 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 ---------------
 vim.keymap.set(
 	"n",
-	"g+",
+	"d+",
 	vim.diagnostic.goto_next,
 	vim.tbl_extend("force", opts, { desc = "✨lsp go to next diagnostic" })
 )
 vim.keymap.set(
 	"n",
-	"g-",
+	"d-",
 	vim.diagnostic.goto_prev,
 	vim.tbl_extend("force", opts, { desc = "✨lsp go to prev diagnostic" })
 )
 vim.keymap.set(
 	"n",
-	"g/",
+	"d/",
 	vim.diagnostic.setloclist,
 	vim.tbl_extend("force", opts, { desc = "✨lsp send diagnostics to loc list" })
 )
 vim.keymap.set(
 	"n",
-	"ge",
+	"de",
 	vim.diagnostic.open_float,
 	vim.tbl_extend("force", opts, { desc = "✨lsp show diagnostic in floating window" })
 )
