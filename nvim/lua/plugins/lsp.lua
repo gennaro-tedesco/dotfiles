@@ -123,7 +123,7 @@ lsp.gopls.setup({
 })
 
 ---sumneko_lua
-lsp.sumneko_lua.setup({
+lsp.lua_ls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	lsp_flags = lsp_flags,
