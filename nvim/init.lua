@@ -69,6 +69,7 @@ local plugins = {
 				config = true,
 			},
 			{ "nvim-treesitter/nvim-treesitter-textobjects" },
+			{ "RRethy/nvim-treesitter-textsubjects" },
 			{ "m-demare/hlargs.nvim", event = "BufReadPost", opts = { highlight = { link = "NonText" } } },
 		},
 		config = function()
