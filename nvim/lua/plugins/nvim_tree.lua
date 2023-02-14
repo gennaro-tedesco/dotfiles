@@ -4,7 +4,7 @@ if not ok then
 end
 
 local HEIGHT_RATIO = 0.8
-local WIDTH_RATIO = 0.4
+local WIDTH_RATIO = 0.2
 
 local function edit_cd(node)
 	local api = require("nvim-tree.api")
@@ -42,7 +42,7 @@ nvim_tree.setup({
 			},
 		},
 		float = {
-			enable = true,
+			enable = false,
 			open_win_config = function()
 				local screen_w = vim.opt.columns:get()
 				local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
