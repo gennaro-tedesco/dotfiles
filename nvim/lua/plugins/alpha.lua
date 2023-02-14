@@ -3,20 +3,57 @@ if not ok then
 	return
 end
 
-local startify = require("alpha.themes.startify")
-startify.section.header.val = { "welcome back, and a fine day it is!" }
-startify.section.top_buttons.val = {
-	startify.button("e", "📄 new file", ":ene <BAR> startinsert <CR>"),
-	startify.button("t", "📆 todo", ":e<space>~/.todo<CR>"),
-	startify.button("s", "📌 sessions", "<cmd> lua require'nvim-possession'.list()<CR>"),
-}
-startify.section.bottom_buttons.val = {
-	startify.button("q", "❌ quit", "<cmd>qa<CR>"),
-	startify.button("h", "✅ checkhealth", "<cmd>checkhealth<CR>"),
-	startify.button("p", "🔌 plugins", "<cmd>Lazy<CR>"),
-}
-startify.section.mru.val = { { type = "padding", val = 0 } }
-startify.section.footer.val = { { type = "text", val = { "", require("utils").version() }, opts = { hl = "@class" } } }
+local theta = require("alpha.themes.theta")
+local dashboard = require("alpha.themes.dashboard")
 
-startify.nvim_web_devicons.enabled = true
-alpha.setup(startify.config)
+local header =
+	{ type = "text", val = { "welcome back, and a fine day it is!" }, opts = { position = "center", hl = "@type" } }
+local footer = {
+	type = "text",
+	val = {
+		require("utils").version()
+			.. ", "
+			.. require("lazy").stats().loaded
+			.. "/"
+			.. require("lazy").stats().count
+			.. " 🔌",
+	},
+	opts = { position = "center", hl = "@type" },
+}
+
+local files = {
+	type = "group",
+	val = {
+		{ type = "text", val = "recent files", opts = { hl = "@constructor", position = "center" } },
+		{ type = "padding", val = 1 },
+		theta.mru(0, vim.fn.getcwd(), 10),
+	},
+}
+
+local buttons = {
+	type = "group",
+	val = {
+		{ type = "text", val = "actions", opts = { hl = "@constructor", position = "center" } },
+		{ type = "padding", val = 1 },
+		dashboard.button("e", "📄 new file", ":ene <BAR> startinsert <CR>"),
+		dashboard.button("t", "📆 todo", ":e<space>~/.todo<CR>"),
+		dashboard.button("p", "🔌 plugins", "<cmd>Lazy<CR>"),
+		dashboard.button("h", "✅ checkhealth", "<cmd>checkhealth<CR>"),
+		dashboard.button("q", "❌ quit", "<cmd>qa<CR>"),
+	},
+}
+
+theta.config = {
+	layout = {
+		{ type = "padding", val = 2 },
+		header,
+		{ type = "padding", val = 3 },
+		files,
+		{ type = "padding", val = 2 },
+		buttons,
+		{ type = "padding", val = 2 },
+		footer,
+	},
+}
+
+alpha.setup(theta.config)
