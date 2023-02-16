@@ -20,10 +20,8 @@ cmp.setup({
 		end,
 	},
 	window = {
-		documentation = cmp.config.window.bordered(),
-		completion = cmp.config.window.bordered({
-			col_offset = -3,
-		}),
+		documentation = cmp.config.window.bordered({ winhighlight = "FloatBorder:helpVim" }),
+		completion = cmp.config.window.bordered({ col_offset = -3, winhighlight = "FloatBorder:helpVim" }),
 	},
 	formatting = {
 		fields = { "kind", "abbr", "menu" },

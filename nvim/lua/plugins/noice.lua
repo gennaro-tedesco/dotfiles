@@ -91,7 +91,7 @@ noice.setup({
 					conceallevel = 3,
 					winhighlight = {
 						Normal = "Normal",
-						FloatBorder = "@function",
+						FloatBorder = "helpVim",
 					},
 				},
 			},
