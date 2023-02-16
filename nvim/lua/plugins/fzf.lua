@@ -15,6 +15,7 @@ fzf.setup({
 		["--info"] = "hidden",
 		["--padding"] = "10%,5%,10%,5%",
 		["--header"] = " ",
+		["--no-scrollbar"] = "",
 	},
 	files = {
 		git_icons = true,
