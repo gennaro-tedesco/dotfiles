@@ -270,7 +270,8 @@ local plugins = {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "BufReadPre",
+		lazy = true,
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("plugins.gitsigns")
 		end,
@@ -310,6 +311,7 @@ local plugins = {
 	{
 		"numToStr/Comment.nvim",
 		event = "BufReadPost",
+		keys = { "gc", "gb", { "gc", mode = "v" }, { "gb", mode = "v" } },
 		config = true,
 	},
 	{
@@ -325,7 +327,9 @@ local plugins = {
 		"gennaro-tedesco/nvim-jqx",
 		ft = { "json", "yaml" },
 		config = function()
-			require("nvim-jqx.config").use_quickfix = false
+			local jqx = require("nvim-jqx.config")
+			jqx.geometry.border = "single"
+			jqx.use_quickfix = false
 		end,
 	},
 	{
