@@ -75,6 +75,18 @@ fzf.setup({
 			},
 		},
 	},
+	autocmds = {
+		prompt = "autocommands:",
+		winopts = {
+			width = 0.8,
+			height = 0.7,
+			preview = {
+				layout = "horizontal",
+				horizontal = "down:40%",
+				wrap = "wrap",
+			},
+		},
+	},
 	keymaps = {
 		prompt = "keymaps:",
 		winopts = {
