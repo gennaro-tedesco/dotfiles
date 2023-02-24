@@ -393,7 +393,7 @@ for _, file in ipairs(vim.fn.readdir(config_path .. "/lua", [[v:val =~ '\.lua$']
 end
 
 local function plug_list()
-	vim.cmd.edit(config_path .. "/init.lua")
+	local plugins_file = config_path .. "/init.lua"
 
 	local loc_list = {}
 	for _, p in pairs(lazy.plugins()) do
@@ -404,7 +404,7 @@ local function plug_list()
 				tonumber(vim.api.nvim_exec("g/" .. plugin_pattern .. '/execute "normal! ^" | echo col(".")-1', true))
 			if row ~= 0 then
 				table.insert(loc_list, {
-					bufnr = vim.api.nvim_buf_get_number(0),
+					filename = plugins_file,
 					lnum = row,
 					col = col + 1,
 					text = p[1],
