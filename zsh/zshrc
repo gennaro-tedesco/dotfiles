@@ -39,7 +39,7 @@ export EDITOR="nvim"
 export LANG=en_US.UTF-8
 export LC_CTYPE="en_US.UTF-8"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export FZF_DEFAULT_OPTS="--reverse --border -e --no-scrollbar --height=50% --padding=1 --preview-window=right:50%:wrap --bind shift-up:preview-up,shift-down:preview-down --bind ?:toggle-preview --color=bg+:#073642,gutter:-1 --pointer ▶ --marker •"
+export FZF_DEFAULT_OPTS="--reverse --border -e --no-scrollbar --height=50% --padding=1 --preview-window=right:50%:wrap --bind shift-up:preview-up,shift-down:preview-down --bind ?:toggle-preview --color=bg+:#073642,gutter:-1 --pointer ▶ --marker "
 export FZF_DEFAULT_COMMAND="fd -H -t f -E '.git/'"
 export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
 export LS_COLORS="$(vivid generate solarized-dark)"
@@ -90,6 +90,7 @@ alias code="scc -c --no-cocomo"
 ## bindkeys
 ## --------
 bindkey -s '^p' 'find_files\n'
+bindkey -s '^t' 'find_dir\n'
 bindkey -s '^o' 'cd $(git root) && git d 2>/dev/null | find_files\n'
 bindkey -s '^n' 'vifm\n'
 bindkey -s '^h' 'search '
