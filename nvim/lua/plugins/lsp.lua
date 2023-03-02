@@ -42,7 +42,7 @@ vim.keymap.set(
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	-- toggle diagnostics
+	--- toggle diagnostics
 	vim.g.diagnostics_visible = true
 	local function toggle_diagnostics()
 		if vim.g.diagnostics_visible then
@@ -54,7 +54,7 @@ local on_attach = function(client, bufnr)
 		end
 	end
 
-	-- autocmd to show diagnostics on CursorHold
+	--- autocmd to show diagnostics on CursorHold
 	vim.api.nvim_create_autocmd("CursorHold", {
 		buffer = bufnr,
 		desc = "✨lsp show diagnostics on CursorHold",

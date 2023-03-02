@@ -111,7 +111,7 @@ end, { desc = "open todo file" })
 nnoremap("<CR>", function()
 	vim.cmd.nohlsearch()
 	vim.api.nvim_buf_clear_namespace(0, -1, 0, -1)
-end, { silent = true })
+end, { silent = true, desc = "clean up search results and extmarks" })
 
 --- delete all marks
 nnoremap("mx", function()
