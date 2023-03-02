@@ -42,6 +42,7 @@ vim.keymap.set(
 local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
+	-- toggle diagnostics
 	vim.g.diagnostics_visible = true
 	local function toggle_diagnostics()
 		if vim.g.diagnostics_visible then
@@ -52,6 +53,22 @@ local on_attach = function(client, bufnr)
 			vim.diagnostic.enable()
 		end
 	end
+
+	-- autocmd to show diagnostics on CursorHold
+	vim.api.nvim_create_autocmd("CursorHold", {
+		buffer = bufnr,
+		desc = "✨lsp show diagnostics on CursorHold",
+		callback = function()
+			local hover_opts = {
+				focusable = false,
+				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+				border = "rounded",
+				source = "always",
+				prefix = " ",
+			}
+			vim.diagnostic.open_float(nil, hover_opts)
+		end,
+	})
 
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", bufopts, { desc = "✨lsp hover for docs" }))
