@@ -122,7 +122,7 @@ nnoremap("mx", function()
 end, { desc = "delete all marks" })
 
 --- escape terminal mode
-tnoremap("qq", "<C-\\><C-n>")
+tnoremap("<C-q>", "<C-\\><C-n>")
 
 ----------------------------------
 --- definition of new commands ---

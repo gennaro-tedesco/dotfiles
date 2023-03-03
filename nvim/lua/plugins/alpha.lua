@@ -11,12 +11,7 @@ local header =
 local footer = {
 	type = "text",
 	val = {
-		require("utils").version()
-			.. ", "
-			.. require("lazy").stats().loaded
-			.. "/"
-			.. require("lazy").stats().count
-			.. " 🔌",
+		require("utils").version(),
 	},
 	opts = { position = "center", hl = "@type" },
 }
@@ -36,7 +31,7 @@ local buttons = {
 		{ type = "text", val = "actions", opts = { hl = "@constructor", position = "center" } },
 		{ type = "padding", val = 1 },
 		dashboard.button("e", "📄 new file", ":ene <BAR> startinsert <CR>"),
-		dashboard.button("t", "📆 todo", ":e<space>~/.todo<CR>"),
+		dashboard.button("t", "📝 todo", ":e<space>~/.todo<CR>"),
 		dashboard.button("p", "🔌 plugins", "<cmd>Lazy<CR>"),
 		dashboard.button("h", "✅ checkhealth", "<cmd>checkhealth<CR>"),
 		dashboard.button("q", "❌ quit", "<cmd>qa<CR>"),
