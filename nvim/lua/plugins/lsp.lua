@@ -211,6 +211,7 @@ lsp.yamlls.setup({
 -------------------------------------------
 vim.diagnostic.config({
 	virtual_text = true,
+	underline = false,
 	signs = true,
 	severity_sort = true,
 	float = {
