@@ -210,7 +210,10 @@ lsp.yamlls.setup({
 --- diagnostics: linting and formatting ---
 -------------------------------------------
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_text = {
+		source = "always",
+		prefix = "●",
+	},
 	underline = false,
 	signs = true,
 	severity_sort = true,
