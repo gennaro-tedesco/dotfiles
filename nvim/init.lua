@@ -204,7 +204,7 @@ local plugins = {
 				fzf.files({ show_cwd_header = false, cwd = require("utils").git_root() })
 			end, { desc = "fzf browse files" })
 			vim.keymap.set({ "n" }, "<C-b>", function()
-				fzf.buffers()
+				fzf.buffers({ fzf_opts = { ["--delimiter"] = ":", ["--with-nth"] = "..-2" } })
 			end, { desc = "fzf browse open buffers" })
 			vim.keymap.set({ "n" }, "<F1>", function()
 				fzf.help_tags()
