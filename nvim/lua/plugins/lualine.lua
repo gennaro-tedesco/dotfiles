@@ -72,4 +72,9 @@ lualine.setup({
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
 	},
+	inactive_winbar = {
+		lualine_c = { "filename" },
+		lualine_x = { "filetype" },
+		lualine_y = { "progress" },
+	},
 })
