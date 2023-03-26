@@ -41,10 +41,18 @@ inoremap("kk", "<ESC>")
 vnoremap("kk", "<ESC>")
 
 --- treat visual lineas as actual lines
-vim.keymap.set({ "n", "v", "o" }, "j", "gj")
-vim.keymap.set({ "n", "v", "o" }, "k", "gk")
-vim.keymap.set({ "n", "v", "o" }, "<Down>", "gj")
-vim.keymap.set({ "n", "v", "o" }, "<Up>", "gk")
+vim.keymap.set({ "n", "v", "o" }, "j", function()
+	return vim.v.count == 0 and "gj" or "j"
+end, { expr = true })
+vim.keymap.set({ "n", "v", "o" }, "k", function()
+	return vim.v.count == 0 and "gk" or "k"
+end, { expr = true })
+vim.keymap.set({ "n", "v", "o" }, "<Down>", function()
+	return vim.v.count == 0 and "gj" or "<Down>"
+end, { expr = true })
+vim.keymap.set({ "n", "v", "o" }, "<Up>", function()
+	return vim.v.count == 0 and "gk" or "<Up>"
+end, { expr = true })
 inoremap("<Down>", "<C-o>gj")
 inoremap("<Up>", "<C-o>gk")
 nnoremap("vv", "^vg_")

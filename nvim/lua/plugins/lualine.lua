@@ -10,6 +10,16 @@ end
 
 local icons = require("utils").icons
 
+local function is_split()
+	return vim.api.nvim_win_get_height(0) ~= vim.go.lines - 1 or vim.api.nvim_win_get_width(0) ~= vim.go.columns
+end
+
+local exclude_ft = {
+	"NvimTree",
+	"help",
+	"Outline",
+}
+
 local soldark = require("lualine.themes.solarized_dark")
 soldark.normal.a.gui = ""
 soldark.insert.a.gui = ""
@@ -72,9 +82,32 @@ lualine.setup({
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
 	},
+	winbar = {
+		lualine_x = {
+			{
+				"filename",
+				cond = function()
+					return is_split() and not require("utils").is_in_list(vim.bo.filetype, exclude_ft)
+				end,
+			},
+		},
+	},
 	inactive_winbar = {
-		lualine_c = { "filename" },
-		lualine_x = { "filetype" },
-		lualine_y = { "progress" },
+		lualine_x = {
+			{
+				"filename",
+				cond = function()
+					return is_split() and not require("utils").is_in_list(vim.bo.filetype, exclude_ft)
+				end,
+			},
+		},
+		lualine_y = {
+			{
+				"progress",
+				cond = function()
+					return is_split() and not require("utils").is_in_list(vim.bo.filetype, exclude_ft)
+				end,
+			},
+		},
 	},
 })

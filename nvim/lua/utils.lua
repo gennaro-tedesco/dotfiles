@@ -85,6 +85,15 @@ M.icons = {
 	},
 }
 
+M.is_in_list = function(value, list)
+	for _, v in pairs(list) do
+		if v == value then
+			return true
+		end
+	end
+	return false
+end
+
 M.count_matches = function()
 	local cur_word = vim.fn.expandcmd("<cword>")
 	local count = vim.api.nvim_exec("%s/" .. cur_word .. "//ng", true)
