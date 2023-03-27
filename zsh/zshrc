@@ -13,7 +13,7 @@ plugins=(
 		vi-mode
 		zsh-interactive-cd
 		zsh-autosuggestions
-		zsh-syntax-highlighting
+		fast-syntax-highlighting
 		fzf-tab
 		)
 unsetopt autocd
