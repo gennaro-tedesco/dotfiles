@@ -1,3 +1,3 @@
 vim.keymap.set("n", "qq", function()
 	vim.cmd.quit()
-end, { desc = "close help window" })
+end, { buffer = 0, desc = "close help window" })
