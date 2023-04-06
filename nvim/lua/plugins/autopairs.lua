@@ -3,11 +3,10 @@ if not ok then
 	return
 end
 
+local Rule = require("nvim-autopairs.rule")
+
 npairs.setup({
 	ignored_next_char = "[%w%.]",
-})
-npairs.setup({
-	fast_wrap = {},
 })
 npairs.setup({
 	fast_wrap = {
@@ -21,3 +20,5 @@ npairs.setup({
 		highlight_grey = "Comment",
 	},
 })
+
+npairs.add_rule(Rule("<", ">"))

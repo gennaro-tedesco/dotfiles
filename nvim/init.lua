@@ -259,6 +259,7 @@ local plugins = {
 		cmd = "Rg",
 		init = function()
 			vim.keymap.set("n", "<C-h>", ":Rg<space>")
+			vim.keymap.set("n", "<C-*>", "<cmd>Rg<space><CR>")
 			vim.keymap.set("n", "<C-g>", "<cmd> lua require('utils').replace_grep()<CR>")
 		end,
 	},
