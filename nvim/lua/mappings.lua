@@ -150,3 +150,7 @@ end, {})
 vim.api.nvim_create_user_command("Timer", function(opts)
 	require("utils").timer(opts.args)
 end, { nargs = 1 })
+
+vim.api.nvim_create_user_command("Info", function()
+	require("utils").info()
+end, {})
