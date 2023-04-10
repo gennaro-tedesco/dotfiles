@@ -127,7 +127,11 @@ preview_files() {
 		*.pdf)
 			zathura $1;;
 		*)
-			bat --style='header,grid' $@;;
+			if [[ -f $1 ]] then
+				bat --style='header,grid' $1
+			else
+				which $1 | bat -l sh --style 'grid'
+			fi
 	esac
 }
 
