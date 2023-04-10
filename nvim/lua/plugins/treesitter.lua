@@ -3,7 +3,6 @@ return {
 		highlight = { enable = true, disable = { "markdown" } },
 		ensure_installed = {
 			"bash",
-			"help",
 			"go",
 			"json",
 			"lua",
@@ -14,6 +13,7 @@ return {
 			"rust",
 			"yaml",
 			"vim",
+			"vimdoc",
 		},
 		matchup = {
 			enable = true,
