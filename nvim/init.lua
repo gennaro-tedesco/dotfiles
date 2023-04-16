@@ -412,7 +412,7 @@ for _, file in ipairs(vim.fn.readdir(config_path .. "/lua", [[v:val =~ '\.lua$']
 end
 
 local function install()
-	local mk_path, mk_cmd = vim.fs.normalize("~/dotfiles"), "install-nvim"
+	local mk_path, mk_cmd = vim.fs.normalize("~/dotfiles"), "nvim"
 	vim.cmd("!make -C " .. mk_path .. " " .. mk_cmd)
 end
 nnoremap("<leader>i", install, { desc = "install nvim dotfiles" })

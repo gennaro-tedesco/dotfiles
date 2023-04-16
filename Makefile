@@ -6,35 +6,41 @@ NAVICONFIG_DIR=${HOME}/.config/navi
 .PHONY: *
 help:
 	@printf "%s\n" "Targets:"
-	@grep -E '^[a-zA-Z0-9_-]+:.*' $(MAKEFILE_LIST) | grep -v 'help:' | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m  make %-15s\033[0m %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z0-9_-]+:.*' Makefile \
+	| grep -v 'help:' \
+	| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m  %-15s\033[0m %s\n", $$1, $$2}' \
+	| sed 's/:$///g'
 
-install-nvim:
+deps:
+	brew bundle install
+
+nvim:
 	rm -rf ${NEOVIMCONFIG_DIR}
 	mkdir -p ${NEOVIMCONFIG_DIR}
 	cp -r nvim/. ${NEOVIMCONFIG_DIR}
 	nvim --headless "+Lazy! restore" +qa
 
-install-zsh:
+zsh:
 	cp -f zsh/zshrc ${HOME}/.zshrc
 	cp -f zsh/zshfun ${HOME}/.zshfun
 	cp -f zsh/p10k.zsh ${HOME}/.p10k.zsh
 	exec zsh
 
-install-vifm:
+vifm:
 	cp -r vifm/colors/. ${VIFILEMANAGERCONFIG_DIR}/colors
 	cp -r vifm/. ${VIFILEMANAGERCONFIG_DIR}
 
-install-visidata:
+visidata:
 	cp -f visidata/visidatarc ${HOME}/.visidatarc
 
-install-git:
+git:
 	cp -f git/gitconfig ${HOME}/.gitconfig
 	cp -f git/config.yml ${HOME}/.config/gh
 
-install-glow:
+glow:
 	mkdir -p ${GLOWCONFIG_DIR}
 	cp -f glow/customglow.json ${GLOWCONFIG_DIR}
 
-install-navi:
+navi:
 	mkdir -p ${NAVICONFIG_DIR}
 	cp -r navi/. ${NAVICONFIG_DIR}
