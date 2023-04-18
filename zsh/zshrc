@@ -1,37 +1,25 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+## -------------------------
+## loading plugins via zap ⚡
+## -------------------------
+[ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
-# themes and prompt
-ZSH_THEME="powerlevel10k/powerlevel10k"
-POWERLEVEL9K_MODE="awesome-patched"
-
-# list of plugins to load
-plugins=(
-		auto-ls
-		golang
-		vi-mode
-		zsh-interactive-cd
-		zsh-autosuggestions
-		fast-syntax-highlighting
-		fzf-tab
-		)
-unsetopt autocd
-
-# Path to your oh-my-zsh installation.
-export ZSH="${HOME}/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
-unalias -m '*'
+plug "romkatv/powerlevel10k"
+plug "desyncr/auto-ls"
+plug "zap-zsh/vim"
+plug "changyuheng/zsh-interactive-cd"
+plug "zsh-users/zsh-autosuggestions"
+plug "zdharma-continuum/fast-syntax-highlighting"
+plug "Aloxaf/fzf-tab"
+plug "hlissner/zsh-autopair"
 
 # options to use vi-mode from command line
-VI_MODE_SET_CURSOR=true
+autoload -z edit-command-line
+zle -N edit-command-line
 bindkey -M vicmd ' ' edit-command-line
 bindkey -M vicmd 'H' vi-beginning-of-line
 bindkey -M vicmd 'L' vi-end-of-line
 bindkey -M vicmd -s E 10e
 bindkey -M vicmd -s B 10b
-bindkey -M viins 'jj' vi-cmd-mode
-bindkey -M viins 'kk' vi-cmd-mode
 
 # exporting environment variables
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -81,7 +69,6 @@ alias upgrade="brew upgrade && brew cleanup --prune=1 -s"
 alias csp="xsv table | bat -H1 -p -l csv --theme='Nord'"
 alias code="scc -c --no-cocomo"
 
-
 ## -----------------------
 ## additional source files
 ## -----------------------
@@ -94,7 +81,6 @@ alias code="scc -c --no-cocomo"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 
 ## --------
 ## bindkeys
