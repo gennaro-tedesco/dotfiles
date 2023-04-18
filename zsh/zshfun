@@ -121,7 +121,7 @@ preview_files() {
 		*.md)
 			glow -s ~/.config/glowconfig/customglow.json -p $@;;
 		*.json)
-			jq '.' -C $1 | less;;
+			jq '.' -C $1 | less -R;;
 		*.csv)
 			vd "$@";;
 		*.pdf)
