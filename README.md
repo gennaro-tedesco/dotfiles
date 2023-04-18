@@ -36,13 +36,13 @@ Use the [`Makefile`](https://github.com/gennaro-tedesco/dotfiles/blob/master/Mak
 
 ```
 # to install nvim configurations
-make install-nvim
+make nvim
 
 # to install zsh configurations
-make install-zsh
+make zsh
 
 # to install navi cheatsheets
-make install-navi
+make navi
 ```
 
 and so forth.
