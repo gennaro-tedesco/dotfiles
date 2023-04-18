@@ -25,9 +25,9 @@ evergreen is a simple but at the same time precise and complete neovim configura
 └── README.md
 ```
 
-| plugin manager 🚀                               | plugins 🔌                                                                                                                  | latest release 🔏                                                         |
-| :---------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------ |
-| [lazy.nvim](https://github.com/folke/lazy.nvim) | [plugins](https://github.com/gennaro-tedesco/dotfiles/blob/51602e9e1dec7d13160baad2586c0ee4e408d4ff/nvim/init.lua#L35-L287) | [v0.0.4](https://github.com/gennaro-tedesco/dotfiles/releases/tag/v0.0.4) |
+| plugin manager 🚀                               | plugins 🔌                                                                                                                  | latest release 🔏                                                        |
+| :---------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------- |
+| [lazy.nvim](https://github.com/folke/lazy.nvim) | [plugins](https://github.com/gennaro-tedesco/dotfiles/blob/51602e9e1dec7d13160baad2586c0ee4e408d4ff/nvim/init.lua#L35-L287) | [0.5.0](https://github.com/gennaro-tedesco/dotfiles/releases/tag/v0.5.0) |
 
 ## Installation
 
