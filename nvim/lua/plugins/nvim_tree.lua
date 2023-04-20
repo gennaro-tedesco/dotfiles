@@ -3,69 +3,44 @@ if not ok then
 	return
 end
 
-local HEIGHT_RATIO = 0.8
-local WIDTH_RATIO = 0.2
-
-local function edit_cd(node)
+local function on_attach(bufnr)
 	local api = require("nvim-tree.api")
-	if vim.fn.isdirectory(node.absolute_path) == 1 then
-		return api.tree.change_root_to_node(node)
-	else
-		return api.node.open.edit(node)
+
+	local function opts(desc)
+		return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
 	end
+
+	vim.keymap.set("n", "<CR>", function()
+		local node = api.tree.get_node_under_cursor()
+		if vim.fn.isdirectory(node.absolute_path) == 1 then
+			return api.tree.change_root_to_node(node)
+		else
+			return api.node.open.edit(node)
+		end
+	end, opts("edit_cd"))
+
+	vim.keymap.set("n", "q", api.tree.close, opts("Close"))
+	vim.keymap.set("n", "<Esc>", api.tree.close, opts("Close"))
+	vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
+	vim.keymap.set("n", "<Right>", api.node.open.edit, opts("Open"))
+	vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
+	vim.keymap.set("n", "<Left>", api.node.navigate.parent_close, opts("Close Directory"))
+	vim.keymap.set("n", "a", api.fs.create, opts("Create"))
+	vim.keymap.set("n", "i", api.fs.rename, opts("Rename"))
+	vim.keymap.set("n", "dd", api.fs.remove, opts("Delete"))
+	vim.keymap.set("n", "++", api.node.navigate.git.next, opts("Next Git"))
+	vim.keymap.set("n", "--", api.node.navigate.git.prev, opts("Prev Git"))
+	vim.keymap.set("n", "o", api.node.open.preview, opts("Open Preview"))
+	vim.keymap.set("n", "za", api.tree.toggle_hidden_filter, opts("Toggle Dotfiles"))
+	vim.keymap.set("n", "zi", api.tree.toggle_gitignore_filter, opts("Toggle Git Ignore"))
+	vim.keymap.set("n", "K", api.node.show_info_popup, opts("Info"))
+	vim.keymap.set("n", "yf", api.fs.copy.filename, opts("Copy Name"))
+	vim.keymap.set("n", "yp", api.fs.copy.relative_path, opts("Copy Relative Path"))
 end
 
 nvim_tree.setup({
 	update_focused_file = { enable = true },
-
-	remove_keymaps = true,
-
-	---window
-	view = {
-		mappings = {
-			list = {
-				{ key = "<CR>", action = "edit_cd", action_cb = edit_cd },
-				{ key = { "q", "<Esc>" }, action = "close" },
-				{ key = { "l", "<Right>" }, action = "edit" },
-				{ key = { "h", "<Left>" }, action = "close_node" },
-				{ key = "a", action = "create" },
-				{ key = "i", action = "rename" },
-				{ key = "dd", action = "remove" },
-				{ key = "++", action = "next_git_item" },
-				{ key = "--", action = "prev_git_item" },
-				{ key = "o", action = "preview" },
-				{ key = "za", action = "toggle_dotfiles" },
-				{ key = "zi", action = "toggle_git_ignored" },
-				{ key = "K", action = "toggle_file_info" },
-				{ key = "yf", action = "copy_name" },
-				{ key = "yp", action = "copy_path" },
-			},
-		},
-		float = {
-			enable = false,
-			open_win_config = function()
-				local screen_w = vim.opt.columns:get()
-				local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
-				local window_w = screen_w * WIDTH_RATIO
-				local window_h = screen_h * HEIGHT_RATIO
-				local window_w_int = math.floor(window_w)
-				local window_h_int = math.floor(window_h)
-				local center_x = (screen_w - window_w) / 2
-				local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
-				return {
-					border = "rounded",
-					relative = "editor",
-					row = center_y,
-					col = center_x,
-					width = window_w_int,
-					height = window_h_int,
-				}
-			end,
-		},
-		width = function()
-			return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
-		end,
-	},
+	on_attach = on_attach,
 
 	---markers
 	renderer = {
