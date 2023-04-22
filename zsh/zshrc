@@ -3,6 +3,13 @@
 ## -------------------------
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
+# load these options before plugins
+autoload -Uz compinit
+compinit
+zstyle ':completion::complete:make::' tag-order targets variables
+unsetopt autocd
+unalias -m '*'
+
 plug "romkatv/powerlevel10k"
 plug "desyncr/auto-ls"
 plug "zap-zsh/vim"
