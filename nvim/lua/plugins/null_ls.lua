@@ -21,6 +21,7 @@ local sources = {
 	null_ls.builtins.formatting.isort,
 	null_ls.builtins.formatting.black,
 	null_ls.builtins.diagnostics.mypy.with({ extra_args = { "--ignore-missing-imports", "--cache-dir=/dev/null" } }),
+	null_ls.builtins.diagnostics.ruff.with({ extra_args = { "--ignore", "E501" } }),
 	null_ls.builtins.formatting.latexindent,
 	null_ls.builtins.formatting.prettier.with({ filetypes = { "json", "yaml", "markdown" } }),
 	null_ls.builtins.formatting.rustfmt,
