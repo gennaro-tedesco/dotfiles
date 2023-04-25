@@ -91,6 +91,14 @@ lualine.setup({
 				end,
 			},
 		},
+		lualine_z = {
+			{
+				"tabs",
+				cond = function()
+					return vim.fn.tabpagenr("$") > 1
+				end,
+			},
+		},
 	},
 	inactive_winbar = {
 		lualine_x = {
@@ -106,6 +114,14 @@ lualine.setup({
 				"progress",
 				cond = function()
 					return is_split() and not require("utils").is_in_list(vim.bo.filetype, exclude_ft)
+				end,
+			},
+		},
+		lualine_z = {
+			{
+				"tabs",
+				cond = function()
+					return vim.fn.tabpagenr("$") > 1
 				end,
 			},
 		},

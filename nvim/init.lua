@@ -291,6 +291,12 @@ local plugins = {
 		end,
 	},
 	{
+		"sindrets/diffview.nvim",
+		config = function()
+			require("plugins.diffview")
+		end,
+	},
+	{
 		"lewis6991/gitsigns.nvim",
 		lazy = true,
 		event = { "BufReadPre", "BufNewFile" },
