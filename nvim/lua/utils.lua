@@ -256,7 +256,7 @@ M.toggle_diffview = function()
 	if view then
 		vim.cmd.DiffviewClose()
 	else
-		require("fzf-lua").fzf_exec("git branch -a", {
+		require("fzf-lua").fzf_exec("git branch -a --format='%(refname:short)'", {
 			prompt = "diff:",
 			actions = {
 				["default"] = function(selected)
