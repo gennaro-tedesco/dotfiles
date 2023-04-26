@@ -19,6 +19,7 @@ diffview.setup({
 			{ "n", "co", actions.conflict_choose_all("ours"), { desc = "Choose conflict --ours" } },
 			{ "n", "ct", actions.conflict_choose_all("theirs"), { desc = "Choose conflict --theirs" } },
 			{ "n", "cb", actions.conflict_choose_all("base"), { desc = "Choose conflict --base" } },
+			["gq"] = "<cmd>DiffviewClose<CR>",
 		},
 		file_panel = {
 			{ "n", "j", actions.next_entry, { desc = "Bring the cursor to the next file entry" } },
@@ -34,6 +35,7 @@ diffview.setup({
 			{ "n", "<Right>", actions.open_fold, { desc = "Expand fold" } },
 			{ "n", "<Left>", actions.close_fold, { desc = "Collapse fold" } },
 			{ "n", "L", actions.open_commit_log, { desc = "Open the commit log panel" } },
+			["gq"] = "<cmd>DiffviewClose<CR>",
 		},
 	},
 })

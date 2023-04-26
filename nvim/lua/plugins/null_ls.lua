@@ -15,21 +15,38 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 local sources = {
+	--lua
 	null_ls.builtins.formatting.stylua,
+
+	-- go
+	null_ls.builtins.code_actions.gomodifytags,
 	null_ls.builtins.formatting.gofmt,
 	null_ls.builtins.formatting.goimports,
-	null_ls.builtins.formatting.isort,
-	null_ls.builtins.formatting.black,
+
+	-- python
 	null_ls.builtins.diagnostics.mypy.with({ extra_args = { "--ignore-missing-imports", "--cache-dir=/dev/null" } }),
 	null_ls.builtins.diagnostics.ruff.with({ extra_args = { "--ignore", "E501" } }),
+	null_ls.builtins.formatting.black,
+	null_ls.builtins.formatting.isort,
+
+	-- latex
 	null_ls.builtins.formatting.latexindent,
+
+	-- prettier
 	null_ls.builtins.formatting.prettier.with({ filetypes = { "json", "yaml", "markdown" } }),
+
+	-- rust
 	null_ls.builtins.formatting.rustfmt,
-	null_ls.builtins.formatting.shfmt,
-	null_ls.builtins.formatting.jq,
-	null_ls.builtins.hover.printenv,
+
+	-- shell
 	null_ls.builtins.code_actions.shellcheck,
-	null_ls.builtins.code_actions.gomodifytags,
+	null_ls.builtins.formatting.shfmt,
+
+	-- jq
+	null_ls.builtins.formatting.jq,
+
+	-- env
+	null_ls.builtins.hover.printenv,
 }
 
 null_ls.setup({

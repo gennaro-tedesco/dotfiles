@@ -99,6 +99,7 @@ bindkey -s '^t' 'find_dir\n'
 bindkey -s '^o' 'cd $(git root) && git d 2>/dev/null | find_files\n'
 bindkey -s '^n' 'vifm\n'
 bindkey -s '^h' 'search '
+bindkey -s '^d' 'nvim_diff\n'
 bindkey -s 'qc' 'quick_commit\n'
 eval "$(navi widget zsh)"
 eval "$(zoxide init zsh)"
