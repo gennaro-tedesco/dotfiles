@@ -254,7 +254,11 @@ M.toggle_diffview = function()
 	local lib = require("diffview.lib")
 	local view = lib.get_current_view()
 	if view then
-		vim.cmd.DiffviewClose()
+		if vim.fn.tabpagenr("$") > 1 then
+			vim.cmd.DiffviewClose()
+		else
+			vim.cmd.quitall()
+		end
 	else
 		require("fzf-lua").fzf_exec("git branch -a --format='%(refname:short)'", {
 			prompt = "diff:",
