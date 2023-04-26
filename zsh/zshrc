@@ -50,11 +50,11 @@ export FZF_DEFAULT_OPTS="\
 export FZF_DEFAULT_COMMAND="fd -H -t f -E '.git/'"
 export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
 export LS_COLORS="$(vivid generate solarized-dark)"
-
-# exporting go paths
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=${PATH}:$GOBIN
+typeset -U path
+typeset -U manpath
 
 # alias
 alias ..="cd .."
