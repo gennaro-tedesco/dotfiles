@@ -17,7 +17,6 @@ plug "zap-zsh/vim"
 plug "changyuheng/zsh-interactive-cd"
 plug "zsh-users/zsh-autosuggestions"
 plug "zdharma-continuum/fast-syntax-highlighting"
-plug "Aloxaf/fzf-tab"
 plug "hlissner/zsh-autopair"
 ## -------------------------
 
