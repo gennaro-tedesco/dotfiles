@@ -373,6 +373,9 @@ local plugins = {
 			vim.keymap.set("n", "<leader>su", function()
 				require("nvim-possession").update()
 			end, { desc = "📌update current session" })
+			vim.keymap.set("n", "<leader>sd", function()
+				require("nvim-possession").delete()
+			end)
 		end,
 		opts = {
 			autoload = true,
