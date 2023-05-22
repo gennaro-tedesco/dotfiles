@@ -12,6 +12,7 @@ fzf.setup({
 		border = "none",
 	},
 	fzf_opts = {
+		["--no-info"] = "",
 		["--info"] = "hidden",
 		["--padding"] = "10%,5%,10%,5%",
 		["--header"] = " ",
@@ -21,10 +22,15 @@ fzf.setup({
 		git_icons = true,
 		prompt = "files:",
 		preview_opts = "hidden",
+		show_cwd_header = false,
+		cwd_prompt = false,
+		cwd = require("utils").git_root(),
 	},
 	buffers = {
 		prompt = "buffers:",
 		preview_opts = "hidden",
+		no_header = true,
+		fzf_opts = { ["--delimiter"] = ":", ["--with-nth"] = "..-2" },
 	},
 	helptags = {
 		prompt = "💡:",
