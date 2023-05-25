@@ -22,7 +22,7 @@ fzf.setup({
 		git_icons = true,
 		prompt = "files:",
 		preview_opts = "hidden",
-		show_cwd_header = false,
+		cwd_header = false,
 		cwd_prompt = false,
 		cwd = require("utils").git_root(),
 	},

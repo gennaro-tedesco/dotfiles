@@ -50,5 +50,5 @@ nvim_tree.setup({
 	},
 	diagnostics = { enable = false },
 	git = { enable = false },
-	filters = { dotfiles = true },
+	filters = { dotfiles = true, custom = { "^__pycache__" } },
 })
