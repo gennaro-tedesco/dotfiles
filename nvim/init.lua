@@ -33,7 +33,7 @@ end
 --- plugins list ---
 --------------------
 local plugins = {
-	--- colorschemes, syntax highlights and general UI
+	-- colorschemes, syntax highlights and general UI
 	{
 		"lifepillar/vim-solarized8",
 		init = function()
@@ -108,6 +108,18 @@ local plugins = {
 		end,
 	},
 	{ "kevinhwang91/nvim-bqf", opts = { func_map = { openc = "<CR>" } } },
+	{
+		"Bekaboo/dropbar.nvim",
+		event = "BufReadPre",
+		init = function()
+			vim.keymap.set("n", "g<Tab>", function()
+				require("dropbar.api").pick()
+			end)
+		end,
+		config = function()
+			require("plugins.dropbar")
+		end,
+	},
 
 	--- LSP, language servers and code autocompletion
 	{ "nvim-lua/plenary.nvim" },

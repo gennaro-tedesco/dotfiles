@@ -85,9 +85,6 @@ cmp.setup({
 			cmp.config.compare.kind,
 		},
 	},
-	experimental = {
-		ghost_text = { enable = true },
-	},
 })
 
 cmp.setup.cmdline({ "/", "?" }, {
