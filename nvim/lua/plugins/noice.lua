@@ -12,7 +12,7 @@ local noice_cmd_types = {
 	Filter = "Constant",
 	Rename = "Constant",
 	Substitute = "NoiceCmdlinePopupBorderSearch",
-	Help = "helpVim",
+	Help = "Todo",
 }
 vim.api.nvim_clear_autocmds({ group = noice_hl })
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -91,7 +91,7 @@ noice.setup({
 					conceallevel = 3,
 					winhighlight = {
 						Normal = "Normal",
-						FloatBorder = "helpVim",
+						FloatBorder = "Todo",
 					},
 				},
 			},

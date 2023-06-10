@@ -20,8 +20,8 @@ cmp.setup({
 		end,
 	},
 	window = {
-		documentation = cmp.config.window.bordered({ winhighlight = "FloatBorder:helpVim" }),
-		completion = cmp.config.window.bordered({ col_offset = -3, winhighlight = "FloatBorder:helpVim" }),
+		documentation = cmp.config.window.bordered({ winhighlight = "FloatBorder:Todo" }),
+		completion = cmp.config.window.bordered({ col_offset = -3, winhighlight = "FloatBorder:Todo" }),
 	},
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
@@ -131,7 +131,7 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
 	desc = "redefinition of nvim-cmp highlight groups",
 	callback = function()
 		vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", {})
-		vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { link = "helpVim" })
+		vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { link = "@text.todo" })
 		vim.api.nvim_set_hl(0, "CmpItemMenu", {})
 		vim.api.nvim_set_hl(0, "CmpItemMenu", { link = "LineNr" })
 		vim.api.nvim_set_hl(0, "CmpItemKindVariable", {})
