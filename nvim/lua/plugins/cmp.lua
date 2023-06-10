@@ -40,6 +40,7 @@ cmp.setup({
 			behavior = cmp.ConfirmBehavior.Insert,
 			select = false,
 		}),
+		["<C-e>"] = cmp.mapping.abort(),
 
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
