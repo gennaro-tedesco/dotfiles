@@ -6,6 +6,11 @@ end
 local icons = require("utils").icons
 
 dropbar.setup({
+	bar = {
+		pick = {
+			pivots = "1234567890",
+		},
+	},
 	menu = {
 		keymaps = {
 			["qq"] = function()
