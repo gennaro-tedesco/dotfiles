@@ -120,6 +120,10 @@ local plugins = {
 			require("plugins.dropbar")
 		end,
 	},
+	{
+		"HampusHauffman/block.nvim",
+		opts = { automatic = true, percent = 0.95 },
+	},
 
 	--- LSP, language servers and code autocompletion
 	{ "nvim-lua/plenary.nvim" },
@@ -319,13 +323,10 @@ local plugins = {
 	},
 	{
 		"akinsho/git-conflict.nvim",
-		init = function()
-			vim.keymap.set("n", "c+", "<Plug>(git-conflict-next-conflict)", { desc = "go to next git conflict" })
-			vim.keymap.set("n", "c-", "<Plug>(git-conflict-prev-conflict)", { desc = "go to prev git conflict" })
-			vim.keymap.set("n", "cq", "<cmd>GitConflictListQf<CR>", { desc = "send git conflicts to quickfix" })
-		end,
-		opt = { default_mappings = true, highlights = { incoming = "DiffText", current = "DiffAdd" } },
-		config = true,
+		tag = "v1.1.2",
+		opts = {
+			default_mappings = { ours = "co", theirs = "ct", none = "c0", both = "cb", next = "c+", prev = "c-" },
+		},
 	},
 
 	--- plugins that make vim easier to use
