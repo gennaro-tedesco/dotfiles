@@ -40,7 +40,7 @@ vim.keymap.set(
 )
 
 local on_attach = function(client, bufnr)
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
 	--- toggle diagnostics
 	vim.g.diagnostics_visible = true
@@ -140,6 +140,19 @@ lsp.gopls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	lsp_flags = lsp_flags,
+	settings = {
+		gopls = {
+			hints = {
+				assignVariableTypes = true,
+				compositeLiteralFields = true,
+				compositeLiteralTypes = true,
+				constantValues = true,
+				functionTypeParameters = true,
+				parameterNames = true,
+				rangeVariableTypes = true,
+			},
+		},
+	},
 })
 
 ---sumneko_lua
@@ -149,9 +162,8 @@ lsp.lua_ls.setup({
 	lsp_flags = lsp_flags,
 	settings = {
 		Lua = {
-			format = {
-				enable = false,
-			},
+			format = { enable = false },
+			hint = { enable = true },
 			runtime = { version = "LuaJIT" },
 			diagnostics = { globals = { "describe", "it", "vim", "setup", "teardown" } },
 			workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false },
