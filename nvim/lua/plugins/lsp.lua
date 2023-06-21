@@ -42,6 +42,20 @@ vim.keymap.set(
 local on_attach = function(client, bufnr)
 	vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
+	--- toggle inlay hints
+	vim.g.inlay_hints_visible = false
+	local function toggle_inlay_hints()
+		if vim.g.inlay_hints_visible then
+			vim.g.inlay_hints_visible = false
+			vim.lsp.buf.inlay_hint(bufnr, false)
+		else
+			if client.server_capabilities.inlayHintProvider then
+				vim.g.inlay_hints_visible = true
+				vim.lsp.buf.inlay_hint(bufnr, true)
+			end
+		end
+	end
+
 	--- toggle diagnostics
 	vim.g.diagnostics_visible = true
 	local function toggle_diagnostics()
@@ -111,6 +125,12 @@ local on_attach = function(client, bufnr)
 		"<leader>l",
 		toggle_diagnostics,
 		vim.tbl_extend("force", bufopts, { desc = "✨lsp toggle diagnostics" })
+	)
+	vim.keymap.set(
+		"n",
+		"<leader>dh",
+		toggle_inlay_hints,
+		vim.tbl_extend("force", bufopts, { desc = "✨lsp toggle inlay hints" })
 	)
 	vim.keymap.set(
 		"n",
