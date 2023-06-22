@@ -119,7 +119,7 @@ nnoremap("<leader>t", function()
 end, { desc = "open todo file" })
 
 --- clean up search results and extmarks
-nnoremap("<CR>", function()
+nnoremap("<BS>", function()
 	vim.cmd.nohlsearch()
 	vim.api.nvim_buf_clear_namespace(0, -1, 0, -1)
 end, { silent = true, desc = "clean up search results and extmarks" })

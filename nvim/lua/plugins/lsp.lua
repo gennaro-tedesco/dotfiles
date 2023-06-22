@@ -271,3 +271,8 @@ for _, type in ipairs({ "Error", "Warn", "Hint", "Info" }) do
 end
 
 require("lspconfig.ui.windows").default_options.border = "rounded"
+
+-------------------
+--- lsp logging ---
+-------------------
+vim.lsp.set_log_level("off")
