@@ -69,6 +69,18 @@ local plugins = {
 				config = true,
 			},
 			{ "nvim-treesitter/nvim-treesitter-textobjects" },
+			{
+				"Wansmer/treesj",
+				keys = {
+					{
+						"<leader>m",
+						function()
+							vim.keymap.set("n", "<leader>m", require("treesj").toggle, { desc = "toggle treesj" })
+						end,
+					},
+				},
+				opts = { use_default_keymaps = false },
+			},
 			{ "RRethy/nvim-treesitter-textsubjects" },
 			{ "m-demare/hlargs.nvim", event = "BufReadPost", opts = { highlight = { link = "NonText" } } },
 		},
