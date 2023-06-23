@@ -39,6 +39,7 @@ local function on_attach(bufnr)
 end
 
 nvim_tree.setup({
+	view = { adaptive_size = true },
 	update_focused_file = { enable = true },
 	on_attach = on_attach,
 
