@@ -83,6 +83,11 @@ local plugins = {
 			},
 			{ "RRethy/nvim-treesitter-textsubjects" },
 			{ "m-demare/hlargs.nvim", event = "BufReadPost", opts = { highlight = { link = "NonText" } } },
+			{
+				"HampusHauffman/block.nvim",
+				event = "BufReadPost",
+				opts = { automatic = true, percent = 0.92 },
+			},
 		},
 		config = function()
 			require("plugins.treesitter")
@@ -133,8 +138,11 @@ local plugins = {
 		end,
 	},
 	{
-		"HampusHauffman/block.nvim",
-		opts = { automatic = true, percent = 0.95 },
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("plugins.flash")
+		end,
 	},
 
 	--- LSP, language servers and code autocompletion
