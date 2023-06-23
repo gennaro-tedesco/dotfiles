@@ -76,6 +76,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("InsertEnter", {
+	group = general_settings,
+	desc = "clear search highlight on insert",
+	callback = function()
+		vim.cmd('let @/=""')
+	end,
+})
+
 vim.api.nvim_create_autocmd("TermOpen", {
 	group = general_settings,
 	desc = "settings for terminal windows",
