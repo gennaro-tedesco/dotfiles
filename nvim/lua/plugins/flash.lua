@@ -4,10 +4,19 @@ if not ok then
 end
 
 flash.setup({
-	highlight = { label = { style = "eol" } },
+	highlight = {
+		label = { style = "eol" },
+		groups = { backdrop = "SignColumn" },
+	},
 	modes = {
 		char = { highlight = { backdrop = false } },
 		search = { highlight = { groups = { label = "Todo" } } },
+		treesitter = {
+			highlight = {
+				groups = { label = "Todo" },
+				label = { before = true, after = true, style = "overlay" },
+			},
+		},
 	},
 })
 
@@ -16,6 +25,7 @@ vim.keymap.set({ "n", "x", "o" }, "<leader>r", function()
 	local view = vim.fn.winsaveview()
 	require("flash").jump({
 		action = function(match, state)
+			state:hide()
 			vim.api.nvim_set_current_win(match.win)
 			vim.api.nvim_win_set_cursor(match.win, match.pos)
 			require("flash").treesitter()
@@ -25,4 +35,4 @@ vim.keymap.set({ "n", "x", "o" }, "<leader>r", function()
 			end)
 		end,
 	})
-end)
+end, { desc = "flash treesitter operator" })
