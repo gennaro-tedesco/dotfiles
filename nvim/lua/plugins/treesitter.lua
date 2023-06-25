@@ -55,6 +55,8 @@ return {
 			prev_selection = ",",
 			keymaps = {
 				["."] = "textsubjects-smart",
+				[";"] = "textsubjects-container-outer",
+				[","] = "textsubjects-container-inner",
 			},
 		},
 	}),
