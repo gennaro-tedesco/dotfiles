@@ -20,7 +20,7 @@ flash.setup({
 	},
 })
 
-vim.keymap.set({ "n", "x", "o" }, "<leader>r", function()
+vim.keymap.set({ "n", "x", "o" }, "<leader>t", function()
 	local win = vim.api.nvim_get_current_win()
 	local view = vim.fn.winsaveview()
 	require("flash").jump({
