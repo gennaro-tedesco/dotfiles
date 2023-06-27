@@ -83,11 +83,6 @@ local plugins = {
 			},
 			{ "RRethy/nvim-treesitter-textsubjects" },
 			{ "m-demare/hlargs.nvim", event = "BufReadPost", opts = { highlight = { link = "NonText" } } },
-			{
-				"HampusHauffman/block.nvim",
-				event = "BufReadPost",
-				opts = { automatic = true, percent = 0.92 },
-			},
 		},
 		config = function()
 			require("plugins.treesitter")
