@@ -7,7 +7,14 @@ flash.setup({
 	label = { min_pattern_length = 2, style = "eol" },
 	highlight = { groups = { backdrop = "SignColumn" } },
 	modes = {
-		char = { highlight = { backdrop = false }, search = { wrap = true } },
+		char = {
+			autohide = function(motion)
+				return vim.fn.mode(true):find("no")
+					and (vim.v.operator == "y" or vim.v.operator == "d" or vim.v.operator == "V")
+			end,
+			search = { wrap = true },
+			highlight = { backdrop = false },
+		},
 		search = { highlight = { groups = { label = "Todo" } } },
 		treesitter = {
 			label = {
@@ -24,6 +31,7 @@ vim.keymap.set({ "n", "x", "o" }, "<leader>t", function()
 	local win = vim.api.nvim_get_current_win()
 	local view = vim.fn.winsaveview()
 	require("flash").jump({
+		pattern = vim.fn.expand("<cword>"),
 		action = function(match, state)
 			state:hide()
 			vim.api.nvim_set_current_win(match.win)
