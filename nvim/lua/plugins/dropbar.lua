@@ -6,6 +6,24 @@ end
 local icons = require("utils").icons
 
 dropbar.setup({
+	general = {
+		update_events = {
+			win = {
+				"CursorMoved",
+				"WinEnter",
+				"WinResized",
+			},
+			buf = {
+				"BufModifiedSet",
+				"FileChangedShellPost",
+				"TextChanged",
+			},
+			global = {
+				"DirChanged",
+				"VimResized",
+			},
+		},
+	},
 	bar = {
 		pick = {
 			pivots = "1234567890",
