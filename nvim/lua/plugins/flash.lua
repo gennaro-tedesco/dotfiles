@@ -9,6 +9,8 @@ local ts_exclude = {
 	"keyword",
 	"conditional",
 	"variable",
+	"number",
+	"dot_index_expression",
 	"field_expression",
 	"field_identifier",
 	"attribute",
