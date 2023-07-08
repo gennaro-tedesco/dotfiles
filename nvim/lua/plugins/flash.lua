@@ -17,7 +17,7 @@ local ts_exclude = {
 }
 
 flash.setup({
-	label = { min_pattern_length = 2, style = "eol" },
+	label = { min_pattern_length = 3, style = "eol" },
 	highlight = { groups = { backdrop = "SignColumn" } },
 	modes = {
 		char = {
@@ -26,6 +26,7 @@ flash.setup({
 			end,
 			search = { wrap = true },
 			highlight = { backdrop = false },
+			multi_line = false,
 		},
 		search = { highlight = { groups = { label = "Todo" } } },
 		treesitter = {
