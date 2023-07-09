@@ -25,5 +25,4 @@ notify.setup({
 
 vim.keymap.set("n", "<Esc>", function()
 	require("notify").dismiss()
-	vim.cmd.nohlsearch()
 end, { desc = "dismiss notify popup and clear hlsearch" })
