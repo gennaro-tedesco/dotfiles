@@ -40,8 +40,8 @@ noice.setup({
 		view = "cmdline_popup",
 		format = {
 			cmdline = { pattern = "^:", icon = "", opts = cmdline_opts },
-			search_down = { kind = "Search", pattern = "^/", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
-			search_up = { kind = "Search", pattern = "^%?", icon = "🔎 ", ft = "regex", opts = cmdline_opts },
+			search_down = { view = "cmdline", kind = "Search", pattern = "^/", icon = "🔎 ", ft = "regex" },
+			search_up = { view = "cmdline", kind = "Search", pattern = "^%?", icon = "🔎 ", ft = "regex" },
 			input = { icon = "✏️ ", ft = "text", opts = cmdline_opts },
 			calculator = { pattern = "^=", icon = "", lang = "vimnormal", opts = cmdline_opts },
 			substitute = {
