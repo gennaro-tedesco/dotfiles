@@ -137,6 +137,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	desc = "redefinition of default highlight groups",
 	callback = function()
 		vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+		vim.api.nvim_set_hl(0, "LspInlayHint", { link = "Comment" })
 		vim.api.nvim_set_hl(0, "ErrorMsg", { bold = false, fg = "#dc322f", bg = "none" })
 		vim.api.nvim_set_hl(0, "DiffDelete", { bold = true, ctermfg = 12, ctermbg = 6, fg = "#dc322f", bg = "none" })
 		vim.api.nvim_set_hl(0, "DiffChange", { bold = true, ctermbg = 5, fg = "#b58900", bg = "none", sp = "#b58900" })
