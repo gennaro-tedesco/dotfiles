@@ -112,6 +112,7 @@ nnoremap("N", "Nzz<cmd>lua require('utils').hl_search(0.3)<CR>", { desc = "go to
 --- quickfix
 nnoremap("<C-q>", "<cmd> lua require('utils').toggle_qf()<CR>", { desc = "toggle quickfix" })
 nnoremap("<C-l>", "<cmd> lua require('utils').toggle_ll()<CR>", { desc = "toggle loc list" })
+nnoremap("<leader><C-o>", "<cmd> lua require('utils').jumps_to_qf()<CR>", { desc = "send jumplist to quickfix" })
 
 --- open todo file in one go
 nnoremap("<C-t>", function()

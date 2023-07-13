@@ -119,7 +119,13 @@ local plugins = {
 			require("plugins.alpha")
 		end,
 	},
-	{ "kevinhwang91/nvim-bqf", opts = { func_map = { openc = "<CR>" } } },
+	{
+		"kevinhwang91/nvim-bqf",
+		ft = "qf",
+		config = function()
+			require("bqf").setup({ func_map = { open = "o", openc = "<CR>" } })
+		end,
+	},
 	{
 		"Bekaboo/dropbar.nvim",
 		event = "BufReadPre",
