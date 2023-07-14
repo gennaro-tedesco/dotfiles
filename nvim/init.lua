@@ -155,6 +155,29 @@ local plugins = {
 			require("plugins.flash")
 		end,
 	},
+	{
+		url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
+		config = function()
+			local rainbow_delimiters = require("rainbow-delimiters")
+
+			vim.g.rainbow_delimiters = {
+				strategy = {
+					[""] = rainbow_delimiters.strategy["local"],
+				},
+				query = {
+					[""] = "rainbow-delimiters",
+				},
+				highlight = {
+					"DiagnosticWarn",
+					"Tag",
+					"Type",
+					"Todo",
+					"DiagnosticError",
+					"DiagnosticHint",
+				},
+			}
+		end,
+	},
 
 	--- LSP, language servers and code autocompletion
 	{ "nvim-lua/plenary.nvim" },
