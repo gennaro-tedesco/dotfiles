@@ -122,7 +122,10 @@ end, { desc = "open todo file" })
 --- clean up search results and extmarks
 nnoremap("<CR>", function()
 	vim.cmd.nohlsearch()
-	vim.api.nvim_buf_clear_namespace(0, -1, 0, -1)
+	local search_ns = vim.api.nvim_get_namespaces().search
+	if search_ns ~= nil then
+		vim.api.nvim_buf_clear_namespace(0, search_ns, 0, -1)
+	end
 end, { silent = true, desc = "clean up search results and extmarks" })
 
 --- delete all marks
