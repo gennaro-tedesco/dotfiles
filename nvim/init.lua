@@ -33,7 +33,7 @@ end
 --- plugins list ---
 --------------------
 local plugins = {
-	-- colorschemes, syntax highlights and general UI
+	--- colorschemes, syntax highlights and general UI
 	{
 		"lifepillar/vim-solarized8",
 		init = function()
