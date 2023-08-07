@@ -16,6 +16,10 @@ ls.config.set_config({
 	updateevents = "TextChanged,TextChangedI",
 	store_selection_keys = "<c-s>",
 	ext_opts = {
+		[types.insertNode] = {
+			visited = { hl_group = "Comment" },
+			unvisited = { hl_group = "Comment" },
+		},
 		[types.choiceNode] = {
 			active = {
 				virt_text = { { "●", "InsertMode" } },
@@ -125,6 +129,18 @@ local snips = {
 				return M
 				]],
 				i(0)
+			)
+		),
+		s(
+			{ trig = "plug", name = "new plugin" },
+			fmt(
+				[[
+				{{
+					"{}",
+					opts = {},
+				}},
+				]],
+				{ i(1, "plugin"), i(2, "opts") }
 			)
 		),
 	},
