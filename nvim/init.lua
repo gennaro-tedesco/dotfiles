@@ -178,6 +178,27 @@ local plugins = {
 			}
 		end,
 	},
+	{
+		"shellRaining/hlchunk.nvim",
+		event = { "UIEnter" },
+		opts = {
+			indent = { enable = false },
+			blank = { enable = false },
+			line_num = { enable = false },
+			chunk = {
+				enable = true,
+				notify = false,
+				use_treesitter = true,
+				exclude_filetypes = {
+					help = true,
+					markdown = true,
+				},
+				style = {
+					{ fg = vim.api.nvim_get_hl_by_name("Normal", true).foreground },
+				},
+			},
+		},
+	},
 
 	--- LSP, language servers and code autocompletion
 	{ "nvim-lua/plenary.nvim" },
