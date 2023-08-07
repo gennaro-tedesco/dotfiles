@@ -1,0 +1,23 @@
+# maximize a window
+alt - f : yabai -m window --toggle zoom-fullscreen
+
+# resize
+alt - e : yabai -m space --balance
+
+# rotate
+alt - r : yabai -m space --rotate 90
+
+
+# change window focus within space
+alt - down  : yabai -m window --focus south
+alt - up    : yabai -m window --focus north
+alt - left  : yabai -m window --focus west
+alt - right : yabai -m window --focus east
+
+# flip layouts
+alt - x     : yabai -m space --mirror x-axis
+alt - y     : yabai -m space --mirror y-axis
+
+# start/stop yabai
+ctrl + alt - q : yabai --stop-service
+ctrl + alt - s : yabai --start-service

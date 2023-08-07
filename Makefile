@@ -46,3 +46,11 @@ glow:
 navi:
 	mkdir -p ${NAVICONFIG_DIR}
 	cp -r navi/. ${NAVICONFIG_DIR}
+
+yabai:
+	yabai --stop-service
+	mkdir -p ${HOME}/.config/yabai
+	mkdir -p ${HOME}/.config/skhd
+	cp -f yabai/yabairc ${HOME}/.config/yabai/yabairc
+	cp -f yabai/skhdrc ${HOME}/.config/skhd/skhdrc
+	yabai --start-service

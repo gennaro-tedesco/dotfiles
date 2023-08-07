@@ -1,0 +1,24 @@
+# layout
+yabai -m config layout bsp
+
+# windows placement
+yabai -m config window_placement second_child
+
+# padding
+yabai -m config top_padding 12
+yabai -m config bottom_padding 12
+yabai -m config left_padding 12
+yabai -m config right_padding 12
+yabai -m config window_gap 12
+
+# center mouse on window with focus
+yabai -m config mouse_follows_focus on
+
+# when window is dropped in center of another window, swap them (on edges it will split it)
+yabai -m mouse_drop_action swap
+
+# disable specific applications
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+
+echo "yabai configuration loaded"
