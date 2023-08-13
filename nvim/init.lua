@@ -83,6 +83,23 @@ local plugins = {
 			},
 			{ "RRethy/nvim-treesitter-textsubjects" },
 			{ "m-demare/hlargs.nvim", event = "BufReadPost", opts = { highlight = { link = "NonText" } } },
+			{
+				"sustech-data/wildfire.nvim",
+				event = "VeryLazy",
+				opts = {
+					surrounds = {
+						{ "(", ")" },
+						{ "{", "}" },
+						{ "<", ">" },
+						{ "[", "]" },
+					},
+					keymaps = {
+						init_selection = "<leader><CR>",
+						node_incremental = "<leader><CR>",
+						node_decremental = "<leader><BS>",
+					},
+				},
+			},
 		},
 		config = function()
 			require("plugins.treesitter")
