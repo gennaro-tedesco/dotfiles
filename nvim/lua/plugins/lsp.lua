@@ -252,7 +252,7 @@ vim.diagnostic.config({
 		source = "always",
 		prefix = "●",
 	},
-	underline = false,
+	underline = true,
 	signs = true,
 	severity_sort = true,
 	float = {
