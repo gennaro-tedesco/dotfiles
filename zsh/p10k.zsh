@@ -157,22 +157,22 @@
   fi
 
   # Default background color.
-  typeset -g POWERLEVEL9K_BACKGROUND=238
+  typeset -g POWERLEVEL9K_BACKGROUND="#073642"
 
   # Separator between same-color segments on the left.
-  typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR='%246F\u2502'
+  typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR="%k%F{$POWERLEVEL9K_BACKGROUND}\uE0B4%k \uE0B6"
   # Separator between same-color segments on the right.
-  typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR='%246F\u2502'
+  typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR="%k%F{$POWERLEVEL9K_BACKGROUND}\uE0B4%k \uE0B6"
   # Separator between different-color segments on the left.
   typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=''
   # Separator between different-color segments on the right.
   typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=''
   # The right end of left prompt.
-  typeset -g POWERLEVEL9K_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL='\uE0B0'
+  typeset -g POWERLEVEL9K_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL='\uE0B4'
   # The left end of right prompt.
-  typeset -g POWERLEVEL9K_RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL='\uE0B2'
+  typeset -g POWERLEVEL9K_RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL='\uE0B6'
   # The left end of left prompt.
-  typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL=''
+  typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL='\uE0B6'
   # The right end of right prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL=''
   # Left prompt terminator for lines without any segments.
@@ -219,7 +219,7 @@
   typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=103
   # Color of the anchor directory segments. Anchor segments are never shortened. The first
   # segment is always an anchor.
-  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=39
+  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND="#268bd2"
   # Display anchor directory segments in bold.
   typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=true
   # Don't shorten directories that contain any of these files. They are anchors.
@@ -346,11 +346,11 @@
 
     if (( $1 )); then
       # Styling for up-to-date Git status.
-      local       meta='%248F'  # grey foreground
-      local      clean='%76F'   # green foreground
-      local   modified='%178F'  # yellow foreground
-      local  untracked='%39F'   # blue foreground
-      local conflicted='%196F'  # red foreground
+      local       meta='%248F'        # grey foreground
+      local      clean='%F{#859900}'  # green foreground
+      local   modified='%F{#b58900}'  # yellow foreground
+      local  untracked='%F{#268bd2}'  # blue foreground
+      local conflicted='%F{#dc322f}'  # red foreground
     else
       # Styling for incomplete and stale Git status.
       local       meta='%244F'  # grey foreground
