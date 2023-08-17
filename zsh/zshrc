@@ -67,6 +67,7 @@ typeset -U manpath
 
 # alias
 alias ..="cd .."
+alias -- -="cd -"
 alias cut="gcut"
 alias sed="gsed"
 alias head="ghead"
