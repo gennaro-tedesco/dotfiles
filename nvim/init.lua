@@ -94,9 +94,9 @@ local plugins = {
 						{ "[", "]" },
 					},
 					keymaps = {
-						init_selection = "<leader><CR>",
-						node_incremental = "<leader><CR>",
-						node_decremental = "<leader><BS>",
+						init_selection = "<leader><Right>",
+						node_incremental = "<leader><Right>",
+						node_decremental = "<leader><Left>",
 					},
 				},
 			},
