@@ -211,7 +211,7 @@ local plugins = {
 					markdown = true,
 				},
 				style = {
-					{ fg = vim.api.nvim_get_hl_by_name("Normal", true).foreground },
+					{ fg = vim.api.nvim_get_hl(0, { name = "Normal" }).fg },
 				},
 			},
 		},
