@@ -96,7 +96,7 @@ end
 
 M.count_matches = function()
 	local cur_word = vim.fn.expandcmd("<cword>")
-	local count = vim.api.nvim_exec("%s/" .. cur_word .. "//ng", true)
+	local count = vim.api.nvim_exec2("%s/" .. cur_word .. "//ng", { output = true }).output
 	notify(" " .. count, "info", { title = "search: " .. cur_word, render = "simple" })
 end
 
@@ -135,7 +135,7 @@ end
 M.trim_whitespace = function()
 	local pattern = [[%s/\s\+$//e]]
 	local cur_view = vim.fn.winsaveview()
-	vim.api.nvim_exec(string.format("keepjumps keeppatterns silent! %s", pattern), false)
+	vim.api.nvim_exec2(string.format("keepjumps keeppatterns silent! %s", pattern), { output = false })
 	vim.fn.winrestview(cur_view)
 end
 
