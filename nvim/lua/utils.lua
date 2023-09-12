@@ -35,7 +35,7 @@ M.icons = {
 	},
 	kinds = {
 		Array = "󰅪",
-		Branch = "",
+		Branch = "",
 		Boolean = "◩",
 		Class = "󰠱",
 		Color = "󰏘",
