@@ -8,8 +8,8 @@ alt - e : yabai -m space --balance
 alt - r : yabai -m space --rotate 90
 
 # change window focus within space
-alt - k : yabai -m window --focus south
-alt - j : yabai -m window --focus north
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
 alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
 
@@ -18,6 +18,9 @@ shift + alt - j : yabai -m window --swap south
 shift + alt - k : yabai -m window --swap north
 shift + alt - h : yabai -m window --swap west
 shift + alt - l : yabai -m window --swap east
+
+# toggle window float
+alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # flip layouts
 alt - x : yabai -m space --mirror x-axis
