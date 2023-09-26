@@ -20,7 +20,7 @@ unalias -m '*'
 
 plug "romkatv/powerlevel10k"
 plug "desyncr/auto-ls"
-export VI_MODE_ESC_INSERT="jj" && plug "gennaro-tedesco/vim"
+export VI_MODE_ESC_INSERT="jj" && plug "zap-zsh/vim"
 plug "kutsan/zsh-system-clipboard"
 plug "Aloxaf/fzf-tab"
 plug "changyuheng/zsh-interactive-cd"
