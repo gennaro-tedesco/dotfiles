@@ -484,6 +484,7 @@ local plugins = {
 		end,
 		opts = {
 			autoload = true,
+			autosave = false,
 			autoswitch = { enable = true },
 			fzf_winopts = { hl = { border = "Constant" } },
 		},
