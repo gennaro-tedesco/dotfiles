@@ -29,6 +29,7 @@ zsh:
 	exec zsh
 
 vifm:
+	mkdir ${VIFILEMANAGERCONFIG_DIR}
 	cp -r vifm/colors/. ${VIFILEMANAGERCONFIG_DIR}/colors
 	cp -r vifm/. ${VIFILEMANAGERCONFIG_DIR}
 
@@ -54,3 +55,4 @@ yabai:
 	cp -f yabai/yabairc ${HOME}/.config/yabai/yabairc
 	cp -f yabai/skhdrc ${HOME}/.config/skhd/skhdrc
 	yabai --start-service
+	skhd --start-service
