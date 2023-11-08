@@ -2,6 +2,7 @@ NEOVIMCONFIG_DIR=${HOME}/.config/nvim
 VIFILEMANAGERCONFIG_DIR=${HOME}/.config/vifm
 GLOWCONFIG_DIR=${HOME}/.config/glowconfig
 NAVICONFIG_DIR=${HOME}/.config/navi
+MACCHINACONFIG_DIR=${HOME}/.config/macchina
 
 .PHONY: *
 help:
@@ -56,3 +57,7 @@ yabai:
 	cp -f yabai/skhdrc ${HOME}/.config/skhd/skhdrc
 	yabai --start-service
 	skhd --start-service
+
+macchina:
+	mkdir -p ${MACCHINACONFIG_DIR}
+	cp -r macchina/. ${HOME}/.config/macchina

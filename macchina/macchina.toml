@@ -1,0 +1,17 @@
+theme = "Sodium"
+
+long_shell = true
+
+long_kernel = true
+
+show = [
+  "Host",
+  "Machine",
+  "Kernel",
+  "OperatingSystem",
+  "Terminal",
+  "Shell",
+  "Uptime",
+  "Memory",
+  "Battery",
+]
