@@ -11,14 +11,17 @@ yabai -m config left_padding   15
 yabai -m config right_padding  15
 yabai -m config window_gap     15
 
-# center mouse on window with focus
+# mouse settings
 yabai -m config mouse_follows_focus on
+yabai -m config focus_follows_mouse autofocus
 
 # when window is dropped in center of another window, swap them (on edges it will split it)
 yabai -m mouse_drop_action swap
 
 # disable specific applications
-yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add title='Preferences$' manage=off
+yabai -m rule --add title='Settings$' manage=off
 
 echo "yabai configuration loaded"
