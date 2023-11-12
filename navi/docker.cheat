@@ -3,10 +3,7 @@
 # Remove an image
 docker image rm <image_id>
 
-# Delete an image from the local image store
-docker rmi <image_id>
-
-# Delete all images
+# Remove all images
 docker rmi -f $(docker images -a -q)
 
 # Clean none/dangling images
@@ -15,8 +12,8 @@ docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
 # Force clean none/dangling images
 docker rmi $(docker images --filter "dangling=true" -q --no-trunc) -f
 
-# List all images that are locally stored with the Docker engine
-docker images
+# List all images
+docker images -a
 
 # Build an image from the Dockerfile in the current directory and tag the image
 docker build -t <image>:<version> .
@@ -24,32 +21,14 @@ docker build -t <image>:<version> .
 # Pull an image from a registry
 docker pull <image>:<version>
 
-# Stop a running container through SIGTERM
-docker stop <container_id>
-
-# Stop a running container through SIGKILL
-docker kill <container_id>
-
-# List the networks
-docker network ls
-
 # List the running containers
 docker ps
 
-# Delete all running and stopped containers
+# Remove all running and stopped containers
 docker rm -f $(docker ps -aq)
 
 # Create a new bash process inside the container and connect it to the terminal
 docker exec -it <container_id> bash
-
-# Print the last lines of a container's logs
-docker logs --tail 100 <container_id> | less
-
-# Print the last lines of a container's logs and following its logs
-docker logs --tail 100 <container_id> -f
-
-# Create new network
-docker network create <network_name>
 
 $ image_id: docker images --- --headers 1 --column 3
 $ container_id: docker ps --- --headers 1 --column 1
