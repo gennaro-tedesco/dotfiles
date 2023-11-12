@@ -1,11 +1,11 @@
-local ok, symbols = pcall(require, "symbols-outline")
+local ok, outline = pcall(require, "outline")
 if not ok then
 	return
 end
 
 local icons = require("utils").icons
 
-symbols.setup({
+outline.setup({
 	outline_items = {
 		show_symbol_details = false,
 	},

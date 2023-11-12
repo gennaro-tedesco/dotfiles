@@ -282,13 +282,13 @@ local plugins = {
 		end,
 	},
 	{
-		"hedyhli/symbols-outline.nvim",
-		cmd = "SymbolsOutline",
+		"hedyhli/outline.nvim",
+		cmd = "Outline",
 		init = function()
-			vim.keymap.set("n", "gm", "<cmd>SymbolsOutline<CR>")
+			vim.keymap.set("n", "gm", "<cmd>Outline<CR>")
 		end,
 		config = function()
-			require("plugins.symbols_outline")
+			require("plugins.outline")
 		end,
 	},
 	{
@@ -455,6 +455,19 @@ local plugins = {
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 			vim.g.matchup_surround_enabled = 1
 		end,
+	},
+	{
+		"rmagatti/alternate-toggler",
+		cmd = "ToggleAlternate",
+		init = function()
+			vim.keymap.set("n", "<leader>b", "<cmd>ToggleAlternate<CR>")
+		end,
+		opts = {
+			alternates = {
+				["Right"] = "Left",
+				["="] = "!=",
+			},
+		},
 	},
 
 	--- my plugins, they're awesome
