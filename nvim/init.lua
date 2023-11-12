@@ -282,7 +282,7 @@ local plugins = {
 		end,
 	},
 	{
-		"simrat39/symbols-outline.nvim",
+		"hedyhli/symbols-outline.nvim",
 		cmd = "SymbolsOutline",
 		init = function()
 			vim.keymap.set("n", "gm", "<cmd>SymbolsOutline<CR>")
