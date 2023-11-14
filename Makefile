@@ -30,6 +30,7 @@ zsh:
 	exec zsh
 
 vifm:
+	rm -rf ${VIFILEMANAGERCONFIG_DIR}
 	mkdir ${VIFILEMANAGERCONFIG_DIR}
 	cp -r vifm/colors/. ${VIFILEMANAGERCONFIG_DIR}/colors
 	cp -r vifm/. ${VIFILEMANAGERCONFIG_DIR}

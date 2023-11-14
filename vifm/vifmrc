@@ -63,7 +63,7 @@ set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
 set ignorecase
 set smartcase
 
-" Don't highlight search results automatically
+" hlsearch
 set hlsearch
 
 " Use increment searching (search while typing)
@@ -76,7 +76,7 @@ set scrolloff=4
 set slowfs=curlftpfs
 
 " Set custom status line look
-set statusline="  Hint: %z%= %A %10u %15s"
+set statusline="  Hint: %z%="
 
 " ------------------------------------------------------------------------------
 
