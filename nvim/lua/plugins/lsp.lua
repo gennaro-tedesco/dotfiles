@@ -224,6 +224,9 @@ lsp.rust_analyzer.setup({
 ---texlab
 lsp.texlab.setup({ on_attach = on_attach })
 
+---taplo toml
+lsp.taplo.setup({ on_attach = on_attach, capabilities = capabilities })
+
 ---vimls
 lsp.vimls.setup({ on_attach = on_attach })
 
