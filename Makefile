@@ -3,6 +3,7 @@ VIFILEMANAGERCONFIG_DIR=${HOME}/.config/vifm
 GLOWCONFIG_DIR=${HOME}/.config/glowconfig
 NAVICONFIG_DIR=${HOME}/.config/navi
 MACCHINACONFIG_DIR=${HOME}/.config/macchina
+BATCONFIG_DIR=${HOME}/.config/bat
 
 .PHONY: *
 help:
@@ -27,6 +28,9 @@ zsh:
 	cp -f zsh/zshfun ${HOME}/.zshfun
 	cp -f zsh/p10k.zsh ${HOME}/.p10k.zsh
 	cp -f zsh/lesskey ${HOME}/.lesskey
+	rm -rf ${BATCONFIG_DIR}
+	mkdir ${BATCONFIG_DIR}
+	cp -f zsh/batconfig ${BATCONFIG_DIR}/config
 	exec zsh
 
 vifm:

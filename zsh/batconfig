@@ -1,0 +1,7 @@
+--theme='Solarized (dark)'
+--style='header,grid'
+
+--italic-text=always
+
+--map-syntax "zsh*:Bourne Again Shell (bash)"
+--map-syntax "vifm*:VimL"
