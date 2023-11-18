@@ -13,6 +13,7 @@ fi
 # load these options before plugins
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion::complete:make::' tag-order targets variables
+zstyle :zsh-no-ps2: accept-line '.accept-line'
 autoload -Uz compinit
 compinit
 unsetopt autocd
