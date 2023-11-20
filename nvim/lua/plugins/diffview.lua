@@ -41,6 +41,7 @@ diffview.setup({
 			{ "n", "<Right>", actions.open_fold, { desc = "Expand fold" } },
 			{ "n", "<Left>", actions.close_fold, { desc = "Collapse fold" } },
 			{ "n", "L", actions.open_commit_log, { desc = "Open the commit log panel" } },
+			{ "n", "g?", actions.help("file_panel"), { desc = "Open the help panel" } },
 			["gq"] = function()
 				if vim.fn.tabpagenr("$") > 1 then
 					vim.cmd.DiffviewClose()
@@ -48,6 +49,18 @@ diffview.setup({
 					vim.cmd.quitall()
 				end
 			end,
+		},
+		file_history_panel = {
+			{ "n", "j", actions.next_entry, { desc = "Bring the cursor to the next file entry" } },
+			{ "n", "<down>", actions.next_entry, { desc = "Bring the cursor to the next file entry" } },
+			{ "n", "k", actions.prev_entry, { desc = "Bring the cursor to the previous file entry." } },
+			{ "n", "<up>", actions.prev_entry, { desc = "Bring the cursor to the previous file entry." } },
+			{ "n", "<cr>", actions.select_entry, { desc = "Open the diff for the selected entry." } },
+			{ "n", "gd", actions.open_in_diffview, { desc = "Open the entry under the cursor in a diffview" } },
+			{ "n", "y", actions.copy_hash, { desc = "Copy the commit hash of the entry under the cursor" } },
+			{ "n", "l", actions.open_commit_log, { desc = "Show commit details" } },
+			{ "n", "gf", actions.goto_file_edit, { desc = "Open the file in the previous tabpage" } },
+			{ "n", "g?", actions.help("file_history_panel"), { desc = "Open the help panel" } },
 		},
 	},
 })
