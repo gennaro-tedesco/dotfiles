@@ -241,6 +241,7 @@ local plugins = {
 					})
 				end,
 			},
+			{ "b0o/schemastore.nvim" },
 		},
 		config = function()
 			require("plugins.lsp")
@@ -286,6 +287,15 @@ local plugins = {
 		cmd = "Outline",
 		init = function()
 			vim.keymap.set("n", "gm", "<cmd>Outline<CR>")
+			local outline_hl = vim.api.nvim_create_augroup("OutlineHighlights", {})
+			vim.api.nvim_clear_autocmds({ group = outline_hl })
+			vim.api.nvim_create_autocmd("BufEnter", {
+				group = outline_hl,
+				desc = "redefinition of outline highlights group",
+				callback = function()
+					vim.api.nvim_set_hl(0, "OutlineJumpHighlight", { link = "CursorLineNr" })
+				end,
+			})
 		end,
 		config = function()
 			require("plugins.outline")

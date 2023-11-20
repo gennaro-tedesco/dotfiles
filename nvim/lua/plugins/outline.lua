@@ -6,6 +6,9 @@ end
 local icons = require("utils").icons
 
 outline.setup({
+	outline_window = {
+		auto_jump = true,
+	},
 	outline_items = {
 		show_symbol_details = false,
 	},
