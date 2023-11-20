@@ -118,6 +118,8 @@ preview_files() {
 			;;
 		-t)
 			bat --style='grid' ~/.todo;;
+		-E)
+			bat --style='header,grid' .env ;;
 		*.md)
 			glow -s ~/.config/glowconfig/customglow.json -p $@;;
 		*.json)
