@@ -194,6 +194,6 @@ nvim_diff() {
 	)"
 
 	if [[ -n "$branches" ]]; then
-		nvim +"DiffviewOpen $branches" +tabonly
+		nvim +DiffviewOpen $branches +tabonly
 	fi
 }
