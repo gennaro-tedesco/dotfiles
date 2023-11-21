@@ -5,3 +5,4 @@
 
 --map-syntax "zsh*:Bourne Again Shell (bash)"
 --map-syntax "vifm*:VimL"
+--map-syntax "log*:log"
