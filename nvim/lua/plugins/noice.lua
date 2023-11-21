@@ -115,6 +115,7 @@ noice.setup({
 					{ find = "; before #%d+" },
 					{ find = "fewer lines" },
 					{ find = "written" },
+					{ find = "Conflict %[%d+" },
 				},
 			},
 			view = "mini",
