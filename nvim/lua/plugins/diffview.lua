@@ -6,6 +6,11 @@ end
 local actions = require("diffview.actions")
 
 diffview.setup({
+	view = {
+		merge_tool = {
+			layout = "diff3_mixed",
+		},
+	},
 	hooks = {
 		diff_buf_read = function()
 			vim.diagnostic.disable()
@@ -34,6 +39,9 @@ diffview.setup({
 			{ "n", "<up>", actions.prev_entry, { desc = "Bring the cursor to the previous file entry" } },
 			{ "n", "<cr>", actions.select_entry, { desc = "Open the diff for the selected entry" } },
 			{ "n", "<C-f>", actions.toggle_files, { desc = "Toggle the file panel" } },
+			{ "n", "s", actions.toggle_stage_entry, { desc = "Stage/unstage the selected entry" } },
+			{ "n", "S", actions.stage_all, { desc = "Stage all entries" } },
+			{ "n", "U", actions.unstage_all, { desc = "Unstage all entries" } },
 			{ "n", "gf", actions.goto_file_edit, { desc = "Open the file in the previous tabpage" } },
 			{ "n", "co", actions.conflict_choose_all("ours"), { desc = "Choose conflict --ours" } },
 			{ "n", "ct", actions.conflict_choose_all("theirs"), { desc = "Choose conflict --theirs" } },
