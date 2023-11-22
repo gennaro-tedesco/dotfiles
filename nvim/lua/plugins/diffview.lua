@@ -6,6 +6,7 @@ end
 local actions = require("diffview.actions")
 
 diffview.setup({
+	enhanced_diff_hl = true,
 	view = {
 		merge_tool = {
 			layout = "diff3_mixed",
@@ -69,6 +70,9 @@ diffview.setup({
 			{ "n", "l", actions.open_commit_log, { desc = "Show commit details" } },
 			{ "n", "gf", actions.goto_file_edit, { desc = "Open the file in the previous tabpage" } },
 			{ "n", "g?", actions.help("file_history_panel"), { desc = "Open the help panel" } },
+		},
+		help_panel = {
+			{ "n", "q", actions.close, { desc = "Close help menu" } },
 		},
 	},
 })
