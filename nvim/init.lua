@@ -55,6 +55,14 @@ local plugins = {
 			{
 				"nvim-treesitter/nvim-treesitter-context",
 				event = "BufReadPre",
+				keys = {
+					{
+						"[c",
+						function()
+							require("treesitter-context").go_to_context()
+						end,
+					},
+				},
 				init = function()
 					local treesitter_hl = vim.api.nvim_create_augroup("TreesitterHighlights", {})
 					vim.api.nvim_clear_autocmds({ group = treesitter_hl })
