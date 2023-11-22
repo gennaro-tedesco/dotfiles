@@ -82,48 +82,4 @@ lualine.setup({
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
 	},
-	winbar = {
-		lualine_x = {
-			{
-				"filename",
-				cond = function()
-					return is_split() and not require("utils").is_in_list(vim.bo.filetype, exclude_ft)
-				end,
-			},
-		},
-		lualine_z = {
-			{
-				"tabs",
-				cond = function()
-					return vim.fn.tabpagenr("$") > 1
-				end,
-			},
-		},
-	},
-	inactive_winbar = {
-		lualine_x = {
-			{
-				"filename",
-				cond = function()
-					return is_split() and not require("utils").is_in_list(vim.bo.filetype, exclude_ft)
-				end,
-			},
-		},
-		lualine_y = {
-			{
-				"progress",
-				cond = function()
-					return is_split() and not require("utils").is_in_list(vim.bo.filetype, exclude_ft)
-				end,
-			},
-		},
-		lualine_z = {
-			{
-				"tabs",
-				cond = function()
-					return vim.fn.tabpagenr("$") > 1
-				end,
-			},
-		},
-	},
 })
