@@ -110,12 +110,13 @@ filetype *.jpg,*.jpeg,*.png,*.gif open %c
 " Man page
 filetype {*.[1-8]},<text/troff> man ./%c
 fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
-fileview {*/,.*/} exa --tree --level=2 %c
+fileviewer {*/,.*/} exa --tree --level=2 %c
 
 " Syntax highlighting in preview
 "
 " Explicitly set highlight type for some extensions
 fileviewer *.json jq --color-output . %c
+fileviewer *.md glow -s ~/.config/glowconfig/customglow.json -p %c
 fileviewer *[^/] env -uCOLORTERM bat --color always --wrap never --pager never %c -p
 
 
@@ -150,6 +151,9 @@ nnoremap S :sort<cr>
 " Toggle visibility of preview window
 nnoremap w :view<cr>
 nnoremap W :set wrap!<cr>
+
+" go to preview pane
+nnoremap <Tab> <c-w><c-w>
 
 " grow/shrink window by 4 columns at a time
 nnoremap < 4<c-w><
