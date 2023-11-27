@@ -1,11 +1,13 @@
-options.use_default_colors 	= True
-options.color_default_hdr 	= "blue underline bold"
-options.color_current_col 	= "normal"
-options.color_current_row 	= "yellow underline"
-options.color_selected_row 	= "green"
-options.save_filetype 		= "csv"
-options.disp_float_fmt 		= '%.07f'
-options.scroll_incr 		= -3
+options.use_default_colors  = True
+options.color_default       = True
+options.color_default_hdr   = "8 underline bold"
+options.color_current_col   = "normal"
+options.color_current_row   = "yellow underline"
+options.color_selected_row  = "14"
+options.color_key_col       = "6"
+options.save_filetype       = "csv"
+options.disp_float_fmt      = "%.07f"
+options.scroll_incr         = -3
 
 TableSheet.unbindkey('i')
 TableSheet.bindkey('i', 'edit-cell')
