@@ -1,0 +1,30 @@
+% kubectl
+
+# view current configuration
+kubectl config view --minify -o jsonpath='{..context}' | jq
+
+# view current namespace
+kubectl config view --minify -o jsonpath='{..namespace}'
+
+# switch namespace
+kubectl config set-context --current --namespace=<namespace>
+
+# view all pods from a specific namespace
+kubectl get pods -n <namespace>
+
+# view all contexts
+kubectl config get-contexts | awk -F" " '{print $2, $3}' | column -t -s" "
+
+# switch context
+kubectl config use-context <context>
+
+# show env variables of a pod
+kubectl exec <pod> -- env | sort | bat -l bash -p
+
+# restart a deployment
+kubectl rollout restart deployment <deployment> -n <namespace>
+
+$ namespace: kubectl get namespace | cut -d" " -f1 | tail -n +2 | sort
+$ context: kubectl config get-contexts | awk -F" " '{print $2}' | tail -n +2 | sort
+$ pod: kubectl get pod | awk -F" " '{print $1}' | tail -n +2 | sort
+$ deployment: kubectl get deployments | awk -F" " '{print $1}' | tail -n +2 | sort
