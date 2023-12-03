@@ -46,21 +46,20 @@ list_goenv() {
 
 # search regex in current directory
 search() {
-	[[ $# -eq 0 ]] && { echo "provide regex argument"; return; }
+	local regex=$(gum input --prompt="find regex: " --placeholder="find pattern...")
+	if [[ -z "$regex" ]]; then
+		return
+	fi
+
 	local matching_files
 	case $1 in
 		-h)
-			shift
-			regex=$1
 			matching_files=$(rg -l --hidden ${regex} | fzf --exit-0 --preview="rg --color=always -n '${regex}' {} ")
 			;;
 		-i)
-			shift
-			regex=$1
 			matching_files=$(rg -i -l --hidden ${regex} | fzf --exit-0 --preview="rg -i --color=always -n '${regex}' {} ")
 			;;
 		*)
-			regex=$1
 			matching_files=$(rg -l -- ${regex} | fzf --exit-0 --preview="rg --color=always -n -- '${regex}' {} ")
 			;;
 	esac
@@ -119,7 +118,7 @@ preview_files() {
 		-t)
 			bat --style='grid' ~/.todo;;
 		-E)
-			bat --style='header,grid' .env ;;
+			bat --style='header,grid' .env 2>/dev/null ;;
 		*.md)
 			glow -s ~/.config/glowconfig/customglow.json -p $@;;
 		*.json)
