@@ -10,5 +10,6 @@ vim.filetype.add({
 		["gitconf.*"] = "gitconfig",
 		[".*/%.dockerignore"] = "gitignore",
 		[".*vifm.*"] = "vim",
+		["%.?visidata.*"] = "python",
 	},
 })

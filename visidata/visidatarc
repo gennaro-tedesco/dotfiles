@@ -1,18 +1,24 @@
-options.use_default_colors  = True
-options.color_default       = True
-options.color_default_hdr   = "8 underline bold"
-options.color_current_col   = "normal"
-options.color_current_row   = "yellow underline"
-options.color_selected_row  = "14"
-options.color_key_col       = "6"
-options.save_filetype       = "csv"
-options.disp_float_fmt      = "%.07f"
-options.scroll_incr         = -3
+from visidata import Sheet, TableSheet, options, vd
 
-TableSheet.unbindkey('i')
-TableSheet.bindkey('i', 'edit-cell')
+options.color_default = True
+options.color_default_hdr = "8 underline bold"
+options.color_current_col = "normal"
+options.color_key_col = "6"
+options.color_current_row = "yellow underline"
+options.color_selected_row = "14"
+options.color_status = "8"
+options.color_active_status = "8"
+options.save_filetype = "csv"
+options.disp_float_fmt = "%.07f"
+options.scroll_incr = -3
 
-vd.option('disp_scrolloff', 5, 'context lines to display above/below cursor when scrolling')
+TableSheet.unbindkey("i")
+TableSheet.bindkey("i", "edit-cell")
+
+vd.option(
+    "disp_scrolloff", 5, "context lines to display above/below cursor when scrolling"
+)
+
 
 @Sheet.api
 def checkCursor(sheet):
@@ -20,8 +26,8 @@ def checkCursor(sheet):
 
     disp_scrolloff = sheet.options.disp_scrolloff
 
-    if sheet.cursorRowIndex-sheet.topRowIndex < disp_scrolloff:
-        sheet.topRowIndex = max(0, sheet.cursorRowIndex-sheet.options.disp_scrolloff)
+    if sheet.cursorRowIndex - sheet.topRowIndex < disp_scrolloff:
+        sheet.topRowIndex = max(0, sheet.cursorRowIndex - sheet.options.disp_scrolloff)
 
-    if sheet.bottomRowIndex-sheet.cursorRowIndex < disp_scrolloff:
-        sheet.bottomRowIndex = sheet.cursorRowIndex+disp_scrolloff
+    if sheet.bottomRowIndex - sheet.cursorRowIndex < disp_scrolloff:
+        sheet.bottomRowIndex = sheet.cursorRowIndex + disp_scrolloff
