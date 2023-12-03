@@ -222,7 +222,7 @@ local snips = {
 		s({
 			trig = "var",
 			name = "variable indicator",
-		}, fmt('"${}"', i(1, "var"))),
+		}, fmt([[${{{}}}]], i(1, "var"))),
 	},
 	tex = {
 		s(
