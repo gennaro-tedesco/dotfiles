@@ -167,9 +167,9 @@ quick_commit(){
 
 	gum confirm "add files and commit?" && \
 	git add . && git commit -m "$message" && \
-	REMOTE="git rev-parse --abbrev-ref --symbolic-full-name @{u}"
+	REMOTE="$(git rev-parse --abbrev-ref --symbolic-full-name @{u})"
 	[[ ! "$(git ls-remote --exit-code --heads origin $(git rev-parse --abbrev-ref HEAD))" ]] && { echo "no remote branch set"; return; }
-	gum confirm "push to ${REMOTE}?" && gum spin --spinner dot --title "git push..." --show-output || echo "changes not pushed"
+	gum confirm "push to $REMOTE?" && gum spin --spinner dot --title "git push..." --show-output git push || echo "changes not pushed"
 }
 
 
