@@ -18,6 +18,8 @@ fi
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
 # load these options before plugins
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion::complete:make::' tag-order targets variables
 zstyle :zsh-no-ps2: accept-line '.accept-line'
@@ -94,7 +96,7 @@ alias calc="insect"
 alias :q="exit"
 alias cheat="cht.sh --shell"
 alias upgrade="brew upgrade && brew cleanup --prune=1 -s"
-alias csp="xsv table | bat -H1 -p -l csv --theme='Nord'"
+alias csp="xsv table | bat -H1 -p -l csv --theme='Nord' --pager='less -RX --header 1'"
 alias lp="tac | sed G | bat -p -l log"
 alias code="scc -c --no-cocomo"
 
@@ -118,7 +120,7 @@ bindkey -s '^p' 'find_files\n'
 bindkey -s '^t' 'find_dir\n'
 bindkey -s '^o' 'cd $(git root) && git d 2>/dev/null | find_files\n'
 bindkey -s '^n' 'vifm\n'
-bindkey -s '^h' 'search '
+bindkey -s '^h' 'search\n'
 bindkey -s '^d' 'nvim_diff\n'
 bindkey -s 'qc' 'quick_commit\n'
 eval "$(navi widget zsh)"
