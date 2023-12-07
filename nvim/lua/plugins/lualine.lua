@@ -10,16 +10,6 @@ end
 
 local icons = require("utils").icons
 
-local function is_split()
-	return vim.api.nvim_win_get_height(0) ~= vim.go.lines - 1 or vim.api.nvim_win_get_width(0) ~= vim.go.columns
-end
-
-local exclude_ft = {
-	"NvimTree",
-	"help",
-	"Outline",
-}
-
 local soldark = require("lualine.themes.solarized_dark")
 soldark.normal.a.gui = ""
 soldark.insert.a.gui = ""
