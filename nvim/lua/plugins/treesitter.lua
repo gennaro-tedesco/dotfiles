@@ -14,6 +14,7 @@ require("nvim-treesitter.configs").setup({
 		"markdown_inline",
 		"python",
 		"regex",
+		"requirements",
 		"rust",
 		"toml",
 		"yaml",

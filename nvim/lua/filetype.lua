@@ -4,7 +4,7 @@ vim.filetype.add({
 		[".todo"] = "txt",
 	},
 	pattern = {
-		["req.*.txt"] = "config",
+		[".*%.cheat"] = "sh",
 		["%.?env.*"] = "config",
 		["%.?config*"] = "config",
 		["gitconf.*"] = "gitconfig",
