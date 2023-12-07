@@ -101,10 +101,10 @@ command! du :if &previewprg == '' | set previewprg='dust -d1 -r ' | view! | else
 
 " ------------------------------------------------------------------------------
 
-" Pdf
+" Open specific extensions with their own programs
 filetype *.pdf zathura %f &
-
-" Images 
+filetype *.csv vd %f
+filetype *.json jq '.' -C %f | less -R
 filetype *.jpg,*.jpeg,*.png,*.gif open %c
 
 " Man page
@@ -112,8 +112,6 @@ filetype {*.[1-8]},<text/troff> man ./%c
 fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
 fileviewer {*/,.*/} exa --tree --level=2 %c
 
-" Syntax highlighting in preview
-"
 " Explicitly set highlight type for some extensions
 fileviewer *.json jq --color-output . %c
 fileviewer *.md glow -s ~/.config/glowconfig/customglow.json -p %c
