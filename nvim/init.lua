@@ -49,8 +49,8 @@ local plugins = {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		lazy = true,
 		build = ":TSUpdate",
-		event = "BufReadPost",
 		dependencies = {
 			{
 				"nvim-treesitter/nvim-treesitter-context",
@@ -284,17 +284,25 @@ local plugins = {
 		end,
 	},
 	{
-		"jose-elias-alvarez/null-ls.nvim",
-		event = "BufEnter",
+		"mfussenegger/nvim-lint",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			require("plugins.null_ls")
+			require("plugins.nvim_lint")
+		end,
+	},
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		config = function()
+			require("plugins.conform")
 		end,
 	},
 	{
 		"hedyhli/outline.nvim",
 		cmd = "Outline",
+		keys = { { "gm", "<cmd>Outline<CR>", desc = "open outline view" } },
 		init = function()
-			vim.keymap.set("n", "gm", "<cmd>Outline<CR>")
 			local outline_hl = vim.api.nvim_create_augroup("OutlineHighlights", {})
 			vim.api.nvim_clear_autocmds({ group = outline_hl })
 			vim.api.nvim_create_autocmd("BufEnter", {
@@ -371,12 +379,16 @@ local plugins = {
 	{
 		"nvim-tree/nvim-tree.lua",
 		cmd = "NvimTreeToggle",
-		init = function()
-			vim.keymap.set("n", "<C-n>", function()
-				require("nvim-tree.api").tree.toggle()
-			end, { desc = "toggle nvim-tree" })
-		end,
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		keys = {
+			{
+				"<C-n>",
+				function()
+					require("nvim-tree.api").tree.toggle()
+				end,
+				desc = "toggle nvim-tree",
+			},
+		},
+		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
 		config = function()
 			require("plugins.nvim_tree")
 		end,
@@ -457,7 +469,8 @@ local plugins = {
 	},
 	{
 		"kylechui/nvim-surround",
-		event = "BufReadPost",
+		version = "*",
+		event = "VeryLazy",
 		config = true,
 	},
 	{
@@ -477,9 +490,7 @@ local plugins = {
 	{
 		"rmagatti/alternate-toggler",
 		cmd = "ToggleAlternate",
-		init = function()
-			vim.keymap.set("n", "<leader>b", "<cmd>ToggleAlternate<CR>")
-		end,
+		keys = { { "<leader>b", "<cmd>ToggleAlternate<CR>", desc = "toggle alternate boolean" } },
 		opts = {
 			alternates = {
 				["Right"] = "Left",

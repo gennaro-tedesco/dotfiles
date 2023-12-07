@@ -121,13 +121,15 @@ local on_attach = function(client, bufnr)
 		vim.lsp.buf.references,
 		vim.tbl_extend("force", bufopts, { desc = "✨lsp go to references" })
 	)
-	vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, vim.tbl_extend("force", bufopts, { desc = "✨lsp format" }))
 	vim.keymap.set(
 		"n",
 		"<leader>l",
 		toggle_diagnostics,
 		vim.tbl_extend("force", bufopts, { desc = "✨lsp toggle diagnostics" })
 	)
+	vim.keymap.set({ "n", "v" }, "<leader>f", function()
+		require("conform").format({ async = true, lsp_fallback = true })
+	end, vim.tbl_extend("force", bufopts, { desc = "✨lsp format" }))
 	vim.keymap.set(
 		"n",
 		"<leader>dh",
