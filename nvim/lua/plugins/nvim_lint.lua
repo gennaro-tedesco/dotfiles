@@ -20,8 +20,12 @@ for _, arg in ipairs(ruff_opts) do
 	table.insert(lint.linters.ruff.args, arg)
 end
 
+local no_lint_files = { "visidatarc", "vifmrc" }
 vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
 	callback = function()
 		lint.try_lint()
+		if require("utils").is_in_list(vim.fs.basename(vim.api.nvim_buf_get_name(0)), no_lint_files) then
+			vim.diagnostic.disable()
+		end
 	end,
 })
