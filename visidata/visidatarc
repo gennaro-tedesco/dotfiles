@@ -1,4 +1,4 @@
-from visidata import Sheet, TableSheet, options, vd
+from visidata import Sheet, TableSheet, options
 
 options.color_default = True
 options.color_default_hdr = "8 underline bold"
@@ -11,13 +11,12 @@ options.color_active_status = "8"
 options.save_filetype = "csv"
 options.disp_float_fmt = "%.07f"
 options.scroll_incr = -3
+option(
+    "disp_scrolloff", 5, "context lines to display above/below cursor when scrolling"
+)
 
 TableSheet.unbindkey("i")
 TableSheet.bindkey("i", "edit-cell")
-
-vd.option(
-    "disp_scrolloff", 5, "context lines to display above/below cursor when scrolling"
-)
 
 
 @Sheet.api
