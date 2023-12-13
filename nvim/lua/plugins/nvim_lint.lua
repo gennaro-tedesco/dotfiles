@@ -11,7 +11,6 @@ lint.linters_by_ft = {
 
 local mypy_opts = { "--ignore-missing-imports", "--cache-dir=/dev/null" }
 local ruff_opts = { "--ignore=E501" }
-
 for _, arg in ipairs(mypy_opts) do
 	table.insert(lint.linters.mypy.args, arg)
 end

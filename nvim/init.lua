@@ -233,22 +233,6 @@ local plugins = {
 		dependencies = {
 			{ "smjonas/inc-rename.nvim", event = "InsertEnter", config = true },
 			{ "folke/neodev.nvim", event = "InsertEnter", ft = "lua", config = true },
-			{
-				"weilbith/nvim-code-action-menu",
-				cmd = "CodeActionMenu",
-				init = function()
-					vim.g.code_action_menu_show_diff = true
-					vim.g.code_action_menu_window_border = "rounded"
-					local actions_hl = vim.api.nvim_create_augroup("ActionsHighlight", { clear = true })
-					vim.api.nvim_create_autocmd("User", {
-						pattern = "CodeActionMenuWindowOpened",
-						group = actions_hl,
-						callback = function()
-							vim.api.nvim_set_hl(0, "CodeActionMenuMenuSelection", { link = "PmenuSel" })
-						end,
-					})
-				end,
-			},
 			{ "b0o/schemastore.nvim" },
 		},
 		config = function()
@@ -301,7 +285,16 @@ local plugins = {
 	{
 		"hedyhli/outline.nvim",
 		cmd = "Outline",
-		keys = { { "gm", "<cmd>Outline<CR>", desc = "open outline view" } },
+		keys = {
+			{
+				"gm",
+				function()
+					require("nvim-tree.api").tree.close()
+					vim.cmd.Outline()
+				end,
+				desc = "open outline view",
+			},
+		},
 		init = function()
 			local outline_hl = vim.api.nvim_create_augroup("OutlineHighlights", {})
 			vim.api.nvim_clear_autocmds({ group = outline_hl })
@@ -383,6 +376,7 @@ local plugins = {
 			{
 				"<C-n>",
 				function()
+					require("outline").close()
 					require("nvim-tree.api").tree.toggle()
 				end,
 				desc = "toggle nvim-tree",

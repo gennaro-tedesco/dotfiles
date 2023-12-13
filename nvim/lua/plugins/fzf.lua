@@ -14,7 +14,7 @@ fzf.setup({
 	fzf_opts = {
 		["--no-info"] = "",
 		["--info"] = "hidden",
-		["--padding"] = "10%,5%,10%,5%",
+		["--padding"] = "13%,5%,13%,5%",
 		["--header"] = " ",
 		["--no-scrollbar"] = "",
 	},
@@ -22,6 +22,7 @@ fzf.setup({
 		git_icons = true,
 		prompt = "files:",
 		preview_opts = "hidden",
+		no_header = true,
 		cwd_header = false,
 		cwd_prompt = false,
 		cwd = require("utils").git_root(),
@@ -122,6 +123,19 @@ fzf.setup({
 			["default"] = function(selected)
 				print(vim.cmd.highlight(selected[1]))
 			end,
+		},
+	},
+	lsp = {
+		code_actions = {
+			prompt = "code actions:",
+			winopts = {
+				width = 0.8,
+				height = 0.7,
+				preview = {
+					layout = "horizontal",
+					horizontal = "up:75%",
+				},
+			},
 		},
 	},
 	registers = {

@@ -136,12 +136,11 @@ local on_attach = function(client, bufnr)
 		toggle_inlay_hints,
 		vim.tbl_extend("force", bufopts, { desc = "✨lsp toggle inlay hints" })
 	)
-	vim.keymap.set(
-		"n",
-		"<leader>a",
-		"<cmd>CodeActionMenu<CR>",
-		vim.tbl_extend("force", bufopts, { desc = "✨lsp code action" })
-	)
+	if client.supports_method(vim.lsp.protocol.Methods.textDocument_codeAction) then
+		vim.keymap.set("n", "<leader>a", function()
+			require("fzf-lua").lsp_code_actions()
+		end, { desc = "✨lsp code actions" })
+	end
 end
 
 local lsp_flags = {
