@@ -21,11 +21,17 @@
 	editor = $EDITOR
 	pager = delta
 
+[interactive]
+    diffFilter = delta --color-only
+
 [delta]
 	features = side-by-side
 	line-numbers = true
 	hunk-header-style = omit
+	hyperlinks = true
 	navigate = true
+	word-diff-regex = '[^[:space:]]'
+	syntax-theme = Solarized (dark)
 
 # alias
 [alias]
