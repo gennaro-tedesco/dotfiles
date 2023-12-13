@@ -47,6 +47,7 @@ zle -N edit-command-line
 bindkey -M vicmd ' ' edit-command-line
 bindkey -M vicmd 'H' vi-beginning-of-line
 bindkey -M vicmd 'L' vi-end-of-line
+bindkey -M vicmd -s S ciw
 bindkey -M vicmd -s E 5e
 bindkey -M vicmd -s B 5b
 bindkey -M vicmd Y zsh-system-clipboard-vicmd-vi-yank-eol
@@ -97,7 +98,7 @@ alias calc="insect"
 alias :q="exit"
 alias cheat="cht.sh --shell"
 alias upgrade="brew upgrade && brew cleanup --prune=1 -s"
-alias csp="xsv table | bat -H1 -p -l csv --theme='Nord' --pager='less -RX --header 1'"
+alias csp="xsv table | bat -H1 -p -l csv --theme='Nord'"
 alias lp="tac | sed G | bat -p -l log"
 alias code="scc -c --no-cocomo"
 
