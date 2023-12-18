@@ -5,6 +5,7 @@ vim.filetype.add({
 	},
 	pattern = {
 		[".*%.cheat"] = "sh",
+		["requirements.*"] = "requirements",
 		["%.?env.*"] = "config",
 		["%.?config*"] = "config",
 		["gitconf.*"] = "gitconfig",
