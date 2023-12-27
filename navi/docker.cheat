@@ -1,34 +1,25 @@
 % docker
 
-# Remove an image
-docker image rm <image_id>
+# format list container output
+docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.CreatedAt}}"
 
-# Remove all images
+# remove all images
 docker rmi -f $(docker images -a -q)
 
-# Clean none/dangling images
-docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
-
-# Force clean none/dangling images
+# force clean none/dangling images
 docker rmi $(docker images --filter "dangling=true" -q --no-trunc) -f
 
-# List all images
-docker images -a
+# build an image from the Dockerfile in the current directory and tag the image
+docker build -t <tag_name>:<version> .
 
-# Build an image from the Dockerfile in the current directory and tag the image
-docker build -t <image>:<version> .
-
-# Pull an image from a registry
-docker pull <image>:<version>
-
-# List the running containers
-docker ps
-
-# Remove all running and stopped containers
+# remove all running and stopped containers
 docker rm -f $(docker ps -aq)
 
-# Create a new bash process inside the container and connect it to the terminal
+# create a new bash process inside the container and connect it to the terminal
 docker exec -it <container_id> bash
 
+# explore container logs
+docker logs <container_id>
+
 $ image_id: docker images --- --headers 1 --column 3
-$ container_id: docker ps --- --headers 1 --column 1
+$ container_id: docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Names}}" --- --headers 1 --column 1

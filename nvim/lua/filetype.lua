@@ -1,10 +1,12 @@
 vim.filetype.add({
+	extension = {
+		cheat = "cheat",
+	},
 	filename = {
 		[".env"] = "config",
 		[".todo"] = "txt",
 	},
 	pattern = {
-		[".*%.cheat"] = "sh",
 		["requirements.*"] = "requirements",
 		["%.?env.*"] = "config",
 		["%.?config*"] = "config",

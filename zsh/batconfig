@@ -7,3 +7,4 @@
 --map-syntax "vifm*:VimL"
 --map-syntax "log*:log"
 --map-syntax "requirements*:Requirements.txt"
+--map-syntax "*.cheat:Bourne Again Shell (bash)"
