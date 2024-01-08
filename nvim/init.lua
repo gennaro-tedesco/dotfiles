@@ -74,7 +74,7 @@ local plugins = {
 						end,
 					})
 				end,
-				config = true,
+				opts = { max_lines = 3 },
 			},
 			{ "nvim-treesitter/nvim-treesitter-textobjects" },
 			{
@@ -89,7 +89,7 @@ local plugins = {
 				},
 				opts = { use_default_keymaps = false },
 			},
-			{ "RRethy/nvim-treesitter-textsubjects" },
+			{ "RRethy/nvim-treesitter-textsubjects", enabled = false },
 			{ "m-demare/hlargs.nvim", event = "BufReadPost", opts = { highlight = { link = "NonText" } } },
 			{
 				"sustech-data/wildfire.nvim",
