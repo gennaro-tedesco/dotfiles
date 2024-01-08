@@ -176,6 +176,19 @@ local snips = {
 	python = {
 		s(
 			{
+				trig = "main",
+				name = "",
+			},
+			fmt(
+				[[
+				if __name__ == "__main__":
+				    {}
+				]],
+				{ i(0) }
+			)
+		),
+		s(
+			{
 				trig = "test",
 				name = "template unit test",
 			},
