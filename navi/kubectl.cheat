@@ -21,6 +21,9 @@ kubectl config use-context <context>
 # show env variables of a pod
 kubectl exec <pod> -- env | sort | bat -l bash -p
 
+# get timestamps of pod status events
+kubectl get pod <pod> -o jsonpath='{.status.conditions}' | jq '.[]'
+
 # restart a deployment
 kubectl rollout restart deployment <deployment> -n <namespace>
 
