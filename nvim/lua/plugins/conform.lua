@@ -13,6 +13,7 @@ conform.setup({
 		python = { "isort", "black" },
 		rust = { "rustfmt" },
 		sh = { "shfmt" },
+		sql = { "sqlfluff" },
 		toml = { "taplo" },
 		yaml = { "prettier" },
 	},
@@ -26,6 +27,6 @@ conform.setup({
 			notify("LSP errors, cannot format")
 			return
 		end
-		return { timeout_ms = 500, lsp_fallback = true }
+		return { timeout_ms = 1000, lsp_fallback = true }
 	end,
 })
