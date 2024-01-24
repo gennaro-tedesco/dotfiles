@@ -207,3 +207,7 @@ nvim_diff() {
 		nvim "+DiffviewOpen $branches" +tabonly
 	fi
 }
+
+
+# grep highlight with delta
+gr() { rg "$@" --json | delta --tabs=1; }
