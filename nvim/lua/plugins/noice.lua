@@ -127,6 +127,7 @@ noice.setup({
 		{ filter = { find = "No signature help" }, skip = true },
 		{ filter = { find = "E37" }, skip = true },
 		{ filter = { find = "HEAD%-%d" }, skip = true },
+		{ filter = { find = 'for "*"' }, skip = true },
 	},
 })
 
