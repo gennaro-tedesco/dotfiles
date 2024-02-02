@@ -234,6 +234,9 @@ lsp.texlab.setup({ on_attach = on_attach })
 ---taplo toml
 lsp.taplo.setup({ on_attach = on_attach, capabilities = capabilities })
 
+---typescript
+lsp.tsserver.setup({ on_attach = on_attach, capabilities = capabilities })
+
 ---vimls
 lsp.vimls.setup({ on_attach = on_attach })
 

@@ -99,7 +99,7 @@ noice.setup({
 	},
 	views = {
 		split = { enter = true },
-		mini = { win_options = { winblend = 100 } },
+		mini = { win_options = { winblend = 0 } },
 	},
 	presets = {
 		long_message_to_split = true,
@@ -126,6 +126,7 @@ noice.setup({
 		{ filter = { event = "emsg", find = "E20" }, skip = true },
 		{ filter = { find = "No signature help" }, skip = true },
 		{ filter = { find = "E37" }, skip = true },
+		{ filter = { find = "HEAD%-%d" }, skip = true },
 	},
 })
 

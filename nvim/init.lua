@@ -35,9 +35,21 @@ end
 local plugins = {
 	--- colorschemes, syntax highlights and general UI
 	{
-		"lifepillar/vim-solarized8",
+		"craftzdog/solarized-osaka.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			transparent = true,
+			styles = {
+				keywords = { italic = false },
+				sidebars = "transparent",
+				floats = "transparent",
+			},
+			sidebars = { "qf", "help" },
+			day_brightness = 0,
+		},
 		init = function()
-			vim.cmd([[colorscheme solarized8_flat]])
+			vim.cmd([[colorscheme solarized-osaka]])
 		end,
 	},
 	{
@@ -89,7 +101,7 @@ local plugins = {
 				},
 				opts = { use_default_keymaps = false },
 			},
-			{ "RRethy/nvim-treesitter-textsubjects", enabled = false },
+			{ "RRethy/nvim-treesitter-textsubjects" },
 			{ "m-demare/hlargs.nvim", event = "BufReadPost", opts = { highlight = { link = "NonText" } } },
 			{
 				"sustech-data/wildfire.nvim",
@@ -148,7 +160,10 @@ local plugins = {
 		"kevinhwang91/nvim-bqf",
 		ft = "qf",
 		config = function()
-			require("bqf").setup({ func_map = { open = "o", openc = "<CR>" } })
+			require("bqf").setup({
+				func_map = { open = "o", openc = "<CR>" },
+				preview = { winblend = 0 },
+			})
 		end,
 	},
 	{
@@ -302,7 +317,7 @@ local plugins = {
 				group = outline_hl,
 				desc = "redefinition of outline highlights group",
 				callback = function()
-					vim.api.nvim_set_hl(0, "OutlineJumpHighlight", { link = "CursorLineNr" })
+					vim.api.nvim_set_hl(0, "OutlineJumpHighlight", { link = "PmenuSel" })
 				end,
 			})
 		end,
