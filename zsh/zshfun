@@ -211,3 +211,19 @@ nvim_diff() {
 
 # grep highlight with delta
 gr() { rg "$@" --json | delta --tabs=1; }
+
+
+# visualise todo file
+todo() {
+	local TODOFILE="${HOME}/.todo"
+	if [[ -z "$1" ]]; then
+		${EDITOR} ${TODOFILE}
+	fi
+
+	case $1 in
+		-v)
+			bat --style='grid' ${TODOFILE};;
+		-d)
+			truncate -s 0 ${TODOFILE};;
+	esac
+}
