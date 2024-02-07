@@ -233,14 +233,28 @@ local plugins = {
 					help = true,
 					markdown = true,
 				},
-				style = {
-					{ fg = vim.api.nvim_get_hl(0, { name = "Normal" }).fg },
-				},
 			},
 		},
 	},
 
 	--- LSP, language servers and code autocompletion
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		opts = {
+			suggestion = { enabled = false },
+			panel = { enabled = false },
+			filetypes = {
+				lua = true,
+				python = true,
+				go = true,
+				rust = true,
+				sh = true,
+				["*"] = false,
+			},
+		},
+	},
 	{ "nvim-lua/plenary.nvim" },
 	{
 		"neovim/nvim-lspconfig",
@@ -264,6 +278,7 @@ local plugins = {
 			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip",
 			"lukas-reineke/cmp-under-comparator",
+			{ "zbirenbaum/copilot-cmp", config = true },
 			{
 				"windwp/nvim-autopairs",
 				config = function()
@@ -335,6 +350,18 @@ local plugins = {
 			vim.g.tex_fast = ""
 			vim.g.tex_flavor = "latex"
 		end,
+	},
+	{
+		"cameron-wags/rainbow_csv.nvim",
+		init = function()
+			vim.g.rainbow_hover_debounce_ms = 1000
+			vim.g.disable_rainbow_key_mappings = 1
+		end,
+		config = true,
+		ft = {
+			"csv",
+			"tsv",
+		},
 	},
 
 	--- file navigation

@@ -116,6 +116,7 @@ noice.setup({
 					{ find = "fewer lines" },
 					{ find = "written" },
 					{ find = "Conflict %[%d+" },
+					{ find = "Col %d+" },
 				},
 			},
 			view = "mini",
@@ -126,8 +127,8 @@ noice.setup({
 		{ filter = { event = "emsg", find = "E20" }, skip = true },
 		{ filter = { find = "No signature help" }, skip = true },
 		{ filter = { find = "E37" }, skip = true },
+		{ filter = { find = "E31" }, skip = true },
 		{ filter = { find = "HEAD%-%d" }, skip = true },
-		{ filter = { find = 'for "*"' }, skip = true },
 	},
 })
 

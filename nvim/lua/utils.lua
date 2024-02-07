@@ -37,6 +37,7 @@ M.icons = {
 		Array = "󰅪",
 		Branch = "",
 		Boolean = "◩",
+		Copilot = "",
 		Class = "󰠱",
 		Color = "󰏘",
 		Constant = "󰏿",
@@ -71,6 +72,7 @@ M.icons = {
 		Variable = "󰀫",
 	},
 	cmp_sources = {
+		copilot = "🤖",
 		nvim_lsp = "✨",
 		luasnip = "🚀",
 		buffer = "📝",

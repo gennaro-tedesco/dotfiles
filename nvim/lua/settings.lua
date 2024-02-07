@@ -138,6 +138,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	callback = function()
 		vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
 		vim.api.nvim_set_hl(0, "WinBarNC", { link = "WinBar" })
+		vim.api.nvim_set_hl(0, "CursorLine", { link = "CursorColumn" })
 		vim.api.nvim_set_hl(0, "FloatBorder", { link = "Constant" })
 		vim.api.nvim_set_hl(0, "LspInlayHint", { link = "Comment" })
 		vim.api.nvim_set_hl(0, "ErrorMsg", { bold = false, fg = "#dc322f", bg = "none" })
