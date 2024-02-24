@@ -101,10 +101,10 @@ help() { "$@" --help | bat -l man -p ; }
 
 
 # preview files
-preview_files() {
+view() {
 	local selection
 	if [[ -z "$1" ]]; then
-		selection="$(fd -u -t f -E '.git/' | fzf)" && preview_files "$selection"
+		selection="$(fd -u -t f -E '.git/' | fzf)" && view "$selection"
 		return 0
 	fi
 
@@ -112,7 +112,7 @@ preview_files() {
 		-e)
 			shift
 			selection="$(fd -u -t f -E '.git/' -e $1 | fzf --multi --select-1 --exit-0 | tr '\n' ' ')"
-			[[ -n "$selection" ]] && preview_files "${(z)selection}"
+			[[ -n "$selection" ]] && view "${(z)selection}"
 			shift
 			;;
 		-t)

@@ -1,5 +1,8 @@
 % kubectl
 
+# view pod logs
+kubectl logs --follow <pod> | tl
+
 # view current configuration
 kubectl config view --minify -o jsonpath='{..context}' | jq
 
@@ -21,8 +24,11 @@ kubectl config use-context <context>
 # show env variables of a pod
 kubectl exec <pod> -- env | sort | bat -l bash -p
 
-# get timestamps of pod status events
-kubectl get pod <pod> -o jsonpath='{.status.conditions}' | jq '.[]'
+# get timestamps of pod conditions
+kubectl get pod <pod> -o jsonpath='{.status.conditions}' | jq '.[] | {type, status, lastTransitionTime}'
+
+# get timestamps of pod events
+kubectl events --for pod/<pod> -o jsonpath='{.items}' | jq '.[] | {type, message, lastTimestamp}'
 
 # restart a deployment
 kubectl rollout restart deployment <deployment> -n <namespace>

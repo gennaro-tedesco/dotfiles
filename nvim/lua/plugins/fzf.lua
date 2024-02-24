@@ -31,7 +31,7 @@ fzf.setup({
 		prompt = "buffers:",
 		preview_opts = "hidden",
 		no_header = true,
-		fzf_opts = { ["--delimiter"] = "' '", ["--with-nth"] = "-1.." },
+		fzf_opts = { ["--delimiter"] = " ", ["--with-nth"] = "-1.." },
 	},
 	helptags = {
 		prompt = "💡:",
