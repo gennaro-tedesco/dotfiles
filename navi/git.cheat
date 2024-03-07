@@ -6,6 +6,9 @@ git checkout -b <forked_branch> && git pull origin pull/<pr_number>/head
 # list all branches containing a pattern
 git branch -r | awk -F/ '/<pattern>/{print $2}'
 
+# sort branches by semantic version
+git branch -r --sort=-v:refname
+
 # delete all branches containing a pattern
 git branch -r | awk -F/ '/<pattern>/{print $2}' | xargs -I {} git push origin :{}
 
