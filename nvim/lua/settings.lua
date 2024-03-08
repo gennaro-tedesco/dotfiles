@@ -126,6 +126,12 @@ vim.api.nvim_create_autocmd("WinEnter", {
 	command = "lua vim.opt.cursorline = true",
 })
 
+vim.api.nvim_create_autocmd("User", {
+	desc = "Cleanup on exit",
+	pattern = "VimtexEventQuit",
+	group = vim.api.nvim_create_augroup("init_vimtex", {}),
+	command = "VimtexClean",
+})
 ------------------------
 --- highlight groups ---
 ------------------------
