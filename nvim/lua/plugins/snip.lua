@@ -7,6 +7,7 @@ local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
 local f = ls.function_node
+local c = ls.choice_node
 local fmt = require("luasnip.extras.fmt").fmt
 local types = require("luasnip.util.types")
 
@@ -22,7 +23,7 @@ ls.config.set_config({
 		},
 		[types.choiceNode] = {
 			active = {
-				virt_text = { { "●", "InsertMode" } },
+				virt_text = { { "●", "Special" } },
 			},
 		},
 	},
@@ -256,6 +257,12 @@ local snips = {
 			)
 		),
 	},
+	txt = {
+		s({
+			trig = "day",
+			name = "choose day of the week",
+		}, c(1, { t("Monday"), t("Tuesday"), t("Wednesday"), t("Thursday"), t("Friday"), t("Saturday"), t("Sunday") })),
+	},
 	zsh = {
 		s({
 			trig = "var",
@@ -272,6 +279,7 @@ ls.add_snippets(nil, {
 	python = snips.python,
 	sh = snips.sh,
 	tex = snips.tex,
+	txt = snips.txt,
 	vim = snips.vim,
 	zsh = snips.zsh,
 })
@@ -286,3 +294,4 @@ local list_snips = function()
 end
 
 vim.api.nvim_create_user_command("SnipList", list_snips, {})
+require("plugins.snip_ui")
