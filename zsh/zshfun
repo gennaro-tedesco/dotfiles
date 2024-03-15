@@ -224,6 +224,6 @@ todo() {
 		-v)
 			bat --style='grid' ${TODOFILE};;
 		-d)
-			truncate -s 0 ${TODOFILE};;
+			gum confirm "delete todo content?" && truncate -s 0 ${TODOFILE};;
 	esac
 }
