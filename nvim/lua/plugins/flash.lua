@@ -25,7 +25,13 @@ flash.setup({
 				opts.autohide = vim.fn.mode(true):find("no") and (vim.v.operator == "y" or vim.v.operator == "d")
 			end,
 			search = { wrap = true },
-			highlight = { backdrop = false },
+			highlight = {
+				backdrop = false,
+				groups = {
+					label = "IncSearch",
+					match = "IncSearch",
+				},
+			},
 			multi_line = false,
 		},
 		search = { highlight = { groups = { label = "Todo" } } },
