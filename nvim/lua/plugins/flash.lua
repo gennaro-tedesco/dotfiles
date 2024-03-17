@@ -28,8 +28,8 @@ flash.setup({
 			highlight = {
 				backdrop = false,
 				groups = {
-					label = "IncSearch",
-					match = "IncSearch",
+					label = "Search",
+					match = "Search",
 				},
 			},
 			multi_line = false,
