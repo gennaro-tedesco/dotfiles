@@ -36,6 +36,8 @@ local function on_attach(bufnr)
 	vim.keymap.set("n", "K", api.node.show_info_popup, opts("Info"))
 	vim.keymap.set("n", "yf", api.fs.copy.filename, opts("Copy Name"))
 	vim.keymap.set("n", "yp", api.fs.copy.relative_path, opts("Copy Relative Path"))
+	vim.keymap.set("n", "mm", api.marks.toggle, opts("Bookmarfk file"))
+	vim.keymap.set("n", "bm", api.marks.bulk.move, opts("Move bookmarked files"))
 end
 
 nvim_tree.setup({
