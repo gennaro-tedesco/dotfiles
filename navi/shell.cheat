@@ -77,7 +77,7 @@ curl -s -H "Content-Type: application/json" -X POST -d @<body> "$APP_HOST:$APP_P
 $ body: find . -type f -iname '*.json' | sed 's/^\.\///g'
 
 
-%man
+% man
 
 # man page of bash conditionals
 man test
