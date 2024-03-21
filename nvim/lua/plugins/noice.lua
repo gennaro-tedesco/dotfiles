@@ -83,7 +83,7 @@ noice.setup({
 			["cmp.entry.get_documentation"] = true,
 		},
 		hover = { enabled = true },
-		signature = { enabled = true },
+		signature = { enabled = false },
 		documentation = {
 			opts = {
 				win_options = {

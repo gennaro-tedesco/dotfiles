@@ -27,6 +27,6 @@ conform.setup({
 			notify("LSP errors, cannot format")
 			return
 		end
-		return { timeout_ms = 1000, lsp_fallback = true }
+		return { timeout_ms = 5000, lsp_fallback = true }
 	end,
 })
