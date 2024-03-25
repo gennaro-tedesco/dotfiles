@@ -163,7 +163,7 @@ vim.api.nvim_create_user_command("Info", function()
 end, {})
 
 vim.api.nvim_create_user_command("ToSql", function()
-	vim.api.nvim_exec2("g/^$/d", {})
+	vim.api.nvim_exec2("g/^$/d", { output = true })
 	vim.api.nvim_exec2("%s/^/'/", {})
 	vim.api.nvim_exec2("%s/$/',/", {})
 	vim.api.nvim_exec2("%s/\\%^/(/", {})
