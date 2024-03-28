@@ -182,6 +182,8 @@ nnoremap A cw
 nnoremap gh :cd ~/<cr>
 nnoremap gd :cd ~/dotfiles<cr>
 nnoremap gc :cd ~/.config<cr>
+nnoremap gD :cd ~/Desktop<cr>
+nnoremap gk :cd /Volumes/Kindle<cr>
 
 
 " -----
