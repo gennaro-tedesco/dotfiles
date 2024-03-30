@@ -43,15 +43,12 @@ local on_attach = function(client, bufnr)
 	vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
 	--- toggle inlay hints
-	vim.g.inlay_hints_visible = false
 	local function toggle_inlay_hints()
-		if vim.g.inlay_hints_visible then
-			vim.g.inlay_hints_visible = false
-			vim.lsp.inlay_hint(bufnr, false)
+		if vim.lsp.inlay_hint.is_enabled() then
+			vim.lsp.inlay_hint.enable(bufnr, false)
 		else
 			if client.server_capabilities.inlayHintProvider then
-				vim.g.inlay_hints_visible = true
-				vim.lsp.inlay_hint(bufnr, true)
+				vim.lsp.inlay_hint.enable(bufnr, true)
 			else
 				print("no inlay hints available")
 			end
