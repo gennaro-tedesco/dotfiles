@@ -136,6 +136,13 @@ nnoremap("mx", function()
 	vim.cmd.wshada({ bang = true })
 end, { desc = "delete all marks" })
 
+--- make bullet point
+nnoremap("<leader>p", function()
+	vim.cmd.normal("mAI- ")
+	vim.cmd.normal("`A")
+	vim.cmd.normal("dmA")
+end)
+
 --- escape terminal mode
 tnoremap("<C-q>", "<C-\\><C-n>")
 

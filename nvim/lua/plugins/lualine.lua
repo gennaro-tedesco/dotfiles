@@ -9,6 +9,7 @@ if not noice_ok then
 end
 
 local icons = require("utils").icons
+local clients_lsp = require("utils").clients_lsp
 
 local soldark = require("lualine.themes.solarized_dark")
 soldark.normal.a.gui = ""
@@ -53,6 +54,7 @@ lualine.setup({
 				cond = noice.api.status.mode.has,
 				color = { fg = "#2aa198" },
 			},
+			{ clients_lsp },
 			{
 				"diagnostics",
 				update_in_insert = true,
