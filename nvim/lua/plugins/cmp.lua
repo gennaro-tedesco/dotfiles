@@ -12,7 +12,7 @@ local icons = require("utils").icons
 
 cmp.setup({
 	view = {
-		entries = { name = "custom", selection_order = "near_cursor" },
+		entries = { name = "custom", selection_order = "near_cursor", follow_cursor = true },
 	},
 	snippet = {
 		expand = function(args)
