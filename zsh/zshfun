@@ -210,7 +210,7 @@ nvim_diff() {
 
 
 # grep highlight with delta
-gr() { rg "$@" --json | delta --tabs=1; }
+gr() { rg "$@" --json | delta --tabs=1 | tail -n+2; }
 
 
 # visualise todo file
@@ -224,6 +224,6 @@ todo() {
 		-v)
 			bat --style='grid' ${TODOFILE};;
 		-d)
-			gum confirm "delete todo content?" && truncate -s 0 ${TODOFILE};;
+			gum confirm "delete todo content?" && truncate -s 0 ${TODOFILE};;	
 	esac
 }
