@@ -510,12 +510,6 @@ local plugins = {
 		event = "VeryLazy",
 		config = true,
 	},
-	-- {
-	-- 	"numToStr/Comment.nvim",
-	-- 	event = "BufReadPost",
-	-- 	keys = { "gc", "gb", { "gc", mode = "v" }, { "gb", mode = "v" } },
-	-- 	config = true,
-	-- },
 	{
 		"andymass/vim-matchup",
 		event = "BufReadPost",
