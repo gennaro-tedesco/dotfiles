@@ -26,7 +26,7 @@ Moreover I am using
 
 | program                                              | scope                |
 | :--------------------------------------------------- | :------------------- |
-| [dust](https://github.com/bootandy/dust)             | disk space           |
+| [ncdu](https://dev.yorhel.nl/ncdu)                   | disk space           |
 | [duf](https://github.com/muesli/duf)                 | disk usage           |
 | [macchina](https://github.com/Macchina-CLI/macchina) | sysinfo              |
 | [hyperfine](https://github.com/sharkdp/hyperfine)    | benchmarks           |

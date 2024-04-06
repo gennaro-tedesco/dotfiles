@@ -97,7 +97,7 @@ set statusline="  Hint: %z%="
 command! diff delta %f %F
 command! mkcd :mkdir %a | cd %a
 command! reload :write | restart full
-command! du :if &previewprg == '' | set previewprg='dust -d1 -r ' | view! | else | set previewprg='' | view | endif
+command! du ncdu %f
 
 " ------------------------------------------------------------------------------
 
@@ -142,9 +142,6 @@ filter {*.pyc,*.pyo, __pycache__, .DS_*}
 " quit application
 nnoremap q :q<cr>
 
-" Start shell in current directory
-nnoremap s :shell<cr>
-
 " Display sorting dialog
 nnoremap S :sort<cr>
 
@@ -172,8 +169,7 @@ nnoremap yn :!echo -n %c | pbcopy %i<cr>:echo expand('%"c') "is yanked to clipbo
 nnoremap yr :!echo -n %c:r | pbcopy %i<cr>:echo expand('%"c:r') "is yanked to clipboard"<cr>
 
 " Mappings for faster renaming
-nnoremap i cw<c-a>
-nnoremap A cw
+nnoremap i cw
 
 " -----------------
 " go to directories
