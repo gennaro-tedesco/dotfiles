@@ -238,23 +238,6 @@ local plugins = {
 	},
 
 	--- LSP, language servers and code autocompletion
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		opts = {
-			suggestion = { enabled = false },
-			panel = { enabled = false },
-			filetypes = {
-				lua = true,
-				python = true,
-				go = true,
-				rust = true,
-				sh = true,
-				["*"] = false,
-			},
-		},
-	},
 	{ "nvim-lua/plenary.nvim" },
 	{
 		"neovim/nvim-lspconfig",
@@ -278,7 +261,6 @@ local plugins = {
 			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip",
 			"lukas-reineke/cmp-under-comparator",
-			{ "zbirenbaum/copilot-cmp", config = true },
 			{
 				"windwp/nvim-autopairs",
 				config = function()
@@ -427,15 +409,6 @@ local plugins = {
 		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
 		config = function()
 			require("plugins.nvim_tree")
-		end,
-	},
-	{
-		"jremmen/vim-ripgrep",
-		cmd = "Rg",
-		init = function()
-			vim.keymap.set("n", "<C-h>", ":Rg<space>")
-			vim.keymap.set("n", "<C-*>", "<cmd>Rg<space><CR>")
-			vim.keymap.set("n", "<C-g>", "<cmd> lua require('utils').replace_grep()<CR>")
 		end,
 	},
 	{

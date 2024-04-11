@@ -106,7 +106,7 @@ M.replace_grep = function()
 	local cur_word = vim.fn.expand("<cword>")
 	if cur_word ~= "" then
 		local replace_word = vim.fn.input("Replace '" .. cur_word .. "' with: ")
-		vim.cmd("Rg " .. cur_word)
+		vim.cmd.grep({ mods = { silent = true }, bang = true, cur_word })
 		if replace_word ~= "" then
 			vim.cmd("cdo s/" .. cur_word .. "/" .. replace_word)
 			vim.cmd("cclose")

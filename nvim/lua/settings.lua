@@ -39,6 +39,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = true
 vim.opt.showmatch = true
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"
 
 --- autocompletion options
 vim.o.shortmess = vim.o.shortmess .. "c"
@@ -110,6 +112,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		vim.cmd.cd(data.file)
 		require("nvim-tree.api").tree.open()
 	end,
+})
+
+vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+	group = general_settings,
+	pattern = { "[^l]*" },
+	command = "cwindow",
 })
 
 local toggle_options = vim.api.nvim_create_augroup("ToggleOptions", { clear = true })

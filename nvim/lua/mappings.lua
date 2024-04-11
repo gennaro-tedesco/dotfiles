@@ -74,8 +74,18 @@ nnoremap("<leader>gd", function()
 	require("utils").toggle_diffview()
 end)
 
+--- project search and replace
+nnoremap("<C-h>", function()
+	local regex = vim.fn.input("regex: ")
+	if regex ~= "" then
+		vim.cmd.grep({ mods = { silent = true }, bang = true, '"' .. regex .. '"' })
+	end
+end, { desc = "project search" })
+
+nnoremap("<C-g>", "<cmd> lua require('utils').replace_grep()<CR>", { desc = "project search and replace" })
+
 --- close all splits/windows except the one in focus
-nnoremap("<leader>q", "<C-w>o")
+nnoremap("<leader>q", "<C-w>o", { desc = "close all windows except the focussed one" })
 
 --- avoid x and s to override the clipboard
 nnoremap("x", '"_x')
