@@ -42,8 +42,8 @@ noice.setup({
 			cmdline = { pattern = "^:", icon = "", opts = cmdline_opts },
 			search_down = { view = "cmdline", kind = "Search", pattern = "^/", icon = "🔎 ", ft = "regex" },
 			search_up = { view = "cmdline", kind = "Search", pattern = "^%?", icon = "🔎 ", ft = "regex" },
-			input = { icon = "✏️ ", ft = "text", opts = cmdline_opts },
-			calculator = { pattern = "^=", icon = "", lang = "vimnormal", opts = cmdline_opts },
+			input = { view = "cmdline", icon = "✏️ ", ft = "regex" },
+			calculator = { view = "cmdline", pattern = "^:=", icon = "", lang = "vimnormal" },
 			substitute = {
 				pattern = "^:%%?s/",
 				icon = "🔁",
@@ -76,6 +76,29 @@ noice.setup({
 		},
 	},
 	messages = { view_search = false },
+	commands = {
+		history = {
+			view = "split",
+			opts = { enter = true, format = "details" },
+			filter = {
+				any = {
+					{ event = "notify" },
+					{ error = true },
+					{ warning = true },
+					{ event = "lsp", kind = "message" },
+					{ event = "msg_show", kind = { "" } },
+				},
+				["not"] = { event = "msg_show", find = "written" },
+			},
+			filter_opts = { reverse = true },
+		},
+		errors = {
+			view = "split",
+			opts = { enter = true, format = "details" },
+			filter = { error = true },
+			filter_opts = { reverse = true },
+		},
+	},
 	lsp = {
 		override = {
 			["vim.lsp.util.convert_input_to_markdown_lines"] = true,

@@ -145,6 +145,14 @@ local plugins = {
 				end,
 			},
 		},
+		init = function()
+			vim.keymap.set("n", "<leader>nh", function()
+				require("noice").cmd("history")
+			end, { desc = "show output history" })
+			vim.keymap.set("n", "<leader>ne", function()
+				require("noice").cmd("errors")
+			end, { desc = "show output history" })
+		end,
 		config = function()
 			require("plugins.noice")
 		end,
