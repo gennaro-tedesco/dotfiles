@@ -117,6 +117,7 @@ fileviewer {*/,.*/} exa --tree --level=2 %c
 " Explicitly set highlight type for some extensions
 fileviewer *.json jq --color-output . %c
 fileviewer *.md glow -s ~/.config/glowconfig/customglow.json -p %c
+fileviewer *.pdf pdfinfo %c | bat -pl yaml --color always
 fileviewer *[^/] env -uCOLORTERM bat --color always --wrap never --pager never %c -p
 
 
