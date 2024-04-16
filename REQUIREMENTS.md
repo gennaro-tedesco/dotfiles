@@ -11,6 +11,7 @@ I am making use of the following system programs:
 | [visidata](https://www.visidata.org/install/)    | interactive csv manipulation |
 | [jq](https://stedolan.github.io/jq/)             | json parser                  |
 | [glow](https://github.com/charmbracelet/glow)    | md preview                   |
+| [csview](https://github.com/wfxr/csview)         | csv pager                    |
 | [zenith](https://github.com/bvaisvil/zenith)     | process list                 |
 | [navi](https://github.com/denisidoro/navi)       | cheatsheet                   |
 | [ripgrep](https://github.com/BurntSushi/ripgrep) | grep improved                |
