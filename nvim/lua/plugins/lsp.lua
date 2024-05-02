@@ -211,9 +211,6 @@ lsp.jsonls.setup({
 	},
 })
 
----ruby_ls
-lsp.ruby_ls.setup({})
-
 ---rust_analyzer
 lsp.rust_analyzer.setup({
 	settings = {
