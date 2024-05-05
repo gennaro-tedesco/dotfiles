@@ -112,7 +112,7 @@ filetype *.epub epy %c
 " Man page
 filetype {*.[1-8]},<text/troff> man ./%c
 fileviewer {*.[1-8]},<text/troff> man ./%c | col -b
-fileviewer {*/,.*/} exa --tree --level=2 %c
+fileviewer {*/,.*/} exa --tree --level=2 --color=always %c
 
 " Explicitly set highlight type for some extensions
 fileviewer *.json jq --color-output . %c
