@@ -19,6 +19,7 @@ fzf.setup({
 		["--no-scrollbar"] = "",
 	},
 	files = {
+		formatter = "path.filename_first",
 		git_icons = true,
 		prompt = "files:",
 		preview_opts = "hidden",
@@ -28,6 +29,7 @@ fzf.setup({
 		cwd = require("utils").git_root(),
 	},
 	buffers = {
+		formatter = "path.filename_first",
 		prompt = "buffers:",
 		preview_opts = "hidden",
 		no_header = true,
