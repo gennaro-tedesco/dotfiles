@@ -5,13 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-## ----------------
-## cwd in tab title
-## ----------------
-if [ $ITERM_SESSION_ID ]; then
-	precmd() { echo -ne "\033]0;${PWD##*/}\007" }
-fi
-
 ## -------------------------
 ## loading plugins via zap ⚡
 ## -------------------------
@@ -60,10 +53,13 @@ export LC_CTYPE="en_US.UTF-8"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export FZF_DEFAULT_OPTS="\
 	--reverse \
-	--border \
+	--no-border \
 	-e \
 	--no-scrollbar \
 	--height=50% \
+	--no-info \
+	--header-first \
+	--separator=' ' \
 	--padding=1 \
 	--preview-window=right:50%:wrap \
 	--bind shift-up:preview-up,shift-down:preview-down --bind ?:toggle-preview \
@@ -114,10 +110,10 @@ alias code="scc -c --no-cocomo"
 ## --------
 ## bindkeys
 ## --------
-bindkey -s '^p' 'find_files\n'
-bindkey -s '^t' 'find_dir\n'
+bindkey -s '^p' 'clear\nfind_files\n'
+bindkey -s '^t' 'clear\nfind_dir\n'
 bindkey -s '^v' 'view '
-bindkey -s '^o' 'cd $(git root) && git d 2>/dev/null | find_files\n'
+bindkey -s '^o' 'clear\nfind_git_files\n'
 bindkey -s '^n' 'vifm\n'
 bindkey -s '^h' 'search\n'
 bindkey -s '^d' 'nvim_diff\n'

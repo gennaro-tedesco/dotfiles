@@ -14,17 +14,24 @@ touchdir() {
 
 # fzf browse files
 find_files() {
-	IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0 --prompt 'files:' --preview='eza --tree --level=1 --color=always $(dirname {})'))
+	IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0 --prompt 'files:'))
 	[[ -n "$files" ]] && ${EDITOR} "${files[@]}"
 }
 
+# fzf browse git modified files
+find_git_files() {
+	if [[ "$(git root)" != "$(pwd)" ]] then
+		cd $(git root)
+	fi
+	IFS=$'\n' files=($(git d 2>/dev/null | fzf --query="$1" --multi --select-1 --exit-0 --prompt 'git files:'))
+	[[ -n "$files" ]] && ${EDITOR} "${files[@]}"
+}
 
 # fzf browse directories and cd into them
 find_dir() {
 	local dir
 	dir=$(fd -IH -t d -E '.git' 2> /dev/null | fzf --prompt 'folders:' +m --preview-window='right:50%:nohidden:wrap' --preview='eza --tree --level=2 --color=always {}') && cd "$dir"
 }
-
 
 # list env variables
 list_env() {
@@ -34,7 +41,6 @@ list_env() {
 		&& unset var
 }
 
-
 # list go env variables
 list_goenv() {
 	local var
@@ -42,7 +48,6 @@ list_goenv() {
 		&& echo "$var=$(go env "$var")" \
 		&& unset var
 }
-
 
 # search regex in current directory
 search() {
@@ -65,7 +70,6 @@ search() {
 	esac
 	[[ -n "$matching_files" ]] && ${EDITOR} "${matching_files}" -c/${regex}
 }
-
 
 # replace
 replace() {
@@ -95,10 +99,8 @@ replace() {
 	fi
 }
 
-
 # paginate help
 help() { "$@" --help | bat -l man -p ; }
-
 
 # preview files
 view() {
@@ -136,7 +138,6 @@ view() {
 	esac
 }
 
-
 # quick commit all
 quick_commit(){
 	[[ ! "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]] && { echo "not a git repo"; return; }
@@ -172,7 +173,6 @@ quick_commit(){
 	gum confirm "push to $REMOTE?" && gum spin --spinner dot --title "git push..." --show-output git push || echo "changes not pushed"
 }
 
-
 # json_diff
 json_diff() {
 	if [[ $# -eq 2 ]]; then
@@ -181,15 +181,6 @@ json_diff() {
 		echo "expected two arguments"
 	fi
 }
-
-
-# curl weather
-weather() {
-	local location
-	[[ $# -eq 0 ]] && location="Berlin" || location=$1
-	curl wttr.in/${location}\?F
-}
-
 
 # open PRs in nvim diffview
 nvim_diff() {
@@ -208,10 +199,12 @@ nvim_diff() {
 	fi
 }
 
-
 # grep highlight with delta
 gr() { rg "$@" --json | delta --tabs=1 | tail -n+2 | bat -p; }
 
+
+# grep in json files with gron
+jgr() { gron "$2" | rg "$1" | gron -u; }
 
 # visualise todo file
 todo() {
