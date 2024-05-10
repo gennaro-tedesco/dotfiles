@@ -6,7 +6,7 @@ I am making use of the following system programs:
 | :----------------------------------------------- | :--------------------------- |
 | [vifm](https://vifm.info/)                       | file manager                 |
 | [bat](https://github.com/sharkdp/bat)            | file preview                 |
-| [exa](https://the.exa.website/)                  | file and dir list            |
+| [eza](https://github.com/eza-community/eza)      | file and dir list            |
 | [fzf](https://github.com/junegunn/fzf)           | fuzzy finder                 |
 | [visidata](https://www.visidata.org/install/)    | interactive csv manipulation |
 | [jq](https://stedolan.github.io/jq/)             | json parser                  |

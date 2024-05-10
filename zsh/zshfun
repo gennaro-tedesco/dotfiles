@@ -14,7 +14,7 @@ touchdir() {
 
 # fzf browse files
 find_files() {
-	IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0 --prompt 'files:' --preview='exa --tree --level=1 $(dirname {})'))
+	IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0 --prompt 'files:' --preview='eza --tree --level=1 --color=always $(dirname {})'))
 	[[ -n "$files" ]] && ${EDITOR} "${files[@]}"
 }
 
@@ -22,7 +22,7 @@ find_files() {
 # fzf browse directories and cd into them
 find_dir() {
 	local dir
-	dir=$(fd -IH -t d -E '.git' 2> /dev/null | fzf --prompt 'folders:' +m --preview-window='right:50%:nohidden:wrap' --preview='exa --tree --level=2 {}') && cd "$dir"
+	dir=$(fd -IH -t d -E '.git' 2> /dev/null | fzf --prompt 'folders:' +m --preview-window='right:50%:nohidden:wrap' --preview='eza --tree --level=2 --color=always {}') && cd "$dir"
 }
 
 
