@@ -64,7 +64,8 @@ export FZF_DEFAULT_OPTS="\
 	--preview-window=right:50%:wrap \
 	--bind shift-up:preview-up,shift-down:preview-down --bind ?:toggle-preview \
 	--color=bg+:#073642,gutter:-1,border:#268bd2,separator:#2aa198 \
-	--pointer ▶ --marker "
+	--pointer=▶ \
+	--marker=' '"
 export FZF_DEFAULT_COMMAND="fd -H -t f -E '.git/'"
 export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
 export LS_COLORS="$(vivid generate solarized-dark)"
