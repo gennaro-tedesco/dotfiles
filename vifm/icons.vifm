@@ -1,5 +1,5 @@
 " Filetypes/directories
-set classify=' :dir:/, :exe:, :reg:, :link:,? :?:, ::../::'
+set classify=' :dir:/, :exe:, :reg:, :link:,? :?:, ::../::'
 
 " Specific files
 set classify+=' ::.Xdefaults,,.Xresources,,.bashprofile,,.bash_profile,,.bashrc,,.dmrc,,.d_store,,.fasd,,.gitconfig,,.gitignore,,.jack-settings,,.mime.types,,.nvidia-settings-rc,,.pam_environment,,.profile,,.recently-used,,.selected_editor,,.xinitpurc,,.zprofile,,.yarnc,,.snclirc,,.tmux.conf,,.urlview,,.config,,.ini,,.user-dirs.dirs,,.mimeapps.list,,.offlineimaprc,,.msmtprc,,.Xauthority,,config::'
@@ -14,6 +14,7 @@ set classify+=' ::node_modules::'
 set classify+=' ::react.jsx::'
 
 " File extensions
+set classify+=' ::Makefile::'
 set classify+=' ::*.csv::'
 set classify+='λ ::*.ml,,*.mli::'
 set classify+=' ::*.styl::'
@@ -66,5 +67,3 @@ set classify+=' ::*.log::'
 set classify+=' ::*.doc,,*.docx,,*.adoc::'
 set classify+=' ::*.xls,,*.xlsmx::'
 set classify+=' ::*.pptx,,*.ppt::'
-
-
