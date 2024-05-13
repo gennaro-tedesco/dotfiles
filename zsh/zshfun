@@ -23,7 +23,7 @@ find_git_files() {
 	if [[ "$(git root)" != "$(pwd)" ]] then
 		cd $(git root)
 	fi
-	IFS=$'\n' files=($(git d 2>/dev/null | fzf --query="$1" --multi --select-1 --exit-0 --prompt 'git files:'))
+	IFS=$'\n' files=($(git d 2>/dev/null | fzf --query="$1" --multi --exit-0 --prompt 'git files:' --height='30%' --preview-window='down:30%:nohidden:wrap' --preview='git diff --stat --color=always -- {}'))
 	[[ -n "$files" ]] && ${EDITOR} "${files[@]}"
 }
 
