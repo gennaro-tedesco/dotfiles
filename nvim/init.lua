@@ -33,6 +33,7 @@ end
 --- plugins list ---
 --------------------
 local plugins = {
+
 	--- colorschemes, syntax highlights and general UI
 	{
 		"craftzdog/solarized-osaka.nvim",
@@ -59,72 +60,7 @@ local plugins = {
 			require("plugins.lualine")
 		end,
 	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		lazy = true,
-		build = ":TSUpdate",
-		dependencies = {
-			{
-				"nvim-treesitter/nvim-treesitter-context",
-				event = "BufReadPre",
-				keys = {
-					{
-						"[c",
-						function()
-							require("treesitter-context").go_to_context()
-						end,
-					},
-				},
-				init = function()
-					local treesitter_hl = vim.api.nvim_create_augroup("TreesitterHighlights", {})
-					vim.api.nvim_clear_autocmds({ group = treesitter_hl })
-					vim.api.nvim_create_autocmd("BufEnter", {
-						group = treesitter_hl,
-						desc = "redefinition of treesitter context highlights group",
-						callback = function()
-							vim.api.nvim_set_hl(0, "TreesitterContext", { link = "Pmenu" })
-						end,
-					})
-				end,
-				opts = { max_lines = 3 },
-			},
-			{ "nvim-treesitter/nvim-treesitter-textobjects" },
-			{
-				"Wansmer/treesj",
-				keys = {
-					{
-						"<leader>m",
-						function()
-							vim.keymap.set("n", "<leader>m", require("treesj").toggle, { desc = "toggle treesj" })
-						end,
-					},
-				},
-				opts = { use_default_keymaps = false },
-			},
-			{ "RRethy/nvim-treesitter-textsubjects" },
-			{ "m-demare/hlargs.nvim", event = "BufReadPost", opts = { highlight = { link = "NonText" } } },
-			{
-				"sustech-data/wildfire.nvim",
-				event = "VeryLazy",
-				opts = {
-					surrounds = {
-						{ "(", ")" },
-						{ "{", "}" },
-						{ "<", ">" },
-						{ "[", "]" },
-					},
-					keymaps = {
-						init_selection = "<leader><Right>",
-						node_incremental = "<leader><Right>",
-						node_decremental = "<leader><Left>",
-					},
-				},
-			},
-		},
-		config = function()
-			require("plugins.treesitter")
-		end,
-	},
+
 	{
 		"karb94/neoscroll.nvim",
 		keys = { "<C-u>", "<C-d>", "zt", "zz", "zb" },
@@ -207,7 +143,6 @@ local plugins = {
 		url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
 		config = function()
 			local rainbow_delimiters = require("rainbow-delimiters")
-
 			vim.g.rainbow_delimiters = {
 				strategy = {
 					[""] = rainbow_delimiters.strategy["local"],
@@ -243,6 +178,88 @@ local plugins = {
 				},
 			},
 		},
+	},
+
+	--- treesitter
+	{
+		"nvim-treesitter/nvim-treesitter",
+		lazy = true,
+		build = ":TSUpdate",
+		config = function()
+			require("plugins.treesitter")
+		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+		dependencies = "nvim-treesitter/nvim-treesitter",
+	},
+	{
+		"RRethy/nvim-treesitter-textsubjects",
+		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+		dependencies = "nvim-treesitter/nvim-treesitter",
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+		keys = {
+			{
+				"[c",
+				function()
+					require("treesitter-context").go_to_context()
+				end,
+			},
+		},
+		init = function()
+			local treesitter_hl = vim.api.nvim_create_augroup("TreesitterHighlights", {})
+			vim.api.nvim_clear_autocmds({ group = treesitter_hl })
+			vim.api.nvim_create_autocmd("BufEnter", {
+				group = treesitter_hl,
+				desc = "redefinition of treesitter context highlights group",
+				callback = function()
+					vim.api.nvim_set_hl(0, "TreesitterContext", { link = "Pmenu" })
+				end,
+			})
+		end,
+		opts = { max_lines = 3 },
+		dependencies = "nvim-treesitter/nvim-treesitter",
+	},
+	{
+		"Wansmer/treesj",
+		keys = {
+			{
+				"<leader>m",
+				function()
+					vim.keymap.set("n", "<leader>m", require("treesj").toggle, { desc = "toggle treesj" })
+				end,
+			},
+		},
+		opts = { use_default_keymaps = false },
+		dependencies = "nvim-treesitter/nvim-treesitter",
+	},
+	{
+		"m-demare/hlargs.nvim",
+		event = "BufReadPost",
+		opts = { highlight = { link = "NonText" } },
+		dependencies = "nvim-treesitter/nvim-treesitter",
+	},
+	{
+		"sustech-data/wildfire.nvim",
+		event = "VeryLazy",
+		opts = {
+			surrounds = {
+				{ "(", ")" },
+				{ "{", "}" },
+				{ "<", ">" },
+				{ "[", "]" },
+			},
+			keymaps = {
+				init_selection = "<leader><Right>",
+				node_incremental = "<leader><Right>",
+				node_decremental = "<leader><Left>",
+			},
+		},
+		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
 
 	--- LSP, language servers and code autocompletion

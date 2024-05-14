@@ -29,6 +29,14 @@ gitsigns.setup({
 	preview_config = {
 		border = "rounded",
 	},
+	current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <abbrev_sha>",
+	current_line_blame_opts = {
+		virt_text = true,
+		virt_text_pos = "eol",
+		delay = 300,
+		ignore_whitespace = false,
+		virt_text_priority = 100,
+	},
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
 
@@ -65,7 +73,7 @@ gitsigns.setup({
 		map("n", "<leader>hp", gs.preview_hunk)
 		map("n", "<leader>gB", function()
 			gs.blame_line({ full = true })
-		end, { desc = "git blame" })
+		end, { desc = "git blame preview" })
 	end,
 })
 
