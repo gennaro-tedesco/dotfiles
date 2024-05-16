@@ -482,7 +482,14 @@ local plugins = {
 		"akinsho/git-conflict.nvim",
 		tag = "v1.1.2",
 		opts = {
-			default_mappings = { ours = "co", theirs = "ct", none = "c0", both = "cb", next = "c+", prev = "c-" },
+			default_mappings = {
+				ours = "co",
+				theirs = "ct",
+				none = "c0",
+				both = "cb",
+				next = "c+",
+				prev = "c-",
+			},
 		},
 	},
 
@@ -512,6 +519,17 @@ local plugins = {
 		"andymass/vim-matchup",
 		event = "BufReadPost",
 		init = function()
+			local matchup_hl = vim.api.nvim_create_augroup("MatchupHighlights", {})
+			vim.api.nvim_clear_autocmds({ group = matchup_hl })
+			vim.api.nvim_create_autocmd("BufEnter", {
+				group = matchup_hl,
+				desc = "redefinition of treesitter context highlights group",
+				callback = function()
+					vim.api.nvim_set_hl(0, "MatchWord", { bold = false, reverse = true })
+					vim.api.nvim_set_hl(0, "MatchParen", { bold = false, reverse = true })
+					vim.api.nvim_set_hl(0, "MatchupVirtualText", { bold = false, reverse = true })
+				end,
+			})
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 			vim.g.matchup_surround_enabled = 1
 		end,
