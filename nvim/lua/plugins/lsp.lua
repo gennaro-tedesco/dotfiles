@@ -42,28 +42,15 @@ vim.keymap.set(
 local on_attach = function(client, bufnr)
 	vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-	--- toggle inlay hints
-	local function toggle_inlay_hints()
-		if vim.lsp.inlay_hint.is_enabled() then
-			vim.lsp.inlay_hint.enable(bufnr, false)
-		else
-			if client.server_capabilities.inlayHintProvider then
-				vim.lsp.inlay_hint.enable(bufnr, true)
-			else
-				print("no inlay hints available")
-			end
-		end
-	end
-
 	--- toggle diagnostics
 	vim.g.diagnostics_visible = true
 	local function toggle_diagnostics()
 		if vim.g.diagnostics_visible then
 			vim.g.diagnostics_visible = false
-			vim.diagnostic.disable()
+			vim.diagnostic.enable(false)
 		else
 			vim.g.diagnostics_visible = true
-			vim.diagnostic.enable()
+			vim.diagnostic.enable(true)
 		end
 	end
 
@@ -127,12 +114,9 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set({ "n", "v" }, "<leader>f", function()
 		require("conform").format({ async = true, lsp_fallback = true })
 	end, vim.tbl_extend("force", bufopts, { desc = "✨lsp format" }))
-	vim.keymap.set(
-		"n",
-		"<leader>dh",
-		toggle_inlay_hints,
-		vim.tbl_extend("force", bufopts, { desc = "✨lsp toggle inlay hints" })
-	)
+	vim.keymap.set("n", "<leader>dh", function()
+		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ nil }))
+	end, vim.tbl_extend("force", bufopts, { desc = "✨lsp toggle inlay hints" }))
 	if client.supports_method(vim.lsp.protocol.Methods.textDocument_codeAction) then
 		vim.keymap.set("n", "<leader>a", function()
 			require("fzf-lua").lsp_code_actions()

@@ -3,10 +3,10 @@
 # view pod logs
 kubectl logs --follow <pod> | tl
 
-# view current configuration
+# view kubernetes configuration
 kubectl config view --minify -o jsonpath='{..context}' | jq
 
-# view current namespace
+# view kubernetes namespace
 kubectl config view --minify -o jsonpath='{..namespace}'
 
 # switch namespace

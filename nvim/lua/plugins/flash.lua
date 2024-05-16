@@ -34,7 +34,7 @@ flash.setup({
 			},
 			multi_line = false,
 		},
-		search = { highlight = { groups = { label = "Todo" } } },
+		search = { enabled = true, highlight = { groups = { label = "Todo" } } },
 		treesitter = {
 			filter = function(matches)
 				return vim.tbl_filter(function(m)
