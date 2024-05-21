@@ -162,8 +162,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		vim.api.nvim_set_hl(0, "DiagnosticSignError", { link = "DiagnosticError" })
 		vim.api.nvim_set_hl(0, "DiagnosticWarn", { bold = false, ctermfg = 1, fg = "Orange" })
 		vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { link = "DiagnosticWarn" })
-		vim.api.nvim_set_hl(0, "DiffDelete", { bold = true, ctermfg = 12, ctermbg = 6, fg = "#dc322f", bg = "none" })
-		vim.api.nvim_set_hl(0, "DiffChange", { bold = true, ctermbg = 5, fg = "#b58900", bg = "none", sp = "#b58900" })
+		vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#0c4c44" })
+		vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#331423" })
+		vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", { link = "DiffDelete" })
 		vim.api.nvim_set_hl(0, "WinSeparator", { bold = false, fg = "#268bd2", bg = "none" })
 	end,
 })
