@@ -12,9 +12,16 @@ diffview.setup({
 			layout = "diff3_mixed",
 		},
 	},
+	file_history_panel = {
+		win_config = {
+			type = "split",
+			position = "bottom",
+			height = 13,
+		},
+	},
 	hooks = {
 		diff_buf_read = function()
-			vim.diagnostic.disable()
+			vim.diagnostic.enable(false)
 		end,
 	},
 	keymaps = {
@@ -70,6 +77,7 @@ diffview.setup({
 			{ "n", "l", actions.open_commit_log, { desc = "Show commit details" } },
 			{ "n", "gf", actions.goto_file_edit, { desc = "Open the file in the previous tabpage" } },
 			{ "n", "g?", actions.help("file_history_panel"), { desc = "Open the help panel" } },
+			{ "n", "q", actions.close, { desc = "Close history panel" } },
 		},
 		help_panel = {
 			{ "n", "q", actions.close, { desc = "Close help menu" } },
