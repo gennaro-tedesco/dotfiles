@@ -111,18 +111,6 @@ local plugins = {
 		end,
 	},
 	{
-		"Bekaboo/dropbar.nvim",
-		event = "BufReadPre",
-		init = function()
-			vim.keymap.set("n", "g<Tab>", function()
-				require("dropbar.api").pick()
-			end)
-		end,
-		config = function()
-			require("plugins.dropbar")
-		end,
-	},
-	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
 		keys = {

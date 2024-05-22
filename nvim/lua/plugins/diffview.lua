@@ -84,7 +84,7 @@ diffview.setup({
 			{ "n", "<cr>", actions.select_entry, { desc = "Open the diff for the selected entry." } },
 			{ "n", "gd", actions.open_in_diffview, { desc = "Open the entry under the cursor in a diffview" } },
 			{ "n", "y", actions.copy_hash, { desc = "Copy the commit hash of the entry under the cursor" } },
-			{ "n", "l", actions.open_commit_log, { desc = "Show commit details" } },
+			{ "n", "L", actions.open_commit_log, { desc = "Show commit details" } },
 			{ "n", "gf", actions.goto_file_edit, { desc = "Open the file in the previous tabpage" } },
 			{ "n", "g?", actions.help("file_history_panel"), { desc = "Open the help panel" } },
 			{ "n", "q", actions.close, { desc = "Close history panel" } },
