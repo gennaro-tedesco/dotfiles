@@ -12,6 +12,12 @@ diffview.setup({
 			layout = "diff3_mixed",
 		},
 	},
+	file_panel = {
+		win_config = {
+			position = "left",
+			width = 30,
+		},
+	},
 	file_history_panel = {
 		win_config = {
 			type = "split",
@@ -65,6 +71,10 @@ diffview.setup({
 					vim.cmd.quitall()
 				end
 			end,
+		},
+		diff2 = {
+			{ "n", "++", "]c" },
+			{ "n", "--", "[c" },
 		},
 		file_history_panel = {
 			{ "n", "j", actions.next_entry, { desc = "Bring the cursor to the next file entry" } },

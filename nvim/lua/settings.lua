@@ -5,7 +5,7 @@ vim.opt.showtabline = 0
 vim.opt.showbreak = "↪"
 vim.opt.list = true
 vim.opt.listchars = { tab = "  ", nbsp = "␣", trail = "•", extends = "⟩", precedes = "⟨" }
-vim.opt.fillchars = { eob = " " }
+vim.opt.fillchars = { eob = " ", diff = " " }
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.ruler = true
@@ -164,6 +164,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { link = "DiagnosticWarn" })
 		vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#0c4c44" })
 		vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#331423" })
+		vim.api.nvim_set_hl(0, "DiffChange", { bg = "#736e57" })
+		vim.api.nvim_set_hl(0, "DiffText", {
+			fg = vim.api.nvim_get_hl(0, { name = "DiffDelete" }).bg,
+			bg = vim.api.nvim_get_hl(0, { name = "DiffChange" }).bg,
+		})
 		vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", { link = "DiffDelete" })
 		vim.api.nvim_set_hl(0, "WinSeparator", { bold = false, fg = "#268bd2", bg = "none" })
 	end,
