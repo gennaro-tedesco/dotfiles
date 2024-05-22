@@ -471,20 +471,6 @@ local plugins = {
 			require("plugins.gitsigns")
 		end,
 	},
-	{
-		"akinsho/git-conflict.nvim",
-		tag = "v1.1.2",
-		opts = {
-			default_mappings = {
-				ours = "co",
-				theirs = "ct",
-				none = "c0",
-				both = "cb",
-				next = "c+",
-				prev = "c-",
-			},
-		},
-	},
 
 	--- plugins that make vim easier to use
 	{
