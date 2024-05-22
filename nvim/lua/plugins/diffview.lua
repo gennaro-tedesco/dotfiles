@@ -22,7 +22,7 @@ diffview.setup({
 		win_config = {
 			type = "split",
 			position = "bottom",
-			height = 13,
+			height = 10,
 		},
 	},
 	hooks = {

@@ -380,9 +380,6 @@ local plugins = {
 			vim.keymap.set({ "n" }, "<leader>gb", function()
 				fzf.git_branches()
 			end, { desc = "fzf git branches" })
-			vim.keymap.set({ "n" }, "<leader>gc", function()
-				fzf.git_bcommits()
-			end, { desc = "fzf buffer commits" })
 			vim.api.nvim_create_user_command("Autocmd", function()
 				fzf.autocmds()
 			end, { desc = "fzf autocmds list" })
@@ -454,6 +451,14 @@ local plugins = {
 	},
 	{
 		"sindrets/diffview.nvim",
+		init = function()
+			vim.keymap.set(
+				{ "n" },
+				"<leader>gc",
+				"<cmd>DiffviewFileHistory %<CR>",
+				{ desc = "diffview buffer commits" }
+			)
+		end,
 		config = function()
 			require("plugins.diffview")
 		end,
