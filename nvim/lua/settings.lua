@@ -104,11 +104,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	desc = "open nvim-tree on directory enter",
 	callback = function(data)
 		local directory = vim.fn.isdirectory(data.file) == 1
-
 		if not directory then
 			return
 		end
-
 		vim.cmd.cd(data.file)
 		require("nvim-tree.api").tree.open()
 	end,
@@ -118,6 +116,17 @@ vim.api.nvim_create_autocmd("QuickFixCmdPost", {
 	group = general_settings,
 	pattern = { "[^l]*" },
 	command = "cwindow",
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = general_settings,
+	desc = "always cd into root directory",
+	callback = function(ctx)
+		local root = vim.fs.root(ctx.buf, { ".git", "Makefile" })
+		if root then
+			vim.uv.chdir(root)
+		end
+	end,
 })
 
 local toggle_options = vim.api.nvim_create_augroup("ToggleOptions", { clear = true })
