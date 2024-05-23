@@ -94,6 +94,7 @@ alias :q="exit"
 alias cheat="cht.sh --shell"
 alias upgrade="brew upgrade && brew cleanup --prune=1 -s"
 alias code="scc -c --no-cocomo"
+alias ndiff="nvim +DiffviewOpen  +tabonly"
 
 ## -----------------------
 ## additional source files
