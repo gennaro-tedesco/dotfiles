@@ -442,14 +442,6 @@ local plugins = {
 
 	--- git integration
 	{
-		"tpope/vim-fugitive",
-		init = function()
-			vim.keymap.set("n", "<leader>gs", "<cmd> Git<CR>", { desc = "open git status" })
-			vim.keymap.set("n", "<leader>g/", "<cmd> Git difftool<CR>", { desc = "send git hunks to quickfix" })
-			vim.keymap.set("n", "<leader>gp", "<cmd> Git push<CR>", { desc = "git push" })
-		end,
-	},
-	{
 		"sindrets/diffview.nvim",
 		init = function()
 			vim.keymap.set(
@@ -458,6 +450,7 @@ local plugins = {
 				"<cmd>DiffviewFileHistory %<CR>",
 				{ desc = "diffview buffer commits" }
 			)
+			vim.keymap.set({ "n" }, "<leader>gs", "<cmd>DiffviewOpen<CR>", { desc = "diffview git status" })
 		end,
 		config = function()
 			require("plugins.diffview")

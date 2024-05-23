@@ -14,8 +14,8 @@ diffview.setup({
 	},
 	file_panel = {
 		win_config = {
-			position = "left",
-			width = 30,
+			position = "bottom",
+			height = 10,
 		},
 	},
 	file_history_panel = {
@@ -71,6 +71,27 @@ diffview.setup({
 					vim.cmd.quitall()
 				end
 			end,
+			{
+				"n",
+				"cc",
+				function()
+					vim.ui.input({ prompt = "Commit message: " }, function(msg)
+						if not msg then
+							return
+						end
+						local results = vim.system({ "git", "commit", "-m", msg }, { text = true }):wait()
+						vim.notify(results.stdout, vim.log.levels.INFO, { title = "Commit" })
+					end)
+				end,
+			},
+			{
+				"n",
+				"cx",
+				function()
+					local results = vim.system({ "git", "commit", "--amend", "--no-edit" }, { text = true }):wait()
+					vim.notify(results.stdout, vim.log.levels.INFO, { title = "Commit amend" })
+				end,
+			},
 		},
 		diff2 = {
 			{ "n", "++", "]c" },
