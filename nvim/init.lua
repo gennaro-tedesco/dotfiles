@@ -41,6 +41,9 @@ local plugins = {
 		priority = 1000,
 		opts = {
 			transparent = true,
+			on_highlights = function(highlights, colors)
+				highlights.Visual = { bg = colors.base01, reverse = false }
+			end,
 			styles = {
 				keywords = { italic = false },
 				sidebars = "transparent",

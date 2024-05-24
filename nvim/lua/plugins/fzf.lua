@@ -27,6 +27,14 @@ fzf.setup({
 		cwd_header = false,
 		cwd_prompt = false,
 		cwd = require("utils").git_root(),
+		actions = {
+			["ctrl-d"] = function(...)
+				fzf.actions.file_vsplit(...)
+				vim.cmd("windo diffthis")
+				local switch = vim.api.nvim_replace_termcodes("<C-w>h", true, false, true)
+				vim.api.nvim_feedkeys(switch, "t", false)
+			end,
+		},
 	},
 	buffers = {
 		formatter = "path.filename_first",

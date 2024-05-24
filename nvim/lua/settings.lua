@@ -173,7 +173,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { link = "DiagnosticWarn" })
 		vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#0c4c44" })
 		vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#331423" })
-		vim.api.nvim_set_hl(0, "DiffChange", { bg = "#736e57" })
+		vim.api.nvim_set_hl(0, "DiffChange", { bg = "#664c00" })
 		vim.api.nvim_set_hl(0, "DiffText", {
 			fg = vim.api.nvim_get_hl(0, { name = "DiffDelete" }).bg,
 			bg = vim.api.nvim_get_hl(0, { name = "DiffChange" }).bg,
