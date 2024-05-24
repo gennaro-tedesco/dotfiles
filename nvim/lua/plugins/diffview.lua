@@ -8,6 +8,9 @@ local actions = require("diffview.actions")
 diffview.setup({
 	enhanced_diff_hl = true,
 	view = {
+		default = {
+			disable_diagnostics = true,
+		},
 		merge_tool = {
 			layout = "diff3_mixed",
 		},
@@ -24,11 +27,6 @@ diffview.setup({
 			position = "bottom",
 			height = 10,
 		},
-	},
-	hooks = {
-		diff_buf_read = function()
-			vim.diagnostic.enable(false)
-		end,
 	},
 	keymaps = {
 		disable_defaults = true,
