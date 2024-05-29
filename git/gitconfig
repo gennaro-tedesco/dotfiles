@@ -32,6 +32,15 @@
 	navigate = true
 	word-diff-regex = '[^[:space:]]'
 	syntax-theme = Solarized (dark)
+	minus-emph-style = syntax strike "#664c00"
+	plus-emph-style = syntax "#664c00"
+	plus-style = syntax "#0c4c44"
+	minus-style = syntax "#331423"
+	line-numbers-minus-style = syntax
+	line-numbers-plus-style = syntax
+	blame-palette = "#073642 #002b36"
+	blame-code-style = syntax
+	blame-separator-format = none
 
 # alias
 [alias]
