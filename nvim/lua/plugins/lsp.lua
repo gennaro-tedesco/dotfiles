@@ -159,6 +159,12 @@ lsp.gopls.setup({
 	},
 })
 
+lsp.marksman.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	lsp_flags = lsp_flags,
+})
+
 ---sumneko_lua
 lsp.lua_ls.setup({
 	capabilities = capabilities,

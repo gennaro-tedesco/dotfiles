@@ -71,8 +71,15 @@ vnoremap("<PageDown>", "j}k")
 nnoremap("<Tab>", "<C-w>w")
 nnoremap("<S-Tab>", "<C-w>W")
 nnoremap("<leader>gd", function()
-	require("utils").toggle_diffview()
-end)
+	require("fzf-lua").fzf_exec("git branch -a --format='%(refname:short)'", {
+		prompt = "diff branch:",
+		actions = {
+			["default"] = function(selected)
+				vim.cmd.DiffviewOpen({ args = { selected[1] } })
+			end,
+		},
+	})
+end, { desc = "diff branch with diffview" })
 
 --- project search and replace
 nnoremap("<C-h>", function()

@@ -252,27 +252,6 @@ M.info = function()
 	})
 end
 
-M.toggle_diffview = function()
-	local lib = require("diffview.lib")
-	local view = lib.get_current_view()
-	if view then
-		if vim.fn.tabpagenr("$") > 1 then
-			vim.cmd.DiffviewClose()
-		else
-			vim.cmd.quitall()
-		end
-	else
-		require("fzf-lua").fzf_exec("git branch -a --format='%(refname:short)'", {
-			prompt = "diff:",
-			actions = {
-				["default"] = function(selected)
-					vim.cmd.DiffviewOpen({ args = { selected[1] } })
-				end,
-			},
-		})
-	end
-end
-
 M.jumps_to_qf = function()
 	local jumplist, _ = unpack(vim.fn.getjumplist())
 	local qf_list = {}
