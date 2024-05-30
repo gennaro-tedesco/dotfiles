@@ -240,18 +240,6 @@ M.date = function()
 	return os.date("%A, %B %d, %H:%M:%S")
 end
 
-M.info = function()
-	notify({ M.date(), "", M.weather(), "", M.version() }, "info", {
-		on_open = function(win)
-			vim.wo[win].conceallevel = 3
-			vim.wo[win].concealcursor = ""
-			vim.wo[win].spell = false
-			local buf = vim.api.nvim_win_get_buf(win)
-			vim.treesitter.start(buf, "lua")
-		end,
-	})
-end
-
 M.jumps_to_qf = function()
 	local jumplist, _ = unpack(vim.fn.getjumplist())
 	local qf_list = {}

@@ -29,7 +29,7 @@ gitsigns.setup({
 	preview_config = {
 		border = "rounded",
 	},
-	current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <abbrev_sha>",
+	current_line_blame_formatter = "\t<author>: <author_time:%Y-%m-%d> - <abbrev_sha>",
 	current_line_blame_opts = {
 		virt_text = true,
 		virt_text_pos = "eol",
@@ -71,8 +71,8 @@ gitsigns.setup({
 		map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
 		map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
 		map("n", "<leader>hp", gs.preview_hunk)
-		map("n", "<leader>gB", function()
-			gs.blame_line({ full = true })
+		map("n", "<leader>gb", function()
+			gs.toggle_current_line_blame()
 		end, { desc = "git blame preview" })
 	end,
 })

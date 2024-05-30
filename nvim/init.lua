@@ -380,7 +380,7 @@ local plugins = {
 			vim.keymap.set({ "n" }, '""', function()
 				fzf.registers()
 			end, { desc = "fzf show registers content" })
-			vim.keymap.set({ "n" }, "<leader>gb", function()
+			vim.keymap.set({ "n" }, "<leader>gB", function()
 				fzf.git_branches()
 			end, { desc = "fzf git branches" })
 			vim.api.nvim_create_user_command("Autocmd", function()

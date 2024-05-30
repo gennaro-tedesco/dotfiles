@@ -236,6 +236,7 @@ todo() {
 
 	case $1 in
 		-v)
+			clear
 			bat --style='grid' ${TODOFILE};;
 		-d)
 			gum confirm "delete todo content?" && truncate -s 0 ${TODOFILE};;

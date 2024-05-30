@@ -151,7 +151,7 @@ noice.setup({
 		{ filter = { find = "No signature help" }, skip = true },
 		{ filter = { find = "E37" }, skip = true },
 		{ filter = { find = "E31" }, skip = true },
-		{ filter = { find = "HEAD%-%d" }, skip = true },
+		{ filter = { find = "Error detected while processing BufReadPost Autocommands for" }, skip = true },
 	},
 })
 
