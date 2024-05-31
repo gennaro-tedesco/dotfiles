@@ -536,6 +536,7 @@ local plugins = {
 	--- my plugins, they're awesome
 	{
 		"gennaro-tedesco/nvim-jqx",
+		event = { "BufReadPost" },
 		ft = { "json", "yaml" },
 		config = function()
 			local jqx = require("nvim-jqx.config")

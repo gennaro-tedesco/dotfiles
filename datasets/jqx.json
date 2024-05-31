@@ -2,7 +2,7 @@
   "_id": "60411184f69184d7cbdbe207",
   "index": 0,
   "guid": "ac11be49-d7e5-4716-b95b-08bd7f04c631",
-  "is active": true,
+  "is_active": true,
   "balance": "$1,620.45",
   "picture": "http://placehold.it/32x32",
   "age": 32,
@@ -40,6 +40,6 @@
       "name": "Michael Marquez"
     }
   ],
-  "morning greeting": "Hello, Dianna Rowland! You have 6 unread messages.",
+  "morning_greeting": "Hello, Dianna Rowland! You have 6 unread messages.",
   "favoriteFruit": "strawberry"
 }
