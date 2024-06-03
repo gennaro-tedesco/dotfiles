@@ -75,6 +75,7 @@ cmp.setup({
 			},
 		},
 		{ name = "path" },
+		{ name = "lazydev", group_index = 0 },
 	},
 	sorting = {
 		comparators = {

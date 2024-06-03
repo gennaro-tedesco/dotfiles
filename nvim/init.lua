@@ -12,7 +12,7 @@ vim.g.maplocalleader = " "
 ---------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local config_path = vim.fn.stdpath("config")
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
@@ -186,11 +186,6 @@ local plugins = {
 		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
 	{
-		"RRethy/nvim-treesitter-textsubjects",
-		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
-		dependencies = "nvim-treesitter/nvim-treesitter",
-	},
-	{
 		"nvim-treesitter/nvim-treesitter-context",
 		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 		keys = {
@@ -234,38 +229,22 @@ local plugins = {
 		opts = { highlight = { link = "NonText" } },
 		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
-	{
-		"sustech-data/wildfire.nvim",
-		event = "VeryLazy",
-		opts = {
-			surrounds = {
-				{ "(", ")" },
-				{ "{", "}" },
-				{ "<", ">" },
-				{ "[", "]" },
-			},
-			keymaps = {
-				init_selection = "<leader><Right>",
-				node_incremental = "<leader><Right>",
-				node_decremental = "<leader><Left>",
-			},
-		},
-		dependencies = "nvim-treesitter/nvim-treesitter",
-	},
 
 	--- LSP, language servers and code autocompletion
 	{ "nvim-lua/plenary.nvim" },
 	{
 		"neovim/nvim-lspconfig",
 		event = "BufReadPre",
-		dependencies = {
-			{ "smjonas/inc-rename.nvim", event = "InsertEnter", config = true },
-			{ "folke/neodev.nvim", event = "InsertEnter", ft = "lua", config = true },
-			{ "b0o/schemastore.nvim" },
-		},
 		config = function()
 			require("plugins.lsp")
 		end,
+	},
+	{ "smjonas/inc-rename.nvim", event = "InsertEnter", config = true },
+	{ "b0o/schemastore.nvim", dependencies = { "neovim/nvim-lspconfig" } },
+	{
+		"folke/lazydev.nvim",
+		ft = "lua",
+		config = true,
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -293,21 +272,6 @@ local plugins = {
 		event = "InsertEnter",
 		config = function()
 			require("plugins.snip")
-		end,
-	},
-	{
-		"mfussenegger/nvim-lint",
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			require("plugins.nvim_lint")
-		end,
-	},
-	{
-		"stevearc/conform.nvim",
-		event = { "BufWritePre" },
-		cmd = { "ConformInfo" },
-		config = function()
-			require("plugins.conform")
 		end,
 	},
 	{
@@ -360,6 +324,23 @@ local plugins = {
 			"csv",
 			"tsv",
 		},
+	},
+
+	--- linting and formatting
+	{
+		"mfussenegger/nvim-lint",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("plugins.nvim_lint")
+		end,
+	},
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		config = function()
+			require("plugins.conform")
+		end,
 	},
 
 	--- file navigation

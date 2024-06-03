@@ -191,6 +191,18 @@ vim.api.nvim_create_user_command("ToSql", function()
 end, {})
 
 vim.api.nvim_create_user_command("Gbrowse", function()
+	local root = vim.system({ "git", "root" }, { text = true }):wait()
+	if root.code ~= 0 then
+		print("not a git repository")
+		return
+	end
 	local filename = vim.fn.expand("%:p:~:.")
-	vim.api.nvim_exec2("!gh browse " .. filename, {})
+	if filename == "" then
+		print("no file name")
+		return
+	end
+	local result = vim.system({ "gh", "browse", filename }, { text = true }):wait()
+	if result.code ~= 0 then
+		print("Gbrowse error")
+	end
 end, {})

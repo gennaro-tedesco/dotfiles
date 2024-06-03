@@ -64,15 +64,6 @@ require("nvim-treesitter.configs").setup({
 			},
 		},
 	},
-	textsubjects = {
-		enable = true,
-		prev_selection = ",",
-		keymaps = {
-			["."] = "textsubjects-smart",
-			[";"] = "textsubjects-container-outer",
-			[","] = "textsubjects-container-inner",
-		},
-	},
 })
 
 vim.treesitter.language.register("bash", "cheat")
