@@ -120,7 +120,7 @@ nnoremap("yf", function()
 end, { desc = "copy file name to clipboard" })
 
 --- count all occurrences of word under cursor
-nnoremap("*", "*<cmd>lua require('utils').count_matches()<CR>", { desc = "count matches for word under cursor" })
+nnoremap("*", "*<cmd>lua require('utils').count_matches()<CR>nN", { desc = "count matches for word under cursor" })
 
 --- blink word under cursor in search mode
 nnoremap("n", "nzz<cmd>lua require('utils').hl_search(0.3)<CR>", { desc = "go to next search and highlight" })

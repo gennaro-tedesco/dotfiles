@@ -175,7 +175,10 @@ lsp.lua_ls.setup({
 			format = { enable = false },
 			hint = { enable = true },
 			runtime = { version = "LuaJIT" },
-			diagnostics = { globals = { "describe", "it", "vim", "setup", "teardown" } },
+			diagnostics = {
+				globals = { "describe", "it", "vim", "setup", "teardown" },
+				disable = { "missing-fields" },
+			},
 			workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false },
 			telemetry = { enable = false },
 		},

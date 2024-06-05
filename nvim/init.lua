@@ -98,7 +98,7 @@ local plugins = {
 	},
 	{
 		"goolord/alpha-nvim",
-		event = "VimEnter",
+		cmd = "Alpha",
 		config = function()
 			require("plugins.alpha")
 		end,

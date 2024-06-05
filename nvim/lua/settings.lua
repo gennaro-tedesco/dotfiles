@@ -99,19 +99,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("VimEnter", {
-	group = general_settings,
-	desc = "open nvim-tree on directory enter",
-	callback = function(data)
-		local directory = vim.fn.isdirectory(data.file) == 1
-		if not directory then
-			return
-		end
-		vim.cmd.cd(data.file)
-		require("nvim-tree.api").tree.open()
-	end,
-})
-
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
 	group = general_settings,
 	pattern = { "[^l]*" },
@@ -149,6 +136,43 @@ vim.api.nvim_create_autocmd("User", {
 	group = vim.api.nvim_create_augroup("init_vimtex", {}),
 	command = "VimtexClean",
 })
+
+local vim_enter_cmd = vim.api.nvim_create_augroup("VimEnterCmd", { clear = true })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+	desc = "Start Alpha when vim is opened with no arguments",
+	group = vim_enter_cmd,
+	callback = function()
+		local should_skip = false
+		if vim.fn.argc() > 0 or vim.fn.line2byte("$") ~= -1 or not vim.o.modifiable then
+			should_skip = true
+		else
+			for _, arg in pairs(vim.v.argv) do
+				if arg == "-b" or arg == "-c" or vim.startswith(arg, "+") or arg == "-S" then
+					should_skip = true
+					break
+				end
+			end
+		end
+		if not should_skip then
+			require("alpha").start(true, require("alpha").default_config)
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("VimEnter", {
+	group = vim_enter_cmd,
+	desc = "open nvim-tree on directory enter",
+	callback = function(data)
+		local directory = vim.fn.isdirectory(data.file) == 1
+		if not directory then
+			return
+		end
+		vim.cmd.cd(data.file)
+		require("nvim-tree.api").tree.open()
+	end,
+})
+
 ------------------------
 --- highlight groups ---
 ------------------------
