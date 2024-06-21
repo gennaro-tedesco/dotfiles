@@ -9,22 +9,12 @@ gitsigns.setup({
 	numhl = true,
 	signcolumn = false,
 	signs = {
-		add = { hl = "GitSignsAdd", text = icons.git.Add, numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-		change = {
-			hl = "GitSignsChange",
-			text = icons.git.Change,
-			numhl = "GitSignsChangeNr",
-			linehl = "GitSignsChangeLn",
-		},
-		delete = {
-			hl = "GitSignsDelete",
-			text = icons.git.Delete,
-			numhl = "GitSignsDeleteNr",
-			linehl = "GitSignsDeleteLn",
-		},
-		topdelete = { hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-		changedelete = { hl = "GitSignsChange", text = "_", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-		untracked = { hl = "GitSignsAdd", text = icons.git.Add, numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+		add = { text = icons.git.Add },
+		change = { text = icons.git.Change },
+		delete = { text = icons.git.Delete },
+		topdelete = { text = "‾" },
+		changedelete = { text = "_" },
+		untracked = { text = icons.git.Add },
 	},
 	preview_config = {
 		border = "rounded",
@@ -68,12 +58,22 @@ gitsigns.setup({
 		end, { expr = true, desc = "prev git hunk" })
 
 		-- Actions
-		map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
-		map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-		map("n", "<leader>hp", gs.preview_hunk)
+		map("n", "<leader>hs", gitsigns.stage_hunk)
+		map("n", "<leader>hr", gitsigns.reset_hunk)
+		map("v", "<leader>hs", function()
+			gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+		end)
+		map("v", "<leader>hr", function()
+			gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+		end)
+		map("n", "<leader>hu", gitsigns.undo_stage_hunk)
+		map("n", "<leader>hp", gitsigns.preview_hunk)
+		map("n", "<leader>hb", function()
+			gitsigns.toggle_current_line_blame()
+		end, { desc = "toggle git line blame" })
 		map("n", "<leader>gb", function()
-			gs.toggle_current_line_blame()
-		end, { desc = "git blame preview" })
+			gitsigns.blame()
+		end, { desc = "git blame" })
 	end,
 })
 
@@ -83,7 +83,15 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	group = gs_hl,
 	desc = "redefinition of gitsigns highlight groups",
 	callback = function()
-		vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", {})
 		vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { link = "Comment" })
+		vim.api.nvim_set_hl(0, "GitSignsChangedelete", { link = "GitSignsChange" })
+		vim.api.nvim_set_hl(0, "GitSignsChangedeleteLn", { link = "GitSignsChangeLn" })
+		vim.api.nvim_set_hl(0, "GitSignsChangedeleteNr", { link = "GitSignsChangeNr" })
+		vim.api.nvim_set_hl(0, "GitSignsTopdelete", { link = "GitSignsDelete" })
+		vim.api.nvim_set_hl(0, "GitSignsTopdeleteLn", { link = "GitSignsDeleteLn" })
+		vim.api.nvim_set_hl(0, "GitSignsTopdeleteNr", { link = "GitSignsDeleteNr" })
+		vim.api.nvim_set_hl(0, "GitSignsUntracked", { link = "GitSignsAdd" })
+		vim.api.nvim_set_hl(0, "GitSignsUntrackedLn", { link = "GitSignsAddLn" })
+		vim.api.nvim_set_hl(0, "GitSignsUntrackedNr", { link = "GitSignsAddNr" })
 	end,
 })

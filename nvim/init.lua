@@ -240,7 +240,7 @@ local plugins = {
 		end,
 	},
 	{ "smjonas/inc-rename.nvim", event = "InsertEnter", config = true },
-	{ "b0o/schemastore.nvim", dependencies = { "neovim/nvim-lspconfig" } },
+	{ "b0o/schemastore.nvim", ft = { "yaml", "json" }, dependencies = { "neovim/nvim-lspconfig" } },
 	{
 		"folke/lazydev.nvim",
 		ft = "lua",
@@ -347,6 +347,7 @@ local plugins = {
 	{
 		"ibhagwan/fzf-lua",
 		branch = "main",
+		lazy = true,
 		init = function()
 			local fzf = require("fzf-lua")
 			vim.keymap.set({ "n" }, "<C-p>", function()
