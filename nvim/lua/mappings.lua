@@ -196,12 +196,14 @@ vim.api.nvim_create_user_command("Gbrowse", function()
 		print("not a git repository")
 		return
 	end
+	local branch = vim.fn.system("git branch --show-current"):gsub("\n", "")
 	local filename = vim.fn.expand("%:p:~:.")
+	local lnum = vim.api.nvim_win_get_cursor(0)[1]
 	if filename == "" then
 		print("no file name")
 		return
 	end
-	local result = vim.system({ "gh", "browse", filename }, { text = true }):wait()
+	local result = vim.system({ "gh", "browse", "-b", branch, filename .. ":" .. lnum }, { text = true }):wait()
 	if result.code ~= 0 then
 		print("Gbrowse error")
 	end

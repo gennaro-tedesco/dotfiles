@@ -70,10 +70,21 @@ gitsigns.setup({
 		map("n", "<leader>hp", gitsigns.preview_hunk)
 		map("n", "<leader>hb", function()
 			gitsigns.toggle_current_line_blame()
-		end, { desc = "toggle git line blame" })
-		map("n", "<leader>gb", function()
-			gitsigns.blame()
-		end, { desc = "git blame" })
+		end, { desc = "toggle git blame inline" })
+		vim.keymap.set("n", "<leader>gb", function()
+			local blame_buf = nil
+			for _, buf_nr in ipairs(vim.api.nvim_list_bufs()) do
+				if vim.bo[buf_nr].filetype == "gitsigns.blame" then
+					blame_buf = buf_nr
+					break
+				end
+			end
+			if blame_buf ~= nil then
+				vim.cmd.bd(blame_buf)
+			else
+				gitsigns.blame()
+			end
+		end, { desc = "git blame side" })
 	end,
 })
 
