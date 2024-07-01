@@ -63,7 +63,6 @@ local plugins = {
 			require("plugins.lualine")
 		end,
 	},
-
 	{
 		"karb94/neoscroll.nvim",
 		keys = { "<C-u>", "<C-d>", "zt", "zz", "zb" },
@@ -572,6 +571,10 @@ local opts = {
 	checker = {
 		enabled = true,
 		notify = false,
+	},
+	headless = {
+		process = false,
+		log = false,
 	},
 	diff = {
 		cmd = "terminal_git",
