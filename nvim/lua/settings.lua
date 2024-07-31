@@ -195,6 +195,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		vim.api.nvim_set_hl(0, "DiagnosticSignError", { link = "DiagnosticError" })
 		vim.api.nvim_set_hl(0, "DiagnosticWarn", { bold = false, ctermfg = 1, fg = "Orange" })
 		vim.api.nvim_set_hl(0, "DiagnosticSignWarn", { link = "DiagnosticWarn" })
+		vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { bg = "#331423", fg = "#db302d" })
 		vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#0c4c44" })
 		vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#331423" })
 		vim.api.nvim_set_hl(0, "DiffChange", { bg = "#664c00" })
@@ -204,5 +205,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		})
 		vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", { link = "DiffDelete" })
 		vim.api.nvim_set_hl(0, "WinSeparator", { bold = false, fg = "#268bd2", bg = "none" })
+		vim.api.nvim_set_hl(0, "@markup.heading", { bold = true, fg = vim.api.nvim_get_hl(0, { name = "Normal" }).fg })
 	end,
 })

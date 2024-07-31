@@ -228,6 +228,20 @@ local plugins = {
 		opts = { highlight = { link = "NonText" } },
 		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
+	{
+		"MeanderingProgrammer/markdown.nvim",
+		ft = { "markdown" },
+		main = "render-markdown",
+		opts = {
+			heading = {
+				sign = false,
+				icons = { "  ", "   ", "    ", "     " },
+				width = "block",
+			},
+			code = { sign = false },
+		},
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+	},
 
 	--- LSP, language servers and code autocompletion
 	{ "nvim-lua/plenary.nvim" },
