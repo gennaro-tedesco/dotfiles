@@ -86,10 +86,12 @@ nnoremap("<C-h>", function()
 	local regex = vim.fn.input("regex: ")
 	if regex ~= "" then
 		vim.cmd.grep({ mods = { silent = true }, bang = true, '"' .. regex .. '"' })
+	else
+		local cur_word = vim.fn.expand("<cword>")
+		vim.cmd.grep({ mods = { silent = true }, bang = true, '"' .. cur_word .. '"' })
 	end
+	vim.bo.modifiable = true
 end, { desc = "project search" })
-
-nnoremap("<C-g>", "<cmd> lua require('utils').replace_grep()<CR>", { desc = "project search and replace" })
 
 --- close all splits/windows except the one in focus
 nnoremap("<leader>q", "<C-w>o", { desc = "close all windows except the focussed one" })

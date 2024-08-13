@@ -102,19 +102,6 @@ M.count_matches = function()
 	notify(" " .. count, "info", { title = "search: " .. cur_word, render = "simple" })
 end
 
-M.replace_grep = function()
-	local cur_word = vim.fn.expand("<cword>")
-	if cur_word ~= "" then
-		local replace_word = vim.fn.input("Replace '" .. cur_word .. "' with: ")
-		vim.cmd.grep({ mods = { silent = true }, bang = true, cur_word })
-		if replace_word ~= "" then
-			vim.cmd("cdo s/" .. cur_word .. "/" .. replace_word)
-			vim.cmd("cclose")
-			notify(" replace: " .. cur_word .. " --> " .. replace_word)
-		end
-	end
-end
-
 M.hl_search = function(blinktime)
 	local ns = vim.api.nvim_create_namespace("search")
 	vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)

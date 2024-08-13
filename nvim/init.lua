@@ -229,14 +229,14 @@ local plugins = {
 		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
 	{
-		"MeanderingProgrammer/markdown.nvim",
+		"MeanderingProgrammer/render-markdown.nvim",
 		ft = { "markdown" },
-		main = "render-markdown",
 		opts = {
 			heading = {
 				sign = false,
 				icons = { "  ", "   ", "    ", "     " },
 				width = "block",
+				right_pad = 2,
 			},
 			code = { sign = false },
 		},
@@ -467,6 +467,30 @@ local plugins = {
 		end,
 	},
 	{
+		"isakbm/gitgraph.nvim",
+		dependencies = { "sindrets/diffview.nvim" },
+		keys = {
+			{
+				"<leader>gl",
+				function()
+					require("gitgraph").draw({}, { all = true, max_count = 1000 })
+				end,
+				desc = "git graph all",
+			},
+		},
+		opts = {
+			symbols = {
+				merge_commit = "",
+				commit = "",
+			},
+			hooks = {
+				on_select_commit = function(commit)
+					vim.cmd(":DiffviewOpen " .. commit.hash .. "^!")
+				end,
+			},
+		},
+	},
+	{
 		"lewis6991/gitsigns.nvim",
 		lazy = true,
 		event = { "BufReadPre", "BufNewFile" },
@@ -476,6 +500,18 @@ local plugins = {
 	},
 
 	--- plugins that make vim easier to use
+	{
+		"stevearc/quicker.nvim",
+		opts = {
+			type_icons = {
+				E = "❗",
+				W = "⚠️ ",
+				H = "i",
+				I = "💡",
+				N = "i",
+			},
+		},
+	},
 	{
 		"chentoast/marks.nvim",
 		event = "VeryLazy",
