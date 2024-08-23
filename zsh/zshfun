@@ -213,7 +213,7 @@ ndiff() {
 }
 
 # grep highlight with delta
-gr() { rg "$@" --json | delta --tabs=1 | tail -n+2 | bat -p; }
+gr() { rg "$@" -N --json | delta --tabs=1 | tail -n+2 | bat -p; }
 
 
 # grep in json files with gron

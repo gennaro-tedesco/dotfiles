@@ -74,7 +74,7 @@ gitsigns.setup({
 		vim.keymap.set("n", "<leader>gb", function()
 			local blame_buf = nil
 			for _, buf_nr in ipairs(vim.api.nvim_list_bufs()) do
-				if vim.bo[buf_nr].filetype == "gitsigns.blame" then
+				if vim.bo[buf_nr].filetype == "gitsigns-blame" then
 					blame_buf = buf_nr
 					break
 				end

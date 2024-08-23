@@ -196,12 +196,6 @@ lsp.jedi_language_server.setup({
 lsp.jsonls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	settings = {
-		json = {
-			schemas = require("schemastore").json.schemas(),
-			validate = { enable = true },
-		},
-	},
 })
 
 ---rust_analyzer
@@ -234,15 +228,6 @@ lsp.vimls.setup({ on_attach = on_attach })
 lsp.yamlls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	settings = {
-		yaml = {
-			schemaStore = {
-				enable = false,
-				url = "",
-			},
-			schemas = require("schemastore").yaml.schemas(),
-		},
-	},
 })
 
 -------------------------------------------

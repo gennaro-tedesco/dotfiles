@@ -253,7 +253,6 @@ local plugins = {
 		end,
 	},
 	{ "smjonas/inc-rename.nvim", event = "InsertEnter", config = true },
-	{ "b0o/schemastore.nvim", ft = { "yaml", "json" }, dependencies = { "neovim/nvim-lspconfig" } },
 	{
 		"folke/lazydev.nvim",
 		ft = "lua",
@@ -592,7 +591,7 @@ local plugins = {
 			end)
 		end,
 		opts = {
-			autoload = true,
+			autoload = false,
 			autosave = false,
 			autoswitch = { enable = true },
 			fzf_winopts = { hl = { border = "Constant" } },

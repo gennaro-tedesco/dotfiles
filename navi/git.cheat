@@ -14,3 +14,9 @@ git tag -a <tag_name> -m "<tag description>"
 
 # add files by pattern
 git diff --name-only | grep '<pattern>' | xargs -n 1 -t git add
+
+# list files changed in a PR
+gh pr view <pr> --json files --jq '.files.[].path'
+
+$ pr: gh pr list | cut -f1,2  --- --column 1 --delimiter '\t'
+
