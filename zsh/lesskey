@@ -1,3 +1,6 @@
 #command
 / forw-search ^W
 ? back-search ^W
+
+#env
+LESS = -iRg --incsearch
