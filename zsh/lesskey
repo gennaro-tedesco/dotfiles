@@ -3,4 +3,4 @@
 ? back-search ^W
 
 #env
-LESS = -iRg --incsearch
+LESS = -iRgF --incsearch
