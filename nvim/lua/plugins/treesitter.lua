@@ -8,6 +8,7 @@ require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"bash",
 		"go",
+		"html",
 		"json",
 		"lua",
 		"markdown",
@@ -20,6 +21,7 @@ require("nvim-treesitter.configs").setup({
 		"yaml",
 		"vim",
 		"vimdoc",
+		"xml",
 	},
 	matchup = {
 		enable = true,

@@ -17,6 +17,7 @@ conform.setup({
 	formatters_by_ft = {
 		json = { "jq" },
 		go = { "gofmt", "goimports" },
+		html = { "djlint" },
 		latex = { "latexindent" },
 		lua = { "stylua" },
 		markdown = { "prettier" },
