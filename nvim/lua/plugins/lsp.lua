@@ -185,6 +185,14 @@ lsp.lua_ls.setup({
 	},
 })
 
+---html vscode-langservers
+lsp.cssls.setup({})
+
+lsp.html.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
 ---jedi_language_server
 lsp.jedi_language_server.setup({
 	capabilities = capabilities,
