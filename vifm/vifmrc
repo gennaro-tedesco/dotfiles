@@ -26,6 +26,9 @@ set nofollowlinks
 " unambiguous beginning using :! (e.g. :!Te instead of :!Terminal or :!Te<tab>).
 " set fastrun
 
+" Sort by extension
+set sort=+ext
+
 " Natural sort of (version) numbers within text.
 set sortnumbers
 

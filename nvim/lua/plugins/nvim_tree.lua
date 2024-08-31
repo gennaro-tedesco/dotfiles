@@ -41,6 +41,9 @@ local function on_attach(bufnr)
 end
 
 nvim_tree.setup({
+	sort = {
+		sorter = "extension",
+	},
 	view = { adaptive_size = true, side = "right" },
 	update_focused_file = { enable = true },
 	on_attach = on_attach,
