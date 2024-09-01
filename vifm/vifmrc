@@ -109,8 +109,6 @@ filetype *.pdf zathura %f &
 filetype *.csv vd %f
 filetype *.json jq '.' -C %f | less -R
 filetype *.jpg,*.jpeg,*.png,*.gif open %c
-filetype *.md glow -s ~/.config/glowconfig/customglow.json -p %c
-filetype *.epub epy %c
 
 " Man page
 filetype {*.[1-8]},<text/troff> man ./%c

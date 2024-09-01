@@ -31,8 +31,8 @@ highlight Border          cterm=none ctermfg=blue       ctermbg=none
 highlight Selected        cterm=bold ctermfg=green       ctermbg=none
 highlight CurrLine        cterm=bold,reverse ctermfg=default    ctermbg=default
 
-highlight WildMenu        cterm=underline,reverse ctermfg=white ctermbg=black
-highlight CmdLine         cterm=none ctermfg=white ctermbg=black
+highlight WildMenu        cterm=reverse ctermfg=default ctermbg=black
+highlight CmdLine         cterm=none ctermfg=default ctermbg=black
 highlight ErrorMsg        cterm=none ctermfg=red ctermbg=black
 
 highlight Directory       cterm=bold ctermfg=blue ctermbg=default
