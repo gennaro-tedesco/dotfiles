@@ -56,6 +56,25 @@ end, { desc = "🚀snip prev choice" })
 
 -- snippets
 local snips = {
+	html = {
+		s(
+			{ trig = "kindle", name = "kindle vocabulary entry" },
+			fmt(
+				[[
+				<idx:entry name="default" scriptable="yes" spell="yes">
+					<dt>
+						<idx:orth>{}</idx:orth>
+					</dt>
+					<dd>
+						{}
+					</dd>
+				</idx:entry>
+				<hr />
+				]],
+				{ i(1, "name"), i(2, "definition") }
+			)
+		),
+	},
 	go = {
 		s(
 			{ trig = "err", name = "error check" },
@@ -273,6 +292,7 @@ local snips = {
 
 -- add snips to engine
 ls.add_snippets(nil, {
+	html = snips.html,
 	go = snips.go,
 	lua = snips.lua,
 	markdown = snips.markdown,
