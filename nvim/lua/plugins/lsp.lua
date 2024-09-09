@@ -191,6 +191,14 @@ lsp.cssls.setup({})
 lsp.html.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	settings = {
+		html = {
+			format = {
+				templating = true,
+				wrapLineLength = 100,
+			},
+		},
+	},
 })
 
 ---jedi_language_server
