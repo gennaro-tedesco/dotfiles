@@ -1,5 +1,5 @@
 # layout
-yabai -m config layout bsp
+yabai -m config layout stack
 
 # windows placement
 yabai -m config window_placement second_child
@@ -14,9 +14,7 @@ yabai -m config window_gap     15
 # mouse settings
 yabai -m config mouse_follows_focus on
 yabai -m config focus_follows_mouse autofocus
-
-# when window is dropped in center of another window, swap them (on edges it will split it)
-yabai -m mouse_drop_action swap
+yabai -m config mouse_drop_action stack
 
 # disable specific applications
 yabai -m rule --add app="^System Settings$" manage=off

@@ -1,5 +1,6 @@
 # maximize a window
 alt - f : yabai -m window --toggle zoom-fullscreen
+alt - space : yabai -m window --toggle split
 
 # resize
 alt - e : yabai -m space --balance
