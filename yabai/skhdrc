@@ -1,5 +1,6 @@
-# maximize a window
+# toggle among different window layouts
 alt - f : yabai -m window --toggle zoom-fullscreen
+alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 alt - space : yabai -m window --toggle split
 
 # resize
@@ -11,9 +12,6 @@ alt - r : yabai -m space --rotate 90
 # change layouts
 alt - b : yabai -m space --layout bsp
 alt - s : yabai -m space --layout stack
-
-# toggle window float
-alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # flip layouts
 alt - x : yabai -m space --mirror x-axis
