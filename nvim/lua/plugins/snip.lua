@@ -57,6 +57,13 @@ end, { desc = "🚀snip prev choice" })
 -- snippets
 local snips = {
 	html = {
+		s({
+			trig = "break",
+			name = "insert new line",
+		}, {
+			t("<br />"),
+			i(0),
+		}),
 		s(
 			{ trig = "kindle", name = "kindle vocabulary entry" },
 			fmt(
@@ -72,6 +79,17 @@ local snips = {
 				<hr />
 				]],
 				{ i(1, "name"), i(2, "definition") }
+			)
+		),
+		s(
+			{ trig = "inflection", name = "kindle inflection entry" },
+			fmt(
+				[[
+					<idx:infl>
+						<idx:iform value="{}" />
+					</idx:infl>
+				]],
+				{ i(0, "inflection") }
 			)
 		),
 	},
