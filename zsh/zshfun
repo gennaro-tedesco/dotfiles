@@ -209,6 +209,11 @@ ndiff() {
 			shift
 			nvim "+DiffviewOpen $1" +tabonly
 			;;
+		-p)
+			shift
+			nvim "+DiffviewOpen $1..." +tabonly
+			;;
+
 	esac
 }
 

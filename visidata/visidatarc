@@ -1,5 +1,12 @@
-from visidata import TableSheet, options
+# type: ignore
+from visidata import CellColorizer, TableSheet, options, vd
 
+## sidebar
+vd.options.disp_help = 0
+options.disp_sidebar = False
+options.color_sidebar = "black on 8"
+
+## colour palette
 options.color_heading = "black on yellow"
 options.color_default = True
 options.color_default_hdr = "8 underline bold"
@@ -9,7 +16,6 @@ options.color_key_col = "cyan"
 options.color_selected_row = "14"
 options.color_status = "8"
 options.color_active_status = "8"
-options.color_sidebar = "black on 8"
 options.color_cmdpalette = "black on 8"
 options.color_keystrokes = "normal"
 options.color_longname = "black on yellow"
@@ -20,11 +26,24 @@ options.color_menu_spec = "yellow underline"
 options.color_match = "202 bold"
 options.color_current_cell = "bold"
 options.color_menu_active = "yellow reverse"
+
+## general options
 options.save_filetype = "csv"
-options.disp_float_fmt = "%.07f"
+options.disp_float_fmt = "%.03f"
 options.scroll_incr = -3
 options.numeric_binning = True
 options.disp_scroll_context = 5
 
 TableSheet.unbindkey("i")
 TableSheet.bindkey("i", "edit-cell")
+
+
+def colours(s, c, r, v):
+    if v and vd.isNumeric(c):
+        if v.typedval > 0.0:
+            return 2
+        if v.typedval < 0.0:
+            return 1
+
+
+TableSheet.colorizers += [CellColorizer(100, None, colours)]
