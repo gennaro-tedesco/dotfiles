@@ -1,5 +1,5 @@
 # type: ignore
-from visidata import CellColorizer, Sheet, TableSheet, options, vd
+from visidata import CellColorizer, Column, Sheet, TableSheet, options, vd
 
 ## sidebar
 vd.options.disp_help = 0
@@ -34,16 +34,25 @@ options.scroll_incr = -3
 options.numeric_binning = True
 options.disp_scroll_context = 5
 
-TableSheet.unbindkey("i")
-TableSheet.bindkey("i", "edit-cell")
 
-
+## ------------------------------
+## definition of custom functions
+## ------------------------------
 def colours(s, c, r, v):
     if v and vd.isNumeric(c):
-        if v.typedval >= 0.0:
+        if v.typedval > 0.0:
             return 2
         if v.typedval < 0.0:
             return 1
+
+
+def FrequencyColumn(sourceCol):
+    return Column(
+        sourceCol.name + "_frequency",
+        getter=lambda c, r: c.source.getTypedValue(r) / c.total,
+        source=sourceCol,
+        total=sum(sourceCol.getValues(sourceCol.sheet.rows)),
+    )
 
 
 @Sheet.api
@@ -56,5 +65,17 @@ def remove_colours(sheet):
     sheet.removeColorizer(CellColorizer(100, None, colours))
 
 
+## -----------------------------
+## definition of custom commands
+## -----------------------------
 Sheet.addCommand(None, "add-colours", "add_colours()", "add colour coding")
 Sheet.addCommand(None, "remove-colours", "remove_colours()", "remove colour coding")
+
+
+TableSheet.unbindkey("f")
+Sheet.addCommand(
+    "f", "addcol-freq", "addColumn(FrequencyColumn(cursorCol), index=cursorColIndex+1)"
+)
+
+TableSheet.unbindkey("i")
+TableSheet.bindkey("i", "edit-cell")
