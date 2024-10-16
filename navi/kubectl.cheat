@@ -1,7 +1,7 @@
 % kubectl
 
-# view pod logs
-kubectl logs --follow <pod> | tl
+# grep from pod logs
+kubectl logs <pod> | gr "<regex>"
 
 # view kubernetes configuration
 kubectl config view --minify -o jsonpath='{..context}' | jq
