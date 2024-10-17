@@ -1,5 +1,13 @@
 # type: ignore
-from visidata import CellColorizer, Column, Sheet, TableSheet, options, vd
+from visidata import (
+    CellColorizer,
+    Column,
+    ColumnColorizer,
+    Sheet,
+    TableSheet,
+    options,
+    vd,
+)
 
 ## sidebar
 options.disp_sidebar = False
@@ -14,7 +22,7 @@ options.color_column_sep = "8"
 options.color_cmdpalette = "8"
 options.color_current_cell = "bold"
 options.color_current_col = "normal"
-options.color_current_row = "yellow underline"
+options.color_current_row = "underline"
 options.color_default = True
 options.color_edit_cell = "normal"
 options.color_edit_unfocused = "8 bold"
@@ -42,15 +50,22 @@ options.disp_scroll_context = 5
 ## ------------------------------
 ## definition of custom functions
 ## ------------------------------
-def colours(s, c, r, v):
+def get_colour_coding(s, c, r, v):
     if v and vd.isNumeric(c):
         if v.typedval > 0.0:
             return 2
-        if v.typedval < 0.0:
+        elif v.typedval < 0.0:
             return 1
+        else:
+            return 255
 
 
-def FrequencyColumn(sourceCol):
+def get_rainbow_columns(s, c, r, v):
+    colours = [3, 4, 5, 6, 8, 202, 14, 28, 134, 66]
+    return str(colours[s.columns.index(c) % len(colours)]) if s and c else None
+
+
+def get_frequency_column(sourceCol):
     return Column(
         sourceCol.name + "_frequency",
         getter=lambda c, r: c.source.getTypedValue(r) / c.total,
@@ -59,32 +74,58 @@ def FrequencyColumn(sourceCol):
     )
 
 
-@Sheet.api
-def add_colours(sheet):
-    sheet.addColorizer(CellColorizer(100, None, colours))
+colour_coding_colouriser = CellColorizer(2, None, get_colour_coding)
+rainbow_colouriser = ColumnColorizer(1, None, get_rainbow_columns)
+
+
+Sheet.colorizers += [rainbow_colouriser]
 
 
 @Sheet.api
-def remove_colours(sheet):
-    sheet.removeColorizer(CellColorizer(100, None, colours))
+def toggle_colour_coding(sheet):
+    if colour_coding_colouriser in Sheet.colorizers:
+        sheet.removeColorizer(colour_coding_colouriser)
+        Sheet.colorizers.remove(colour_coding_colouriser)
+    else:
+        sheet.addColorizer(colour_coding_colouriser)
+        Sheet.colorizers += [colour_coding_colouriser]
 
+
+@Sheet.api
+def toggle_rainbow(sheet):
+    if rainbow_colouriser in Sheet.colorizers:
+        sheet.removeColorizer(rainbow_colouriser)
+        Sheet.colorizers.remove(rainbow_colouriser)
+    else:
+        sheet.addColorizer(rainbow_colouriser)
+        Sheet.colorizers += [rainbow_colouriser]
+
+
+Sheet.addCommand(None, "rainbow", "toggle_rainbow()", "toggle column colours")
+Sheet.addCommand(
+    None, "colour-coding", "toggle_colour_coding()", "toggle colour coding"
+)
 
 ## -----------------------------
 ## definition of custom commands
 ## -----------------------------
-Sheet.addCommand(None, "add-colours", "add_colours()", "add colour coding")
-Sheet.addCommand(None, "remove-colours", "remove_colours()", "remove colour coding")
-
-
-TableSheet.unbindkey("f")
-Sheet.addCommand(
-    "f", "addcol-freq", "addColumn(FrequencyColumn(cursorCol), index=cursorColIndex+1)"
-)
-
 TableSheet.unbindkey("i")
 TableSheet.bindkey("i", "edit-cell")
-
 
 TableSheet.unbindkey("^D")
 TableSheet.bindkey("^U", "go-pageup")
 TableSheet.bindkey("^D", "go-pagedown")
+
+Sheet.addCommand(
+    None,
+    "remove-aggregators",
+    'Fanout(columns).aggregators = ""',
+    "remove aggregators sticky row",
+)
+
+TableSheet.unbindkey("f")
+Sheet.addCommand(
+    "f",
+    "addcol-freq",
+    "addColumn(get_frequency_column(cursorCol), index=cursorColIndex+1)",
+)
