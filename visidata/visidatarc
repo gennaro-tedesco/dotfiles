@@ -1,8 +1,10 @@
+# ruff: noqa: F821
 # type: ignore
 from visidata import (
     CellColorizer,
     Column,
     ColumnColorizer,
+    DirSheet,
     Sheet,
     TableSheet,
     options,
@@ -11,7 +13,7 @@ from visidata import (
 
 ## sidebar
 options.disp_sidebar = False
-options.color_sidebar = "black on 8"
+options.color_sidebar = "cyan"
 
 ## colour palette
 options.color_active_status = "8"
@@ -29,6 +31,7 @@ options.color_edit_unfocused = "8 bold"
 options.color_heading = "black on yellow"
 options.color_keystrokes = "cyan"
 options.color_key_col = "cyan"
+options.color_longname_guide = "normal"
 options.color_longname_status = "normal"
 options.color_match = "202 bold"
 options.color_menu = "cyan underline reverse"
@@ -42,9 +45,39 @@ options.disp_edit_fill = ""
 ## general options
 options.save_filetype = "csv"
 options.disp_float_fmt = "%.03f"
+options.disp_date_fmt = "%Y-%m-%d %H:%M:%S"
 options.scroll_incr = -3
 options.numeric_binning = True
 options.disp_scroll_context = 5
+
+
+## re-definition of leader key
+vd.unbindkey("Space")
+vd.allPrefixes += ["Space"]
+TableSheet.unbindkey(":")
+TableSheet.bindkey(":", "exec-longname")
+
+
+## setting default data types
+@Sheet.api
+def set_types(sheet):
+    for col in sheet.visibleCols:
+        if "count" in col.name:
+            col.type = int
+        elif "avg" in col.name:
+            col.type = float
+        elif "timestamp" in col.name:
+            col.type = date
+        else:
+            col.type = anytype
+
+
+@Sheet.after
+def afterLoad(sheet):
+    set_types(sheet)
+
+
+DirSheet.knownCols.directory.width = 0
 
 
 ## ------------------------------
@@ -101,9 +134,9 @@ def toggle_rainbow(sheet):
         Sheet.colorizers += [rainbow_colouriser]
 
 
-Sheet.addCommand(None, "rainbow", "toggle_rainbow()", "toggle column colours")
+Sheet.addCommand("Space r", "rainbow", "toggle_rainbow()", "toggle column colours")
 Sheet.addCommand(
-    None, "colour-coding", "toggle_colour_coding()", "toggle colour coding"
+    "Space c", "colour-coding", "toggle_colour_coding()", "toggle colour coding"
 )
 
 ## -----------------------------
@@ -117,7 +150,7 @@ TableSheet.bindkey("^U", "go-pageup")
 TableSheet.bindkey("^D", "go-pagedown")
 
 Sheet.addCommand(
-    None,
+    "Space -",
     "remove-aggregators",
     'Fanout(columns).aggregators = ""',
     "remove aggregators sticky row",
