@@ -1,5 +1,7 @@
 # ruff: noqa: F821
 # type: ignore
+import re
+
 from visidata import (
     CellColorizer,
     Column,
@@ -61,8 +63,9 @@ TableSheet.bindkey(":", "exec-longname")
 ## setting default data types
 @Sheet.api
 def set_types(sheet):
+    count_ptrn = re.compile(r"count\b")
     for col in sheet.visibleCols:
-        if "count" in col.name:
+        if re.search(count_ptrn, col.name):
             col.type = int
         elif "avg" in col.name:
             col.type = float
