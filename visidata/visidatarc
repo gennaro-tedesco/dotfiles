@@ -6,6 +6,7 @@ from visidata import (
     CellColorizer,
     Column,
     ColumnColorizer,
+    CsvSheet,
     DirSheet,
     Sheet,
     TableSheet,
@@ -75,7 +76,7 @@ def set_types(sheet):
             col.type = anytype
 
 
-@Sheet.after
+@CsvSheet.after
 def afterLoad(sheet):
     set_types(sheet)
 
