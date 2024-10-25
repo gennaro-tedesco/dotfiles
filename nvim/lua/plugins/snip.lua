@@ -261,6 +261,10 @@ local snips = {
 			end, {}),
 			t({ ".csv', index=False)" }),
 		}),
+		s({
+			trig = "df_new",
+			name = "",
+		}, t("df = pd.DataFrame(np.random.randint(0,10,size=(10, 2)), columns=list('AB'))"), { i(0) }),
 	},
 	sh = {
 		s({
