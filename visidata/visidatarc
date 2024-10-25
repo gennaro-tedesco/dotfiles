@@ -61,16 +61,36 @@ TableSheet.unbindkey(":")
 TableSheet.bindkey(":", "exec-longname")
 
 
+## --------------------------
 ## setting default data types
+## --------------------------
+def is_date(col_name: str) -> bool:
+    date_cols = ["timestamp", "created_at", "updated_at", "created_on", "updated_on"]
+    return True if [col for col in date_cols if col in col_name] else False
+
+
+def is_float(col_name: str) -> bool:
+    float_cols = ["avg"]
+    return True if [col for col in float_cols if col in col_name] else False
+
+
+def is_int(col_name: str) -> bool:
+    regex_list = [r"count\b"]
+    return (
+        True
+        if any([re.search(re.compile(regex), col_name) for regex in regex_list])
+        else False
+    )
+
+
 @Sheet.api
 def set_types(sheet):
-    count_ptrn = re.compile(r"count\b")
     for col in sheet.visibleCols:
-        if re.search(count_ptrn, col.name):
+        if is_int(col.name):
             col.type = int
-        elif "avg" in col.name:
+        elif is_float(col.name):
             col.type = float
-        elif "timestamp" in col.name:
+        elif is_date(col.name):
             col.type = date
         else:
             col.type = anytype
@@ -84,9 +104,9 @@ def afterLoad(sheet):
 DirSheet.knownCols.directory.width = 0
 
 
-## ------------------------------
-## definition of custom functions
-## ------------------------------
+## --------------------------------
+## definition of custom colourisers
+## --------------------------------
 def get_colour_coding(s, c, r, v):
     if v and vd.isNumeric(c):
         if v.typedval > 0.0:
@@ -100,15 +120,6 @@ def get_colour_coding(s, c, r, v):
 def get_rainbow_columns(s, c, r, v):
     colours = [3, 4, 5, 6, 8, 202, 14, 28, 134, 66]
     return str(colours[s.columns.index(c) % len(colours)]) if s and c else None
-
-
-def get_frequency_column(sourceCol):
-    return Column(
-        sourceCol.name + "_frequency",
-        getter=lambda c, r: c.source.getTypedValue(r) / c.total,
-        source=sourceCol,
-        total=sum(sourceCol.getValues(sourceCol.sheet.rows)),
-    )
 
 
 colour_coding_colouriser = CellColorizer(2, None, get_colour_coding)
@@ -159,6 +170,16 @@ Sheet.addCommand(
     'Fanout(columns).aggregators = ""',
     "remove aggregators sticky row",
 )
+
+
+def get_frequency_column(source_col):
+    return Column(
+        source_col.name + "_frequency",
+        getter=lambda c, r: c.source.getTypedValue(r) / c.total,
+        source=source_col,
+        total=sum(source_col.getValues(source_col.sheet.rows)),
+    )
+
 
 TableSheet.unbindkey("f")
 Sheet.addCommand(
