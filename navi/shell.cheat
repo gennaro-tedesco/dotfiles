@@ -97,5 +97,8 @@ find . -type f | grep -v '.git/' | awk -F'/' '{print $NF}' | awk -F'.' '  {print
 # extract multiple key-values
 jq '{<keys>}' <filename>
 
+# select where key equals value
+jq '.[] | select(.<key>=="<value>")' <filename>
+
 $ filename: fd -t f -e json
 $ keys: jq 'keys[]' <filename> --- --multi --map "paste -s -d, -"
