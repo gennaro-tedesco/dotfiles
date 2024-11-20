@@ -3,6 +3,9 @@
 # grep from pod logs
 kubectl logs <pod> | gr "<regex>"
 
+# grep from deployment label
+kubectl logs -l app.kubernetes.io/instance=<deployment> --tail=-1 --prefix | gr "<regex>"
+
 # view kubernetes configuration
 kubectl config view --minify -o jsonpath='{..context}' | jq
 

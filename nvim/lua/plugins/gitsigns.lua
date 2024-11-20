@@ -82,7 +82,16 @@ gitsigns.setup({
 			if blame_buf ~= nil then
 				vim.cmd.bd(blame_buf)
 			else
-				gitsigns.blame()
+				local is_git = vim.system(
+					{ "git", "ls-files", "--error-unmatch", vim.api.nvim_buf_get_name(0) },
+					{ text = true }
+				)
+					:wait()
+				if is_git.code ~= 1 then
+					gitsigns.blame()
+				else
+					print("file not tracked")
+				end
 			end
 		end, { desc = "git blame side" })
 	end,

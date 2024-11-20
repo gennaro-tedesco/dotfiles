@@ -4,6 +4,7 @@
   "guid": "ac11be49-d7e5-4716-b95b-08bd7f04c631",
   "is_active": true,
   "balance": "$1,620.45",
+  "overdraft": null,
   "picture": "http://placehold.it/32x32",
   "age": 32,
   "eyeColor": "brown",
