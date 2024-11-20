@@ -226,9 +226,9 @@ jgr() {
 	case $1 in
 		-o)
 			shift
-			gron | rg "$1" | gron -u -m | bat -l json -p;;
+			gron | rg "$1" | gron -u -m | jq;;
 		*)
-			gron "$2" | rg "$1" | gron -u -m | bat -l json -p;;
+			gron "$2" | rg "$1" | gron -u -m | jq;;
 	esac
 }
 
