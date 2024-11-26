@@ -183,6 +183,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = { "*" },
 	desc = "redefinition of default highlight groups",
 	callback = function()
+		vim.api.nvim_set_hl(0, "Visual", { bg = "#214283" })
 		vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
 		vim.api.nvim_set_hl(0, "WinBarNC", { link = "WinBar" })
 		vim.api.nvim_set_hl(0, "CursorLine", { link = "CursorColumn" })

@@ -1,4 +1,4 @@
-" Command used to edit files in various contexts.  The default is vim.
+" Command used to edit files in various contexts. The default is vim.
 set vicmd=nvim
 
 " This makes vifm perform file operations on its own instead of relying on

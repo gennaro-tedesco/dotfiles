@@ -23,7 +23,6 @@ conform.setup({
 		python = { "isort", "black" },
 		rust = { "rustfmt" },
 		sh = { "shfmt" },
-		sql = { "sqlfluff" },
 		toml = { "taplo" },
 		yaml = { "prettier" },
 	},
