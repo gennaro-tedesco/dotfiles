@@ -210,3 +210,7 @@ vim.api.nvim_create_user_command("Gbrowse", function()
 		print("Gbrowse error")
 	end
 end, {})
+
+vim.api.nvim_create_user_command("Cal", function()
+	require("FTerm").run({ "cal", "-3" })
+end, {})
