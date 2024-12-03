@@ -247,12 +247,14 @@ local plugins = {
 	},
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
-		event = "VeryLazy",
+		event = "BufReadPre",
 		priority = 1000,
 		opts = {
-			preset = "simple",
-			signs = { diag = "" },
-			blend = { factor = 0.25 },
+			preset = "classic",
+			signs = {
+				diag = "●",
+				arrow = "  ",
+			},
 			options = {
 				show_source = false,
 				multiple_diag_under_cursor = true,
@@ -260,6 +262,31 @@ local plugins = {
 				show_all_diags_on_cursorline = true,
 			},
 		},
+		init = function()
+			local tiny_hl = vim.api.nvim_create_augroup("TinyHighlights", {})
+			vim.api.nvim_clear_autocmds({ group = tiny_hl })
+			vim.api.nvim_create_autocmd("BufEnter", {
+				group = tiny_hl,
+				desc = "redefinition of tiny diagnostics highlights group",
+				callback = function()
+					vim.api.nvim_set_hl(
+						0,
+						"TinyInlineDiagnosticVirtualTextError",
+						{ bg = "none", fg = vim.api.nvim_get_hl(0, { name = "DiagnosticVirtualTextError" }).fg }
+					)
+					vim.api.nvim_set_hl(
+						0,
+						"TinyInlineDiagnosticVirtualTextWarn",
+						{ bg = "none", fg = vim.api.nvim_get_hl(0, { name = "DiagnosticVirtualTextWarn" }).fg }
+					)
+					vim.api.nvim_set_hl(
+						0,
+						"TinyInlineDiagnosticVirtualTextHint",
+						{ bg = "none", fg = vim.api.nvim_get_hl(0, { name = "DiagnosticVirtualTextHint" }).fg }
+					)
+				end,
+			})
+		end,
 	},
 	{ "smjonas/inc-rename.nvim", event = "InsertEnter", config = true },
 	{
