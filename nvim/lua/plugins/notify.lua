@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	desc = "redefinition of notify icon colours",
 	callback = function()
 		vim.api.nvim_set_hl(0, "NotifyINFOIcon", {})
-		vim.api.nvim_set_hl(0, "NotifyINFOIcon", { link = "Character" })
+		vim.api.nvim_set_hl(0, "NotifyINFOIcon", { link = "Normal" })
 	end,
 })
 

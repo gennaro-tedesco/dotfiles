@@ -96,13 +96,6 @@ local plugins = {
 		end,
 	},
 	{
-		"goolord/alpha-nvim",
-		cmd = "Alpha",
-		config = function()
-			require("plugins.alpha")
-		end,
-	},
-	{
 		"kevinhwang91/nvim-bqf",
 		ft = "qf",
 		config = function()
@@ -252,6 +245,22 @@ local plugins = {
 			require("plugins.lsp")
 		end,
 	},
+	{
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy",
+		priority = 1000,
+		opts = {
+			preset = "simple",
+			signs = { diag = "" },
+			blend = { factor = 0.25 },
+			options = {
+				show_source = false,
+				multiple_diag_under_cursor = true,
+				multilines = false,
+				show_all_diags_on_cursorline = true,
+			},
+		},
+	},
 	{ "smjonas/inc-rename.nvim", event = "InsertEnter", config = true },
 	{
 		"folke/lazydev.nvim",
@@ -306,7 +315,7 @@ local plugins = {
 				group = outline_hl,
 				desc = "redefinition of outline highlights group",
 				callback = function()
-					vim.api.nvim_set_hl(0, "OutlineJumpHighlight", { link = "PmenuSel" })
+					vim.api.nvim_set_hl(0, "OutlineJumpHighlight", { link = "Visual" })
 				end,
 			})
 		end,
@@ -389,15 +398,6 @@ local plugins = {
 		end,
 		config = function()
 			require("plugins.fzf")
-		end,
-	},
-	{
-		"numToStr/FTerm.nvim",
-		keys = { "<F2>" },
-		config = function()
-			require("FTerm").setup({ border = "rounded", dimensions = { height = 0.85, width = 0.9 } })
-			vim.keymap.set("n", "<F2>", '<cmd>lua require("FTerm").toggle()<CR>', { desc = "toggle fterm" })
-			vim.keymap.set("t", "<F2>", '<C-\\><C-n><cmd>lua require("FTerm").toggle()<CR>', { desc = "toggle fterm" })
 		end,
 	},
 	{
@@ -499,6 +499,40 @@ local plugins = {
 	},
 
 	--- plugins that make vim easier to use
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		config = function()
+			require("plugins.snacks")
+		end,
+		keys = {
+			{
+				"<F2>",
+				function()
+					Snacks.terminal.toggle()
+				end,
+				desc = "toggle snacks terminal",
+				mode = { "n", "t" },
+			},
+			{
+				"]]",
+				function()
+					Snacks.words.jump(vim.v.count1)
+				end,
+				desc = "Next Reference",
+				mode = { "n", "t" },
+			},
+			{
+				"[[",
+				function()
+					Snacks.words.jump(-vim.v.count1)
+				end,
+				desc = "Prev Reference",
+				mode = { "n", "t" },
+			},
+		},
+	},
 	{
 		"stevearc/quicker.nvim",
 		opts = {

@@ -18,11 +18,7 @@ _G.P = function(...)
 		end,
 	})
 end
-
-_G.R = function(pkg_name)
-	require("plenary.reload").reload_module(pkg_name)
-	return require(pkg_name)
-end
+vim.print = _G.P
 
 local M = {}
 

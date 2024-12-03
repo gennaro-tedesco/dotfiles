@@ -54,22 +54,6 @@ local on_attach = function(client, bufnr)
 		end
 	end
 
-	--- autocmd to show diagnostics on CursorHold
-	vim.api.nvim_create_autocmd("CursorHold", {
-		buffer = bufnr,
-		desc = "✨lsp show diagnostics on CursorHold",
-		callback = function()
-			local hover_opts = {
-				focusable = false,
-				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-				border = "rounded",
-				source = "always",
-				prefix = " ",
-			}
-			vim.diagnostic.open_float(nil, hover_opts)
-		end,
-	})
-
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", bufopts, { desc = "✨lsp hover for docs" }))
 	vim.keymap.set(
@@ -146,6 +130,12 @@ lsp.gopls.setup({
 	lsp_flags = lsp_flags,
 	settings = {
 		gopls = {
+			codelenses = {
+				test = true,
+				tidy = true,
+				upgrade_dependency = true,
+				vendor = true,
+			},
 			hints = {
 				assignVariableTypes = true,
 				compositeLiteralFields = true,
@@ -181,6 +171,7 @@ lsp.lua_ls.setup({
 			},
 			workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false },
 			telemetry = { enable = false },
+			codeLens = { enable = true },
 		},
 	},
 })
@@ -250,10 +241,7 @@ lsp.yamlls.setup({
 --- diagnostics: linting and formatting ---
 -------------------------------------------
 vim.diagnostic.config({
-	virtual_text = {
-		source = "always",
-		prefix = "●",
-	},
+	virtual_text = false,
 	underline = true,
 	signs = true,
 	severity_sort = true,
