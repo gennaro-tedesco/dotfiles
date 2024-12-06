@@ -53,8 +53,10 @@ vim.opt.pumheight = 10
 --- matching pairs
 vim.opt.matchpairs:append({ "<:>" })
 
---- python host programme
+--- language specific global settings
 vim.g.python3_host_prog = "/usr/local/bin/python3"
+vim.g.no_python_maps = 1
+vim.g.no_rust_maps = 1
 
 --------------------
 --- autocommands ---
