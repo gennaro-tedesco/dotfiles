@@ -20,6 +20,7 @@ snacks.setup({
 		icons = {
 			error = "",
 			info = "",
+			warn = "",
 		},
 	},
 	terminal = {
@@ -52,7 +53,7 @@ snacks.setup({
 		sections = {
 			{ section = "header" },
 			{ title = "📂 Recent files", padding = 1 },
-			{ section = "recent_files", limit = 8, indent = 4, padding = 2 },
+			{ section = "recent_files", limit = 8, indent = 4, padding = 2, cwd = true },
 			{ title = "🔖 Quick commands", padding = 1 },
 			{ section = "keys", indent = 4, padding = 2 },
 			{

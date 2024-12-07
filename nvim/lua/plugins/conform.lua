@@ -3,6 +3,11 @@ if not conform_ok then
 	return
 end
 
+local snacks_ok, snacks = pcall(require, "snacks")
+if not snacks_ok then
+	return
+end
+
 local function override_lsp()
 	local lsp_error_override = { "yamlls" }
 	local active_lsp = require("utils").clients_lsp()
@@ -30,7 +35,19 @@ conform.setup({
 		local next = next
 		--- check if we have to skip formatting due to lsp errors
 		if next(vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })) ~= nil and not override_lsp() then
-			Snacks.notify.warn("LSP errors, cannot format")
+			local clients = require("utils").clients_lsp()
+			local icons = require("utils").icons
+			snacks.notifier.notify(
+				"LSP errors, cannot format: "
+					.. #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+					.. icons.statusline.Error
+					.. " "
+					.. #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+					.. icons.statusline.Warn,
+				"warn",
+				{ title = clients, style = "compact", ft = "txt", id = "lsp_error" }
+			)
+			return
 		end
 		return { timeout_ms = 5000, lsp_fallback = true }
 	end,

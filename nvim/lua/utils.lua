@@ -1,8 +1,13 @@
+local snacks_ok, snacks = pcall(require, "snacks")
+if not snacks_ok then
+	return
+end
+
 ------------------------
 --- global functions ---
 ------------------------
 _G.P = function(...)
-	Snacks.notify.info(vim.inspect(...), { ft = "lua" })
+	snacks.notify.info(vim.inspect(...), { ft = "lua" })
 end
 
 vim.print = _G.P
@@ -82,7 +87,7 @@ end
 M.count_matches = function()
 	local cur_word = vim.fn.expandcmd("<cword>")
 	local count = vim.api.nvim_exec2("%s/" .. cur_word .. "//ng", { output = true }).output
-	Snacks.notifier.notify(" " .. count, "info", { title = "search: " .. cur_word, style = "compact" })
+	snacks.notifier.notify(" " .. count, "info", { title = "search: " .. cur_word, style = "compact" })
 end
 
 M.hl_search = function(blinktime)
@@ -160,10 +165,6 @@ end
 M.git_root = function()
 	local git_path = vim.fn.finddir(".git", ".;")
 	return vim.fn.fnamemodify(git_path, ":h")
-end
-
-M.weather = function()
-	return vim.trim(vim.fn.system("curl -s 'wttr.in?format=3'")):gsub("%s+", " ")
 end
 
 M.jumps_to_qf = function()
