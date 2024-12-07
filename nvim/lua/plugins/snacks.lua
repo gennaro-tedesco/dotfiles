@@ -6,7 +6,22 @@ end
 local in_git = snacks.git.get_root() ~= nil
 
 snacks.setup({
+	styles = {
+		["notification.history"] = {
+			title = "Notifications",
+			keys = { q = "close", ["<Esc>"] = "close" },
+		},
+	},
 	words = { enabled = true, notify_end = false },
+	quickfile = { enabled = true, exclude = { "latex" } },
+	notifier = {
+		enabled = true,
+		style = "minimal",
+		icons = {
+			error = "",
+			info = "",
+		},
+	},
 	terminal = {
 		enabled = true,
 		win = {
@@ -70,7 +85,6 @@ snacks.setup({
 				cmd = "git status --short",
 				height = 5,
 				padding = 1,
-				ttl = 5 * 60,
 				indent = 3,
 			},
 		},

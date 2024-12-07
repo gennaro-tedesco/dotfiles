@@ -29,7 +29,6 @@
   "nvim-jqx": { "branch": "master", "commit": "07393e80fa8097e82f9038fec05e948fe8a60fd1" },
   "nvim-lint": { "branch": "master", "commit": "6b46370d02cd001509a765591a3ffc481b538794" },
   "nvim-lspconfig": { "branch": "master", "commit": "2c007c79eedfca0ec652c50d571cb0c52d1577ba" },
-  "nvim-notify": { "branch": "master", "commit": "fbef5d32be8466dd76544a257d3f3dce20082a07" },
   "nvim-possession": { "branch": "main", "commit": "fcc6e00ffb13b7c7945560af8bf025184f795c95" },
   "nvim-spider": { "branch": "main", "commit": "8b9dc30243336655699179fd095841adb29434cd" },
   "nvim-surround": { "branch": "main", "commit": "9f0cb495f25bff32c936062d85046fbda0c43517" },

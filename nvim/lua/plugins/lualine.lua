@@ -20,7 +20,7 @@ lualine.setup({
 	options = {
 		theme = soldark,
 		component_separators = { left = "", right = "" },
-		disabled_filetypes = { statusline = { "alpha" } },
+		disabled_filetypes = { "snacks_dashboard" },
 	},
 	sections = {
 		lualine_a = { { "mode", padding = { left = 1 } } },

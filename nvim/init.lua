@@ -76,21 +76,7 @@ local plugins = {
 		"folke/noice.nvim",
 		dependencies = {
 			{ "MunifTanjim/nui.nvim" },
-			{
-				"rcarriga/nvim-notify",
-				config = function()
-					require("plugins.notify")
-				end,
-			},
 		},
-		init = function()
-			vim.keymap.set("n", "<leader>nh", function()
-				require("noice").cmd("history")
-			end, { desc = "show output history" })
-			vim.keymap.set("n", "<leader>ne", function()
-				require("noice").cmd("errors")
-			end, { desc = "show output history" })
-		end,
 		config = function()
 			require("plugins.noice")
 		end,
@@ -534,6 +520,22 @@ local plugins = {
 			require("plugins.snacks")
 		end,
 		keys = {
+			{
+				"<leader>nh",
+				function()
+					Snacks.notifier.show_history()
+				end,
+				desc = "show notification history",
+				mode = "n",
+			},
+			{
+				"<Esc>",
+				function()
+					Snacks.notifier.hide()
+				end,
+				desc = "dismiss notify popup",
+				mode = "n",
+			},
 			{
 				"<F2>",
 				function()

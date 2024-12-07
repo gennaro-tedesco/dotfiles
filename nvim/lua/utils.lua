@@ -1,23 +1,10 @@
-local ok, notify = pcall(require, "notify")
-if not ok then
-	return
-end
-
 ------------------------
 --- global functions ---
 ------------------------
 _G.P = function(...)
-	local msg = vim.inspect(...)
-	notify(msg, "info", {
-		on_open = function(win)
-			vim.wo[win].conceallevel = 3
-			vim.wo[win].concealcursor = ""
-			vim.wo[win].spell = false
-			local buf = vim.api.nvim_win_get_buf(win)
-			vim.treesitter.start(buf, "lua")
-		end,
-	})
+	Snacks.notify.info(vim.inspect(...), { ft = "lua" })
 end
+
 vim.print = _G.P
 
 local M = {}
@@ -95,7 +82,7 @@ end
 M.count_matches = function()
 	local cur_word = vim.fn.expandcmd("<cword>")
 	local count = vim.api.nvim_exec2("%s/" .. cur_word .. "//ng", { output = true }).output
-	notify(" " .. count, "info", { title = "search: " .. cur_word, render = "simple" })
+	Snacks.notifier.notify(" " .. count, "info", { title = "search: " .. cur_word, style = "compact" })
 end
 
 M.hl_search = function(blinktime)
@@ -175,52 +162,8 @@ M.git_root = function()
 	return vim.fn.fnamemodify(git_path, ":h")
 end
 
-M.timer = function(seconds)
-	local timer = vim.loop.new_timer()
-	local spinner_frames = { "⌛", "⏳" }
-	local countdown = notify("", "info", {
-		title = "🕐 countdown",
-		timeout = false,
-		render = "simple",
-	})
-
-	timer:start(
-		0,
-		1000,
-		vim.schedule_wrap(function()
-			seconds = seconds - 1
-			local spinner_left = spinner_frames[(seconds % #spinner_frames) + 1]
-			countdown = notify(" " .. spinner_left .. " " .. seconds .. "s left", "info", {
-				replace = countdown,
-				on_close = function()
-					timer:close()
-				end,
-			})
-			if seconds == 0 then
-				timer:stop()
-				countdown = notify(string.rep(" 💥 ", 12), "error", { replace = countdown })
-			end
-		end)
-	)
-end
-
-M.version = function()
-	local ver = vim.version()
-	return require("nvim-web-devicons").get_icon_by_filetype("vim", {})
-		.. " "
-		.. ver.major
-		.. "."
-		.. ver.minor
-		.. "."
-		.. ver.patch
-end
-
 M.weather = function()
 	return vim.trim(vim.fn.system("curl -s 'wttr.in?format=3'")):gsub("%s+", " ")
-end
-
-M.date = function()
-	return os.date("%A, %B %d, %H:%M:%S")
 end
 
 M.jumps_to_qf = function()

@@ -30,12 +30,7 @@ conform.setup({
 		local next = next
 		--- check if we have to skip formatting due to lsp errors
 		if next(vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })) ~= nil and not override_lsp() then
-			local notify_ok, notify = pcall(require, "notify")
-			if not notify_ok then
-				return
-			end
-			notify("LSP errors, cannot format")
-			return
+			Snacks.notify.warn("LSP errors, cannot format")
 		end
 		return { timeout_ms = 5000, lsp_fallback = true }
 	end,
