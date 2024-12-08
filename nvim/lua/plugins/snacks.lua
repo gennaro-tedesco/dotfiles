@@ -4,9 +4,19 @@ if not snacks_ok then
 end
 
 local in_git = snacks.git.get_root() ~= nil
+local snacks_hl = vim.api.nvim_create_augroup("SnacksHighlights", { clear = true })
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = snacks_hl,
+	callback = function()
+		vim.api.nvim_set_hl(0, "SnacksNotifierBorderInfo", { link = "DiagnosticHint" })
+	end,
+})
 
 snacks.setup({
 	styles = {
+		["notification"] = {
+			wo = { wrap = true },
+		},
 		["notification.history"] = {
 			title = "Notifications",
 			keys = { q = "close", ["<Esc>"] = "close" },
@@ -22,6 +32,7 @@ snacks.setup({
 			info = "",
 			warn = "",
 		},
+		width = { min = 40, max = 50 },
 	},
 	terminal = {
 		enabled = true,

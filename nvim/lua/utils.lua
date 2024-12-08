@@ -1,6 +1,6 @@
 local snacks_ok, snacks = pcall(require, "snacks")
 if not snacks_ok then
-	return
+	vim.notify("snacks not installed, notifications not available", vim.log.levels.WARN)
 end
 
 ------------------------
