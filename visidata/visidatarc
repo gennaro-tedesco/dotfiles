@@ -17,6 +17,7 @@ from visidata import (
 ## sidebar
 options.disp_sidebar = False
 options.color_sidebar = "cyan"
+options.motd_url = ""
 
 ## colour palette
 options.color_active_status = "8"
