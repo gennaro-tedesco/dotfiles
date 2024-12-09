@@ -81,7 +81,11 @@ diffview.setup({
 							return
 						end
 						local results = vim.system({ "git", "commit", "-m", msg }, { text = true }):wait()
-						vim.notify(results.stdout, "info", { style = "compact", title = " git commit", id = "git" })
+						vim.notify(
+							results.stdout,
+							vim.log.levels.INFO,
+							{ style = "compact", title = " git commit", id = "git" }
+						)
 					end)
 				end,
 			},
@@ -90,7 +94,11 @@ diffview.setup({
 				"cx",
 				function()
 					local results = vim.system({ "git", "commit", "--amend", "--no-edit" }, { text = true }):wait()
-					vim.notify(results.stdout, "info", { style = "compact", title = " git amend", id = "git" })
+					vim.notify(
+						results.stdout,
+						vim.log.levels.INFO,
+						{ style = "compact", title = " git amend", id = "git" }
+					)
 				end,
 			},
 		},
