@@ -20,6 +20,7 @@ snacks.setup({
 		["notification.history"] = {
 			title = "Notifications",
 			keys = { q = "close", ["<Esc>"] = "close" },
+			wo = { wrap = true },
 		},
 	},
 	words = { enabled = true, notify_end = false },
@@ -32,7 +33,7 @@ snacks.setup({
 			info = "",
 			warn = "",
 		},
-		width = { min = 40, max = 50 },
+		width = { min = 40, max = 70 },
 	},
 	terminal = {
 		enabled = true,
