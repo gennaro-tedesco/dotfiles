@@ -17,7 +17,6 @@ yabai -m config focus_follows_mouse autofocus
 yabai -m config mouse_drop_action stack
 
 # disable specific applications
-yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add title='Preferences$' manage=off
 yabai -m rule --add title='Settings$' manage=off

@@ -3,7 +3,6 @@ if not snacks_ok then
 	return
 end
 
-local in_git = snacks.git.get_root() ~= nil
 local snacks_hl = vim.api.nvim_create_augroup("SnacksHighlights", { clear = true })
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = snacks_hl,
@@ -13,6 +12,22 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 snacks.setup({
+	---@type snacks.indent.Config
+	indent = {
+		enabled = true,
+		indent = { enabled = false },
+		scope = { enabled = false },
+		chunk = {
+			enabled = true,
+			char = { corner_top = "╭", corner_bottom = "╰" },
+			hl = "@comment.todo",
+		},
+	},
+	---@type snacks.scroll.Config
+	scroll = {
+		animate = { easing = "inQuad" },
+	},
+	---@type snacks.notifier.style
 	styles = {
 		["notification"] = {
 			wo = { wrap = true },
@@ -25,9 +40,12 @@ snacks.setup({
 	},
 	words = { enabled = true, notify_end = false },
 	quickfile = { enabled = true, exclude = { "latex" } },
+	---@type snacks.notifier.Config
 	notifier = {
 		enabled = true,
-		style = "minimal",
+		style = function(buf, notif, ctx)
+			vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(notif.msg, "\n"))
+		end,
 		icons = {
 			error = "",
 			info = "",
@@ -69,36 +87,9 @@ snacks.setup({
 			{ title = "🔖 Quick commands", padding = 1 },
 			{ section = "keys", indent = 4, padding = 2 },
 			{
-				icon = "🧿",
-				title = "Git status:  " .. vim.system({ "git", "branch", "--show-current" }, { text = true })
-					:wait().stdout,
-				enabled = in_git,
-				padding = 1,
-			},
-			{
-				desc = "🔱 git diff",
-				enabled = in_git,
-				indent = 4,
-				padding = 1,
-				key = "d",
-				action = function()
-					require("fzf-lua").fzf_exec("git branch -a --format='%(refname:short)'", {
-						prompt = "diff branch:",
-						actions = {
-							["default"] = function(selected)
-								vim.cmd.DiffviewOpen({ args = { selected[1] } })
-							end,
-						},
-					})
-				end,
-			},
-			{
 				section = "terminal",
-				enabled = in_git,
-				cmd = "git status --short",
-				height = 5,
-				padding = 1,
-				indent = 3,
+				cmd = "curl -s 'wttr.in/?0'",
+				indent = 15,
 			},
 		},
 	},

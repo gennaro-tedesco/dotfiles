@@ -64,15 +64,6 @@ local plugins = {
 		end,
 	},
 	{
-		"karb94/neoscroll.nvim",
-		keys = { "<C-u>", "<C-d>", "zt", "zz", "zb" },
-		config = function()
-			require("neoscroll").setup({
-				mappings = { "<C-u>", "<C-d>", "zt", "zz", "zb" },
-			})
-		end,
-	},
-	{
 		"folke/noice.nvim",
 		dependencies = {
 			{ "MunifTanjim/nui.nvim" },
@@ -129,24 +120,6 @@ local plugins = {
 				},
 			}
 		end,
-	},
-	{
-		"shellRaining/hlchunk.nvim",
-		event = { "UIEnter" },
-		opts = {
-			indent = { enable = false },
-			blank = { enable = false },
-			line_num = { enable = false },
-			chunk = {
-				enable = true,
-				notify = false,
-				use_treesitter = true,
-				exclude_filetypes = {
-					help = true,
-					markdown = true,
-				},
-			},
-		},
 	},
 
 	--- treesitter
@@ -515,6 +488,7 @@ local plugins = {
 
 	--- plugins that make vim easier to use
 	{
+		---@module 'snacks'
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
