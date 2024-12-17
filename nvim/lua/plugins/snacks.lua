@@ -33,7 +33,8 @@ snacks.setup({
 			wo = { wrap = true },
 		},
 		["notification.history"] = {
-			title = "Notifications",
+			width = 0.8,
+			title = " Notifications ",
 			keys = { q = "close", ["<Esc>"] = "close" },
 			wo = { wrap = true },
 		},

@@ -240,16 +240,18 @@ lsp.yamlls.setup({
 -------------------------------------------
 --- diagnostics: linting and formatting ---
 -------------------------------------------
+---@type vim.diagnostic.Opts
 vim.diagnostic.config({
 	virtual_text = false,
 	underline = true,
 	signs = true,
 	severity_sort = true,
+	---@type vim.diagnostic.Opts.Float
 	float = {
 		border = "rounded",
-		source = "always",
+		source = "if_many",
 		header = "",
-		prefix = "",
+		prefix = " ",
 		focusable = false,
 	},
 })
