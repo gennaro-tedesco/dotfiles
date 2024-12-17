@@ -23,6 +23,8 @@ snacks.setup({
 			hl = "@comment.todo",
 		},
 	},
+	---@type snacks.statuscolumn.Config
+	statuscolumn = { enabled = true },
 	---@type snacks.scroll.Config
 	scroll = {
 		animate = { easing = "inQuad" },

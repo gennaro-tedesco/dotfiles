@@ -29,6 +29,7 @@ if not ok then
 	print("lazy not installed")
 	return
 end
+
 --------------------
 --- plugins list ---
 --------------------
@@ -542,10 +543,10 @@ local plugins = {
 		"stevearc/quicker.nvim",
 		opts = {
 			type_icons = {
-				E = "❗",
-				W = "⚠️ ",
+				E = "✘",
+				W = "",
 				H = "i",
-				I = "💡",
+				I = "i",
 				N = "i",
 			},
 		},

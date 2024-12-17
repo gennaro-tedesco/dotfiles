@@ -87,7 +87,7 @@ end
 M.count_matches = function()
 	local cur_word = vim.fn.expandcmd("<cword>")
 	local count = vim.api.nvim_exec2("%s/" .. cur_word .. "//ng", { output = true }).output
-	snacks.notifier.notify(" " .. count, "info", { title = "search: " .. cur_word, style = "compact" })
+	snacks.notifier.notify(" " .. count, "info", { title = "search: " .. cur_word, style = "compact", id = "search" })
 end
 
 M.hl_search = function(blinktime)

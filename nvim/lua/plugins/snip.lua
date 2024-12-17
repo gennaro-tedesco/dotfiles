@@ -332,7 +332,12 @@ local list_snips = function()
 	for _, item in pairs(ft_list) do
 		ft_snips[item.trigger] = item.name
 	end
-	P(ft_snips)
+	vim.notify(vim.inspect(ft_snips), vim.log.levels.INFO, {
+		style = "compact",
+		title = "snippets for " .. vim.o.filetype,
+		id = "sniplist",
+		ft = "lua",
+	})
 end
 
 vim.api.nvim_create_user_command("SnipList", list_snips, {})

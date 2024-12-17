@@ -81,7 +81,7 @@ nnoremap("<leader>gd", function()
 	})
 end, { desc = "diff branch with diffview" })
 
---- project search and replace
+--- project search
 nnoremap("<C-h>", function()
 	local regex = vim.fn.input("regex: ")
 	if regex ~= "" then

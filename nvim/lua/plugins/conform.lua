@@ -32,6 +32,7 @@ conform.setup({
 		if next(vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })) ~= nil and not override_lsp() then
 			local clients = require("utils").clients_lsp()
 			local icons = require("utils").icons
+			---@module 'snacks'
 			Snacks.notifier.notify(
 				"LSP errors, cannot format: "
 					.. #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })

@@ -8,6 +8,8 @@ if not cmq_ok then
 	return
 end
 
+local icons = require("utils").icons
+
 local opts = { noremap = true, silent = true }
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -251,12 +253,25 @@ vim.diagnostic.config({
 		border = "rounded",
 		source = "if_many",
 		header = "",
-		prefix = " ",
+		prefix = function(d)
+			local d_icon = {
+				[vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+				[vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
+				[vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
+				[vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+			}
+			local d_hl = {
+				[vim.diagnostic.severity.HINT] = "DiagnosticHint",
+				[vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+				[vim.diagnostic.severity.WARN] = "DiagnosticWarn",
+				[vim.diagnostic.severity.ERROR] = "DiagnosticError",
+			}
+			return d_icon[d.severity] .. " ", d_hl[d.severity]
+		end,
 		focusable = false,
 	},
 })
 
-local icons = require("utils").icons
 for _, type in ipairs({ "Error", "Warn", "Hint", "Info" }) do
 	vim.fn.sign_define(
 		"DiagnosticSign" .. type,
