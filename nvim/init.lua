@@ -538,6 +538,11 @@ local plugins = {
 				mode = { "n", "t" },
 			},
 		},
+		init = function()
+			vim.api.nvim_create_user_command("Bd", function()
+				Snacks.bufdelete()
+			end, {})
+		end,
 	},
 	{
 		"stevearc/quicker.nvim",
@@ -598,6 +603,9 @@ local plugins = {
 		opts = {
 			alternates = {
 				["Right"] = "Left",
+				["right"] = "left",
+				["Up"] = "Down",
+				["up"] = "down",
 				["="] = "!=",
 			},
 		},
@@ -634,7 +642,8 @@ local plugins = {
 			autoload = false,
 			autosave = false,
 			autoswitch = { enable = true },
-			fzf_winopts = { hl = { border = "Constant" } },
+			---@type possession.Hls
+			fzf_hls = { border = "Function", preview_border = "Function" },
 		},
 	},
 }

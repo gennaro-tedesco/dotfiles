@@ -4,11 +4,12 @@ if not ok then
 end
 
 fzf.setup({
+	hls = { normal = "Pmenu", preview_normal = "Pmenu" },
 	winopts = {
 		height = 0.25,
 		width = 0.4,
 		row = 0.5,
-		hl = { normal = "Pmenu" },
+		preview = { hidden = "hidden" },
 		border = "none",
 	},
 	fzf_opts = {
@@ -22,7 +23,6 @@ fzf.setup({
 		formatter = "path.filename_first",
 		git_icons = true,
 		prompt = "files:",
-		preview_opts = "hidden",
 		no_header = true,
 		cwd_header = false,
 		cwd_prompt = false,
@@ -39,14 +39,15 @@ fzf.setup({
 	buffers = {
 		formatter = "path.filename_first",
 		prompt = "buffers:",
-		preview_opts = "hidden",
 		no_header = true,
 		fzf_opts = { ["--delimiter"] = " ", ["--with-nth"] = "-1.." },
 	},
 	helptags = {
 		prompt = "💡:",
-		preview_opts = "hidden",
 		winopts = {
+			preview = {
+				hidden = "hidden",
+			},
 			row = 1,
 			width = vim.api.nvim_win_get_width(0),
 			height = 0.3,
@@ -65,9 +66,9 @@ fzf.setup({
 					vim.api.nvim_feedkeys(switch, "t", false)
 				end,
 			},
-			preview_opts = "nohidden",
 			winopts = {
 				preview = {
+					hidden = "nohidden",
 					layout = "vertical",
 					vertical = "right:50%",
 					wrap = "wrap",
@@ -82,6 +83,7 @@ fzf.setup({
 			cmd = "git branch --all --color",
 			winopts = {
 				preview = {
+					hidden = "nohidden",
 					layout = "vertical",
 					vertical = "right:50%",
 					wrap = "wrap",
@@ -98,6 +100,7 @@ fzf.setup({
 			width = 0.8,
 			height = 0.7,
 			preview = {
+				hidden = "nohidden",
 				layout = "horizontal",
 				horizontal = "down:40%",
 				wrap = "wrap",
@@ -108,7 +111,12 @@ fzf.setup({
 		prompt = "keymaps:",
 		winopts = {
 			width = 0.8,
-			height = 0.7,
+			height = 0.6,
+			preview = {
+				hidden = "nohidden",
+				layout = "horizontal",
+				horizontal = "down:40%",
+			},
 		},
 		actions = {
 			["default"] = function(selected)
@@ -122,8 +130,9 @@ fzf.setup({
 		prompt = "highlights:",
 		winopts = {
 			width = 0.8,
-			height = 0.7,
+			height = 0.6,
 			preview = {
+				hidden = "nohidden",
 				layout = "horizontal",
 				horizontal = "down:40%",
 				wrap = "wrap",
@@ -140,23 +149,31 @@ fzf.setup({
 			prompt = "code actions:",
 			winopts = {
 				width = 0.8,
-				height = 0.7,
+				height = 0.6,
 				preview = {
+					hidden = "nohidden",
 					layout = "horizontal",
-					horizontal = "up:75%",
+					horizontal = "down:75%",
 				},
 			},
 		},
 	},
 	registers = {
 		prompt = "registers:",
-		preview_opts = "hidden",
 		winopts = {
 			width = 0.8,
-			height = 0.7,
+			height = 0.6,
+		},
+	},
+	marks = {
+		marks = "%a",
+		winopts = {
+			width = 0.8,
+			height = 0.6,
 			preview = {
+				hidden = "nohidden",
 				layout = "horizontal",
-				horizontal = "down:45%",
+				horizontal = "down:40%",
 			},
 		},
 	},

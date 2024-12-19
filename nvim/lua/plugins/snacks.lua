@@ -11,7 +11,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 })
 
+---@type snacks.Config
 snacks.setup({
+	bufdelete = { enabled = true },
 	---@type snacks.indent.Config
 	indent = {
 		enabled = true,
@@ -23,8 +25,6 @@ snacks.setup({
 			hl = "@comment.todo",
 		},
 	},
-	---@type snacks.statuscolumn.Config
-	statuscolumn = { enabled = true },
 	---@type snacks.scroll.Config
 	scroll = {
 		animate = { easing = "inQuad" },
@@ -34,7 +34,7 @@ snacks.setup({
 		["notification"] = {
 			wo = { wrap = true },
 		},
-		["notification.history"] = {
+		["notification_history"] = {
 			width = 0.8,
 			title = " Notifications ",
 			keys = { q = "close", ["<Esc>"] = "close" },
