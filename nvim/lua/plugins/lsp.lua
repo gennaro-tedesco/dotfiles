@@ -194,8 +194,17 @@ lsp.html.setup({
 	},
 })
 
----jedi_language_server
-lsp.jedi_language_server.setup({
+---basedpyright language server
+lsp.basedpyright.setup({
+	settings = {
+		basedpyright = {
+			disableOrganizeImports = true,
+			analysis = {
+				autoImportCompletions = true,
+				diagnosticMode = "openFilesOnly",
+			},
+		},
+	},
 	capabilities = capabilities,
 	on_attach = on_attach,
 	lsp_flags = lsp_flags,
