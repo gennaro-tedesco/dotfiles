@@ -305,6 +305,7 @@ local plugins = {
 				desc = "redefinition of outline highlights group",
 				callback = function()
 					vim.api.nvim_set_hl(0, "OutlineJumpHighlight", { link = "Visual" })
+					vim.api.nvim_set_hl(0, "OutlineCurrent", { underline = true })
 				end,
 			})
 		end,

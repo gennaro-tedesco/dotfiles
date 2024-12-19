@@ -4,13 +4,13 @@ if not ok then
 end
 
 fzf.setup({
-	hls = { normal = "Pmenu", preview_normal = "Pmenu" },
+	hls = { normal = "Normal", preview_normal = "Normal", border = "Function", preview_border = "Function" },
 	winopts = {
 		height = 0.25,
 		width = 0.4,
 		row = 0.5,
 		preview = { hidden = "hidden" },
-		border = "none",
+		border = "rounded",
 	},
 	fzf_opts = {
 		["--no-info"] = "",
@@ -28,12 +28,15 @@ fzf.setup({
 		cwd_prompt = false,
 		cwd = require("utils").git_root(),
 		actions = {
-			["ctrl-d"] = function(...)
-				fzf.actions.file_vsplit(...)
-				vim.cmd("windo diffthis")
-				local switch = vim.api.nvim_replace_termcodes("<C-w>h", true, false, true)
-				vim.api.nvim_feedkeys(switch, "t", false)
-			end,
+			["ctrl-d"] = {
+				fn = function(...)
+					fzf.actions.file_vsplit(...)
+					vim.cmd("windo diffthis")
+					local switch = vim.api.nvim_replace_termcodes("<C-w>h", true, false, true)
+					vim.api.nvim_feedkeys(switch, "t", false)
+				end,
+				desc = "diff-file",
+			},
 		},
 	},
 	buffers = {
@@ -54,33 +57,10 @@ fzf.setup({
 		},
 	},
 	git = {
-		bcommits = {
-			prompt = "logs:",
-			cmd = "git log --color --pretty=format:'%C(yellow)%h%Creset %Cgreen%><(12)%cr%><|(12)%Creset %s' <file>",
-			preview = "git show --stat --color --format='%C(cyan)%an%C(reset)%C(bold yellow)%d%C(reset): %s' {1} -- <file>",
-			actions = {
-				["ctrl-d"] = function(...)
-					fzf.actions.git_buf_vsplit(...)
-					vim.cmd("windo diffthis")
-					local switch = vim.api.nvim_replace_termcodes("<C-w>h", true, false, true)
-					vim.api.nvim_feedkeys(switch, "t", false)
-				end,
-			},
-			winopts = {
-				preview = {
-					hidden = "nohidden",
-					layout = "vertical",
-					vertical = "right:50%",
-					wrap = "wrap",
-				},
-				row = 1,
-				width = vim.api.nvim_win_get_width(0),
-				height = 0.3,
-			},
-		},
 		branches = {
 			prompt = "branches:",
-			cmd = "git branch --all --color",
+			cmd = "git branch -a --format='%(refname:short)'",
+			no_header = true,
 			winopts = {
 				preview = {
 					hidden = "nohidden",
@@ -91,6 +71,14 @@ fzf.setup({
 				row = 1,
 				width = vim.api.nvim_win_get_width(0),
 				height = 0.3,
+			},
+			actions = {
+				["default"] = {
+					fn = function(selected)
+						vim.cmd.DiffviewOpen({ args = { selected[1] } })
+					end,
+					desc = "diffview-git-branch",
+				},
 			},
 		},
 	},
@@ -138,11 +126,6 @@ fzf.setup({
 				wrap = "wrap",
 			},
 		},
-		actions = {
-			["default"] = function(selected)
-				print(vim.cmd.highlight(selected[1]))
-			end,
-		},
 	},
 	lsp = {
 		code_actions = {
@@ -163,18 +146,6 @@ fzf.setup({
 		winopts = {
 			width = 0.8,
 			height = 0.6,
-		},
-	},
-	marks = {
-		marks = "%a",
-		winopts = {
-			width = 0.8,
-			height = 0.6,
-			preview = {
-				hidden = "nohidden",
-				layout = "horizontal",
-				horizontal = "down:40%",
-			},
 		},
 	},
 })

@@ -70,28 +70,9 @@ vnoremap("<PageUp>", "{")
 vnoremap("<PageDown>", "}")
 nnoremap("<Tab>", "<C-w>w")
 nnoremap("<S-Tab>", "<C-w>W")
-nnoremap("<leader>gd", function()
-	require("fzf-lua").fzf_exec("git branch -a --format='%(refname:short)'", {
-		prompt = "diff branch:",
-		actions = {
-			["default"] = function(selected)
-				vim.cmd.DiffviewOpen({ args = { selected[1] } })
-			end,
-		},
-	})
-end, { desc = "diff branch with diffview" })
 
 --- project search
-nnoremap("<C-h>", function()
-	local regex = vim.fn.input("regex: ")
-	if regex ~= "" then
-		vim.cmd.grep({ mods = { silent = true }, bang = true, '"' .. regex .. '"' })
-	else
-		local cur_word = vim.fn.expand("<cword>")
-		vim.cmd.grep({ mods = { silent = true }, bang = true, '"' .. cur_word .. '"' })
-	end
-	vim.bo.modifiable = true
-end, { desc = "project search" })
+nnoremap("<C-h>", require("utils").project_search, { desc = "project search" })
 
 --- close all splits/windows except the one in focus
 nnoremap("<leader>q", "<C-w>o", { desc = "close all windows except the focussed one" })

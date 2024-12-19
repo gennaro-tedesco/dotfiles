@@ -109,6 +109,16 @@ M.hl_search = function(blinktime)
 	vim.cmd("redraw")
 end
 
+M.project_search = function()
+	vim.ui.input({ prompt = "regex: " }, function(input)
+		if input == "" or input == nil then
+			return
+		else
+			vim.cmd.grep({ mods = { silent = true }, bang = true, '"' .. input .. '"' })
+		end
+	end)
+end
+
 M.trim_whitespace = function()
 	local pattern = [[%s/\s\+$//e]]
 	local cur_view = vim.fn.winsaveview()
