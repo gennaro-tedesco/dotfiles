@@ -11,6 +11,7 @@ fzf.setup({
 		row = 0.5,
 		preview = { hidden = "hidden" },
 		border = "rounded",
+		treesitter = { enabled = true },
 	},
 	fzf_opts = {
 		["--no-info"] = "",
@@ -48,12 +49,15 @@ fzf.setup({
 	helptags = {
 		prompt = "💡:",
 		winopts = {
+			title = " 💡 ",
+			title_pos = "center",
+			width = 0.8,
+			height = 0.6,
 			preview = {
-				hidden = "hidden",
+				hidden = "nohidden",
+				layout = "horizontal",
+				horizontal = "down:40%",
 			},
-			row = 1,
-			width = vim.api.nvim_win_get_width(0),
-			height = 0.3,
 		},
 	},
 	git = {
@@ -62,14 +66,16 @@ fzf.setup({
 			cmd = "git branch -a --format='%(refname:short)'",
 			no_header = true,
 			winopts = {
+				title = "  ",
+				title_pos = "center",
 				preview = {
-					hidden = "nohidden",
+					hidden = "hidden",
 					layout = "vertical",
 					vertical = "right:50%",
 					wrap = "wrap",
 				},
 				row = 1,
-				width = vim.api.nvim_win_get_width(0),
+				width = vim.api.nvim_win_get_width(0) / 2,
 				height = 0.3,
 			},
 			actions = {
@@ -86,7 +92,7 @@ fzf.setup({
 		prompt = "autocommands:",
 		winopts = {
 			width = 0.8,
-			height = 0.7,
+			height = 0.6,
 			preview = {
 				hidden = "nohidden",
 				layout = "horizontal",
@@ -145,7 +151,6 @@ fzf.setup({
 		prompt = "registers:",
 		winopts = {
 			width = 0.8,
-			height = 0.6,
 		},
 	},
 })

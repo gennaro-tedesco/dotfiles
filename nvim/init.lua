@@ -456,30 +456,6 @@ local plugins = {
 		end,
 	},
 	{
-		"isakbm/gitgraph.nvim",
-		dependencies = { "sindrets/diffview.nvim" },
-		keys = {
-			{
-				"<leader>gl",
-				function()
-					require("gitgraph").draw({}, { all = true, max_count = 1000 })
-				end,
-				desc = "git graph all",
-			},
-		},
-		opts = {
-			symbols = {
-				merge_commit = "",
-				commit = "",
-			},
-			hooks = {
-				on_select_commit = function(commit)
-					vim.cmd(":DiffviewOpen " .. commit.hash .. "^!")
-				end,
-			},
-		},
-	},
-	{
 		"lewis6991/gitsigns.nvim",
 		lazy = true,
 		event = { "BufReadPre", "BufNewFile" },

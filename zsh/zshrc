@@ -95,7 +95,6 @@ alias :q="exit"
 alias cheat="cht.sh --shell"
 alias upgrade="brew upgrade && brew cleanup --prune=1 -s"
 alias code="scc -c --no-cocomo"
-alias graph="nvim \"+lua require('gitgraph').draw({},{all=true, max_count=1000})\""
 
 ## -----------------------
 ## additional source files
