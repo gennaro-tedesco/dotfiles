@@ -27,7 +27,9 @@ snacks.setup({
 	},
 	---@type snacks.scroll.Config
 	scroll = {
-		animate = { easing = "inQuad" },
+		animate = {
+			easing = "inQuad",
+		},
 	},
 	---@type snacks.notifier.style
 	styles = {
@@ -58,6 +60,24 @@ snacks.setup({
 	},
 	terminal = {
 		enabled = true,
+		keys = {
+			term_normal = {
+				"<esc>",
+				function(self)
+					self.esc_timer = self.esc_timer or (vim.uv or vim.loop).new_timer()
+					if self.esc_timer:is_active() then
+						self.esc_timer:stop()
+						vim.cmd("stopinsert")
+					else
+						self.esc_timer:start(200, 0, function() end)
+						return "<esc>"
+					end
+				end,
+				mode = "t",
+				expr = true,
+				desc = "snack terminal: double escape to normal mode",
+			},
+		},
 		win = {
 			position = "float",
 			height = 0.85,
@@ -91,7 +111,7 @@ snacks.setup({
 			{ section = "keys", indent = 4, padding = 2 },
 			{
 				section = "terminal",
-				cmd = "curl -s 'wttr.in/?0'",
+				cmd = "curl -s 'wttr.in/Berlin?0'",
 				indent = 15,
 			},
 		},

@@ -23,11 +23,15 @@ fzf.setup({
 	files = {
 		formatter = "path.filename_first",
 		git_icons = true,
-		prompt = "files:",
+		prompt = ":",
 		no_header = true,
 		cwd_header = false,
 		cwd_prompt = false,
 		cwd = require("utils").git_root(),
+		winopts = {
+			title = " files 📑 ",
+			title_pos = "center",
+		},
 		actions = {
 			["ctrl-d"] = {
 				fn = function(...)
@@ -42,14 +46,18 @@ fzf.setup({
 	},
 	buffers = {
 		formatter = "path.filename_first",
-		prompt = "buffers:",
+		prompt = ":",
 		no_header = true,
 		fzf_opts = { ["--delimiter"] = " ", ["--with-nth"] = "-1.." },
+		winopts = {
+			title = " buffers 📝 ",
+			title_pos = "center",
+		},
 	},
 	helptags = {
-		prompt = "💡:",
+		prompt = ":",
 		winopts = {
-			title = " 💡 ",
+			title = " help 💡 ",
 			title_pos = "center",
 			width = 0.8,
 			height = 0.6,
@@ -62,11 +70,11 @@ fzf.setup({
 	},
 	git = {
 		branches = {
-			prompt = "branches:",
+			prompt = ":",
 			cmd = "git branch -a --format='%(refname:short)'",
 			no_header = true,
 			winopts = {
-				title = "  ",
+				title = " branches  ",
 				title_pos = "center",
 				preview = {
 					hidden = "hidden",
@@ -75,7 +83,7 @@ fzf.setup({
 					wrap = "wrap",
 				},
 				row = 1,
-				width = vim.api.nvim_win_get_width(0) / 2,
+				width = 0.3,
 				height = 0.3,
 			},
 			actions = {
@@ -89,8 +97,10 @@ fzf.setup({
 		},
 	},
 	autocmds = {
-		prompt = "autocommands:",
+		prompt = ":",
 		winopts = {
+			title = " autocommands ",
+			title_pos = "center",
 			width = 0.8,
 			height = 0.6,
 			preview = {
@@ -102,8 +112,10 @@ fzf.setup({
 		},
 	},
 	keymaps = {
-		prompt = "keymaps:",
+		prompt = ":",
 		winopts = {
+			title = " keymaps ",
+			title_pos = "center",
 			width = 0.8,
 			height = 0.6,
 			preview = {
@@ -121,8 +133,10 @@ fzf.setup({
 		},
 	},
 	highlights = {
-		prompt = "highlights:",
+		prompt = ":",
 		winopts = {
+			title = " highlights 🎨 ",
+			title_pos = "center",
 			width = 0.8,
 			height = 0.6,
 			preview = {
@@ -149,7 +163,10 @@ fzf.setup({
 	},
 	registers = {
 		prompt = "registers:",
+		filter = "%a",
 		winopts = {
+			title = " registers 🏷️ ",
+			title_pos = "center",
 			width = 0.8,
 		},
 	},
