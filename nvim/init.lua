@@ -257,24 +257,16 @@ local plugins = {
 		config = true,
 	},
 	{
-		"hrsh7th/nvim-cmp",
-		event = { "InsertEnter", "CmdlineEnter" },
+		"saghen/blink.cmp",
+		version = "*",
 		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			"saadparwaiz1/cmp_luasnip",
-			"lukas-reineke/cmp-under-comparator",
-			{
-				"windwp/nvim-autopairs",
-				config = function()
-					require("plugins.autopairs")
-				end,
-			},
+			"windwp/nvim-autopairs",
+			config = function()
+				require("plugins.autopairs")
+			end,
 		},
 		config = function()
-			require("plugins.cmp")
+			require("plugins.blink")
 		end,
 	},
 	{
@@ -359,33 +351,6 @@ local plugins = {
 		"ibhagwan/fzf-lua",
 		branch = "main",
 		lazy = true,
-		init = function()
-			local fzf = require("fzf-lua")
-			vim.keymap.set({ "n" }, "<C-p>", function()
-				fzf.files()
-			end, { desc = "fzf browse files" })
-			vim.keymap.set({ "n" }, "<C-b>", function()
-				fzf.buffers()
-			end, { desc = "fzf browse open buffers" })
-			vim.keymap.set({ "n" }, "<F1>", function()
-				fzf.help_tags()
-			end, { desc = "fzf help tags" })
-			vim.keymap.set({ "n" }, '""', function()
-				fzf.registers()
-			end, { desc = "fzf show registers content" })
-			vim.keymap.set({ "n" }, "<leader>gB", function()
-				fzf.git_branches()
-			end, { desc = "fzf git branches" })
-			vim.api.nvim_create_user_command("Autocmd", function()
-				fzf.autocmds()
-			end, { desc = "fzf autocmds list" })
-			vim.api.nvim_create_user_command("Maps", function()
-				fzf.keymaps()
-			end, { desc = "fzf maps list" })
-			vim.api.nvim_create_user_command("Highlights", function()
-				fzf.highlights()
-			end, { desc = "fzf highlights list" })
-		end,
 		config = function()
 			require("plugins.fzf")
 		end,

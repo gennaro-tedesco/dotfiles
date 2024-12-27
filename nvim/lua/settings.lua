@@ -39,7 +39,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = true
 vim.opt.showmatch = true
-vim.opt.grepprg = "rg --vimgrep " .. require("utils").git_root() .. " -e"
+local git_root = require("utils").git_root() or ""
+vim.opt.grepprg = "rg --vimgrep " .. git_root .. " -e"
 vim.opt.grepformat = "%f:%l:%c:%m"
 
 --- autocompletion options

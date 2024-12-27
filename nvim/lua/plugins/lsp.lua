@@ -3,15 +3,16 @@ if not lsp_ok then
 	return
 end
 
-local cmq_ok, _ = pcall(require, "cmp_nvim_lsp")
-if not cmq_ok then
-	return
-end
-
 local icons = require("utils").icons
 
 local opts = { noremap = true, silent = true }
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+local blink_ok, blink = pcall(require, "blink.cmp")
+if not blink_ok then
+	vim.notify("no completion module found", vim.log.levels.WARN)
+end
+
+local capabilities = blink.get_lsp_capabilities()
 
 ---------------
 --- keymaps ---

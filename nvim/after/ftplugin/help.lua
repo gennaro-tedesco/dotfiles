@@ -3,3 +3,5 @@ vim.keymap.set("n", "qq", function()
 end, { buffer = 0, desc = "close help window" })
 
 vim.cmd(15 .. "wincmd_")
+
+vim.opt_local.scrolloff = 0

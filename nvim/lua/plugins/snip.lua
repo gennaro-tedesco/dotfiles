@@ -119,6 +119,17 @@ local snips = {
 		),
 		s({ trig = "req", name = "local require" }, fmt("local {} = require('{}')", { i(1, "name"), i(2, "module") })),
 		s(
+			{ trig = "opts", name = "options table" },
+			fmt(
+				[[
+				{} = {{
+					{}
+				}},
+				]],
+				{ i(1, "name"), i(2, "opt") }
+			)
+		),
+		s(
 			{ trig = "aucmd", name = "create lua autocommand" },
 			fmt(
 				[[

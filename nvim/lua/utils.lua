@@ -60,12 +60,11 @@ M.icons = {
 		Variable = "󰀫",
 	},
 	cmp_sources = {
-		copilot = "🤖",
-		nvim_lsp = "✨",
-		luasnip = "🚀",
-		buffer = "📝",
-		path = "📁",
-		cmdline = "💻",
+		LSP = "✨",
+		Luasnip = "🚀",
+		Buffer = "📝",
+		Path = "📁",
+		Cmdline = "💻",
 	},
 	statusline = {
 		Error = "❗",
@@ -173,8 +172,7 @@ M.replace_file = function()
 end
 
 M.git_root = function()
-	local git_path = vim.fn.finddir(".git", ".;")
-	return vim.fn.fnamemodify(git_path, ":h")
+	return vim.fs.root(0, { ".git" })
 end
 
 M.jumps_to_qf = function()
