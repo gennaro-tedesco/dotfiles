@@ -16,7 +16,7 @@ soldark.normal.a.gui = ""
 soldark.insert.a.gui = ""
 soldark.visual.a.gui = ""
 lualine.setup({
-	extensions = { "symbols-outline", "nvim-tree", "lazy" },
+	extensions = { "nvim-tree", "lazy" },
 	options = {
 		theme = soldark,
 		component_separators = { left = "", right = "" },

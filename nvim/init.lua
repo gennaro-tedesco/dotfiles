@@ -277,35 +277,6 @@ local plugins = {
 		end,
 	},
 	{
-		"hedyhli/outline.nvim",
-		cmd = "Outline",
-		keys = {
-			{
-				"gm",
-				function()
-					require("nvim-tree.api").tree.close()
-					vim.cmd.Outline()
-				end,
-				desc = "open outline view",
-			},
-		},
-		init = function()
-			local outline_hl = vim.api.nvim_create_augroup("OutlineHighlights", {})
-			vim.api.nvim_clear_autocmds({ group = outline_hl })
-			vim.api.nvim_create_autocmd("BufEnter", {
-				group = outline_hl,
-				desc = "redefinition of outline highlights group",
-				callback = function()
-					vim.api.nvim_set_hl(0, "OutlineJumpHighlight", { link = "Visual" })
-					vim.api.nvim_set_hl(0, "OutlineCurrent", { underline = true })
-				end,
-			})
-		end,
-		config = function()
-			require("plugins.outline")
-		end,
-	},
-	{
 		"lervag/vimtex",
 		init = function()
 			vim.g.vimtex_view_general_viewer = "zathura"
@@ -362,7 +333,6 @@ local plugins = {
 			{
 				"<C-n>",
 				function()
-					require("outline").close()
 					require("nvim-tree.api").tree.toggle()
 				end,
 				desc = "toggle nvim-tree",
@@ -554,16 +524,6 @@ local plugins = {
 	},
 
 	--- my plugins, they're awesome
-	{
-		"gennaro-tedesco/nvim-jqx",
-		event = { "BufReadPost" },
-		ft = { "json", "yaml" },
-		config = function()
-			local jqx = require("nvim-jqx.config")
-			jqx.geometry.border = "single"
-			jqx.use_quickfix = false
-		end,
-	},
 	{
 		"gennaro-tedesco/nvim-possession",
 		init = function()

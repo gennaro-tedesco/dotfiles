@@ -99,7 +99,12 @@ fzf.setup({
 			cwd_only = true,
 			no_header = true,
 			regex_filter = function(item)
-				if item.kind:match("Variable") then
+				if
+					item.kind:match("Variable")
+					or item.kind:match("String")
+					or item.kind:match("Number")
+					or item.kind:match("Boolean")
+				then
 					return false
 				else
 					return true
@@ -120,21 +125,9 @@ fzf.setup({
 			symbol_fmt = function(s)
 				return s .. ":"
 			end,
-			symbol_style = 1,
-			symbol_icons = {
-				Class = icons.kinds.Class,
-				Method = icons.kinds.Method,
-				Property = icons.kinds.Property,
-				Field = icons.kinds.Function,
-				Constructor = icons.kinds.Constructor,
-				Enum = icons.kinds.Enum,
-				Interface = icons.kinds.Interface,
-				Function = icons.kinds.Function,
-				Object = icons.kinds.Object,
-				Struct = icons.kinds.Struct,
-				Operator = icons.kinds.Operator,
-				TypeParameter = icons.kinds.TypeParameter,
-			},
+			symbol_style = 2,
+			symbol_icons = icons.kinds,
+			child_prefix = false,
 		},
 	},
 	autocmds = {
@@ -229,7 +222,10 @@ vim.keymap.set({ "n" }, "<C-m>", function()
 		end
 		fzf.lsp_workspace_symbols({ lsp_query = sym })
 	end)
-end, { desc = "fzf git branches" })
+end, { desc = "fzf workspace symbols" })
+vim.keymap.set({ "n" }, "gm", function()
+	fzf.lsp_document_symbols()
+end, { desc = "fzf document symbols" })
 vim.api.nvim_create_user_command("Autocmd", function()
 	fzf.autocmds()
 end, { desc = "fzf autocmds list" })

@@ -10,8 +10,8 @@ local icons = require("utils").icons
 blink.setup({
 	sources = {
 		default = { "lsp", "path", "luasnip", "buffer" },
-		-- cmdline = {},
 		providers = {
+			cmdline = { min_keyword_length = 2 },
 			luasnip = {
 				min_keyword_length = 2,
 				score_offset = 4,
@@ -54,6 +54,7 @@ blink.setup({
 						highlight = "BlinkCmpSource",
 					},
 				},
+				treesitter = { "lsp" },
 			},
 			winhighlight = "Normal:Normal,FloatBorder:Todo,CursorLine:CursorLine,Search:None,BlinkCmpLabelMatch:Todo",
 		},

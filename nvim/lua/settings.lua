@@ -190,5 +190,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", { link = "DiffDelete" })
 		vim.api.nvim_set_hl(0, "WinSeparator", { bold = false, fg = "#268bd2", bg = "none" })
 		vim.api.nvim_set_hl(0, "@markup.heading", { bold = true, fg = vim.api.nvim_get_hl(0, { name = "Normal" }).fg })
+		vim.api.nvim_set_hl(0, "@object", { link = "@lsp.type.class" })
+		vim.api.nvim_set_hl(0, "@package", { link = "@namespace" })
+		vim.api.nvim_set_hl(0, "@array", { link = "@comment.todo" })
 	end,
 })
