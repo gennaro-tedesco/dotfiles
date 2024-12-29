@@ -3,7 +3,7 @@ if not ok then
 	return
 end
 
-local icons = require("utils").icons
+local symbols_exclude = { "Variable", "String", "Number", "Text", "Boolean" }
 
 fzf.setup({
 	hls = {
@@ -99,12 +99,7 @@ fzf.setup({
 			cwd_only = true,
 			no_header = true,
 			regex_filter = function(item)
-				if
-					item.kind:match("Variable")
-					or item.kind:match("String")
-					or item.kind:match("Number")
-					or item.kind:match("Boolean")
-				then
+				if require("utils").is_in_list(item.kind, symbols_exclude) then
 					return false
 				else
 					return true
@@ -126,7 +121,7 @@ fzf.setup({
 				return s .. ":"
 			end,
 			symbol_style = 2,
-			symbol_icons = icons.kinds,
+			symbol_icons = require("utils").icons.kinds,
 			child_prefix = false,
 		},
 	},
