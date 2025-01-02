@@ -76,7 +76,7 @@ diffview.setup({
 				"n",
 				"cc",
 				function()
-					vim.ui.input({ prompt = "Commit message: " }, function(msg)
+					vim.ui.input({ prompt = "commit message: " }, function(msg)
 						if not msg then
 							return
 						end

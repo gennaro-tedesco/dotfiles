@@ -84,8 +84,14 @@ local on_attach = function(client, bufnr)
 		vim.tbl_extend("force", bufopts, { desc = "✨lsp go to implementation" })
 	)
 	vim.keymap.set("n", "rn", function()
-		return ":IncRename " .. vim.fn.expand("<cword>")
-	end, { expr = true })
+		vim.ui.input({ prompt = "rename: ", default = vim.fn.expand("<cword>") }, function(input)
+			if input == "" or input == nil then
+				return
+			else
+				vim.lsp.buf.rename(input)
+			end
+		end)
+	end, { desc = "✨lsp rename symbol" })
 	vim.keymap.set(
 		"n",
 		"gr",

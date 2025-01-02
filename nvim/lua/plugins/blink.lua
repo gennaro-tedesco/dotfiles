@@ -11,7 +11,6 @@ blink.setup({
 	sources = {
 		default = { "lsp", "path", "luasnip", "buffer" },
 		providers = {
-			cmdline = { min_keyword_length = 2 },
 			luasnip = {
 				min_keyword_length = 2,
 				score_offset = 4,
@@ -78,7 +77,6 @@ blink.setup({
 		["<C-k>"] = { "scroll_documentation_up", "fallback" },
 		["<C-j>"] = { "scroll_documentation_down", "fallback" },
 		["<C-e>"] = { "cancel" },
-		["K"] = { "show", "show_documentation", "hide_documentation" },
 		cmdline = {
 			["<cr>"] = {
 				function(cmp)

@@ -36,7 +36,7 @@ gitsigns.setup({
 			vim.keymap.set(mode, l, r, opts)
 		end
 
-		-- Navigation
+		--- navigation
 		map("n", "++", function()
 			if vim.wo.diff then
 				return "]c"
@@ -57,7 +57,7 @@ gitsigns.setup({
 			return "<Ignore>"
 		end, { expr = true, desc = "prev git hunk" })
 
-		-- Actions
+		--- actions
 		map("n", "<leader>hs", gitsigns.stage_hunk)
 		map("n", "<leader>hr", gitsigns.reset_hunk)
 		map("v", "<leader>hs", function()
@@ -68,6 +68,8 @@ gitsigns.setup({
 		end)
 		map("n", "<leader>hu", gitsigns.undo_stage_hunk)
 		map("n", "<leader>hp", gitsigns.preview_hunk)
+
+		--- git blame
 		map("n", "<leader>hb", function()
 			gitsigns.toggle_current_line_blame()
 		end, { desc = "toggle git blame inline" })

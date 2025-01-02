@@ -250,7 +250,6 @@ local plugins = {
 			})
 		end,
 	},
-	{ "smjonas/inc-rename.nvim", event = "InsertEnter", config = true },
 	{
 		"folke/lazydev.nvim",
 		ft = "lua",
@@ -397,6 +396,14 @@ local plugins = {
 		config = function()
 			require("plugins.gitsigns")
 		end,
+		keys = {
+			{
+				"<leader>h/",
+				function()
+					require("gitsigns").setqflist("all")
+				end,
+			},
+		},
 	},
 
 	--- plugins that make vim easier to use
@@ -436,7 +443,7 @@ local plugins = {
 			{
 				"]]",
 				function()
-					Snacks.words.jump(vim.v.count1)
+					Snacks.words.jump(vim.v.count1, true)
 				end,
 				desc = "Next Reference",
 				mode = { "n", "t" },
@@ -444,7 +451,7 @@ local plugins = {
 			{
 				"[[",
 				function()
-					Snacks.words.jump(-vim.v.count1)
+					Snacks.words.jump(-vim.v.count1, true)
 				end,
 				desc = "Prev Reference",
 				mode = { "n", "t" },
