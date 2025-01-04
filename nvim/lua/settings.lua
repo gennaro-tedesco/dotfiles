@@ -17,6 +17,7 @@ vim.opt.splitright = true
 vim.opt.scrolloff = 8
 vim.opt.showmode = false
 vim.opt.signcolumn = "number"
+vim.opt.startofline = true
 
 --- standard neovim behavior
 vim.opt.undofile = true
