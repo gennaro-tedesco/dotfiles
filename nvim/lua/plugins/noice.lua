@@ -36,13 +36,16 @@ local cmdline_opts = {
 }
 
 noice.setup({
+	presets = {
+		bottom_search = true,
+		long_message_to_split = true,
+		lsp_doc_border = true,
+	},
 	cmdline = {
 		view = "cmdline_popup",
 		format = {
-			cmdline = { pattern = "^:", icon = "", opts = cmdline_opts },
-			search_down = { view = "cmdline", kind = "Search", pattern = "^/", icon = "🔎 ", ft = "regex" },
-			search_up = { view = "cmdline", kind = "Search", pattern = "^%?", icon = "🔎 ", ft = "regex" },
-			input = { view = "cmdline", icon = "✏️ ", ft = "regex" },
+			cmdline = { opts = cmdline_opts },
+			input = { view = "cmdline", ft = "regex" },
 			calculator = { view = "cmdline", pattern = "^:=", icon = "", lang = "vimnormal" },
 			substitute = {
 				pattern = "^:%%?s/",
@@ -60,45 +63,10 @@ noice.setup({
 				opts = cmdline_opts,
 			},
 			lua = { pattern = "^:%s*lua%s+", icon = "", conceal = true, ft = "lua", opts = cmdline_opts },
-			rename = {
-				pattern = "^:%s*IncRename%s+",
-				icon = "✏️ ",
-				conceal = true,
-				opts = {
-					relative = "cursor",
-					size = { min_width = 20 },
-					position = { row = -3, col = 0 },
-					buf_options = { filetype = "text" },
-					border = { text = { top = " rename " } },
-				},
-			},
 			help = { pattern = "^:%s*h%s+", icon = "💡", opts = cmdline_opts },
 		},
 	},
 	messages = { view_search = false },
-	commands = {
-		history = {
-			view = "split",
-			opts = { enter = true, format = "details" },
-			filter = {
-				any = {
-					{ event = "notify" },
-					{ error = true },
-					{ warning = true },
-					{ event = "lsp", kind = "message" },
-					{ event = "msg_show", kind = { "" } },
-				},
-				["not"] = { event = "msg_show", find = "written" },
-			},
-			filter_opts = { reverse = true },
-		},
-		errors = {
-			view = "split",
-			opts = { enter = true, format = "details" },
-			filter = { error = true },
-			filter_opts = { reverse = true },
-		},
-	},
 	lsp = {
 		override = {
 			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -123,10 +91,6 @@ noice.setup({
 	views = {
 		split = { enter = true },
 		mini = { win_options = { winblend = 0 } },
-	},
-	presets = {
-		long_message_to_split = true,
-		lsp_doc_border = true,
 	},
 	routes = {
 		{ filter = { find = "E162" }, view = "mini" },

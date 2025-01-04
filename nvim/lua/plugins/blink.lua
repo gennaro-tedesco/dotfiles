@@ -55,14 +55,14 @@ blink.setup({
 				},
 				treesitter = { "lsp" },
 			},
-			winhighlight = "Normal:Normal,FloatBorder:Todo,CursorLine:CursorLine,Search:None,BlinkCmpLabelMatch:Todo",
+			winhighlight = "Normal:Normal,FloatBorder:@comment.todo,CursorLine:CursorLine,Search:None,BlinkCmpLabelMatch:@comment.todo",
 		},
 		documentation = {
 			auto_show = true,
 			auto_show_delay_ms = 100,
 			window = {
 				border = "rounded",
-				winhighlight = "Normal:Normal,FloatBorder:Todo,CursorLine:CursorLine,Search:None",
+				winhighlight = "Normal:Normal,FloatBorder:@comment.todo,CursorLine:CursorLine,Search:None",
 			},
 		},
 		accept = { auto_brackets = { enabled = true } },
@@ -100,7 +100,7 @@ blink.setup({
 		enabled = true,
 		window = {
 			border = "rounded",
-			winhighlight = "Normal:Normal,FloatBorder:Todo,CursorLine:CursorLine,Search:None",
+			winhighlight = "Normal:Normal,FloatBorder:@comment.todo,CursorLine:CursorLine,Search:None",
 		},
 	},
 })
