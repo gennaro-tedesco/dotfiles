@@ -33,9 +33,11 @@ diffview.setup({
 		view = {
 			{ "n", "<C-f>", actions.toggle_files, { desc = "Toggle the file panel" } },
 			{ "n", "gf", actions.goto_file_edit, { desc = "Open the file in the previous tabpage" } },
-			{ "n", "co", actions.conflict_choose_all("ours"), { desc = "Choose conflict --ours" } },
-			{ "n", "ct", actions.conflict_choose_all("theirs"), { desc = "Choose conflict --theirs" } },
-			{ "n", "cb", actions.conflict_choose_all("base"), { desc = "Choose conflict --base" } },
+			{ "n", "c-", actions.prev_conflict, { desc = "Go to prev conflict" } },
+			{ "n", "c+", actions.next_conflict, { desc = "Go to next conflict" } },
+			{ "n", "co", actions.conflict_choose("ours"), { desc = "Choose conflict --ours" } },
+			{ "n", "ct", actions.conflict_choose("theirs"), { desc = "Choose conflict --theirs" } },
+			{ "n", "cb", actions.conflict_choose("base"), { desc = "Choose conflict --base" } },
 			["gq"] = function()
 				if vim.fn.tabpagenr("$") > 1 then
 					vim.cmd.DiffviewClose()
