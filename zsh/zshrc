@@ -118,7 +118,7 @@ bindkey -s '^v' 'view '
 bindkey -s '^o' 'clear\nfind_git_files\n'
 bindkey -s '^n' 'vifm\n'
 bindkey -s '^h' 'search\n'
-bindkey -s '^d' 'nvim_diff\n'
-bindkey -s 'qc' 'quick_commit\n'
+bindkey -s 'cc' 'conventional_commit\n'
+bindkey -s 'cx' 'amend_commit\n'
 eval "$(navi widget zsh)"
 eval "$(zoxide init zsh)"

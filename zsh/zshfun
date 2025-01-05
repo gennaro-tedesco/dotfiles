@@ -138,8 +138,8 @@ view() {
 	esac
 }
 
-# quick commit all
-quick_commit(){
+# conventional commit selector
+conventional_commit(){
 	[[ ! "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]] && { echo "not a git repo"; return; }
 
 	TEXT="#268bd2"
@@ -150,7 +150,7 @@ quick_commit(){
 		return
 	fi
 
-	echo '\n{{ Color "'${BORDER}'" "" " on branch :"}} {{ Color "'${TEXT}'" "" "'$(git rev-parse --abbrev-ref HEAD)'" }}' | gum format -t template
+	echo '\n{{ Color "'${BORDER}'" "" " :"}} {{ Color "'${TEXT}'" "" "'$(git rev-parse --abbrev-ref HEAD)'" }}' | gum format -t template
 	gum style \
 		--border rounded \
 		--foreground "$TEXT" \
@@ -159,6 +159,8 @@ quick_commit(){
 		--padding "1 1" \
 		$unstaged_list
 
+	local cc=("feat" "fix" "docs" "config" "refactor" "test" "build" "revert")
+	local choice=$(gum filter --limit 1 --placeholder="commit type:" --match.foreground=$TEXT $cc)
 	local message=$(gum input --prompt="commit: " --placeholder="commit message...")
 
 	if [[ -z "$message" ]]; then
@@ -167,10 +169,36 @@ quick_commit(){
 	fi
 
 	gum confirm "add files and commit?" && \
-	git add . && git commit -m "$message" && \
+
+	git add . && git commit -m "$choice: $message" && \
 	REMOTE="$(git rev-parse --abbrev-ref --symbolic-full-name @{u})"
 	[[ ! "$(git ls-remote --exit-code --heads origin $(git rev-parse --abbrev-ref HEAD))" ]] && { echo "no remote branch set"; return; }
 	gum confirm "push to $REMOTE?" && gum spin --spinner dot --title "git push..." --show-output git push || echo "changes not pushed"
+}
+
+# amend commit
+amend_commit(){
+	[[ ! "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]] && { echo "not a git repo"; return; }
+
+	TEXT="#268bd2"
+	BORDER="#2aa198"
+	local unstaged_list="$(git status -s)"
+	if [[ -z "$unstaged_list" ]]; then
+		echo "no files to commit"
+		return
+	fi
+
+	echo '\n{{ Color "'${BORDER}'" "" " :"}} {{ Color "'${TEXT}'" "" "'$(git rev-parse --abbrev-ref HEAD)'" }}' | gum format -t template
+	gum style \
+		--border rounded \
+		--foreground "$TEXT" \
+		--border-foreground  "$BORDER" \
+		--margin "1 1" \
+		--padding "1 1" \
+		$unstaged_list
+
+	gum confirm "amend last commit?" && \
+	git add . && git commit --amend --no-edit
 }
 
 # json_diff
