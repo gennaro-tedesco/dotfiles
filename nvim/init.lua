@@ -596,21 +596,3 @@ lazy.setup(plugins, opts)
 for _, file in ipairs(vim.fn.readdir(config_path .. "/lua", [[v:val =~ '\.lua$']])) do
 	require(file:gsub("%.lua$", ""))
 end
-
-local function install()
-	local make_cmd = vim.system({ "make", "-C", vim.fs.normalize("~/dotfiles"), "nvim" }, { text = true }):wait()
-	if make_cmd.code ~= 0 then
-		vim.notify(
-			make_cmd.stderr,
-			vim.log.levels.ERROR,
-			{ ft = "bash", style = "compact", title = "install nvim config", id = "nvim" }
-		)
-		return
-	end
-	vim.notify(
-		make_cmd.stdout:gsub("\n[^\n]*$", ""),
-		vim.log.levels.INFO,
-		{ ft = "bash", style = "compact", title = "install nvim config", id = "nvim" }
-	)
-end
-nnoremap("<leader>i", install, { desc = "install nvim dotfiles" })
