@@ -4,6 +4,7 @@ prompt: enabled
 pager: delta -s
 aliases:
   mine: s -E -u @me
+  a: f -a
   b: f -b
   d: f -d
   l: f -l
