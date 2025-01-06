@@ -3,6 +3,7 @@ vim.opt_local.suffixesadd:prepend("init.lua")
 vim.opt_local.path:prepend(vim.fn.stdpath("config") .. "/lua")
 
 local function install()
+	vim.cmd.edit()
 	local make_cmd = vim.system({ "make", "-C", vim.fs.normalize("~/dotfiles"), "nvim" }, { text = true }):wait()
 	if make_cmd.code ~= 0 then
 		vim.notify(

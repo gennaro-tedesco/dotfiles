@@ -1,4 +1,5 @@
 local function install()
+	vim.cmd.edit()
 	local make_cmd = vim.system({ "make", "-C", vim.fs.normalize("~/dotfiles"), "zsh" }, { text = true }):wait()
 	if make_cmd.code ~= 0 then
 		vim.notify(
