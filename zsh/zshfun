@@ -152,6 +152,7 @@ conventional_commit(){
 	local cc=("feat" "fix" "docs" "config" "refactor" "test" "build" "revert")
 	local choice=$(printf "%s\n" "${cc[@]}" | fzf --prompt="type: ")
 	local text=$(gum input --prompt="${choice}: " --placeholder="commit message...")
+	if [[ -z "$text" ]]; then { echo "commit aborted"; return } fi
 	local message="${choice}: ${text}" && [[ -z "$choice" ]] && local message=$text
 
 	git commit -m $message && \
