@@ -18,7 +18,7 @@ local ts_exclude = {
 
 flash.setup({
 	label = { min_pattern_length = 3, style = "eol" },
-	highlight = { groups = { backdrop = "SignColumn" } },
+	highlight = { groups = { backdrop = "SignColumn", label = "@array" } },
 	modes = {
 		char = {
 			config = function(opts)
@@ -34,7 +34,7 @@ flash.setup({
 			},
 			multi_line = false,
 		},
-		search = { enabled = true, highlight = { groups = { label = "Todo" } } },
+		search = { enabled = true },
 		treesitter = {
 			filter = function(matches)
 				return vim.tbl_filter(function(m)

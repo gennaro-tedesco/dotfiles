@@ -8,10 +8,11 @@ local icons = require("utils").icons
 ---@module 'blink.cmp'
 ---@type blink.cmp.Config
 blink.setup({
+	snippets = { preset = "luasnip" },
 	sources = {
-		default = { "lsp", "path", "luasnip", "buffer" },
+		default = { "lsp", "path", "snippets", "buffer" },
 		providers = {
-			luasnip = {
+			snippets = {
 				min_keyword_length = 2,
 				score_offset = 4,
 			},
@@ -32,9 +33,14 @@ blink.setup({
 	completion = {
 		list = {
 			max_items = 10,
-			selection = function(ctx)
-				return ctx.mode == "cmdline" and "auto_insert" or "preselect"
-			end,
+			selection = {
+				preselect = function(ctx)
+					return ctx.mode ~= "cmdline"
+				end,
+				auto_insert = function(ctx)
+					return ctx.mode == "cmdline"
+				end,
+			},
 		},
 		menu = {
 			auto_show = true,
