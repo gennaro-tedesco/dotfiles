@@ -5,7 +5,9 @@ end
 
 local symbols_exclude = { "Variable", "String", "Number", "Text", "Boolean" }
 
-fzf.setup({
+local M = {}
+
+M.opts = {
 	hls = {
 		normal = "Normal",
 		preview_normal = "Normal",
@@ -188,39 +190,79 @@ fzf.setup({
 			width = 0.8,
 		},
 	},
-})
+}
 
---- initialisation of fzf commands
-vim.keymap.set({ "n" }, "<C-p>", function()
-	fzf.files()
-end, { desc = "fzf browse files" })
-vim.keymap.set({ "n" }, "<C-b>", function()
-	fzf.buffers()
-end, { desc = "fzf browse open buffers" })
-vim.keymap.set({ "n" }, "<F1>", function()
-	fzf.help_tags()
-end, { desc = "fzf help tags" })
-vim.keymap.set({ "n" }, '""', function()
-	fzf.registers()
-end, { desc = "fzf show registers content" })
-vim.keymap.set({ "n" }, "<leader>gB", function()
-	if require("utils").git_root() ~= nil then
-		fzf.git_branches()
-	else
-		vim.notify("not a git repository", vim.log.levels.WARN)
-	end
-end, { desc = "fzf git branches" })
-vim.keymap.set({ "n" }, "<C-m>", function()
-	vim.ui.input({ prompt = "search symbol: " }, function(sym)
-		if not sym or sym == "" then
-			return
-		end
-		fzf.lsp_workspace_symbols({ lsp_query = sym })
-	end)
-end, { desc = "fzf workspace symbols" })
-vim.keymap.set({ "n" }, "gm", function()
-	fzf.lsp_document_symbols()
-end, { desc = "fzf document symbols" })
+M.keys = {
+	{
+		"<C-p>",
+		function()
+			fzf.files()
+		end,
+		desc = "fzf browse files",
+	},
+	{
+		"<C-b>",
+		function()
+			fzf.buffers()
+		end,
+		desc = "fzf browse buffers",
+	},
+	{
+		"<F1>",
+		function()
+			fzf.help_tags()
+		end,
+		desc = "fzf help tags",
+	},
+	{
+		'""',
+		function()
+			fzf.registers()
+		end,
+		desc = "fzf show registers",
+	},
+	{
+		"<leader>gB",
+		function()
+			if require("utils").git_root() ~= nil then
+				fzf.git_branches()
+			else
+				vim.notify("not a git repository", vim.log.levels.WARN)
+			end
+		end,
+		desc = "fzf git branches",
+	},
+	{
+		"<C-m>",
+		function()
+			vim.ui.input({ prompt = "search symbol: " }, function(sym)
+				if not sym or sym == "" then
+					return
+				end
+				fzf.lsp_workspace_symbols({ lsp_query = sym })
+			end)
+		end,
+		desc = "fzf workspace symbols",
+	},
+	{
+		"gm",
+		function()
+			fzf.lsp_document_symbols()
+		end,
+		desc = "fzf document symbols",
+	},
+	{
+		"<C-f>",
+		ft = "qf",
+		function()
+			require("plugins.fzf_extras").filter_qf()
+		end,
+		desc = "fzf filter quickfix",
+	},
+}
+
+--- custom fzf commands
+vim.api.nvim_create_user_command("Env", require("plugins.fzf_extras").printenv, { desc = "fzf env list" })
 vim.api.nvim_create_user_command("Autocmd", function()
 	fzf.autocmds()
 end, { desc = "fzf autocmds list" })
@@ -231,60 +273,4 @@ vim.api.nvim_create_user_command("Highlights", function()
 	fzf.highlights()
 end, { desc = "fzf highlights list" })
 
---- custom fzf pickers
-local builtin = require("fzf-lua.previewer.builtin")
-local EnvPreviewer = builtin.base:extend()
-
-function EnvPreviewer:new(o, opts, fzf_win)
-	EnvPreviewer.super.new(self, o, opts, fzf_win)
-	setmetatable(self, EnvPreviewer)
-	return self
-end
-
-function EnvPreviewer:populate_preview_buf(entry_str)
-	local tmpbuf = self:get_tmp_buffer()
-	local entry = vim.system({ "printenv", entry_str }, { text = true }):wait().stdout:gsub("[\n\r]", " ")
-	vim.api.nvim_buf_set_lines(tmpbuf, 0, -1, false, {
-		" " .. entry,
-	})
-	self:set_preview_buf(tmpbuf)
-	self.win:update_scrollbar()
-end
-
-function EnvPreviewer:gen_winopts()
-	local new_winopts = {
-		wrap = true,
-		number = false,
-	}
-	return vim.tbl_extend("force", self.winopts, new_winopts)
-end
-
-local function printenv()
-	local cmd = "printenv | cut -d= -f1"
-	local opts = {
-		prompt = ":",
-		previewer = EnvPreviewer,
-		hls = { cursorline = "" },
-		winopts = {
-			title = " env variables ",
-			title_pos = "center",
-			height = 0.4,
-			preview = {
-				hidden = "nohidden",
-				horizontal = "down:5%",
-			},
-		},
-		actions = {
-			["default"] = function(selected)
-				vim.notify(
-					vim.system({ "printenv", selected[1] }, { text = true }):wait().stdout:gsub("[\n\r]", " "),
-					vim.log.levels.INFO,
-					{ ft = "bash" }
-				)
-			end,
-		},
-	}
-	fzf.fzf_exec(cmd, opts)
-end
-
-vim.api.nvim_create_user_command("Env", printenv, {})
+return M
