@@ -6,7 +6,7 @@ end
 local Rule = require("nvim-autopairs.rule")
 
 npairs.setup({
-	ignored_next_char = "[(%w%.]",
+	ignored_next_char = [=[[%w%%%'%[%"%.%`%$]]=],
 	fast_wrap = {
 		map = "<C-w>",
 		chars = { "{", "[", "(", '"', "'" },
