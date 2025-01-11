@@ -200,7 +200,7 @@ local plugins = {
 	{ "nvim-lua/plenary.nvim" },
 	{
 		"neovim/nvim-lspconfig",
-		event = "BufReadPre",
+		event = "BufReadPost",
 		config = function()
 			require("plugins.lsp")
 		end,
@@ -257,6 +257,7 @@ local plugins = {
 	},
 	{
 		"saghen/blink.cmp",
+		event = "InsertEnter",
 		version = "*",
 		dependencies = {
 			"windwp/nvim-autopairs",
@@ -288,6 +289,7 @@ local plugins = {
 	},
 	{
 		"cameron-wags/rainbow_csv.nvim",
+		event = "BufReadPost",
 		init = function()
 			vim.g.rainbow_hover_debounce_ms = 1000
 			vim.g.disable_rainbow_key_mappings = 1
@@ -321,8 +323,11 @@ local plugins = {
 		"ibhagwan/fzf-lua",
 		branch = "main",
 		lazy = true,
-		config = function()
-			require("plugins.fzf")
+		opts = function()
+			return require("plugins.fzf").opts
+		end,
+		keys = function()
+			return require("plugins.fzf").keys
 		end,
 	},
 	{
@@ -515,44 +520,46 @@ local plugins = {
 			vim.g.matchup_surround_enabled = 1
 		end,
 	},
-	{
-		"rmagatti/alternate-toggler",
-		cmd = "ToggleAlternate",
-		keys = { { "<leader>b", "<cmd>ToggleAlternate<CR>", desc = "toggle alternate boolean" } },
-		opts = {
-			alternates = {
-				["Right"] = "Left",
-				["right"] = "left",
-				["Up"] = "Down",
-				["up"] = "down",
-				["="] = "!=",
-			},
-		},
-	},
 
 	--- my plugins, they're awesome
 	{
 		"gennaro-tedesco/nvim-possession",
-		init = function()
-			vim.keymap.set("n", "<leader>sl", function()
-				require("nvim-possession").list()
-			end, { desc = "📌list sessions" })
-			vim.keymap.set("n", "<leader>sn", function()
-				require("nvim-possession").new()
-			end, { desc = "📌create new session" })
-			vim.keymap.set("n", "<leader>su", function()
-				require("nvim-possession").update()
-			end, { desc = "📌update current session" })
-			vim.keymap.set("n", "<leader>sd", function()
-				require("nvim-possession").delete()
-			end)
-		end,
+		keys = {
+			{
+				"<leader>sl",
+				function()
+					require("nvim-possession").list()
+				end,
+				desc = "📌list sessions",
+			},
+			{
+				"<leader>sn",
+				function()
+					require("nvim-possession").new()
+				end,
+				desc = "📌create new session",
+			},
+			{
+				"<leader>su",
+				function()
+					require("nvim-possession").update()
+				end,
+				desc = "📌update current session",
+			},
+			{
+				"<leader>sd",
+				function()
+					require("nvim-possession").delete()
+				end,
+			},
+		},
 		opts = {
 			autoload = false,
 			autosave = false,
 			autoswitch = { enable = true },
 			---@type possession.Hls
 			fzf_hls = { border = "Function", preview_border = "Function" },
+			fzf_winopts = { width = 0.4 },
 		},
 	},
 }
