@@ -63,7 +63,7 @@ export FZF_DEFAULT_OPTS="\
 	--padding=1 \
 	--preview-window=right:50%:wrap \
 	--bind shift-up:preview-up,shift-down:preview-down --bind ?:toggle-preview \
-	--color=bg+:#073642,gutter:-1,border:#268bd2,separator:#2aa198 \
+	--color=fg+:-1:regular,bg+:#073642,gutter:-1,border:#268bd2,separator:#2aa198,pointer:#cb4b16,hl:#268bd2,hl+:#268bd2 \
 	--pointer=▶ \
 	--marker=' '"
 export FZF_DEFAULT_COMMAND="fd -H -t f -E '.git/'"
@@ -122,3 +122,4 @@ bindkey -s 'cc' 'conventional_commit\n'
 bindkey -s 'cx' 'amend_commit\n'
 eval "$(navi widget zsh)"
 eval "$(zoxide init zsh)"
+eval "$(uv generate-shell-completion zsh)"
