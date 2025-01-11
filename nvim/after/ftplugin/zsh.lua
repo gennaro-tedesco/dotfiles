@@ -14,5 +14,6 @@ local function install()
 		vim.log.levels.INFO,
 		{ ft = "bash", style = "compact", title = "install zsh shell config", id = "zsh" }
 	)
+	vim.api.nvim_feedkeys("<C-o>", "n", true)
 end
 nnoremap("<leader>i", install, { desc = "install nvim dotfiles" })
