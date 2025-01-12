@@ -75,8 +75,9 @@ M.filter_qf = function()
 	local new_qf = {}
 	local opts = {
 		winopts = {
-			row = 1,
-			col = 1,
+			title = " filter quickfix ",
+			title_pos = "center",
+			row = -1,
 			height = 0.2,
 		},
 		fzf_opts = {
