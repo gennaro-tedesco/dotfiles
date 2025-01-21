@@ -5,121 +5,122 @@ end
 
 local icons = require("utils").icons
 
-local opts = { noremap = true, silent = true }
-
-local blink_ok, blink = pcall(require, "blink.cmp")
-if not blink_ok then
-	vim.notify("no completion module found", vim.log.levels.WARN)
-end
-
-local capabilities = blink.get_lsp_capabilities()
+-- local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 ---------------
 --- keymaps ---
 ---------------
-vim.keymap.set(
-	"n",
-	"d+",
-	vim.diagnostic.goto_next,
-	vim.tbl_extend("force", opts, { desc = "✨lsp go to next diagnostic" })
-)
-vim.keymap.set(
-	"n",
-	"d-",
-	vim.diagnostic.goto_prev,
-	vim.tbl_extend("force", opts, { desc = "✨lsp go to prev diagnostic" })
-)
-vim.keymap.set(
-	"n",
-	"d/",
-	vim.diagnostic.setloclist,
-	vim.tbl_extend("force", opts, { desc = "✨lsp send diagnostics to loc list" })
-)
-vim.keymap.set(
-	"n",
-	"de",
-	vim.diagnostic.open_float,
-	vim.tbl_extend("force", opts, { desc = "✨lsp show diagnostic in floating window" })
-)
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local bufnr = args.buf
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+		local opts = { noremap = true, silent = true }
 
-local on_attach = function(client, bufnr)
-	vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+		vim.keymap.set(
+			"n",
+			"d+",
+			vim.diagnostic.goto_next,
+			vim.tbl_extend("force", opts, { desc = "✨lsp go to next diagnostic" })
+		)
+		vim.keymap.set(
+			"n",
+			"d-",
+			vim.diagnostic.goto_prev,
+			vim.tbl_extend("force", opts, { desc = "✨lsp go to prev diagnostic" })
+		)
+		vim.keymap.set(
+			"n",
+			"d/",
+			vim.diagnostic.setloclist,
+			vim.tbl_extend("force", opts, { desc = "✨lsp send diagnostics to loc list" })
+		)
+		vim.keymap.set(
+			"n",
+			"de",
+			vim.diagnostic.open_float,
+			vim.tbl_extend("force", opts, { desc = "✨lsp show diagnostic in floating window" })
+		)
 
-	--- toggle diagnostics
-	vim.g.diagnostics_visible = true
-	local function toggle_diagnostics()
-		if vim.g.diagnostics_visible then
-			vim.g.diagnostics_visible = false
-			vim.diagnostic.enable(false)
-		else
-			vim.g.diagnostics_visible = true
-			vim.diagnostic.enable(true)
-		end
-	end
-
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", bufopts, { desc = "✨lsp hover for docs" }))
-	vim.keymap.set(
-		"n",
-		"gD",
-		vim.lsp.buf.declaration,
-		vim.tbl_extend("force", bufopts, { desc = "✨lsp go to declaration" })
-	)
-	vim.keymap.set(
-		"n",
-		"gd",
-		vim.lsp.buf.definition,
-		vim.tbl_extend("force", bufopts, { desc = "✨lsp go to definition" })
-	)
-	vim.keymap.set(
-		"n",
-		"gt",
-		vim.lsp.buf.type_definition,
-		vim.tbl_extend("force", bufopts, { desc = "✨lsp go to type definition" })
-	)
-	vim.keymap.set(
-		"n",
-		"gi",
-		vim.lsp.buf.implementation,
-		vim.tbl_extend("force", bufopts, { desc = "✨lsp go to implementation" })
-	)
-	vim.keymap.set("n", "rn", function()
-		vim.ui.input({ prompt = "rename: ", default = vim.fn.expand("<cword>") }, function(input)
-			if input == "" or input == nil then
-				return
+		--- toggle diagnostics
+		vim.g.diagnostics_visible = true
+		local function toggle_diagnostics()
+			if vim.g.diagnostics_visible then
+				vim.g.diagnostics_visible = false
+				vim.diagnostic.enable(false)
 			else
-				vim.lsp.buf.rename(input)
+				vim.g.diagnostics_visible = true
+				vim.diagnostic.enable(true)
 			end
-		end)
-	end, { desc = "✨lsp rename symbol" })
-	vim.keymap.set(
-		"n",
-		"gr",
-		vim.lsp.buf.references,
-		vim.tbl_extend("force", bufopts, { desc = "✨lsp go to references" })
-	)
-	vim.keymap.set(
-		"n",
-		"<leader>l",
-		toggle_diagnostics,
-		vim.tbl_extend("force", bufopts, { desc = "✨lsp toggle diagnostics" })
-	)
-	vim.keymap.set({ "n", "v" }, "<leader>f", function()
-		require("conform").format({ async = true, lsp_fallback = true })
-	end, vim.tbl_extend("force", bufopts, { desc = "✨lsp format" }))
-	vim.keymap.set("n", "<leader>dh", function()
-		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ nil }))
-	end, vim.tbl_extend("force", bufopts, { desc = "✨lsp toggle inlay hints" }))
-	if client.supports_method(vim.lsp.protocol.Methods.textDocument_codeAction) then
-		vim.keymap.set("n", "<leader>a", function()
-			require("fzf-lua").lsp_code_actions()
-		end, { desc = "✨lsp code actions" })
-	end
-end
+		end
 
-local lsp_flags = {
-	debounce_text_changes = 150,
-}
+		local bufopts = { noremap = true, silent = true, buffer = bufnr }
+		vim.keymap.set(
+			"n",
+			"K",
+			vim.lsp.buf.hover,
+			vim.tbl_extend("force", bufopts, { desc = "✨lsp hover for docs" })
+		)
+		vim.keymap.set(
+			"n",
+			"gD",
+			vim.lsp.buf.declaration,
+			vim.tbl_extend("force", bufopts, { desc = "✨lsp go to declaration" })
+		)
+		vim.keymap.set(
+			"n",
+			"gd",
+			vim.lsp.buf.definition,
+			vim.tbl_extend("force", bufopts, { desc = "✨lsp go to definition" })
+		)
+		vim.keymap.set(
+			"n",
+			"gt",
+			vim.lsp.buf.type_definition,
+			vim.tbl_extend("force", bufopts, { desc = "✨lsp go to type definition" })
+		)
+		vim.keymap.set(
+			"n",
+			"gi",
+			vim.lsp.buf.implementation,
+			vim.tbl_extend("force", bufopts, { desc = "✨lsp go to implementation" })
+		)
+		vim.keymap.set("n", "rn", function()
+			vim.ui.input({ prompt = "rename: ", default = vim.fn.expand("<cword>") }, function(input)
+				if input == "" or input == nil then
+					return
+				else
+					vim.lsp.buf.rename(input)
+				end
+			end)
+		end, { desc = "✨lsp rename symbol" })
+		vim.keymap.set(
+			"n",
+			"gr",
+			vim.lsp.buf.references,
+			vim.tbl_extend("force", bufopts, { desc = "✨lsp go to references" })
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>l",
+			toggle_diagnostics,
+			vim.tbl_extend("force", bufopts, { desc = "✨lsp toggle diagnostics" })
+		)
+		vim.keymap.set({ "n", "v" }, "<leader>f", function()
+			require("conform").format({ async = true, lsp_fallback = true })
+		end, vim.tbl_extend("force", bufopts, { desc = "✨lsp format" }))
+		vim.keymap.set("n", "<leader>dh", function()
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ nil }))
+		end, vim.tbl_extend("force", bufopts, { desc = "✨lsp toggle inlay hints" }))
+		if client.supports_method(vim.lsp.protocol.Methods.textDocument_codeAction) then
+			vim.keymap.set("n", "<leader>a", function()
+				require("fzf-lua").lsp_code_actions()
+			end, { desc = "✨lsp code actions" })
+		end
+	end,
+})
+
+local lsp_flags = { debounce_text_changes = 150 }
 vim.lsp.set_log_level("debug")
 
 --------------------------------------------------------
@@ -127,15 +128,13 @@ vim.lsp.set_log_level("debug")
 --------------------------------------------------------
 
 ---bashls
-lsp.bashls.setup({ filetypes = { "sh" }, on_attach = on_attach })
+lsp.bashls.setup({ filetypes = { "sh" } })
 
 --- dockerfile ls
-lsp.dockerls.setup({ on_attach = on_attach })
+lsp.dockerls.setup({})
 
 ---gopls
 lsp.gopls.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
 	lsp_flags = lsp_flags,
 	settings = {
 		gopls = {
@@ -158,16 +157,10 @@ lsp.gopls.setup({
 	},
 })
 
-lsp.marksman.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	lsp_flags = lsp_flags,
-})
+lsp.marksman.setup({ lsp_flags = lsp_flags })
 
 ---sumneko_lua
 lsp.lua_ls.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
 	lsp_flags = lsp_flags,
 	settings = {
 		Lua = {
@@ -189,8 +182,6 @@ lsp.lua_ls.setup({
 lsp.cssls.setup({})
 
 lsp.html.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
 	settings = {
 		html = {
 			format = {
@@ -212,16 +203,11 @@ lsp.basedpyright.setup({
 			},
 		},
 	},
-	capabilities = capabilities,
-	on_attach = on_attach,
 	lsp_flags = lsp_flags,
 })
 
 ---jsonls
-lsp.jsonls.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+lsp.jsonls.setup({})
 
 ---rust_analyzer
 lsp.rust_analyzer.setup({
@@ -232,28 +218,23 @@ lsp.rust_analyzer.setup({
 			},
 		},
 	},
-	capabilities = capabilities,
-	on_attach = on_attach,
 	lsp_flags = lsp_flags,
 })
 
 ---texlab
-lsp.texlab.setup({ on_attach = on_attach })
+lsp.texlab.setup({})
 
 ---taplo toml
-lsp.taplo.setup({ on_attach = on_attach, capabilities = capabilities })
+lsp.taplo.setup({})
 
 ---typescript
-lsp.ts_ls.setup({ on_attach = on_attach, capabilities = capabilities })
+lsp.ts_ls.setup({})
 
 ---vimls
-lsp.vimls.setup({ on_attach = on_attach })
+lsp.vimls.setup({})
 
 ---yamlls
-lsp.yamlls.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+lsp.yamlls.setup({})
 
 -------------------------------------------
 --- diagnostics: linting and formatting ---

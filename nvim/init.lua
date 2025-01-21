@@ -102,6 +102,7 @@ local plugins = {
 	},
 	{
 		url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
+		event = "BufReadPost",
 		config = function()
 			local rainbow_delimiters = require("rainbow-delimiters")
 			vim.g.rainbow_delimiters = {
@@ -257,7 +258,7 @@ local plugins = {
 	},
 	{
 		"saghen/blink.cmp",
-		event = "InsertEnter",
+		event = { "InsertEnter" },
 		version = "*",
 		dependencies = {
 			"windwp/nvim-autopairs",

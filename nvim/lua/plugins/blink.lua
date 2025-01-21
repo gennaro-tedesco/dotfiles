@@ -51,6 +51,11 @@ blink.setup({
 					{ "source_name" },
 				},
 				components = {
+					kind_icon = {
+						text = function(ctx)
+							return vim.api.nvim_get_mode().mode == "c" and "" or ctx.kind_icon
+						end,
+					},
 					source_name = {
 						width = { max = 30 },
 						text = function(ctx)

@@ -261,16 +261,9 @@ M.keys = {
 	},
 }
 
---- custom fzf commands
-vim.api.nvim_create_user_command("Env", require("plugins.fzf_extras").printenv, { desc = "fzf env list" })
-vim.api.nvim_create_user_command("Autocmd", function()
-	fzf.autocmds()
-end, { desc = "fzf autocmds list" })
-vim.api.nvim_create_user_command("Maps", function()
-	fzf.keymaps()
-end, { desc = "fzf maps list" })
-vim.api.nvim_create_user_command("Highlights", function()
-	fzf.highlights()
-end, { desc = "fzf highlights list" })
+--- registering custom providers
+require("fzf-lua").env = function()
+	require("plugins.fzf_extras").printenv()
+end
 
 return M
