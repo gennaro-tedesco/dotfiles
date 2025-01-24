@@ -14,11 +14,19 @@ fi
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' menu no
 zstyle ':completion::complete:make::' tag-order targets variables
-zstyle ':fzf-tab:*' switch-group ',' '.'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --tree --level=2 --color=always $realpath'
+zstyle ':fzf-tab:complete:kubectl:*' fzf-preview 'kubectl config view --minify -o jsonpath="{..context}" | jq -C'
+zstyle ':fzf-tab:*' switch-group '<' '>'
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle :zsh-no-ps2: accept-line '.accept-line'
 autoload -Uz compinit
-compinit
+if [ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
 unsetopt autocd
 unalias -m '*'
 
@@ -27,7 +35,6 @@ plug "desyncr/auto-ls"
 export VI_MODE_ESC_INSERT="jj" && plug "zap-zsh/vim"
 plug "kutsan/zsh-system-clipboard"
 plug "Aloxaf/fzf-tab"
-plug "changyuheng/zsh-interactive-cd"
 plug "zsh-users/zsh-autosuggestions"
 plug "zdharma-continuum/fast-syntax-highlighting"
 plug "hlissner/zsh-autopair"
