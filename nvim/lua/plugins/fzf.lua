@@ -31,7 +31,7 @@ M.opts = {
 	},
 	files = {
 		formatter = "path.filename_first",
-		git_icons = true,
+		git_icons = false,
 		prompt = ":",
 		no_header = true,
 		cwd_header = false,
@@ -40,6 +40,7 @@ M.opts = {
 		winopts = {
 			title = " files 📑 ",
 			title_pos = "center",
+			title_flags = false,
 		},
 		actions = {
 			["ctrl-d"] = {

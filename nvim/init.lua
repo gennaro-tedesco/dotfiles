@@ -258,7 +258,7 @@ local plugins = {
 	},
 	{
 		"saghen/blink.cmp",
-		event = { "InsertEnter" },
+		event = { "InsertEnter", "CmdlineEnter" },
 		version = "*",
 		dependencies = {
 			"windwp/nvim-autopairs",
