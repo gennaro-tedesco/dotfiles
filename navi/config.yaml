@@ -1,14 +1,15 @@
 style:
   tag:
-    color: cyan
+    color: dark_yellow
     width_percentage: 10
-    min_width: 10
+    min_width: 5
   comment:
     color: blue
     width_percentage: 32
     min_width: 35
   snippet:
     color: dark_cyan
+    min_width: 50
 finder:
   command: fzf
 cheats:

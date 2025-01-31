@@ -29,7 +29,6 @@ if not ok then
 	print("lazy not installed")
 	return
 end
-
 --------------------
 --- plugins list ---
 --------------------
@@ -552,16 +551,20 @@ local plugins = {
 				function()
 					require("nvim-possession").delete()
 				end,
+				desc = "📌delete selected session",
 			},
 		},
-		opts = {
-			autoload = false,
-			autosave = false,
-			autoswitch = { enable = true },
-			---@type possession.Hls
-			fzf_hls = { border = "Function", preview_border = "Function" },
-			fzf_winopts = { width = 0.4 },
-		},
+		config = function()
+			require("nvim-possession").setup({
+				autoload = false,
+				autosave = false,
+				autoswitch = { enable = true },
+				---@type possession.Hls
+				fzf_hls = { border = "Function", preview_border = "Function" },
+				fzf_winopts = { width = 0.4 },
+				sort = require("nvim-possession.sorting").time_sort,
+			})
+		end,
 	},
 }
 

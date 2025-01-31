@@ -46,16 +46,14 @@ blink.setup({
 			auto_show = true,
 			border = "rounded",
 			draw = {
-				columns = {
-					{ "kind_icon", "label", gap = 1 },
-					{ "source_name" },
-				},
+				columns = function(ctx)
+					if ctx.mode == "cmdline" then
+						return { { "label" } }
+					else
+						return { { "kind_icon", "label", gap = 1 }, { "source_name" } }
+					end
+				end,
 				components = {
-					kind_icon = {
-						text = function(ctx)
-							return vim.api.nvim_get_mode().mode == "c" and "" or ctx.kind_icon
-						end,
-					},
 					source_name = {
 						width = { max = 30 },
 						text = function(ctx)
@@ -77,9 +75,6 @@ blink.setup({
 			},
 		},
 		accept = { auto_brackets = { enabled = true } },
-	},
-	fuzzy = {
-		use_typo_resistance = false,
 	},
 	keymap = {
 		["<CR>"] = { "accept", "fallback" },

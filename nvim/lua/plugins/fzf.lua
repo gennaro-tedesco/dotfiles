@@ -63,6 +63,17 @@ M.opts = {
 			title = " buffers 📝 ",
 			title_pos = "center",
 		},
+		actions = {
+			["ctrl-d"] = {
+				fn = function(...)
+					fzf.actions.file_vsplit(...)
+					vim.cmd("windo diffthis")
+					local switch = vim.api.nvim_replace_termcodes("<C-w>h", true, false, true)
+					vim.api.nvim_feedkeys(switch, "t", false)
+				end,
+				desc = "diff-file",
+			},
+		},
 	},
 	helptags = {
 		prompt = ":",
