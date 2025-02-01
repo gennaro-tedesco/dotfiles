@@ -109,4 +109,9 @@ blink.setup({
 			winhighlight = "Normal:Normal,FloatBorder:@comment.todo,CursorLine:CursorLine,Search:None",
 		},
 	},
+	fuzzy = {
+		max_typos = function()
+			return 0
+		end,
+	},
 })

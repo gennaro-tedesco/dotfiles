@@ -19,6 +19,29 @@ local function on_attach(bufnr)
 		end
 	end, opts("edit_cd"))
 
+	vim.keymap.set("n", "/", function()
+		local fzf = require("fzf-lua")
+		fzf.fzf_exec("fd -H -t f -E '.git/'", {
+			prompt = ":",
+			fzf_opts = { ["--padding"] = "5%,5%,15%,5%" },
+			winopts = {
+				height = 0.15,
+				width = vim.fn.winwidth(0) - 2,
+				row = 1,
+				col = 1,
+				title = " search tree ",
+			},
+			actions = {
+				["default"] = {
+					fn = function(selected)
+						api.tree.find_file(selected[1])
+					end,
+					desc = "fuzzy find in tree",
+				},
+			},
+		})
+	end, opts("fuzzy find in tree"))
+
 	vim.keymap.set("n", "q", api.tree.close, opts("Close"))
 	vim.keymap.set("n", "<Esc>", api.tree.close, opts("Close"))
 	vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
@@ -38,6 +61,7 @@ local function on_attach(bufnr)
 	vim.keymap.set("n", "yp", api.fs.copy.relative_path, opts("Copy Relative Path"))
 	vim.keymap.set("n", "mm", api.marks.toggle, opts("Bookmarfk file"))
 	vim.keymap.set("n", "bm", api.marks.bulk.move, opts("Move bookmarked files"))
+	vim.keymap.set("n", "g?", api.tree.toggle_help, opts("Toggle help"))
 end
 
 nvim_tree.setup({
