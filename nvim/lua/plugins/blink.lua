@@ -34,12 +34,8 @@ blink.setup({
 		list = {
 			max_items = 10,
 			selection = {
-				preselect = function(ctx)
-					return ctx.mode ~= "cmdline"
-				end,
-				auto_insert = function(ctx)
-					return ctx.mode == "cmdline"
-				end,
+				preselect = false,
+				auto_insert = true,
 			},
 		},
 		menu = {

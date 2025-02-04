@@ -264,7 +264,7 @@ M.keys = {
 		desc = "fzf document symbols",
 	},
 	{
-		"<C-f>",
+		"/",
 		ft = "qf",
 		function()
 			require("plugins.fzf_extras").filter_qf()

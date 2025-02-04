@@ -25,6 +25,7 @@ local function on_attach(bufnr)
 			prompt = ":",
 			fzf_opts = { ["--padding"] = "5%,5%,15%,5%" },
 			winopts = {
+				border = { "", "-", "", "", "", "", "", "" },
 				height = 0.15,
 				width = vim.fn.winwidth(0) - 2,
 				row = 1,

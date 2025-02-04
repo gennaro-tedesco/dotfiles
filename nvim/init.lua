@@ -87,7 +87,7 @@ local plugins = {
 		event = "VeryLazy",
 		keys = {
 			{
-				"<leader>t",
+				"<leader>T",
 				mode = { "n", "o", "x" },
 				function()
 					require("flash").treesitter()
@@ -438,7 +438,7 @@ local plugins = {
 				mode = "n",
 			},
 			{
-				"<F2>",
+				"<leader>t",
 				function()
 					Snacks.terminal.toggle()
 				end,
@@ -599,6 +599,13 @@ local opts = {
 	},
 	dev = {
 		path = "~",
+	},
+	performance = {
+		rtp = {
+			disabled_plugins = {
+				"osc52",
+			},
+		},
 	},
 }
 

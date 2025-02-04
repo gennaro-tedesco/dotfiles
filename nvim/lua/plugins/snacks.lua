@@ -79,10 +79,8 @@ snacks.setup({
 			},
 		},
 		win = {
-			position = "float",
-			height = 0.85,
-			width = 0.9,
-			border = "rounded",
+			position = "right",
+			width = 0.2,
 		},
 	},
 	dashboard = {
