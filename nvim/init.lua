@@ -64,15 +64,6 @@ local plugins = {
 		end,
 	},
 	{
-		"folke/noice.nvim",
-		dependencies = {
-			{ "MunifTanjim/nui.nvim" },
-		},
-		config = function()
-			require("plugins.noice")
-		end,
-	},
-	{
 		"kevinhwang91/nvim-bqf",
 		ft = "qf",
 		config = function()
@@ -440,10 +431,12 @@ local plugins = {
 			{
 				"<leader>t",
 				function()
-					Snacks.terminal.toggle()
+					if vim.bo.filetype ~= "fzf" then
+						Snacks.terminal.toggle()
+					end
 				end,
 				desc = "toggle snacks terminal",
-				mode = { "n", "t" },
+				mode = { "n" },
 			},
 			{
 				"]]",
@@ -606,6 +599,10 @@ local opts = {
 				"osc52",
 			},
 		},
+	},
+	profiling = {
+		loader = true,
+		require = true,
 	},
 }
 

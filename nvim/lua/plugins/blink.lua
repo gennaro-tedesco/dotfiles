@@ -32,7 +32,7 @@ blink.setup({
 	},
 	completion = {
 		list = {
-			max_items = 10,
+			max_items = 5,
 			selection = {
 				preselect = false,
 				auto_insert = true,
@@ -79,7 +79,9 @@ blink.setup({
 		["<C-k>"] = { "scroll_documentation_up", "fallback" },
 		["<C-j>"] = { "scroll_documentation_down", "fallback" },
 		["<C-e>"] = { "cancel" },
-		cmdline = {
+	},
+	cmdline = {
+		keymap = {
 			["<cr>"] = {
 				function(cmp)
 					return cmp.accept({
@@ -106,6 +108,7 @@ blink.setup({
 		},
 	},
 	fuzzy = {
+		sorts = { "exact", "score", "sort_text" },
 		max_typos = function()
 			return 0
 		end,

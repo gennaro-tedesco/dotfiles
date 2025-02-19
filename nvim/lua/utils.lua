@@ -84,7 +84,9 @@ end
 
 M.count_matches = function()
 	local cur_word = vim.fn.expandcmd("<cword>")
+	vim.opt.cmdheight = 1
 	local count = vim.api.nvim_exec2("%s/" .. cur_word .. "//ng", { output = true }).output
+	vim.opt.cmdheight = 0
 	snacks.notifier.notify(" " .. count, "info", { title = "search: " .. cur_word, style = "compact", id = "search" })
 end
 
@@ -133,7 +135,7 @@ M.toggle_qf = function()
 	end
 
 	if next(vim.fn.getqflist()) == nil then
-		print("qf list empty")
+		vim.print("qf list empty")
 		return
 	end
 	vim.cmd("copen")
@@ -148,7 +150,7 @@ M.toggle_ll = function()
 	end
 
 	if next(vim.fn.getloclist(0)) == nil then
-		print("loc list empty")
+		vim.print("loc list empty")
 		return
 	end
 	vim.cmd("lopen")

@@ -122,7 +122,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 local lsp_flags = { debounce_text_changes = 150 }
 vim.lsp.set_log_level("debug")
-
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+	opts = opts or {}
+	opts.border = opts.border or "rounded"
+	return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
 --------------------------------------------------------
 --- configuration of the individual language servers ---
 --------------------------------------------------------
@@ -226,6 +231,9 @@ lsp.texlab.setup({})
 
 ---taplo toml
 lsp.taplo.setup({})
+
+---terraform
+lsp.terraformls.setup({})
 
 ---typescript
 lsp.ts_ls.setup({})

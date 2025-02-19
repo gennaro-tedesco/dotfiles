@@ -3,11 +3,6 @@ if not line_ok then
 	return
 end
 
-local noice_ok, noice = pcall(require, "noice")
-if not noice_ok then
-	return
-end
-
 local icons = require("utils").icons
 local clients_lsp = require("utils").clients_lsp
 
@@ -48,11 +43,6 @@ lualine.setup({
 				on_click = function()
 					require("lazy").home()
 				end,
-			},
-			{
-				noice.api.status.mode.get,
-				cond = noice.api.status.mode.has,
-				color = { fg = "#2aa198" },
 			},
 			{ clients_lsp },
 			{

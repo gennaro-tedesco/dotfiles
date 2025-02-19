@@ -35,6 +35,9 @@ local function on_attach(bufnr)
 			actions = {
 				["default"] = {
 					fn = function(selected)
+						if selected[1]:find("^%.") ~= nil then
+							api.tree.toggle_hidden_filter()
+						end
 						api.tree.find_file(selected[1])
 					end,
 					desc = "fuzzy find in tree",

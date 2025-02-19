@@ -45,7 +45,7 @@ vim.opt.grepprg = "rg --vimgrep " .. git_root .. " -e"
 vim.opt.grepformat = "%f:%l:%c:%m"
 
 --- autocompletion options
-vim.o.shortmess = vim.o.shortmess .. "c"
+vim.o.shortmess = vim.o.shortmess .. "csW"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.wildmenu = true
 vim.opt.wildmode = { "longest", "full", "list" }
@@ -153,6 +153,22 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		end
 		vim.cmd.cd(data.file)
 		require("nvim-tree.api").tree.open()
+	end,
+})
+
+local recording_cmd = vim.api.nvim_create_augroup("RecordingCmd", { clear = true })
+
+vim.api.nvim_create_autocmd("RecordingEnter", {
+	group = recording_cmd,
+	callback = function(ctx)
+		vim.opt.cmdheight = 1
+	end,
+})
+
+vim.api.nvim_create_autocmd("RecordingLeave", {
+	group = recording_cmd,
+	callback = function()
+		vim.opt.cmdheight = 0
 	end,
 })
 
