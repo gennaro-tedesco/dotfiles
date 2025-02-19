@@ -1,3 +1,4 @@
 nnoremap("<leader>i", function()
-	Snacks.terminal.open("make zsh")
+	---@module 'snacks'
+	Snacks.terminal.open("make -C " .. vim.fs.normalize("~/dotfiles") .. " zsh")
 end, { desc = "install zsh" })
