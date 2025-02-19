@@ -4,6 +4,7 @@ GLOWCONFIG_DIR=${HOME}/.config/glowconfig
 NAVICONFIG_DIR=${HOME}/.config/navi
 MACCHINACONFIG_DIR=${HOME}/.config/macchina
 BATCONFIG_DIR=${HOME}/.config/bat
+WEZTERMCONFIG_DIR=${HOME}/.config/wezterm
 
 .PHONY: *
 help:
@@ -32,6 +33,10 @@ zsh:
 	mkdir ${BATCONFIG_DIR}
 	cp -f zsh/batconfig ${BATCONFIG_DIR}/config
 	exec zsh
+
+wezterm:
+	mkdir -p ${WEZTERMCONFIG_DIR}
+	cp -r wezterm/. ${WEZTERMCONFIG_DIR}
 
 vifm:
 	rm -rf ${VIFILEMANAGERCONFIG_DIR}
