@@ -10,6 +10,7 @@ config = {
 	automatically_reload_config = true,
 	audible_bell = "Disabled",
 	scrollback_lines = 10000,
+	enable_scroll_bar = true,
 	cursor_blink_rate = 400,
 	disable_default_key_bindings = true,
 
@@ -18,6 +19,7 @@ config = {
 	font = wezterm.font("Fira Code"),
 	color_scheme = colour_scheme,
 	colors = {
+		scrollbar_thumb = scheme_def.ansi[1],
 		tab_bar = {
 			active_tab = {
 				bg_color = scheme_def.background,
@@ -36,6 +38,8 @@ config = {
 				fg_color = scheme_def.selection_fg,
 			},
 		},
+		selection_bg = "#214283",
+		copy_mode_inactive_highlight_bg = { Color = scheme_def.ansi[7] },
 	},
 
 	--- windows and tabs
@@ -51,6 +55,7 @@ config = {
 		font = wezterm.font("Museo"),
 		font_size = 24,
 		active_titlebar_bg = scheme_def.ansi[1],
+		inactive_titlebar_bg = scheme_def.ansi[1],
 	},
 
 	--- keymaps
@@ -58,12 +63,12 @@ config = {
 		{
 			key = "t",
 			mods = "CMD",
-			action = wezterm.action.SpawnCommandInNewTab({ cwd = wezterm.home_dir }),
+			action = act.SpawnCommandInNewTab({ cwd = wezterm.home_dir }),
 		},
 		{
 			key = "r",
 			mods = "CMD|SHIFT",
-			action = wezterm.action.ReloadConfiguration,
+			action = act.ReloadConfiguration,
 		},
 		{
 			key = "v",
@@ -73,12 +78,17 @@ config = {
 		{
 			key = "l",
 			mods = "CTRL|SHIFT",
-			action = wezterm.action.ShowDebugOverlay,
+			action = act.ShowDebugOverlay,
 		},
 		{
 			key = "q",
 			mods = "CMD",
-			action = wezterm.action.CloseCurrentPane({ confirm = false }),
+			action = act.CloseCurrentPane({ confirm = false }),
+		},
+		{
+			key = "f",
+			mods = "CTRL",
+			action = act.Search({ Regex = "" }),
 		},
 	},
 
@@ -95,7 +105,18 @@ config = {
 			action = act.ScrollByLine(10),
 			alt_screen = false,
 		},
+		{
+			event = { Up = { streak = 1, button = "Left" } },
+			mods = "NONE",
+			action = act.CompleteSelection("ClipboardAndPrimarySelection"),
+		},
+		{
+			event = { Up = { streak = 1, button = "Left" } },
+			mods = "CTRL",
+			action = act.OpenLinkAtMouseCursor,
+		},
 	},
+	selection_word_boundary = "{}[]()\"'`.,;:=",
 }
 
 for i = 1, 8 do
