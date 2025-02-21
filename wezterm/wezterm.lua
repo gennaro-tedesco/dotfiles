@@ -116,7 +116,7 @@ config = {
 			action = act.OpenLinkAtMouseCursor,
 		},
 	},
-	selection_word_boundary = "{}[]()\"'`.,;:=",
+	selection_word_boundary = " {}[]()\"'`=",
 }
 
 for i = 1, 8 do
