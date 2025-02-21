@@ -4,5 +4,9 @@ vim.opt_local.path:prepend(vim.fn.stdpath("config") .. "/lua")
 
 nnoremap("<leader>i", function()
 	---@module 'snacks'
-	Snacks.terminal.open("make -C " .. vim.fs.normalize("~/dotfiles") .. " nvim")
+	if vim.api.nvim_buf_get_name(0):match("wezterm") ~= nil then
+		Snacks.terminal.open("make -C " .. vim.fs.normalize("~/dotfiles") .. " wezterm")
+	else
+		Snacks.terminal.open("make -C " .. vim.fs.normalize("~/dotfiles") .. " nvim")
+	end
 end, { desc = "install nvim dotfiles" })

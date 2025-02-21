@@ -11,7 +11,7 @@ vim.opt.relativenumber = true
 vim.opt.ruler = true
 vim.opt.cursorline = true
 vim.opt.laststatus = 3
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.scrolloff = 8
@@ -153,22 +153,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		end
 		vim.cmd.cd(data.file)
 		require("nvim-tree.api").tree.open()
-	end,
-})
-
-local recording_cmd = vim.api.nvim_create_augroup("RecordingCmd", { clear = true })
-
-vim.api.nvim_create_autocmd("RecordingEnter", {
-	group = recording_cmd,
-	callback = function(ctx)
-		vim.opt.cmdheight = 1
-	end,
-})
-
-vim.api.nvim_create_autocmd("RecordingLeave", {
-	group = recording_cmd,
-	callback = function()
-		vim.opt.cmdheight = 0
 	end,
 })
 

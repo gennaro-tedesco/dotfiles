@@ -84,9 +84,7 @@ end
 
 M.count_matches = function()
 	local cur_word = vim.fn.expandcmd("<cword>")
-	vim.opt.cmdheight = 1
 	local count = vim.api.nvim_exec2("%s/" .. cur_word .. "//ng", { output = true }).output
-	vim.opt.cmdheight = 0
 	snacks.notifier.notify(" " .. count, "info", { title = "search: " .. cur_word, style = "compact", id = "search" })
 end
 
