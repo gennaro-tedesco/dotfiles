@@ -17,6 +17,13 @@ local ts_exclude = {
 }
 
 flash.setup({
+	search = {
+		exclude = {
+			"blink-cmp-menu",
+			"blink-cmp-documentation",
+			"blink-cmp-signature",
+		},
+	},
 	label = { min_pattern_length = 3, style = "eol" },
 	highlight = { groups = { backdrop = "SignColumn", label = "@array" } },
 	modes = {
@@ -34,7 +41,9 @@ flash.setup({
 			},
 			multi_line = false,
 		},
-		search = { enabled = true },
+		search = {
+			enabled = true,
+		},
 		treesitter = {
 			filter = function(matches)
 				return vim.tbl_filter(function(m)
