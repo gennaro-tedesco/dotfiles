@@ -133,6 +133,8 @@ view() {
 			vd "$@";;
 		*.pdf)
 			zathura $1;;
+		*.jpg|*.jpeg|*.png)
+			wezterm imgcat $1;;
 		*)
 			if [[ -f $1 ]]; then
 				bat --style='header,grid' $1

@@ -37,6 +37,7 @@ config = {
 				bg_color = scheme_def.selection_bg,
 				fg_color = scheme_def.selection_fg,
 			},
+			inactive_tab_edge = scheme_def.ansi[1],
 		},
 		selection_bg = "#214283",
 		copy_mode_inactive_highlight_bg = { Color = scheme_def.ansi[7] },
@@ -92,6 +93,7 @@ config = {
 		},
 	},
 
+	--- mouse configuration
 	mouse_bindings = {
 		{
 			event = { Down = { streak = 1, button = { WheelUp = 1 } } },
@@ -142,6 +144,11 @@ wezterm.on("format-tab-title", function(tab)
 	end
 
 	return wezterm.format({ { Text = title } })
+end)
+
+wezterm.on("new-tab-button-click", function(window, pane)
+	window:perform_action(wezterm.action.SpawnCommandInNewTab({ cwd = wezterm.home_dir }), pane)
+	return false
 end)
 
 return config
