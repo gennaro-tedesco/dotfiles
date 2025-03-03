@@ -1,0 +1,55 @@
+[manager]
+prepend_keymap = [
+
+  #smart enter
+  { on = "l", run = "plugin smart-enter" },
+  { on = "<Right>", run = "plugin smart-enter" },
+
+  { on = "!", run = 'shell "$SHELL" --block' },
+  { on = "<Esc>", run = "close" },
+  { on = "u", run = "undo" },
+  { on = "U", run = "redo" },
+  { on = "i", run = "rename" },
+  { on = "<C-p>", run = "plugin fzf" },
+
+  # copying paths
+  { on = [
+    "y",
+    "p",
+  ], run = "copy path" },
+  { on = [
+    "y",
+    "f",
+  ], run = "copy filename" },
+  { on = [
+    "y",
+    "y",
+  ], run = "yank" },
+  { on = [
+    "y",
+    "u",
+  ], run = "unyank" },
+
+  # bookmarks
+  { on = [
+    "g",
+    "h",
+  ], run = "cd $HOME" },
+  { on = [
+    "g",
+    "c",
+  ], run = "cd $HOME/.config" },
+  { on = [
+    "g",
+    "d",
+  ], run = "cd $HOME/dotfiles/" },
+
+  # cd back to root
+  { on = [
+    "g",
+    "r",
+  ], run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"' },
+]
+
+[input]
+prepend_keymap = [{ on = "<Esc>", run = "close" }]

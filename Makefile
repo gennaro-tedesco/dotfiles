@@ -1,4 +1,5 @@
 NEOVIMCONFIG_DIR=${HOME}/.config/nvim
+YAZICONFIG_DIR=${HOME}/.config/yazi
 VIFILEMANAGERCONFIG_DIR=${HOME}/.config/vifm
 GLOWCONFIG_DIR=${HOME}/.config/glowconfig
 NAVICONFIG_DIR=${HOME}/.config/navi
@@ -43,6 +44,12 @@ vifm:
 	mkdir ${VIFILEMANAGERCONFIG_DIR}
 	cp -r vifm/colors/. ${VIFILEMANAGERCONFIG_DIR}/colors
 	cp -r vifm/. ${VIFILEMANAGERCONFIG_DIR}
+
+yazi:
+	rm -rf ${YAZICONFIG_DIR}
+	mkdir ${YAZICONFIG_DIR}
+	cp -r yazi/. ${YAZICONFIG_DIR}
+	ya pack -i
 
 visidata:
 	cp -f visidata/visidatarc ${HOME}/.visidatarc

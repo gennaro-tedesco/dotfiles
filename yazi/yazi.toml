@@ -1,0 +1,72 @@
+[manager]
+ratio = [0, 1, 1]
+sort_by = "natural"
+sort_sensitive = false
+sort_reverse = false
+sort_dir_first = true
+sort_translit = false
+linemode = "none"
+show_hidden = false
+show_symlink = true
+scrolloff = 5
+mouse_events = ["click", "scroll"]
+title_format = "Yazi: {cwd}"
+
+[opener]
+edit = [{ run = '$EDITOR "$@"', desc = "$EDITOR", block = true, for = "unix" }]
+[open]
+rules = [
+  # Folder
+  { name = "*/", use = ["edit"] },
+  # Text files
+  # { mime = "text/*", use = ["edit"] },
+  { name = "*.json", use = "edit" },
+  # Fallback
+  { name = "*", use = "edit" },
+]
+
+
+[input]
+cursor_blink = true
+
+# cd
+cd_title = " cd "
+cd_origin = "top-center"
+cd_offset = [0, 2, 50, 3]
+
+# create
+create_title = ["Create:", "Create :"]
+create_origin = "bottom-left"
+create_offset = [0, 2, 50, 3]
+
+# rename
+rename_title = " rename: "
+rename_origin = "hovered"
+rename_offset = [0, 1, 20, 3]
+
+# filter
+filter_title = " filter "
+filter_origin = "bottom-left"
+filter_offset = [0, 2, 50, 3]
+
+# find
+find_title = [" find ", " find "]
+find_origin = "bottom-left"
+find_offset = [0, 2, 50, 3]
+
+# search
+search_title = " search file "
+search_origin = "bottom-left"
+search_offset = [0, 2, 50, 3]
+
+# shell
+shell_title = ["Shell:", "Shell (block):"]
+shell_origin = "bottom-left"
+shell_offset = [0, 2, 50, 3]
+
+[plugin]
+prepend_previewers = [
+  { name = "*.md", run = "glow" },
+  { name = "*", run = "bat" },
+  { name = "*/", run = "eza-preview" },
+]

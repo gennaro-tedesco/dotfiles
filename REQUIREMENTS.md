@@ -4,14 +4,14 @@ I am making use of the following system programs:
 
 | program                                          | scope                        |
 | :----------------------------------------------- | :--------------------------- |
-| [wezterm](https://wezterm.org/)                  | terminal emulator            |
-| [vifm](https://vifm.info/)                       | file manager                 |
+| [yazi](https://github.com/sxyazi/yazi)           | file manager                 |
 | [bat](https://github.com/sharkdp/bat)            | file preview                 |
 | [eza](https://github.com/eza-community/eza)      | file and dir list            |
 | [fzf](https://github.com/junegunn/fzf)           | fuzzy finder                 |
 | [visidata](https://www.visidata.org/install/)    | interactive csv manipulation |
 | [jq](https://stedolan.github.io/jq/)             | json parser                  |
 | [glow](https://github.com/charmbracelet/glow)    | md preview                   |
+| [csview](https://github.com/wfxr/csview)         | csv pager                    |
 | [zenith](https://github.com/bvaisvil/zenith)     | process list                 |
 | [navi](https://github.com/denisidoro/navi)       | cheatsheet                   |
 | [ripgrep](https://github.com/BurntSushi/ripgrep) | grep improved                |
