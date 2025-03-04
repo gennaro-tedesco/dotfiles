@@ -1,54 +1,82 @@
 [manager]
 prepend_keymap = [
 
-  #smart enter
-  { on = "l", run = "plugin smart-enter" },
-  { on = "<Right>", run = "plugin smart-enter" },
+  # general
+  { on = "<Esc>", run = "escape", desc = "cancel find, visual, filter" },
+  { on = "u", run = "undo", desc = "undo" },
+  { on = "U", run = "redo", desc = "redo" },
+  { on = "i", run = "rename", desc = "rename" },
+  { on = "<C-p>", run = "plugin fzf", desc = "fuzzy find with fzf" },
+  { on = "Z", run = "noop" },
+  { on = [
+    "z",
+    "a",
+  ], run = "hidden toggle", desc = "toggle hidden files" },
+  { on = ".", run = "noop" },
+  { on = "?", run = "help", desc = "open help file" },
+  { on = "~", run = "noop" },
+  { on = [
+    "z",
+    "i",
+  ], run = "plugin zoxide", desc = "zoxide" },
 
-  { on = "!", run = 'shell "$SHELL" --block' },
-  { on = "<Esc>", run = "close" },
-  { on = "u", run = "undo" },
-  { on = "U", run = "redo" },
-  { on = "i", run = "rename" },
-  { on = "<C-p>", run = "plugin fzf" },
+
+  # smart enter
+  { on = "l", run = "plugin smart-enter", desc = "smart enter" },
+  { on = "<Right>", run = "plugin smart-enter", desc = "smart enter" },
 
   # copying paths
   { on = [
     "y",
     "p",
-  ], run = "copy path" },
+  ], run = "copy path", desc = "copy file path" },
   { on = [
     "y",
     "f",
-  ], run = "copy filename" },
+  ], run = "copy filename", desc = "copy filename" },
   { on = [
     "y",
     "y",
-  ], run = "yank" },
+  ], run = "yank", desc = "yank entry" },
   { on = [
     "y",
     "u",
-  ], run = "unyank" },
+  ], run = "unyank", desc = "unyank entry" },
+
+  # cut and delete
+  { on = [
+    "d",
+    "d",
+  ], run = "remove", desc = "delete current entry" },
+  { on = [
+    "d",
+    "x",
+  ], run = "yank --cut", desc = "cut current entry" },
 
   # bookmarks
   { on = [
     "g",
     "h",
-  ], run = "cd $HOME" },
+  ], run = "cd $HOME", desc = "go to home folder" },
   { on = [
     "g",
     "c",
-  ], run = "cd $HOME/.config" },
+  ], run = "cd $HOME/.config", desc = "go to config folder" },
   { on = [
     "g",
     "d",
-  ], run = "cd $HOME/dotfiles/" },
+  ], run = "cd $HOME/dotfiles/", desc = "go to dotfiles folder" },
+  { on = [
+    "g",
+    "t",
+  ], run = "cd $HOME/.Trash", desc = "go to Trash folder" },
+  { on = "D", run = "noop" },
 
   # cd back to root
   { on = [
     "g",
     "r",
-  ], run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"' },
+  ], run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"', desc = "go to git root" },
 ]
 
 [input]

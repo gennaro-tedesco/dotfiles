@@ -67,6 +67,6 @@ shell_offset = [0, 2, 50, 3]
 [plugin]
 prepend_previewers = [
   { name = "*.md", run = "glow" },
-  { name = "*", run = "bat" },
+  { mime = "text/*", run = "bat" },
   { name = "*/", run = "eza-preview" },
 ]
