@@ -1,6 +1,5 @@
 NEOVIMCONFIG_DIR=${HOME}/.config/nvim
 YAZICONFIG_DIR=${HOME}/.config/yazi
-VIFILEMANAGERCONFIG_DIR=${HOME}/.config/vifm
 GLOWCONFIG_DIR=${HOME}/.config/glowconfig
 NAVICONFIG_DIR=${HOME}/.config/navi
 MACCHINACONFIG_DIR=${HOME}/.config/macchina
@@ -38,12 +37,6 @@ zsh:
 wezterm:
 	mkdir -p ${WEZTERMCONFIG_DIR}
 	cp -r wezterm/. ${WEZTERMCONFIG_DIR}
-
-vifm:
-	rm -rf ${VIFILEMANAGERCONFIG_DIR}
-	mkdir ${VIFILEMANAGERCONFIG_DIR}
-	cp -r vifm/colors/. ${VIFILEMANAGERCONFIG_DIR}/colors
-	cp -r vifm/. ${VIFILEMANAGERCONFIG_DIR}
 
 yazi:
 	rm -rf ${YAZICONFIG_DIR}

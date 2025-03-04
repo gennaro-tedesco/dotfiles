@@ -19,7 +19,7 @@ for _, arg in ipairs(ruff_opts) do
 	table.insert(lint.linters.ruff.args, arg)
 end
 
-local no_lint_files = { "visidatarc", "vifmrc" }
+local no_lint_files = { "visidatarc" }
 vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
 	callback = function()
 		lint.try_lint()

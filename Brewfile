@@ -110,7 +110,6 @@ brew "texlab"
 brew "tree-sitter"
 brew "ttyd", args: ["HEAD"]
 brew "uv"
-brew "vifm"
 brew "vint"
 brew "vivid"
 brew "xmlstarlet"
