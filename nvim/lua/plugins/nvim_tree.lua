@@ -39,6 +39,7 @@ local function on_attach(bufnr)
 							api.tree.toggle_hidden_filter()
 						end
 						api.tree.find_file(selected[1])
+						api.node.open.preview()
 					end,
 					desc = "fuzzy find in tree",
 				},
