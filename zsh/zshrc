@@ -121,7 +121,7 @@ alias code="scc -c --no-cocomo"
 ## --------
 bindkey -s '^p' 'clear\nfind_files\n'
 bindkey -s '^t' 'clear\nfind_dir\n'
-bindkey -s '^v' 'view '
+bindkey -s '^v' 'view **\t'
 bindkey -s '^o' 'clear\nfind_git_files\n'
 bindkey -s '^n' 'yazi\n'
 bindkey -s '^h' 'search\n'
