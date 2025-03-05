@@ -33,6 +33,10 @@ config = {
 				bg_color = scheme_def.background,
 				fg_color = scheme_def.foreground,
 			},
+			new_tab_hover = {
+				bg_color = scheme_def.background,
+				fg_color = scheme_def.foreground,
+			},
 			inactive_tab_hover = {
 				bg_color = scheme_def.selection_bg,
 				fg_color = scheme_def.selection_fg,
