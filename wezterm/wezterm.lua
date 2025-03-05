@@ -50,6 +50,7 @@ config = {
 	--- windows and tabs
 	window_decorations = "RESIZE",
 	window_close_confirmation = "NeverPrompt",
+	skip_close_confirmation_for_processes_named = { "zsh", "nvim", "k9s" },
 	window_padding = {
 		left = 50,
 		right = 50,

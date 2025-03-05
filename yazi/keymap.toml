@@ -6,6 +6,7 @@ prepend_keymap = [
   { on = "u", run = "undo", desc = "undo" },
   { on = "U", run = "redo", desc = "redo" },
   { on = "i", run = "rename", desc = "rename" },
+  { on = "r", run = "noop" },
   { on = "<C-p>", run = "plugin fzf", desc = "fuzzy find with fzf" },
   { on = "Z", run = "noop" },
   { on = [

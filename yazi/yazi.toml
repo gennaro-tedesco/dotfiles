@@ -36,39 +36,42 @@ rules = [
 cursor_blink = true
 
 # cd
-cd_title = " cd "
+cd_title = " 📁 "
 cd_origin = "top-center"
 cd_offset = [0, 2, 50, 3]
 
 # create
-create_title = ["Create:", "Create :"]
+create_title = ["   ", "  "]
 create_origin = "bottom-left"
 create_offset = [0, 2, 50, 3]
 
 # rename
-rename_title = " rename: "
-rename_origin = "hovered"
-rename_offset = [0, 1, 20, 3]
+rename_title = " ✏️"
+rename_origin = "bottom-left"
+rename_offset = [0, 2, 20, 3]
 
 # filter
-filter_title = " filter "
+filter_title = " 󱃥  "
 filter_origin = "bottom-left"
 filter_offset = [0, 2, 50, 3]
 
 # find
-find_title = [" find ", " find "]
+find_title = [" 🔍 ", " 🔍 "]
 find_origin = "bottom-left"
 find_offset = [0, 2, 50, 3]
 
 # search
-search_title = " search file "
+search_title = " 🔍 file "
 search_origin = "bottom-left"
 search_offset = [0, 2, 50, 3]
 
 # shell
-shell_title = ["Shell:", "Shell (block):"]
+shell_title = [" ", " "]
 shell_origin = "bottom-left"
 shell_offset = [0, 2, 50, 3]
+
+[pick]
+open_title = " 👀 "
 
 [plugin]
 prepend_previewers = [

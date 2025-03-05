@@ -57,20 +57,20 @@ perm_exec = { fg = "#849900" }
 perm_sep = { fg = "#001419" }
 
 [pick]
-border = { fg = "#063540" }
-active = { fg = "#839395", bg = "#1a6397" }
+border = { fg = "#596f75" }
+active = { fg = "#839395", bg = "#002c38" }
 inactive = { fg = "#839395" }
 
 # Input
 [input]
-border = { fg = "#063540" }
+border = { fg = "#596f75" }
 title = { fg = "#46acf5" }
 value = { fg = "#9eabac" }
 selected = { bg = "#1a6397" }
 
 # Completion
 [completion]
-border = { fg = "#46acf5" }
+border = { fg = "#596f75" }
 active = { fg = "#839395", bg = "#1a6397" }
 inactive = { fg = "#839395" }
 
@@ -80,8 +80,8 @@ icon_command = ""
 
 # Tasks
 [tasks]
-border = { fg = "#063540" }
-title = { fg = "#063540" }
+border = { fg = "#596f75" }
+title = { fg = "#596f75" }
 hovered = { fg = "#839395", bg = "#1a6397" }
 
 # Which
@@ -96,18 +96,18 @@ separator_style = { fg = "#576d74" }
 
 # Confirm
 [confirm]
-title = { fg = "#46acf5" }
-border = { fg = "#063540" }
+title = { fg = "#596f75" }
+border = { fg = "#596f75" }
 content = {}
 list = {}
-btn_yes = { bg = "#1a6397" }
+btn_yes = {}
 btn_no = {}
 btn_labels = ["  [Y]es  ", "  (N)o  "]
 
 # Spot
 [spot]
-border = { fg = "#063540" }
-title = { fg = "#063540" }
+border = { fg = "#596f75" }
+title = { fg = "#596f75" }
 
 # Notify
 [notify]

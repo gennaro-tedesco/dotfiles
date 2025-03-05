@@ -24,6 +24,10 @@ blink.setup({
 				min_keyword_length = 3,
 				score_offset = 2,
 			},
+			cmdline = {
+				min_keyword_length = 3,
+				score_offset = 1,
+			},
 			buffer = {
 				min_keyword_length = 5,
 				score_offset = 1,
@@ -55,7 +59,7 @@ blink.setup({
 						text = function(ctx)
 							return icons.cmp_sources[ctx.source_name]
 						end,
-						highlight = "BlinkCmpSource",
+						highlight = "NonText",
 					},
 				},
 				treesitter = { "lsp" },
@@ -95,6 +99,13 @@ blink.setup({
 			["<Tab>"] = { "select_next" },
 			["<S-Tab>"] = { "select_prev" },
 			["<C-e>"] = { "cancel" },
+		},
+		completion = {
+			menu = {
+				auto_show = function(ctx)
+					return vim.fn.getcmdtype() == ":"
+				end,
+			},
 		},
 	},
 	appearance = {
