@@ -21,7 +21,9 @@ prepend_keymap = [
   ], run = "plugin zoxide", desc = "zoxide" },
 
 
-  # smart enter
+  # smart enter and openers
+  { on = "o", run = "open --interactive", desc = "open interactive" },
+  { on = "O", run = "noop" },
   { on = "l", run = "plugin smart-enter", desc = "smart enter" },
   { on = "<Right>", run = "plugin smart-enter", desc = "smart enter" },
 

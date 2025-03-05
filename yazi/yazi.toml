@@ -13,16 +13,22 @@ mouse_events = ["click", "scroll"]
 title_format = "Yazi: {cwd}"
 
 [opener]
-edit = [{ run = '$EDITOR "$@"', desc = "$EDITOR", block = true, for = "unix" }]
+edit = [{ run = '$EDITOR "$@"', desc = "nvim", block = true, for = "unix" }]
+vd = [{ run = 'vd "$0"', desc = "visidata", block = true, for = "unix" }]
+jq = [
+  { run = 'jq "." -C "$0" | less -R', desc = "jq", block = true, for = "unix" },
+]
 [open]
 rules = [
-  # Folder
-  { name = "*/", use = ["edit"] },
-  # Text files
-  # { mime = "text/*", use = ["edit"] },
-  { name = "*.json", use = "edit" },
-  # Fallback
-  { name = "*", use = "edit" },
+  { name = "*.csv", use = [
+    "edit",
+    "vd",
+  ] },
+  { name = "*.json", use = [
+    "edit",
+    "jq",
+  ] },
+  { mime = "text/*", use = "edit" },
 ]
 
 
