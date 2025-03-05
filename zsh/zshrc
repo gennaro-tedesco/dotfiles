@@ -80,7 +80,7 @@ export JQ_COLORS="2;37:0;33:0;33:0;35:0;36:1;30:2;37:0;34"
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=${PATH}:$GOBIN
-export PATH="/Users/g.tedesco/.local/share/bob/nvim-bin:$PATH"
+export PATH="/Users/$USER/.local/share/bob/nvim-bin:$PATH"
 typeset -U path
 typeset -U manpath
 
