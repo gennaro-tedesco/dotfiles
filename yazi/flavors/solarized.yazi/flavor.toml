@@ -1,5 +1,5 @@
 [manager]
-cwd = { fg = "#9eabac", italic = false }
+cwd = { fg = "#268bd3", bg = "#002c38", italic = false }
 
 # Hovered
 hovered = { bg = "#002c38" }
@@ -10,7 +10,7 @@ find_keyword = { fg = "#002c38", bg = "#c94c16", bold = true }
 find_position = { fg = "#46acf5", bg = "#664c00", bold = true }
 
 # Marker
-marker_copied = { fg = "#849900", bg = "#849900" }
+marker_copied = { fg = "#c94c16", bg = "#c94c16" }
 marker_cut = { fg = "#db302d", bg = "#db302d" }
 marker_marked = { fg = "#6d71c4", bg = "#6d71c4" }
 marker_selected = { fg = "#6d71c4", bg = "#6d71c4" }
@@ -21,9 +21,9 @@ tab_inactive = { fg = "#576d74", bg = "#001419" }
 tab_width = 1
 
 # Count
-count_copied = { fg = "#839395", bg = "#b7f900" }
-count_cut = { fg = "#839395", bg = "#f55350" }
-count_selected = { fg = "#839395", bg = "#1a6397" }
+count_copied = { bg = "#c94c16" }
+count_cut = { bg = "#f55350" }
+count_selected = { bg = "#6d71c4" }
 
 # Border
 border_symbol = "│"
@@ -34,10 +34,10 @@ normal_main = { fg = "#001014", bg = "#268bd3", bold = true }
 normal_alt = { fg = "#268bd3", bg = "#002831" }
 
 select_main = { fg = "#001014", bg = "#6d71c4", bold = true }
-select_alt = { fg = "#6d71c4", bg = "#576d74" }
+select_alt = { fg = "#6d71c4", bg = "#002831" }
 
 unset_main = { fg = "#001014", bg = "#6d71c4", bold = true }
-unset_alt = { fg = "#6d71c4", bg = "#576d74" }
+unset_alt = { fg = "#6d71c4", bg = "#002831" }
 
 [status]
 separator_open = ""
@@ -102,7 +102,7 @@ content = {}
 list = {}
 btn_yes = {}
 btn_no = {}
-btn_labels = ["  [Y]es  ", "  (N)o  "]
+btn_labels = ["  [y]es  ", "  (n)o  "]
 
 # Spot
 [spot]

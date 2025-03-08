@@ -3,3 +3,5 @@ require("full-border"):setup({
 })
 
 require("eza-preview"):setup()
+
+require("line"):setup()

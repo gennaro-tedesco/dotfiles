@@ -18,8 +18,17 @@ vd = [{ run = 'vd "$0"', desc = "visidata", block = true, for = "unix" }]
 jq = [
   { run = 'jq "." -C "$0" | less -R', desc = "jq", block = true, for = "unix" },
 ]
+du = [
+  { run = 'ncdu --show-percent --hide-graph --show-itemcount --color dark "$0"', desc = "du", block = true, for = "unix" },
+]
+zathura = [
+  { run = 'zathura "$@"', desc = "zathura", block = true, for = "unix" },
+]
 [open]
 rules = [
+  { name = "*/", use = [
+    "du",
+  ] },
   { name = "*.csv", use = [
     "edit",
     "vd",
@@ -29,6 +38,8 @@ rules = [
     "jq",
   ] },
   { mime = "text/*", use = "edit" },
+  { mime = "application/pdf", use = "zathura" },
+  { mime = "inode/empty", use = "edit" },
 ]
 
 
