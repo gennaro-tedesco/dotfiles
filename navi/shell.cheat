@@ -69,13 +69,15 @@ echo $PATH | tr  ':' '\n'
 $ filename: fd -t f
 
 
-% curl
+% http
 
 # get request with json body
 curl -s -H "Content-Type: application/json" -X POST -d @<body> "$APP_HOST:$APP_PORT/endpoint" | jq
 
 $ body: find . -type f -iname '*.json' | sed 's/^\.\///g'
 
+# query localhost
+http -b http://localhost:<LOCAL_PORT>
 
 % man
 
