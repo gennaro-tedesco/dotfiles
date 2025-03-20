@@ -132,3 +132,8 @@ diffview.setup({
 		},
 	},
 })
+
+vim.api.nvim_create_user_command("DiffViewPatch", function()
+	local cur_word = vim.fn.expandcmd("<cword>")
+	vim.cmd("DiffviewOpen " .. cur_word .. "^!")
+end, {})

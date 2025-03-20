@@ -25,7 +25,7 @@ blink.setup({
 				score_offset = 2,
 			},
 			cmdline = {
-				min_keyword_length = 3,
+				min_keyword_length = 2,
 				score_offset = 1,
 			},
 			buffer = {
