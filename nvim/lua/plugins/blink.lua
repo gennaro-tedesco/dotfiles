@@ -64,7 +64,7 @@ blink.setup({
 				},
 				treesitter = { "lsp" },
 			},
-			winhighlight = "Normal:Normal,FloatBorder:@comment.todo,CursorLine:CursorLine,Search:None,BlinkCmpLabelMatch:@comment.todo",
+			winhighlight = "Normal:Normal,FloatBorder:@comment.todo,Search:None,BlinkCmpLabelMatch:@comment.todo",
 		},
 		documentation = {
 			auto_show = true,
