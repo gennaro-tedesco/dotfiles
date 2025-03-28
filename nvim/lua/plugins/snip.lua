@@ -117,6 +117,25 @@ local snips = {
 				{ i(1, "name"), i(2, "module") }
 			)
 		),
+		s(
+			{ trig = "lsp", name = "configure lsp server" },
+			fmt(
+				[[
+				vim.lsp.config["{}"] = {{
+					cmd = ,
+					filetypes = ,
+					root_markers = ,
+				}}
+				vim.lsp.enable("{}")
+				]],
+				{
+					i(1, "lsp"),
+					f(function(name)
+						return name[1]
+					end, { 1 }),
+				}
+			)
+		),
 		s({ trig = "req", name = "local require" }, fmt("local {} = require('{}')", { i(1, "name"), i(2, "module") })),
 		s(
 			{ trig = "opts", name = "options table" },

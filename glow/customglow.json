@@ -21,8 +21,15 @@
   "h1": {
     "prefix": " ",
     "suffix": " ",
-    "color": "252",
-    "background_color": "#6464fb",
+    "color": "#268bd3",
+    "background_color": "#0f3856",
+    "bold": true
+  },
+  "h2": {
+    "prefix": " ",
+    "suffix": " ",
+    "color": "#29a298",
+    "background_color": "#103a3c",
     "bold": true
   },
   "text": {},
@@ -50,11 +57,12 @@
     "unticked": "[ ] "
   },
   "link": {
-    "color": "#859900",
-    "underline": true
+    "conceal": true,
+    "background_color": "#073642",
+    "italic": true
   },
   "link_text": {
-    "color": "#2aa198",
+    "color": "#c94c16",
     "bold": true
   },
   "image": {

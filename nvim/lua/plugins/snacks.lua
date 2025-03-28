@@ -107,11 +107,6 @@ snacks.setup({
 			{ section = "recent_files", limit = 8, indent = 4, padding = 2, cwd = true },
 			{ title = "🔖 Quick commands", padding = 1 },
 			{ section = "keys", indent = 4, padding = 2 },
-			{
-				section = "terminal",
-				cmd = "curl -s 'wttr.in/Berlin?0'",
-				indent = 15,
-			},
 		},
 	},
 })

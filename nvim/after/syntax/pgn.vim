@@ -1,12 +1,6 @@
-" *****************
-" *** Tag pairs ***
-" *****************
 syntax region pgnTagName start=/\[/ end=/\]/ contains=pgnTagValue 
 syntax region pgnTagValue start=/"/ skip=/\\"/ end=/"/ contained
 
-" ****************
-" *** Movetext ***
-" ****************
 " move number
 " - pgn requires 1.e4 or 1...e5
 " - pattern: whitespace number whitespace? period? whitespace? ellipsis?
@@ -44,7 +38,6 @@ syntax match pgnDrawOffer /(=)/
 syntax match pgnCastling /\%(0-0\%(-0\)\?\)\|\%(O-O\%(-O\)\?\)/
 
 " annotations
-" - as used by scid and others
 syntax match pgnMoveEvaluation /[!?]\+/
 
 syntax match pgnNovelty /\%(^\|\s\)\zsN\ze\_s/
@@ -56,22 +49,18 @@ syntax match pgnDiagram /\%(^\|\s\)\zsD\ze\_s/
 syntax match pgnNumericAnnotationGlyph /\$\<\%([0-9]\|[1-9][0-9]\|1[0-9][0-9]\|2[0-4][0-9]\|25[0-5]\)\>/
 
 " variations
-" - can be nested; excludes parentheses promotion, draw offer
 syntax region pgnVariation start=/\%(([=QRBN])\)\@!(/ end=/)\%(([=QRBN])\)\@3<!/ contains=pgnVariation
 
 " result
-" - required by pgn
 syntax match pgnResult /1-0\|0-1\|1\/2-1\/2\|½-½\|\*/
 
-" ****************
-" *** Comments ***
-" ****************
-" - cannot be nested
+" Comments
 syntax region pgnCommentBlock start=/{/ end=/}/
 syntax region pgnCommentSingleLine start=/;/ end=/$/
 
-
-" "Wow! Look at all the colours, man!"
+" ----------------------
+" highlights definitions
+" ----------------------
 highlight def link pgnTagName Keyword
 highlight def link pgnTagValue String
 highlight def link pgnMoveNumber @markup.math

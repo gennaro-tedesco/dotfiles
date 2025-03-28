@@ -175,10 +175,24 @@ local plugins = {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		ft = { "markdown" },
+		init = function()
+			local markdown_hl = vim.api.nvim_create_augroup("MarkdownHighlights", {})
+			vim.api.nvim_clear_autocmds({ group = markdown_hl })
+			vim.api.nvim_create_autocmd("BufEnter", {
+				group = markdown_hl,
+				desc = "redefinition of markdown highlights",
+				callback = function()
+					vim.api.nvim_set_hl(0, "RenderMarkdownH1Bg", { link = "DiagnosticVirtualTextInfo" })
+					vim.api.nvim_set_hl(0, "RenderMarkdownH2Bg", { link = "DiagnosticVirtualTextHint" })
+					vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { link = "DiagnosticVirtualTextHint" })
+				end,
+			})
+		end,
 		opts = {
+			completions = { blink = { enabled = true } },
 			heading = {
 				sign = false,
-				icons = { "  ", "   ", "    ", "     " },
+				icons = { "", "", "" },
 				width = "block",
 				right_pad = 2,
 			},
@@ -189,58 +203,6 @@ local plugins = {
 
 	--- LSP, language servers and code autocompletion
 	{ "nvim-lua/plenary.nvim" },
-	{
-		"neovim/nvim-lspconfig",
-		event = "BufReadPost",
-		config = function()
-			require("plugins.lsp")
-		end,
-	},
-	{
-		"rachartier/tiny-inline-diagnostic.nvim",
-		event = "BufReadPre",
-		priority = 1000,
-		opts = {
-			preset = "classic",
-			signs = {
-				diag = "●",
-				arrow = "  ",
-				left = "",
-				right = "",
-			},
-			options = {
-				show_source = false,
-				multiple_diag_under_cursor = true,
-				multilines = false,
-				show_all_diags_on_cursorline = true,
-			},
-		},
-		init = function()
-			local tiny_hl = vim.api.nvim_create_augroup("TinyHighlights", {})
-			vim.api.nvim_clear_autocmds({ group = tiny_hl })
-			vim.api.nvim_create_autocmd("BufEnter", {
-				group = tiny_hl,
-				desc = "redefinition of tiny diagnostics highlights group",
-				callback = function()
-					vim.api.nvim_set_hl(
-						0,
-						"TinyInlineDiagnosticVirtualTextError",
-						{ bg = "none", fg = vim.api.nvim_get_hl(0, { name = "DiagnosticVirtualTextError" }).fg }
-					)
-					vim.api.nvim_set_hl(
-						0,
-						"TinyInlineDiagnosticVirtualTextWarn",
-						{ bg = "none", fg = vim.api.nvim_get_hl(0, { name = "DiagnosticVirtualTextWarn" }).fg }
-					)
-					vim.api.nvim_set_hl(
-						0,
-						"TinyInlineDiagnosticVirtualTextHint",
-						{ bg = "none", fg = vim.api.nvim_get_hl(0, { name = "DiagnosticVirtualTextHint" }).fg }
-					)
-				end,
-			})
-		end,
-	},
 	{
 		"folke/lazydev.nvim",
 		ft = "lua",

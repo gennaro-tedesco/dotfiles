@@ -18,6 +18,7 @@ vim.opt.scrolloff = 8
 vim.opt.showmode = false
 vim.opt.signcolumn = "number"
 vim.opt.startofline = true
+vim.o.winborder = "rounded"
 
 --- standard neovim behavior
 vim.opt.undofile = true
