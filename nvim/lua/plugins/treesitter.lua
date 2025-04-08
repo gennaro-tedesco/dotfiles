@@ -8,6 +8,7 @@ require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"bash",
 		"go",
+		"hcl",
 		"html",
 		"json",
 		"lua",

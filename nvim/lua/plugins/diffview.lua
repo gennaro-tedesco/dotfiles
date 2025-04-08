@@ -133,7 +133,26 @@ diffview.setup({
 	},
 })
 
-vim.api.nvim_create_user_command("DiffViewPatch", function()
-	local cur_word = vim.fn.expandcmd("<cword>")
-	vim.cmd("DiffviewOpen " .. cur_word .. "^!")
+vim.api.nvim_create_user_command("DiffviewPatch", function()
+	local row = vim.api.nvim_win_get_cursor(0)[1]
+	local filename = vim.api.nvim_buf_get_name(0)
+	local blame = vim.system({ "git", "blame", "-L", row .. "," .. row, filename }, { text = true }):wait()
+	local commit_sha = blame.stdout:match("(%w+)(.+)")
+	if commit_sha == nil then
+		vim.notify(
+			"no revision available",
+			vim.log.levels.WARN,
+			{ style = "compact", title = " git blame", id = "blame" }
+		)
+		return
+	elseif commit_sha == "00000000" then
+		vim.notify(
+			"not committed yet",
+			vim.log.levels.WARN,
+			{ style = "compact", title = " git blame", id = "blame" }
+		)
+		return
+	else
+		vim.cmd("DiffviewOpen " .. commit_sha .. " -- %")
+	end
 end, {})

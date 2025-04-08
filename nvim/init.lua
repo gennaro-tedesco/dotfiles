@@ -202,7 +202,6 @@ local plugins = {
 	},
 
 	--- LSP, language servers and code autocompletion
-	{ "nvim-lua/plenary.nvim" },
 	{
 		"folke/lazydev.nvim",
 		ft = "lua",
@@ -570,6 +569,7 @@ local opts = {
 
 lazy.setup(plugins, opts)
 
+--- require the entire lua directory
 for _, file in ipairs(vim.fn.readdir(config_path .. "/lua", [[v:val =~ '\.lua$']])) do
 	require(file:gsub("%.lua$", ""))
 end

@@ -56,6 +56,7 @@ glow:
 	cp -f glow/customglow.json ${GLOWCONFIG_DIR}
 
 navi:
+	rm -rf ${NAVICONFIG_DIR}
 	mkdir -p ${NAVICONFIG_DIR}
 	cp -r navi/. ${NAVICONFIG_DIR}
 
