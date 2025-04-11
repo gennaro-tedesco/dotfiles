@@ -206,4 +206,30 @@ M.clients_lsp = function()
 	return table.concat(c, "|")
 end
 
+M.gbrowse = function()
+	local root = vim.system({ "git", "root" }, { text = true }):wait()
+	if root.code ~= 0 then
+		vim.notify(
+			"not a git repository",
+			vim.log.levels.WARN,
+			{ style = "compact", title = " gh browse", id = "Gbrowse" }
+		)
+		return
+	end
+	local branch = vim.fn.system("git branch --show-current"):gsub("\n", "")
+	local filename = vim.fn.expand("%:p:~:.")
+	local lnum = vim.api.nvim_win_get_cursor(0)[1]
+	if filename == "" then
+		vim.notify("no filename", vim.log.levels.ERROR, { style = "compact", title = " gh browse", id = "Gbrowse" })
+		return
+	end
+	local result = vim.system({ "gh", "browse", "-b", branch, filename .. ":" .. lnum }, { text = true }):wait()
+	if result.code ~= 0 then
+		vim.notify(
+			"Gbrowse error",
+			vim.log.levels.ERROR,
+			{ style = "compact", title = " gh browse", id = "Gbrowse" }
+		)
+	end
+end
 return M

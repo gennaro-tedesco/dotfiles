@@ -87,6 +87,7 @@ open_title = " 👀 "
 [plugin]
 prepend_previewers = [
   { name = "*.md", run = "glow" },
+  { name = "*.csv", run = "xan" },
   { mime = "text/*", run = "bat" },
   { name = "*/", run = "eza-preview" },
 ]

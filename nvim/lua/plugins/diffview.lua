@@ -133,7 +133,8 @@ diffview.setup({
 	},
 })
 
-vim.api.nvim_create_user_command("DiffviewPatch", function()
+---@param opts string
+local function diff_view_patch(opts)
 	local row = vim.api.nvim_win_get_cursor(0)[1]
 	local filename = vim.api.nvim_buf_get_name(0)
 	local blame = vim.system({ "git", "blame", "-L", row .. "," .. row, filename }, { text = true }):wait()
@@ -153,6 +154,24 @@ vim.api.nvim_create_user_command("DiffviewPatch", function()
 		)
 		return
 	else
-		vim.cmd("DiffviewOpen " .. commit_sha .. " -- %")
+		if opts.args ~= "" then
+			local web_commit = vim.system({ "gh", "browse", commit_sha }, { text = true }):wait()
+			if web_commit.code ~= 0 then
+				vim.notify(
+					"gh browse commit error",
+					vim.log.levels.ERROR,
+					{ style = "compact", title = " git blame", id = "blame" }
+				)
+			end
+		else
+			vim.cmd("DiffviewOpen " .. commit_sha .. " -- %")
+		end
 	end
-end, {})
+end
+
+vim.api.nvim_create_user_command("DiffviewPatch", diff_view_patch, {
+	nargs = "?",
+	complete = function(ArgLead, CmdLine, CursorPos)
+		return { "browse" }
+	end,
+})

@@ -161,10 +161,6 @@ vim.api.nvim_create_user_command("Q", function()
 	vim.cmd.quit()
 end, {})
 
-vim.api.nvim_create_user_command("Timer", function(opts)
-	require("utils").timer(opts.args)
-end, { nargs = 1 })
-
 vim.api.nvim_create_user_command("ToSql", function()
 	vim.api.nvim_exec2("g/^$/d", { output = true })
 	vim.api.nvim_exec2("%s/^/'/", {})
@@ -174,20 +170,5 @@ vim.api.nvim_create_user_command("ToSql", function()
 end, {})
 
 vim.api.nvim_create_user_command("Gbrowse", function()
-	local root = vim.system({ "git", "root" }, { text = true }):wait()
-	if root.code ~= 0 then
-		print("not a git repository")
-		return
-	end
-	local branch = vim.fn.system("git branch --show-current"):gsub("\n", "")
-	local filename = vim.fn.expand("%:p:~:.")
-	local lnum = vim.api.nvim_win_get_cursor(0)[1]
-	if filename == "" then
-		print("no file name")
-		return
-	end
-	local result = vim.system({ "gh", "browse", "-b", branch, filename .. ":" .. lnum }, { text = true }):wait()
-	if result.code ~= 0 then
-		print("Gbrowse error")
-	end
+	require("utils").gbrowse()
 end, {})
