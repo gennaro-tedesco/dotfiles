@@ -510,7 +510,7 @@ local plugins = {
 		},
 		config = function()
 			require("nvim-possession").setup({
-				autoload = false,
+				autoload = true,
 				autosave = false,
 				autoswitch = { enable = true },
 				---@type possession.Hls
