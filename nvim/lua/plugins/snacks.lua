@@ -79,6 +79,10 @@ snacks.setup({
 				desc = "snack terminal: double escape to normal mode",
 			},
 		},
+		win = {
+			position = "bottom",
+			height = 0.3,
+		},
 	},
 	dashboard = {
 		enabled = true,
