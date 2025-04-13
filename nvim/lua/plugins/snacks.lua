@@ -35,6 +35,7 @@ snacks.setup({
 	styles = {
 		["notification"] = {
 			wo = { wrap = true },
+			focusable = false,
 		},
 		["notification_history"] = {
 			width = 0.8,
@@ -77,10 +78,6 @@ snacks.setup({
 				expr = true,
 				desc = "snack terminal: double escape to normal mode",
 			},
-		},
-		win = {
-			position = "right",
-			width = 0.3,
 		},
 	},
 	dashboard = {

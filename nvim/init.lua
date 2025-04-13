@@ -390,14 +390,14 @@ local plugins = {
 				mode = "n",
 			},
 			{
-				"<leader>t",
+				"<C-t>",
 				function()
 					if vim.bo.filetype ~= "fzf" then
 						Snacks.terminal.toggle()
 					end
 				end,
 				desc = "toggle snacks terminal",
-				mode = { "n" },
+				mode = { "n", "t" },
 			},
 			{
 				"]]",

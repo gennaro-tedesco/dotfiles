@@ -86,8 +86,8 @@ open_title = " 👀 "
 
 [plugin]
 prepend_previewers = [
-  { name = "*.md", run = "glow" },
-  { name = "*.csv", run = "xan" },
-  { mime = "text/*", run = "bat" },
-  { name = "*/", run = "eza-preview" },
+  { name = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
+  { name = "*.csv", run = 'piper -- xan view -IpRM --theme="compact" "$1"' },
+  { mime = "text/*", run = 'piper -- bat -p --color=always "$1"' },
+  { name = "*/", run = 'piper -- eza -TL=1 --icons=always --color=always --sort=extension "$1"' },
 ]

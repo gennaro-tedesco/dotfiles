@@ -14,9 +14,9 @@ local function setup()
 
 		local s = ya.readable_path(tostring(self._current.cwd)) .. self:flags()
 		return ui.Line({
-			ui.Span(THEME.status.sep_left.open):fg(THEME.manager.cwd.bg),
-			ui.Span(" " .. ya.truncate(s, { max = max, rtl = true }) .. " "):style(THEME.manager.cwd),
-			ui.Span(THEME.status.sep_left.close):fg(THEME.manager.cwd.bg),
+			ui.Span(th.status.sep_left.open):fg(th.mgr.cwd.bg),
+			ui.Span(" " .. ya.truncate(s, { max = max, rtl = true }) .. " "):style(th.mgr.cwd),
+			ui.Span(th.status.sep_left.close):fg(th.mgr.cwd.bg),
 		})
 	end
 
@@ -26,11 +26,11 @@ local function setup()
 
 		local selection_element = files_selected > 0 and config.select_symbol .. " " .. files_selected or ""
 		local yank_icon = cx.yanked.is_cut and config.cut_symbol or config.yank_symbol
-		local yank_colour = cx.yanked.is_cut and THEME.manager.count_cut.bg or THEME.manager.count_copied.bg
+		local yank_colour = cx.yanked.is_cut and th.mgr.count_cut.bg or th.mgr.count_copied.bg
 		local yank_element = files_yanked > 0 and yank_icon .. " " .. files_yanked or ""
 
 		return ui.Line({
-			ui.Span(selection_element .. " "):fg(THEME.manager.count_selected.bg),
+			ui.Span(selection_element .. " "):fg(th.mgr.count_selected.bg),
 			ui.Span(yank_element .. " "):fg(yank_colour),
 		})
 	end
@@ -41,9 +41,9 @@ local function setup()
 
 		if branch ~= "" then
 			return ui.Line({
-				ui.Span(" " .. THEME.status.sep_left.open):fg(THEME.manager.cwd.bg),
-				ui.Span(config.branch_symbol .. " " .. branch):style(THEME.manager.cwd):fg(THEME.status.perm_exec.fg),
-				ui.Span(THEME.status.sep_left.close):fg(THEME.manager.cwd.bg),
+				ui.Span(" " .. th.status.sep_left.open):fg(th.mgr.cwd.bg),
+				ui.Span(config.branch_symbol .. " " .. branch):style(th.mgr.cwd):fg(th.status.perm_exec.fg),
+				ui.Span(th.status.sep_left.close):fg(th.mgr.cwd.bg),
 			})
 		end
 	end

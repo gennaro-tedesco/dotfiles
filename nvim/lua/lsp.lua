@@ -54,7 +54,7 @@ vim.diagnostic.config({
 		source = false,
 		header = "",
 		prefix = "",
-		focusable = false,
+		focusable = true,
 		format = diagnostic_format,
 	},
 })

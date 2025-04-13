@@ -115,7 +115,7 @@ nnoremap("<C-l>", "<cmd> lua require('utils').toggle_ll()<CR>", { desc = "toggle
 nnoremap("<leader><C-o>", "<cmd> lua require('utils').jumps_to_qf()<CR>", { desc = "send jumplist to quickfix" })
 
 --- open todo file in one go
-nnoremap("<C-t>", function()
+nnoremap("<leader>t", function()
 	vim.cmd.edit(vim.fs.normalize("~/.todo"))
 end, { desc = "open todo file" })
 
