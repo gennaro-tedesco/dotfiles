@@ -81,6 +81,7 @@ export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=${PATH}:$GOBIN
 export PATH="/Users/$USER/.local/share/bob/nvim-bin:$PATH"
+export XAN_VIEW_ARGS="-pAMIR -t compact"
 typeset -U path
 typeset -U manpath
 
