@@ -1,13 +1,5 @@
-# toggle among different window layouts
-alt - f : yabai -m window --toggle zoom-fullscreen
-alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
-alt - space : yabai -m window --toggle split
-
 # resize
 alt - e : yabai -m space --balance
-
-# rotate
-alt - r : yabai -m space --rotate 90
 
 # change layouts
 alt - b : yabai -m space --layout bsp
@@ -22,12 +14,6 @@ ctrl + alt - j : yabai -m window --focus south
 ctrl + alt - k : yabai -m window --focus north
 ctrl + alt - h : yabai -m window --focus west
 ctrl + alt - l : yabai -m window --focus east
-
-# swap windows
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - h : yabai -m window --swap west
-shift + alt - l : yabai -m window --swap east
 
 # start/stop yabai
 ctrl + alt - q : yabai --stop-service

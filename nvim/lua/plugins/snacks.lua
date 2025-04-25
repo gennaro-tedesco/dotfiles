@@ -81,7 +81,7 @@ snacks.setup({
 		},
 		win = {
 			position = "bottom",
-			height = 0.3,
+			height = 0.4,
 		},
 	},
 	dashboard = {
