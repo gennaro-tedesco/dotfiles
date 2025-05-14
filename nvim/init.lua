@@ -53,7 +53,7 @@ local plugins = {
 			day_brightness = 0,
 		},
 		init = function()
-			vim.cmd([[colorscheme solarized-osaka]])
+			vim.cmd.colorscheme("solarized-osaka")
 		end,
 	},
 	{
@@ -95,6 +95,7 @@ local plugins = {
 		event = "BufReadPost",
 		config = function()
 			local rainbow_delimiters = require("rainbow-delimiters")
+			---@type rainbow_delimiters.config
 			vim.g.rainbow_delimiters = {
 				strategy = {
 					[""] = rainbow_delimiters.strategy["local"],
@@ -206,6 +207,11 @@ local plugins = {
 		"folke/lazydev.nvim",
 		ft = "lua",
 		config = true,
+		opts = {
+			library = {
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
 	},
 	{
 		"saghen/blink.cmp",

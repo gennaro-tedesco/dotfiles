@@ -19,7 +19,7 @@ conform.setup({
 		go = { "gofmt", "goimports" },
 		latex = { "latexindent" },
 		lua = { "stylua" },
-		markdown = { "prettier" },
+		markdown = { "mdformat" },
 		python = { "isort", "black" },
 		rust = { "rustfmt" },
 		sh = { "shfmt" },

@@ -10,8 +10,14 @@ local icons = require("utils").icons
 blink.setup({
 	snippets = { preset = "luasnip" },
 	sources = {
-		default = { "lsp", "path", "snippets", "buffer" },
+		default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 		providers = {
+			lazydev = {
+				min_keyword_length = 2,
+				name = "LazyDev",
+				module = "lazydev.integrations.blink",
+				score_offset = 5,
+			},
 			snippets = {
 				min_keyword_length = 2,
 				score_offset = 4,
