@@ -121,8 +121,6 @@ view() {
 			[[ -n "$selection" ]] && view "${(z)selection}"
 			shift
 			;;
-		-t)
-			bat --style='grid' ~/.todo;;
 		-E)
 			bat --style='header,grid' .env 2>/dev/null ;;
 		*.md)
@@ -130,7 +128,7 @@ view() {
 		*.json)
 			jq '.' -C $1 | less -R;;
 		*.csv)
-			vd "$@";;
+			xan view "$@";;
 		*.pdf)
 			zathura $1;;
 		*.jpg|*.jpeg|*.png)
@@ -242,7 +240,7 @@ todo() {
 	case $1 in
 		-v)
 			clear
-			bat --style='grid' ${TODOFILE};;
+			bat --style='grid' ${TODOFILE} -l markdown;;
 		-d)
 			gum confirm "delete todo content?" && truncate -s 0 ${TODOFILE};;
 	esac
