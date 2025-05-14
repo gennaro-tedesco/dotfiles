@@ -19,9 +19,40 @@ lualine.setup({
 	},
 	sections = {
 		lualine_a = { { "mode", padding = { left = 1 } } },
-		lualine_b = { "branch" },
+		lualine_b = {
+			{
+				"branch",
+				fmt = function(str)
+					vim.g._branch_name = str
+					local maxlen = 30
+					if #str > maxlen then
+						return str:sub(1, maxlen - 3) .. "..."
+					end
+					return str
+				end,
+				on_click = function()
+					local branch = vim.g._branch_name or "<no branch>"
+					vim.notify(
+						branch,
+						vim.log.levels.INFO,
+						{ style = "compact", title = "  git branch", id = "branch" }
+					)
+				end,
+			},
+		},
 		lualine_c = {
-			{ "filename", path = 1 },
+			{
+				"filename",
+				path = 1,
+				on_click = function()
+					local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":.")
+					vim.notify(
+						filename,
+						vim.log.levels.INFO,
+						{ style = "compact", title = "filename", id = "filename" }
+					)
+				end,
+			},
 			{
 				"diff",
 				on_click = function()
