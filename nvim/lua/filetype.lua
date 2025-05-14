@@ -5,7 +5,7 @@ vim.filetype.add({
 	},
 	filename = {
 		[".env"] = "config",
-		[".todo"] = "txt",
+		[".todo"] = "markdown",
 		["Brewfile"] = "bash",
 	},
 	pattern = {

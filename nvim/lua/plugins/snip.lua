@@ -221,6 +221,10 @@ local snips = {
 				{ i(1, "language"), i(2, "body") }
 			)
 		),
+		s({
+			trig = "day",
+			name = "choose day of the week",
+		}, c(1, { t("Monday"), t("Tuesday"), t("Wednesday"), t("Thursday"), t("Friday"), t("Saturday"), t("Sunday") })),
 	},
 	python = {
 		s(
