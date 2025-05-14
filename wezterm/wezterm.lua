@@ -66,6 +66,8 @@ config = {
 
 	--- keymaps
 	keys = {
+		{ key = "LeftArrow", mods = "CMD", action = act.MoveTabRelative(-1) },
+		{ key = "RightArrow", mods = "CMD", action = act.MoveTabRelative(1) },
 		{
 			key = "t",
 			mods = "CMD",
