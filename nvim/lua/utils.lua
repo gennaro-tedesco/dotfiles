@@ -61,6 +61,7 @@ M.icons = {
 	cmp_sources = {
 		LSP = "✨",
 		Luasnip = "🚀",
+		Snippets = "🚀",
 		Buffer = "📝",
 		Path = "📁",
 		Cmdline = "💻",
@@ -113,6 +114,17 @@ M.project_search = function()
 			return
 		else
 			vim.cmd.grep({ mods = { silent = true }, bang = true, '"' .. input .. '"' })
+		end
+	end)
+end
+
+M.buffers_search = function()
+	vim.fn.setqflist({}, " ")
+	vim.ui.input({ prompt = "regex in open buffers: " }, function(input)
+		if input == "" or input == nil then
+			return
+		else
+			vim.cmd({ cmd = "bufdo", args = { "vimgrepadd " .. input .. " % " }, bang = true, mods = { silent = true } })
 		end
 	end)
 end

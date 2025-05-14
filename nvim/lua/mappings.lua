@@ -73,6 +73,8 @@ nnoremap("<S-Tab>", "<C-w>W")
 
 --- project search
 nnoremap("<C-h>", require("utils").project_search, { desc = "project search" })
+--- open buffers search
+nnoremap("<C-j>", require("utils").buffers_search, { desc = "search in open buffers only" })
 
 --- close all splits/windows except the one in focus
 nnoremap("<leader>q", "<C-w>o", { desc = "close all windows except the focussed one" })
