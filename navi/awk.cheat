@@ -67,4 +67,4 @@ awk -F ',' '/<pattern>/{++count} END {print count}' <filename>
 : <filename>; awk -F ',' 'NR!=1 {print $<colNr>}' <filename> | sort | uniq -c | sort -nr
 
 $ filename: fd -I -t f -e csv
-$ colNr: xsv headers <filename> --- --column 1
+$ colNr: xan headers -s1 <filename> --- --column 1
