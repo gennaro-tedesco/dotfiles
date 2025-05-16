@@ -70,6 +70,7 @@ local function on_attach(bufnr)
 end
 
 nvim_tree.setup({
+	notify = { threshold = vim.log.levels.WARN },
 	sort = {
 		sorter = "extension",
 	},

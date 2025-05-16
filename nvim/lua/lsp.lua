@@ -116,7 +116,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set(
 			"n",
 			"de",
-			-- vim.diagnostic.open_float,
 			toggle_lines,
 			vim.tbl_extend("force", opts, { desc = "✨lsp show diagnostic in floating window" })
 		)
