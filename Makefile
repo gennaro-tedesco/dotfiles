@@ -29,10 +29,14 @@ zsh:
 	cp -f zsh/zshfun ${HOME}/.zshfun
 	cp -f zsh/p10k.zsh ${HOME}/.p10k.zsh
 	cp -f zsh/lesskey ${HOME}/.lesskey
-	rm -rf ${BATCONFIG_DIR}
-	mkdir ${BATCONFIG_DIR}
 	cp -f zsh/batconfig ${BATCONFIG_DIR}/config
 	exec zsh
+
+bat:
+	rm -rf ${BATCONFIG_DIR}
+	mkdir ${BATCONFIG_DIR}
+	cp -r bat/. ${BATCONFIG_DIR}
+	bat cache --build
 
 wezterm:
 	mkdir -p ${WEZTERMCONFIG_DIR}

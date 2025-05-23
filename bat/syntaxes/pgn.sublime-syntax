@@ -1,0 +1,73 @@
+%YAML 1.2
+---
+name: PGN
+file_extensions:
+  - pgn
+scope: source.pgn
+
+contexts:
+  main:
+    # PGN Tag Names, e.g. [Event "Linares"]
+    - match: '\[\w+'
+      scope: keyword.tag.pgn
+      push:
+        - meta_scope: meta.header.pgn
+        - match: '"([^"\\]*(\\.[^"\\]*)*)"'
+          scope: string.quoted.double.pgn
+        - match: '\]'
+          pop: true
+
+    # Move number (e.g. 1., 1... e4)
+    - match: '\b\d+\s*\.(\.\.)?'
+      scope: entity.name.section.move-number.pgn
+
+    # Promotion (e.g. e8=Q, e1/N, e1(Q))
+    - match: '(?<=[a-h][1-8]):?\=?[QRBN]|\([QRBN]\)'
+      scope: entity.name.promotion.pgn
+
+    # Abbreviations, annotations, symbols, draw offer
+    - match: '[-=()/:xX×+#]|e\.?p\.?|dbl\.?\s*ch\.?|dis\.?\s*ch\.?|mate'
+      scope: punctuation.definition.abbreviation.pgn
+    - match: '\(=\)'
+      scope: comment.keyword.draw-offer.pgn
+
+    # Move annotation (e.g. !, ?, !?, !!, ??)
+    - match: '[!?]+'
+      scope: markup.bold.move-evaluation.pgn
+
+    # Novelty (N)
+    - match: '(?<=^|\s)N(?=\s)'
+      scope: variable.language.novelty.pgn
+
+    # Numeric annotation glyph (e.g. $1, $14, $255)
+    - match: '\$(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\b'
+      scope: constant.numeric.numeric-annotation-glyph.pgn
+
+    # Result (1-0, 0-1, 1/2-1/2, ½-½, *)
+    - match: '\b(1-0|0-1|1/2-1/2|½-½|\*)\b'
+      scope: constant.language.result.pgn
+
+    # Comments: block { ... }
+    - match: '{'
+      scope: punctuation.definition.comment.begin.pgn
+      push:
+        - meta_scope: comment.block.pgn
+        - match: '}'
+          scope: punctuation.definition.comment.end.pgn
+          pop: true
+
+    # Comments: single line ;
+    - match: ';.*$'
+      scope: comment.line.semicolon.pgn
+
+    # Variations: ( ... )
+    - match: '\('
+      scope: punctuation.section.parens.begin.pgn
+      push:
+        - meta_scope: meta.variation.pgn
+        - match: '\)'
+          scope: punctuation.section.parens.end.pgn
+          pop: true
+
+    # Diagram, position evaluation, arrival, departure, etc.
+    # Not fully implemented: add custom scopes as needed
