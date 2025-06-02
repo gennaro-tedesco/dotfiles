@@ -29,7 +29,6 @@ zsh:
 	cp -f zsh/zshfun ${HOME}/.zshfun
 	cp -f zsh/p10k.zsh ${HOME}/.p10k.zsh
 	cp -f zsh/lesskey ${HOME}/.lesskey
-	cp -f zsh/batconfig ${BATCONFIG_DIR}/config
 	exec zsh
 
 bat:
@@ -46,7 +45,7 @@ yazi:
 	rm -rf ${YAZICONFIG_DIR}
 	mkdir ${YAZICONFIG_DIR}
 	cp -r yazi/. ${YAZICONFIG_DIR}
-	ya pack -i
+	ya pkg install
 
 visidata:
 	cp -f visidata/visidatarc ${HOME}/.visidatarc
