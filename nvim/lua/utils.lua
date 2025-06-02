@@ -65,10 +65,11 @@ M.icons = {
 		Buffer = "📝",
 		Path = "📁",
 		Cmdline = "💻",
+		copilot = "🤖",
 	},
 	statusline = {
-		Error = "❗",
-		Warn = "⚠️ ",
+		Error = "❌",
+		Warn = "⚠️",
 		Hint = "i",
 		Info = "💡",
 	},

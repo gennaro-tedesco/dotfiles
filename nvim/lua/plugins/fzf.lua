@@ -278,4 +278,7 @@ require("fzf-lua").env = function()
 	require("plugins.fzf_extras").printenv()
 end
 
+--- register ui select
+require("fzf-lua").register_ui_select()
+
 return M

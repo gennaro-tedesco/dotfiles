@@ -69,7 +69,9 @@ nnoremap("<PageDown>", "}")
 vnoremap("<PageUp>", "{")
 vnoremap("<PageDown>", "}")
 nnoremap("<Tab>", "<C-w>w")
+vnoremap("<Tab>", "<C-w>w")
 nnoremap("<S-Tab>", "<C-w>W")
+vnoremap("<S-Tab>", "<C-w>W")
 
 --- project search
 nnoremap("<C-h>", require("utils").project_search, { desc = "project search" })
@@ -139,11 +141,8 @@ nnoremap("mx", function()
 end, { desc = "delete all marks" })
 
 --- make bullet point
-nnoremap("<leader>p", function()
-	vim.cmd.normal("mAI- ")
-	vim.cmd.normal("`A")
-	vim.cmd.normal("dmA")
-end)
+nnoremap("<leader>p", ":Bullet<CR>", { desc = "add bullet to current line" })
+vnoremap("<leader>p", ":Bullet<CR>", { desc = "add bullets to selected lines" })
 
 --- escape terminal mode
 tnoremap("<C-q>", "<C-\\><C-n>")
@@ -174,3 +173,15 @@ end, {})
 vim.api.nvim_create_user_command("Gbrowse", function()
 	require("utils").gbrowse()
 end, {})
+
+vim.api.nvim_create_user_command("Bullet", function(opts)
+	local cursor_pos = vim.api.nvim_win_get_cursor(0)
+	if opts.range == 0 then
+		vim.cmd("normal! I- ")
+	else
+		vim.cmd(string.format("%d,%ds/^/- /", opts.line1, opts.line2))
+	end
+	cursor_pos[2] = cursor_pos[2] + 2
+	vim.api.nvim_win_set_cursor(0, cursor_pos)
+	vim.cmd.nohlsearch()
+end, { range = true })
