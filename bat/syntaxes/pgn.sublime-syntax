@@ -68,6 +68,3 @@ contexts:
         - match: '\)'
           scope: punctuation.section.parens.end.pgn
           pop: true
-
-    # Diagram, position evaluation, arrival, departure, etc.
-    # Not fully implemented: add custom scopes as needed
