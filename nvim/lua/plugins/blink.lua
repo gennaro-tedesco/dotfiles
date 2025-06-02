@@ -10,8 +10,19 @@ local icons = require("utils").icons
 blink.setup({
 	snippets = { preset = "luasnip" },
 	sources = {
-		default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+		default = { "lazydev", "lsp", "path", "snippets", "buffer", "copilot" },
 		providers = {
+			copilot = {
+				min_keyword_length = 3,
+				name = "copilot",
+				module = "blink-copilot",
+				score_offset = 6,
+				async = true,
+				enabled = function()
+					local ft = vim.bo.filetype
+					return ft ~= "" and ft ~= nil
+				end,
+			},
 			lazydev = {
 				min_keyword_length = 2,
 				name = "LazyDev",
@@ -41,6 +52,10 @@ blink.setup({
 		},
 	},
 	completion = {
+		trigger = {
+			show_on_insert_on_trigger_character = true,
+			show_on_trigger_character = true,
+		},
 		list = {
 			max_items = 5,
 			selection = {

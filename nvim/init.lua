@@ -160,8 +160,9 @@ local plugins = {
 			{
 				"<leader>m",
 				function()
-					vim.keymap.set("n", "<leader>m", require("treesj").toggle, { desc = "toggle treesj" })
+					require("treesj").toggle()
 				end,
+				desc = "toggle treesj",
 			},
 		},
 		opts = { use_default_keymaps = false },
@@ -175,7 +176,7 @@ local plugins = {
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		ft = { "markdown" },
+		ft = { "markdown", "copilot-chat" },
 		init = function()
 			local markdown_hl = vim.api.nvim_create_augroup("MarkdownHighlights", {})
 			vim.api.nvim_clear_autocmds({ group = markdown_hl })
@@ -185,17 +186,19 @@ local plugins = {
 				callback = function()
 					vim.api.nvim_set_hl(0, "RenderMarkdownH1Bg", { link = "DiagnosticVirtualTextInfo" })
 					vim.api.nvim_set_hl(0, "RenderMarkdownH2Bg", { link = "DiagnosticVirtualTextHint" })
-					vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { link = "DiagnosticVirtualTextHint" })
+					vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { link = "DiagnosticVirtualTextWarn" })
 				end,
 			})
 		end,
 		opts = {
 			completions = { blink = { enabled = true } },
 			heading = {
+				position = "inline",
 				sign = false,
 				icons = { "", "", "" },
 				width = "block",
 				right_pad = 2,
+				left_pad = 2,
 			},
 			code = { sign = false },
 		},
@@ -218,10 +221,20 @@ local plugins = {
 		event = { "InsertEnter", "CmdlineEnter" },
 		version = "*",
 		dependencies = {
-			"windwp/nvim-autopairs",
-			config = function()
-				require("plugins.autopairs")
-			end,
+			{
+				"windwp/nvim-autopairs",
+				config = function()
+					require("plugins.autopairs")
+				end,
+			},
+			{
+				"fang2hou/blink-copilot",
+				opts = {
+					max_completions = 2,
+					max_attempts = 3,
+					kind_icon = "",
+				},
+			},
 		},
 		config = function()
 			require("plugins.blink")
@@ -256,6 +269,33 @@ local plugins = {
 		ft = {
 			"csv",
 			"tsv",
+		},
+	},
+
+	--- copilot
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			{ "nvim-lua/plenary.nvim", branch = "master" },
+		},
+		build = "make tiktoken",
+		config = function()
+			require("plugins.copilot")
+		end,
+		keys = {
+			{ "<leader>ct", mode = { "n", "x" }, "<cmd>CopilotChatToggle<cr>", desc = "toggle copilot chat" },
+			{ "<leader>cm", mode = { "n", "x" }, "<cmd>CopilotChatModels<cr>", desc = "copilot models" },
+			{ "<leader>cp", mode = { "n", "x" }, "<cmd>CopilotChatPrompts<cr>", desc = "copilot prompts" },
+		},
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		opts = {
+			suggestion = { enabled = false },
+			panel = { enabled = false },
 		},
 	},
 
