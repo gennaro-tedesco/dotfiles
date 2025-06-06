@@ -229,6 +229,7 @@ local plugins = {
 			},
 			{
 				"fang2hou/blink-copilot",
+				event = { "InsertEnter" },
 				opts = {
 					max_completions = 2,
 					max_attempts = 3,
@@ -275,7 +276,6 @@ local plugins = {
 	--- copilot
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
-		event = "VeryLazy",
 		dependencies = {
 			{ "nvim-lua/plenary.nvim", branch = "master" },
 		},

@@ -193,6 +193,25 @@ local snips = {
 			)
 		),
 	},
+	["copilot-chat"] = {
+		s(
+			{
+				trig = "code",
+				name = "code block markdown language",
+			},
+			fmt(
+				[[
+				````{}
+
+				{}
+				````
+
+				{}
+				]],
+				{ i(1, "language"), i(2, "body"), i(0) }
+			)
+		),
+	},
 	markdown = {
 		s(
 			{
@@ -339,6 +358,7 @@ ls.add_snippets(nil, {
 	txt = snips.txt,
 	vim = snips.vim,
 	zsh = snips.zsh,
+	["copilot-chat"] = snips["copilot-chat"],
 })
 
 local list_snips = function()

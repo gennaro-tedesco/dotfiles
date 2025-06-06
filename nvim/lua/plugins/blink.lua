@@ -13,7 +13,7 @@ blink.setup({
 		default = { "lazydev", "lsp", "path", "snippets", "buffer", "copilot" },
 		providers = {
 			copilot = {
-				min_keyword_length = 3,
+				-- min_keyword_length = 3,
 				name = "copilot",
 				module = "blink-copilot",
 				score_offset = 6,

@@ -115,6 +115,16 @@ M.project_search = function()
 			return
 		else
 			vim.cmd.grep({ mods = { silent = true }, bang = true, '"' .. input .. '"' })
+			vim.schedule(function()
+				local qf_list = vim.fn.getqflist()
+				if #qf_list == 0 then
+					vim.notify(
+						"no matches found for: " .. input,
+						vim.log.levels.WARN,
+						{ style = "compact", title = "grep", id = "grep" }
+					)
+				end
+			end)
 		end
 	end)
 end
