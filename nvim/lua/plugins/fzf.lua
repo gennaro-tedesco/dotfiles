@@ -16,7 +16,7 @@ M.opts = {
 	},
 	winopts = {
 		height = 0.25,
-		width = 0.4,
+		width = 0.8,
 		row = 0.5,
 		preview = { hidden = "hidden" },
 		border = "rounded",
@@ -80,7 +80,6 @@ M.opts = {
 		winopts = {
 			title = " help 💡 ",
 			title_pos = "center",
-			width = 0.8,
 			height = 0.6,
 			preview = {
 				hidden = "nohidden",
@@ -123,7 +122,6 @@ M.opts = {
 			winopts = {
 				title = " symbols ✨ ",
 				title_pos = "center",
-				width = 0.8,
 				height = 0.6,
 				preview = {
 					hidden = "nohidden",
@@ -144,7 +142,6 @@ M.opts = {
 		winopts = {
 			title = " autocommands ",
 			title_pos = "center",
-			width = 0.8,
 			height = 0.6,
 			preview = {
 				hidden = "nohidden",
@@ -159,7 +156,6 @@ M.opts = {
 		winopts = {
 			title = " keymaps ",
 			title_pos = "center",
-			width = 0.8,
 			height = 0.6,
 			preview = {
 				hidden = "nohidden",
@@ -183,7 +179,6 @@ M.opts = {
 		winopts = {
 			title = " highlights 🎨 ",
 			title_pos = "center",
-			width = 0.8,
 			height = 0.6,
 			preview = {
 				hidden = "nohidden",
@@ -199,7 +194,6 @@ M.opts = {
 		winopts = {
 			title = " registers 🏷️ ",
 			title_pos = "center",
-			width = 0.8,
 		},
 	},
 }

@@ -12,22 +12,25 @@ blink.setup({
 	sources = {
 		default = { "lazydev", "lsp", "path", "snippets", "buffer", "copilot" },
 		providers = {
-			copilot = {
-				-- min_keyword_length = 3,
-				name = "copilot",
-				module = "blink-copilot",
-				score_offset = 6,
-				async = true,
-				enabled = function()
-					local ft = vim.bo.filetype
-					return ft ~= "" and ft ~= nil
-				end,
-			},
 			lazydev = {
 				min_keyword_length = 2,
 				name = "LazyDev",
 				module = "lazydev.integrations.blink",
 				score_offset = 5,
+			},
+			path = {
+				min_keyword_length = 0,
+				score_offset = 5,
+			},
+			copilot = {
+				name = "copilot",
+				module = "blink-copilot",
+				score_offset = 4,
+				async = true,
+				enabled = function()
+					local ft = vim.bo.filetype
+					return ft ~= "" and ft ~= nil
+				end,
 			},
 			snippets = {
 				min_keyword_length = 2,
@@ -36,10 +39,6 @@ blink.setup({
 			lsp = {
 				min_keyword_length = 3,
 				score_offset = 3,
-			},
-			path = {
-				min_keyword_length = 3,
-				score_offset = 2,
 			},
 			cmdline = {
 				min_keyword_length = 2,
