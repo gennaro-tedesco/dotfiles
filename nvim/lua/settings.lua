@@ -1,7 +1,7 @@
 vim.opt.background = "dark"
 
 --- cursorline, windows frame and looks
-vim.opt.showtabline = 0
+vim.opt.showtabline = 1
 vim.opt.showbreak = "↪"
 vim.opt.list = true
 vim.opt.listchars = { tab = "  ", nbsp = "␣", trail = "•", extends = "⟩", precedes = "⟨" }

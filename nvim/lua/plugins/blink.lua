@@ -4,6 +4,9 @@ if not ok then
 end
 
 local icons = require("utils").icons
+local disabled_ft = {
+	["copilot-chat"] = true,
+}
 
 ---@module 'blink.cmp'
 ---@type blink.cmp.Config
@@ -21,6 +24,9 @@ blink.setup({
 			path = {
 				min_keyword_length = 0,
 				score_offset = 5,
+				enabled = function()
+					return not disabled_ft[vim.bo.filetype]
+				end,
 			},
 			copilot = {
 				name = "copilot",
@@ -47,6 +53,9 @@ blink.setup({
 			buffer = {
 				min_keyword_length = 5,
 				score_offset = 1,
+				enabled = function()
+					return not disabled_ft[vim.bo.filetype]
+				end,
 			},
 		},
 	},

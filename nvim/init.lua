@@ -78,7 +78,7 @@ local plugins = {
 		event = "VeryLazy",
 		keys = {
 			{
-				"<leader>T",
+				"<leader>t",
 				mode = { "n", "o", "x" },
 				function()
 					require("flash").treesitter()
@@ -296,6 +296,9 @@ local plugins = {
 		opts = {
 			suggestion = { enabled = false },
 			panel = { enabled = false },
+			filetypes = {
+				tex = false,
+			},
 		},
 	},
 
@@ -436,7 +439,7 @@ local plugins = {
 				mode = "n",
 			},
 			{
-				"<C-t>",
+				",t",
 				function()
 					if vim.bo.filetype ~= "fzf" then
 						Snacks.terminal.toggle()

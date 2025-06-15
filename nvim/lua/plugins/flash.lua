@@ -26,6 +26,9 @@ flash.setup({
 	},
 	label = { min_pattern_length = 3, style = "eol" },
 	highlight = { groups = { backdrop = "SignColumn", label = "@array" } },
+	prompt = {
+		enabled = false,
+	},
 	modes = {
 		char = {
 			config = function(opts)
