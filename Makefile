@@ -1,11 +1,3 @@
-NEOVIMCONFIG_DIR=${HOME}/.config/nvim
-YAZICONFIG_DIR=${HOME}/.config/yazi
-GLOWCONFIG_DIR=${HOME}/.config/glowconfig
-NAVICONFIG_DIR=${HOME}/.config/navi
-MACCHINACONFIG_DIR=${HOME}/.config/macchina
-BATCONFIG_DIR=${HOME}/.config/bat
-WEZTERMCONFIG_DIR=${HOME}/.config/wezterm
-
 .PHONY: *
 help:
 	@printf "%s\n" "Targets:"
@@ -19,9 +11,9 @@ deps:
 	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 
 nvim:
-	rm -rf ${NEOVIMCONFIG_DIR}
-	mkdir -p ${NEOVIMCONFIG_DIR}
-	cp -r nvim/. ${NEOVIMCONFIG_DIR}
+	rm -rf ${XDG_CONFIG_HOME}/nvim
+	mkdir -p ${XDG_CONFIG_HOME}/nvim
+	cp -r nvim/. ${XDG_CONFIG_HOME}/nvim
 	nvim --headless "+Lazy! restore" +qa
 
 zsh:
@@ -32,19 +24,19 @@ zsh:
 	exec zsh
 
 bat:
-	rm -rf ${BATCONFIG_DIR}
-	mkdir ${BATCONFIG_DIR}
-	cp -r bat/. ${BATCONFIG_DIR}
+	rm -rf ${XDG_CONFIG_HOME}/bat
+	mkdir -p ${XDG_CONFIG_HOME}/bat
+	cp -r bat/. ${XDG_CONFIG_HOME}/bat
 	bat cache --build
 
 wezterm:
-	mkdir -p ${WEZTERMCONFIG_DIR}
-	cp -r wezterm/. ${WEZTERMCONFIG_DIR}
+	mkdir -p ${XDG_CONFIG_HOME}/wezterm
+	cp -r wezterm/. ${XDG_CONFIG_HOME}/wezterm
 
 yazi:
-	rm -rf ${YAZICONFIG_DIR}
-	mkdir ${YAZICONFIG_DIR}
-	cp -r yazi/. ${YAZICONFIG_DIR}
+	rm -rf ${XDG_CONFIG_HOME}/yazi
+	mkdir -p ${XDG_CONFIG_HOME}/yazi
+	cp -r yazi/. ${XDG_CONFIG_HOME}/yazi
 	ya pkg install
 
 visidata:
@@ -52,26 +44,27 @@ visidata:
 
 git:
 	cp -f git/gitconfig ${HOME}/.gitconfig
-	cp -f git/config.yml ${HOME}/.config/gh
+	mkdir -p ${XDG_CONFIG_HOME}/gh
+	cp -f git/config.yml ${XDG_CONFIG_HOME}/gh/config.yml
 
 glow:
-	mkdir -p ${GLOWCONFIG_DIR}
-	cp -f glow/customglow.json ${GLOWCONFIG_DIR}
+	mkdir -p ${XDG_CONFIG_HOME}/glowconfig
+	cp -f glow/customglow.json ${XDG_CONFIG_HOME}/glowconfig
 
 navi:
-	rm -rf ${NAVICONFIG_DIR}
-	mkdir -p ${NAVICONFIG_DIR}
-	cp -r navi/. ${NAVICONFIG_DIR}
+	rm -rf ${XDG_CONFIG_HOME}/navi
+	mkdir -p ${XDG_CONFIG_HOME}/navi
+	cp -r navi/. ${XDG_CONFIG_HOME}/navi
 
 yabai:
 	yabai --stop-service
-	mkdir -p ${HOME}/.config/yabai
-	mkdir -p ${HOME}/.config/skhd
-	cp -f yabai/yabairc ${HOME}/.config/yabai/yabairc
-	cp -f yabai/skhdrc ${HOME}/.config/skhd/skhdrc
+	mkdir -p ${XDG_CONFIG_HOME}/yabai
+	mkdir -p ${XDG_CONFIG_HOME}/skhd
+	cp -f yabai/yabairc ${XDG_CONFIG_HOME}/yabai/yabairc
+	cp -f yabai/skhdrc ${XDG_CONFIG_HOME}/skhd/skhdrc
 	yabai --start-service
 	skhd --start-service
 
 macchina:
-	mkdir -p ${MACCHINACONFIG_DIR}
-	cp -r macchina/. ${HOME}/.config/macchina
+	mkdir -p ${XDG_CONFIG_HOME}/macchina
+	cp -r macchina/. ${XDG_CONFIG_HOME}/macchina
