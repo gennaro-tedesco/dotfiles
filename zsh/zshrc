@@ -22,7 +22,7 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle :zsh-no-ps2: accept-line '.accept-line'
 autoload -Uz compinit
-if [ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
+if [ $(date +'%U') != $(/usr/bin/stat -f '%Sm' -t '%U' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
   compinit
 else
   compinit -C
@@ -69,6 +69,7 @@ export FZF_DEFAULT_OPTS="\
 	--separator=' ' \
 	--padding=1 \
 	--preview-window=right:50%:wrap \
+	--preview-border line \
 	--bind shift-up:preview-up,shift-down:preview-down --bind ?:toggle-preview \
 	--color=fg+:-1:regular,bg+:#073642,gutter:-1,border:#268bd2,separator:#2aa198,pointer:#cb4b16,hl:#268bd2,hl+:#268bd2 \
 	--pointer=▶ \
