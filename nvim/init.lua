@@ -283,6 +283,7 @@ local plugins = {
 		config = function()
 			require("plugins.copilot")
 		end,
+		event = "CmdlineEnter",
 		keys = {
 			{ "<leader>ct", mode = { "n", "x" }, "<cmd>CopilotChatToggle<cr>", desc = "toggle copilot chat" },
 			{ "<leader>cm", mode = { "n", "x" }, "<cmd>CopilotChatModels<cr>", desc = "copilot models" },
@@ -294,7 +295,17 @@ local plugins = {
 		cmd = "Copilot",
 		event = "InsertEnter",
 		opts = {
-			suggestion = { enabled = false },
+			suggestion = {
+				enabled = true,
+				auto_trigger = false,
+				hide_during_completion = true,
+				keymap = {
+					accept = "<M-l>",
+					next = "<M-k>",
+					prev = "<M-j>",
+					dismiss = "<M-h>",
+				},
+			},
 			panel = { enabled = false },
 			filetypes = {
 				tex = false,

@@ -18,7 +18,7 @@ touchdir() {
 
 # fzf browse files
 find_files() {
-	IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0 --prompt 'files:'))
+	IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0 --prompt '▶ ' --ghost 'file name'))
 	[[ -n "$files" ]] && ${EDITOR} "${files[@]}"
 }
 
@@ -27,14 +27,14 @@ find_git_files() {
 	if [[ "$(git root)" != "$(pwd)" ]] then
 		cd $(git root)
 	fi
-	IFS=$'\n' files=($(git d 2>/dev/null | fzf --query="$1" --multi --exit-0 --prompt 'git files:' --height='30%' --preview-window='down:30%:nohidden:wrap' --preview='git diff --stat --color=always -- {}'))
+	IFS=$'\n' files=($(git d 2>/dev/null | fzf --query="$1" --multi --exit-0 --prompt '▶ ' --ghost 'file name' --bind 'focus:transform-footer:git diff --stat --color=always -- {}' --height='30%'))
 	[[ -n "$files" ]] && ${EDITOR} "${files[@]}"
 }
 
 # fzf browse directories and cd into them
 find_dir() {
 	local dir
-	dir=$(fd -IH -t d -E '.git' 2> /dev/null | fzf --prompt 'folders:' +m --preview-window='right:50%:nohidden:wrap' --preview='eza --tree --level=2 --color=always {}') && cd "$dir"
+	dir=$(fd -IH -t d -E '.git' 2> /dev/null | fzf --prompt '▶ ' --ghost 'folder name' +m --preview-window='right:50%:nohidden:wrap' --preview='eza --tree --level=2 --color=always {}') && cd "$dir"
 }
 
 # list env variables

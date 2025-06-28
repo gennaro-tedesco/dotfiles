@@ -15,6 +15,14 @@ blink.setup({
 	sources = {
 		default = { "lazydev", "lsp", "path", "snippets", "buffer", "copilot" },
 		providers = {
+			snippets = {
+				min_keyword_length = 2,
+				score_offset = 10,
+			},
+			lsp = {
+				min_keyword_length = 3,
+				score_offset = 9,
+			},
 			lazydev = {
 				min_keyword_length = 2,
 				name = "LazyDev",
@@ -31,6 +39,7 @@ blink.setup({
 			copilot = {
 				name = "copilot",
 				module = "blink-copilot",
+				min_keyword_length = 0,
 				score_offset = 4,
 				async = true,
 				enabled = function()
@@ -38,17 +47,8 @@ blink.setup({
 					return ft ~= "" and ft ~= nil
 				end,
 			},
-			snippets = {
-				min_keyword_length = 2,
-				score_offset = 4,
-			},
-			lsp = {
-				min_keyword_length = 3,
-				score_offset = 3,
-			},
 			cmdline = {
 				min_keyword_length = 2,
-				score_offset = 1,
 			},
 			buffer = {
 				min_keyword_length = 5,
@@ -65,7 +65,7 @@ blink.setup({
 			show_on_trigger_character = true,
 		},
 		list = {
-			max_items = 5,
+			max_items = 10,
 			selection = {
 				preselect = false,
 				auto_insert = true,

@@ -4,6 +4,40 @@ if not ok then
 end
 
 local icons = require("utils").icons
+local copilot_utils = require("CopilotChat.utils")
+
+local function get_diagnostics()
+	local diagnostics = vim.diagnostic.get(nil)
+	local lines = {}
+	local severity_labels = {
+		[vim.diagnostic.severity.ERROR] = "ERROR",
+		[vim.diagnostic.severity.WARN] = "WARN",
+		[vim.diagnostic.severity.INFO] = "INFO",
+		[vim.diagnostic.severity.HINT] = "HINT",
+	}
+
+	copilot_utils.schedule_main()
+	for _, d in ipairs(diagnostics) do
+		local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(d.bufnr), ":.")
+		table.insert(
+			lines,
+			string.format(
+				"%s:%d - %s - %s",
+				filename,
+				(d.lnum or 0) + 1,
+				severity_labels[d.severity] or "",
+				d.message or ""
+			)
+		)
+	end
+	return {
+		{
+			content = table.concat(lines, "\n"),
+			filename = "workspace_diagnostics",
+			filetype = "text",
+		},
+	}
+end
 
 local concise_prompt = [[
 	1. be concise and to the point
@@ -14,9 +48,25 @@ local concise_prompt = [[
 	6. when providing code, do so without code comments
 	]]
 
+local diagnostics_prompt = [[
+	1. Fix all LSP warnings and errors.
+	2. Show different code patches for each diagnostic.
+	3. Start from current open buffer first.
+	4. Display results with following markdown:
+		> `<filename>`: <start line>-<end line> <diagnostic type> - <diagnostic message>\n
+	5. Show each diagnostic as code diff in format git diff -U0; remove file names and line numbers
+	6. Separate each patch with a horizontal markdown line
+	]]
+
 chat.setup({
 	model = "claude-sonnet-4",
-	context = { "buffers" },
+	contexts = {
+		diagnostics = {
+			description = "workspace diagnostics as context",
+			resolve = get_diagnostics,
+		},
+	},
+	context = { "buffers", "diagnostics" },
 	system_prompt = concise_prompt,
 	question_header = "# ",
 	answer_header = "# 🤖 🤖",
@@ -24,6 +74,12 @@ chat.setup({
 	error_header = "### " .. icons.statusline.Error,
 	highlight_headers = false,
 	separator = "",
+	prompts = {
+		Diagnostic = {
+			prompt = diagnostics_prompt,
+			context = { "buffers", "diagnostics" },
+		},
+	},
 	mappings = {
 		accept_diff = {
 			normal = "gp",
