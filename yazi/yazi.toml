@@ -59,7 +59,7 @@ create_offset = [0, 2, 50, 3]
 # rename
 rename_title = " ✏️"
 rename_origin = "bottom-left"
-rename_offset = [0, 2, 20, 3]
+rename_offset = [0, 2, 50, 3]
 
 # filter
 filter_title = " 󱃥  "

@@ -18,7 +18,7 @@ touchdir() {
 
 # fzf browse files
 find_files() {
-	IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0 --prompt '▶ ' --ghost 'file name'))
+	IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0  --ghost 'file name'))
 	[[ -n "$files" ]] && ${EDITOR} "${files[@]}"
 }
 
@@ -27,29 +27,21 @@ find_git_files() {
 	if [[ "$(git root)" != "$(pwd)" ]] then
 		cd $(git root)
 	fi
-	IFS=$'\n' files=($(git d 2>/dev/null | fzf --query="$1" --multi --exit-0 --prompt '▶ ' --ghost 'file name' --bind 'focus:transform-footer:git diff --stat --color=always -- {}' --height='30%'))
+	IFS=$'\n' files=($(git d 2>/dev/null | fzf --query="$1" --multi --exit-0  --ghost 'file name' --bind 'focus:transform-footer:git diff --stat --color=always -- {}' --height='30%'))
 	[[ -n "$files" ]] && ${EDITOR} "${files[@]}"
 }
 
 # fzf browse directories and cd into them
 find_dir() {
 	local dir
-	dir=$(fd -IH -t d -E '.git' 2> /dev/null | fzf --prompt '▶ ' --ghost 'folder name' +m --preview-window='right:50%:nohidden:wrap' --preview='eza --tree --level=2 --color=always {}') && cd "$dir"
+	dir=$(fd -IH -t d -E '.git' 2> /dev/null | fzf  --ghost 'folder name' +m --preview-window='right:50%:nohidden:wrap' --preview='eza --tree --level=2 --color=always {}') && cd "$dir"
 }
 
 # list env variables
 list_env() {
 	local var
-	var=$(printenv | cut -d= -f1 | fzf --prompt 'env:' --preview='printenv {}') \
+	var=$(printenv | cut -d= -f1 | fzf --prompt '❯ ' --ghost 'env' --bind='focus:transform-footer:printenv {}') \
 		&& echo "$var=$(printenv "$var")" \
-		&& unset var
-}
-
-# list go env variables
-list_goenv() {
-	local var
-	var=$(go env | cut -d= -f1 | fzf --prompt 'env:' --preview='go env {}') \
-		&& echo "$var=$(go env "$var")" \
 		&& unset var
 }
 
@@ -110,7 +102,7 @@ help() { "$@" --help | bat -l man -p ; }
 view() {
 	local selection
 	if [[ -z "$1" ]]; then
-		selection="$(fd -u -t f -E '.git/' | fzf)" && view "$selection"
+		selection="$(fd -u -t f -E '.git/' | fzf --ghost 'file name')" && view "$selection"
 		return 0
 	fi
 
