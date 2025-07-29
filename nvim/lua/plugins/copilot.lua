@@ -3,42 +3,6 @@ if not ok then
 	return
 end
 
-local icons = require("utils").icons
-local copilot_utils = require("CopilotChat.utils")
-
-local function get_diagnostics()
-	local diagnostics = vim.diagnostic.get(nil)
-	local lines = {}
-	local severity_labels = {
-		[vim.diagnostic.severity.ERROR] = "ERROR",
-		[vim.diagnostic.severity.WARN] = "WARN",
-		[vim.diagnostic.severity.INFO] = "INFO",
-		[vim.diagnostic.severity.HINT] = "HINT",
-	}
-
-	copilot_utils.schedule_main()
-	for _, d in ipairs(diagnostics) do
-		local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(d.bufnr), ":.")
-		table.insert(
-			lines,
-			string.format(
-				"%s:%d - %s - %s",
-				filename,
-				(d.lnum or 0) + 1,
-				severity_labels[d.severity] or "",
-				d.message or ""
-			)
-		)
-	end
-	return {
-		{
-			content = table.concat(lines, "\n"),
-			filename = "workspace_diagnostics",
-			filetype = "text",
-		},
-	}
-end
-
 local concise_prompt = [[
 	1. be concise and to the point
 	2. only answer the question asked
@@ -60,24 +24,18 @@ local diagnostics_prompt = [[
 
 chat.setup({
 	model = "claude-sonnet-4",
-	contexts = {
-		diagnostics = {
-			description = "workspace diagnostics as context",
-			resolve = get_diagnostics,
-		},
-	},
-	context = { "buffers", "diagnostics" },
+	sticky = { "#buffers", "#diagnostics" },
 	system_prompt = concise_prompt,
-	question_header = "# ",
-	answer_header = "# 🤖 🤖",
+	headers = {
+		user = "#  ",
+		assistant = "# 🤖 🤖 ",
+	},
 	auto_follow_cursor = false,
-	error_header = "### " .. icons.statusline.Error,
 	highlight_headers = false,
 	separator = "",
 	prompts = {
 		Diagnostic = {
 			prompt = diagnostics_prompt,
-			context = { "buffers", "diagnostics" },
 		},
 	},
 	mappings = {
