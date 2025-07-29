@@ -96,8 +96,6 @@ M.hl_search = function(blinktime)
 
 	local search_pat = "\\c\\%#" .. vim.fn.getreg("/")
 	local ring = vim.fn.matchadd("IncSearch", search_pat)
-	vim.cmd("redraw")
-	vim.cmd("sleep " .. blinktime * 1000 .. "m")
 
 	local sc = vim.fn.searchcount()
 	vim.api.nvim_buf_set_extmark(0, ns, vim.api.nvim_win_get_cursor(0)[1] - 1, 0, {
@@ -105,8 +103,9 @@ M.hl_search = function(blinktime)
 		virt_text_pos = "eol",
 	})
 
-	vim.fn.matchdelete(ring)
-	vim.cmd("redraw")
+	vim.defer_fn(function()
+		vim.fn.matchdelete(ring)
+	end, blinktime * 1000)
 end
 
 M.project_search = function()
