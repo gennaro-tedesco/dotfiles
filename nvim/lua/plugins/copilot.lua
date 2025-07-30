@@ -27,14 +27,15 @@ chat.setup({
 	sticky = { "#buffers", "#diagnostics" },
 	system_prompt = concise_prompt,
 	headers = {
-		user = "#  ",
+		user = "#   ",
 		assistant = "# 🤖 🤖 ",
 	},
 	auto_follow_cursor = false,
-	highlight_headers = false,
-	separator = "",
+	highlight_headers = true,
+	separator = " ",
 	prompts = {
 		Diagnostic = {
+			description = "Fix LSP buffer diagnostics",
 			prompt = diagnostics_prompt,
 		},
 	},

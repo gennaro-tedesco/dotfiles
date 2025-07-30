@@ -287,7 +287,6 @@ local plugins = {
 		keys = {
 			{ "<leader>ct", mode = { "n", "x" }, "<cmd>CopilotChatToggle<cr>", desc = "toggle copilot chat" },
 			{ "<leader>cm", mode = { "n", "x" }, "<cmd>CopilotChatModels<cr>", desc = "copilot models" },
-			{ "<leader>cp", mode = { "n", "x" }, "<cmd>CopilotChatPrompts<cr>", desc = "copilot prompts" },
 		},
 	},
 	{
