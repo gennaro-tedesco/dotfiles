@@ -112,7 +112,7 @@ M.opts = {
 			cwd_only = true,
 			no_header = true,
 			regex_filter = function(item)
-				if require("utils").is_in_list(item.kind, symbols_exclude) then
+				if vim.tbl_contains(symbols_exclude, item.kind) then
 					return false
 				else
 					return true

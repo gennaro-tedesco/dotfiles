@@ -27,12 +27,13 @@ chat.setup({
 	sticky = { "#buffers", "#diagnostics" },
 	system_prompt = concise_prompt,
 	headers = {
-		user = "#   ",
-		assistant = "# 🤖 🤖 ",
+		user = "#    ",
+		assistant = "# 🤖 🤖  ",
+		tool = "# 🔧  ",
 	},
 	auto_follow_cursor = false,
 	highlight_headers = true,
-	separator = " ",
+	separator = "━━",
 	prompts = {
 		Diagnostic = {
 			description = "Fix LSP buffer diagnostics",
@@ -40,6 +41,9 @@ chat.setup({
 		},
 	},
 	mappings = {
+		complete = {
+			insert = "<Tab>",
+		},
 		accept_diff = {
 			normal = "gp",
 			insert = "gp",
@@ -55,11 +59,6 @@ chat.setup({
 			end,
 		},
 	},
-	providers = {
-		github_models = {
-			disabled = true,
-		},
-	},
 })
 
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -70,3 +69,5 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		vim.opt_local.conceallevel = 0
 	end,
 })
+
+vim.api.nvim_set_hl(0, "CopilotChatSeparator", { link = "@comment" })

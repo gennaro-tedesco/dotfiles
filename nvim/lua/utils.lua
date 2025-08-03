@@ -75,15 +75,6 @@ M.icons = {
 	},
 }
 
-M.is_in_list = function(value, list)
-	for _, v in pairs(list) do
-		if v == value then
-			return true
-		end
-	end
-	return false
-end
-
 M.count_matches = function()
 	local cur_word = vim.fn.expandcmd("<cword>")
 	local count = vim.api.nvim_exec2("%s/" .. cur_word .. "//ng", { output = true }).output
@@ -176,18 +167,6 @@ M.toggle_ll = function()
 	vim.cmd("lopen")
 end
 
-M.t2s = function()
-	vim.o.expandtab = true
-	vim.cmd("%retab!")
-	vim.cmd("write")
-end
-
-M.s2t = function()
-	vim.o.expandtab = false
-	vim.cmd("%retab!")
-	vim.cmd("write")
-end
-
 M.replace_file = function()
 	vim.cmd("silent execute 'norm gg" .. '"' .. "_dGP'")
 end
@@ -197,7 +176,7 @@ M.git_root = function()
 end
 
 M.jumps_to_qf = function()
-	local jumplist, _ = unpack(vim.fn.getjumplist())
+	local jumplist = vim.fn.getjumplist()[1]
 	local qf_list = {}
 	for _, v in pairs(jumplist) do
 		if vim.fn.bufloaded(v.bufnr) == 1 then
@@ -214,18 +193,15 @@ M.jumps_to_qf = function()
 end
 
 M.clients_lsp = function()
-	local bufnr = vim.api.nvim_get_current_buf()
-
-	local clients = vim.lsp.get_clients({ bufnr = bufnr })
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
 	if next(clients) == nil then
 		return ""
 	end
-
-	local c = {}
-	for _, client in pairs(clients) do
-		table.insert(c, client.name)
+	local names = {}
+	for _, client in ipairs(clients) do
+		table.insert(names, client.name)
 	end
-	return table.concat(c, "|")
+	return table.concat(names, "|")
 end
 
 M.gbrowse = function()
@@ -238,20 +214,37 @@ M.gbrowse = function()
 		)
 		return
 	end
-	local branch = vim.fn.system("git branch --show-current"):gsub("\n", "")
+
 	local filename = vim.fn.expand("%:p:~:.")
-	local lnum = vim.api.nvim_win_get_cursor(0)[1]
 	if filename == "" then
 		vim.notify("no filename", vim.log.levels.ERROR, { style = "compact", title = " gh browse", id = "Gbrowse" })
 		return
 	end
-	local result = vim.system({ "gh", "browse", "-b", branch, filename .. ":" .. lnum }, { text = true }):wait()
-	if result.code ~= 0 then
-		vim.notify(
-			"Gbrowse error",
-			vim.log.levels.ERROR,
-			{ style = "compact", title = " gh browse", id = "Gbrowse" }
-		)
-	end
+
+	local lnum = vim.api.nvim_win_get_cursor(0)[1]
+
+	vim.system({ "git", "branch", "--show-current" }, { text = true }, function(branch_result)
+		if branch_result.code ~= 0 then
+			vim.notify(
+				"failed to get current branch",
+				vim.log.levels.ERROR,
+				{ style = "compact", title = " gh browse", id = "Gbrowse" }
+			)
+			return
+		end
+
+		local branch = vim.trim(branch_result.stdout)
+
+		vim.system({ "gh", "browse", "-b", branch, filename .. ":" .. lnum }, { text = true }, function(result)
+			if result.code ~= 0 then
+				local error_msg = result.stderr and vim.trim(result.stderr) or "unknown error"
+				vim.notify(
+					"gh browse failed: " .. error_msg,
+					vim.log.levels.ERROR,
+					{ style = "compact", title = " gh browse", id = "Gbrowse" }
+				)
+			end
+		end)
+	end)
 end
 return M
