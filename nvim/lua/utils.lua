@@ -85,8 +85,8 @@ M.hl_search = function(blinktime)
 	local ns = vim.api.nvim_create_namespace("search")
 	vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
 
-	local search_pat = "\\c\\%#" .. vim.fn.getreg("/")
-	local ring = vim.fn.matchadd("IncSearch", search_pat)
+	local search_reg = vim.fn.getreg("/")
+	local ring = vim.fn.matchadd("IncSearch", search_reg)
 
 	local sc = vim.fn.searchcount()
 	vim.api.nvim_buf_set_extmark(0, ns, vim.api.nvim_win_get_cursor(0)[1] - 1, 0, {
@@ -96,6 +96,7 @@ M.hl_search = function(blinktime)
 
 	vim.defer_fn(function()
 		vim.fn.matchdelete(ring)
+		vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
 	end, blinktime * 1000)
 end
 

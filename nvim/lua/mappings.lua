@@ -110,8 +110,8 @@ end, { desc = "copy file name to clipboard" })
 nnoremap("*", "*<cmd>lua require('utils').count_matches()<CR>nN", { desc = "count matches for word under cursor" })
 
 --- blink word under cursor in search mode
-nnoremap("n", "nzz<cmd>lua require('utils').hl_search(0.3)<CR>", { desc = "go to next search and highlight" })
-nnoremap("N", "Nzz<cmd>lua require('utils').hl_search(0.3)<CR>", { desc = "go to prev search and highlight" })
+nnoremap("n", "nzz<cmd>lua require('utils').hl_search(0.4)<CR>", { desc = "go to next search and highlight" })
+nnoremap("N", "Nzz<cmd>lua require('utils').hl_search(0.4)<CR>", { desc = "go to prev search and highlight" })
 
 --- quickfix
 nnoremap("<C-q>", "<cmd> lua require('utils').toggle_qf()<CR>", { desc = "toggle quickfix" })
