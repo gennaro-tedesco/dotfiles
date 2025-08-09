@@ -90,30 +90,6 @@ local plugins = {
 			require("plugins.flash")
 		end,
 	},
-	{
-		url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
-		event = "BufReadPost",
-		config = function()
-			local rainbow_delimiters = require("rainbow-delimiters")
-			---@type rainbow_delimiters.config
-			vim.g.rainbow_delimiters = {
-				strategy = {
-					[""] = rainbow_delimiters.strategy["local"],
-				},
-				query = {
-					[""] = "rainbow-delimiters",
-				},
-				highlight = {
-					"DiagnosticWarn",
-					"Tag",
-					"Type",
-					"Todo",
-					"DiagnosticError",
-					"DiagnosticHint",
-				},
-			}
-		end,
-	},
 
 	--- treesitter
 	{

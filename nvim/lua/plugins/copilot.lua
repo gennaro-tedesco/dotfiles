@@ -24,7 +24,8 @@ local diagnostics_prompt = [[
 
 chat.setup({
 	model = "claude-sonnet-4",
-	sticky = { "#buffers", "#diagnostics" },
+	sticky = { "#buffers" },
+	tools = { "copilot" },
 	system_prompt = concise_prompt,
 	headers = {
 		user = "#    ",
@@ -41,9 +42,6 @@ chat.setup({
 		},
 	},
 	mappings = {
-		complete = {
-			insert = "<Tab>",
-		},
 		accept_diff = {
 			normal = "gp",
 			insert = "gp",

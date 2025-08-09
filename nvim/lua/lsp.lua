@@ -37,7 +37,7 @@ local function diagnostic_format(diagnostic)
 		"%s %s [%s]",
 		diagnostic_signs[diagnostic.severity],
 		diagnostic.message:gsub("%.$", ""),
-		diagnostic.source:gsub("%.$", "")
+		(diagnostic.source or ""):gsub("%.$", "")
 	)
 end
 
