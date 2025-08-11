@@ -237,7 +237,6 @@ local plugins = {
 	},
 	{
 		"cameron-wags/rainbow_csv.nvim",
-		event = "BufReadPost",
 		init = function()
 			vim.g.rainbow_hover_debounce_ms = 1000
 			vim.g.disable_rainbow_key_mappings = 1
