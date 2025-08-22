@@ -4,14 +4,12 @@ function M:peek(job)
 	-- Set a fixed width of 50 characters for the preview
 	local preview_width = 55
 
-	local child = Command("bat")
-		:args({
-			"--style",
-			"plain",
-			"--theme",
-			"Solarized (dark)",
-			"--color",
-			"always",
+	local child = Command("xan")
+		:arg({
+			"view",
+			"-IpRM",
+			"-t",
+			"compact",
 			tostring(job.file.url),
 		})
 		:env("CLICOLOR_FORCE", "1")
