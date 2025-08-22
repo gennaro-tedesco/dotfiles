@@ -28,4 +28,4 @@ datamash -t, -s -H -g <colNr> count 1 < <filename> | column -s, -t
 : <filename>; datamash -t, -s --header-in ppearson <colNr-colon-colNr> < <filename>
 
 $ filename: fd -I -t f -e csv
-$ colNr: xsv headers <filename> --- --column 1
+$ colNr: xan headers -s1 <filename> --- --column 1

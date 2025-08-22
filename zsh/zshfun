@@ -54,7 +54,7 @@ search() {
 
 	local matching_files
 	case $1 in
-		-h)
+		-.)
 			matching_files=$(rg -l --hidden ${regex} | fzf --exit-0 --preview="rg --color=always -n '${regex}' {} ")
 			;;
 		-i)
@@ -141,8 +141,13 @@ conventional_commit(){
 	local staged_files="$(git diff --name-only --cached)"
 	if [[ -z "$staged_files" ]]; then { echo "no staged files to commit"; return }; fi
 
-	local cc=("feat" "fix" "docs" "config" "refactor" "test" "build" "revert")
-	local choice=$(printf "%s\n" "${cc[@]}" | fzf --prompt="type: ")
+	local cc=("feat" "fix" "docs" "config" "refactor" "test" "build" "revert" "tag" "version")
+	local choice=$(printf "%s\n" "${cc[@]}" | \
+		fzf \
+	    --ghost="select type: " \
+		--preview="git diff --stat --staged --format='%C(bold blue)%h%C(reset) - %C(green)%ar%C(reset): %C(cyan)%an%C(reset)%C(bold yellow)%d%C(reset)' --color=always" \
+	)
+	if [[ -z "$choice" ]]; then { echo "commit aborted"; return } fi
 	local text=$(gum input --prompt="${choice}: " --placeholder="commit message...")
 	if [[ -z "$text" ]]; then { echo "commit aborted"; return } fi
 	local message="${choice}: ${text}" && [[ -z "$choice" ]] && local message=$text
