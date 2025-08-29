@@ -70,3 +70,4 @@ require("nvim-treesitter.configs").setup({
 })
 
 vim.treesitter.language.register("bash", "cheat")
+vim.treesitter.language.register("bash", "zsh")
