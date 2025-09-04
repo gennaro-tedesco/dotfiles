@@ -72,6 +72,10 @@ M.filter_qf = function()
 		end
 	end
 
+	if #qf_files <= 1 then
+		return
+	end
+
 	local new_qf = {}
 	local opts = {
 		winopts = {

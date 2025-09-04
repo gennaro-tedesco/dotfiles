@@ -89,6 +89,9 @@ nnoremap("X", '"_X')
 --- replace a word with yanked text
 nnoremap("rw", "viwpyiw", { desc = "replace a word with yanked text" })
 
+--- insert mode paste
+inoremap("<C-v>", "<C-r><C-p>+", { desc = "insert mode paste" })
+
 --- replace till the end of line with yanked text
 nnoremap("rl", 'Pl"_D', { desc = "replace till end of the line" })
 

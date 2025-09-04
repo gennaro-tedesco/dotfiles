@@ -78,25 +78,22 @@ M.icons = {
 M.count_matches = function()
 	local cur_word = vim.fn.expandcmd("<cword>")
 	local count = vim.api.nvim_exec2("%s/" .. cur_word .. "//ng", { output = true }).output
-	snacks.notifier.notify(" " .. count, "info", { title = "search: " .. cur_word, style = "compact", id = "search" })
+	snacks.notifier.notify(" " .. count, "info", { title = "🔎 " .. cur_word, style = "compact", id = "search" })
 end
 
 M.hl_search = function(blinktime)
-	local ns = vim.api.nvim_create_namespace("search")
-	vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
-
 	local search_reg = vim.fn.getreg("/")
 	local ring = vim.fn.matchadd("IncSearch", search_reg)
 
 	local sc = vim.fn.searchcount()
-	vim.api.nvim_buf_set_extmark(0, ns, vim.api.nvim_win_get_cursor(0)[1] - 1, 0, {
-		virt_text = { { "[" .. sc.current .. "/" .. sc.total .. "]", "Comment" } },
-		virt_text_pos = "eol",
-	})
+	snacks.notifier.notify(
+		"[" .. sc.current .. "/" .. sc.total .. "] line " .. vim.api.nvim_win_get_cursor(0)[1],
+		"info",
+		{ title = "🔎 " .. search_reg, style = "compact", id = "search_nav" }
+	)
 
 	vim.defer_fn(function()
 		vim.fn.matchdelete(ring)
-		vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
 	end, blinktime * 1000)
 end
 
