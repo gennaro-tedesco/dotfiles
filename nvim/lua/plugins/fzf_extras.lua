@@ -45,7 +45,7 @@ M.printenv = function()
 			height = 0.4,
 			preview = {
 				hidden = "nohidden",
-				horizontal = "down:5%",
+				horizontal = "down:10%",
 			},
 		},
 		actions = {

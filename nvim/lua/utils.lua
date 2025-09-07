@@ -85,13 +85,6 @@ M.hl_search = function(blinktime)
 	local search_reg = vim.fn.getreg("/")
 	local ring = vim.fn.matchadd("IncSearch", search_reg)
 
-	local sc = vim.fn.searchcount()
-	snacks.notifier.notify(
-		"[" .. sc.current .. "/" .. sc.total .. "] line " .. vim.api.nvim_win_get_cursor(0)[1],
-		"info",
-		{ title = "🔎 " .. search_reg, style = "compact", id = "search_nav" }
-	)
-
 	vim.defer_fn(function()
 		vim.fn.matchdelete(ring)
 	end, blinktime * 1000)

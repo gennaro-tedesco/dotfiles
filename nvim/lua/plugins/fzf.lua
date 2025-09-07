@@ -26,7 +26,7 @@ M.opts = {
 		["--no-info"] = "",
 		["--info"] = "hidden",
 		["--padding"] = "13%,5%,13%,5%",
-		["--header"] = " ",
+		["--no-header"] = "",
 		["--no-scrollbar"] = "",
 	},
 	files = {
