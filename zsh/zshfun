@@ -237,3 +237,50 @@ todo() {
 			gum confirm "delete todo content?" && truncate -s 0 ${TODOFILE};;
 	esac
 }
+
+# tag release version
+tagme() {
+	local tc=("hotfix" "minor" "major")
+	local choice=$(printf "%s\n" "${tc[@]}" | \
+		fzf --ghost="select type"
+	)
+	if [[ -z "$choice" ]]; then { echo "tag aborted"; return } fi
+	local latest_tag=$(git tag -l --sort=-v:refname | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | head -n 1)
+	local clean_version=${latest_tag#v}
+	local parts=("${(@s/./)clean_version}")
+	local major=${parts[1]}
+	local minor=${parts[2]}
+	local patch=${parts[3]}
+
+	case $choice in
+		"hotfix")
+			local new_patch=$((patch + 1))
+			local new_version="v${major}.${minor}.${new_patch}"
+			;;
+		"minor")
+			local new_minor=$((minor + 1))
+			local new_version="v${major}.${new_minor}.0"
+			;;
+		"major")
+			local new_major=$((major + 1))
+			local new_version="v${new_major}.0.0"
+			;;
+		*)
+			echo "Invalid choice"
+			exit 1
+			;;
+	esac
+	gum join --align left "Latest tag is " "$latest_tag" ". New version will be " "$new_version"
+	if gum confirm ""; then
+		local text=$(gum input --placeholder="tag description")
+		if [[ -z "$text" ]]; then { echo "no tag description: aborted"; return } fi
+		git tag -a "$new_version" -m "$text"
+		if gum confirm "Push $new_version to remote?"; then
+			gum spin --spinner dot --title "git push..." --show-output git push origin tag "$new_version" || echo "Failed to push tag."
+		else
+			echo "Push cancelled."
+		fi
+	else
+		echo "No tag created."
+	fi
+}
