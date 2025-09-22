@@ -52,5 +52,6 @@
 	s = status -s
 	c = checkout -- .
 	d = diff --name-only
+	f = fetch --all
 	hs = log --date=relative --date-order --pretty='%C("#"cb4b16)%h %C(cyan)%cd %Cblue%aN%C(green)%d %C("#"93a1a1)%s'
 	root = rev-parse --show-toplevel
