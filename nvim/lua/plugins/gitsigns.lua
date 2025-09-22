@@ -19,7 +19,7 @@ gitsigns.setup({
 	preview_config = {
 		border = "rounded",
 	},
-	current_line_blame_formatter = "\t<author>: <author_time:%Y-%m-%d> - <abbrev_sha>",
+	current_line_blame_formatter = "\t<author>: <author_time:%R> - <abbrev_sha>",
 	current_line_blame_opts = {
 		virt_text = true,
 		virt_text_pos = "eol",
