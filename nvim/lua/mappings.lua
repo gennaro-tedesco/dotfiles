@@ -68,8 +68,6 @@ nnoremap("<PageUp>", "{")
 nnoremap("<PageDown>", "}")
 vnoremap("<PageUp>", "{")
 vnoremap("<PageDown>", "}")
-nnoremap("<Tab>", "<C-w>w")
-vnoremap("<Tab>", "<C-w>w")
 nnoremap("<S-Tab>", "<C-w>W")
 vnoremap("<S-Tab>", "<C-w>W")
 

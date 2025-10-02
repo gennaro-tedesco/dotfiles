@@ -36,6 +36,14 @@ local plugins = {
 
 	--- colorschemes, syntax highlights and general UI
 	{
+		"catgoose/nvim-colorizer.lua",
+		event = "BufReadPre",
+		opts = {
+			filetypes = { "toml", "json", "gitconfig" },
+			user_default_options = { names = false },
+		},
+	},
+	{
 		"craftzdog/solarized-osaka.nvim",
 		lazy = false,
 		priority = 1000,
@@ -152,7 +160,7 @@ local plugins = {
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		ft = { "markdown", "copilot-chat" },
+		ft = { "markdown" },
 		init = function()
 			local markdown_hl = vim.api.nvim_create_augroup("MarkdownHighlights", {})
 			vim.api.nvim_clear_autocmds({ group = markdown_hl })
@@ -203,15 +211,6 @@ local plugins = {
 					require("plugins.autopairs")
 				end,
 			},
-			{
-				"fang2hou/blink-copilot",
-				event = { "InsertEnter" },
-				opts = {
-					max_completions = 2,
-					max_attempts = 3,
-					kind_icon = "",
-				},
-			},
 		},
 		config = function()
 			require("plugins.blink")
@@ -247,44 +246,14 @@ local plugins = {
 			"tsv",
 		},
 	},
-
-	--- copilot
 	{
-		"CopilotC-Nvim/CopilotChat.nvim",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim", branch = "master" },
-		},
-		build = "make tiktoken",
-		config = function()
-			require("plugins.copilot")
+		"folke/sidekick.nvim",
+		opts = function()
+			return require("plugins.sidekick").opts
 		end,
-		event = "CmdlineEnter",
-		keys = {
-			{ "<leader>ct", mode = { "n", "x" }, "<cmd>CopilotChatToggle<cr>", desc = "toggle copilot chat" },
-			{ "<leader>cm", mode = { "n", "x" }, "<cmd>CopilotChatModels<cr>", desc = "copilot models" },
-		},
-	},
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		opts = {
-			suggestion = {
-				enabled = true,
-				auto_trigger = false,
-				hide_during_completion = true,
-				keymap = {
-					accept = "<M-l>",
-					next = "<M-k>",
-					prev = "<M-j>",
-					dismiss = "<M-h>",
-				},
-			},
-			panel = { enabled = false },
-			filetypes = {
-				tex = false,
-			},
-		},
+		keys = function()
+			return require("plugins.sidekick").keys
+		end,
 	},
 
 	--- linting and formatting

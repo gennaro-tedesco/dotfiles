@@ -18,15 +18,11 @@ zstyle ':completion:*' menu no
 zstyle ':completion::complete:make::' tag-order targets variables
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --tree --level=2 --color=always $realpath'
 zstyle ':fzf-tab:complete:kubectl:*' fzf-preview 'kubectl config view --minify -o jsonpath="{..context}" | jq -C'
+zstyle ':fzf-tab:complete:docker:*' fzf-preview 'docker ps -a --format "{{json .}}" | jq -C "{Name: .Names, Image: .Image, Uptime: .Status}"'
 zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle :zsh-no-ps2: accept-line '.accept-line'
 autoload -Uz compinit
-if [ $(date +'%U') != $(/usr/bin/stat -f '%Sm' -t '%U' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
-  compinit
-else
-  compinit -C
-fi
 unsetopt autocd
 unalias -m '*'
 
@@ -66,6 +62,7 @@ export FZF_DEFAULT_OPTS="\
 	--height=50% \
 	--no-info \
 	--header-first \
+	--prompt='❯ ' \
 	--separator=' ' \
 	--padding=1 \
 	--preview-window=right:50%:wrap \
@@ -93,6 +90,7 @@ alias cut="gcut"
 alias sed="gsed"
 alias head="ghead"
 alias ls="eza --tree . --level=1 --sort='type' --icons"
+alias rg="rg --colors match:bg:23 --colors match:fg:137"
 alias zenith="zenith -d 0 -n 0"
 alias du="ncdu --show-percent --hide-graph --show-itemcount --color dark"
 alias df="duf"
@@ -104,6 +102,7 @@ alias :q="exit"
 alias cheat="cht.sh --shell"
 alias upgrade="brew upgrade && brew cleanup --prune=1 -s"
 alias code="scc -c --no-cocomo"
+alias pingme="gping 8.8.8.8 google.com"
 
 ## -----------------------
 ## additional source files
@@ -123,7 +122,7 @@ alias code="scc -c --no-cocomo"
 ## --------
 bindkey -s '^p' 'clear\nfind_files\n'
 bindkey -s '^t' 'clear\nfind_dir\n'
-bindkey -s '^v' 'view **\t'
+bindkey -s '^v' 'view\n'
 bindkey -s '^o' 'clear\nfind_git_files\n'
 bindkey -s '^n' 'yazi\n'
 bindkey -s '^h' 'search\n'

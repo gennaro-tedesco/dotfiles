@@ -10,7 +10,7 @@ vim.filetype.add({
 	},
 	pattern = {
 		["requirements.*"] = "requirements",
-		["%.?env.*"] = "config",
+		[".*%.env"] = "config",
 		["%.?config*"] = "config",
 		["gitconf.*"] = "gitconfig",
 		[".*/%.dockerignore"] = "gitignore",

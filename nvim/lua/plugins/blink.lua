@@ -4,16 +4,13 @@ if not ok then
 end
 
 local icons = require("utils").icons
-local disabled_ft = {
-	["copilot-chat"] = true,
-}
 
 ---@module 'blink.cmp'
 ---@type blink.cmp.Config
 blink.setup({
 	snippets = { preset = "luasnip" },
 	sources = {
-		default = { "lazydev", "lsp", "path", "snippets", "buffer", "copilot" },
+		default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 		providers = {
 			snippets = {
 				min_keyword_length = 2,
@@ -32,20 +29,6 @@ blink.setup({
 			path = {
 				min_keyword_length = 0,
 				score_offset = 5,
-				enabled = function()
-					return not disabled_ft[vim.bo.filetype]
-				end,
-			},
-			copilot = {
-				name = "copilot",
-				module = "blink-copilot",
-				min_keyword_length = 0,
-				score_offset = 4,
-				async = true,
-				enabled = function()
-					local ft = vim.bo.filetype
-					return ft ~= "" and ft ~= nil
-				end,
 			},
 			cmdline = {
 				min_keyword_length = 2,
@@ -53,9 +36,6 @@ blink.setup({
 			buffer = {
 				min_keyword_length = 5,
 				score_offset = 1,
-				enabled = function()
-					return not disabled_ft[vim.bo.filetype]
-				end,
 			},
 		},
 	},
@@ -107,7 +87,13 @@ blink.setup({
 	},
 	keymap = {
 		["<CR>"] = { "accept", "fallback" },
-		["<Tab>"] = { "select_next", "fallback" },
+		["<Tab>"] = {
+			"select_next",
+			function()
+				return vim.lsp.inline_completion.get()
+			end,
+			"fallback",
+		},
 		["<S-Tab>"] = { "select_prev", "fallback" },
 		["<C-k>"] = { "scroll_documentation_up", "fallback" },
 		["<C-j>"] = { "scroll_documentation_down", "fallback" },
