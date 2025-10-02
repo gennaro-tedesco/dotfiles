@@ -20,6 +20,7 @@ for _, v in ipairs(vim.api.nvim_get_runtime_file("lsp/*", true)) do
 end
 
 vim.lsp.enable(vim.tbl_keys(configs))
+vim.lsp.inline_completion.enable()
 
 -------------------------------------------
 --- diagnostics: linting and formatting ---
@@ -160,4 +161,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -------------------
 --- lsp logging ---
 -------------------
-vim.lsp.set_log_level("off")
+vim.lsp.log.set_level("off")
