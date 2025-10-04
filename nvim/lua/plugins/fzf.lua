@@ -16,7 +16,7 @@ M.opts = {
 	},
 	winopts = {
 		height = 0.25,
-		width = 0.8,
+		width = 0.6,
 		row = 0.5,
 		preview = { hidden = "hidden" },
 		border = "rounded",
@@ -271,8 +271,5 @@ M.keys = {
 require("fzf-lua").env = function()
 	require("plugins.fzf_extras").printenv()
 end
-
---- register ui select
-require("fzf-lua").register_ui_select()
 
 return M

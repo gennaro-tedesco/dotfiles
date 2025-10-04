@@ -13,6 +13,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 ---@type snacks.Config
 snacks.setup({
+	picker = {
+		enabled = true,
+		win = { input = { keys = { ["<Esc>"] = { "close", mode = { "n", "i" } } } } },
+	},
 	bufdelete = { enabled = true },
 	---@type snacks.indent.Config
 	indent = {
