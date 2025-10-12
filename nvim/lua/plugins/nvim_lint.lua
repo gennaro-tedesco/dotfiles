@@ -9,7 +9,7 @@ lint.linters_by_ft = {
 	zsh = { "zsh" },
 }
 
-local mypy_opts = { "--ignore-missing-imports", "--cache-dir=/dev/null" }
+local mypy_opts = { "--ignore-missing-imports", "--cache-dir=/dev/null", "--no-disallow-untyped-globals" }
 local ruff_opts = { "--ignore=E501" }
 for _, arg in ipairs(mypy_opts) do
 	table.insert(lint.linters.mypy.args, arg)

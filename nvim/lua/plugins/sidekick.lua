@@ -26,23 +26,15 @@ M.keys = {
 	{
 		"<c-.>",
 		function()
-			require("sidekick.cli").focus()
+			require("sidekick.cli").toggle({ filter = { installed = true } })
 		end,
 		mode = { "n", "x", "i", "t" },
 		desc = "Sidekick Switch Focus",
 	},
 	{
-		"<leader>ct",
+		"<leader>cv",
 		function()
-			require("sidekick.cli").toggle({ filter = { installed = true } })
-		end,
-		desc = "Sidekick AI toggle",
-		mode = { "n", "t" },
-	},
-	{
-		"<leader>ct",
-		function()
-			require("sidekick.cli").send({ msg = "{selection}" })
+			require("sidekick.cli").send({ msg = "{this}", filter = { installed = true } })
 		end,
 		desc = "Sidekick AI send visual selection",
 		mode = { "x" },

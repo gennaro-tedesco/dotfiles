@@ -372,53 +372,12 @@ local plugins = {
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
-		config = function()
-			require("plugins.snacks")
+		opts = function()
+			return require("plugins.snacks").opts
 		end,
-		keys = {
-			{
-				"<leader>nh",
-				function()
-					Snacks.notifier.show_history()
-				end,
-				desc = "show notification history",
-				mode = "n",
-			},
-			{
-				"<Esc>",
-				function()
-					Snacks.notifier.hide()
-				end,
-				desc = "dismiss notify popup",
-				mode = "n",
-			},
-			{
-				",t",
-				function()
-					if vim.bo.filetype ~= "fzf" then
-						Snacks.terminal.toggle()
-					end
-				end,
-				desc = "toggle snacks terminal",
-				mode = { "n", "t" },
-			},
-			{
-				"]]",
-				function()
-					Snacks.words.jump(vim.v.count1, true)
-				end,
-				desc = "Next Reference",
-				mode = { "n", "t" },
-			},
-			{
-				"[[",
-				function()
-					Snacks.words.jump(-vim.v.count1, true)
-				end,
-				desc = "Prev Reference",
-				mode = { "n", "t" },
-			},
-		},
+		keys = function()
+			return require("plugins.snacks").keys
+		end,
 		init = function()
 			vim.api.nvim_create_user_command("Bd", function()
 				Snacks.bufdelete()
@@ -516,7 +475,6 @@ local plugins = {
 				autoload = true,
 				autosave = false,
 				autoswitch = { enable = true },
-				---@type possession.Hls
 				fzf_hls = { border = "Function", preview_border = "Function" },
 				fzf_winopts = { width = 0.4 },
 				sort = require("nvim-possession.sorting").time_sort,
@@ -571,8 +529,11 @@ local opts = {
 }
 
 lazy.setup(plugins, opts)
+vim.cmd.packadd("nvim.undotree")
 
 --- require the entire lua directory
-for _, file in ipairs(vim.fn.readdir(config_path .. "/lua", [[v:val =~ '\.lua$']])) do
-	require(file:gsub("%.lua$", ""))
+for _, file in ipairs(vim.fn.readdir(config_path .. "/lua")) do
+	if file:match("%.lua$") then
+		require(file:gsub("%.lua$", ""))
+	end
 end

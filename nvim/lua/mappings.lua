@@ -148,6 +148,11 @@ vnoremap("<leader>p", ":Bullet<CR>", { desc = "add bullets to selected lines" })
 --- escape terminal mode
 tnoremap("<C-q>", "<C-\\><C-n>")
 
+--- undootree
+nnoremap("<leader>u", function()
+	vim.cmd.Undotree()
+end, { desc = "toggle undotree" })
+
 ----------------------------------
 --- definition of new commands ---
 ----------------------------------

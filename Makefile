@@ -47,8 +47,9 @@ git:
 	cp -f git/config.yml ${XDG_CONFIG_HOME}/gh/config.yml
 
 glow:
-	mkdir -p ${XDG_CONFIG_HOME}/glowconfig
-	cp -f glow/customglow.json ${XDG_CONFIG_HOME}/glowconfig
+	rm -rf ${XDG_CONFIG_HOME}/glow
+	mkdir -p ${XDG_CONFIG_HOME}/glow
+	cp -r glow/. ${XDG_CONFIG_HOME}/glow
 
 navi:
 	rm -rf ${XDG_CONFIG_HOME}/navi

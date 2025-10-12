@@ -11,8 +11,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 })
 
+local M = {}
+
 ---@type snacks.Config
-snacks.setup({
+M.opts = {
 	picker = {
 		enabled = true,
 		win = { input = { keys = { ["<Esc>"] = { "close", mode = { "n", "i" } } } } },
@@ -114,7 +116,52 @@ snacks.setup({
 			{ section = "keys", indent = 4, padding = 2 },
 		},
 	},
-})
+}
+
+M.keys = {
+	{
+		"<leader>nh",
+		function()
+			Snacks.notifier.show_history()
+		end,
+		desc = "show notification history",
+		mode = "n",
+	},
+	{
+		"<Esc>",
+		function()
+			Snacks.notifier.hide()
+		end,
+		desc = "dismiss notify popup",
+		mode = "n",
+	},
+	{
+		",t",
+		function()
+			if vim.bo.filetype ~= "fzf" then
+				Snacks.terminal.toggle()
+			end
+		end,
+		desc = "toggle snacks terminal",
+		mode = { "n", "t" },
+	},
+	{
+		"]]",
+		function()
+			Snacks.words.jump(vim.v.count1, true)
+		end,
+		desc = "Next Reference",
+		mode = { "n", "t" },
+	},
+	{
+		"[[",
+		function()
+			Snacks.words.jump(-vim.v.count1, true)
+		end,
+		desc = "Prev Reference",
+		mode = { "n", "t" },
+	},
+}
 
 --- lsp progress
 local progress = vim.defaulttable()
@@ -159,3 +206,5 @@ vim.api.nvim_create_autocmd("LspProgress", {
 		})
 	end,
 })
+
+return M
