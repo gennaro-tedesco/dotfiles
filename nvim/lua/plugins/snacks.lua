@@ -1,4 +1,4 @@
-local snacks_ok, snacks = pcall(require, "snacks")
+local snacks_ok, _ = pcall(require, "snacks")
 if not snacks_ok then
 	return
 end
@@ -15,6 +15,9 @@ local M = {}
 
 ---@type snacks.Config
 M.opts = {
+	lazygit = {
+		win = { height = 0 },
+	},
 	picker = {
 		enabled = true,
 		win = { input = { keys = { ["<Esc>"] = { "close", mode = { "n", "i" } } } } },
@@ -48,6 +51,9 @@ M.opts = {
 			title = " Notifications ",
 			keys = { q = "close", ["<Esc>"] = "close" },
 			wo = { wrap = true },
+		},
+		lazygit = {
+			border = "rounded",
 		},
 	},
 	words = { enabled = true, notify_end = false },
@@ -125,6 +131,14 @@ M.keys = {
 			Snacks.notifier.show_history()
 		end,
 		desc = "show notification history",
+		mode = "n",
+	},
+	{
+		"<leader>gs",
+		function()
+			Snacks.lazygit()
+		end,
+		desc = "open lazygit",
 		mode = "n",
 	},
 	{

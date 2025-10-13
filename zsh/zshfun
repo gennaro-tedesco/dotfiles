@@ -22,7 +22,7 @@ find_git_files() {
 	if [[ "$(git root)" != "$(pwd)" ]] then
 		cd $(git root)
 	fi
-	IFS=$'\n' files=($(git d 2>/dev/null | fzf --query="$1" --multi --exit-0  --ghost 'file name' --bind 'focus:transform-footer:git diff --stat --color=always -- {} __NOVAR__' --height='30%'))
+	IFS=$'\n' files=($(git d 2>/dev/null | fzf --query="$1" --multi --select-1 --exit-0  --ghost 'file name' --bind 'focus:transform-footer:git diff --stat --color=always -- {} __NOVAR__' --height='30%'))
 	[[ -n "$files" ]] && ${EDITOR} "${files[@]}"
 }
 
@@ -111,7 +111,7 @@ view() {
 		-E)
 			bat --style='header,grid' .env 2>/dev/null ;;
 		*.md)
-			glow -s ~/.config/glowconfig/customglow.json -p $@;;
+			glow -p $@;;
 		*.json)
 			jq '.' -C $1 | less -R;;
 		*.csv)
@@ -172,40 +172,6 @@ json_diff() {
 	fi
 }
 
-# open PRs in nvim diffview
-ndiff() {
-	[[ ! "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]] && { echo "not a git repo"; return; }
-
-	if [[ -z "$1" ]]; then
-		nvim +DiffviewOpen +tabonly
-	fi
-
-	case $1 in
-		-b)
-			shift
-			local branches="$(git branch -a --format='%(refname:short)' | grep -v 'HEAD' |
-				fzf -d' ' \
-				--ghost="branches:" \
-				--preview="git log --oneline --format='%C(bold blue)%h%C(reset) - %C(green)%ar%C(reset) - %C(cyan)%an%C(reset)%C(bold yellow)%d%C(reset): %s' --color=always {}" \
-				--header=$'\n' \
-				--no-info
-			)"
-
-			if [[ -n "$branches" ]]; then
-				nvim "+DiffviewOpen $branches" +tabonly
-			fi
-			;;
-		-r)
-			shift
-			nvim "+DiffviewOpen $1" +tabonly
-			;;
-		-p)
-			shift
-			nvim "+DiffviewOpen $1..." +tabonly
-			;;
-
-	esac
-}
 
 # grep highlight with delta
 gr() { rg "$@" -N --json | delta --tabs=1 | tail -n+2 | bat -p; }

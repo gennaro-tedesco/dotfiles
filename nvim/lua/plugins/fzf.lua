@@ -97,14 +97,6 @@ M.opts = {
 				title_pos = "center",
 				preview = { hidden = "hidden" },
 			},
-			actions = {
-				["ctrl-d"] = {
-					fn = function(selected)
-						vim.cmd.DiffviewOpen({ args = { selected[1] } })
-					end,
-					desc = "diffview-git-branch",
-				},
-			},
 		},
 	},
 	lsp = {
