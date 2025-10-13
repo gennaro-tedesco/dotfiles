@@ -69,11 +69,12 @@ export FZF_DEFAULT_OPTS="\
 	--header-first \
 	--prompt='❯ ' \
 	--separator=' ' \
+	--gutter=' ' \
 	--padding=1 \
 	--preview-window=right:50%:wrap \
 	--preview-border line \
 	--bind shift-up:preview-up,shift-down:preview-down --bind ?:toggle-preview \
-	--color=fg+:-1:regular,bg+:#073642,gutter:-1,border:#268bd2,separator:#2aa198,pointer:#cb4b16,hl:#268bd2,hl+:#268bd2 \
+	--color=fg+:-1:regular,bg+:#073642,border:#268bd2,separator:#2aa198,pointer:#cb4b16,hl:#268bd2,hl+:#268bd2 \
 	--pointer=▶ \
 	--marker=' '"
 export FZF_DEFAULT_COMMAND="fd -H -t f -E '.git/'"
