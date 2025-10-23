@@ -55,7 +55,7 @@ end
 local excluded_filetypes = {
 	markdown = true,
 	text = true,
-	-- add more filetypes as needed
+	norg = true,
 }
 
 return {

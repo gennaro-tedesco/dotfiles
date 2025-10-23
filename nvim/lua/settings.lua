@@ -5,7 +5,7 @@ vim.opt.showtabline = 1
 vim.opt.showbreak = "↪"
 vim.opt.list = true
 vim.opt.listchars = { tab = "  ", nbsp = "␣", trail = "•", extends = "⟩", precedes = "⟨" }
-vim.opt.fillchars = { eob = " ", diff = " " }
+vim.opt.fillchars = { eob = " ", diff = " ", fold = " " }
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.ruler = true
@@ -190,9 +190,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
 			bg = vim.api.nvim_get_hl(0, { name = "DiffChange" }).bg,
 		})
 		vim.api.nvim_set_hl(0, "WinSeparator", { bold = false, fg = "#268bd2", bg = "none" })
-		vim.api.nvim_set_hl(0, "@markup.heading", { bold = true, fg = vim.api.nvim_get_hl(0, { name = "Normal" }).fg })
 		vim.api.nvim_set_hl(0, "@object", { link = "@lsp.type.class" })
 		vim.api.nvim_set_hl(0, "@package", { link = "@namespace" })
 		vim.api.nvim_set_hl(0, "@array", { link = "@comment.todo" })
+		vim.api.nvim_set_hl(0, "@markup.heading.1", { link = "DiagnosticVirtualTextInfo" })
+		vim.api.nvim_set_hl(0, "@markup.heading.2", { link = "DiagnosticVirtualTextHint" })
+		vim.api.nvim_set_hl(0, "@markup.heading.3", { link = "DiagnosticVirtualTextWarn" })
 	end,
 })

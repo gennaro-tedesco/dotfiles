@@ -1,4 +1,4 @@
-local sidekick_ok, sidekick = pcall(require, "sidekick")
+local sidekick_ok, _ = pcall(require, "sidekick")
 if not sidekick_ok then
 	return
 end
@@ -7,8 +7,10 @@ local M = {}
 
 ---@class sidekick.Config
 M.opts = {
+	nes = { enabled = false },
 	cli = {
 		win = { split = { width = 0.5 } },
+		picker = "fzf-lua",
 	},
 }
 

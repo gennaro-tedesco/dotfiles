@@ -6,6 +6,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.deprecate = function() end
 
 ---------------------------------
 --- plugins manager:lazy.nvim ---
@@ -33,7 +34,6 @@ end
 --- plugins list ---
 --------------------
 local plugins = {
-
 	--- colorschemes, syntax highlights and general UI
 	{
 		"catgoose/nvim-colorizer.lua",
@@ -161,32 +161,28 @@ local plugins = {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		ft = { "markdown" },
-		init = function()
-			local markdown_hl = vim.api.nvim_create_augroup("MarkdownHighlights", {})
-			vim.api.nvim_clear_autocmds({ group = markdown_hl })
-			vim.api.nvim_create_autocmd("BufEnter", {
-				group = markdown_hl,
-				desc = "redefinition of markdown highlights",
-				callback = function()
-					vim.api.nvim_set_hl(0, "RenderMarkdownH1Bg", { link = "DiagnosticVirtualTextInfo" })
-					vim.api.nvim_set_hl(0, "RenderMarkdownH2Bg", { link = "DiagnosticVirtualTextHint" })
-					vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { link = "DiagnosticVirtualTextWarn" })
-				end,
-			})
-		end,
 		opts = {
 			completions = { blink = { enabled = true } },
 			heading = {
 				position = "inline",
 				sign = false,
-				icons = { "", "", "" },
+				icons = { "", "", "", "" },
 				width = "block",
-				right_pad = 2,
-				left_pad = 2,
+				backgrounds = {},
 			},
 			code = { sign = false },
 		},
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+	},
+	{
+		"nvim-neorg/neorg",
+		build = ":Neorg sync-parsers",
+		ft = "norg",
+		cmd = "Neorg",
+		version = "*",
+		opts = function()
+			return require("plugins.neorg").opts
+		end,
 	},
 
 	--- LSP, language servers and code autocompletion
@@ -297,7 +293,19 @@ local plugins = {
 				desc = "toggle nvim-tree",
 			},
 		},
-		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			lazy = true,
+			opts = {
+				override_by_extension = {
+					norg = {
+						icon = "",
+						color = "#4878BE",
+						name = "Neorg",
+					},
+				},
+			},
+		},
 		config = function()
 			require("plugins.nvim_tree")
 		end,

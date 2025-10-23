@@ -19,10 +19,6 @@
   <a href="#Screenshots">Screenshots</a>
 </h3>
 
-# Requirements
-
-I am making use of a certain number of system programs that you can find in [`REQUIREMENTS.md`](https://github.com/gennaro-tedesco/dotfiles/blob/master/REQUIREMENTS.md); some of them are necessary as they are included in `zsh` functions as well as `neovim` plugins and `navi` commands, whereas some others are optional.
-
 # Installation
 
 Clone the repository

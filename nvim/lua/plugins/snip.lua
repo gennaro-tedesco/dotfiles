@@ -193,29 +193,10 @@ local snips = {
 			)
 		),
 	},
-	["copilot-chat"] = {
-		s(
-			{
-				trig = "code",
-				name = "code block markdown language",
-			},
-			fmt(
-				[[
-				````{}
-
-				{}
-				````
-
-				{}
-				]],
-				{ i(1, "language"), i(2, "body"), i(0) }
-			)
-		),
-	},
 	markdown = {
 		s(
 			{
-				trig = "link",
+				trig = "hyperlink",
 				name = "Create markdown link [txt](url)",
 			},
 			fmt(
@@ -244,6 +225,12 @@ local snips = {
 			trig = "day",
 			name = "choose day of the week",
 		}, c(1, { t("Monday"), t("Tuesday"), t("Wednesday"), t("Thursday"), t("Friday"), t("Saturday"), t("Sunday") })),
+	},
+	norg = {
+		s({
+			trig = "hyperlink",
+			name = "Create norg link {:url:}[txt]",
+		}, fmt("{{{}}}[{}]", { i(1, "url"), i(2, "text") })),
 	},
 	python = {
 		s(
@@ -352,6 +339,7 @@ ls.add_snippets(nil, {
 	go = snips.go,
 	lua = snips.lua,
 	markdown = snips.markdown,
+	norg = snips.norg,
 	python = snips.python,
 	sh = snips.sh,
 	tex = snips.tex,

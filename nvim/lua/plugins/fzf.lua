@@ -97,6 +97,15 @@ M.opts = {
 				title_pos = "center",
 				preview = { hidden = "hidden" },
 			},
+			actions = {
+				["default"] = {
+					fn = function(selected)
+						vim.fn.system("git checkout " .. selected[1])
+						vim.cmd.checktime()
+					end,
+					desc = "git-checkout-branch",
+				},
+			},
 		},
 	},
 	lsp = {

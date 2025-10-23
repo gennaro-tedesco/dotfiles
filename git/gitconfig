@@ -45,7 +45,7 @@
 	blame-code-style = syntax
 	blame-separator-format = none
 	line-numbers-left-format = "{nm:^4} "
-	line-numbers-right-format = "│ "
+	line-numbers-right-format = " "
 
 # alias
 [alias]

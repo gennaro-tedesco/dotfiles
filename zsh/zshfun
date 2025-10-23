@@ -196,9 +196,6 @@ todo() {
 	fi
 
 	case $1 in
-		-v)
-			clear
-			bat --style='grid' ${TODOFILE} -l markdown;;
 		-d)
 			gum confirm "delete todo content?" && truncate -s 0 ${TODOFILE};;
 	esac

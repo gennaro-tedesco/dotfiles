@@ -93,11 +93,6 @@ config = {
 			mods = "CMD",
 			action = act.CloseCurrentPane({ confirm = false }),
 		},
-		{
-			key = "f",
-			mods = "CTRL",
-			action = act.Search({ Regex = "" }),
-		},
 	},
 
 	--- mouse configuration
