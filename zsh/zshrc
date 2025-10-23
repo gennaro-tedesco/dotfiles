@@ -106,10 +106,11 @@ alias env="list_env"
 alias src="exec zsh"
 alias calc="insect"
 alias :q="exit"
-alias cheat="cht.sh --shell"
 alias upgrade="brew upgrade && brew cleanup --prune=1 -s"
 alias code="scc -c --no-cocomo"
 alias pingme="gping 8.8.8.8 google.com"
+alias lg="lazygit"
+alias ld="lazydocker"
 
 ## -----------------------
 ## additional source files
