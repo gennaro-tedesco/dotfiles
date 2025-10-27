@@ -36,33 +36,23 @@ end
 local plugins = {
 	--- colorschemes, syntax highlights and general UI
 	{
+		"craftzdog/solarized-osaka.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = function()
+			return require("plugins.colourscheme").opts
+		end,
+		init = function()
+			vim.cmd.colorscheme("solarized-osaka")
+		end,
+	},
+	{
 		"catgoose/nvim-colorizer.lua",
 		event = "BufReadPre",
 		opts = {
 			filetypes = { "toml", "json", "gitconfig", "yaml" },
 			user_default_options = { names = false },
 		},
-	},
-	{
-		"craftzdog/solarized-osaka.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {
-			transparent = true,
-			on_highlights = function(highlights, colors)
-				highlights.Visual = { bg = colors.base01, reverse = false }
-			end,
-			styles = {
-				keywords = { italic = false },
-				sidebars = "transparent",
-				floats = "transparent",
-			},
-			sidebars = { "qf", "help" },
-			day_brightness = 0,
-		},
-		init = function()
-			vim.cmd.colorscheme("solarized-osaka")
-		end,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
@@ -124,17 +114,6 @@ local plugins = {
 				end,
 			},
 		},
-		init = function()
-			local treesitter_hl = vim.api.nvim_create_augroup("TreesitterHighlights", {})
-			vim.api.nvim_clear_autocmds({ group = treesitter_hl })
-			vim.api.nvim_create_autocmd("BufEnter", {
-				group = treesitter_hl,
-				desc = "redefinition of treesitter context highlights group",
-				callback = function()
-					vim.api.nvim_set_hl(0, "TreesitterContext", { link = "Pmenu" })
-				end,
-			})
-		end,
 		opts = { max_lines = 3 },
 		dependencies = "nvim-treesitter/nvim-treesitter",
 	},
@@ -402,23 +381,10 @@ local plugins = {
 		"andymass/vim-matchup",
 		event = "BufReadPost",
 		init = function()
-			local matchup_hl = vim.api.nvim_create_augroup("MatchupHighlights", {})
-			vim.api.nvim_clear_autocmds({ group = matchup_hl })
-			vim.api.nvim_create_autocmd("BufEnter", {
-				group = matchup_hl,
-				desc = "redefinition of treesitter context highlights group",
-				callback = function()
-					vim.api.nvim_set_hl(0, "MatchWord", { bold = false, reverse = true })
-					vim.api.nvim_set_hl(0, "MatchParen", { bold = false, reverse = true })
-					vim.api.nvim_set_hl(0, "MatchupVirtualText", { bold = false, reverse = true })
-				end,
-			})
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 			vim.g.matchup_surround_enabled = 1
 		end,
 	},
-
-	--- my plugins, they're awesome
 	{
 		"gennaro-tedesco/nvim-possession",
 		keys = {

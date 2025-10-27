@@ -3,7 +3,7 @@ if not ok then
 	return
 end
 
-local symbols_exclude = { "Variable", "String", "Number", "Text", "Boolean" }
+local symbols_exclude = { "Constant", "Variable", "String", "Number", "Text", "Boolean" }
 
 local M = {}
 
@@ -130,6 +130,9 @@ M.opts = {
 					wrap = "wrap",
 				},
 			},
+			symbol_hl = function(s)
+				return "@lsp.type." .. s:lower()
+			end,
 			symbol_fmt = function(s)
 				return s .. ":"
 			end,

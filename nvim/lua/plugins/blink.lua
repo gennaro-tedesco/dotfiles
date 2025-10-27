@@ -30,9 +30,6 @@ blink.setup({
 				min_keyword_length = 0,
 				score_offset = 5,
 			},
-			cmdline = {
-				min_keyword_length = 2,
-			},
 			buffer = {
 				min_keyword_length = 5,
 				score_offset = 1,
@@ -101,19 +98,10 @@ blink.setup({
 	},
 	cmdline = {
 		keymap = {
-			["<cr>"] = {
-				function(cmp)
-					return cmp.accept({
-						callback = function()
-							vim.api.nvim_feedkeys("\n", "n", true)
-						end,
-					})
-				end,
-				"fallback",
-			},
 			["<Tab>"] = { "select_next" },
 			["<S-Tab>"] = { "select_prev" },
 			["<C-e>"] = { "cancel" },
+			["<C-o>"] = { "accept" },
 		},
 		completion = {
 			menu = {

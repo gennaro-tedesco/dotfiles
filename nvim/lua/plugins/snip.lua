@@ -231,6 +231,10 @@ local snips = {
 			trig = "hyperlink",
 			name = "Create norg link {:url:}[txt]",
 		}, fmt("{{{}}}[{}]", { i(1, "url"), i(2, "text") })),
+		s({
+			trig = "day",
+			name = "choose day of the week",
+		}, c(1, { t("Monday"), t("Tuesday"), t("Wednesday"), t("Thursday"), t("Friday"), t("Saturday"), t("Sunday") })),
 	},
 	python = {
 		s(
