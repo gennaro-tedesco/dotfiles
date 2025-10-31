@@ -16,7 +16,7 @@ config = {
 
 	--- appearance
 	font_size = 20,
-	font = wezterm.font("Fira Code"),
+	font = wezterm.font("FiraCode Nerd Font"),
 	color_scheme = colour_scheme,
 	colors = {
 		scrollbar_thumb = scheme_def.ansi[1],

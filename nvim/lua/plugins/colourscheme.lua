@@ -19,6 +19,7 @@ M.opts = {
 		highlights.Visual = { bg = "#214283" }
 		highlights.NormalFloat = { link = "Normal" }
 		highlights.WinBarNC = { link = "WinBar" }
+		highlights.StatusLineNC = { link = "StatusLine" }
 		highlights.CursorLine = { link = "CursorColumn" }
 		highlights.FloatBorder = { link = "@comment.todo" }
 		highlights.FloatTitle = { link = "Normal" }
@@ -36,7 +37,7 @@ M.opts = {
 		highlights.DiffDelete = { bg = "#331423" }
 		highlights.DiffChange = { bg = "#664c00" }
 		highlights.DiffText = { fg = "#331423", bg = "#664c00" }
-		highlights.WinSeparator = { bold = false, fg = "#268bd2", bg = "none" }
+		highlights.WinSeparator = { bold = false, fg = "#063540", bg = "none" }
 		highlights.MatchWord = { bold = false, reverse = true }
 		highlights.MatchParen = { bold = false, reverse = true }
 		highlights.MatchupVirtualText = { bold = false, reverse = true }

@@ -278,8 +278,8 @@ local plugins = {
 			opts = {
 				override_by_extension = {
 					norg = {
-						icon = "",
-						color = "#4878BE",
+						icon = "",
+						color = "#427d8f",
 						name = "Neorg",
 					},
 				},

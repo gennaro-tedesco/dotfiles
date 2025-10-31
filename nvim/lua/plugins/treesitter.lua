@@ -51,13 +51,13 @@ require("nvim-treesitter.configs").setup({
 			set_jumps = true,
 			goto_next_start = {
 				["g+"] = { query = "@function.outer", desc = "🌲go to next function" },
-				["gc+"] = { query = "@class.outer", desc = "🌲go to next class" },
+				["gC+"] = { query = "@class.outer", desc = "🌲go to next class" },
 				["gl+"] = { query = "@loop.outer", desc = "🌲go to next loop" },
 				["gb+"] = { query = "@block.outer", desc = "🌲go to next block" },
 			},
 			goto_previous_start = {
 				["g-"] = { query = "@function.outer", desc = "🌲go to previous function" },
-				["gc-"] = { query = "@class.outer", desc = "🌲go to previous class" },
+				["gC-"] = { query = "@class.outer", desc = "🌲go to previous class" },
 				["gl-"] = { query = "@loop.outer", desc = "🌲go to previous loop" },
 				["gb-"] = { query = "@block.outer", desc = "🌲go to previous block" },
 			},

@@ -17,3 +17,8 @@ vim.opt_local.foldtext = "v:lua.md_fold_text()"
 vim.opt_local.foldmethod = "expr"
 vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt_local.foldlevel = 99
+
+vim.keymap.set("n", "g0", function()
+	vim.cmd.vimgrep("/^#/", "%")
+	vim.cmd.copen()
+end, { buffer = true, desc = "README TOC" })

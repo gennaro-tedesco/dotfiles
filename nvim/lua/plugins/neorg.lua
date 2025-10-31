@@ -7,9 +7,9 @@ M.opts = {
 		["core.dirman"] = {
 			config = {
 				workspaces = {
-					team = "~/team",
+					notes = "~/notes",
 				},
-				default_workspace = "team",
+				default_workspace = "notes",
 			},
 		},
 		["core.highlights"] = {

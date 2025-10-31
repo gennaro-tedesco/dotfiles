@@ -241,3 +241,13 @@ tagme() {
 		echo "No tag created."
 	fi
 }
+
+# open neorg notes
+neorg() {
+	local NEORG_DIR="${HOME}/notes"
+	if [[ -f "${NEORG_DIR}/index.norg" ]]; then
+		cd "${NEORG_DIR}" && nvim index.norg
+	else
+		echo "No index.norg found in ${NEORG_DIR}"
+	fi
+}
