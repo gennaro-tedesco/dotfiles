@@ -275,15 +275,6 @@ local plugins = {
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 			lazy = true,
-			opts = {
-				override_by_extension = {
-					norg = {
-						icon = "",
-						color = "#427d8f",
-						name = "Neorg",
-					},
-				},
-			},
 		},
 		config = function()
 			require("plugins.nvim_tree")
