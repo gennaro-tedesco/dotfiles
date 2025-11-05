@@ -105,6 +105,12 @@ M.opts = {
 					end,
 					desc = "git-checkout-branch",
 				},
+				["ctrl-d"] = {
+					fn = function(selected)
+						require("gitsigns").diffthis(selected[1])
+					end,
+					desc = "git-diff-branch",
+				},
 			},
 		},
 	},
@@ -213,7 +219,11 @@ M.keys = {
 	{
 		"<C-b>",
 		function()
-			fzf.buffers()
+			if #vim.fn.getbufinfo({ buflisted = 1 }) <= 1 then
+				vim.notify("Only one buffer open", vim.log.levels.INFO)
+			else
+				fzf.buffers()
+			end
 		end,
 		desc = "fzf browse buffers",
 	},

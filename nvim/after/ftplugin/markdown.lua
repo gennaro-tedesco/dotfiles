@@ -19,6 +19,12 @@ vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt_local.foldlevel = 99
 
 vim.keymap.set("n", "g0", function()
-	vim.cmd.vimgrep("/^#/", "%")
-	vim.cmd.copen()
+	local ok, _ = pcall(function()
+		vim.cmd.vimgrep("/^#/", "%")
+	end)
+	if ok then
+		vim.cmd.copen()
+	else
+		vim.notify("no headers found", vim.log.levels.INFO)
+	end
 end, { buffer = true, desc = "README TOC" })

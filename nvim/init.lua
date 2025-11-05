@@ -57,6 +57,10 @@ local plugins = {
 	{
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			lazy = true,
+		},
 		config = function()
 			require("plugins.lualine")
 		end,
@@ -151,7 +155,7 @@ local plugins = {
 			},
 			code = { sign = false },
 		},
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
 	{
 		"nvim-neorg/neorg",
@@ -258,26 +262,6 @@ local plugins = {
 		end,
 		keys = function()
 			return require("plugins.fzf").keys
-		end,
-	},
-	{
-		"nvim-tree/nvim-tree.lua",
-		cmd = "NvimTreeToggle",
-		keys = {
-			{
-				"<C-n>",
-				function()
-					require("nvim-tree.api").tree.toggle()
-				end,
-				desc = "toggle nvim-tree",
-			},
-		},
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-			lazy = true,
-		},
-		config = function()
-			require("plugins.nvim_tree")
 		end,
 	},
 	{

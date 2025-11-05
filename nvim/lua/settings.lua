@@ -156,3 +156,47 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		require("nvim-tree.api").tree.open()
 	end,
 })
+
+---------------
+--- folding ---
+---------------
+---@param line string
+---@param lnum number
+local function fold_virt_text(line, lnum)
+	local text = ""
+	local hl
+	local result = {}
+	for i = 1, #line do
+		local char = line:sub(i, i)
+		local hls = vim.treesitter.get_captures_at_pos(0, lnum, i - 1)
+		if next(hls) ~= nil then
+			local new_hl = "@" .. hls[#hls].capture
+			if new_hl ~= hl then
+				table.insert(result, { text, hl })
+				text = ""
+				hl = nil
+			end
+			text = text .. char
+			hl = new_hl
+		else
+			text = text .. char
+		end
+	end
+	table.insert(result, { text, hl })
+	return result
+end
+
+function _G.fold_text()
+	local line = vim.fn.getline(vim.v.foldstart)
+	local count = vim.v.foldend - vim.v.foldstart + 1
+	local icon = "▼"
+
+	local result = fold_virt_text(line, vim.v.foldstart - 1)
+	table.insert(result, { " … " .. icon .. count, "Folded" })
+	return result
+end
+
+vim.opt.foldtext = "v:lua.fold_text()"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99

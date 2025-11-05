@@ -30,7 +30,7 @@ ls.config.set_config({
 })
 
 -- commands
-vim.keymap.set({ "i", "s" }, "<C-k>", function()
+vim.keymap.set({ "i", "s", "n" }, "<C-k>", function()
 	if ls.expand_or_jumpable() then
 		ls.expand_or_jump()
 	end

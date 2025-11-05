@@ -9,6 +9,9 @@ end
 _G.P = function(...)
 	snacks.notify.info(vim.inspect(...), { ft = "lua" })
 end
+_G.bt = function()
+	snacks.debug.backtrace()
+end
 
 vim.print = _G.P
 

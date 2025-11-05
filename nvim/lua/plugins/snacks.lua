@@ -8,6 +8,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	group = snacks_hl,
 	callback = function()
 		vim.api.nvim_set_hl(0, "SnacksNotifierBorderInfo", { link = "DiagnosticHint" })
+		vim.api.nvim_set_hl(0, "SnacksPickerTree", { link = "WinSeparator" })
+		vim.api.nvim_set_hl(0, "SnacksPickerInputCursorLine", { link = "Normal" })
+		vim.api.nvim_set_hl(0, "SnacksPickerListCursorLine", { link = "CursorLine" })
 	end,
 })
 
@@ -18,10 +21,64 @@ M.opts = {
 	lazygit = {
 		win = { height = 0 },
 	},
+	explorer = { enabled = true, replace_netrw = true },
+	input = {
+		enabled = false,
+		icon = "",
+		win = {
+			keys = {
+				n_esc = { "<esc>", "cancel", mode = "n" },
+				i_esc = { "<esc>", "cancel", mode = "i" },
+			},
+		},
+	},
 	picker = {
+		prompt = " ",
 		enabled = true,
 		ui_select = true,
 		win = { input = { keys = { ["<Esc>"] = { "close", mode = { "n", "i" } } } } },
+		sources = {
+			explorer = {
+				title = "🔎 search file",
+				diagnostics = false,
+				diagnostics_open = false,
+				git_status = false,
+				git_status_open = false,
+				git_untracked = false,
+				layout = { layout = { position = "right" } },
+				win = {
+					input = {
+						keys = {
+							["<Tab>"] = { "toggle_focus", mode = { "i" } },
+							["<S-Tab>"] = { "toggle_focus", mode = { "i" } },
+						},
+					},
+					list = {
+						keys = {
+							["<Tab>"] = false,
+							["<S-Tab>"] = false,
+							["d"] = false,
+							["o"] = false,
+							["m"] = false,
+							["y"] = false,
+							["c"] = false,
+							["P"] = false,
+							["dd"] = "explorer_del",
+							["<Left>"] = "explorer_close",
+							["<Right>"] = "confirm",
+							["a"] = "explorer_add",
+							["i"] = "explorer_rename",
+							["za"] = "toggle_hidden",
+							["<C-n>"] = "close",
+							["v"] = { "select_and_next", mode = { "n", "x" } },
+							["p"] = "explorer_move",
+							["yf"] = { "explorer_yank", mode = { "n", "x" } },
+							["yy"] = "explorer_copy",
+						},
+					},
+				},
+			},
+		},
 	},
 	bufdelete = { enabled = true },
 	---@type snacks.indent.Config
@@ -175,6 +232,13 @@ M.keys = {
 		end,
 		desc = "Prev Reference",
 		mode = { "n", "t" },
+	},
+	{
+		"<C-n>",
+		function()
+			Snacks.explorer()
+		end,
+		desc = "File Explorer",
 	},
 }
 

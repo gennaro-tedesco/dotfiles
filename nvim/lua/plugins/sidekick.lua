@@ -16,16 +16,6 @@ M.opts = {
 
 M.keys = {
 	{
-		"<tab>",
-		function()
-			if not require("sidekick.nes").apply() then
-				return "<Tab>"
-			end
-		end,
-		expr = true,
-		desc = "Sidekick NES",
-	},
-	{
 		"<c-.>",
 		function()
 			require("sidekick.cli").toggle({ filter = { installed = true } })

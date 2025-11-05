@@ -41,6 +41,7 @@ M.opts = {
 		highlights.MatchWord = { bold = false, reverse = true }
 		highlights.MatchParen = { bold = false, reverse = true }
 		highlights.MatchupVirtualText = { bold = false, reverse = true }
+		highlights.Folded = { bold = false }
 	end,
 	styles = {
 		keywords = { italic = false },
