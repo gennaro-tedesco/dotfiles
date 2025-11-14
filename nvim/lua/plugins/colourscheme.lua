@@ -16,6 +16,7 @@ M.opts = {
 		highlights["@markup.heading.1"] = { link = "DiagnosticVirtualTextInfo" }
 		highlights["@markup.heading.2"] = { link = "DiagnosticVirtualTextHint" }
 		highlights["@markup.heading.3"] = { link = "DiagnosticVirtualTextWarn" }
+		highlights["@neorg.tags.ranged_verbatim.code_block"] = { bg = "#002831" }
 		highlights.Visual = { bg = "#214283" }
 		highlights.NormalFloat = { link = "Normal" }
 		highlights.WinBarNC = { link = "WinBar" }

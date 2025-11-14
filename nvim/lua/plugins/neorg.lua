@@ -49,7 +49,10 @@ M.opts = {
 		["core.concealer"] = {
 			config = {
 				folds = false,
-				icons = { todo = { pending = { icon = "✘" } } },
+				icons = {
+					code_block = { conceal = true },
+					todo = { pending = { icon = "✘" } },
+				},
 			},
 		},
 	},

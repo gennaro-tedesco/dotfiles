@@ -26,6 +26,11 @@ column -t -s, <filename>
 $ filename: fd -t f
 
 
+% sort
+
+# sort and count unique lines (pipe)
+sort | uniq -c | sort -nr
+
 % sed
 
 # select row by index
