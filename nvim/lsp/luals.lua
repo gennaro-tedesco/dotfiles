@@ -19,7 +19,14 @@ return {
 				globals = { "describe", "it", "setup", "teardown" },
 				disable = { "missing-fields" },
 			},
-			workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false },
+			workspace = {
+				library = {
+					vim.env.VIMRUNTIME,
+					"${3rd}/luv/library",
+					vim.api.nvim_get_runtime_file("", true),
+				},
+				checkThirdParty = false,
+			},
 			telemetry = { enable = false },
 			codeLens = { enable = true },
 		},

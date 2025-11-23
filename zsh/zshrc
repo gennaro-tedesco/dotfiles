@@ -111,6 +111,7 @@ alias code="scc -c --no-cocomo"
 alias pingme="gping 8.8.8.8 google.com"
 alias lg="lazygit"
 alias ld="lazydocker"
+alias zj="zellij"
 
 ## -----------------------
 ## additional source files

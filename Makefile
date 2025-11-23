@@ -68,3 +68,8 @@ yabai:
 macchina:
 	mkdir -p ${XDG_CONFIG_HOME}/macchina
 	cp -r macchina/. ${XDG_CONFIG_HOME}/macchina
+
+zellij:
+	rm -rf ${XDG_CONFIG_HOME}/zellij
+	mkdir -p ${XDG_CONFIG_HOME}/zellij
+	cp -r zellij/. ${XDG_CONFIG_HOME}/zellij
