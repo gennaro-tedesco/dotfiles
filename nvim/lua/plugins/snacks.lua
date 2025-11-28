@@ -169,6 +169,17 @@ M.opts = {
 					action = "<cmd>Lazy<CR>",
 					enabled = package.loaded.lazy ~= nil,
 				},
+				{
+					icon = " ",
+					key = "b",
+					desc = "git branches",
+					action = function()
+						require("fzf-lua").git_branches()
+					end,
+					enabled = function()
+						return require("utils").git_root() ~= nil
+					end,
+				},
 				{ icon = "❌", key = "q", desc = "Quit", action = "<cmd>qa<CR>" },
 			},
 		},

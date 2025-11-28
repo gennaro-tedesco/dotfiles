@@ -17,6 +17,7 @@ conform.setup({
 	formatters_by_ft = {
 		json = { "jq" },
 		go = { "gofmt", "goimports" },
+		html = { "js_beautify" },
 		latex = { "latexindent" },
 		lua = { "stylua" },
 		markdown = { "mdformat" },
@@ -26,6 +27,20 @@ conform.setup({
 		sql = { "sqlfluff" },
 		toml = { "taplo" },
 		yaml = { "prettier" },
+	},
+	formatters = {
+		js_beautify = {
+			prepend_args = {
+				"--type",
+				"html",
+				"--indent-size",
+				"2",
+				"--wrap-line-length",
+				"100",
+				"--end-with-newline",
+				"false",
+			},
+		},
 	},
 	format_on_save = function()
 		local next = next

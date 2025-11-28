@@ -3,7 +3,7 @@ return {
 	filetypes = { "html" },
 	root_markers = { "package.json" },
 	init_options = {
-		provideFormatter = true,
+		provideFormatter = false,
 	},
 	settings = {},
 }
