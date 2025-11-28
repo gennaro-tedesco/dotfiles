@@ -10,8 +10,8 @@ local soldark = require("lualine.themes.solarized_dark")
 soldark.normal.a.gui = ""
 soldark.insert.a.gui = ""
 soldark.visual.a.gui = ""
-lualine.setup({
-	extensions = { "lazy" },
+	lualine.setup({
+		extensions = { "lazy", "quickfix" },
 	options = {
 		theme = soldark,
 		component_separators = { left = "", right = "" },

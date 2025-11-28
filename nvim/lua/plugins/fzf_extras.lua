@@ -104,4 +104,25 @@ M.filter_qf = function()
 	fzf.fzf_exec(qf_files, opts)
 end
 
+M.diff_branch_to_qf = function(selected)
+	local diff_branch = selected[1]
+	local diff_output = vim.fn.systemlist(string.format("git diff --name-only %s", diff_branch))
+
+	if #diff_output == 0 then
+		return
+	end
+
+	vim.fn.setqflist({}, "r")
+	local qf_items = {}
+	for _, file in ipairs(diff_output) do
+		table.insert(qf_items, {
+			filename = file,
+			lnum = 1,
+			col = 1,
+		})
+	end
+	vim.fn.setqflist({}, "r", { title = "diff  " .. diff_branch, items = qf_items })
+	vim.cmd("copen")
+end
+
 return M

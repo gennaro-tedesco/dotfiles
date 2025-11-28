@@ -111,6 +111,12 @@ M.opts = {
 					end,
 					desc = "git-diff-branch",
 				},
+				["ctrl-f"] = {
+					fn = function(selected)
+						require("plugins.fzf_extras").diff_branch_to_qf(selected)
+					end,
+					desc = "git-diff-to-quickfix",
+				},
 			},
 		},
 	},
