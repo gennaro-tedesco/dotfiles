@@ -24,6 +24,9 @@ du = [
 zathura = [
   { run = 'zathura "$@"', desc = "zathura", block = true, for = "unix" },
 ]
+preview = [
+  { run = 'open -a Preview "$@"', desc = "preview", block = true, for = "unix" },
+]
 [open]
 rules = [
   { name = "*/", use = [
@@ -38,6 +41,7 @@ rules = [
     "jq",
   ] },
   { mime = "text/*", use = "edit" },
+  { mime = "image/*", use = "preview" },
   { mime = "application/pdf", use = "zathura" },
   { mime = "inode/empty", use = "edit" },
 ]
