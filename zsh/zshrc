@@ -73,16 +73,22 @@ export FZF_DEFAULT_OPTS="\
 	--padding=1 \
 	--preview-window=right:50%:wrap \
 	--preview-border line \
-	--bind shift-up:preview-up,shift-down:preview-down --bind ?:toggle-preview \
+	--bind shift-up:preview-up,shift-down:preview-down,?:toggle-preview,ctrl-a:toggle-all \
 	--color=fg+:-1:regular,bg+:#073642,border:#268bd2,separator:#2aa198,pointer:#cb4b16,hl:#268bd2,hl+:#268bd2 \
 	--pointer=▶ \
 	--marker=' '"
 export FZF_DEFAULT_COMMAND="fd -H -t f -E '.git/'"
+export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS --preview='eza --tree --level=2 --color=always {2}' --delimiter=' '"
 export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
-export LS_COLORS="$(vivid generate solarized-dark)"
+_ls_colors_cache="${ZDOTDIR:-$HOME}/.zsh_ls_colors"
+if [[ ! -f "$_ls_colors_cache" || "$(command -v vivid)" -nt "$_ls_colors_cache" ]]; then
+  vivid generate solarized-dark > "$_ls_colors_cache"
+fi
+export LS_COLORS="$(<"$_ls_colors_cache")"
 export JQ_COLORS="2;37:0;33:0;33:0;35:0;36:1;30:2;37:0;34"
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
+export FZF_LUA_PATH=$HOME/.local/share/nvim/lazy/fzf-lua
 export PATH=${PATH}:$GOBIN
 export PATH="$HOME/.luarocks/bin:$PATH"
 export PATH="/Users/$USER/.local/share/bob/nvim-bin:$PATH"
