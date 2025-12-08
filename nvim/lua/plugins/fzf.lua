@@ -15,6 +15,11 @@ local hor_prev_opts = {
 }
 
 M.opts = {
+	keymap = {
+		fzf = {
+			["ctrl-q"] = "select-all+accept",
+		},
+	},
 	hls = {
 		normal = "Normal",
 		preview_normal = "Normal",

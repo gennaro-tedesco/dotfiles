@@ -42,19 +42,10 @@ list_env() {
 
 # search regex in current directory
 search() {
-	local matches=$(nvim -l "$FZF_LUA_PATH/scripts/cli.lua" grep_project)
-	if [[ -n "$matches" ]]; then
-		if [[ $(echo "$matches" | jq 'length') -eq 1 ]]; then
-			local file=$(echo "$matches" | jq -r '.[0].path')
-			local line=$(echo "$matches" | jq -r '.[0].line')
-			nvim "+$line" "$file"
-		else
-			local qf_file=$(mktemp)
-			echo "$matches" | jq -r '.[] | "\(.path):\(.line):\(.col + 1):\(.stripped | split(":") | .[2:] | join(":"))"' > "$qf_file"
-			nvim -q "$qf_file" '+copen'
-			rm "$qf_file"
-		fi
-	fi
+	qf_file=$(mktemp)
+	nvim -l "$FZF_LUA_PATH/scripts/cli.lua" grep_project > "$qf_file"
+	nvim -q "$qf_file" '+copen | cfirst'
+	rm "$qf_file"
 }
 
 # replace
