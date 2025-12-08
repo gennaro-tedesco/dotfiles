@@ -42,24 +42,19 @@ list_env() {
 
 # search regex in current directory
 search() {
-	local regex=$(gum input --prompt="find regex: " --placeholder="find pattern...")
-	if [[ -z "$regex" ]]; then
-		return
+	local matches=$(nvim -l "$FZF_LUA_PATH/scripts/cli.lua" grep_project)
+	if [[ -n "$matches" ]]; then
+		if [[ $(echo "$matches" | jq 'length') -eq 1 ]]; then
+			local file=$(echo "$matches" | jq -r '.[0].path')
+			local line=$(echo "$matches" | jq -r '.[0].line')
+			nvim "+$line" "$file"
+		else
+			local qf_file=$(mktemp)
+			echo "$matches" | jq -r '.[] | "\(.path):\(.line):\(.col + 1):\(.stripped | split(":") | .[2:] | join(":"))"' > "$qf_file"
+			nvim -q "$qf_file" '+copen'
+			rm "$qf_file"
+		fi
 	fi
-
-	local matching_files
-	case $1 in
-		-.)
-			matching_files=$(rg -l --hidden ${regex} | fzf --exit-0 --preview="rg --color=always -n '${regex}' {} ")
-			;;
-		-i)
-			matching_files=$(rg -i -l --hidden ${regex} | fzf --exit-0 --preview="rg -i --color=always -n '${regex}' {} ")
-			;;
-		*)
-			matching_files=$(rg -l -- ${regex} | fzf --exit-0 --preview="rg --color=always -n -- '${regex}' {} ")
-			;;
-	esac
-	[[ -n "$matching_files" ]] && ${EDITOR} "${matching_files}" -c/${regex}
 }
 
 # replace
@@ -250,4 +245,28 @@ neorg() {
 	else
 		echo "No index.norg found in ${NEORG_DIR}"
 	fi
+}
+
+# zellij session manager
+zj() {
+	if [[ -z "$1" ]]; then
+		zellij
+		return
+	fi
+
+	case $1 in
+		-a)
+			local session=$(zellij ls | cut -d' ' -f1 | fzf --ansi --ghost 'attach to session' --exit-0)
+			[[ -n "$session" ]] && zellij attach "$session"
+			;;
+		-d)
+			local session=$(zellij ls | cut -d' ' -f1 | fzf --ansi --ghost 'delete session' --exit-0)
+			[[ -n "$session" ]] && gum confirm "delete $session?" && zellij delete-session "$session" -f
+			;;
+		*)
+			echo "Usage: zj [-a|-d]"
+			echo "  -a  attach to a zellij session"
+			echo "  -d  delete a zellij session"
+			;;
+	esac
 }
