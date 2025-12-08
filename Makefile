@@ -11,8 +11,11 @@ deps:
 
 nvim:
 	rm -rf ${XDG_CONFIG_HOME}/nvim
+	rm -rf ${XDG_CONFIG_HOME}/fzf-lua
 	mkdir -p ${XDG_CONFIG_HOME}/nvim
+	mkdir -p ${XDG_CONFIG_HOME}/fzf-lua
 	cp -r nvim/. ${XDG_CONFIG_HOME}/nvim
+	cp nvim/lua/plugins/fzf_lua_shell.lua ${XDG_CONFIG_HOME}/fzf-lua/init.lua
 	nvim --headless "+Lazy! restore" +qa
 
 zsh:

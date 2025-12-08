@@ -50,7 +50,7 @@ local plugins = {
 		"catgoose/nvim-colorizer.lua",
 		event = "BufReadPre",
 		opts = {
-			filetypes = { "toml", "json", "gitconfig", "yaml" },
+			filetypes = { "toml", "json", "gitconfig", "yaml", "html", "css" },
 			user_default_options = { names = false },
 		},
 	},
@@ -70,7 +70,7 @@ local plugins = {
 		ft = "qf",
 		config = function()
 			require("bqf").setup({
-				func_map = { open = "o", openc = "<CR>" },
+				func_map = { open = "o", openc = "<CR>", stoggleup = "", stoggledown = "" },
 				preview = { show_title = true, winblend = 0 },
 			})
 		end,

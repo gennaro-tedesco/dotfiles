@@ -7,6 +7,13 @@ local symbols_exclude = { "Constant", "Variable", "String", "Number", "Text", "B
 
 local M = {}
 
+local hor_prev_opts = {
+	hidden = "nohidden",
+	layout = "horizontal",
+	horizontal = "down:40%",
+	wrap = "wrap",
+}
+
 M.opts = {
 	hls = {
 		normal = "Normal",
@@ -81,10 +88,7 @@ M.opts = {
 			title = " help 💡 ",
 			title_pos = "center",
 			height = 0.6,
-			preview = {
-				hidden = "nohidden",
-				horizontal = "down:40%",
-			},
+			preview = hor_prev_opts,
 		},
 	},
 	git = {
@@ -136,11 +140,7 @@ M.opts = {
 				title = " symbols ✨ ",
 				title_pos = "center",
 				height = 0.6,
-				preview = {
-					hidden = "nohidden",
-					horizontal = "down:40%",
-					wrap = "wrap",
-				},
+				preview = hor_prev_opts,
 			},
 			symbol_hl = function(s)
 				return "@lsp.type." .. s:lower()
@@ -153,18 +153,32 @@ M.opts = {
 			child_prefix = false,
 		},
 	},
+	grep = {
+		formatter = "path.filename_first",
+		prompt = ":",
+		winopts = {
+			title = " grep 🔍 ",
+			title_pos = "center",
+			height = 0.6,
+			preview = hor_prev_opts,
+		},
+	},
+	grep_curbuf = {
+		prompt = ":",
+		winopts = {
+			title = " buffer grep 🔍 ",
+			title_pos = "center",
+			height = 0.6,
+			preview = hor_prev_opts,
+		},
+	},
 	autocmds = {
 		prompt = ":",
 		winopts = {
 			title = " autocommands ",
 			title_pos = "center",
 			height = 0.6,
-			preview = {
-				hidden = "nohidden",
-				layout = "horizontal",
-				horizontal = "down:40%",
-				wrap = "wrap",
-			},
+			preview = hor_prev_opts,
 		},
 	},
 	keymaps = {
@@ -173,11 +187,7 @@ M.opts = {
 			title = " keymaps ",
 			title_pos = "center",
 			height = 0.6,
-			preview = {
-				hidden = "nohidden",
-				layout = "horizontal",
-				horizontal = "down:40%",
-			},
+			preview = hor_prev_opts,
 		},
 		actions = {
 			["default"] = {
@@ -196,12 +206,7 @@ M.opts = {
 			title = " highlights 🎨 ",
 			title_pos = "center",
 			height = 0.6,
-			preview = {
-				hidden = "nohidden",
-				layout = "horizontal",
-				horizontal = "down:40%",
-				wrap = "wrap",
-			},
+			preview = hor_prev_opts,
 		},
 	},
 	registers = {
@@ -276,6 +281,20 @@ M.keys = {
 			fzf.lsp_document_symbols()
 		end,
 		desc = "fzf document symbols",
+	},
+	{
+		"<C-h>",
+		function()
+			fzf.grep({ search = "" })
+		end,
+		desc = "fzf grep project",
+	},
+	{
+		"<C-j>",
+		function()
+			fzf.grep_curbuf()
+		end,
+		desc = "fzf grep current buffer",
 	},
 	{
 		"/",

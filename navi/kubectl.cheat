@@ -4,7 +4,7 @@
 kubectl logs <pod> | fzf -m --ansi --tac --wrap --gap --exact --no-sort --info inline-right --header "grep from <pod>" --bind ctrl-a:toggle-all
 
 # grep from deployment label
-kubectl logs -l app.kubernetes.io/instance=<deployment> --tail=-1 | fzf -m --ansi --tac --wrap --gap --exact --no-sort --info inline-right --header "grep from <deployment>" --bind ctrl-a:toggle-all
+kubectl logs -l app.kubernetes.io/instance=<deployment> --tail=-1 | fzf -m --ansi --tac --wrap --gap --exact --no-sort --info inline-right --header "grep from <deployment>"
 
 # view kubernetes configuration
 kubectl config view --minify -o jsonpath='{..context}' | jq

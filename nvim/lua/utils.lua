@@ -93,37 +93,6 @@ M.hl_search = function(blinktime)
 	end, blinktime * 1000)
 end
 
-M.project_search = function()
-	vim.ui.input({ prompt = "regex: " }, function(input)
-		if input == "" or input == nil then
-			return
-		else
-			vim.cmd.grep({ mods = { silent = true }, bang = true, '"' .. input .. '"' })
-			vim.schedule(function()
-				local qf_list = vim.fn.getqflist()
-				if #qf_list == 0 then
-					vim.notify(
-						"no matches found for: " .. input,
-						vim.log.levels.WARN,
-						{ style = "compact", title = "grep", id = "grep" }
-					)
-				end
-			end)
-		end
-	end)
-end
-
-M.buffers_search = function()
-	vim.fn.setqflist({}, " ")
-	vim.ui.input({ prompt = "regex in open buffers: " }, function(input)
-		if input == "" or input == nil then
-			return
-		else
-			vim.cmd({ cmd = "bufdo", args = { "vimgrepadd " .. input .. " % " }, bang = true, mods = { silent = true } })
-		end
-	end)
-end
-
 M.trim_whitespace = function()
 	local pattern = [[%s/\s\+$//e]]
 	local cur_view = vim.fn.winsaveview()

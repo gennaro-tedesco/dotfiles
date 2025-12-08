@@ -84,6 +84,10 @@ prepend_keymap = [
     "g",
     "t",
   ], run = "cd $HOME/.Trash", desc = "go to Trash folder" },
+  { on = [
+    "g",
+    "k",
+  ], run = "cd /Volumes/Kindle", desc = "go to Kindle folder" },
   { on = "D", run = "noop" },
 
   # cd back to root

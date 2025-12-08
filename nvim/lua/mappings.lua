@@ -73,11 +73,6 @@ vnoremap("<Tab>", "<C-w>w")
 nnoremap("<S-Tab>", "<C-w>W")
 vnoremap("<S-Tab>", "<C-w>W")
 
---- project search
-nnoremap("<C-h>", require("utils").project_search, { desc = "project search" })
---- open buffers search
-nnoremap("<C-j>", require("utils").buffers_search, { desc = "search in open buffers only" })
-
 --- close all splits/windows except the one in focus
 nnoremap("<leader>q", "<C-w>o", { desc = "close all windows except the focussed one" })
 
@@ -144,7 +139,13 @@ nnoremap("mx", function()
 end, { desc = "delete all marks" })
 
 --- escape terminal mode
-tnoremap("<C-q>", "<C-\\><C-n>")
+tnoremap("<C-q>", function()
+	if vim.bo.filetype ~= "fzf" then
+		return "<C-\\><C-n>"
+	else
+		return "<C-q>"
+	end
+end, { expr = true })
 
 --- undootree
 nnoremap("<leader>u", function()
