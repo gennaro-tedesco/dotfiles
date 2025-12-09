@@ -1,7 +1,6 @@
----@diagnostic disable: inject-field
+local cli_profile = require("fzf-lua.profiles.cli")
 require("fzf-lua").setup({
 	{ "cli" },
-	---@diagnostic disable-next-line: missing-fields
 	fzf_opts = {
 		["--border"] = "--no-border",
 		["--info"] = "hidden",
@@ -9,24 +8,12 @@ require("fzf-lua").setup({
 		["--no-scrollbar"] = "",
 		["--border-label-pos"] = "4:top",
 	},
-	---@diagnostic disable-next-line: missing-fields
 	previewers = { bat = { args = "--color=always --style=numbers" } },
 	grep = {
-		prompt = false,
 		actions = {
-			["enter"] = function(s)
-				for _, entry in ipairs(s) do
-					local path, lnum, text = entry:match("^(.-):(%d+):(.*)$")
-					if path and lnum then
-						io.stdout:write(string.format("%s:%d:%d:%s\n", path, tonumber(lnum), 1, vim.trim(text)))
-					end
-				end
-
-				vim.cmd.quit()
-			end,
+			["enter"] = cli_profile.actions.files["ctrl-q"],
 		},
-
-		---@diagnostic disable-next-line: param-type-mismatch
+		prompt = false,
 		fzf_opts = {
 			["--ghost"] = "search pattern",
 		},

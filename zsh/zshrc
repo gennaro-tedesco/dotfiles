@@ -138,7 +138,7 @@ bindkey -s '^t' 'clear\nfind_dir\n'
 bindkey -s '^v' 'view\n'
 bindkey -s '^o' 'clear\nfind_git_files\n'
 bindkey -s '^n' 'yazi\n'
-bindkey -s '^h' 'search\n'
+bindkey -s '^h' 'nvim -l "$FZF_LUA_PATH/scripts/cli.lua" grep_project\n'
 bindkey -s 'cc' 'conventional_commit\n'
 bindkey -s 'cx' 'amend_commit\n'
 eval "$(navi widget zsh)"

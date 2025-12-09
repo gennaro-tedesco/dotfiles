@@ -15,11 +15,6 @@ local hor_prev_opts = {
 }
 
 M.opts = {
-	keymap = {
-		fzf = {
-			["ctrl-q"] = "select-all+accept",
-		},
-	},
 	hls = {
 		normal = "Normal",
 		preview_normal = "Normal",
@@ -159,6 +154,9 @@ M.opts = {
 		},
 	},
 	grep = {
+		actions = {
+			["ctrl-q"] = { fn = FzfLua.actions.file_sel_to_qf, prefix = "select-all" },
+		},
 		formatter = "path.filename_first",
 		prompt = ":",
 		winopts = {
