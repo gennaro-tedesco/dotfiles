@@ -96,7 +96,7 @@ local plugins = {
 	--- treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		lazy = true,
+		branch = "main",
 		build = ":TSUpdate",
 		config = function()
 			require("plugins.treesitter")
@@ -105,7 +105,10 @@ local plugins = {
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
-		dependencies = "nvim-treesitter/nvim-treesitter",
+		branch = "main",
+		config = function()
+			require("plugins.treesitter_textobjects")
+		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
@@ -159,10 +162,9 @@ local plugins = {
 	},
 	{
 		"nvim-neorg/neorg",
-		build = ":Neorg sync-parsers",
+		branch = "main",
 		ft = "norg",
 		cmd = "Neorg",
-		version = "*",
 		opts = function()
 			return require("plugins.neorg").opts
 		end,
@@ -347,6 +349,11 @@ local plugins = {
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 			vim.g.matchup_surround_enabled = 1
 		end,
+		opts = {
+			treesitter = {
+				stopline = 500,
+			},
+		},
 	},
 	{
 		"gennaro-tedesco/nvim-possession",

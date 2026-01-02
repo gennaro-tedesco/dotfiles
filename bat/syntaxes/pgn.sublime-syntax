@@ -32,7 +32,7 @@ contexts:
       scope: comment.keyword.draw-offer.pgn
 
     # Move annotation (e.g. !, ?, !?, !!, ??)
-    - match: '[!?]+'
+    - match: "[!?]+"
       scope: markup.bold.move-evaluation.pgn
 
     # Novelty (N)
@@ -48,16 +48,16 @@ contexts:
       scope: constant.language.result.pgn
 
     # Comments: block { ... }
-    - match: '{'
+    - match: "{"
       scope: punctuation.definition.comment.begin.pgn
       push:
         - meta_scope: comment.block.pgn
-        - match: '}'
+        - match: "}"
           scope: punctuation.definition.comment.end.pgn
           pop: true
 
     # Comments: single line ;
-    - match: ';.*$'
+    - match: ";.*$"
       scope: comment.line.semicolon.pgn
 
     # Variations: ( ... )
