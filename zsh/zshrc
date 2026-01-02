@@ -133,12 +133,23 @@ alias lg="lazygit"
 ## --------
 ## bindkeys
 ## --------
-bindkey -s '^p' 'clear\nfind_files\n'
+find_files() {
+	zle -I
+	command nvim -l "$FZF_LUA_PATH/scripts/cli.lua" files </dev/tty >/dev/tty 2>&1
+	zle reset-prompt
+}
+zle -N find_files
+bindkey '^p' find_files
 bindkey -s '^t' 'clear\nfind_dir\n'
-bindkey -s '^v' 'view\n'
 bindkey -s '^o' 'clear\nfind_git_files\n'
 bindkey -s '^n' 'yazi\n'
-bindkey -s '^h' 'nvim -l "$FZF_LUA_PATH/scripts/cli.lua" grep_project\n'
+grep_project() {
+  zle -I
+  command nvim -l "$FZF_LUA_PATH/scripts/cli.lua" grep_project </dev/tty >/dev/tty 2>&1
+  zle reset-prompt
+}
+zle -N grep_project
+bindkey '^h' grep_project
 bindkey -s 'cc' 'conventional_commit\n'
 bindkey -s 'cx' 'amend_commit\n'
 eval "$(navi widget zsh)"
