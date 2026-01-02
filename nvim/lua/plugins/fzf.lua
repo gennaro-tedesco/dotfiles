@@ -167,6 +167,9 @@ M.opts = {
 		},
 	},
 	grep_curbuf = {
+		actions = {
+			["ctrl-q"] = { fn = FzfLua.actions.file_sel_to_qf, prefix = "select-all" },
+		},
 		prompt = ":",
 		winopts = {
 			title = " buffer grep 🔍 ",

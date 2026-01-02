@@ -214,18 +214,6 @@ local plugins = {
 		end,
 	},
 	{
-		"cameron-wags/rainbow_csv.nvim",
-		init = function()
-			vim.g.rainbow_hover_debounce_ms = 1000
-			vim.g.disable_rainbow_key_mappings = 1
-		end,
-		config = true,
-		ft = {
-			"csv",
-			"tsv",
-		},
-	},
-	{
 		"folke/sidekick.nvim",
 		opts = function()
 			return require("plugins.sidekick").opts
