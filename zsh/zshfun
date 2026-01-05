@@ -11,14 +11,32 @@ mkcd() {
 	mkdir -p -- "$1" && cd -P -- "$1"
 }
 
-# fzf browse git modified files
-find_git_files() {
-	if [[ "$(git root)" != "$(pwd)" ]] then
-		cd $(git root)
-	fi
-	IFS=$'\n' files=($(git d 2>/dev/null | fzf --query="$1" --multi --select-1 --exit-0  --ghost 'file name' --bind 'focus:transform-footer:git diff --stat --color=always -- {} __NOVAR__' --height='30%'))
-	[[ -n "$files" ]] && ${EDITOR} "${files[@]}"
+# fzf-lua widget to find files
+find_files() {
+	zle -I
+	command nvim -l "$FZF_LUA_PATH/scripts/cli.lua" files </dev/tty >/dev/tty 2>&1
+	zle reset-prompt
 }
+zle -N find_files
+
+# fzf-lua widget to find git changed files
+find_git_files() {
+	zle -I
+	if ! is_git_repo; then { echo "not a git repo"; return }; fi
+	if git diff --quiet; then { echo "no file changes"; return }; fi
+
+	command nvim -l "$FZF_LUA_PATH/scripts/cli.lua" git_status </dev/tty >/dev/tty 2>&1
+	zle -reset-prompt
+}
+zle -N find_git_files
+
+# fzf-lua widget to grep project
+grep_project() {
+	zle -I
+	command nvim -l "$FZF_LUA_PATH/scripts/cli.lua" grep_project </dev/tty >/dev/tty 2>&1
+	zle reset-prompt
+}
+zle -N grep_project
 
 # fzf browse directories and cd into them
 find_dir() {
@@ -108,10 +126,8 @@ json_diff() {
 	fi
 }
 
-
 # grep highlight with delta
 gr() { rg "$@" -N --json | delta --tabs=1 | tail -n+2 | bat -p; }
-
 
 # grep in json files with gron
 jgr() {
@@ -197,11 +213,11 @@ zj() {
 
 	case $1 in
 		-a)
-			local session=$(zellij ls | cut -d' ' -f1 | fzf --ansi --ghost 'attach to session' --exit-0)
+			local session=$(zellij ls -r -s | fzf --ansi --ghost 'attach to session' --exit-0)
 			[[ -n "$session" ]] && zellij attach "$session"
 			;;
 		-d)
-			local session=$(zellij ls | cut -d' ' -f1 | fzf --ansi --ghost 'delete session' --exit-0)
+			local session=$(zellij ls -r -s | fzf --ansi --ghost 'delete session' --exit-0)
 			[[ -n "$session" ]] && gum confirm "delete $session?" && zellij delete-session "$session" -f
 			;;
 		*)

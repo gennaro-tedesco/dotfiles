@@ -27,7 +27,6 @@ require("fzf-lua").setup({
 		["--info"] = "hidden",
 		["--no-header"] = "",
 		["--no-scrollbar"] = "",
-		["--border-label-pos"] = "4:top",
 	},
 	previewers = { bat = { args = "--color=always --style=numbers" } },
 	files = {
@@ -51,6 +50,11 @@ require("fzf-lua").setup({
 				end
 			end,
 		},
+		keymap = {
+			fzf = {
+				["ctrl-a"] = "select-all",
+			},
+		},
 	},
 	grep = {
 		actions = {
@@ -63,6 +67,26 @@ require("fzf-lua").setup({
 		keymap = {
 			fzf = {
 				["ctrl-a"] = "select-all",
+			},
+		},
+	},
+	git = {
+		status = {
+			cwd_header = false,
+			cwd_prompt = false,
+			winopts = {
+				preview = { hidden = "hidden" },
+			},
+			fzf_opts = {
+				["--ghost"] = "search modified files",
+			},
+			actions = {
+				["enter"] = cli_profile.actions.files["ctrl-q"],
+			},
+			keymap = {
+				fzf = {
+					["ctrl-a"] = "select-all",
+				},
 			},
 		},
 	},
