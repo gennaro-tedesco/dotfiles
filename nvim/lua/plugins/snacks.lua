@@ -1,4 +1,4 @@
-local snacks_ok, _ = pcall(require, "snacks")
+local snacks_ok, snacks = pcall(require, "snacks")
 if not snacks_ok then
 	return
 end
@@ -16,7 +16,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 local M = {}
 
----@type snacks.Config
 M.opts = {
 	lazygit = {
 		win = { height = 0 },
@@ -38,6 +37,21 @@ M.opts = {
 		ui_select = true,
 		win = { input = { keys = { ["<Esc>"] = { "close", mode = { "n", "i" } } } } },
 		sources = {
+			git_log_file = {
+				actions = {
+					diff_commit = function(picker, item)
+						picker:close()
+						require("gitsigns").diffthis(item.commit)
+					end,
+				},
+				win = {
+					input = {
+						keys = {
+							["<C-d>"] = { "diff_commit", mode = { "i", "n" } },
+						},
+					},
+				},
+			},
 			explorer = {
 				title = "🔎 search file",
 				diagnostics = false,
@@ -81,7 +95,6 @@ M.opts = {
 		},
 	},
 	bufdelete = { enabled = true },
-	---@type snacks.indent.Config
 	indent = {
 		enabled = true,
 		indent = { enabled = false },
@@ -92,13 +105,11 @@ M.opts = {
 			hl = "@comment.todo",
 		},
 	},
-	---@type snacks.scroll.Config
 	scroll = {
 		animate = {
 			easing = "inQuad",
 		},
 	},
-	---@type snacks.notifier.style
 	styles = {
 		["notification"] = {
 			wo = { wrap = true },
@@ -116,7 +127,6 @@ M.opts = {
 	},
 	words = { enabled = true, notify_end = false },
 	quickfile = { enabled = true, exclude = { "latex" } },
-	---@type snacks.notifier.Config
 	notifier = {
 		enabled = true,
 		style = function(buf, notif, ctx)
@@ -197,7 +207,7 @@ M.keys = {
 	{
 		"<leader>nh",
 		function()
-			Snacks.notifier.show_history()
+			snacks.notifier.show_history()
 		end,
 		desc = "show notification history",
 		mode = "n",
@@ -205,15 +215,23 @@ M.keys = {
 	{
 		"<leader>gs",
 		function()
-			Snacks.lazygit()
+			snacks.lazygit()
 		end,
 		desc = "open lazygit",
 		mode = "n",
 	},
 	{
+		"<leader>gc",
+		function()
+			snacks.picker.git_log_file()
+		end,
+		desc = "open buffer commits",
+		mode = "n",
+	},
+	{
 		"<Esc>",
 		function()
-			Snacks.notifier.hide()
+			snacks.notifier.hide()
 		end,
 		desc = "dismiss notify popup",
 		mode = "n",
@@ -222,7 +240,7 @@ M.keys = {
 		",t",
 		function()
 			if vim.bo.filetype ~= "fzf" then
-				Snacks.terminal.toggle()
+				snacks.terminal.toggle()
 			end
 		end,
 		desc = "toggle snacks terminal",
@@ -231,7 +249,7 @@ M.keys = {
 	{
 		"]]",
 		function()
-			Snacks.words.jump(vim.v.count1, true)
+			snacks.words.jump(vim.v.count1, true)
 		end,
 		desc = "Next Reference",
 		mode = { "n", "t" },
@@ -239,7 +257,7 @@ M.keys = {
 	{
 		"[[",
 		function()
-			Snacks.words.jump(-vim.v.count1, true)
+			snacks.words.jump(-vim.v.count1, true)
 		end,
 		desc = "Prev Reference",
 		mode = { "n", "t" },
@@ -247,7 +265,7 @@ M.keys = {
 	{
 		"<C-n>",
 		function()
-			Snacks.explorer()
+			snacks.explorer()
 		end,
 		desc = "File Explorer",
 	},

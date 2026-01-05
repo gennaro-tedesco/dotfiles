@@ -8,6 +8,7 @@ local icons = require("utils").icons
 gitsigns.setup({
 	numhl = true,
 	signcolumn = false,
+	diffthis = { split = "rightbelow" },
 	signs = {
 		add = { text = icons.git.Add },
 		change = { text = icons.git.Change },
