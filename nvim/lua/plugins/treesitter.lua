@@ -17,8 +17,6 @@ ts.install({
 	"make",
 	"markdown",
 	"markdown_inline",
-	"norg",
-	"norg_meta",
 	"python",
 	"regex",
 	"requirements",
