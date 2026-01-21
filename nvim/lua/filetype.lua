@@ -2,6 +2,7 @@ vim.filetype.add({
 	extension = {
 		cheat = "cheat",
 		pgn = "pgn",
+		stardict = "stardict",
 	},
 	filename = {
 		[".env"] = "config",

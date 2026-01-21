@@ -22,6 +22,7 @@ vim.o.winborder = "rounded"
 
 --- standard neovim behavior
 vim.opt.undofile = true
+vim.opt.undolevels = 20
 vim.opt.swapfile = false
 vim.opt.mouse = "a"
 vim.opt.updatetime = 100
@@ -198,5 +199,5 @@ end
 
 vim.opt.foldtext = "v:lua.fold_text()"
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99

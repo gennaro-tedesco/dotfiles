@@ -26,7 +26,6 @@ find_git_files() {
 	if git diff --quiet; then { echo "no file changes"; return }; fi
 
 	command nvim -l "$FZF_LUA_PATH/scripts/cli.lua" git_status </dev/tty >/dev/tty 2>&1
-	zle -reset-prompt
 }
 zle -N find_git_files
 
@@ -213,11 +212,11 @@ zj() {
 
 	case $1 in
 		-a)
-			local session=$(zellij ls -r -s | fzf --ansi --ghost 'attach to session' --exit-0)
+			local session=$(zellij ls -s | fzf --ansi --ghost 'attach to session' --exit-0)
 			[[ -n "$session" ]] && zellij attach "$session"
 			;;
 		-d)
-			local session=$(zellij ls -r -s | fzf --ansi --ghost 'delete session' --exit-0)
+			local session=$(zellij ls -s | fzf --ansi --ghost 'delete session' --exit-0)
 			[[ -n "$session" ]] && gum confirm "delete $session?" && zellij delete-session "$session" -f
 			;;
 		*)
