@@ -212,11 +212,11 @@ zj() {
 
 	case $1 in
 		-a)
-			local session=$(zellij ls -s | fzf --ansi --ghost 'attach to session' --exit-0)
+			local session=$(zellij ls -r -s | fzf --ansi --ghost 'attach to session' --exit-0)
 			[[ -n "$session" ]] && zellij attach "$session"
 			;;
 		-d)
-			local session=$(zellij ls -s | fzf --ansi --ghost 'delete session' --exit-0)
+			local session=$(zellij ls -r -s | fzf --ansi --ghost 'delete session' --exit-0)
 			[[ -n "$session" ]] && gum confirm "delete $session?" && zellij delete-session "$session" -f
 			;;
 		*)

@@ -71,6 +71,12 @@ M.opts = {
 			title_pos = "center",
 		},
 		actions = {
+			zero = function()
+				vim.defer_fn(function()
+					local query = require("fzf-lua").get_info().query
+					require("fzf-lua").files({ query = query })
+				end, 10)
+			end,
 			["ctrl-d"] = {
 				fn = function(...)
 					fzf.actions.file_vsplit(...)

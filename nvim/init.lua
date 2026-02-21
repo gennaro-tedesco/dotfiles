@@ -75,23 +75,6 @@ local plugins = {
 			})
 		end,
 	},
-	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		keys = {
-			{
-				"<leader>t",
-				mode = { "n", "o", "x" },
-				function()
-					require("flash").treesitter()
-				end,
-				desc = "Flash Treesitter",
-			},
-		},
-		config = function()
-			require("plugins.flash")
-		end,
-	},
 
 	--- treesitter
 	{
@@ -309,6 +292,7 @@ local plugins = {
 			end, {})
 		end,
 	},
+	{ "nemanjamalesija/smart-paste.nvim", event = "VeryLazy", config = true },
 	{
 		"stevearc/quicker.nvim",
 		opts = {
