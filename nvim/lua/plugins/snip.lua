@@ -18,8 +18,8 @@ ls.config.set_config({
 	store_selection_keys = "<c-s>",
 	ext_opts = {
 		[types.insertNode] = {
-			visited = { hl_group = "Comment" },
-			unvisited = { hl_group = "Comment" },
+			visited = {},
+			unvisited = {},
 		},
 		[types.choiceNode] = {
 			active = {
@@ -231,6 +231,17 @@ local snips = {
 			trig = "hyperlink",
 			name = "Create norg link {:url:}[txt]",
 		}, fmt("{{{}}}[{}]", { i(1, "url"), i(2, "text") })),
+		s(
+			{ trig = "code", name = "norg code block" },
+			fmt(
+				[[
+				@code {}
+				{}
+				@end
+				]],
+				{ i(1, "language"), i(2, "body") }
+			)
+		),
 		s({
 			trig = "day",
 			name = "choose day of the week",

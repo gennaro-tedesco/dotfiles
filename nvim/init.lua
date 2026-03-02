@@ -51,7 +51,7 @@ local plugins = {
 		event = "BufReadPre",
 		opts = {
 			filetypes = { "toml", "json", "gitconfig", "yaml", "html", "css", "xml" },
-			user_default_options = { names = false },
+			options = { names = false },
 		},
 	},
 	{
