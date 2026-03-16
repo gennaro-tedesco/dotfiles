@@ -14,6 +14,7 @@ ts.install({
 	"html",
 	"json",
 	"lua",
+	"javascript",
 	"make",
 	"markdown",
 	"markdown_inline",

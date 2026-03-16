@@ -93,6 +93,11 @@ config = {
 			mods = "CMD",
 			action = act.CloseCurrentPane({ confirm = false }),
 		},
+		{
+			key = "Enter",
+			mods = "SHIFT",
+			action = wezterm.action.SendString("\x1b[200~\n\x1b[201~"),
+		},
 	},
 
 	--- mouse configuration
