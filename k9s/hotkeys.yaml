@@ -1,0 +1,25 @@
+hotKeys:
+  F1:
+    shortCut: F1
+    description: view contexts
+    command: contexts
+
+  F2:
+    shortCut: F2
+    description: view namespaces
+    command: namespace
+
+  F3:
+    shortCut: F3
+    description: view pods
+    command: pods
+
+  F5:
+    shortCut: F5
+    description: view deployments
+    command: deployments
+
+  q:
+    shortCut: q
+    description: quit
+    command: quit

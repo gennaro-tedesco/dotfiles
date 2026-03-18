@@ -1,0 +1,40 @@
+k9s:
+  liveViewAutoRefresh: false
+  screenDumpDir: /var/folders/bk/74ddw4ts1gj1p0z88pv6b1d40000gq/T/k9s-screens-g.tedesco
+  refreshRate: 2
+  maxConnRetry: 5
+  readOnly: true
+  noExitOnCtrlC: false
+  ui:
+    enableMouse: true
+    headless: false
+    logoless: true
+    crumbsless: false
+    noIcons: false
+    skin: solarized
+  skipLatestRevCheck: false
+  disablePodCounting: false
+  shellPod:
+    image: busybox:1.35.0
+    namespace: default
+    limits:
+      cpu: 100m
+      memory: 100Mi
+  imageScans:
+    enable: false
+    exclusions:
+      namespaces: []
+      labels: {}
+  logger:
+    tail: 200
+    buffer: 1000
+    sinceSeconds: 300
+    textWrap: false
+    showTime: false
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 70
+    memory:
+      critical: 90
+      warn: 70

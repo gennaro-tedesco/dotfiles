@@ -1,0 +1,19 @@
+plugins:
+  env-vars:
+    shortCut: Shift-E
+    description: "env vars"
+    scopes:
+      - po
+    command: bash
+    background: false
+    args:
+      - -c
+      - '"$@" -- env | sort | bat -l DotEnv -p'
+      - dummy-arg
+      - kubectl
+      - exec
+      - $NAME
+      - -n
+      - $NAMESPACE
+      - --context
+      - $CONTEXT

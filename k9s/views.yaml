@@ -1,0 +1,18 @@
+views:
+  v1/pods:
+    sortColumn: NAME:asc
+    columns:
+      - NAME
+      - STATUS
+      - AGE
+      - READY
+      - CPU
+      - MEM
+      - RESTARTS
+      - PF|H
+      - NODE|H
+      - IP|H
+      - "%CPU/R|H"
+      - "%CPU/L|H"
+      - "%MEM/R|H"
+      - "%MEM/L|H"
