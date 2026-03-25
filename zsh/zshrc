@@ -125,7 +125,7 @@ alias lg="lazygit"
 [ -f ~/.zshfun ] && source ~/.zshfun
 
 # sourcing fzf keybindings
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
