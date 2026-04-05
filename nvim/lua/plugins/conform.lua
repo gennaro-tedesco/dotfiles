@@ -15,6 +15,7 @@ end
 
 conform.setup({
 	formatters_by_ft = {
+		javascript = { "prettier" },
 		json = { "jq" },
 		go = { "gofmt", "goimports" },
 		html = { "js_beautify" },

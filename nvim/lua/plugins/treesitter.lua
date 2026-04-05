@@ -9,6 +9,7 @@ ts.setup({
 
 ts.install({
 	"bash",
+	"dart",
 	"go",
 	"hcl",
 	"html",

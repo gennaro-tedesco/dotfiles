@@ -431,6 +431,7 @@ local opts = {
 
 lazy.setup(plugins, opts)
 vim.cmd.packadd("nvim.undotree")
+require("vim._core.ui2").enable({ enable = true })
 
 --- require the entire lua directory
 for _, file in ipairs(vim.fn.readdir(config_path .. "/lua")) do
