@@ -4,14 +4,15 @@ if not line_ok then
 end
 
 local icons = require("utils").icons
+local clients_lint = require("utils").clients_lint
 local clients_lsp = require("utils").clients_lsp
 
 local soldark = require("lualine.themes.solarized_dark")
 soldark.normal.a.gui = ""
 soldark.insert.a.gui = ""
 soldark.visual.a.gui = ""
-	lualine.setup({
-		extensions = { "lazy", "quickfix" },
+lualine.setup({
+	extensions = { "lazy", "quickfix" },
 	options = {
 		theme = soldark,
 		component_separators = { left = "", right = "" },
@@ -76,6 +77,7 @@ soldark.visual.a.gui = ""
 				end,
 			},
 			{ clients_lsp },
+			{ clients_lint },
 			{
 				"diagnostics",
 				update_in_insert = true,

@@ -50,7 +50,7 @@ local plugins = {
 		"catgoose/nvim-colorizer.lua",
 		event = "BufReadPre",
 		opts = {
-			filetypes = { "toml", "json", "gitconfig", "yaml", "html", "css", "xml" },
+			filetypes = { "toml", "json", "gitconfig", "yaml", "html", "css", "xml", "norg" },
 			options = { names = false },
 		},
 	},

@@ -167,6 +167,31 @@ M.clients_lsp = function()
 	return table.concat(names, "|")
 end
 
+M.clients_lint = function()
+	local lint_ok, lint = pcall(require, "lint")
+	if not lint_ok then
+		return ""
+	end
+
+	local configured_linters = lint.linters_by_ft[vim.bo.filetype] or {}
+	if vim.tbl_isempty(configured_linters) then
+		return ""
+	end
+
+	local running_linters = lint.get_running(0) or {}
+	local names = {}
+	for _, name in ipairs(configured_linters) do
+		local display_name = name
+		if vim.tbl_contains(running_linters, name) then
+			display_name = display_name .. "  "
+		end
+
+		table.insert(names, display_name)
+	end
+
+	return table.concat(names, "|")
+end
+
 M.gbrowse = function()
 	local root = vim.system({ "git", "root" }, { text = true }):wait()
 	if root.code ~= 0 then
