@@ -51,7 +51,11 @@ local plugins = {
 		event = "BufReadPre",
 		opts = {
 			filetypes = { "toml", "json", "gitconfig", "yaml", "html", "css", "xml", "norg" },
-			options = { names = false },
+			options = {
+				parsers = {
+					names = { enable = false },
+				},
+			},
 		},
 	},
 	{
