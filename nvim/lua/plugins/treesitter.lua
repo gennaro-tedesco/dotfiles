@@ -16,6 +16,7 @@ ts.install({
 	"json",
 	"lua",
 	"javascript",
+	"kotlin",
 	"make",
 	"markdown",
 	"markdown_inline",

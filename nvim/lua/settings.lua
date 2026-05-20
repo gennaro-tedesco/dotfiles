@@ -15,6 +15,7 @@ vim.opt.cmdheight = 1
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.scrolloff = 8
+vim.opt.scrolloffpad = 1
 vim.opt.showmode = false
 vim.opt.signcolumn = "number"
 vim.opt.startofline = true

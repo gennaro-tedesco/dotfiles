@@ -2,7 +2,7 @@ local icons = require("utils").icons
 
 local function range_contains_pos(bufnr, range, line, char, position_encoding)
 	local vim_range = vim.range.lsp(bufnr, range, position_encoding)
-	local current_pos = vim.pos(line, char, { buf = bufnr })
+	local current_pos = vim.pos(bufnr, line, char)
 	return vim_range:has(current_pos)
 end
 

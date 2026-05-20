@@ -3,6 +3,7 @@ vim.filetype.add({
 		cheat = "cheat",
 		pgn = "pgn",
 		stardict = "stardict",
+		log = "log",
 	},
 	filename = {
 		[".env"] = "config",
