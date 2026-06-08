@@ -100,7 +100,7 @@ conventional_commit(){
 	if [[ -z "$text" ]]; then { echo "commit aborted"; return } fi
 	local message="${choice}: ${text}" && [[ -z "$choice" ]] && local message=$text
 
-	git commit -m $message && \
+	git commit -m "$message" || { echo "commit failed"; return 1; }
 	REMOTE="$(git rev-parse --abbrev-ref --symbolic-full-name @{u})"
 	[[ ! "$(git ls-remote --exit-code --heads origin $(git rev-parse --abbrev-ref HEAD))" ]] && { echo "no remote branch set"; return; }
 	gum confirm "push to $REMOTE?" && gum spin --spinner dot --title "git push..." --show-output git push || echo "changes not pushed"
@@ -219,10 +219,15 @@ zj() {
 			local session=$(zellij ls -r -s | fzf --ansi --ghost 'delete session' --exit-0)
 			[[ -n "$session" ]] && gum confirm "delete $session?" && zellij delete-session "$session" -f
 			;;
+		-n)
+			[[ -z "$2" ]] && { echo "Usage: zj -n <name>"; return }
+			zellij attach --create "$2"
+			;;
 		*)
-			echo "Usage: zj [-a|-d]"
+			echo "Usage: zj [-a|-d|-n]"
 			echo "  -a  attach to a zellij session"
 			echo "  -d  delete a zellij session"
+			echo "  -n  create or attach to a named session"
 			;;
 	esac
 }
