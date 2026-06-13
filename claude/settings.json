@@ -1,0 +1,46 @@
+{
+    "permissions": {
+        "allow": [
+            "Bash(git diff:*)",
+            "Bash(gh :*)",
+            "Bash(find :*)",
+            "WebFetch",
+            "WebSearch",
+            "Grep",
+            "Glob",
+            "Bash(rtk:*)",
+            "mcp__context7",
+            "mcp__contextplus"
+        ],
+        "deny": [
+            "Bash(git push:*)",
+            "Bash(git commit -m:*)",
+            "Read(./.env)",
+            "Read(./.env.*)"
+        ],
+        "ask": [
+            "Bash(curl:*)",
+            "Write"
+        ]
+    },
+    "statusLine": {
+        "type": "command",
+        "command": "~/.claude/statusline.sh",
+        "padding": 0
+    },
+    "theme": "dark",
+    "editorMode": "vim",
+    "hooks": {
+        "PreToolUse": [
+            {
+                "matcher": "Bash",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "rtk hook claude"
+                    }
+                ]
+            }
+        ]
+    }
+}

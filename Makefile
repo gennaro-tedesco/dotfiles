@@ -81,3 +81,6 @@ k9s:
 	rm -rf ${XDG_CONFIG_HOME}/k9s
 	mkdir -p ${XDG_CONFIG_HOME}/k9s
 	cp -r k9s/. ${XDG_CONFIG_HOME}/k9s
+
+claude:
+	cp -r claude/. ${HOME}/.claude
