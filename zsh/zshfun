@@ -231,3 +231,8 @@ zj() {
 			;;
 	esac
 }
+
+# unix timestamp converter
+unix() {
+  date -r $(( $1 / 1000 )) "+%Y-%m-%d %H:%M:%S %Z"
+}

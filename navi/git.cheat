@@ -18,4 +18,8 @@ git diff --name-only | grep '<pattern>' | xargs -n 1 -t git add
 # list files changed in a PR
 gh pr view <pr> --json files --jq '.files.[].path'
 
+# list container tags for a service package
+gh api "/orgs/LoanLink/packages/container/<service>/versions" --paginate --jq '.[].metadata.container.tags[]'
+
 $ pr: gh pr list | cut -f1,2  --- --column 1 --delimiter '\t'
+$ service: gh api "/orgs/LoanLink/packages?package_type=container" --paginate --jq '.[].name'

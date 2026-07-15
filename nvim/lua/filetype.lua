@@ -4,6 +4,7 @@ vim.filetype.add({
 		pgn = "pgn",
 		stardict = "stardict",
 		log = "log",
+		jsonl = "json",
 	},
 	filename = {
 		[".env"] = "config",
