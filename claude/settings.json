@@ -4,6 +4,7 @@
             "Bash(git diff:*)",
             "Bash(gh :*)",
             "Bash(find :*)",
+            "Bash(awk :*)",
             "WebFetch",
             "WebSearch",
             "Grep",

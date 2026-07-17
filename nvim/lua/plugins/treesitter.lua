@@ -37,5 +37,16 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+local syntax_only_ft = { "helm" }
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = syntax_only_ft,
+	callback = function(ev)
+		vim.schedule(function()
+			vim.treesitter.stop(ev.buf)
+		end)
+	end,
+})
+
 vim.treesitter.language.register("bash", "cheat")
 vim.treesitter.language.register("bash", "zsh")
