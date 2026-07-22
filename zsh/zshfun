@@ -213,21 +213,18 @@ zj() {
 	case $1 in
 		-a)
 			local session=$(zellij ls -r -s | fzf --ansi --ghost 'attach to session' --exit-0)
-			[[ -n "$session" ]] && zellij attach "$session"
+			[[ -n "$session" ]] && zellij "${@:2}" attach "$session"
 			;;
 		-d)
 			local session=$(zellij ls -r -s | fzf --ansi --ghost 'delete session' --exit-0)
-			[[ -n "$session" ]] && gum confirm "delete $session?" && zellij delete-session "$session" -f
+			[[ -n "$session" ]] && gum confirm "delete $session?" && zellij "${@:2}" delete-session "$session" -f
 			;;
 		-n)
 			[[ -z "$2" ]] && { echo "Usage: zj -n <name>"; return }
-			zellij attach --create "$2"
+			zellij "${@:3}" attach --create "$2"
 			;;
 		*)
-			echo "Usage: zj [-a|-d|-n]"
-			echo "  -a  attach to a zellij session"
-			echo "  -d  delete a zellij session"
-			echo "  -n  create or attach to a named session"
+			zellij "$@"
 			;;
 	esac
 }
