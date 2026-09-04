@@ -368,6 +368,7 @@ themes {
 theme "osaka"
 default_layout "minimal"
 pane_frames true
+pane_frame_style "full"
 ui {
     pane_frames {
         hide_session_name false

@@ -51,6 +51,9 @@ kubectl scale deployment <deployment> --replicas=<N> --namespace=<namespace>
 # group by pod string and count status
 kubectl get pods | grep <pod-string> | tr -s ' ' | cut -f3 -d ' ' | sort | uniq -c
 
+# show CPU throttling
+for p in $(kubectl get pods -l app.kubernetes.io/name=<deployment> -o jsonpath='{.items[*].metadata.name}'); do echo "=== $p ==="; kubectl exec "$p" -- cat /sys/fs/cgroup/cpu.stat 2>/dev/null | awk '/nr_periods/{p=$2} /nr_throttled/{t=$2} /throttled_usec/{u=$2} END {printf "throttled: %.2f%%\ntotal throttled time: %.2fs\n", p ? 100*t/p : 0, u/1000000}'; done
+
 $ namespace: kubectl get namespace | cut -d" " -f1 | tail -n +2 | sort
 $ context: kubectl config get-contexts | awk -F" " '{print $2}' | tail -n +2 | sort
 $ pod: kubectl get pod | awk -F" " '{print $1}' | tail -n +2 | sort
