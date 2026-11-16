@@ -1,126 +1,122 @@
 {
-    "$schema": "https://opencode.ai/config.json",
-    "permissions": [
-        {
-            "action": "skill",
-            "resource": "*",
-            "effect": "allow"
-        },
-        {
-            "action": "shell",
-            "resource": "*",
-            "effect": "allow"
-        },
-        {
-            "action": "shell",
-            "resource": "git *",
-            "effect": "allow"
-        },
-        {
-            "action": "shell",
-            "resource": "git commit *",
-            "effect": "allow"
-        },
-        {
-            "action": "shell",
-            "resource": "git push *",
-            "effect": "deny"
-        },
-        {
-            "action": "shell",
-            "resource": "rm *",
-            "effect": "ask"
-        },
-        {
-            "action": "shell",
-            "resource": "grep *",
-            "effect": "allow"
-        },
-        {
-            "action": "shell",
-            "resource": "ls *",
-            "effect": "allow"
-        },
-        {
-            "action": "shell",
-            "resource": "du *",
-            "effect": "allow"
-        },
-        {
-            "action": "shell",
-            "resource": "date *",
-            "effect": "allow"
-        },
-        {
-            "action": "read",
-            "resource": "*",
-            "effect": "allow"
-        },
-        {
-            "action": "read",
-            "resource": "*.env",
-            "effect": "ask"
-        },
-        {
-            "action": "read",
-            "resource": "*.env.*",
-            "effect": "ask"
-        },
-        {
-            "action": "read",
-            "resource": "*.env.example",
-            "effect": "allow"
-        },
-        {
-            "action": "edit",
-            "resource": "*",
-            "effect": "allow"
-        },
-        {
-            "action": "webfetch",
-            "resource": "*",
-            "effect": "allow"
-        },
-        {
-            "action": "websearch",
-            "resource": "*",
-            "effect": "allow"
-        },
-        {
-            "action": "glob",
-            "resource": "*",
-            "effect": "allow"
-        },
-        {
-            "action": "external_directory",
-            "resource": "*",
-            "effect": "ask"
-        }
-    ],
-    "mcp": {
-        "servers": {
-            "context7": {
-                "type": "remote",
-                "url": "https://mcp.context7.com/mcp",
-                "headers": {
-                    "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
-                }
-            },
-            "supabase": {
-                "type": "remote",
-                "url": "https://mcp.supabase.com/mcp"
-            },
-            "contextplus": {
-                "type": "local",
-                "command": [
-                    "npx",
-                    "-y",
-                    "contextplus"
-                ],
-                "environment": {
-                    "CONTEXTPLUS_IDLE_TIMEOUT_MS": "14400000"
-                }
-            }
-        }
+  "$schema": "https://opencode.ai/config.json",
+  "permissions": [
+    {
+      "action": "skill",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git commit *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git push *",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "rm *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "grep *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "ls *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "du *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "date *",
+      "effect": "allow"
+    },
+    {
+      "action": "read",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "read",
+      "resource": "*.env",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "*.env.*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "*.env.example",
+      "effect": "allow"
+    },
+    {
+      "action": "edit",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "webfetch",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "websearch",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "glob",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "external_directory",
+      "resource": "*",
+      "effect": "ask"
     }
+  ],
+  "mcp": {
+    "servers": {
+      "context7": {
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp",
+        "headers": {
+          "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+        }
+      },
+      "supabase": {
+        "type": "remote",
+        "url": "https://mcp.supabase.com/mcp"
+      },
+      "contextplus": {
+        "type": "local",
+        "command": ["npx", "-y", "contextplus"],
+        "environment": {
+          "CONTEXTPLUS_IDLE_TIMEOUT_MS": "14400000"
+        }
+      }
+    }
+  }
 }

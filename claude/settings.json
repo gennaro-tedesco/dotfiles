@@ -1,77 +1,71 @@
 {
-    "attribution": {
-        "commit": "",
-        "pr": "",
-        "sessionUrl": false
-    },
-    "includeCoAuthoredBy": false,
-    "permissions": {
-        "allow": [
-            "Bash(git diff:*)",
-            "Bash(gh :*)",
-            "Bash(find :*)",
-            "Bash(awk :*)",
-            "WebFetch",
-            "WebSearch",
-            "Grep",
-            "Glob",
-            "Bash(rtk:*)",
-            "Bash(curl:*)",
-            "mcp__context7",
-            "mcp__contextplus",
-            "Bash(kubectl *)",
-            "mcp__kubernetes-mcp-server"
-        ],
-        "deny": [
-            "Read(./.env)",
-            "Read(./.env.*)"
-        ],
-        "ask": [
-            "Bash(git commit -m:*)",
-            "Bash(git push:*)"
-        ],
-        "defaultMode": "auto"
-    },
-    "model": "sonnet",
-    "hooks": {
-        "PreToolUse": [
-            {
-                "matcher": "Bash",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "rtk hook claude"
-                    },
-                    {
-                        "type": "command",
-                        "command": "jq -r '.tool_input.command // \"\"' | grep -qE '^find .+(-name|-type [fd]|-maxdepth|-path)' && echo 'Use contextplus MCP tools for repo exploration instead of find: get_context_tree, get_file_skeleton. If contextplus is unavailable, use fd instead of find.' >&2 && exit 2 || exit 0"
-                    },
-                    {
-                        "type": "command",
-                        "command": "jq -r '.tool_input.command // \"\"' | grep -qE '(^|[|;&]|\\s)sed(\\s|$)' && echo 'Use the Read tool instead of sed for viewing/reading file contents (e.g. cat file | sed, or sed -n ...p file). Read the file directly with the Read tool.' >&2 && exit 2 || exit 0"
-                    }
-                ]
-            }
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "Bash(git diff:*)",
+      "Bash(gh :*)",
+      "Bash(find :*)",
+      "Bash(awk :*)",
+      "WebFetch",
+      "WebSearch",
+      "Grep",
+      "Glob",
+      "Bash(rtk:*)",
+      "Bash(curl:*)",
+      "mcp__context7",
+      "mcp__contextplus",
+      "Bash(kubectl *)",
+      "mcp__kubernetes-mcp-server"
+    ],
+    "deny": ["Read(./.env)", "Read(./.env.*)"],
+    "ask": ["Bash(git commit -m:*)", "Bash(git push:*)"],
+    "defaultMode": "auto"
+  },
+  "model": "sonnet",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          },
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.command // \"\"' | grep -qE '^find .+(-name|-type [fd]|-maxdepth|-path)' && echo 'Use contextplus MCP tools for repo exploration instead of find: get_context_tree, get_file_skeleton. If contextplus is unavailable, use fd instead of find.' >&2 && exit 2 || exit 0"
+          },
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.command // \"\"' | grep -qE '(^|[|;&]|\\s)sed(\\s|$)' && echo 'Use the Read tool instead of sed for viewing/reading file contents (e.g. cat file | sed, or sed -n ...p file). Read the file directly with the Read tool.' >&2 && exit 2 || exit 0"
+          }
         ]
-    },
-    "statusLine": {
-        "type": "command",
-        "command": "~/.claude/statusline.sh",
-        "padding": 0
-    },
-    "effortLevel": "medium",
-    "modelSettings": {
-        "claude-sonnet-5": {
-            "effortLevel": "medium"
-        }
-    },
-    "tui": "fullscreen",
-    "skipDangerousModePermissionPrompt": true,
-    "theme": "dark",
-    "editorMode": "vim",
-    "vimInsertModeRemaps": {
-        "jj": "<Esc>",
-        "kk": "<Esc>"
-    },
-    "switchModelsOnFlag": false
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 0
+  },
+  "effortLevel": "medium",
+  "modelSettings": {
+    "claude-sonnet-5": {
+      "effortLevel": "medium"
+    }
+  },
+  "tui": "fullscreen",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
+  "editorMode": "vim",
+  "vimInsertModeRemaps": {
+    "jj": "<Esc>",
+    "kk": "<Esc>"
+  },
+  "switchModelsOnFlag": false
 }
