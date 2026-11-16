@@ -1,0 +1,25 @@
+{
+  "$schema": "https://opencode.ai/v2/cli.json",
+  "plugins": ["{env:HOME}/.config/opencode/tui-plugins/repo-tree"],
+  "theme": {
+    "name": "system"
+  },
+  "scroll": {
+    "speed": 3,
+    "acceleration": true
+  },
+  "diffs": {
+    "wrap": "word"
+  },
+  "session": {
+    "sidebar": "auto",
+    "scrollbar": false,
+    "thinking": "show"
+  },
+  "animations": true,
+  "mouse": true,
+  "cursor": {
+    "style": "line",
+    "blinking": true
+  }
+}
