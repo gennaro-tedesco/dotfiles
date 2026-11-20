@@ -1,8 +1,9 @@
 import { execFile } from "node:child_process"
+import { watch } from "node:fs"
 import { readdir, readFile, stat } from "node:fs/promises"
 import { join, relative } from "node:path"
 import { promisify } from "node:util"
-import { createResource, createSignal, For, Match, onCleanup, onMount, Show, Switch } from "solid-js"
+import { createEffect, createResource, createSignal, For, Match, onCleanup, onMount, Show, Switch } from "solid-js"
 import { createStore } from "solid-js/store"
 import { Plugin, usePlugin } from "@opencode/plugin/tui"
 import { generateSyntax, type ResolvedTheme } from "@opencode/theme/tui"
@@ -131,7 +132,7 @@ async function list(dir: string): Promise<Entry[]> {
     .sort((a, b) => Number(b.dir) - Number(a.dir) || a.name.localeCompare(b.name, undefined, { sensitivity: "base" }))
 }
 
-function RepoTree(props: { root: string }) {
+function RepoTree(props: { root: string; revision: number }) {
   const context = usePlugin()
   const [collapsed, setCollapsed] = createSignal(false)
   const [state, setState] = createStore<{ children: Record<string, Entry[]>; open: Record<string, boolean> }>({
@@ -145,7 +146,17 @@ function RepoTree(props: { root: string }) {
   let timer: ReturnType<typeof setTimeout> | undefined
   let request = 0
 
-  onMount(async () => setState("children", props.root, await list(props.root)))
+  const refresh = async () => {
+    listing = undefined
+    const paths = [props.root, ...Object.keys(state.open).filter((path) => state.open[path])]
+    const entries = await Promise.all(paths.map((path) => list(path)))
+    paths.forEach((path, index) => setState("children", path, entries[index]))
+  }
+
+  createEffect(() => {
+    props.revision
+    void refresh()
+  })
   onCleanup(() => clearTimeout(timer))
 
   const openFile = (path: string) => {
@@ -264,6 +275,30 @@ function RepoTree(props: { root: string }) {
   )
 }
 
+function Sidebar(props: { root: string }) {
+  const context = usePlugin()
+  const [revision, setRevision] = createSignal(0)
+  let timer: ReturnType<typeof setTimeout> | undefined
+
+  onMount(() => {
+    const watcher = watch(props.root, { recursive: true }, () => {
+      clearTimeout(timer)
+      timer = setTimeout(() => {
+        setRevision((value) => value + 1)
+        const location = context.location ?? context.data.location.default()
+        context.data.location.vcs.invalidate(location)
+        void context.data.location.vcs.sync(location)
+      }, 100)
+    })
+    onCleanup(() => {
+      clearTimeout(timer)
+      watcher.close()
+    })
+  })
+
+  return <RepoTree root={props.root} revision={revision()} />
+}
+
 function FileViewer(props: {
   root: string
   style: SyntaxStyle
@@ -318,7 +353,7 @@ export default Plugin.define({
     const style = generateSyntax(context.theme, context.renderer.nativeScene)
     const stopSidebar = context.ui.slot({
       append: "sidebar.content",
-      render: () => <RepoTree root={root} />,
+      render: () => <Sidebar root={root} />,
     })
     const stopPanel = context.ui.slot({
       append: "session.panel",
