@@ -20,23 +20,24 @@ const run = promisify(execFile)
 
 type SearchResult = { files: string[]; note?: string }
 
-let listing: { at: number; files: string[] } | undefined
+let listing: { at: number; files: string[]; showHidden: boolean } | undefined
 
-async function listFiles(root: string): Promise<string[]> {
-  if (listing && Date.now() - listing.at < LIST_TTL_MS) return listing.files
-  const { stdout } = await run("fd", ["--type", "f"], { cwd: root, maxBuffer: 64 * 1024 * 1024 })
-  listing = { at: Date.now(), files: stdout.split("\n").filter(Boolean) }
+async function listFiles(root: string, showHidden: boolean): Promise<string[]> {
+  if (listing && listing.showHidden === showHidden && Date.now() - listing.at < LIST_TTL_MS) return listing.files
+  const args = showHidden ? ["--hidden", "--type", "f"] : ["--type", "f"]
+  const { stdout } = await run("fd", args, { cwd: root, maxBuffer: 64 * 1024 * 1024 })
+  listing = { at: Date.now(), files: stdout.split("\n").filter(Boolean), showHidden }
   return listing.files
 }
 
-async function find(root: string, query: string): Promise<SearchResult> {
+async function find(root: string, query: string, showHidden: boolean): Promise<SearchResult> {
   try {
     const terms = query.toLowerCase().split(/\s+/).filter(Boolean)
     const nameHits = (file: string) => {
       const name = file.slice(file.lastIndexOf("/") + 1).toLowerCase()
       return terms.filter((term) => name.includes(term)).length
     }
-    const files = (await listFiles(root))
+    const files = (await listFiles(root, showHidden))
       .filter((file) => terms.every((term) => file.toLowerCase().includes(term)))
       .sort((a, b) => nameHits(b) - nameHits(a) || a.length - b.length)
       .slice(0, MAX_RESULTS)
@@ -124,10 +125,10 @@ function icon(theme: ResolvedTheme, entry: Entry, open: boolean): { char: string
   return match ? { char: match.char, color: theme.syntax[match.token] } : { char: "", color: theme.text.muted }
 }
 
-async function list(dir: string): Promise<Entry[]> {
+async function list(dir: string, showHidden = false): Promise<Entry[]> {
   const entries = await readdir(dir, { withFileTypes: true }).catch(() => [])
   return entries
-    .filter((e) => e.name !== ".git")
+    .filter((e) => showHidden || !e.name.startsWith("."))
     .map((e) => ({ name: e.name, path: join(dir, e.name), dir: e.isDirectory() }))
     .sort((a, b) => Number(b.dir) - Number(a.dir) || a.name.localeCompare(b.name, undefined, { sensitivity: "base" }))
 }
@@ -135,6 +136,7 @@ async function list(dir: string): Promise<Entry[]> {
 function RepoTree(props: { root: string; revision: number }) {
   const context = usePlugin()
   const [collapsed, setCollapsed] = createSignal(false)
+  const [showHidden, setShowHidden] = createSignal(false)
   const [state, setState] = createStore<{ children: Record<string, Entry[]>; open: Record<string, boolean> }>({
     children: {},
     open: {},
@@ -149,7 +151,7 @@ function RepoTree(props: { root: string; revision: number }) {
   const refresh = async () => {
     listing = undefined
     const paths = [props.root, ...Object.keys(state.open).filter((path) => state.open[path])]
-    const entries = await Promise.all(paths.map((path) => list(path)))
+    const entries = await Promise.all(paths.map((path) => list(path, showHidden())))
     paths.forEach((path, index) => setState("children", path, entries[index]))
   }
 
@@ -173,7 +175,7 @@ function RepoTree(props: { root: string; revision: number }) {
     if (!text) return
     timer = setTimeout(async () => {
       const id = request
-      const found = await find(props.root, text)
+      const found = await find(props.root, text, showHidden())
       if (id === request) setResults(found)
     }, 150)
   }
@@ -191,12 +193,19 @@ function RepoTree(props: { root: string; revision: number }) {
     ],
   }))
 
+  const toggleHidden = async () => {
+    const next = !showHidden()
+    setShowHidden(next)
+    setState({ children: { [props.root]: await list(props.root, next) }, open: {} })
+    search(query())
+  }
+
   const toggle = async (entry: Entry) => {
     if (!entry.dir) {
       openFile(entry.path)
       return
     }
-    if (!state.open[entry.path]) setState("children", entry.path, await list(entry.path))
+    if (!state.open[entry.path]) setState("children", entry.path, await list(entry.path, showHidden()))
     setState("open", entry.path, !state.open[entry.path])
   }
 
@@ -211,8 +220,13 @@ function RepoTree(props: { root: string; revision: number }) {
 
   return (
     <box flexDirection="column" marginTop={1}>
-      <box onMouseDown={() => setCollapsed(!collapsed())}>
-        <text fg={context.theme.text.base}>{collapsed() ? "▶" : "▼"} Files</text>
+      <box flexDirection="row" justifyContent="space-between">
+        <box onMouseDown={() => setCollapsed(!collapsed())}>
+          <text fg={context.theme.text.base}>{collapsed() ? "▶" : "▼"} Files</text>
+        </box>
+        <box onMouseDown={() => void toggleHidden()}>
+          <text fg={context.theme.text.muted}>{showHidden() ? "󰈈" : "󰈉"}</text>
+        </box>
       </box>
       <Show when={!collapsed()}>
         <box onMouseDown={() => setSearching(true)}>

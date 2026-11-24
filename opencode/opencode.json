@@ -1,5 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "plugins": ["*", "{env:HOME}/.config/opencode/local-plugins/codex-limits"],
   "permissions": [
     {
       "action": "skill",
